@@ -39,6 +39,7 @@
 		C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C972FF721C19FA0900D34EB2 /* Messages.storyboard */; };
 		C972FF761C1A1ACF00D34EB2 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C972FF741C1A1ACF00D34EB2 /* Schedule.storyboard */; };
 		C972FF781C1A1B1700D34EB2 /* SOI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C972FF771C1A1B1700D34EB2 /* SOI.storyboard */; };
+		C972FF7A1C1A267400D34EB2 /* ScheduleNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972FF791C1A267400D34EB2 /* ScheduleNavViewController.swift */; };
 		C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E421BF5BD3700D30F96 /* AppDelegate.swift */; };
 		C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99D3E461BF5BD3700D30F96 /* Main.storyboard */; };
 		C99D3E4A1BF5BD3700D30F96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C99D3E491BF5BD3700D30F96 /* Assets.xcassets */; };
@@ -134,6 +135,7 @@
 		C972FF721C19FA0900D34EB2 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
 		C972FF751C1A1ACF00D34EB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Schedule.storyboard; sourceTree = "<group>"; };
 		C972FF771C1A1B1700D34EB2 /* SOI.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SOI.storyboard; sourceTree = "<group>"; };
+		C972FF791C1A267400D34EB2 /* ScheduleNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleNavViewController.swift; sourceTree = "<group>"; };
 		C99D3E3F1BF5BD3700D30F96 /* inSparkle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inSparkle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99D3E421BF5BD3700D30F96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C99D3E471BF5BD3700D30F96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				C972FF741C1A1ACF00D34EB2 /* Schedule.storyboard */,
+				C972FF791C1A267400D34EB2 /* ScheduleNavViewController.swift */,
 				C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */,
 				C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */,
 				C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */,
@@ -745,6 +748,7 @@
 				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,
 				C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */,
 				C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */,
+				C972FF7A1C1A267400D34EB2 /* ScheduleNavViewController.swift in Sources */,
 				C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */,
 				C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */,
 				C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */,
