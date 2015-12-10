@@ -1,0 +1,1 @@
+PHONENUMBERKIT_OTHER_LDFLAGS = -framework "CoreTelephony"
