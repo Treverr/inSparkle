@@ -7,13 +7,77 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7152D5A8CCD5E65BA2403309 /* Pods_inSparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411847EFD392F5F727796B8A /* Pods_inSparkle.framework */; };
+		C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */; };
+		C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AC6411BFD85BA00E09B22 /* SOIModel.swift */; };
+		C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */; };
+		C94367061BF719E10066D155 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94367051BF719E10066D155 /* Colors.swift */; };
+		C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */; };
+		C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */; };
+		C9585F201C163FF1008AB918 /* ConfirmPunchInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F1F1C163FF1008AB918 /* ConfirmPunchInViewController.swift */; };
+		C9585F221C164013008AB918 /* ConfirmPunchOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F211C164013008AB918 /* ConfirmPunchOutViewController.swift */; };
+		C9585F251C165179008AB918 /* ScannerBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9585F241C165179008AB918 /* ScannerBeep.wav */; };
+		C9585F271C169491008AB918 /* RunTimeReportAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F261C169491008AB918 /* RunTimeReportAllTableViewController.swift */; };
+		C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F281C174A3B008AB918 /* CalendarDatePickerViewController.swift */; };
+		C9585F2B1C174C0F008AB918 /* TimeClockReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9585F2A1C174C0F008AB918 /* TimeClockReport.storyboard */; };
+		C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9585F2E1C175505008AB918 /* Admin.storyboard */; };
+		C9585F311C175887008AB918 /* ReportsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F301C175887008AB918 /* ReportsTableViewController.swift */; };
+		C9585F361C175B08008AB918 /* TimeCardReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */; };
+		C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F371C175BC0008AB918 /* AdminTableViewController.swift */; };
+		C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95990E31C10F8DD00F6873E /* ScheduleModel.swift */; };
+		C961638A1BF6EC9E00EB5D44 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */; };
+		C96EF7F61C13F2E700C4D2C1 /* TimeClockPunchObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96EF7F51C13F2E700C4D2C1 /* TimeClockPunchObj.swift */; };
+		C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96EF7F71C13F37700C4D2C1 /* EmployeeModel.swift */; };
+		C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96EF7FA1C14BFC400C4D2C1 /* TimeClockViewController.swift */; };
+		C96EF7FE1C14CDDD00C4D2C1 /* TimeClock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96EF7FD1C14CDDD00C4D2C1 /* TimeClock.storyboard */; };
+		C96EF8011C14CE3100C4D2C1 /* ChemCheck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96EF8001C14CE3100C4D2C1 /* ChemCheck.storyboard */; };
+		C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C96EF8021C14E0FD00C4D2C1 /* TimeClock.xcassets */; };
+		C96F79AB1BFC41AB00C13615 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96F79AA1BFC41AB00C13615 /* LocalAuthentication.framework */; };
+		C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C96F79AF1BFC44ED00C13615 /* KeychainWrapper.m */; };
+		C972FF6E1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972FF6D1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift */; };
+		C972FF701C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972FF6F1C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift */; };
+		C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C972FF721C19FA0900D34EB2 /* Messages.storyboard */; };
+		C972FF761C1A1ACF00D34EB2 /* Schedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C972FF741C1A1ACF00D34EB2 /* Schedule.storyboard */; };
+		C972FF781C1A1B1700D34EB2 /* SOI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C972FF771C1A1B1700D34EB2 /* SOI.storyboard */; };
 		C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E421BF5BD3700D30F96 /* AppDelegate.swift */; };
-		C99D3E451BF5BD3700D30F96 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E441BF5BD3700D30F96 /* ViewController.swift */; };
 		C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99D3E461BF5BD3700D30F96 /* Main.storyboard */; };
 		C99D3E4A1BF5BD3700D30F96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C99D3E491BF5BD3700D30F96 /* Assets.xcassets */; };
 		C99D3E4D1BF5BD3700D30F96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99D3E4B1BF5BD3700D30F96 /* LaunchScreen.storyboard */; };
 		C99D3E581BF5BD3700D30F96 /* inSparkleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E571BF5BD3700D30F96 /* inSparkleTests.swift */; };
 		C99D3E631BF5BD3700D30F96 /* inSparkleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E621BF5BD3700D30F96 /* inSparkleUITests.swift */; };
+		C99D3E711BF5C04200D30F96 /* SOITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E701BF5C04200D30F96 /* SOITableViewCell.swift */; };
+		C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */; };
+		C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */; };
+		C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A781221BF944740013D388 /* TabBarViewController.swift */; };
+		C9B5B4511BF6773200650FC4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B44F1BF6773200650FC4 /* Fabric.framework */; };
+		C9B5B4521BF6773200650FC4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B4501BF6773200650FC4 /* Crashlytics.framework */; };
+		C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */; };
+		C9C192801BF64D8200862F52 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192791BF64D8200862F52 /* Bolts.framework */; };
+		C9C192811BF64D8200862F52 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1927A1BF64D8200862F52 /* Parse.framework */; };
+		C9C192821BF64D8200862F52 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1927B1BF64D8200862F52 /* ParseCrashReporting.framework */; };
+		C9C192831BF64D8200862F52 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1927C1BF64D8200862F52 /* ParseFacebookUtils.framework */; };
+		C9C192841BF64D8200862F52 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1927D1BF64D8200862F52 /* ParseFacebookUtilsV4.framework */; };
+		C9C192851BF64D8200862F52 /* ParseTwitterUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1927E1BF64D8200862F52 /* ParseTwitterUtils.framework */; };
+		C9C192861BF64D8200862F52 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1927F1BF64D8200862F52 /* ParseUI.framework */; };
+		C9C192881BF64DBF00862F52 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192871BF64DBF00862F52 /* AudioToolbox.framework */; };
+		C9C1928A1BF64DC900862F52 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192891BF64DC900862F52 /* CFNetwork.framework */; };
+		C9C1928C1BF64DD100862F52 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1928B1BF64DD100862F52 /* CoreGraphics.framework */; };
+		C9C1928E1BF64DD800862F52 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1928D1BF64DD800862F52 /* CoreLocation.framework */; };
+		C9C192901BF64DDF00862F52 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1928F1BF64DDF00862F52 /* QuartzCore.framework */; };
+		C9C192921BF64DE600862F52 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192911BF64DE500862F52 /* Security.framework */; };
+		C9C192941BF64DEE00862F52 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192931BF64DEE00862F52 /* StoreKit.framework */; };
+		C9C192961BF64DF400862F52 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192951BF64DF400862F52 /* SystemConfiguration.framework */; };
+		C9C192981BF64DFE00862F52 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192971BF64DFE00862F52 /* libz.tbd */; };
+		C9C1929A1BF64E0500862F52 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192991BF64E0500862F52 /* libsqlite3.tbd */; };
+		C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */; };
+		C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */; };
+		C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */; };
+		C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */; };
+		C9F0FF931C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */; };
+		C9F0FF961C18A646005EEE28 /* TimeCardManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F0FF951C18A646005EEE28 /* TimeCardManagement.storyboard */; };
+		C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */; };
+		C9F0FF9A1C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */; };
+		C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F431171BFEB13500AC3CD8 /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +98,44 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		411847EFD392F5F727796B8A /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		780D3CC7ECBD99D4953539B4 /* Pods-inSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.release.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.release.xcconfig"; sourceTree = "<group>"; };
+		C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPopViewController.swift; sourceTree = "<group>"; };
+		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
+		C91AC6411BFD85BA00E09B22 /* SOIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOIModel.swift; sourceTree = "<group>"; };
+		C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePunchCalcObject.swift; sourceTree = "<group>"; };
+		C94367051BF719E10066D155 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = Onboarding/ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
+		C9585F1F1C163FF1008AB918 /* ConfirmPunchInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPunchInViewController.swift; sourceTree = "<group>"; };
+		C9585F211C164013008AB918 /* ConfirmPunchOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPunchOutViewController.swift; sourceTree = "<group>"; };
+		C9585F241C165179008AB918 /* ScannerBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ScannerBeep.wav; sourceTree = "<group>"; };
+		C9585F261C169491008AB918 /* RunTimeReportAllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeReportAllTableViewController.swift; sourceTree = "<group>"; };
+		C9585F281C174A3B008AB918 /* CalendarDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDatePickerViewController.swift; sourceTree = "<group>"; };
+		C9585F2A1C174C0F008AB918 /* TimeClockReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeClockReport.storyboard; sourceTree = "<group>"; };
+		C9585F2E1C175505008AB918 /* Admin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
+		C9585F301C175887008AB918 /* ReportsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsTableViewController.swift; sourceTree = "<group>"; };
+		C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCardReportTableViewController.swift; sourceTree = "<group>"; };
+		C9585F371C175BC0008AB918 /* AdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+		C95990E31C10F8DD00F6873E /* ScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
+		C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
+		C96EF7F51C13F2E700C4D2C1 /* TimeClockPunchObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeClockPunchObj.swift; sourceTree = "<group>"; };
+		C96EF7F71C13F37700C4D2C1 /* EmployeeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeModel.swift; sourceTree = "<group>"; };
+		C96EF7FA1C14BFC400C4D2C1 /* TimeClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeClockViewController.swift; sourceTree = "<group>"; };
+		C96EF7FD1C14CDDD00C4D2C1 /* TimeClock.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeClock.storyboard; sourceTree = "<group>"; };
+		C96EF8001C14CE3100C4D2C1 /* ChemCheck.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChemCheck.storyboard; sourceTree = "<group>"; };
+		C96EF8021C14E0FD00C4D2C1 /* TimeClock.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TimeClock.xcassets; sourceTree = "<group>"; };
+		C96F79AA1BFC41AB00C13615 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		C96F79AD1BFC44ED00C13615 /* inSparkle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "inSparkle-Bridging-Header.h"; sourceTree = "<group>"; };
+		C96F79AE1BFC44ED00C13615 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		C96F79AF1BFC44ED00C13615 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		C972FF6D1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExistingTimePunchTableViewController.swift; sourceTree = "<group>"; };
+		C972FF6F1C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimeDatePickerViewController.swift; sourceTree = "<group>"; };
+		C972FF721C19FA0900D34EB2 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
+		C972FF751C1A1ACF00D34EB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Schedule.storyboard; sourceTree = "<group>"; };
+		C972FF771C1A1B1700D34EB2 /* SOI.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SOI.storyboard; sourceTree = "<group>"; };
 		C99D3E3F1BF5BD3700D30F96 /* inSparkle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inSparkle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99D3E421BF5BD3700D30F96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C99D3E441BF5BD3700D30F96 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C99D3E471BF5BD3700D30F96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C99D3E491BF5BD3700D30F96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C99D3E4C1BF5BD3700D30F96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +146,40 @@
 		C99D3E5E1BF5BD3700D30F96 /* inSparkleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = inSparkleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99D3E621BF5BD3700D30F96 /* inSparkleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inSparkleUITests.swift; sourceTree = "<group>"; };
 		C99D3E641BF5BD3700D30F96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C99D3E701BF5C04200D30F96 /* SOITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOITableViewCell.swift; sourceTree = "<group>"; };
+		C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOITableViewController.swift; sourceTree = "<group>"; };
+		C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewToScheduleTableViewController.swift; sourceTree = "<group>"; };
+		C9A781221BF944740013D388 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		C9B5B44F1BF6773200650FC4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		C9B5B4501BF6773200650FC4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
+		C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewSOITableViewController.swift; sourceTree = "<group>"; };
+		C9C192791BF64D8200862F52 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		C9C1927A1BF64D8200862F52 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		C9C1927B1BF64D8200862F52 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
+		C9C1927C1BF64D8200862F52 /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
+		C9C1927D1BF64D8200862F52 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtilsV4.framework; sourceTree = "<group>"; };
+		C9C1927E1BF64D8200862F52 /* ParseTwitterUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseTwitterUtils.framework; sourceTree = "<group>"; };
+		C9C1927F1BF64D8200862F52 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		C9C192871BF64DBF00862F52 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C9C192891BF64DC900862F52 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C9C1928B1BF64DD100862F52 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C9C1928D1BF64DD800862F52 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C9C1928F1BF64DDF00862F52 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C9C192911BF64DE500862F52 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C9C192931BF64DEE00862F52 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		C9C192951BF64DF400862F52 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C9C192971BF64DFE00862F52 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C9C192991BF64E0500862F52 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Onboarding.storyboard; path = Onboarding/Onboarding.storyboard; sourceTree = "<group>"; };
+		C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Onboarding/LoginViewController.swift; sourceTree = "<group>"; };
+		C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCardManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
+		C9F0FF951C18A646005EEE28 /* TimeCardManagement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeCardManagement.storyboard; sourceTree = "<group>"; };
+		C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimePunchesTableViewController.swift; sourceTree = "<group>"; };
+		C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditEmployeeSelectionTableViewController.swift; sourceTree = "<group>"; };
+		C9F431171BFEB13500AC3CD8 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		DFB671CF34700E590D95A655 /* Pods-inSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +187,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96F79AB1BFC41AB00C13615 /* LocalAuthentication.framework in Frameworks */,
+				C9C1929A1BF64E0500862F52 /* libsqlite3.tbd in Frameworks */,
+				C9C192981BF64DFE00862F52 /* libz.tbd in Frameworks */,
+				C9B5B4521BF6773200650FC4 /* Crashlytics.framework in Frameworks */,
+				C9C192961BF64DF400862F52 /* SystemConfiguration.framework in Frameworks */,
+				C9C192941BF64DEE00862F52 /* StoreKit.framework in Frameworks */,
+				C9C192921BF64DE600862F52 /* Security.framework in Frameworks */,
+				C9B5B4511BF6773200650FC4 /* Fabric.framework in Frameworks */,
+				C9C192901BF64DDF00862F52 /* QuartzCore.framework in Frameworks */,
+				C9C1928E1BF64DD800862F52 /* CoreLocation.framework in Frameworks */,
+				C9C1928C1BF64DD100862F52 /* CoreGraphics.framework in Frameworks */,
+				C9C1928A1BF64DC900862F52 /* CFNetwork.framework in Frameworks */,
+				C9C192881BF64DBF00862F52 /* AudioToolbox.framework in Frameworks */,
+				C9C192811BF64D8200862F52 /* Parse.framework in Frameworks */,
+				C9C192821BF64D8200862F52 /* ParseCrashReporting.framework in Frameworks */,
+				C9C192861BF64D8200862F52 /* ParseUI.framework in Frameworks */,
+				C9C192831BF64D8200862F52 /* ParseFacebookUtils.framework in Frameworks */,
+				C9C192801BF64D8200862F52 /* Bolts.framework in Frameworks */,
+				C9C192851BF64D8200862F52 /* ParseTwitterUtils.framework in Frameworks */,
+				C9C192841BF64D8200862F52 /* ParseFacebookUtilsV4.framework in Frameworks */,
+				7152D5A8CCD5E65BA2403309 /* Pods_inSparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +228,116 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		48389877081E5AAA4D42626A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DFB671CF34700E590D95A655 /* Pods-inSparkle.debug.xcconfig */,
+				780D3CC7ECBD99D4953539B4 /* Pods-inSparkle.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		90475D90352FAA03D0A61B3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C96F79AA1BFC41AB00C13615 /* LocalAuthentication.framework */,
+				411847EFD392F5F727796B8A /* Pods_inSparkle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C94367041BF719D50066D155 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C96F79AD1BFC44ED00C13615 /* inSparkle-Bridging-Header.h */,
+				C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */,
+				C94367051BF719E10066D155 /* Colors.swift */,
+				C91AC6411BFD85BA00E09B22 /* SOIModel.swift */,
+				C95990E31C10F8DD00F6873E /* ScheduleModel.swift */,
+				C96EF7F51C13F2E700C4D2C1 /* TimeClockPunchObj.swift */,
+				C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */,
+				C96EF7F71C13F37700C4D2C1 /* EmployeeModel.swift */,
+				C9F431171BFEB13500AC3CD8 /* Global.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		C9585F231C16511A008AB918 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C9585F241C165179008AB918 /* ScannerBeep.wav */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		C9585F321C17588D008AB918 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				C9F0FF941C189B66005EEE28 /* Time Card Management */,
+				C9585F331C1758A7008AB918 /* Reports */,
+				C9585F2E1C175505008AB918 /* Admin.storyboard */,
+				C9585F371C175BC0008AB918 /* AdminTableViewController.swift */,
+			);
+			name = Admin;
+			sourceTree = "<group>";
+		};
+		C9585F331C1758A7008AB918 /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				C9585F301C175887008AB918 /* ReportsTableViewController.swift */,
+			);
+			name = Reports;
+			sourceTree = "<group>";
+		};
+		C9585F341C175AE8008AB918 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				C9585F2A1C174C0F008AB918 /* TimeClockReport.storyboard */,
+				C9585F261C169491008AB918 /* RunTimeReportAllTableViewController.swift */,
+				C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */,
+			);
+			name = Report;
+			sourceTree = "<group>";
+		};
+		C96EF7FC1C14BFD800C4D2C1 /* TimeClock */ = {
+			isa = PBXGroup;
+			children = (
+				C9585F341C175AE8008AB918 /* Report */,
+				C96EF7FA1C14BFC400C4D2C1 /* TimeClockViewController.swift */,
+				C96EF7FD1C14CDDD00C4D2C1 /* TimeClock.storyboard */,
+				C9585F281C174A3B008AB918 /* CalendarDatePickerViewController.swift */,
+				C9585F1F1C163FF1008AB918 /* ConfirmPunchInViewController.swift */,
+				C9585F211C164013008AB918 /* ConfirmPunchOutViewController.swift */,
+				C96EF8021C14E0FD00C4D2C1 /* TimeClock.xcassets */,
+			);
+			name = TimeClock;
+			sourceTree = "<group>";
+		};
+		C96EF7FF1C14CE1C00C4D2C1 /* Chemical Check */ = {
+			isa = PBXGroup;
+			children = (
+				C96EF8001C14CE3100C4D2C1 /* ChemCheck.storyboard */,
+			);
+			name = "Chemical Check";
+			sourceTree = "<group>";
+		};
+		C96F79AC1BFC44E100C13615 /* KeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				C96F79AE1BFC44ED00C13615 /* KeychainWrapper.h */,
+				C96F79AF1BFC44ED00C13615 /* KeychainWrapper.m */,
+			);
+			name = KeychainWrapper;
+			sourceTree = "<group>";
+		};
+		C972FF711C19F9F100D34EB2 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				C972FF721C19FA0900D34EB2 /* Messages.storyboard */,
+			);
+			name = Messages;
+			sourceTree = "<group>";
+		};
 		C99D3E361BF5BD3700D30F96 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +345,8 @@
 				C99D3E561BF5BD3700D30F96 /* inSparkleTests */,
 				C99D3E611BF5BD3700D30F96 /* inSparkleUITests */,
 				C99D3E401BF5BD3700D30F96 /* Products */,
+				48389877081E5AAA4D42626A /* Pods */,
+				90475D90352FAA03D0A61B3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,9 +363,22 @@
 		C99D3E411BF5BD3700D30F96 /* inSparkle */ = {
 			isa = PBXGroup;
 			children = (
+				C972FF711C19F9F100D34EB2 /* Messages */,
+				C90915641C183D8600FC7E54 /* inSparkle.entitlements */,
+				C9585F321C17588D008AB918 /* Admin */,
+				C9585F231C16511A008AB918 /* Resource */,
+				C96EF7FF1C14CE1C00C4D2C1 /* Chemical Check */,
+				C96EF7FC1C14BFD800C4D2C1 /* TimeClock */,
+				C9CC66A51C0D0E800000EDE6 /* More */,
+				C9CC66A41C0D0E6D0000EDE6 /* Schedule */,
+				C9CC66A31C0D0E500000EDE6 /* SOI */,
+				C9A37B741BFE49C200F9A55A /* Third Party */,
+				C9E511F11BFABC8D0030AA98 /* Onboarding */,
+				C94367041BF719D50066D155 /* Utilities */,
+				C9C1929B1BF64E0C00862F52 /* Frameworks */,
 				C99D3E421BF5BD3700D30F96 /* AppDelegate.swift */,
-				C99D3E441BF5BD3700D30F96 /* ViewController.swift */,
 				C99D3E461BF5BD3700D30F96 /* Main.storyboard */,
+				C9A781221BF944740013D388 /* TabBarViewController.swift */,
 				C99D3E491BF5BD3700D30F96 /* Assets.xcassets */,
 				C99D3E4B1BF5BD3700D30F96 /* LaunchScreen.storyboard */,
 				C99D3E4E1BF5BD3700D30F96 /* Info.plist */,
@@ -125,6 +404,110 @@
 			path = inSparkleUITests;
 			sourceTree = "<group>";
 		};
+		C9A37B741BFE49C200F9A55A /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		C9C192781BF64D8200862F52 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				C9C192791BF64D8200862F52 /* Bolts.framework */,
+				C9C1927A1BF64D8200862F52 /* Parse.framework */,
+				C9C1927B1BF64D8200862F52 /* ParseCrashReporting.framework */,
+				C9C1927C1BF64D8200862F52 /* ParseFacebookUtils.framework */,
+				C9C1927D1BF64D8200862F52 /* ParseFacebookUtilsV4.framework */,
+				C9C1927E1BF64D8200862F52 /* ParseTwitterUtils.framework */,
+				C9C1927F1BF64D8200862F52 /* ParseUI.framework */,
+			);
+			path = Parse;
+			sourceTree = "<group>";
+		};
+		C9C1929B1BF64E0C00862F52 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C96F79AC1BFC44E100C13615 /* KeychainWrapper */,
+				C9C192871BF64DBF00862F52 /* AudioToolbox.framework */,
+				C9B5B44F1BF6773200650FC4 /* Fabric.framework */,
+				C9B5B4501BF6773200650FC4 /* Crashlytics.framework */,
+				C9C192781BF64D8200862F52 /* Parse */,
+				C9C192991BF64E0500862F52 /* libsqlite3.tbd */,
+				C9C192971BF64DFE00862F52 /* libz.tbd */,
+				C9C192951BF64DF400862F52 /* SystemConfiguration.framework */,
+				C9C192931BF64DEE00862F52 /* StoreKit.framework */,
+				C9C192911BF64DE500862F52 /* Security.framework */,
+				C9C1928F1BF64DDF00862F52 /* QuartzCore.framework */,
+				C9C1928D1BF64DD800862F52 /* CoreLocation.framework */,
+				C9C1928B1BF64DD100862F52 /* CoreGraphics.framework */,
+				C9C192891BF64DC900862F52 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C9CC66A31C0D0E500000EDE6 /* SOI */ = {
+			isa = PBXGroup;
+			children = (
+				C972FF771C1A1B1700D34EB2 /* SOI.storyboard */,
+				C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */,
+				C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */,
+				C99D3E701BF5C04200D30F96 /* SOITableViewCell.swift */,
+				C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */,
+			);
+			name = SOI;
+			sourceTree = "<group>";
+		};
+		C9CC66A41C0D0E6D0000EDE6 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				C972FF741C1A1ACF00D34EB2 /* Schedule.storyboard */,
+				C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */,
+				C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */,
+				C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */,
+			);
+			name = Schedule;
+			sourceTree = "<group>";
+		};
+		C9CC66A51C0D0E800000EDE6 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */,
+			);
+			name = More;
+			sourceTree = "<group>";
+		};
+		C9E511F11BFABC8D0030AA98 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */,
+				C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */,
+				C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */,
+				C9E511F61BFAC4D60030AA98 /* Assets */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
+		C9E511F61BFAC4D60030AA98 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		C9F0FF941C189B66005EEE28 /* Time Card Management */ = {
+			isa = PBXGroup;
+			children = (
+				C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */,
+				C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */,
+				C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */,
+				C9F0FF951C18A646005EEE28 /* TimeCardManagement.storyboard */,
+				C972FF6F1C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift */,
+				C972FF6D1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift */,
+			);
+			name = "Time Card Management";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +515,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C99D3E671BF5BD3700D30F96 /* Build configuration list for PBXNativeTarget "inSparkle" */;
 			buildPhases = (
+				C639748D7D5C9E35F575B2AF /* Check Pods Manifest.lock */,
 				C99D3E3B1BF5BD3700D30F96 /* Sources */,
 				C99D3E3C1BF5BD3700D30F96 /* Frameworks */,
 				C99D3E3D1BF5BD3700D30F96 /* Resources */,
+				C9B5B44E1BF6772000650FC4 /* ShellScript */,
+				F17120345EF620486FA54E9B /* Embed Pods Frameworks */,
+				723CE4C0C1B4199F03ECCE41 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,6 +580,12 @@
 				TargetAttributes = {
 					C99D3E3E1BF5BD3700D30F96 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 62765ZZ5LE;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					C99D3E521BF5BD3700D30F96 = {
 						CreatedOnToolsVersion = 7.1;
@@ -229,9 +622,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F0FF961C18A646005EEE28 /* TimeCardManagement.storyboard in Resources */,
 				C99D3E4D1BF5BD3700D30F96 /* LaunchScreen.storyboard in Resources */,
+				C9585F251C165179008AB918 /* ScannerBeep.wav in Resources */,
 				C99D3E4A1BF5BD3700D30F96 /* Assets.xcassets in Resources */,
+				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
+				C96EF8011C14CE3100C4D2C1 /* ChemCheck.storyboard in Resources */,
+				C972FF781C1A1B1700D34EB2 /* SOI.storyboard in Resources */,
+				C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */,
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
+				C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */,
+				C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */,
+				C96EF7FE1C14CDDD00C4D2C1 /* TimeClock.storyboard in Resources */,
+				C972FF761C1A1ACF00D34EB2 /* Schedule.storyboard in Resources */,
+				C9585F2B1C174C0F008AB918 /* TimeClockReport.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +655,106 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		723CE4C0C1B4199F03ECCE41 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C639748D7D5C9E35F575B2AF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C9B5B44E1BF6772000650FC4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run bb9f228438400e05eeff9a4184baa75a30a9ea74 0c50bda97b33f1d934fba0ec283f8cb080b86c68a78653bd6087cd3e97b07f21";
+		};
+		F17120345EF620486FA54E9B /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C99D3E3B1BF5BD3700D30F96 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C99D3E451BF5BD3700D30F96 /* ViewController.swift in Sources */,
+				C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */,
+				C9F0FF931C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift in Sources */,
+				C9585F221C164013008AB918 /* ConfirmPunchOutViewController.swift in Sources */,
+				C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */,
 				C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */,
+				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
+				C94367061BF719E10066D155 /* Colors.swift in Sources */,
+				C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */,
+				C9F0FF9A1C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift in Sources */,
+				C99D3E711BF5C04200D30F96 /* SOITableViewCell.swift in Sources */,
+				C96EF7F61C13F2E700C4D2C1 /* TimeClockPunchObj.swift in Sources */,
+				C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */,
+				C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */,
+				C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */,
+				C972FF6E1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift in Sources */,
+				C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */,
+				C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */,
+				C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */,
+				C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */,
+				C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */,
+				C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */,
+				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,
+				C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */,
+				C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */,
+				C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */,
+				C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */,
+				C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */,
+				C961638A1BF6EC9E00EB5D44 /* BarcodeScanner.swift in Sources */,
+				C9585F311C175887008AB918 /* ReportsTableViewController.swift in Sources */,
+				C9585F201C163FF1008AB918 /* ConfirmPunchInViewController.swift in Sources */,
+				C9585F361C175B08008AB918 /* TimeCardReportTableViewController.swift in Sources */,
+				C972FF701C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift in Sources */,
+				C9585F271C169491008AB918 /* RunTimeReportAllTableViewController.swift in Sources */,
+				C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +790,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		C972FF741C1A1ACF00D34EB2 /* Schedule.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C972FF751C1A1ACF00D34EB2 /* Base */,
+			);
+			name = Schedule.storyboard;
+			sourceTree = "<group>";
+		};
 		C99D3E461BF5BD3700D30F96 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -397,23 +902,52 @@
 		};
 		C99D3E681BF5BD3700D30F96 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFB671CF34700E590D95A655 /* Pods-inSparkle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = inSparkle/inSparkle.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/inSparkle/Parse",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = inSparkle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mysparklepools.inSparkle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mysparklepools.inSparklePools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "inSparkle/inSparkle-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		C99D3E691BF5BD3700D30F96 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 780D3CC7ECBD99D4953539B4 /* Pods-inSparkle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = inSparkle/inSparkle.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/inSparkle/Parse",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = inSparkle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mysparklepools.inSparkle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mysparklepools.inSparklePools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "inSparkle/inSparkle-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -484,6 +1018,7 @@
 				C99D3E691BF5BD3700D30F96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C99D3E6A1BF5BD3700D30F96 /* Build configuration list for PBXNativeTarget "inSparkleTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +1027,7 @@
 				C99D3E6C1BF5BD3700D30F96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C99D3E6D1BF5BD3700D30F96 /* Build configuration list for PBXNativeTarget "inSparkleUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +1036,7 @@
 				C99D3E6F1BF5BD3700D30F96 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

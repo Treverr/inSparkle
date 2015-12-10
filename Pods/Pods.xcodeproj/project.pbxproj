@@ -1,0 +1,1805 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03A74673DDEEF4462656F57C50828344 /* ReachabilitySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 36136BA80085FE7AEDE0681C85F50F65 /* ReachabilitySwift-dummy.m */; };
+		0FA5445799F8D7AB0A150F4D48844443 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584E1CCAE8CBE0F0FB2F1FCFFAE7BC38 /* Reachability.swift */; };
+		134B250E1864D43B166253EDACB84BC7 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD796F8BA41856FC7C052CB71E0706 /* MonthView.swift */; };
+		15BA79E5FA73F611878C81C807D8BCCE /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69E7738F3B4AB181B8C7CD95353C146 /* TimeUnit.swift */; };
+		18282304EAAA5DB148A11991B04CB736 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0FA2A82D9E8D3FC28A6ACABD5F13C1B /* AVFoundation.framework */; };
+		1CFAC1FFC364C06ECE01E0FDC5C09B1D /* SimpleAlert-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B6D80A3F2973A21B1144799A1873D0 /* SimpleAlert-dummy.m */; };
+		1E6F81F9ACB5C9FB512B10C3B1D1B200 /* SwiftMoment-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D95F812501E1856EBE3A25A9520454A /* SwiftMoment-dummy.m */; };
+		282861C5642F9A4C5E2B3F030DF32712 /* RSCode39Mod43Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC90691D93E47BAD97FDCB7914DD165 /* RSCode39Mod43Generator.swift */; };
+		29A8059D1E03301AE6B275705F53476F /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16ADD60745F4A76F6FBEB15C49AFC47 /* DayView.swift */; };
+		2E48324FC76C43C08D8C16EAC9680C95 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76CDDD33DB8E185BC2E8DF92498FD96 /* Banner.swift */; };
+		38CA5C1A02AC17DCC99BD4BA3C3AB45B /* SwiftMoment.h in Headers */ = {isa = PBXBuildFile; fileRef = F763C686620A832A4A1DDDEBDF9CB727 /* SwiftMoment.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BAAA9F34A62F442CF68D4F24549175C /* EasyCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A06ED2410DA63C56B757850E65C1A6 /* EasyCast.swift */; };
+		3BFBFE7C78727FE7093ABDFD672651F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */; };
+		3E595D19A10AF351538AD7EB022BA80E /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6886509E90A6E397E1BEF2C100EFB981 /* StringExtension.swift */; };
+		458B978A6FB9CB5ED74FB76D29428A89 /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B8E4B367D9CE211363B76331ACF16C /* SimpleAlert.swift */; };
+		47082C15955512F8DE46118A66DFB9BC /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8741FB47E6199629BBFBD957CEF87464 /* CalendarView.swift */; };
+		4A5E0B39B425AA72C83D953F60D85B19 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADF29D3C9531745FD11B0812FF24F9 /* UIKit.framework */; };
+		4A6C728652A6A315539C5BDBEF975D26 /* RSBarcodes_Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 75A665B33DEE9F6C21A49682E47C6E2B /* RSBarcodes_Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4BBAA62688253728B96ECC9C8D13C790 /* SwiftMoment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B41AB34FF36A2327AA5196DDF3372B5D /* SwiftMoment.framework */; };
+		597C28F5AE6422A7E718838559A48FC0 /* CalendarView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F98008B250E4D82F530195AD12E0B09A /* CalendarView.bundle */; };
+		5A7ADE0B32A113CFC84F5FBFC8BDE4FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084873A876313A5BACCE4E290D28BEA /* ContentView.swift */; };
+		5D20D1029EA3E4FD008A69B26E91D775 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CA855BB9525636F057C5B87A724C3C /* Operators.swift */; };
+		61B77DCA10A1955AF85A3265B9F02A16 /* RSCode93Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909826953FDF86660DBDB9AE8D97DC9F /* RSCode93Generator.swift */; };
+		641A770C3037A2FA1FDCE399A8E21307 /* RSBarcodes_Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD03E680ED6087E2EC80F455855FF287 /* RSBarcodes_Swift-dummy.m */; };
+		67FFBE9A769A046825E9AA8D2F895389 /* RSITF14Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9032BA449767D4DCBC9D5E3B9188D5 /* RSITF14Generator.swift */; };
+		68C3ACC2D2DF3BC930B50C8B636B9B2E /* RSCornersLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF4A86345C002A1FF3FA83C630993F /* RSCornersLayer.swift */; };
+		6B2B29BBF24833769E93263FAFBC272D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */; };
+		6D54348591FFF58E70D239A9602CA6AF /* BRYXBanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 30B07A9D9A05742F143D2BAD70A0A7A1 /* BRYXBanner.bundle */; };
+		6E475DB573C3C4078E5018BBDEE7ADC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04ADF29D3C9531745FD11B0812FF24F9 /* UIKit.framework */; };
+		6FDCBC9D6E29131C638CA708B1997D30 /* BRYXBanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D418D02FF0420C75F0E951FB3985681B /* BRYXBanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		72C7AA61CAE16C2034FFACDE2FE21499 /* RSFocusMarkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F747FE12A5CE4C385C58B912514BB3 /* RSFocusMarkLayer.swift */; };
+		778D669BA0BD8550AC31311858B5D07C /* Pods-inSparkle-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5540E1ED90605D472084924703AC99D1 /* Pods-inSparkle-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		78EEC1CF2977B8107DBCE313BCA9DE6D /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4E963E15B2C2C6B284311C94A7F9B2 /* WeekView.swift */; };
+		7A98303916A44D00CF6C5AE5A86C3D02 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */; };
+		8191C7810C53ADFD6D5168EE8A3CB41F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */; };
+		8538F0AB68B8809B903476DCA08BCE60 /* ReachabilitySwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9114A0DEEC01866ABF931D96AD589525 /* ReachabilitySwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90508721D7456AC94D9F46AE59B65A0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */; };
+		9254D51D86F769CB80B82EFA1DFF10D5 /* CalendarView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDC4380F82566EA5E2EEFB8ACB4685D /* CalendarView-dummy.m */; };
+		92EAC8325A0355E36340572143D9C540 /* RSCode128Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145CFD80BAC6D38262AA57FE2383112B /* RSCode128Generator.swift */; };
+		9CFDF70EA0F7A8B0AD06F2EAF29D9C11 /* BRYXBanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CB588A61D4FFBE60C93436A89DE8AB31 /* BRYXBanner-dummy.m */; };
+		9EE407B5C5D71DC4FC5D702A6214A2E2 /* RSITFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2D767D4C54AB37902479721CF67449 /* RSITFGenerator.swift */; };
+		9FE9CF72954EF8F1F848D96B1177DA82 /* RSCodeDataMatrixGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BBD1EAC0D5D633095DAC5F32F43616 /* RSCodeDataMatrixGenerator.swift */; };
+		A24AABB5997DDE1452044D461FBD6DD9 /* SwiftMoment-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 481A30FCBD42267BEAF51C7286C6F135 /* SwiftMoment-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A3145D8EDA8C290BE61D87DE1A62B2B3 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72FFA22315E08B0B05624F02086980D /* Moment.swift */; };
+		A316F52EC0681137E718C39D5ADA4478 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A30C5F5C5118F2C27D8DB5EEC3E95C /* QuartzCore.framework */; };
+		AA2904F09741AE1661676CE09DEBEC5A /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAEF21714A76180ED3D158B9FF7E536 /* UIColorExtension.swift */; };
+		ADAFD218F2C0C99A99D0D698592A661A /* RSEANGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831E9F40F5ED8A5C614FFD275A9E1B /* RSEANGenerator.swift */; };
+		AE0100913BDCE445D8B7743246C6586C /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2184E26D8A388A1670144F8F1E5834E /* Duration.swift */; };
+		AF8160094F0644F7BCB9D4E6FE041947 /* SimpleAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = F0AF55A33353987D9C5C78ABAEE4CC52 /* SimpleAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B16FFF4359F963871F9DE48B6AFFEACF /* RSUPCEGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30793ADFEFDC660B59BFA00E9EA3DB37 /* RSUPCEGenerator.swift */; };
+		B51AC4F97FBD4F33B0CA68F292CB5A16 /* RSCodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B451B1CE01E8C7A161032E620140BBE /* RSCodeReaderViewController.swift */; };
+		C8C4D18F465F257F525F99904E9E3F9C /* SimpleAlert.xib in Sources */ = {isa = PBXBuildFile; fileRef = 59AF5E3C3D9A1AD30879854D4ABF859E /* SimpleAlert.xib */; };
+		CAC5CF565684F56819A9283214738026 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 648C359475E717C111F69B67FA2D07E1 /* CoreImage.framework */; };
+		CC1B0AB47BB3609E0961AE8470B6F191 /* CalendarView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9097009671D516D424ACEB57756B67AE /* CalendarView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CEE5B9337B34DC65E3865355AC689D4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */; };
+		D7956C1CDDA6357ECE299FDB803B48BA /* SwiftGifOrigin-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4381FF6132E91D17B51DE1540F6D0FDA /* SwiftGifOrigin-dummy.m */; };
+		D7B8B175749B48E0552273D1C4ABB2A4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E7F1B08E28CD328723021863ACF24 /* Extensions.swift */; };
+		DC50F14A929C26B231638759AB4318CC /* RSExtendedCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3080AC9FEC0D43EA0E0A911EFF488E6 /* RSExtendedCode39Generator.swift */; };
+		E10EA23D4820CCE55DB3AE7BA59D1243 /* RSCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD24ADF4E2E8F46E9A19430640787922 /* RSCodeGenerator.swift */; };
+		E61C370E0F6B7D5DC11B665EC0C60DF9 /* RSUnifiedCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF599FCD438582180B468BA1FCABE7D /* RSUnifiedCodeGenerator.swift */; };
+		E7C0DEB7C2F819AADDCBC29CC1088C09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */; };
+		E91A0EC995063C15AA8BA81A25798168 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501CC8DF280E94A09FA5B10DF56794A1 /* SystemConfiguration.framework */; };
+		E97E038A8DCCA2AE56359C35E907C573 /* SwiftGifOrigin-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C2507B9955CCFCAE674824A67F95AAC /* SwiftGifOrigin-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC1AFEA4801BE5F1F4DB9051BEC4946E /* Pods-inSparkle-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 955547A20C3AABAECB9E0ADD4C203EE7 /* Pods-inSparkle-dummy.m */; };
+		EC30F00F53617F56F81FA37857CCB3DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */; };
+		EFDF1F9D70FEE5D17BDC9D6A636CCCE0 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = F384FA41487E777EF4AA7ED155C9C68A /* UIImage+Gif.swift */; };
+		F4A763CD7E6A1165370FA75882F246DC /* RSCodeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0AEEB646A4BEEB1B2CC628B6BE092D /* RSCodeLayer.swift */; };
+		F7BB082A945773C36B4020517BCF3BA8 /* SimpleAlert-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DDC19DD9E92C59A7442A3C52ADC9B9AD /* SimpleAlert-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FB5560D238AA8D814A04C65D7F70C4D2 /* RSCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CBE34F56847606FE21F1407FAED149 /* RSCode39Generator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1277931FE2B4225B7C481686281505CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A21DCB995841FE970CCB507D94F822D9;
+			remoteInfo = SwiftMoment;
+		};
+		1AB6CDE9F09B6AE0C49537E03FF6856B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DAB7791547A685D8C24023E819F48683;
+			remoteInfo = SwiftGifOrigin;
+		};
+		422AFBD4287375853E0A363336C0B390 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 210EA42A414A7C3C0744D2E634D9893A;
+			remoteInfo = RSBarcodes_Swift;
+		};
+		96354DFD3D88F64BCA23A5F0D0EE1069 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E45C60E65DC7B25E659C0A735F907FC7;
+			remoteInfo = "BRYXBanner-BRYXBanner";
+		};
+		99C778AF4C73A35DBFCE87EF435F06A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75AEEEFD7E431013E8E60009251D5797;
+			remoteInfo = BRYXBanner;
+		};
+		9A6CDD387B27F7C0A6C73296D2C26DF2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 72C41FBE0C81D2322FF7DF37F4B8029A;
+			remoteInfo = SimpleAlert;
+		};
+		B03F3F3B27F3C1A71C73A9C151C727D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A888A38A9574002E16368D1076DDDDFB;
+			remoteInfo = ReachabilitySwift;
+		};
+		C212A310ED81EF7C8C983084530A575B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 41638D9B170F774D9F650F63B192526A;
+			remoteInfo = "CalendarView-CalendarView";
+		};
+		D1A063AF9C40FCD4CFD795752708DA1D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A21DCB995841FE970CCB507D94F822D9;
+			remoteInfo = SwiftMoment;
+		};
+		F964053B6A4DF3BCEC2ADB839CD030D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A249CF9CC83EF996380469C8249B2013;
+			remoteInfo = CalendarView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03D47081E7D3A7E92EE093E4316BE8F1 /* SwiftMoment-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMoment-prefix.pch"; sourceTree = "<group>"; };
+		0455047BAB75082A23DB6F070BB47857 /* ReachabilitySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReachabilitySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		04ADF29D3C9531745FD11B0812FF24F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		093B0DA16CF2B5E478B13900010C5DA0 /* SimpleAlert-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimpleAlert-prefix.pch"; sourceTree = "<group>"; };
+		098C438633A48E4434B8CD15E59E83D0 /* CalendarView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CalendarView.xcconfig; sourceTree = "<group>"; };
+		0C2D767D4C54AB37902479721CF67449 /* RSITFGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSITFGenerator.swift; path = Source/RSITFGenerator.swift; sourceTree = "<group>"; };
+		0D29F3F2BD0C07E2B7A13DFE0FDEF4C5 /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EB364F6F65BA21A9BB893DBBDE7FC04 /* SimpleAlert.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SimpleAlert.modulemap; sourceTree = "<group>"; };
+		113861E59A043E89B23EF303907046C8 /* SimpleAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		13C213B22113FB02F852459F231350D5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		145CFD80BAC6D38262AA57FE2383112B /* RSCode128Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCode128Generator.swift; path = Source/RSCode128Generator.swift; sourceTree = "<group>"; };
+		1D0AEEB646A4BEEB1B2CC628B6BE092D /* RSCodeLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCodeLayer.swift; path = Source/RSCodeLayer.swift; sourceTree = "<group>"; };
+		23BE60EB146E5D76731671D126232546 /* RSBarcodes_Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSBarcodes_Swift-prefix.pch"; sourceTree = "<group>"; };
+		258BAF1BAEE8980D45A1E7B37EDD486C /* Pods-inSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-inSparkle.release.xcconfig"; sourceTree = "<group>"; };
+		2A7F038094450CF43CDD6D13B3A83E00 /* CalendarView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CalendarView.modulemap; sourceTree = "<group>"; };
+		2BF599FCD438582180B468BA1FCABE7D /* RSUnifiedCodeGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSUnifiedCodeGenerator.swift; path = Source/RSUnifiedCodeGenerator.swift; sourceTree = "<group>"; };
+		2DD2E91C4D00AB59A4F273C13BEE1AE9 /* ReachabilitySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-prefix.pch"; sourceTree = "<group>"; };
+		30793ADFEFDC660B59BFA00E9EA3DB37 /* RSUPCEGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSUPCEGenerator.swift; path = Source/RSUPCEGenerator.swift; sourceTree = "<group>"; };
+		30B07A9D9A05742F143D2BAD70A0A7A1 /* BRYXBanner.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BRYXBanner.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		346AD49F4C54168817A17FADB71F33E2 /* Pods-inSparkle.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-inSparkle.modulemap"; sourceTree = "<group>"; };
+		36136BA80085FE7AEDE0681C85F50F65 /* ReachabilitySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReachabilitySwift-dummy.m"; sourceTree = "<group>"; };
+		3DA3DE2640438C7B76995CA6F9ABFC35 /* ReachabilitySwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ReachabilitySwift.modulemap; sourceTree = "<group>"; };
+		3DB49D639C1610784698BC39FF3C3983 /* CalendarView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CalendarView-prefix.pch"; sourceTree = "<group>"; };
+		4084873A876313A5BACCE4E290D28BEA /* ContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = CalendarView/CalendarView/Classes/ContentView.swift; sourceTree = "<group>"; };
+		4381FF6132E91D17B51DE1540F6D0FDA /* SwiftGifOrigin-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftGifOrigin-dummy.m"; sourceTree = "<group>"; };
+		43DFCB48AFD2AFFDD5EE8B7961D9AE01 /* SwiftMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45E828B525A0672AB663D41E104F910E /* Pods-inSparkle-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-inSparkle-acknowledgements.plist"; sourceTree = "<group>"; };
+		481A30FCBD42267BEAF51C7286C6F135 /* SwiftMoment-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMoment-umbrella.h"; sourceTree = "<group>"; };
+		4BDC4380F82566EA5E2EEFB8ACB4685D /* CalendarView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CalendarView-dummy.m"; sourceTree = "<group>"; };
+		4CB7FF0DCAFDA431F728B4BCD318B4FD /* SwiftGifOrigin.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftGifOrigin.modulemap; sourceTree = "<group>"; };
+		4EFCCAD8E4D200CD2E44CC34E809F48D /* SwiftMoment.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMoment.xcconfig; sourceTree = "<group>"; };
+		501CC8DF280E94A09FA5B10DF56794A1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		50831E9F40F5ED8A5C614FFD275A9E1B /* RSEANGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSEANGenerator.swift; path = Source/RSEANGenerator.swift; sourceTree = "<group>"; };
+		5540E1ED90605D472084924703AC99D1 /* Pods-inSparkle-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-inSparkle-umbrella.h"; sourceTree = "<group>"; };
+		5808A3387FEAF8CC9633DD2FA239B109 /* SwiftGifOrigin-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftGifOrigin-prefix.pch"; sourceTree = "<group>"; };
+		584E1CCAE8CBE0F0FB2F1FCFFAE7BC38 /* Reachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Reachability/Reachability.swift; sourceTree = "<group>"; };
+		59AF5E3C3D9A1AD30879854D4ABF859E /* SimpleAlert.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SimpleAlert.xib; path = SimpleAlert/SimpleAlert.xib; sourceTree = "<group>"; };
+		5B0D9A7D55CEB85B146C63AFE080CFCB /* ReachabilitySwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReachabilitySwift.xcconfig; sourceTree = "<group>"; };
+		5BB3E288775084C23AAF5218D0C5D7C2 /* Pods-inSparkle-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-inSparkle-frameworks.sh"; sourceTree = "<group>"; };
+		6116F61C7A166EC4EE72C04C24154420 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		648C359475E717C111F69B67FA2D07E1 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/CoreImage.framework; sourceTree = DEVELOPER_DIR; };
+		66B6D80A3F2973A21B1144799A1873D0 /* SimpleAlert-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SimpleAlert-dummy.m"; sourceTree = "<group>"; };
+		6886509E90A6E397E1BEF2C100EFB981 /* StringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Source/StringExtension.swift; sourceTree = "<group>"; };
+		69A30C5F5C5118F2C27D8DB5EEC3E95C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		6C1E7F1B08E28CD328723021863ACF24 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = SwiftMoment/SwiftMoment/Extensions.swift; sourceTree = "<group>"; };
+		75A665B33DEE9F6C21A49682E47C6E2B /* RSBarcodes_Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSBarcodes_Swift-umbrella.h"; sourceTree = "<group>"; };
+		7665FAC9F7E5B7212191701E902EC83D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C2507B9955CCFCAE674824A67F95AAC /* SwiftGifOrigin-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftGifOrigin-umbrella.h"; sourceTree = "<group>"; };
+		7D5E8D4B22DDD3A04D38BB0C56CB778F /* RSBarcodes_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSBarcodes_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D95F812501E1856EBE3A25A9520454A /* SwiftMoment-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftMoment-dummy.m"; sourceTree = "<group>"; };
+		7EC90691D93E47BAD97FDCB7914DD165 /* RSCode39Mod43Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCode39Mod43Generator.swift; path = Source/RSCode39Mod43Generator.swift; sourceTree = "<group>"; };
+		7FAEF21714A76180ED3D158B9FF7E536 /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Source/UIColorExtension.swift; sourceTree = "<group>"; };
+		7FDD796F8BA41856FC7C052CB71E0706 /* MonthView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonthView.swift; path = CalendarView/CalendarView/Classes/MonthView.swift; sourceTree = "<group>"; };
+		86F747FE12A5CE4C385C58B912514BB3 /* RSFocusMarkLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSFocusMarkLayer.swift; path = Source/RSFocusMarkLayer.swift; sourceTree = "<group>"; };
+		8741FB47E6199629BBFBD957CEF87464 /* CalendarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = CalendarView/CalendarView/Classes/CalendarView.swift; sourceTree = "<group>"; };
+		8B451B1CE01E8C7A161032E620140BBE /* RSCodeReaderViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCodeReaderViewController.swift; path = Source/RSCodeReaderViewController.swift; sourceTree = "<group>"; };
+		8FCA0CED7B1FCD46FE1C610F6D80E87F /* Pods-inSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-inSparkle.debug.xcconfig"; sourceTree = "<group>"; };
+		9097009671D516D424ACEB57756B67AE /* CalendarView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CalendarView-umbrella.h"; sourceTree = "<group>"; };
+		909826953FDF86660DBDB9AE8D97DC9F /* RSCode93Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCode93Generator.swift; path = Source/RSCode93Generator.swift; sourceTree = "<group>"; };
+		9114A0DEEC01866ABF931D96AD589525 /* ReachabilitySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-umbrella.h"; sourceTree = "<group>"; };
+		955547A20C3AABAECB9E0ADD4C203EE7 /* Pods-inSparkle-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-inSparkle-dummy.m"; sourceTree = "<group>"; };
+		98CA855BB9525636F057C5B87A724C3C /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = SwiftMoment/SwiftMoment/Operators.swift; sourceTree = "<group>"; };
+		9BF4FCD55C7C8FD9F135707076E5096D /* Pods-inSparkle-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-inSparkle-resources.sh"; sourceTree = "<group>"; };
+		A2184E26D8A388A1670144F8F1E5834E /* Duration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Duration.swift; path = SwiftMoment/SwiftMoment/Duration.swift; sourceTree = "<group>"; };
+		A286F694BA44EC5A3CA06A8C67926C84 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB86AEA309874D125F914139F9BEA04D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACB070CF7AB66EB908D36D97B7DFC377 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE860FFF2B8A522C73444BB2016202A7 /* BRYXBanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BRYXBanner.modulemap; sourceTree = "<group>"; };
+		B068A58C3DCDBA3A95B47B0828BB1C93 /* RSBarcodes_Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSBarcodes_Swift.xcconfig; sourceTree = "<group>"; };
+		B139B137063FA925B3FB673DA2565597 /* BRYXBanner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRYXBanner.xcconfig; sourceTree = "<group>"; };
+		B3080AC9FEC0D43EA0E0A911EFF488E6 /* RSExtendedCode39Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSExtendedCode39Generator.swift; path = Source/RSExtendedCode39Generator.swift; sourceTree = "<group>"; };
+		B41AB34FF36A2327AA5196DDF3372B5D /* SwiftMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4A06ED2410DA63C56B757850E65C1A6 /* EasyCast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasyCast.swift; path = CalendarView/CalendarView/Classes/EasyCast.swift; sourceTree = "<group>"; };
+		B4CBE34F56847606FE21F1407FAED149 /* RSCode39Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCode39Generator.swift; path = Source/RSCode39Generator.swift; sourceTree = "<group>"; };
+		B69E7738F3B4AB181B8C7CD95353C146 /* TimeUnit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TimeUnit.swift; path = SwiftMoment/SwiftMoment/TimeUnit.swift; sourceTree = "<group>"; };
+		B72FFA22315E08B0B05624F02086980D /* Moment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Moment.swift; path = SwiftMoment/SwiftMoment/Moment.swift; sourceTree = "<group>"; };
+		B7B8DE729595C1A54B6DF8AF4F3FCD91 /* SwiftMoment.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftMoment.modulemap; sourceTree = "<group>"; };
+		B94027B95B5837513AC0498A21F44B52 /* Pods-inSparkle-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-inSparkle-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BB83F7654E76A32B6E6F3C3A2DC5134F /* BRYXBanner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-prefix.pch"; sourceTree = "<group>"; };
+		C0FA2A82D9E8D3FC28A6ACABD5F13C1B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		C2F003312C57007A1402F97DB43C3DB3 /* SimpleAlert.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimpleAlert.xcconfig; sourceTree = "<group>"; };
+		C7AD7194ECE0842A809CA92D699BEF15 /* BRYXBanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BRYXBanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB588A61D4FFBE60C93436A89DE8AB31 /* BRYXBanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BRYXBanner-dummy.m"; sourceTree = "<group>"; };
+		CD24ADF4E2E8F46E9A19430640787922 /* RSCodeGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCodeGenerator.swift; path = Source/RSCodeGenerator.swift; sourceTree = "<group>"; };
+		CEAB66270E6195459B82A83576A06B69 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D418D02FF0420C75F0E951FB3985681B /* BRYXBanner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-umbrella.h"; sourceTree = "<group>"; };
+		D8B8E4B367D9CE211363B76331ACF16C /* SimpleAlert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SimpleAlert.swift; path = SimpleAlert/SimpleAlert.swift; sourceTree = "<group>"; };
+		D8DE36EE2431D05F2534F0220B642EFC /* SwiftGifOrigin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftGifOrigin.xcconfig; sourceTree = "<group>"; };
+		DDC19DD9E92C59A7442A3C52ADC9B9AD /* SimpleAlert-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimpleAlert-umbrella.h"; sourceTree = "<group>"; };
+		E16ADD60745F4A76F6FBEB15C49AFC47 /* DayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DayView.swift; path = CalendarView/CalendarView/Classes/DayView.swift; sourceTree = "<group>"; };
+		E2DF4A86345C002A1FF3FA83C630993F /* RSCornersLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCornersLayer.swift; path = Source/RSCornersLayer.swift; sourceTree = "<group>"; };
+		E76CDDD33DB8E185BC2E8DF92498FD96 /* Banner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = Pod/Classes/Banner.swift; sourceTree = "<group>"; };
+		E858290A9B36C786C326545489B9E7E7 /* CalendarView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CalendarView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA4E963E15B2C2C6B284311C94A7F9B2 /* WeekView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeekView.swift; path = CalendarView/CalendarView/Classes/WeekView.swift; sourceTree = "<group>"; };
+		EC2F86296515B5FBFF149AD9D4EE76C5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0AF55A33353987D9C5C78ABAEE4CC52 /* SimpleAlert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SimpleAlert.h; path = SimpleAlert/SimpleAlert.h; sourceTree = "<group>"; };
+		F0BBD1EAC0D5D633095DAC5F32F43616 /* RSCodeDataMatrixGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCodeDataMatrixGenerator.swift; path = Source/RSCodeDataMatrixGenerator.swift; sourceTree = "<group>"; };
+		F31C78B0231087044ECB404DDECD0D8A /* RSBarcodes_Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RSBarcodes_Swift.modulemap; sourceTree = "<group>"; };
+		F384FA41487E777EF4AA7ED155C9C68A /* UIImage+Gif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Gif.swift"; path = "SwiftGifCommon/UIImage+Gif.swift"; sourceTree = "<group>"; };
+		F763C686620A832A4A1DDDEBDF9CB727 /* SwiftMoment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftMoment.h; path = SwiftMoment/SwiftMoment/SwiftMoment.h; sourceTree = "<group>"; };
+		F98008B250E4D82F530195AD12E0B09A /* CalendarView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA5623C96DB4A26D23BB59DB3411DDAB /* SwiftGifOrigin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftGifOrigin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9032BA449767D4DCBC9D5E3B9188D5 /* RSITF14Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSITF14Generator.swift; path = Source/RSITF14Generator.swift; sourceTree = "<group>"; };
+		FD03E680ED6087E2EC80F455855FF287 /* RSBarcodes_Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RSBarcodes_Swift-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1533EFC8E75BD2382D80CA5023E3B4E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90508721D7456AC94D9F46AE59B65A0F /* Foundation.framework in Frameworks */,
+				E91A0EC995063C15AA8BA81A25798168 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1AB832D5AD69000789B489B7436EA31E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A98303916A44D00CF6C5AE5A86C3D02 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		29CA903B45A7B7D47947D302E26DB67F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8191C7810C53ADFD6D5168EE8A3CB41F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51ED0989E6D903F1F0ED909EE1D0E482 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7C0DEB7C2F819AADDCBC29CC1088C09 /* Foundation.framework in Frameworks */,
+				6E475DB573C3C4078E5018BBDEE7ADC9 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61FBC01E9FEF54EAA1352E4716AE327E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18282304EAAA5DB148A11991B04CB736 /* AVFoundation.framework in Frameworks */,
+				CAC5CF565684F56819A9283214738026 /* CoreImage.framework in Frameworks */,
+				EC30F00F53617F56F81FA37857CCB3DC /* Foundation.framework in Frameworks */,
+				A316F52EC0681137E718C39D5ADA4478 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		83B4167F9890413D10AA3C55CD44F51B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B2B29BBF24833769E93263FAFBC272D /* Foundation.framework in Frameworks */,
+				4BBAA62688253728B96ECC9C8D13C790 /* SwiftMoment.framework in Frameworks */,
+				4A5E0B39B425AA72C83D953F60D85B19 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CE42323B24CE4F52EAD6833C06526A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		975C790EAEB55EF7BF9CC59AAEC0EB21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEE5B9337B34DC65E3865355AC689D4B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0708840727C8C1D9952B765C5A83003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BFBFE7C78727FE7093ABDFD672651F9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F58BDA84F275E04CA1E5846669A55722 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02299FFBBA7D26829EDA5A5427DD09AC /* RSBarcodes_Swift */ = {
+			isa = PBXGroup;
+			children = (
+				145CFD80BAC6D38262AA57FE2383112B /* RSCode128Generator.swift */,
+				B4CBE34F56847606FE21F1407FAED149 /* RSCode39Generator.swift */,
+				7EC90691D93E47BAD97FDCB7914DD165 /* RSCode39Mod43Generator.swift */,
+				909826953FDF86660DBDB9AE8D97DC9F /* RSCode93Generator.swift */,
+				F0BBD1EAC0D5D633095DAC5F32F43616 /* RSCodeDataMatrixGenerator.swift */,
+				CD24ADF4E2E8F46E9A19430640787922 /* RSCodeGenerator.swift */,
+				1D0AEEB646A4BEEB1B2CC628B6BE092D /* RSCodeLayer.swift */,
+				8B451B1CE01E8C7A161032E620140BBE /* RSCodeReaderViewController.swift */,
+				E2DF4A86345C002A1FF3FA83C630993F /* RSCornersLayer.swift */,
+				50831E9F40F5ED8A5C614FFD275A9E1B /* RSEANGenerator.swift */,
+				B3080AC9FEC0D43EA0E0A911EFF488E6 /* RSExtendedCode39Generator.swift */,
+				86F747FE12A5CE4C385C58B912514BB3 /* RSFocusMarkLayer.swift */,
+				FA9032BA449767D4DCBC9D5E3B9188D5 /* RSITF14Generator.swift */,
+				0C2D767D4C54AB37902479721CF67449 /* RSITFGenerator.swift */,
+				2BF599FCD438582180B468BA1FCABE7D /* RSUnifiedCodeGenerator.swift */,
+				30793ADFEFDC660B59BFA00E9EA3DB37 /* RSUPCEGenerator.swift */,
+				6886509E90A6E397E1BEF2C100EFB981 /* StringExtension.swift */,
+				7FAEF21714A76180ED3D158B9FF7E536 /* UIColorExtension.swift */,
+				639A10ADCA4ACF5215935DD1657C3BE9 /* Support Files */,
+			);
+			path = RSBarcodes_Swift;
+			sourceTree = "<group>";
+		};
+		0ECB73C0CD9936DF9261AF6F8FD035A8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A286F694BA44EC5A3CA06A8C67926C84 /* Info.plist */,
+				3DA3DE2640438C7B76995CA6F9ABFC35 /* ReachabilitySwift.modulemap */,
+				5B0D9A7D55CEB85B146C63AFE080CFCB /* ReachabilitySwift.xcconfig */,
+				36136BA80085FE7AEDE0681C85F50F65 /* ReachabilitySwift-dummy.m */,
+				2DD2E91C4D00AB59A4F273C13BEE1AE9 /* ReachabilitySwift-prefix.pch */,
+				9114A0DEEC01866ABF931D96AD589525 /* ReachabilitySwift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ReachabilitySwift";
+			sourceTree = "<group>";
+		};
+		12891D9B31525ED734A7FDEDF508A6E2 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6116F61C7A166EC4EE72C04C24154420 /* Info.plist */,
+				4CB7FF0DCAFDA431F728B4BCD318B4FD /* SwiftGifOrigin.modulemap */,
+				D8DE36EE2431D05F2534F0220B642EFC /* SwiftGifOrigin.xcconfig */,
+				4381FF6132E91D17B51DE1540F6D0FDA /* SwiftGifOrigin-dummy.m */,
+				5808A3387FEAF8CC9633DD2FA239B109 /* SwiftGifOrigin-prefix.pch */,
+				7C2507B9955CCFCAE674824A67F95AAC /* SwiftGifOrigin-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftGifOrigin";
+			sourceTree = "<group>";
+		};
+		1417636B3EDB3F7426DB9AE8289B7869 /* BRYXBanner */ = {
+			isa = PBXGroup;
+			children = (
+				E76CDDD33DB8E185BC2E8DF92498FD96 /* Banner.swift */,
+				761199E12FD7B74EB064957D442B960A /* Support Files */,
+			);
+			path = BRYXBanner;
+			sourceTree = "<group>";
+		};
+		1E00F967BD91AC4E39B5EE8F68087C53 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				13C213B22113FB02F852459F231350D5 /* Info.plist */,
+				0EB364F6F65BA21A9BB893DBBDE7FC04 /* SimpleAlert.modulemap */,
+				C2F003312C57007A1402F97DB43C3DB3 /* SimpleAlert.xcconfig */,
+				66B6D80A3F2973A21B1144799A1873D0 /* SimpleAlert-dummy.m */,
+				093B0DA16CF2B5E478B13900010C5DA0 /* SimpleAlert-prefix.pch */,
+				DDC19DD9E92C59A7442A3C52ADC9B9AD /* SimpleAlert-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SimpleAlert";
+			sourceTree = "<group>";
+		};
+		2AB6FECEFED8FC7353FBAD1C070E1718 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A7F038094450CF43CDD6D13B3A83E00 /* CalendarView.modulemap */,
+				098C438633A48E4434B8CD15E59E83D0 /* CalendarView.xcconfig */,
+				4BDC4380F82566EA5E2EEFB8ACB4685D /* CalendarView-dummy.m */,
+				3DB49D639C1610784698BC39FF3C3983 /* CalendarView-prefix.pch */,
+				9097009671D516D424ACEB57756B67AE /* CalendarView-umbrella.h */,
+				7665FAC9F7E5B7212191701E902EC83D /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CalendarView";
+			sourceTree = "<group>";
+		};
+		5731CE9D935875F78C24D254BD3F582F /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED3A6EFD3EA12E0784565764EC98A166 /* Pods-inSparkle */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		639A10ADCA4ACF5215935DD1657C3BE9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EC2F86296515B5FBFF149AD9D4EE76C5 /* Info.plist */,
+				F31C78B0231087044ECB404DDECD0D8A /* RSBarcodes_Swift.modulemap */,
+				B068A58C3DCDBA3A95B47B0828BB1C93 /* RSBarcodes_Swift.xcconfig */,
+				FD03E680ED6087E2EC80F455855FF287 /* RSBarcodes_Swift-dummy.m */,
+				23BE60EB146E5D76731671D126232546 /* RSBarcodes_Swift-prefix.pch */,
+				75A665B33DEE9F6C21A49682E47C6E2B /* RSBarcodes_Swift-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RSBarcodes_Swift";
+			sourceTree = "<group>";
+		};
+		761199E12FD7B74EB064957D442B960A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE860FFF2B8A522C73444BB2016202A7 /* BRYXBanner.modulemap */,
+				B139B137063FA925B3FB673DA2565597 /* BRYXBanner.xcconfig */,
+				CB588A61D4FFBE60C93436A89DE8AB31 /* BRYXBanner-dummy.m */,
+				BB83F7654E76A32B6E6F3C3A2DC5134F /* BRYXBanner-prefix.pch */,
+				D418D02FF0420C75F0E951FB3985681B /* BRYXBanner-umbrella.h */,
+				ACB070CF7AB66EB908D36D97B7DFC377 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BRYXBanner";
+			sourceTree = "<group>";
+		};
+		7BEBCDFAD1424CB1AA569DEEF41C9A52 /* SwiftGifOrigin */ = {
+			isa = PBXGroup;
+			children = (
+				F384FA41487E777EF4AA7ED155C9C68A /* UIImage+Gif.swift */,
+				12891D9B31525ED734A7FDEDF508A6E2 /* Support Files */,
+			);
+			path = SwiftGifOrigin;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				8EA7B19732F4DDE8A9B6F27E6D13CB29 /* Frameworks */,
+				9E88704D8305C2A8B7A3C1589F19AFE3 /* Pods */,
+				93FD8A9AF2D343A05040B9D42FF6F35C /* Products */,
+				5731CE9D935875F78C24D254BD3F582F /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		85FAB410D2581D3CED82CF8155F47D56 /* SimpleAlert */ = {
+			isa = PBXGroup;
+			children = (
+				F0AF55A33353987D9C5C78ABAEE4CC52 /* SimpleAlert.h */,
+				D8B8E4B367D9CE211363B76331ACF16C /* SimpleAlert.swift */,
+				59AF5E3C3D9A1AD30879854D4ABF859E /* SimpleAlert.xib */,
+				1E00F967BD91AC4E39B5EE8F68087C53 /* Support Files */,
+			);
+			path = SimpleAlert;
+			sourceTree = "<group>";
+		};
+		8EA7B19732F4DDE8A9B6F27E6D13CB29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B41AB34FF36A2327AA5196DDF3372B5D /* SwiftMoment.framework */,
+				B1BBB4EE1551F803C2503F07D55EB3AD /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93FD8A9AF2D343A05040B9D42FF6F35C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				30B07A9D9A05742F143D2BAD70A0A7A1 /* BRYXBanner.bundle */,
+				C7AD7194ECE0842A809CA92D699BEF15 /* BRYXBanner.framework */,
+				F98008B250E4D82F530195AD12E0B09A /* CalendarView.bundle */,
+				E858290A9B36C786C326545489B9E7E7 /* CalendarView.framework */,
+				0D29F3F2BD0C07E2B7A13DFE0FDEF4C5 /* Pods_inSparkle.framework */,
+				0455047BAB75082A23DB6F070BB47857 /* ReachabilitySwift.framework */,
+				7D5E8D4B22DDD3A04D38BB0C56CB778F /* RSBarcodes_Swift.framework */,
+				113861E59A043E89B23EF303907046C8 /* SimpleAlert.framework */,
+				FA5623C96DB4A26D23BB59DB3411DDAB /* SwiftGifOrigin.framework */,
+				43DFCB48AFD2AFFDD5EE8B7961D9AE01 /* SwiftMoment.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9E88704D8305C2A8B7A3C1589F19AFE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1417636B3EDB3F7426DB9AE8289B7869 /* BRYXBanner */,
+				C65E6F5562AB20E761266ADF5F50E9F2 /* CalendarView */,
+				CCDF699191F108E55849D25243DDF268 /* ReachabilitySwift */,
+				02299FFBBA7D26829EDA5A5427DD09AC /* RSBarcodes_Swift */,
+				85FAB410D2581D3CED82CF8155F47D56 /* SimpleAlert */,
+				7BEBCDFAD1424CB1AA569DEEF41C9A52 /* SwiftGifOrigin */,
+				E2DFC1CFBB70FC0691813DDE70DB4079 /* SwiftMoment */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B1BBB4EE1551F803C2503F07D55EB3AD /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C0FA2A82D9E8D3FC28A6ACABD5F13C1B /* AVFoundation.framework */,
+				648C359475E717C111F69B67FA2D07E1 /* CoreImage.framework */,
+				08FEDD5A2AC2493AC2F9DEC155A51E1E /* Foundation.framework */,
+				69A30C5F5C5118F2C27D8DB5EEC3E95C /* QuartzCore.framework */,
+				501CC8DF280E94A09FA5B10DF56794A1 /* SystemConfiguration.framework */,
+				04ADF29D3C9531745FD11B0812FF24F9 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		B3CA2356D5442D0CFD6BEE5BDCC414A1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB66270E6195459B82A83576A06B69 /* Info.plist */,
+				B7B8DE729595C1A54B6DF8AF4F3FCD91 /* SwiftMoment.modulemap */,
+				4EFCCAD8E4D200CD2E44CC34E809F48D /* SwiftMoment.xcconfig */,
+				7D95F812501E1856EBE3A25A9520454A /* SwiftMoment-dummy.m */,
+				03D47081E7D3A7E92EE093E4316BE8F1 /* SwiftMoment-prefix.pch */,
+				481A30FCBD42267BEAF51C7286C6F135 /* SwiftMoment-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftMoment";
+			sourceTree = "<group>";
+		};
+		C65E6F5562AB20E761266ADF5F50E9F2 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				8741FB47E6199629BBFBD957CEF87464 /* CalendarView.swift */,
+				4084873A876313A5BACCE4E290D28BEA /* ContentView.swift */,
+				E16ADD60745F4A76F6FBEB15C49AFC47 /* DayView.swift */,
+				B4A06ED2410DA63C56B757850E65C1A6 /* EasyCast.swift */,
+				7FDD796F8BA41856FC7C052CB71E0706 /* MonthView.swift */,
+				EA4E963E15B2C2C6B284311C94A7F9B2 /* WeekView.swift */,
+				2AB6FECEFED8FC7353FBAD1C070E1718 /* Support Files */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		CCDF699191F108E55849D25243DDF268 /* ReachabilitySwift */ = {
+			isa = PBXGroup;
+			children = (
+				584E1CCAE8CBE0F0FB2F1FCFFAE7BC38 /* Reachability.swift */,
+				0ECB73C0CD9936DF9261AF6F8FD035A8 /* Support Files */,
+			);
+			path = ReachabilitySwift;
+			sourceTree = "<group>";
+		};
+		E2DFC1CFBB70FC0691813DDE70DB4079 /* SwiftMoment */ = {
+			isa = PBXGroup;
+			children = (
+				A2184E26D8A388A1670144F8F1E5834E /* Duration.swift */,
+				6C1E7F1B08E28CD328723021863ACF24 /* Extensions.swift */,
+				B72FFA22315E08B0B05624F02086980D /* Moment.swift */,
+				98CA855BB9525636F057C5B87A724C3C /* Operators.swift */,
+				F763C686620A832A4A1DDDEBDF9CB727 /* SwiftMoment.h */,
+				B69E7738F3B4AB181B8C7CD95353C146 /* TimeUnit.swift */,
+				B3CA2356D5442D0CFD6BEE5BDCC414A1 /* Support Files */,
+			);
+			path = SwiftMoment;
+			sourceTree = "<group>";
+		};
+		ED3A6EFD3EA12E0784565764EC98A166 /* Pods-inSparkle */ = {
+			isa = PBXGroup;
+			children = (
+				AB86AEA309874D125F914139F9BEA04D /* Info.plist */,
+				346AD49F4C54168817A17FADB71F33E2 /* Pods-inSparkle.modulemap */,
+				B94027B95B5837513AC0498A21F44B52 /* Pods-inSparkle-acknowledgements.markdown */,
+				45E828B525A0672AB663D41E104F910E /* Pods-inSparkle-acknowledgements.plist */,
+				955547A20C3AABAECB9E0ADD4C203EE7 /* Pods-inSparkle-dummy.m */,
+				5BB3E288775084C23AAF5218D0C5D7C2 /* Pods-inSparkle-frameworks.sh */,
+				9BF4FCD55C7C8FD9F135707076E5096D /* Pods-inSparkle-resources.sh */,
+				5540E1ED90605D472084924703AC99D1 /* Pods-inSparkle-umbrella.h */,
+				8FCA0CED7B1FCD46FE1C610F6D80E87F /* Pods-inSparkle.debug.xcconfig */,
+				258BAF1BAEE8980D45A1E7B37EDD486C /* Pods-inSparkle.release.xcconfig */,
+			);
+			name = "Pods-inSparkle";
+			path = "Target Support Files/Pods-inSparkle";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		030CD6A8FF2B78AAF8C5C7B71ACFBAE7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A6C728652A6A315539C5BDBEF975D26 /* RSBarcodes_Swift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0D5FC5E3BC3F962251AE21A77342D484 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8538F0AB68B8809B903476DCA08BCE60 /* ReachabilitySwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6A79D8737E4BA541C34B2B0ADA8A0D98 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A24AABB5997DDE1452044D461FBD6DD9 /* SwiftMoment-umbrella.h in Headers */,
+				38CA5C1A02AC17DCC99BD4BA3C3AB45B /* SwiftMoment.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6C8210038691936AF2FF96F57712FDB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E97E038A8DCCA2AE56359C35E907C573 /* SwiftGifOrigin-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AED5813032B309961C7C846D4FEFA1BB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				778D669BA0BD8550AC31311858B5D07C /* Pods-inSparkle-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C366A590250CCF691DE8DD6D83B5BCD4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FDCBC9D6E29131C638CA708B1997D30 /* BRYXBanner-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD7A87EAFF36A07BA2C925D3F30840C0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7BB082A945773C36B4020517BCF3BA8 /* SimpleAlert-umbrella.h in Headers */,
+				AF8160094F0644F7BCB9D4E6FE041947 /* SimpleAlert.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9AE8BF45492E2B424DEAB1D71F6A5CE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC1B0AB47BB3609E0961AE8470B6F191 /* CalendarView-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		210EA42A414A7C3C0744D2E634D9893A /* RSBarcodes_Swift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6503B15E63AECBF28A0BD087BF57697 /* Build configuration list for PBXNativeTarget "RSBarcodes_Swift" */;
+			buildPhases = (
+				699F54F081CF295459115208599AF3F1 /* Sources */,
+				61FBC01E9FEF54EAA1352E4716AE327E /* Frameworks */,
+				030CD6A8FF2B78AAF8C5C7B71ACFBAE7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RSBarcodes_Swift;
+			productName = RSBarcodes_Swift;
+			productReference = 7D5E8D4B22DDD3A04D38BB0C56CB778F /* RSBarcodes_Swift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		41638D9B170F774D9F650F63B192526A /* CalendarView-CalendarView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A81766E10721EFE9C8CEE1AB4E808181 /* Build configuration list for PBXNativeTarget "CalendarView-CalendarView" */;
+			buildPhases = (
+				D713B42F5761C042F36F0E585388A84E /* Sources */,
+				8CE42323B24CE4F52EAD6833C06526A6 /* Frameworks */,
+				31165A49A2A4A9363C21630FACAE5D19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CalendarView-CalendarView";
+			productName = "CalendarView-CalendarView";
+			productReference = F98008B250E4D82F530195AD12E0B09A /* CalendarView.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		69653C4EF2B0C3B6DF53483E84FE1C64 /* Pods-inSparkle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7A7B37C90D652F384BB6F1384CD1B90 /* Build configuration list for PBXNativeTarget "Pods-inSparkle" */;
+			buildPhases = (
+				EEB44B817B4B8F90A092A37502946620 /* Sources */,
+				1AB832D5AD69000789B489B7436EA31E /* Frameworks */,
+				AED5813032B309961C7C846D4FEFA1BB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A5DA234FBFF5B17AB74AFCAF1B09ECD /* PBXTargetDependency */,
+				1664202BE5D1B8B54D5FADD944113A6B /* PBXTargetDependency */,
+				35F02DA10AF62932D5B7B21E56564AA3 /* PBXTargetDependency */,
+				3DDE6C069241FEBED75A85640CC21FAC /* PBXTargetDependency */,
+				E76BDD02E45DD6792F2BC6363FB12576 /* PBXTargetDependency */,
+				84F94E779E653DBAD95BF5470AEB6169 /* PBXTargetDependency */,
+				94C28A1F6AB98A336E59AA32BA2CEE36 /* PBXTargetDependency */,
+			);
+			name = "Pods-inSparkle";
+			productName = "Pods-inSparkle";
+			productReference = 0D29F3F2BD0C07E2B7A13DFE0FDEF4C5 /* Pods_inSparkle.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		72C41FBE0C81D2322FF7DF37F4B8029A /* SimpleAlert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 516F5D220834E730C2A3D851EDDCF1CD /* Build configuration list for PBXNativeTarget "SimpleAlert" */;
+			buildPhases = (
+				026183D9D4D9C40EC3BBF13147E0A0B0 /* Sources */,
+				51ED0989E6D903F1F0ED909EE1D0E482 /* Frameworks */,
+				DD7A87EAFF36A07BA2C925D3F30840C0 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleAlert;
+			productName = SimpleAlert;
+			productReference = 113861E59A043E89B23EF303907046C8 /* SimpleAlert.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		75AEEEFD7E431013E8E60009251D5797 /* BRYXBanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44C47E9BB39C5950AA6F6D88D07A66E1 /* Build configuration list for PBXNativeTarget "BRYXBanner" */;
+			buildPhases = (
+				274BF109B4F9D46B884ABAF5E62233A4 /* Sources */,
+				29CA903B45A7B7D47947D302E26DB67F /* Frameworks */,
+				19D690EB5701322FE17A3A2D6564057A /* Resources */,
+				C366A590250CCF691DE8DD6D83B5BCD4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA312F87378A022EE86EB823002D597F /* PBXTargetDependency */,
+			);
+			name = BRYXBanner;
+			productName = BRYXBanner;
+			productReference = C7AD7194ECE0842A809CA92D699BEF15 /* BRYXBanner.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A21DCB995841FE970CCB507D94F822D9 /* SwiftMoment */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2FBA9BDCB64E66A084507DA2C170257F /* Build configuration list for PBXNativeTarget "SwiftMoment" */;
+			buildPhases = (
+				392ED984EA3C713D11E90F1F2FA20F9B /* Sources */,
+				B0708840727C8C1D9952B765C5A83003 /* Frameworks */,
+				6A79D8737E4BA541C34B2B0ADA8A0D98 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftMoment;
+			productName = SwiftMoment;
+			productReference = 43DFCB48AFD2AFFDD5EE8B7961D9AE01 /* SwiftMoment.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A249CF9CC83EF996380469C8249B2013 /* CalendarView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 974339C44F3F3E4CBC7E9EEBAFAC444F /* Build configuration list for PBXNativeTarget "CalendarView" */;
+			buildPhases = (
+				E9699F5C0CE4FD13E80DB24EC21793DC /* Sources */,
+				83B4167F9890413D10AA3C55CD44F51B /* Frameworks */,
+				801261530DF1CF65E0B3D007C5066B97 /* Resources */,
+				E9AE8BF45492E2B424DEAB1D71F6A5CE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B2EA9733185A9897DFD29A28783402B7 /* PBXTargetDependency */,
+				489A982E89AA89A17739AC356B3D65F7 /* PBXTargetDependency */,
+			);
+			name = CalendarView;
+			productName = CalendarView;
+			productReference = E858290A9B36C786C326545489B9E7E7 /* CalendarView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A888A38A9574002E16368D1076DDDDFB /* ReachabilitySwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D912A734F0430F375C5B962A015FA512 /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */;
+			buildPhases = (
+				EE32A9F7D258366F0F2CCD4D170F28AF /* Sources */,
+				1533EFC8E75BD2382D80CA5023E3B4E0 /* Frameworks */,
+				0D5FC5E3BC3F962251AE21A77342D484 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReachabilitySwift;
+			productName = ReachabilitySwift;
+			productReference = 0455047BAB75082A23DB6F070BB47857 /* ReachabilitySwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DAB7791547A685D8C24023E819F48683 /* SwiftGifOrigin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D10C112E9602A3C4F52A9AB097199A8C /* Build configuration list for PBXNativeTarget "SwiftGifOrigin" */;
+			buildPhases = (
+				910491915F347041CCE4B74EB019AF7D /* Sources */,
+				975C790EAEB55EF7BF9CC59AAEC0EB21 /* Frameworks */,
+				A6C8210038691936AF2FF96F57712FDB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftGifOrigin;
+			productName = SwiftGifOrigin;
+			productReference = FA5623C96DB4A26D23BB59DB3411DDAB /* SwiftGifOrigin.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E45C60E65DC7B25E659C0A735F907FC7 /* BRYXBanner-BRYXBanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E060CC8E66EC546BC8781C9854A15FD7 /* Build configuration list for PBXNativeTarget "BRYXBanner-BRYXBanner" */;
+			buildPhases = (
+				8A942900361D2285928B9965F0CCE20F /* Sources */,
+				F58BDA84F275E04CA1E5846669A55722 /* Frameworks */,
+				91FD6A1772683A53825B3BE511D1DFDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BRYXBanner-BRYXBanner";
+			productName = "BRYXBanner-BRYXBanner";
+			productReference = 30B07A9D9A05742F143D2BAD70A0A7A1 /* BRYXBanner.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 93FD8A9AF2D343A05040B9D42FF6F35C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				75AEEEFD7E431013E8E60009251D5797 /* BRYXBanner */,
+				E45C60E65DC7B25E659C0A735F907FC7 /* BRYXBanner-BRYXBanner */,
+				A249CF9CC83EF996380469C8249B2013 /* CalendarView */,
+				41638D9B170F774D9F650F63B192526A /* CalendarView-CalendarView */,
+				69653C4EF2B0C3B6DF53483E84FE1C64 /* Pods-inSparkle */,
+				A888A38A9574002E16368D1076DDDDFB /* ReachabilitySwift */,
+				210EA42A414A7C3C0744D2E634D9893A /* RSBarcodes_Swift */,
+				72C41FBE0C81D2322FF7DF37F4B8029A /* SimpleAlert */,
+				DAB7791547A685D8C24023E819F48683 /* SwiftGifOrigin */,
+				A21DCB995841FE970CCB507D94F822D9 /* SwiftMoment */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		19D690EB5701322FE17A3A2D6564057A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D54348591FFF58E70D239A9602CA6AF /* BRYXBanner.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		31165A49A2A4A9363C21630FACAE5D19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		801261530DF1CF65E0B3D007C5066B97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				597C28F5AE6422A7E718838559A48FC0 /* CalendarView.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91FD6A1772683A53825B3BE511D1DFDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		026183D9D4D9C40EC3BBF13147E0A0B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1CFAC1FFC364C06ECE01E0FDC5C09B1D /* SimpleAlert-dummy.m in Sources */,
+				458B978A6FB9CB5ED74FB76D29428A89 /* SimpleAlert.swift in Sources */,
+				C8C4D18F465F257F525F99904E9E3F9C /* SimpleAlert.xib in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		274BF109B4F9D46B884ABAF5E62233A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2E48324FC76C43C08D8C16EAC9680C95 /* Banner.swift in Sources */,
+				9CFDF70EA0F7A8B0AD06F2EAF29D9C11 /* BRYXBanner-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		392ED984EA3C713D11E90F1F2FA20F9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE0100913BDCE445D8B7743246C6586C /* Duration.swift in Sources */,
+				D7B8B175749B48E0552273D1C4ABB2A4 /* Extensions.swift in Sources */,
+				A3145D8EDA8C290BE61D87DE1A62B2B3 /* Moment.swift in Sources */,
+				5D20D1029EA3E4FD008A69B26E91D775 /* Operators.swift in Sources */,
+				1E6F81F9ACB5C9FB512B10C3B1D1B200 /* SwiftMoment-dummy.m in Sources */,
+				15BA79E5FA73F611878C81C807D8BCCE /* TimeUnit.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		699F54F081CF295459115208599AF3F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				641A770C3037A2FA1FDCE399A8E21307 /* RSBarcodes_Swift-dummy.m in Sources */,
+				92EAC8325A0355E36340572143D9C540 /* RSCode128Generator.swift in Sources */,
+				FB5560D238AA8D814A04C65D7F70C4D2 /* RSCode39Generator.swift in Sources */,
+				282861C5642F9A4C5E2B3F030DF32712 /* RSCode39Mod43Generator.swift in Sources */,
+				61B77DCA10A1955AF85A3265B9F02A16 /* RSCode93Generator.swift in Sources */,
+				9FE9CF72954EF8F1F848D96B1177DA82 /* RSCodeDataMatrixGenerator.swift in Sources */,
+				E10EA23D4820CCE55DB3AE7BA59D1243 /* RSCodeGenerator.swift in Sources */,
+				F4A763CD7E6A1165370FA75882F246DC /* RSCodeLayer.swift in Sources */,
+				B51AC4F97FBD4F33B0CA68F292CB5A16 /* RSCodeReaderViewController.swift in Sources */,
+				68C3ACC2D2DF3BC930B50C8B636B9B2E /* RSCornersLayer.swift in Sources */,
+				ADAFD218F2C0C99A99D0D698592A661A /* RSEANGenerator.swift in Sources */,
+				DC50F14A929C26B231638759AB4318CC /* RSExtendedCode39Generator.swift in Sources */,
+				72C7AA61CAE16C2034FFACDE2FE21499 /* RSFocusMarkLayer.swift in Sources */,
+				67FFBE9A769A046825E9AA8D2F895389 /* RSITF14Generator.swift in Sources */,
+				9EE407B5C5D71DC4FC5D702A6214A2E2 /* RSITFGenerator.swift in Sources */,
+				E61C370E0F6B7D5DC11B665EC0C60DF9 /* RSUnifiedCodeGenerator.swift in Sources */,
+				B16FFF4359F963871F9DE48B6AFFEACF /* RSUPCEGenerator.swift in Sources */,
+				3E595D19A10AF351538AD7EB022BA80E /* StringExtension.swift in Sources */,
+				AA2904F09741AE1661676CE09DEBEC5A /* UIColorExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8A942900361D2285928B9965F0CCE20F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		910491915F347041CCE4B74EB019AF7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7956C1CDDA6357ECE299FDB803B48BA /* SwiftGifOrigin-dummy.m in Sources */,
+				EFDF1F9D70FEE5D17BDC9D6A636CCCE0 /* UIImage+Gif.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D713B42F5761C042F36F0E585388A84E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E9699F5C0CE4FD13E80DB24EC21793DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9254D51D86F769CB80B82EFA1DFF10D5 /* CalendarView-dummy.m in Sources */,
+				47082C15955512F8DE46118A66DFB9BC /* CalendarView.swift in Sources */,
+				5A7ADE0B32A113CFC84F5FBFC8BDE4FB /* ContentView.swift in Sources */,
+				29A8059D1E03301AE6B275705F53476F /* DayView.swift in Sources */,
+				3BAAA9F34A62F442CF68D4F24549175C /* EasyCast.swift in Sources */,
+				134B250E1864D43B166253EDACB84BC7 /* MonthView.swift in Sources */,
+				78EEC1CF2977B8107DBCE313BCA9DE6D /* WeekView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE32A9F7D258366F0F2CCD4D170F28AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FA5445799F8D7AB0A150F4D48844443 /* Reachability.swift in Sources */,
+				03A74673DDEEF4462656F57C50828344 /* ReachabilitySwift-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EEB44B817B4B8F90A092A37502946620 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC1AFEA4801BE5F1F4DB9051BEC4946E /* Pods-inSparkle-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1664202BE5D1B8B54D5FADD944113A6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CalendarView;
+			target = A249CF9CC83EF996380469C8249B2013 /* CalendarView */;
+			targetProxy = F964053B6A4DF3BCEC2ADB839CD030D4 /* PBXContainerItemProxy */;
+		};
+		2A5DA234FBFF5B17AB74AFCAF1B09ECD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BRYXBanner;
+			target = 75AEEEFD7E431013E8E60009251D5797 /* BRYXBanner */;
+			targetProxy = 99C778AF4C73A35DBFCE87EF435F06A3 /* PBXContainerItemProxy */;
+		};
+		35F02DA10AF62932D5B7B21E56564AA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RSBarcodes_Swift;
+			target = 210EA42A414A7C3C0744D2E634D9893A /* RSBarcodes_Swift */;
+			targetProxy = 422AFBD4287375853E0A363336C0B390 /* PBXContainerItemProxy */;
+		};
+		3DDE6C069241FEBED75A85640CC21FAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReachabilitySwift;
+			target = A888A38A9574002E16368D1076DDDDFB /* ReachabilitySwift */;
+			targetProxy = B03F3F3B27F3C1A71C73A9C151C727D1 /* PBXContainerItemProxy */;
+		};
+		489A982E89AA89A17739AC356B3D65F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftMoment;
+			target = A21DCB995841FE970CCB507D94F822D9 /* SwiftMoment */;
+			targetProxy = D1A063AF9C40FCD4CFD795752708DA1D /* PBXContainerItemProxy */;
+		};
+		84F94E779E653DBAD95BF5470AEB6169 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftGifOrigin;
+			target = DAB7791547A685D8C24023E819F48683 /* SwiftGifOrigin */;
+			targetProxy = 1AB6CDE9F09B6AE0C49537E03FF6856B /* PBXContainerItemProxy */;
+		};
+		94C28A1F6AB98A336E59AA32BA2CEE36 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftMoment;
+			target = A21DCB995841FE970CCB507D94F822D9 /* SwiftMoment */;
+			targetProxy = 1277931FE2B4225B7C481686281505CD /* PBXContainerItemProxy */;
+		};
+		B2EA9733185A9897DFD29A28783402B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CalendarView-CalendarView";
+			target = 41638D9B170F774D9F650F63B192526A /* CalendarView-CalendarView */;
+			targetProxy = C212A310ED81EF7C8C983084530A575B /* PBXContainerItemProxy */;
+		};
+		BA312F87378A022EE86EB823002D597F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "BRYXBanner-BRYXBanner";
+			target = E45C60E65DC7B25E659C0A735F907FC7 /* BRYXBanner-BRYXBanner */;
+			targetProxy = 96354DFD3D88F64BCA23A5F0D0EE1069 /* PBXContainerItemProxy */;
+		};
+		E76BDD02E45DD6792F2BC6363FB12576 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SimpleAlert;
+			target = 72C41FBE0C81D2322FF7DF37F4B8029A /* SimpleAlert */;
+			targetProxy = 9A6CDD387B27F7C0A6C73296D2C26DF2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		14FAEC944ED9E6F26A35CC00415A0EB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 098C438633A48E4434B8CD15E59E83D0 /* CalendarView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CalendarView/CalendarView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CalendarView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CalendarView/CalendarView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CalendarView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1C56AAABB860B469BC77421212A7939D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 098C438633A48E4434B8CD15E59E83D0 /* CalendarView.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = CalendarView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		1D670F036C44CAF7BBEE1899493677C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8DE36EE2431D05F2534F0220B642EFC /* SwiftGifOrigin.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftGifOrigin/SwiftGifOrigin-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftGifOrigin/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftGifOrigin/SwiftGifOrigin.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftGifOrigin;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		26FC2BF3E199EC1AA18BDB53B2476EEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B068A58C3DCDBA3A95B47B0828BB1C93 /* RSBarcodes_Swift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RSBarcodes_Swift/RSBarcodes_Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RSBarcodes_Swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RSBarcodes_Swift/RSBarcodes_Swift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RSBarcodes_Swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2ADC3A95414E5996C2CA8CC6DE1485B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EFCCAD8E4D200CD2E44CC34E809F48D /* SwiftMoment.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftMoment/SwiftMoment-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftMoment/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftMoment/SwiftMoment.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftMoment;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		36304638BDAC443AA572C5579F01D631 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 098C438633A48E4434B8CD15E59E83D0 /* CalendarView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CalendarView/CalendarView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CalendarView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CalendarView/CalendarView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CalendarView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		56A8836DE8D1E5CA56A05FB5D98E98A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B139B137063FA925B3FB673DA2565597 /* BRYXBanner.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BRYXBanner/BRYXBanner-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BRYXBanner/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BRYXBanner/BRYXBanner.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = BRYXBanner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		5EC7B064D1CB5F62941CE0ECFF3663E4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8DE36EE2431D05F2534F0220B642EFC /* SwiftGifOrigin.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftGifOrigin/SwiftGifOrigin-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftGifOrigin/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftGifOrigin/SwiftGifOrigin.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftGifOrigin;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6989B94961D8CAEA31A8BB4BE33F6E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B0D9A7D55CEB85B146C63AFE080CFCB /* ReachabilitySwift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ReachabilitySwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		74101A8A79CD10C1CD618B97A00594F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2F003312C57007A1402F97DB43C3DB3 /* SimpleAlert.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SimpleAlert/SimpleAlert-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SimpleAlert/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SimpleAlert/SimpleAlert.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SimpleAlert;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		77B6D8C9E50CDA648CDB3EF6877A6D6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B139B137063FA925B3FB673DA2565597 /* BRYXBanner.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = BRYXBanner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		8583CD5871D268654BAF16594839AFB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B068A58C3DCDBA3A95B47B0828BB1C93 /* RSBarcodes_Swift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RSBarcodes_Swift/RSBarcodes_Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RSBarcodes_Swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RSBarcodes_Swift/RSBarcodes_Swift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = RSBarcodes_Swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9495D15E3FE9B84B724B96263A5AC697 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FCA0CED7B1FCD46FE1C610F6D80E87F /* Pods-inSparkle.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-inSparkle/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-inSparkle/Pods-inSparkle.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_inSparkle;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9D5AE45C1FA8D0E70F9D5A0B416C4F71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B0D9A7D55CEB85B146C63AFE080CFCB /* ReachabilitySwift.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ReachabilitySwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A18D35D1AEA46B195CEE20D5C9269FBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2F003312C57007A1402F97DB43C3DB3 /* SimpleAlert.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SimpleAlert/SimpleAlert-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SimpleAlert/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SimpleAlert/SimpleAlert.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SimpleAlert;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AAB922225F306EAE273A816705C27318 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4EFCCAD8E4D200CD2E44CC34E809F48D /* SwiftMoment.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftMoment/SwiftMoment-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftMoment/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftMoment/SwiftMoment.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftMoment;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B208CBF8467721CFD94E75AAEC7CE771 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 098C438633A48E4434B8CD15E59E83D0 /* CalendarView.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = CalendarView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		C074F63C9EE7CB4D8C618390A32CEC35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		C9F6DF513186AD876989BA7704B50520 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B139B137063FA925B3FB673DA2565597 /* BRYXBanner.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/BRYXBanner/BRYXBanner-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BRYXBanner/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BRYXBanner/BRYXBanner.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = BRYXBanner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CFA52ADC15F0FD898E15352632AECEC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 258BAF1BAEE8980D45A1E7B37EDD486C /* Pods-inSparkle.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-inSparkle/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-inSparkle/Pods-inSparkle.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_inSparkle;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E43846B588E1892F3093F3B7082B6DFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ED116C40CF345CDFA9517484D56805D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B139B137063FA925B3FB673DA2565597 /* BRYXBanner.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = BRYXBanner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C074F63C9EE7CB4D8C618390A32CEC35 /* Debug */,
+				E43846B588E1892F3093F3B7082B6DFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2FBA9BDCB64E66A084507DA2C170257F /* Build configuration list for PBXNativeTarget "SwiftMoment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAB922225F306EAE273A816705C27318 /* Debug */,
+				2ADC3A95414E5996C2CA8CC6DE1485B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44C47E9BB39C5950AA6F6D88D07A66E1 /* Build configuration list for PBXNativeTarget "BRYXBanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56A8836DE8D1E5CA56A05FB5D98E98A9 /* Debug */,
+				C9F6DF513186AD876989BA7704B50520 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		516F5D220834E730C2A3D851EDDCF1CD /* Build configuration list for PBXNativeTarget "SimpleAlert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A18D35D1AEA46B195CEE20D5C9269FBD /* Debug */,
+				74101A8A79CD10C1CD618B97A00594F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		974339C44F3F3E4CBC7E9EEBAFAC444F /* Build configuration list for PBXNativeTarget "CalendarView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36304638BDAC443AA572C5579F01D631 /* Debug */,
+				14FAEC944ED9E6F26A35CC00415A0EB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6503B15E63AECBF28A0BD087BF57697 /* Build configuration list for PBXNativeTarget "RSBarcodes_Swift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26FC2BF3E199EC1AA18BDB53B2476EEE /* Debug */,
+				8583CD5871D268654BAF16594839AFB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A81766E10721EFE9C8CEE1AB4E808181 /* Build configuration list for PBXNativeTarget "CalendarView-CalendarView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C56AAABB860B469BC77421212A7939D /* Debug */,
+				B208CBF8467721CFD94E75AAEC7CE771 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D10C112E9602A3C4F52A9AB097199A8C /* Build configuration list for PBXNativeTarget "SwiftGifOrigin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D670F036C44CAF7BBEE1899493677C2 /* Debug */,
+				5EC7B064D1CB5F62941CE0ECFF3663E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7A7B37C90D652F384BB6F1384CD1B90 /* Build configuration list for PBXNativeTarget "Pods-inSparkle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9495D15E3FE9B84B724B96263A5AC697 /* Debug */,
+				CFA52ADC15F0FD898E15352632AECEC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D912A734F0430F375C5B962A015FA512 /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9D5AE45C1FA8D0E70F9D5A0B416C4F71 /* Debug */,
+				6989B94961D8CAEA31A8BB4BE33F6E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E060CC8E66EC546BC8781C9854A15FD7 /* Build configuration list for PBXNativeTarget "BRYXBanner-BRYXBanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				77B6D8C9E50CDA648CDB3EF6877A6D6A /* Debug */,
+				ED116C40CF345CDFA9517484D56805D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

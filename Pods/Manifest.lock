@@ -1,0 +1,37 @@
+PODS:
+  - BRYXBanner (0.5.0)
+  - CalendarView (1.1.0):
+    - SwiftMoment (~> 0.1)
+  - ReachabilitySwift (2.3)
+  - RSBarcodes_Swift (0.1.5)
+  - SimpleAlert (1.3.1)
+  - SwiftGifOrigin (1.5.1)
+  - SwiftMoment (0.2)
+
+DEPENDENCIES:
+  - BRYXBanner
+  - CalendarView
+  - ReachabilitySwift (from `https://github.com/ashleymills/Reachability.swift`)
+  - RSBarcodes_Swift (~> 0.1.4)
+  - SimpleAlert
+  - SwiftGifOrigin
+
+EXTERNAL SOURCES:
+  ReachabilitySwift:
+    :git: https://github.com/ashleymills/Reachability.swift
+
+CHECKOUT OPTIONS:
+  ReachabilitySwift:
+    :commit: 35aa812197a0f5f964febfe74be6c000edc8f850
+    :git: https://github.com/ashleymills/Reachability.swift
+
+SPEC CHECKSUMS:
+  BRYXBanner: a1b87cd80ae9c366af5755b5ea2978802aaff87a
+  CalendarView: adad8997eae3474f2cfd8f300a0a16914f4fd4b3
+  ReachabilitySwift: 2ac9df18a443901f06caae38a9f5431219a4c36a
+  RSBarcodes_Swift: bad1ce459c5ac0b314d6e4f3524cc07d53f3a188
+  SimpleAlert: 05215ee656e1da1428998e76a76bb153a16c7a21
+  SwiftGifOrigin: 2dd51f087f77b676e75bb572f521e06e9ced6c58
+  SwiftMoment: b1bf1b5708b4bc99db47697e32683430d7c19759
+
+COCOAPODS: 0.39.0

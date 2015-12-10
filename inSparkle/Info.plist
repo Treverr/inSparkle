@@ -19,7 +19,21 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>6</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>bb9f228438400e05eeff9a4184baa75a30a9ea74</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -35,6 +49,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

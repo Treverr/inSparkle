@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Parse
+import Bolts
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +19,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Fabric.with([Crashlytics.self])
+        
+        registerParseSubclasses()
+        
+        Parse.setApplicationId("M8DKwA6ifp1JJlHmSjpBL0M66tYq710f9xEnFcrv",
+            clientKey: "cy4fwRWmKVdFw8LSCCjYIflbH2yP6qCjWQnoAMzH")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        do {
+           try PFUser.currentUser()?.fetch()
+            print(PFUser.currentUser())
+            print("Updated User")
+        } catch {
+            print("Error")
+        }
+        
+        
         return true
+    }
+    
+    func registerParseSubclasses() {
+        ScheduleObject.registerSubclass()
+        TimeClockPunchObj.registerSubclass()
+        TimePunchCalcObject.registerSubclass()
     }
 
     func applicationWillResignActive(application: UIApplication) {

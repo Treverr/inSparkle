@@ -1,0 +1,6 @@
+framework module Pods_inSparkle {
+  umbrella header "Pods-inSparkle-umbrella.h"
+
+  export *
+  module * { export * }
+}
