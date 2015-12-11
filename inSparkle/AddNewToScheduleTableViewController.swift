@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import GooglePlacesAutocomplete
+//import PhoneNumberKit
 
 class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -16,9 +18,12 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet weak var weekEndingLabel: UILabel!
     @IBOutlet weak var customerNameTextField: UITextField!
     @IBOutlet weak var typeSegControl: UISegmentedControl!
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var phoneNumberTextField: UITextField!
     
     
     var weekList = [PFObject]()
+    var phoneNumber : String! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +34,26 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         weekPicker.delegate = self
         weekPicker.dataSource = self
         customerNameTextField.delegate = self
+        phoneNumberTextField.delegate = self
         
         self.tableView.allowsSelection = false
         
+        addressLabel.userInteractionEnabled = true
+        let googlePlacesAPI : Selector = "googlePlacesAPI"
+        let googlePlacesAPITapGesture = UITapGestureRecognizer(target: self, action: googlePlacesAPI)
+        googlePlacesAPITapGesture.numberOfTapsRequired = 1
+        addressLabel.addGestureRecognizer(googlePlacesAPITapGesture)
+        
+        weekPicker.userInteractionEnabled = true
+        let weekPickerMakeAllOthersResign : Selector = "weekPickerMakeAllOthersResign"
+        let weekPickerTapGesture = UITapGestureRecognizer(target: self, action: weekPickerMakeAllOthersResign)
+        weekPickerTapGesture.numberOfTapsRequired = 1
+        weekPicker.addGestureRecognizer(weekPickerTapGesture)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatedAddressLabel", name: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
@@ -106,6 +128,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        if !pickerView.isFirstResponder() {
+            customerNameTextField.resignFirstResponder()
+            addressLabel.resignFirstResponder()
+            phoneNumberTextField.resignFirstResponder()
+        }
+        
         let weekStartDate : NSDate = weekList[row].valueForKey("weekStart") as! NSDate
         let weekEndDate : NSDate = weekList[row].valueForKey("weekEnd") as! NSDate
         
@@ -133,8 +162,31 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             return true
         }
         
+//        if phoneNumberTextField.isFirstResponder() {
+//            
+//            do {
+//                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
+//                phoneNumberTextField.text! = phoneNumber.toNational()
+//            } catch {
+//                print("error")
+//            }
+//        }
+        
         return false
     }
+    
+//    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+//        if phoneNumberTextField.isFirstResponder() {
+//            
+//            do {
+//                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
+//                phoneNumberTextField.text! = phoneNumber.toNational()
+//            } catch {
+//                print("error")
+//            }
+//        }
+//        return false
+//    }
     
     @IBAction func saveButton(sender: AnyObject) {
         if customerNameTextField.text!.isEmpty {
@@ -175,10 +227,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func typeSegControl(sender: AnyObject) {
-        DataManager.lastUsedTypeSegment = typeSegControl.selectedSegmentIndex
-    }
-    
     func displayError(title: String, message : String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         let okButton = UIAlertAction(title: "Oops", style: .Default, handler: nil)
@@ -208,5 +256,94 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
         }
     }
+    
+    func googlePlacesAPI() {
+        
+        let gpaViewController = GooglePlacesAutocomplete(
+            apiKey: "AIzaSyCFBaUShWIatpRNiDtc8IcE8reNMs0kM7I",
+            placeType: .Address
+        )
+        
+        gpaViewController.placeDelegate = self
+        gpaViewController.locationBias = LocationBias(latitude: 39.4931008, longitude: -87.3789913, radius: 120)
+        gpaViewController.navigationBar.barStyle = UIBarStyle.Black
+        gpaViewController.navigationBar.barTintColor = Colors.sparkleBlue
+        gpaViewController.navigationBar.tintColor = UIColor.whiteColor()
+        
+        presentViewController(gpaViewController, animated: true, completion: nil)
+        
+    }
+    
+    func updatedAddressLabel() {
+        addressLabel.text = GoogleAddress.address
+        addressLabel.textColor = UIColor.blackColor()
+    }
+    
+    var isKeyboardShowing : Bool?
+    var kbHeight: CGFloat?
+    var showUIKeyboard : Bool?
+    
+    func keyboardWillShow(notification : NSNotification) {
+        
+        if isKeyboardShowing == true {
+            return
+        } else {
+            if let userInfo = notification.userInfo {
+                if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                    kbHeight = keyboardSize.height
+                    self.animateTextField(true)
+                    isKeyboardShowing = true
+                }
+            }
+        }
+        
+    }
+    
+    
+    
+    func keyboardWillHide(notification : NSNotification) {
+        self.animateTextField(false)
+        isKeyboardShowing = false
+    }
+    
+    func animateTextField(up: Bool) {
+        if kbHeight == nil {
+            return
+        } else {
+            if customerNameTextField.isFirstResponder() {
+                
+            } else {
+                let movement = (up ? -kbHeight! + 150 : kbHeight! - 150)
+                UIView.animateWithDuration(0.3, animations: {
+                    self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+                })
+            }
+        }
+        
+    }
+    
+    func weekPickerMakeAllOthersResign() {
+        if !weekPicker.isFirstResponder() {
+            customerNameTextField.resignFirstResponder()
+            addressLabel.resignFirstResponder()
+            phoneNumberTextField.resignFirstResponder()
+        }
+    }
+    
+}
+
+extension AddNewToScheduleTableViewController : GooglePlacesAutocompleteDelegate {
+    
+    func placeSelected(place: Place) {
+        GoogleAddress.address = place.description
+        NSNotificationCenter.defaultCenter().postNotificationName("NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func placeViewClosed() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
     
 }

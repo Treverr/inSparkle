@@ -75,6 +75,12 @@ class EmployeeData: NSObject {
     
 }
 
+class GoogleAddress: NSObject {
+    
+    static var address : String?
+    
+}
+
 class GlobalFunctions {
     
     func stringFromDateFullStyle(theDate : NSDate) -> String {
