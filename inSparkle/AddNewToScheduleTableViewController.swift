@@ -349,15 +349,30 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     var isKeyboardShowing : Bool?
     var kbHeight: CGFloat?
     var showUIKeyboard : Bool?
+    var hasKeyboard : Bool?
     
     func keyboardWillShow(notification : NSNotification) {
+        
+        var userInfo: [NSObject : AnyObject] = notification.userInfo!
+        var keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
+        var keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
+        var height: CGFloat = self.view.frame.size.height
+        if (keyboard.origin.y + keyboard.size.height) > height {
+            self.hasKeyboard = true
+        }
+        var toolbarHeight : CGFloat?
+        
         
         if isKeyboardShowing == true {
             return
         } else {
             if let userInfo = notification.userInfo {
                 if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                    kbHeight = keyboardSize.height
+                    if self.hasKeyboard == true {
+                        kbHeight = 25
+                    } else {
+                        kbHeight = keyboardSize.height
+                    }
                     self.animateTextField(true)
                     isKeyboardShowing = true
                 }
