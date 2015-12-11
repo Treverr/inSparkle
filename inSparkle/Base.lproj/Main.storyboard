@@ -102,7 +102,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="yhP-wp-MmP" kind="show" id="x1d-yl-rMn"/>
+                                            <segue destination="yhP-wp-MmP" kind="popoverPresentation" popoverAnchorView="iBZ-Ad-khe" id="x1d-yl-rMn">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="LeM-YN-c5K" style="IBUITableViewCellStyleDefault" id="Ka6-Vp-8HO">
