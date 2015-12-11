@@ -20,11 +20,14 @@ class ScheduleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh", name: "NotifyScheduleTableToRefresh", object: nil)
+        
         setFilterType()
         scheduleQuery()
         setupNavigationbar()
         
         self.navigationItem.leftBarButtonItem = editButtonItem()
+        self.tableView.allowsMultipleSelectionDuringEditing = true
         
     }
     
@@ -99,6 +102,11 @@ class ScheduleTableViewController: UITableViewController {
         }
     }
     
+    func refresh() {
+        scheduleArray.removeAllObjects()
+        scheduleQuery()
+    }
+    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             var deletingObject : ScheduleObject!
@@ -120,5 +128,22 @@ class ScheduleTableViewController: UITableViewController {
         }
         
         return returnValue!
+    }
+    @IBAction func segToAdd(sender: AnyObject) {
+       let alert = UIAlertController(title: "Type?", message: "Is this an opening or closing?", preferredStyle: .Alert)
+        let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
+        
+        let openingButton = UIAlertAction(title: "Opening", style: .Default) { (action) -> Void in
+            let closeVC = storyboard.instantiateViewControllerWithIdentifier("opening")
+            self.presentViewController(closeVC, animated: true, completion: nil)
+        }
+        let closingButton = UIAlertAction(title: "Closing", style: .Default) { (ACTION) -> Void in
+            let openVC = storyboard.instantiateViewControllerWithIdentifier("opening")
+            self.presentViewController(openVC, animated: true, completion: nil)
+        }
+        alert.addAction(openingButton)
+        alert.addAction(closingButton)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
     }
 }

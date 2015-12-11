@@ -263,11 +263,6 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
             categoryPicker.hidden = false
         }
         
-        
-        let customerNameIndexPath : NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-        let locationIndexPath : NSIndexPath = NSIndexPath(forRow: 3, inSection: 0)
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        
         if indexPath.section == 0 && indexPath.row == 3 {
             toggleDatepicker()
             
