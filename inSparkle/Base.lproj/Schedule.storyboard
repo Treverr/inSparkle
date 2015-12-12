@@ -536,10 +536,10 @@
             </objects>
             <point key="canvasLocation" x="3990" y="823"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Customer Lookup Table View Controller-->
         <scene sceneID="1bl-ii-v0H">
             <objects>
-                <tableViewController id="UQt-DF-2Tp" sceneMemberID="viewController">
+                <tableViewController id="UQt-DF-2Tp" customClass="CustomerLookupTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" sectionHeaderHeight="28" sectionFooterHeight="28" id="GXB-Mp-isJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -550,7 +550,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="8I1-7Y-aJd">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="8I1-7Y-aJd" customClass="CustomerLookupTableViewCell" customModule="inSparkle" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8I1-7Y-aJd" id="NcI-4B-cKl">
@@ -569,12 +569,6 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="addressStreet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-IL-t7d">
-                                            <rect key="frame" x="8" y="37" width="584" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="addressCity, addressState, addressZIP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKL-go-0o6">
                                             <rect key="frame" x="8" y="63" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -587,8 +581,21 @@
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="addressStreet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-IL-t7d">
+                                            <rect key="frame" x="8" y="37" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addressRest" destination="SKL-go-0o6" id="DBr-9N-Tj0"/>
+                                    <outlet property="addressStreet" destination="Odd-IL-t7d" id="aNc-xU-khy"/>
+                                    <outlet property="balance" destination="vNV-Cv-eyx" id="518-Zg-pvr"/>
+                                    <outlet property="customerName" destination="CVm-Xy-o0d" id="dse-op-Oc9"/>
+                                    <outlet property="phoneNumber" destination="oVW-Ze-nvB" id="cDf-WG-P6g"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -597,6 +604,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="6eK-3L-HoI"/>
+                    <connections>
+                        <outlet property="addressRest" destination="SKL-go-0o6" id="d6A-Dr-aea"/>
+                        <outlet property="addressStreet" destination="Odd-IL-t7d" id="6PD-YZ-bFj"/>
+                        <outlet property="balance" destination="vNV-Cv-eyx" id="ADS-js-UbJ"/>
+                        <outlet property="customerName" destination="CVm-Xy-o0d" id="Uth-tU-oyr"/>
+                        <outlet property="phoneNumber" destination="oVW-Ze-nvB" id="XHm-sO-e96"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iyq-0Y-X44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
