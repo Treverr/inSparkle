@@ -49,6 +49,7 @@
 		C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */; };
 		C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */; };
 		C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A781221BF944740013D388 /* TabBarViewController.swift */; };
+		C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */; };
 		C9B5B4511BF6773200650FC4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B44F1BF6773200650FC4 /* Fabric.framework */; };
 		C9B5B4521BF6773200650FC4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B4501BF6773200650FC4 /* Crashlytics.framework */; };
 		C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */; };
@@ -150,6 +151,7 @@
 		C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOITableViewController.swift; sourceTree = "<group>"; };
 		C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewToScheduleTableViewController.swift; sourceTree = "<group>"; };
 		C9A781221BF944740013D388 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TimeClockPunch.wav; sourceTree = "<group>"; };
 		C9B5B44F1BF6773200650FC4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		C9B5B4501BF6773200650FC4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewSOITableViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				C9585F241C165179008AB918 /* ScannerBeep.wav */,
+				C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
 				C96EF8011C14CE3100C4D2C1 /* ChemCheck.storyboard in Resources */,
 				C972FF781C1A1B1700D34EB2 /* SOI.storyboard in Resources */,
+				C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */,
 				C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */,
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
 				C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */,

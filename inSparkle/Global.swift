@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import AVFoundation
 
 class DataManager: NSObject {
     
@@ -118,6 +119,21 @@ class GlobalFunctions {
         
         return theReturn!
     }
+    
+    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
+        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
+        let url = NSURL.fileURLWithPath(path!)
+        var audioPlayer : AVAudioPlayer?
+        
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+        } catch {
+            print("NO AUDIO PLAYER")
+        }
+        
+        return audioPlayer!
+    }
+
 
 }
 

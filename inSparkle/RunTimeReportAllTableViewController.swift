@@ -166,8 +166,18 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
                     self.returnedPunches = self.returnedPunches + 1
                 }
                 
+                if (self.expectedPunches == 0) && (self.returnedPunches == 0) {
+                    
+                    let alert = UIAlertController(title: "Error", message: "The report retuned 0 punches, please check your criteria and try again.", preferredStyle: .Alert)
+                    let okButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+                
                 if totalForEmp != 0 {
                     self.csvPunches = self.csvPunches + ",,TOTAL:,\(totalForEmp)\n" + ",,,\n"
+            
                     if self.expectedPunches - self.returnedPunches == 0 {
                         print(self.csvPunches)
                         self.shareTime()
