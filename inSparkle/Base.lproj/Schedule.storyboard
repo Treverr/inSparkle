@@ -544,13 +544,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="rRP-bZ-KBv">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="cJY-sE-ZQu">
                             <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="103" id="8I1-7Y-aJd" customClass="CustomerLookupTableViewCell" customModule="inSparkle" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="customerCell" rowHeight="103" id="8I1-7Y-aJd" customClass="CustomerLookupTableViewCell" customModule="inSparkle" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="136" width="600" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8I1-7Y-aJd" id="NcI-4B-cKl">
@@ -605,11 +605,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="6eK-3L-HoI"/>
                     <connections>
-                        <outlet property="addressRest" destination="SKL-go-0o6" id="d6A-Dr-aea"/>
-                        <outlet property="addressStreet" destination="Odd-IL-t7d" id="6PD-YZ-bFj"/>
-                        <outlet property="balance" destination="vNV-Cv-eyx" id="ADS-js-UbJ"/>
-                        <outlet property="customerName" destination="CVm-Xy-o0d" id="Uth-tU-oyr"/>
-                        <outlet property="phoneNumber" destination="oVW-Ze-nvB" id="XHm-sO-e96"/>
+                        <outlet property="searchBar" destination="cJY-sE-ZQu" id="jgY-rl-eF7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iyq-0Y-X44" userLabel="First Responder" sceneMemberID="firstResponder"/>

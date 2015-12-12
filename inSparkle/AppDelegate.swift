@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ScheduleObject.registerSubclass()
         TimeClockPunchObj.registerSubclass()
         TimePunchCalcObject.registerSubclass()
+        CustomerData.registerSubclass()
     }
 
     func applicationWillResignActive(application: UIApplication) {
