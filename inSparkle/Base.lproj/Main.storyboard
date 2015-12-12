@@ -74,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="941.5" y="1236"/>
         </scene>
-        <!--More...-->
+        <!--More-->
         <scene sceneID="78d-uS-uK7">
             <objects>
                 <tableViewController id="8Yy-L8-RAJ" customClass="MoreTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
@@ -154,7 +154,7 @@
                             <outlet property="delegate" destination="8Yy-L8-RAJ" id="r53-Lo-3pj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="More..." id="Ley-Er-7Ed">
+                    <navigationItem key="navigationItem" title="More" id="Ley-Er-7Ed">
                         <barButtonItem key="rightBarButtonItem" image="Administrator" id="nuL-W7-2rW">
                             <connections>
                                 <segue destination="nrI-7n-Vtw" kind="show" id="SnY-pN-HHw"/>
