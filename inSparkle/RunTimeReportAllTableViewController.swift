@@ -127,6 +127,8 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
     }
     
     var csvPunches : String = "Employee,TimePunchedIn,TimePunchedOut,TotalTime\n"
+    var expectedPunches = 0
+    var returnedPunches = 0
     
     func getTimeCardForEachEmployee(employee : Employee, startDate : NSDate, endDate : NSDate) {
         var complete : Bool = false
@@ -136,6 +138,10 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
         timeCardQuery?.whereKey("timePunchedOut", lessThan: endDate)
         timeCardQuery?.findObjectsInBackgroundWithBlock({ (punches : [PFObject]?, error : NSError?) -> Void in
             if error == nil {
+                
+                if punches?.count > 0 {
+                    self.expectedPunches = self.expectedPunches + (punches?.count)!
+                }
                 
                 var totalForEmp : Double! = 0
                 
@@ -157,12 +163,15 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
                     print(totalForEmp)
                     
                     self.csvPunches = self.csvPunches + "\(employeeName),\(timePunchedIn),\(timePunchedOut),\(totalTime)\n"
+                    self.returnedPunches = self.returnedPunches + 1
                 }
                 
                 if totalForEmp != 0 {
                     self.csvPunches = self.csvPunches + ",,TOTAL:,\(totalForEmp)\n" + ",,,\n"
-                    print(self.csvPunches)
-                    self.shareTime()
+                    if self.expectedPunches - self.returnedPunches == 0 {
+                        print(self.csvPunches)
+                        self.shareTime()
+                    }
                 }
             }
         })
@@ -176,7 +185,7 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
         
         let data = textToShare.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         saveCSV(textToShare)
-
+        
     }
     
     func sheet(whatToShare : AnyObject) {
@@ -201,9 +210,9 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
         docController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: writePath))
         docController!.delegate = self
         docController!.presentPreviewAnimated(true)
-//        docController!.UTI = "public.comma-separated-values-text"
-//        docController!.name = "TimeCardReport"
-//        docController!.presentOptionsMenuFromRect(CGRect(x: x.x, y: x.y, width: 0, height: 0), inView: self.view, animated: true)
+        //        docController!.UTI = "public.comma-separated-values-text"
+        //        docController!.name = "TimeCardReport"
+        //        docController!.presentOptionsMenuFromRect(CGRect(x: x.x, y: x.y, width: 0, height: 0), inView: self.view, animated: true)
     }
     
     func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
@@ -211,7 +220,7 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
     }
     
     func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
-         var viewController: UIViewController = UIViewController()
+        var viewController: UIViewController = UIViewController()
         self.presentViewController(viewController, animated: true, completion: nil)
         return viewController
     }
