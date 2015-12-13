@@ -17,7 +17,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet weak var weekEndingLabel: UILabel!
     @IBOutlet weak var customerNameTextField: UITextField!
     @IBOutlet weak var typeSegControl: UISegmentedControl!
-    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var addressLabel: UITextView!
     @IBOutlet var phoneNumberTextField: UITextField!
     @IBOutlet var typeOfWinterCoverLabel: UILabel!
     @IBOutlet var typeOfWinterCoverPicker: UIPickerView!
