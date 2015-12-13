@@ -24,6 +24,7 @@
 		C9585F311C175887008AB918 /* ReportsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F301C175887008AB918 /* ReportsTableViewController.swift */; };
 		C9585F361C175B08008AB918 /* TimeCardReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */; };
 		C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F371C175BC0008AB918 /* AdminTableViewController.swift */; };
+		C958A8411C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958A8401C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift */; };
 		C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95990E31C10F8DD00F6873E /* ScheduleModel.swift */; };
 		C961638A1BF6EC9E00EB5D44 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */; };
 		C96EF7F61C13F2E700C4D2C1 /* TimeClockPunchObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96EF7F51C13F2E700C4D2C1 /* TimeClockPunchObj.swift */; };
@@ -121,6 +122,7 @@
 		C9585F301C175887008AB918 /* ReportsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsTableViewController.swift; sourceTree = "<group>"; };
 		C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCardReportTableViewController.swift; sourceTree = "<group>"; };
 		C9585F371C175BC0008AB918 /* AdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+		C958A8401C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditCustomerTableViewController.swift; sourceTree = "<group>"; };
 		C95990E31C10F8DD00F6873E /* ScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		C96EF7F51C13F2E700C4D2C1 /* TimeClockPunchObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeClockPunchObj.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				C972FF741C1A1ACF00D34EB2 /* Schedule.storyboard */,
+				C958A8401C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift */,
 				C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */,
 				C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */,
 				C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */,
@@ -755,6 +758,7 @@
 				C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */,
 				C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */,
 				C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */,
+				C958A8411C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift in Sources */,
 				C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */,
 				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,
 				C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */,

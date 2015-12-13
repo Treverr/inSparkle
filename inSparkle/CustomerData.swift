@@ -16,7 +16,7 @@ class CustomerData : PFObject, PFSubclassing {
     }
     
     class func parseClassName() -> String {
-        "CustomerData"
+       return "CustomerData"
     }
     
     var objectID : String {
@@ -34,14 +34,14 @@ class CustomerData : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "fullName") }
     }
     
-    var firstName : String {
-        get {return objectForKey("firstName") as! String}
-        set { setObject(newValue, forKey: "firstName") }
+    var firstName : String? {
+        get {return objectForKey("firstName") as? String}
+        set { setObject(newValue!, forKey: "firstName") }
     }
     
-    var lastName : String {
-        get {return objectForKey("lastName") as! String}
-        set { setObject(newValue, forKey: "lastName") }
+    var lastName : String? {
+        get {return objectForKey("lastName") as? String}
+        set { setObject(newValue!, forKey: "lastName") }
     }
     
     var addressCity : String {

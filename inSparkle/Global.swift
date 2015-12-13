@@ -82,6 +82,12 @@ class GoogleAddress: NSObject {
     
 }
 
+class AddEditCustomers: NSObject {
+    
+    var addingCustomer : Bool!
+    
+}
+
 class GlobalFunctions {
     
     func stringFromDateFullStyle(theDate : NSDate) -> String {

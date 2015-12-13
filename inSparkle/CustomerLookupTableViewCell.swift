@@ -15,11 +15,6 @@ public class CustomerLookupTableViewCell: UITableViewCell {
     @IBOutlet weak var addressRest: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var balance: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
     
     public func customerCell(_customerName : String, _addressStreet : String, _addressRest : String, _phoneNumber : String, _balance : Int?) {
         
@@ -27,7 +22,10 @@ public class CustomerLookupTableViewCell: UITableViewCell {
         addressStreet.text = _addressStreet
         addressRest.text = _addressRest
         phoneNumber.text = _phoneNumber
-        balance.text = String(_balance!)
+        if _balance != 0 {
+            balance.text = "$\(_balance)"
+        }
+        
         
     }
 
