@@ -62,7 +62,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
     
     func keyboardWillHide(notification : NSNotification) {
         self.animateTextField(false)
@@ -90,6 +92,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if textField == passwordField {
             textField.resignFirstResponder()
+        }
+        
+        if  !usernameField.text!.isEmpty && !passwordField.text!.isEmpty {
+            loginAction(self)
         }
         
         return true
