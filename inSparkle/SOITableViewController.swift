@@ -31,7 +31,7 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "RefreshSOI:", name: "RefreshSOINotification", object: nil)
         
-        self.tableView.allowsMultipleSelection = false
+        self.tableView.allowsMultipleSelectionDuringEditing = true
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
@@ -69,6 +69,24 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         return objects.count
     }
     
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if (editing) {
+            let deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteParseObject")
+            self.navigationItem.leftBarButtonItem = deleteButton
+        } else {
+            let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segToAdd")
+            self.navigationItem.leftBarButtonItem = addButton
+        }
+    }
+    
+    func segToAdd() {
+        let sb = UIStoryboard(name: "SOI", bundle: nil)
+        let vc = sb.instantiateViewControllerWithIdentifier("addToSOINav")
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("soiCell") as! SOITableViewCell
         
@@ -89,12 +107,11 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        var objectsToDelete = [NSIndexPath]()
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            let object = self.objects.objectAtIndex(indexPath.row) as! PFObject
-            let objID = object.valueForKey("objectId") as! String
+            objectsToDelete = tableView.indexPathsForSelectedRows!
             self.objects.removeObjectAtIndex(indexPath.row)
-            deleteParseObject(objID)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            tableView.deleteRowsAtIndexPaths(objectsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
             
         }
     }
@@ -123,29 +140,24 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         }
     }
     
-    func deleteParseObject(inputObjectID : String) {
-        let deleteQuery = PFQuery(className: "SOI")
-        deleteQuery.whereKey("objectId", equalTo: inputObjectID)
-        deleteQuery.findObjectsInBackgroundWithBlock { (objects:[PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                for object in objects! {
-                    object.setValue(false, forKey: "isActive")
-                    object.saveEventually()
-                }
-            } else {
-                let alert = UIAlertView()
-                alert.title = "Error"
-                alert.message = "There was an issue removing the item, check your internet connection and try again."
-                alert.addButtonWithTitle("Okay")
-                alert.show()
-            }
+    func deleteParseObject() {
+        
+        for obj in objsToDelete {
+            obj["isActive"] = false
+            obj.saveInBackground()
         }
+        self.objects.removeAllObjects()
+        getParseItems()
+        self.tableView.reloadData()
+
     }
     
     func RefreshSOI(notification : NSNotification) {
         self.objects.removeAllObjects()
         getParseItems()
         self.tableView.reloadData()
+        
+        
     }
     
     func setupNavigationbar()  {
@@ -171,11 +183,27 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         getParseItems()
     }
     
+    var objsToDelete = [PFObject]()
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        let object = objects[indexPath.row] as! PFObject
-        displayInformation(cell!, object: object)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        if tableView.editing == false {
+            let cell = tableView.cellForRowAtIndexPath(indexPath)
+            let object = objects[indexPath.row] as! PFObject
+            displayInformation(cell!, object: object)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+        if tableView.editing == true {
+            let theObject = objects[indexPath.row] as! PFObject
+            objsToDelete.append(theObject)
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView.editing == true {
+            let theObject = objects[indexPath.row] as! PFObject
+            let objIndex = self.objsToDelete.indexOf(theObject)
+            self.objsToDelete.removeAtIndex(objIndex!)
+        }
     }
     
     

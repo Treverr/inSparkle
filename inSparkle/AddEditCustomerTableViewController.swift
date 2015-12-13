@@ -16,10 +16,25 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
     @IBOutlet var phoneNumberTextField: UITextField!
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var saveUpdateButton: UIButton!
+    
+    var customer : CustomerData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.customer = AddEditCustomers.theCustomer
+    
+        if AddEditCustomers.theCustomer != nil {
+            self.firstNameTextField.text = self.customer?.firstName?.capitalizedString
+            self.lastNameTextField.text = self.customer?.lastName?.capitalizedString
+            self.phoneNumberTextField.text = self.customer?.phoneNumber.capitalizedString
+            if self.customer?.addressStreet != nil || self.customer?.addressStreet != "" {
+                self.addressLabel.textColor = UIColor.blackColor()
+                self.addressLabel.text = "\(self.customer!.addressStreet.capitalizedString) \n" + "\(self.customer!.addressCity.capitalizedString), \(self.customer!.addressState.uppercaseString) \(self.customer!.ZIP)"
+            }
+        }
+        
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatedAddressLabel", name: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
 
     }
@@ -71,5 +86,9 @@ extension AddEditCustomerTableViewController : GooglePlacesAutocompleteDelegate 
     
     func placeViewClosed() {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func cancelButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

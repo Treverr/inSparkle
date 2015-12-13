@@ -17,7 +17,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet weak var weekEndingLabel: UILabel!
     @IBOutlet weak var customerNameTextField: UITextField!
     @IBOutlet weak var typeSegControl: UISegmentedControl!
-    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var addressLabel: UITextView!
     @IBOutlet var phoneNumberTextField: UITextField!
     @IBOutlet var typeOfWinterCoverLabel: UILabel!
     @IBOutlet var typeOfWinterCoverPicker: UIPickerView!
@@ -59,7 +59,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     }
     
     func setTypes() {
-        typeOfWinterCover = ["1","2","3"]
+        typeOfWinterCover = [
+            "Solid w/ Water Tubes",
+            "Electric",
+            "Solid Safety",
+            "Mesh Safety",
+            "Solid w/ Winch and Cable (AG Only)",
+            "Other (See Notes)"]
     }
     
     func textFieldDidBeginEditing(textField : UITextField) {
@@ -491,6 +497,18 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     }
     
     @IBOutlet var notesTextView: UITextView!
+    
+    @IBAction func updateFields(seg : UIStoryboardSegue) {
+        
+        let fromVC = seg.sourceViewController as! CustomerLookupTableViewController
+
+        let selectedCx = fromVC.globalSelectedCx
+        print(selectedCx)
+        customerNameTextField.text = selectedCx!.firstName!.capitalizedString + " " + selectedCx!.lastName!.capitalizedString
+        addressLabel.text = "\(selectedCx!.addressStreet.capitalizedString)\n" + "\(selectedCx!.addressCity.capitalizedString), \(selectedCx!.addressState) \(selectedCx!.ZIP)"
+        addressLabel.textColor = UIColor.blackColor()
+        phoneNumberTextField.text = selectedCx!.phoneNumber
+    }
     
     
 }
