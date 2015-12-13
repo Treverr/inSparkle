@@ -84,8 +84,23 @@ class GoogleAddress: NSObject {
 
 class AddEditCustomers: NSObject {
     
-    var addingCustomer : Bool!
+    static var addingCustomer : Bool!
     
+    static var firstName : String!
+    
+    static var lastName : String!
+    
+    static var phoneNumber : String!
+    
+    static var address : String!
+    
+    static var theCustomer : CustomerData?
+    
+}
+
+class AddNewScheduleObjects : NSObject {
+    
+    static var selectedCx : CustomerData?
 }
 
 class GlobalFunctions {

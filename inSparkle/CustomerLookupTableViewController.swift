@@ -15,6 +15,8 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
     var filteredData = [CustomerData]()
     var resultsSearchController = UISearchController()
     
+    var selectedCustomer : CustomerData? = nil
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
@@ -78,6 +80,7 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
                     let theCustomer = cust as! CustomerData
                     self.customerDataArray.append(theCustomer)
                     self.tableView.reloadData()
+                    print(self.customerDataArray.count)
                 }
             }
         }
@@ -87,7 +90,7 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         if indexPath.section == 0 && indexPath.row == 0 {
             return 40
         } else {
-            return 91
+            return 120
         }
     }
     
@@ -95,12 +98,13 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         
         if indexPath.section == 0 && indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("addCell")!
-            
             return cell
         } else {
             var cell = CustomerLookupTableViewCell()
+            
             cell = tableView.dequeueReusableCellWithIdentifier("customerCell") as! CustomerLookupTableViewCell
-            let customer = customerDataArray[indexPath.row] as! CustomerData
+            print(indexPath.row)
+            let customer = customerDataArray[indexPath.row - 1] as! CustomerData
             
             cell.customerName.text = customer.firstName!.capitalizedString + " " + customer.lastName!.capitalizedString
             cell.addressStreet.text = customer.addressStreet.capitalizedString
@@ -111,6 +115,8 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
             } else {
                 cell.balance.hidden = true
             }
+            print(cell.editButton.tag)
+            cell.editButton.tag = ((indexPath.row) - 1)
             return cell
         }
     }
@@ -126,4 +132,37 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
+    
+    @IBAction func editCustomer(sender: UIButton) {
+        let cell = CustomerLookupTableViewCell()
+        let editTag = sender.tag
+        let customerObj : CustomerData = customerDataArray[editTag]
+        AddEditCustomers.theCustomer = customerObj
+        if searchBar.isFirstResponder() {
+            searchBar.resignFirstResponder()
+        }
+    }
+
+    @IBAction func cancelButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedCx = self.customerDataArray[indexPath.row - 1]
+        globalSelectedCx = selectedCx
+    }
+    
+    var globalSelectedCx : CustomerData!
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "selectCustomerForSchedule" {
+            let cell = sender as! CustomerLookupTableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            
+            globalSelectedCx = customerDataArray[(indexPath!.row - 1)]
+            
+        }
+        
+        
+    }
 }

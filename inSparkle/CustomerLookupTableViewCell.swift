@@ -15,8 +15,9 @@ public class CustomerLookupTableViewCell: UITableViewCell {
     @IBOutlet weak var addressRest: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var balance: UILabel!
+    @IBOutlet weak var editButton: UIButton!
     
-    public func customerCell(_customerName : String, _addressStreet : String, _addressRest : String, _phoneNumber : String, _balance : Int?) {
+    public func customerCell(_customerName : String, _addressStreet : String, _addressRest : String, _phoneNumber : String, _balance : Int?, editButton : UIButton) {
         
         customerName.text = _customerName
         addressStreet.text = _addressStreet
@@ -25,7 +26,6 @@ public class CustomerLookupTableViewCell: UITableViewCell {
         if _balance != 0 {
             balance.text = "$\(_balance)"
         }
-        
         
     }
 
