@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlacesAutocomplete
+import Parse
 
 class AddEditCustomerTableViewController: UITableViewController, UITextFieldDelegate {
     
@@ -63,6 +64,16 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
     
     @IBAction func saveUpdate(sender: AnyObject) {
         saveUpdateButton.setTitle("Saving...", forState: .Normal)
+        var accountNumber : String?
+        var name : String! = firstNameTextField.text! + " " + lastNameTextField.text!
+        var address : String! = addressLabel.text!
+        var phoneNumber : String = phoneNumberTextField.text!
+        if self.customer != nil {
+            accountNumber = customer?.accountNumber
+        } else {
+            accountNumber = nil
+        }
+        CloudCode.AddUpdateCustomerRecord(accountNumber, name: name, address: address, phoneNumber: phoneNumber)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

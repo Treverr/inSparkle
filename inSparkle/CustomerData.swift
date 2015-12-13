@@ -64,8 +64,8 @@ class CustomerData : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "addressZIP") }
     }
     
-    var currentBalance : Int {
-        get {return objectForKey("currentBalance") as!  Int }
+    var currentBalance : Double {
+        get {return objectForKey("currentBalance") as!  Double }
         set { setObject(newValue, forKey: "currentBalance") }
     }
     

@@ -66,7 +66,7 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         let splitString = searchBar.text!.componentsSeparatedByString(" ")
         let first = splitString.first
         let last = splitString.last
-
+        
         splitNameQuery1.whereKey("fullName", containsString: first?.uppercaseString)
         splitNameQuery2.whereKey("fullName", containsString: last?.uppercaseString)
         queries.append(splitNameQuery1)
@@ -110,8 +110,9 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
             cell.addressStreet.text = customer.addressStreet.capitalizedString
             cell.addressRest.text = customer.addressCity.capitalizedString + " " + customer.addressState.uppercaseString + ", " + customer.ZIP
             cell.phoneNumber.text = customer.phoneNumber
-            if customer.currentBalance > 2 {
-                cell.balance.text = String(customer.currentBalance)
+            if customer.currentBalance > 0 {
+                print(customer.currentBalance)
+                cell.balance.text = "$\(customer.currentBalance)"
             } else {
                 cell.balance.hidden = true
             }
@@ -142,14 +143,19 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
             searchBar.resignFirstResponder()
         }
     }
-
+    
     @IBAction func cancelButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let selectedCx = self.customerDataArray[indexPath.row - 1]
-        globalSelectedCx = selectedCx
+        if indexPath.section == 0 && indexPath.row == 0 {
+            // Do nothing
+        } else {
+            let selectedCx = self.customerDataArray[indexPath.row - 1]
+            globalSelectedCx = selectedCx
+            
+        }
     }
     
     var globalSelectedCx : CustomerData!
