@@ -11,6 +11,7 @@
 		C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */; };
 		C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AC6411BFD85BA00E09B22 /* SOIModel.swift */; };
 		C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */; };
+		C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338D831C1E306C00DC09BE /* CloudCode.swift */; };
 		C94367061BF719E10066D155 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94367051BF719E10066D155 /* Colors.swift */; };
 		C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */; };
 		C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */; };
@@ -109,6 +110,7 @@
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
 		C91AC6411BFD85BA00E09B22 /* SOIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOIModel.swift; sourceTree = "<group>"; };
 		C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePunchCalcObject.swift; sourceTree = "<group>"; };
+		C9338D831C1E306C00DC09BE /* CloudCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCode.swift; sourceTree = "<group>"; };
 		C94367051BF719E10066D155 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = Onboarding/ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				C96EF7F71C13F37700C4D2C1 /* EmployeeModel.swift */,
 				C9F431171BFEB13500AC3CD8 /* Global.swift */,
 				C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */,
+				C9338D831C1E306C00DC09BE /* CloudCode.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */,
 				C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */,
 				C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */,
+				C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */,
 				C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */,
 				C961638A1BF6EC9E00EB5D44 /* BarcodeScanner.swift in Sources */,
 				C9585F311C175887008AB918 /* ReportsTableViewController.swift in Sources */,

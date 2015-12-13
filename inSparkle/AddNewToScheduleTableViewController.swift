@@ -500,15 +500,12 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     @IBAction func updateFields(seg : UIStoryboardSegue) {
         
-        let fromVC = seg.sourceViewController as! CustomerLookupTableViewController
-
-        let selectedCx = fromVC.globalSelectedCx
-        print(selectedCx)
-        customerNameTextField.text = selectedCx!.firstName!.capitalizedString + " " + selectedCx!.lastName!.capitalizedString
-        addressLabel.text = "\(selectedCx!.addressStreet.capitalizedString)\n" + "\(selectedCx!.addressCity.capitalizedString), \(selectedCx!.addressState) \(selectedCx!.ZIP)"
+        let fromVC = seg.sourceViewController as! AddEditCustomerTableViewController
+        
+        customerNameTextField.text = fromVC.firstNameTextField.text!.capitalizedString + " " + fromVC.lastNameTextField.text!.capitalizedString
+        addressLabel.text = fromVC.addressLabel.text
         addressLabel.textColor = UIColor.blackColor()
-        phoneNumberTextField.text = selectedCx!.phoneNumber
+        phoneNumberTextField.text = fromVC.phoneNumberTextField.text
     }
-    
     
 }
