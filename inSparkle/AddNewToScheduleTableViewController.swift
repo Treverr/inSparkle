@@ -8,7 +8,6 @@
 
 import UIKit
 import Parse
-import GooglePlacesAutocomplete
 //import PhoneNumberKit
 
 class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
@@ -43,19 +42,12 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         typeOfWinterCoverPicker.delegate = self
         typeOfWinterCoverPicker.dataSource = self
         
-        addressLabel.userInteractionEnabled = true
-        let googlePlacesAPI : Selector = "googlePlacesAPI"
-        let googlePlacesAPITapGesture = UITapGestureRecognizer(target: self, action: googlePlacesAPI)
-        googlePlacesAPITapGesture.numberOfTapsRequired = 1
-        addressLabel.addGestureRecognizer(googlePlacesAPITapGesture)
-        
         weekPicker.userInteractionEnabled = true
         let weekPickerMakeAllOthersResign : Selector = "weekPickerMakeAllOthersResign"
         let weekPickerTapGesture = UITapGestureRecognizer(target: self, action: weekPickerMakeAllOthersResign)
         weekPickerTapGesture.numberOfTapsRequired = 1
         weekPicker.addGestureRecognizer(weekPickerTapGesture)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatedAddressLabel", name: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
+    
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
@@ -210,38 +202,38 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
-        if customerNameTextField.isFirstResponder() {
-            customerNameTextField.resignFirstResponder()
-            return true
-        }
-        
-        //        if phoneNumberTextField.isFirstResponder() {
-        //
-        //            do {
-        //                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
-        //                phoneNumberTextField.text! = phoneNumber.toNational()
-        //            } catch {
-        //                print("error")
-        //            }
-        //        }
-        
-        return false
-    }
-    
-    //    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-    //        if phoneNumberTextField.isFirstResponder() {
-    //
-    //            do {
-    //                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
-    //                phoneNumberTextField.text! = phoneNumber.toNational()
-    //            } catch {
-    //                print("error")
-    //            }
-    //        }
-    //        return false
-    //    }
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//        
+//        if customerNameTextField.isFirstResponder() {
+//            customerNameTextField.resignFirstResponder()
+//            return true
+//        }
+//        
+//                if phoneNumberTextField.isFirstResponder() {
+//        
+//                    do {
+//                        let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
+//                        phoneNumberTextField.text! = phoneNumber.toNational()
+//                    } catch {
+//                        print("error")
+//                    }
+//                }
+//        
+//        return false
+//    }
+//    
+//        func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+//            if phoneNumberTextField.isFirstResponder() {
+//    
+//                do {
+//                    let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
+//                    phoneNumberTextField.text! = phoneNumber.toNational()
+//                } catch {
+//                    print("error")
+//                }
+//            }
+//            return false
+//        }
     
     @IBAction func saveButton(sender: AnyObject) {
         if customerNameTextField.text!.isEmpty || addressLabel.text!.isEmpty || phoneNumberTextField.text!.isEmpty || typeOfWinterCoverLabel.text!.isEmpty ||  locationEssentialItems.text.isEmpty {
@@ -324,27 +316,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
     }
     
-    func googlePlacesAPI() {
-        
-        let gpaViewController = GooglePlacesAutocomplete(
-            apiKey: "AIzaSyCFBaUShWIatpRNiDtc8IcE8reNMs0kM7I",
-            placeType: .Address
-        )
-        
-        gpaViewController.placeDelegate = self
-        gpaViewController.locationBias = LocationBias(latitude: 39.4931008, longitude: -87.3789913, radius: 120)
-        gpaViewController.navigationBar.barStyle = UIBarStyle.Black
-        gpaViewController.navigationBar.barTintColor = Colors.sparkleBlue
-        gpaViewController.navigationBar.tintColor = UIColor.whiteColor()
-        
-        presentViewController(gpaViewController, animated: true, completion: nil)
-        
-    }
-    
-    func updatedAddressLabel() {
-        addressLabel.text = GoogleAddress.address
-        addressLabel.textColor = UIColor.blackColor()
-    }
     
     var isKeyboardShowing : Bool?
     var kbHeight: CGFloat?
@@ -520,23 +491,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     }
     
     @IBOutlet var notesTextView: UITextView!
-    
-    
-}
-
-extension AddNewToScheduleTableViewController : GooglePlacesAutocompleteDelegate {
-    
-    func placeSelected(place: Place) {
-        GoogleAddress.address = place.description
-        NSNotificationCenter.defaultCenter().postNotificationName("NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func placeViewClosed() {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-
-    
     
     
 }

@@ -24,6 +24,7 @@
 		C9585F311C175887008AB918 /* ReportsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F301C175887008AB918 /* ReportsTableViewController.swift */; };
 		C9585F361C175B08008AB918 /* TimeCardReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */; };
 		C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F371C175BC0008AB918 /* AdminTableViewController.swift */; };
+		C958A8411C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958A8401C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift */; };
 		C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95990E31C10F8DD00F6873E /* ScheduleModel.swift */; };
 		C961638A1BF6EC9E00EB5D44 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */; };
 		C96EF7F61C13F2E700C4D2C1 /* TimeClockPunchObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96EF7F51C13F2E700C4D2C1 /* TimeClockPunchObj.swift */; };
@@ -49,6 +50,7 @@
 		C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */; };
 		C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */; };
 		C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A781221BF944740013D388 /* TabBarViewController.swift */; };
+		C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */; };
 		C9B5B4511BF6773200650FC4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B44F1BF6773200650FC4 /* Fabric.framework */; };
 		C9B5B4521BF6773200650FC4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B4501BF6773200650FC4 /* Crashlytics.framework */; };
 		C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */; };
@@ -71,6 +73,9 @@
 		C9C1929A1BF64E0500862F52 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192991BF64E0500862F52 /* libsqlite3.tbd */; };
 		C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */; };
 		C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */; };
+		C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */; };
+		C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */; };
+		C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */; };
 		C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */; };
 		C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */; };
 		C9F0FF931C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */; };
@@ -117,6 +122,7 @@
 		C9585F301C175887008AB918 /* ReportsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportsTableViewController.swift; sourceTree = "<group>"; };
 		C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCardReportTableViewController.swift; sourceTree = "<group>"; };
 		C9585F371C175BC0008AB918 /* AdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+		C958A8401C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditCustomerTableViewController.swift; sourceTree = "<group>"; };
 		C95990E31C10F8DD00F6873E /* ScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		C96EF7F51C13F2E700C4D2C1 /* TimeClockPunchObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeClockPunchObj.swift; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 		C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOITableViewController.swift; sourceTree = "<group>"; };
 		C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewToScheduleTableViewController.swift; sourceTree = "<group>"; };
 		C9A781221BF944740013D388 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TimeClockPunch.wav; sourceTree = "<group>"; };
 		C9B5B44F1BF6773200650FC4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		C9B5B4501BF6773200650FC4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewSOITableViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +179,9 @@
 		C9C192991BF64E0500862F52 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewController.swift; sourceTree = "<group>"; };
+		C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewCell.swift; sourceTree = "<group>"; };
+		C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerData.swift; sourceTree = "<group>"; };
 		C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Onboarding.storyboard; path = Onboarding/Onboarding.storyboard; sourceTree = "<group>"; };
 		C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Onboarding/LoginViewController.swift; sourceTree = "<group>"; };
 		C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCardManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +268,7 @@
 				C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */,
 				C96EF7F71C13F37700C4D2C1 /* EmployeeModel.swift */,
 				C9F431171BFEB13500AC3CD8 /* Global.swift */,
+				C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -266,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				C9585F241C165179008AB918 /* ScannerBeep.wav */,
+				C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -462,6 +474,9 @@
 			isa = PBXGroup;
 			children = (
 				C972FF741C1A1ACF00D34EB2 /* Schedule.storyboard */,
+				C958A8401C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift */,
+				C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */,
+				C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */,
 				C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */,
 				C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */,
 				C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */,
@@ -629,6 +644,7 @@
 				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
 				C96EF8011C14CE3100C4D2C1 /* ChemCheck.storyboard in Resources */,
 				C972FF781C1A1B1700D34EB2 /* SOI.storyboard in Resources */,
+				C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */,
 				C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */,
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
 				C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */,
@@ -726,6 +742,7 @@
 				C9585F221C164013008AB918 /* ConfirmPunchOutViewController.swift in Sources */,
 				C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */,
 				C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */,
+				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
 				C94367061BF719E10066D155 /* Colors.swift in Sources */,
 				C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */,
@@ -741,6 +758,7 @@
 				C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */,
 				C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */,
 				C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */,
+				C958A8411C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift in Sources */,
 				C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */,
 				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,
 				C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */,
@@ -752,8 +770,10 @@
 				C9585F311C175887008AB918 /* ReportsTableViewController.swift in Sources */,
 				C9585F201C163FF1008AB918 /* ConfirmPunchInViewController.swift in Sources */,
 				C9585F361C175B08008AB918 /* TimeCardReportTableViewController.swift in Sources */,
+				C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */,
 				C972FF701C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift in Sources */,
 				C9585F271C169491008AB918 /* RunTimeReportAllTableViewController.swift in Sources */,
+				C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */,
 				C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

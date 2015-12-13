@@ -9,10 +9,13 @@
 import UIKit
 import Parse
 import BRYXBanner
+import AVFoundation
 
 class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var timeClockTextField: UITextField!
+    
+    var audioPlayer : AVAudioPlayer = AVAudioPlayer()
 
     var lastPunch : TimeClockPunchObj? = nil
     var lunchResult: Bool?
@@ -29,14 +32,15 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.frame = CGRectMake(0, 44, self.view.frame.width , self.view.frame.height)
+        
+        audioPlayer = GlobalFunctions().setupAudioPlayerWithFile("TimeClockPunch", type: "wav")
+        audioPlayer.prepareToPlay()
+        
         currentTime.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .NoStyle, timeStyle: .ShortStyle)
         currentDate.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .FullStyle, timeStyle: .NoStyle)
         
         self.timeTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick", userInfo: nil, repeats: true)
-        
-        if PFUser.currentUser() != nil {
-            backButton.hidden = true
-        }
         
         timeClockTextField.delegate = self
         
@@ -298,6 +302,7 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         popover.permittedArrowDirections = UIPopoverArrowDirection()
         popover.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
         self.presentViewController(confirmPopOver, animated: true, completion: nil)
+        self.audioPlayer.play()
     }
     
     func displayClockOutConfirm(emp : Employee, timePunch : TimeClockPunchObj) {
@@ -312,7 +317,11 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         popover.permittedArrowDirections = UIPopoverArrowDirection()
         popover.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
         self.presentViewController(confirmPopOver, animated: true, completion: nil)
-
+        self.audioPlayer.play()
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        self.audioPlayer.play()
+        }
     }
     
     func setTimeOutClockData(emp : Employee, timePunch: TimeClockPunchObj, hours : String) {
