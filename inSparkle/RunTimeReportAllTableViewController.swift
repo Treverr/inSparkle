@@ -129,6 +129,7 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
     var csvPunches : String = "Employee,TimePunchedIn,TimePunchedOut,TotalTime\n"
     var expectedPunches = 0
     var returnedPunches = 0
+    var error = NSErrorPointer()
     
     func getTimeCardForEachEmployee(employee : Employee, startDate : NSDate, endDate : NSDate) {
         var complete : Bool = false
@@ -136,12 +137,10 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
         timeCardQuery?.whereKey("employee", equalTo: employee)
         timeCardQuery?.whereKey("timePunchedIn", greaterThan: startDate)
         timeCardQuery?.whereKey("timePunchedOut", lessThan: endDate)
+        expectedPunches = expectedPunches + (timeCardQuery?.countObjects(error))!
+        print(expectedPunches)
         timeCardQuery?.findObjectsInBackgroundWithBlock({ (punches : [PFObject]?, error : NSError?) -> Void in
             if error == nil {
-                
-                if punches?.count > 0 {
-                    self.expectedPunches = self.expectedPunches + (punches?.count)!
-                }
                 
                 var totalForEmp : Double! = 0
                 
@@ -177,6 +176,10 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
                 
                 if totalForEmp != 0 {
                     self.csvPunches = self.csvPunches + ",,TOTAL:,\(totalForEmp)\n" + ",,,\n"
+                    
+                    print(self.expectedPunches)
+                    print(self.returnedPunches)
+                    print(self.expectedPunches - self.returnedPunches)
             
                     if self.expectedPunches - self.returnedPunches == 0 {
                         print(self.csvPunches)
