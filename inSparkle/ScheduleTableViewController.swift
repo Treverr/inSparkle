@@ -66,7 +66,13 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let scheduledObject = self.scheduleArray[indexPath.row] as! ScheduleObject
+        AddNewScheduleObjects.scheduledObject = scheduledObject
+        let sb = UIStoryboard(name: "Schedule", bundle: nil)
+        let vc = sb.instantiateViewControllerWithIdentifier("addEditSche")
+        self.presentViewController(vc, animated: true, completion: nil)
+        
     }
     
     func setupNavigationbar()  {
@@ -86,12 +92,14 @@ class ScheduleTableViewController: UITableViewController {
     
     func runOpenFilter() {
         scheduleArray.removeAllObjects()
+        self.tableView.reloadData()
         filterOption = "Opening"
         scheduleQuery()
     }
     
     func runCloseFilter() {
         scheduleArray.removeAllObjects()
+        self.tableView.reloadData()
         filterOption = "Closing"
         scheduleQuery()
     }
@@ -109,13 +117,30 @@ class ScheduleTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            var deletingObject : ScheduleObject!
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            deletingObject = scheduleArray.objectAtIndex(indexPath.row)
-             as! ScheduleObject
-            deletingObject.isActive = false
-            deletingObject.saveEventually()
-            scheduleArray.removeObjectAtIndex(indexPath.row)
+            var reason : String?
+            let alert = UIAlertController(title: "Reason for Cancelation", message: "Please enter a reason for cancelation", preferredStyle: .Alert)
+            alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+                textField.placeholder = "reason"
+                textField.keyboardType = .Default
+                reason = textField.text!
+            })
+            let confirmCancel = UIAlertAction(title: "Confirm Cancel", style: .Destructive, handler: { (action) -> Void in
+                var deletingObject : ScheduleObject!
+                deletingObject = self.scheduleArray.objectAtIndex(indexPath.row)
+                    as! ScheduleObject
+                deletingObject.isActive = false
+                deletingObject.cancelReason = reason!
+                deletingObject.saveEventually()
+                                CloudCode.AlertOfCancelation(deletingObject.customerName, address: deletingObject.customerAddress.capitalizedString, phone: deletingObject.customerPhone, reason: reason!, cancelBy: PFUser.currentUser()!.username!.capitalizedString)
+                self.scheduleArray.removeObjectAtIndex(indexPath.row)
+                tableView.reloadData()
+
+            })
+            let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            alert.addAction(confirmCancel)
+            alert.addAction(cancelButton)
+            self.presentViewController(alert, animated: true, completion: nil)
+           
         }
     }
     
@@ -130,20 +155,25 @@ class ScheduleTableViewController: UITableViewController {
         return returnValue!
     }
     @IBAction func segToAdd(sender: AnyObject) {
+        AddNewScheduleObjects.scheduledObject = nil
        let alert = UIAlertController(title: "Type?", message: "Is this an opening or closing?", preferredStyle: .Alert)
         let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
         
         let openingButton = UIAlertAction(title: "Opening", style: .Default) { (action) -> Void in
-            let closeVC = storyboard.instantiateViewControllerWithIdentifier("opening")
-            self.presentViewController(closeVC, animated: true, completion: nil)
+            AddNewScheduleObjects.isOpening = true
+            let VC = storyboard.instantiateViewControllerWithIdentifier("addEditSche")
+            self.presentViewController(VC, animated: true, completion: nil)
         }
         let closingButton = UIAlertAction(title: "Closing", style: .Default) { (ACTION) -> Void in
-            let openVC = storyboard.instantiateViewControllerWithIdentifier("opening")
-            self.presentViewController(openVC, animated: true, completion: nil)
+            AddNewScheduleObjects.isOpening = false
+            let VC = storyboard.instantiateViewControllerWithIdentifier("addEditSche")
+            self.presentViewController(VC, animated: true, completion: nil)
         }
+
         alert.addAction(openingButton)
         alert.addAction(closingButton)
         self.presentViewController(alert, animated: true, completion: nil)
+        
         
     }
 }

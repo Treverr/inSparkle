@@ -386,6 +386,9 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
                     let origIn = self.theTimeObject as! TimeClockPunchObj
                     origIn.timePunched = self.updatedIn!
                     origIn.saveInBackground()
+                    EditPunch.inTime = nil
+                    EditPunch.outTime = nil
+                    EditPunch.hours = nil
                 }
             }
             
@@ -394,7 +397,10 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
                     let origOut = self.theTimeObject as! TimeClockPunchObj
                     origOut.timePunched = self.updatedOut!
                     origOut.saveInBackground()
-                    
+                    EditPunch.inTime = nil
+                    EditPunch.outTime = nil
+                    EditPunch.hours = nil
+            
                 }
             }
             
