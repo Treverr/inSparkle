@@ -295,81 +295,81 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
                     })
                     
                 } else {
-                
-                if self.theTimeObject.description.containsString("TimeClockPunches") {
                     
-                    let theEmp = self.theTimeObject.objectForKey("employee") as! Employee
-                    
-                    let newCalc = TimePunchCalcObject()
-                    newCalc.timePunchedIn = inDate
-                    newCalc.timePunchedOut = outDate
-                    newCalc.totalTime = Double(hours)!
-                    newCalc.employee = theEmp
-                    newCalc.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) -> Void in
-                        if (success) {
-                            let updateTimeObject = self.theTimeObject as! TimeClockPunchObj
-                            if updateTimeObject.punchOutIn == "in" {
-                                let newPunch = TimeClockPunchObj()
-                                newPunch.employee = theEmp
-                                newPunch.punchOutIn = "out"
-                                newPunch.timePunched = self.updatedOut!
-                                newPunch.relatedTimeCalc = newCalc
-                                newPunch.saveInBackground()
+                    if self.theTimeObject.description.containsString("TimeClockPunches") {
+                        
+                        let theEmp = self.theTimeObject.objectForKey("employee") as! Employee
+                        
+                        let newCalc = TimePunchCalcObject()
+                        newCalc.timePunchedIn = inDate
+                        newCalc.timePunchedOut = outDate
+                        newCalc.totalTime = Double(hours)!
+                        newCalc.employee = theEmp
+                        newCalc.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) -> Void in
+                            if (success) {
+                                let updateTimeObject = self.theTimeObject as! TimeClockPunchObj
+                                if updateTimeObject.punchOutIn == "in" {
+                                    let newPunch = TimeClockPunchObj()
+                                    newPunch.employee = theEmp
+                                    newPunch.punchOutIn = "out"
+                                    newPunch.timePunched = self.updatedOut!
+                                    newPunch.relatedTimeCalc = newCalc
+                                    newPunch.saveInBackground()
+                                }
+                                if updateTimeObject.punchOutIn == "out" {
+                                    let newPunch = TimeClockPunchObj()
+                                    newPunch.employee = theEmp
+                                    newPunch.punchOutIn = "in"
+                                    newPunch.timePunched = self.updatedIn!
+                                    newPunch.relatedTimeCalc = newCalc
+                                    newPunch.saveInBackground()
+                                }
+                                updateTimeObject.relatedTimeCalc = newCalc
+                                updateTimeObject.saveInBackground()
                             }
-                            if updateTimeObject.punchOutIn == "out" {
-                                let newPunch = TimeClockPunchObj()
-                                newPunch.employee = theEmp
-                                newPunch.punchOutIn = "in"
-                                newPunch.timePunched = self.updatedIn!
-                                newPunch.relatedTimeCalc = newCalc
-                                newPunch.saveInBackground()
+                        })
+                        
+                    } else {
+                        let timeClac = self.theTimeObject as! TimePunchCalcObject
+                        
+                        
+                        
+                        if updatedIn != nil {
+                            timeClac.timePunchedIn = updatedIn!
+                            if self.theOriginalIn != nil {
+                                let origIn = self.theOriginalIn as! TimeClockPunchObj
+                                origIn.timePunched = self.updatedIn!
+                                origIn.saveInBackground()
                             }
-                            updateTimeObject.relatedTimeCalc = newCalc
-                            updateTimeObject.saveInBackground()
                         }
-                    })
-                    
-                } else {
-                    let timeClac = self.theTimeObject as! TimePunchCalcObject
-                
-                
-                
-                if updatedIn != nil {
-                    timeClac.timePunchedIn = updatedIn!
-                    if self.theOriginalIn != nil {
-                        let origIn = self.theOriginalIn as! TimeClockPunchObj
-                        origIn.timePunched = self.updatedIn!
-                        origIn.saveInBackground()
+                        if updatedOut != nil {
+                            timeClac.timePunchedOut = updatedOut!
+                            if self.theOriginalOut != nil {
+                                let origOut = self.theOriginalOut as! TimeClockPunchObj
+                                origOut.timePunched = self.updatedOut!
+                                origOut.saveInBackground()
+                            }
+                        }
+                        
+                        timeClac.totalTime = Double(hours)!
+                        print(timeClac)
+                        timeClac.saveInBackground()
+                        NSNotificationCenter.defaultCenter().postNotificationName("NotifyEditTableViewToRefresh", object: nil)
+                        
+                        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+                        dispatch_after(delayTime, dispatch_get_main_queue()) {
+                            EditTimePunchesDatePicker.dateToPass = nil
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                            EditPunch.inTime = nil
+                            EditPunch.outTime = nil
+                            EditPunch.hours = nil
+                        }
                     }
                 }
-                if updatedOut != nil {
-                    timeClac.timePunchedOut = updatedOut!
-                    if self.theOriginalOut != nil {
-                        let origOut = self.theOriginalOut as! TimeClockPunchObj
-                        origOut.timePunched = self.updatedOut!
-                        origOut.saveInBackground()
-                    }
-                }
-
-                timeClac.totalTime = Double(hours)!
-                print(timeClac)
-                timeClac.saveInBackground()
-                    NSNotificationCenter.defaultCenter().postNotificationName("NotifyEditTableViewToRefresh", object: nil)
-                    
-                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-                    dispatch_after(delayTime, dispatch_get_main_queue()) {
-                        EditTimePunchesDatePicker.dateToPass = nil
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        EditPunch.inTime = nil
-                        EditPunch.outTime = nil
-                        EditPunch.hours = nil
-                    }
-                }
-            }
-            
+                
                 
             } else {
-               let alert = UIAlertController(title: "Error", message: "Out punch must be greater than the In punch, try again.", preferredStyle: .Alert)
+                let alert = UIAlertController(title: "Error", message: "Out punch must be greater than the In punch, try again.", preferredStyle: .Alert)
                 let okButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
                 alert.addAction(okButton)
                 self.presentViewController(alert, animated: true, completion: nil)
@@ -388,44 +388,51 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
                     origIn.saveInBackground()
                 }
             }
+            
             if updatedOut != nil {
                 if self.theTimeObject != nil {
                     let origOut = self.theTimeObject as! TimeClockPunchObj
                     origOut.timePunched = self.updatedOut!
                     origOut.saveInBackground()
+                    
                 }
             }
             
-            if updatedIn != nil || updatedOut != nil {
-                if inTimeLabel.text != "N/A" {
-                    let inDate = formatter.dateFromString(inTimeLabel.text!)!
-                    let newPunchIn = TimeClockPunchObj()
-                    newPunchIn.employee = theEmp
-                    newPunchIn.timePunched = inDate
-                    newPunchIn.punchOutIn = "in"
-                    newPunchIn.saveInBackground()
-                    NSNotificationCenter.defaultCenter().postNotificationName("NotifyEditTableViewToRefresh", object: nil)
-                    
-                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-                    dispatch_after(delayTime, dispatch_get_main_queue()) {
-                        EditTimePunchesDatePicker.dateToPass = nil
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        EditPunch.inTime = nil
-                        EditPunch.outTime = nil
-                        EditPunch.hours = nil
-                    }
-                
-                }
+            
+            if self.theTimeObject != nil {
+                //                if inTimeLabel.text != "N/A" {
+                //                    let inDate = formatter.dateFromString(inTimeLabel.text!)!
+                //                    let newPunchIn = TimeClockPunchObj()
+                //                    newPunchIn.employee = theEmp
+                //                    newPunchIn.timePunched = inDate
+                //                    newPunchIn.punchOutIn = "in"
+                //                    newPunchIn.saveInBackground()
+                //                    NSNotificationCenter.defaultCenter().postNotificationName("NotifyEditTableViewToRefresh", object: nil)
+                //
+                //                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+                //                    dispatch_after(delayTime, dispatch_get_main_queue()) {
+                //                        EditTimePunchesDatePicker.dateToPass = nil
+                //                        self.dismissViewControllerAnimated(true, completion: nil)
+                //                        EditPunch.inTime = nil
+                //                        EditPunch.outTime = nil
+                //                        EditPunch.hours = nil
+                //                    }
+                //
+                //                }
                 if outTimeLabel.text != "N/A" {
                     if inTimeLabel.text == "N/A" {
                         let alert = UIAlertController(title: "Update In", message: "You should never add just an OUT punch, please adjust an exisitng IN punch.", preferredStyle: .Alert)
                         let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
                         alert.addAction(okayButton)
                         self.presentViewController(alert, animated: true, completion: nil)
+                        EditPunch.inTime = nil
+                        EditPunch.outTime = nil
+                        EditPunch.hours = nil
                     }
                 }
             }
-            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName("NotifyEditTableViewToRefresh", object: nil)
         }
         
     }
