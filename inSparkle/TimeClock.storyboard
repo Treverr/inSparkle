@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hbB-VV-ine"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gMl-9U-y14">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kqa-fn-Zu0">
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9Vf-El-JQ3">
-                                <rect key="frame" x="119" y="75" width="363" height="450"/>
+                                <rect key="frame" x="119" y="125" width="363" height="450"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNT-F5-qRa">
                                         <rect key="frame" x="0.0" y="0.0" width="363" height="450"/>
@@ -216,42 +216,44 @@
                                     <constraint firstAttribute="width" constant="363" id="4vg-2d-tdg"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrentTime" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lMq-8Y-JCv">
-                                <rect key="frame" x="119" y="20" width="363" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="9g8-rm-Q3n"/>
-                                    <constraint firstAttribute="width" constant="363" id="Dsc-pT-3PV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrentDate" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KUW-Vt-iyu">
-                                <rect key="frame" x="119" y="51" width="363" height="21"/>
+                                <rect key="frame" x="119" y="101" width="363" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="363" id="2c6-O0-jlo"/>
                                     <constraint firstAttribute="height" constant="21" id="cp3-F4-IeP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMq-8Y-JCv">
+                                <rect key="frame" x="119" y="28" width="363" height="79"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="96"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="lMq-8Y-JCv" firstAttribute="centerX" secondItem="gMl-9U-y14" secondAttribute="centerX" id="Aih-Zh-Zx3"/>
-                            <constraint firstItem="9Vf-El-JQ3" firstAttribute="top" secondItem="lMq-8Y-JCv" secondAttribute="bottom" constant="19" id="M84-z8-scf"/>
+                            <constraint firstItem="9Vf-El-JQ3" firstAttribute="trailing" secondItem="lMq-8Y-JCv" secondAttribute="trailing" id="9v6-g9-DX8"/>
+                            <constraint firstItem="KUW-Vt-iyu" firstAttribute="trailing" secondItem="lMq-8Y-JCv" secondAttribute="trailing" id="Sc6-bQ-9bi"/>
                             <constraint firstItem="9Vf-El-JQ3" firstAttribute="top" secondItem="KUW-Vt-iyu" secondAttribute="bottom" constant="3" id="TZQ-eu-Qel"/>
                             <constraint firstItem="KUW-Vt-iyu" firstAttribute="centerX" secondItem="gMl-9U-y14" secondAttribute="centerX" id="XM4-uf-UGl"/>
                             <constraint firstItem="9Vf-El-JQ3" firstAttribute="centerX" secondItem="gMl-9U-y14" secondAttribute="centerX" id="Y7f-Uu-peZ"/>
                             <constraint firstItem="9Vf-El-JQ3" firstAttribute="centerY" secondItem="gMl-9U-y14" secondAttribute="centerY" id="ZFQ-GD-tgv"/>
+                            <constraint firstItem="9Vf-El-JQ3" firstAttribute="top" secondItem="lMq-8Y-JCv" secondAttribute="bottom" constant="18" id="ZVB-Dd-y1g"/>
                             <constraint firstItem="Kqa-fn-Zu0" firstAttribute="top" secondItem="yfe-hS-o1h" secondAttribute="bottom" id="e03-ka-Q7W"/>
+                            <constraint firstItem="lMq-8Y-JCv" firstAttribute="centerX" secondItem="gMl-9U-y14" secondAttribute="centerX" id="gTU-Rt-Yux"/>
+                            <constraint firstItem="KUW-Vt-iyu" firstAttribute="leading" secondItem="lMq-8Y-JCv" secondAttribute="leading" id="iHC-lO-AKd"/>
+                            <constraint firstItem="9Vf-El-JQ3" firstAttribute="leading" secondItem="lMq-8Y-JCv" secondAttribute="leading" id="jVy-pK-ZNg"/>
                             <constraint firstItem="9Vf-El-JQ3" firstAttribute="top" secondItem="KUW-Vt-iyu" secondAttribute="bottom" constant="3" id="pH6-6O-oel"/>
                             <constraint firstItem="Kqa-fn-Zu0" firstAttribute="leading" secondItem="gMl-9U-y14" secondAttribute="leadingMargin" constant="-20" id="uKC-Og-Q0e"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="TimeClock" image="TimeClock" id="pPR-Ps-L8I"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="700"/>
                     <connections>
                         <outlet property="backButton" destination="Kqa-fn-Zu0" id="aPZ-el-YFu"/>
                         <outlet property="currentDate" destination="KUW-Vt-iyu" id="tmU-ga-CQe"/>
