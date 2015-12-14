@@ -47,7 +47,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         let weekPickerTapGesture = UITapGestureRecognizer(target: self, action: weekPickerMakeAllOthersResign)
         weekPickerTapGesture.numberOfTapsRequired = 1
         weekPicker.addGestureRecognizer(weekPickerTapGesture)
-    
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
@@ -149,7 +149,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                     typeOfWinterCoverLabel.textColor = UIColor.blackColor()
                     typeOfWinterCoverLabel.text = typeOfWinterCover.first
                 }
-  
+                
             }
             whatToReturn = typeOfWinterCover[row]
         }
@@ -333,23 +333,27 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         let toolbarHeight : CGFloat?
         
-        
-        if isKeyboardShowing == true {
+        if customerNameTextField.isFirstResponder() || addressLabel.isFirstResponder() || phoneNumberTextField.isFirstResponder() {
             return
         } else {
-            if let userInfo = notification.userInfo {
-                if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                    if self.hasKeyboard == true {
-                        kbHeight = 25
-                    } else {
-                        kbHeight = keyboardSize.height
+            
+            if isKeyboardShowing == true {
+                return
+            } else {
+                if let userInfo = notification.userInfo {
+                    if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                        if self.hasKeyboard == true && !notesTextView.isFirstResponder() {
+                            kbHeight = 25
+                        } else {
+                            kbHeight = keyboardSize.height
+                        }
+                        self.animateTextField(true)
+                        isKeyboardShowing = true
                     }
-                    self.animateTextField(true)
-                    isKeyboardShowing = true
                 }
             }
+            
         }
-        
     }
     
     
@@ -518,6 +522,14 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         
+    }
+    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        customerNameTextField.resignFirstResponder()
+        addressLabel.resignFirstResponder()
+        phoneNumberTextField.resignFirstResponder()
+        locationEssentialItems.resignFirstResponder()
+        notesTextView.resignFirstResponder()
     }
     
 }
