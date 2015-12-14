@@ -413,6 +413,10 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             toggleWeekPicker()
         }
         
+        if indexPath.section == 0 && indexPath.row == 5 {
+            toggleWeekPicker()
+        }
+        
         if indexPath.section == 0 && indexPath.row == 6 {
             toggleTypePicker()
         }
