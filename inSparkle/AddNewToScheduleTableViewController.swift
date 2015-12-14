@@ -331,13 +331,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     func keyboardWillShow(notification : NSNotification) {
         
         var userInfo: [NSObject : AnyObject] = notification.userInfo!
-        var keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
-        var keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
-        var height: CGFloat = self.view.frame.size.height
+        let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
+        let keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
+        let height: CGFloat = self.view.frame.size.height
         if (keyboard.origin.y + keyboard.size.height) > height {
             self.hasKeyboard = true
         }
-        var toolbarHeight : CGFloat?
+        let toolbarHeight : CGFloat?
         
         
         if isKeyboardShowing == true {
@@ -500,12 +500,26 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     @IBAction func updateFields(seg : UIStoryboardSegue) {
         
-        let fromVC = seg.sourceViewController as! AddEditCustomerTableViewController
         
-        customerNameTextField.text = fromVC.firstNameTextField.text!.capitalizedString + " " + fromVC.lastNameTextField.text!.capitalizedString
-        addressLabel.text = fromVC.addressLabel.text
-        addressLabel.textColor = UIColor.blackColor()
-        phoneNumberTextField.text = fromVC.phoneNumberTextField.text
+        if seg.identifier == "updateFromAddEdit" {
+            let fromVC = seg.sourceViewController as! AddEditCustomerTableViewController
+            
+            customerNameTextField.text = fromVC.firstNameTextField.text!.capitalizedString + " " + fromVC.lastNameTextField.text!.capitalizedString
+            addressLabel.text = fromVC.addressLabel.text
+            addressLabel.textColor = UIColor.blackColor()
+            phoneNumberTextField.text = fromVC.phoneNumberTextField.text
+        } else {
+            let fromVC = seg.sourceViewController as! CustomerLookupTableViewController
+            
+            var selectedCx = fromVC.globalSelectedCx
+            
+            customerNameTextField.text = selectedCx.firstName!.capitalizedString + " " + selectedCx.lastName!.capitalizedString
+            addressLabel.text = "\(selectedCx.addressStreet) \n \(selectedCx.addressCity), \(selectedCx.addressState) \(selectedCx.ZIP)"
+            phoneNumberTextField.text = selectedCx.phoneNumber
+            
+        }
+        
+        
     }
     
 }
