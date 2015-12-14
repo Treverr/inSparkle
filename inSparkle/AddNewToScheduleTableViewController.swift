@@ -23,6 +23,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet var typeOfWinterCoverPicker: UIPickerView!
     @IBOutlet var aquadoorYesNo: UISegmentedControl!
     
+    @IBOutlet var locationOfEssentialItemsLabel: UILabel!
+    @IBOutlet var importantTextView: UITextView!
     
     var weekList = [PFObject]()
     var typeOfWinterCover = [String]()
@@ -30,6 +32,63 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var isOpening : Bool?
+        
+        if AddNewScheduleObjects.isOpening != nil {
+            isOpening = AddNewScheduleObjects.isOpening as Bool
+        }
+        
+        if AddNewScheduleObjects.scheduledObject != nil {
+            let object = AddNewScheduleObjects.scheduledObject
+            customerNameTextField.text = object.customerName.capitalizedString
+            addressLabel.text = object.customerAddress.capitalizedString
+            phoneNumberTextField.text = object.customerPhone
+            weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyle(object.weekStart)
+            weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyle(object.weekEnd)
+            typeOfWinterCoverLabel.text = object.coverType
+            if object.aquaDoor != nil {
+                if object.aquaDoor == true {
+                    aquadoorYesNo.selectedSegmentIndex = 0
+                } else {
+                    aquadoorYesNo.selectedSegmentIndex = 1
+                }
+            }
+            locationEssentialItems.text = object.locEssentials
+            if object.bringChem == true {
+                bringCloseChemYesNo.selectedSegmentIndex = 0
+            } else {
+                bringCloseChemYesNo.selectedSegmentIndex = 1
+            }
+            if object.takeTrash == true {
+                takeTrashSeg.selectedSegmentIndex = 0
+            } else {
+                takeTrashSeg.selectedSegmentIndex = 1
+            }
+            if object.notes != nil {
+                notesTextView.text = object.notes
+            }
+            
+            if object.type == "Opening" {
+                isOpening = true
+            } else {
+                isOpening = false
+            }
+            
+        }
+        
+        if (isOpening!) {
+            self.navigationItem.title = "Schedule a Closing"
+            locationOfEssentialItemsLabel.text = "Where to store winter accessories?"
+            importantTextView.text = "Customer must have the following done, to avoid any additional charges:"
+                + "\n -WATER LEVEL IN POOL RAISED TO MIDDLE OF SKIMMER"
+                + "\n -ELECTRICITY TURNED ON TO PUMP AND FILTER"
+                + "\n -WATER PUMPED OFF COVER AND LEAVES CLEANED OFF"
+        } else {
+            importantTextView.text = "Customer must have the following done, to avoid any additional charges:"
+                + "\n -POOL VACUUMED OUT"
+                + "\n -WATER LEVEL LOWERED TO 1/2” BELOW THE SKIMMER (OVERFILL FOR GROUND WATER, ELECTRIC COVERS DON’T LOWER WATER LEVEL)"
+        }
         
         setTypes()
         setupNavigationbar()
@@ -263,20 +322,29 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             let schObj = ScheduleObject()
             ScheduleObject.registerSubclass()
             schObj.customerName = customerName!
+            schObj.customerAddress = addressLabel.text!
+            schObj.customerPhone = phoneNumberTextField.text!
             schObj.weekStart = weekStartDate!
             schObj.weekEnd = weekEndDate!
             schObj.isActive = true
-            schObj.type = "Opening"
+            if AddNewScheduleObjects.isOpening == true {
+                schObj.type = "Opening"
+            } else {
+                schObj.type = "Closing"
+            }
             schObj.coverType = coverType!
-            schObj.aquaDoor = aquadoor
+            if AddNewScheduleObjects.isOpening == false {
+                schObj.aquaDoor = aquadoor
+            }
             schObj.locEssentials = locationOfEss
-            schObj.bringCloseChem = bringCloseChem
+            schObj.bringChem = bringCloseChem
             schObj.takeTrash = takeTheTrash
             schObj.notes = theNotes.text!
             schObj.saveEventually { (success: Bool, error : NSError?) -> Void in
                 if error == nil {
                     self.dismissViewControllerAnimated(true, completion: nil)
                     NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
+                    AddNewScheduleObjects.isOpening = nil
                 }
             }
         }
@@ -419,9 +487,28 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             toggleTypePicker()
         }
         
+        
+        
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        if indexPath.section == 0 && indexPath.row == 8 {
+            if AddNewScheduleObjects.isOpening == nil {
+                
+            } else {
+                if AddNewScheduleObjects.isOpening == true {
+                    return 0
+                }
+            }
+            
+        }
+        
+        if AddNewScheduleObjects.scheduledObject == nil {
+            if indexPath.section == 1 && indexPath.row == 0 {
+                return 0
+            }
+        }
         
         if theWeekPickerHidden == true && indexPath == weekPickerIndexPath {
             return 0
@@ -432,6 +519,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         } else {
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
+        
+
+        
     }
     
     func toggleWeekPicker() {

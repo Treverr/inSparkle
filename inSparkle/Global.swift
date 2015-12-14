@@ -101,6 +101,16 @@ class AddEditCustomers: NSObject {
 class AddNewScheduleObjects : NSObject {
     
     static var selectedCx : CustomerData?
+    
+    static var isOpening : Bool!
+    
+    static var scheduledObject : ScheduleObject!
+}
+
+class ConfirmAppointData : NSObject {
+    
+    static var date : String!
+    
 }
 
 class GlobalFunctions {
@@ -136,6 +146,14 @@ class GlobalFunctions {
     func dateFromShortDateString(dateString : String) -> NSDate {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yy"
+        let theReturn = formatter.dateFromString(dateString)
+        
+        return theReturn!
+    }
+    
+    func dateFromMediumDateString(dateString : String) -> NSDate {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMMM d, yyyy"
         let theReturn = formatter.dateFromString(dateString)
         
         return theReturn!
