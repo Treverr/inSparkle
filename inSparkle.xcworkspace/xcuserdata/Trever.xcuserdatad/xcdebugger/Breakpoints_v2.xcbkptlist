@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
-            timestampString = "471725556.288933"
+            timestampString = "471745138.105007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
+            startingLineNumber = "502"
+            endingLineNumber = "502"
             landmarkName = "updateFields(_:)"
             landmarkType = "5">
          </BreakpointContent>
