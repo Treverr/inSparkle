@@ -309,27 +309,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="type" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZL-7k-2eC">
-                                                    <rect key="frame" x="363" y="11" width="229" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="F0f-CN-mDE"/>
-                                                        <constraint firstAttribute="width" constant="229" id="ie5-0T-ytf"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="178" y="11" width="414" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type of Winter Cover" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60H-mM-Y0O">
                                                     <rect key="frame" x="8" y="11" width="162" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="162" id="AXW-vx-ltz"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="60H-mM-Y0O" firstAttribute="leading" secondItem="4vp-Sx-RtW" secondAttribute="leadingMargin" id="BFm-al-YMz"/>
-                                                <constraint firstItem="0ZL-7k-2eC" firstAttribute="trailing" secondItem="4vp-Sx-RtW" secondAttribute="trailingMargin" id="bck-mm-J6g"/>
-                                                <constraint firstItem="0ZL-7k-2eC" firstAttribute="centerY" secondItem="4vp-Sx-RtW" secondAttribute="centerY" id="tjA-HQ-gXN"/>
-                                                <constraint firstItem="0ZL-7k-2eC" firstAttribute="baseline" secondItem="60H-mM-Y0O" secondAttribute="baseline" id="yyi-PZ-zsU"/>
+                                                <constraint firstItem="60H-mM-Y0O" firstAttribute="leading" secondItem="4vp-Sx-RtW" secondAttribute="leadingMargin" id="0Tk-56-wao"/>
+                                                <constraint firstItem="0ZL-7k-2eC" firstAttribute="baseline" secondItem="60H-mM-Y0O" secondAttribute="baseline" id="IrG-No-jGA"/>
+                                                <constraint firstItem="0ZL-7k-2eC" firstAttribute="leading" secondItem="60H-mM-Y0O" secondAttribute="trailing" constant="8" symbolic="YES" id="SmM-4c-dKI"/>
+                                                <constraint firstItem="0ZL-7k-2eC" firstAttribute="trailing" secondItem="4vp-Sx-RtW" secondAttribute="trailingMargin" id="nSr-Hj-paZ"/>
+                                                <constraint firstItem="0ZL-7k-2eC" firstAttribute="centerY" secondItem="4vp-Sx-RtW" secondAttribute="centerY" id="zYz-MX-Fql"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
