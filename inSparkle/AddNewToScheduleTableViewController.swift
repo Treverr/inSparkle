@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-//import PhoneNumberKit
+import PhoneNumberKit
 
 class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -208,39 +208,33 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
-//    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//        
-//        if customerNameTextField.isFirstResponder() {
-//            customerNameTextField.resignFirstResponder()
-//            return true
-//        }
-//        
-//                if phoneNumberTextField.isFirstResponder() {
-//        
-//                    do {
-//                        let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
-//                        phoneNumberTextField.text! = phoneNumber.toNational()
-//                    } catch {
-//                        print("error")
-//                    }
-//                }
-//        
-//        return false
-//    }
-//    
-//        func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-//            if phoneNumberTextField.isFirstResponder() {
-//    
-//                do {
-//                    let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
-//                    phoneNumberTextField.text! = phoneNumber.toNational()
-//                } catch {
-//                    print("error")
-//                }
-//            }
-//            return false
-//        }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == customerNameTextField {
+            customerNameTextField.resignFirstResponder()
+            return true
+        }
+        if textField == phoneNumberTextField {
+            do {
+                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
+                phoneNumberTextField.text! = phoneNumber.toNational()
+            } catch {
+                print("error")
+            }
+        }
+        return false
+    }
     
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        if textField == phoneNumberTextField {
+            do {
+                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
+                phoneNumberTextField.text! = phoneNumber.toNational()
+            } catch {
+                print("error")
+            }
+        }
+        return true
+    }
     @IBAction func saveButton(sender: AnyObject) {
         if customerNameTextField.text!.isEmpty || addressLabel.text!.isEmpty || phoneNumberTextField.text!.isEmpty || typeOfWinterCoverLabel.text!.isEmpty ||  locationEssentialItems.text.isEmpty {
             displayError("Missing Field", message: "There is a field missing, check your entries and try again")
