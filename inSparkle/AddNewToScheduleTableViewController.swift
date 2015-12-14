@@ -37,6 +37,11 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
         if AddNewScheduleObjects.isOpening != nil {
             isOpening = AddNewScheduleObjects.isOpening as Bool
+            if (isOpening!) {
+                self.navigationItem.title = "Schedule Opening"
+            } else {
+                self.navigationItem.title = "Schedule Closing"
+            }
         }
         
         if AddNewScheduleObjects.scheduledObject != nil {
@@ -78,7 +83,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         if (isOpening!) {
-            self.navigationItem.title = "Schedule a Closing"
             locationOfEssentialItemsLabel.text = "Where to store winter accessories?"
             importantTextView.text = "Customer must have the following done, to avoid any additional charges:"
                 + "\n -WATER LEVEL IN POOL RAISED TO MIDDLE OF SKIMMER"
