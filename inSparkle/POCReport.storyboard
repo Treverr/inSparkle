@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Customer Filter Table View Controller-->
         <scene sceneID="Cg6-QJ-I1n">
             <objects>
-                <tableViewController id="yrJ-rY-Bz0" sceneMemberID="viewController">
+                <tableViewController id="yrJ-rY-Bz0" customClass="POCCustomerFilterTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="uPZ-8M-ecC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,10 +54,10 @@
             </objects>
             <point key="canvasLocation" x="1284" y="444"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Open Close Table View Controller-->
         <scene sceneID="Cov-7m-V4v">
             <objects>
-                <tableViewController id="NZH-EJ-MBP" sceneMemberID="viewController">
+                <tableViewController id="NZH-EJ-MBP" customClass="POCOpenCloseTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="7tY-mu-GPu">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
