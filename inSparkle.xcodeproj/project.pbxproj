@@ -86,6 +86,7 @@
 		C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F431171BFEB13500AC3CD8 /* Global.swift */; };
 		C9FE5BE41C1F880600293836 /* ConfirmCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */; };
 		C9FE5BE51C1F880600293836 /* ConfirmingAppointmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */; };
+		C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +196,7 @@
 		C9F431171BFEB13500AC3CD8 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCalViewController.swift; sourceTree = "<group>"; };
 		C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmingAppointmentTableViewController.swift; sourceTree = "<group>"; };
+		C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = POCReport.storyboard; sourceTree = "<group>"; };
 		DFB671CF34700E590D95A655 /* Pods-inSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -303,6 +305,7 @@
 		C9585F331C1758A7008AB918 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
+				C9FE5BE81C1FC5BF00293836 /* POC */,
 				C9585F301C175887008AB918 /* ReportsTableViewController.swift */,
 			);
 			name = Reports;
@@ -532,6 +535,14 @@
 			name = "Time Card Management";
 			sourceTree = "<group>";
 		};
+		C9FE5BE81C1FC5BF00293836 /* POC */ = {
+			isa = PBXGroup;
+			children = (
+				C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */,
+			);
+			name = POC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -655,6 +666,7 @@
 				C972FF781C1A1B1700D34EB2 /* SOI.storyboard in Resources */,
 				C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */,
 				C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */,
+				C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */,
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
 				C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */,
 				C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */,
