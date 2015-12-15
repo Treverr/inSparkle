@@ -37,7 +37,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="NZH-EJ-MBP" kind="show" id="DIw-n7-Spm"/>
+                                            <segue destination="NZH-EJ-MBP" kind="show" identifier="allCustomers" id="DIw-n7-Spm"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

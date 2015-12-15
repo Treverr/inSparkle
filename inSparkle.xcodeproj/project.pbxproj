@@ -72,6 +72,7 @@
 		C9C192961BF64DF400862F52 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192951BF64DF400862F52 /* SystemConfiguration.framework */; };
 		C9C192981BF64DFE00862F52 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192971BF64DFE00862F52 /* libz.tbd */; };
 		C9C1929A1BF64E0500862F52 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192991BF64E0500862F52 /* libsqlite3.tbd */; };
+		C9C8E1DD1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1DC1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift */; };
 		C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */; };
 		C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */; };
 		C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */; };
@@ -182,6 +183,7 @@
 		C9C192951BF64DF400862F52 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C9C192971BF64DFE00862F52 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C9C192991BF64E0500862F52 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C9C8E1DC1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCCustomerFilterTableViewController.swift; sourceTree = "<group>"; };
 		C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewController.swift; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */,
+				C9C8E1DC1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift */,
 			);
 			name = POC;
 			sourceTree = "<group>";
@@ -770,6 +773,7 @@
 				C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */,
 				C9F0FF9A1C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift in Sources */,
 				C99D3E711BF5C04200D30F96 /* SOITableViewCell.swift in Sources */,
+				C9C8E1DD1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift in Sources */,
 				C96EF7F61C13F2E700C4D2C1 /* TimeClockPunchObj.swift in Sources */,
 				C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */,
 				C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */,

@@ -113,6 +113,12 @@ class ConfirmAppointData : NSObject {
     
 }
 
+class POCReportFilters : NSObject {
+    
+    static var filter : [String]?
+    
+}
+
 class GlobalFunctions {
     
     func stringFromDateFullStyle(theDate : NSDate) -> String {
