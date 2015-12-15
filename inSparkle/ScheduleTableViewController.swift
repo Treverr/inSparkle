@@ -29,6 +29,8 @@ class ScheduleTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = editButtonItem()
         self.tableView.allowsMultipleSelectionDuringEditing = true
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayConfirmed", name: "NotifyAppointmentConfirmed", object: nil)
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -40,7 +42,14 @@ class ScheduleTableViewController: UITableViewController {
         let weekStart = object.valueForKey("weekStart") as! NSDate
         let weekEnd = object.valueForKey("weekEnd") as! NSDate
         
-        cell.scheduleCell(customerName, weekStart: weekStart, weekEnd: weekEnd)
+        var isConfirmed : Bool?
+        if object.valueForKey("confrimedBy") != nil {
+            isConfirmed = true
+        } else {
+            isConfirmed = false
+        }
+        
+        cell.scheduleCell(customerName, weekStart: weekStart, weekEnd: weekEnd, isConfirmed: isConfirmed! )
         
         return cell
     }
@@ -173,7 +182,12 @@ class ScheduleTableViewController: UITableViewController {
         alert.addAction(openingButton)
         alert.addAction(closingButton)
         self.presentViewController(alert, animated: true, completion: nil)
-        
-        
+    }
+    
+    func displayConfirmed() {
+        let alert = UIAlertController(title: "Confirmed", message: "The POC has been confriemd", preferredStyle: .Alert)
+        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+        alert.addAction(okayButton)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }

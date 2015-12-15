@@ -12,8 +12,9 @@ public class ScheduleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var customerNameLabel: UILabel!
     @IBOutlet weak var weekScheduleLabel: UILabel!
+    @IBOutlet var confirmed: UIImageView!
     
-    public func scheduleCell(customerName : String, weekStart: NSDate, weekEnd : NSDate) {
+    public func scheduleCell(customerName : String, weekStart: NSDate, weekEnd : NSDate, isConfirmed : Bool) {
         
         customerNameLabel.text = customerName
         
@@ -25,6 +26,10 @@ public class ScheduleTableViewCell: UITableViewCell {
         let weekEndString = formatter.stringFromDate(weekEnd)
         
         weekScheduleLabel.text = weekStartString + " - " + weekEndString
+        
+        if isConfirmed == false {
+            confirmed.hidden = true
+        }
         
     }
 
