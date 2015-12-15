@@ -9,8 +9,6 @@
 import UIKit
 
 class POCActiveInactiveAllFilterTableViewController: UITableViewController {
-    
-    var filter = POCReportFilters.filter
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +27,15 @@ class POCActiveInactiveAllFilterTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "inactive" {
-            filter!.append("inactive")
+            POCReportFilters.filter.append("inactive")
         }
         if segue.identifier == "all" {
-            filter!.append("all")
+            POCReportFilters.filter.append("all")
         }
         if segue.identifier == "active" {
-            filter!.append("active")
+            POCReportFilters.filter.append("active")
         }
+        print(POCReportFilters.filter)
     }
 
 }

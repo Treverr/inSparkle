@@ -23,7 +23,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet var typeOfWinterCoverPicker: UIPickerView!
     @IBOutlet var aquadoorYesNo: UISegmentedControl!
     @IBOutlet var dateClosingPicker: UIPickerView!
-    
+    @IBOutlet weak var confirmButton : UIButton!
     @IBOutlet var locationOfEssentialItemsLabel: UILabel!
     @IBOutlet var importantTextView: UITextView!
     @IBOutlet var selectClosingDate: UILabel!
@@ -47,7 +47,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         if AddNewScheduleObjects.scheduledObject != nil {
-            let object = AddNewScheduleObjects.scheduledObject
+            let object = AddNewScheduleObjects.scheduledObject!
             customerNameTextField.text = object.customerName.capitalizedString
             addressLabel.text = object.customerAddress.capitalizedString
             phoneNumberTextField.text = object.customerPhone
@@ -83,8 +83,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
             
             if AddNewScheduleObjects.scheduledObject != nil {
-                if AddNewScheduleObjects.scheduledObject.confirmedDate != nil {
-                    selectClosingDate.text! = GlobalFunctions().stringFromDateShortStyle(AddNewScheduleObjects.scheduledObject.confirmedDate!)
+                if AddNewScheduleObjects.scheduledObject!.confirmedDate != nil {
+                    selectClosingDate.text! = GlobalFunctions().stringFromDateShortStyle(AddNewScheduleObjects.scheduledObject!.confirmedDate!)
                 }
             }
             
@@ -147,9 +147,22 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     func getDatesFromParse() {
         
+        var isOpeningWeek : Bool!
+        
+        if AddNewScheduleObjects.isOpening != nil {
+            isOpeningWeek = AddNewScheduleObjects.isOpening as Bool
+        } else {
+            if AddNewScheduleObjects.scheduledObject?.type == "Opening" {
+                isOpeningWeek = true
+            } else {
+                isOpeningWeek = false
+            }
+        }
+        
         let query = PFQuery(className: "ScheduleWeekList")
         query.whereKey("weekEnd", greaterThan: NSDate())
         query.whereKey("apptsRemain", greaterThan: 0)
+        query.whereKey("isOpenWeek", equalTo: isOpeningWeek)
         query.findObjectsInBackgroundWithBlock { (weeks:[PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print(weeks!)
@@ -162,7 +175,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                         self.weekPicker.reloadAllComponents()
                     }
                 }
-                
             }
         }
         
@@ -193,12 +205,18 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
         if pickerView == weekPicker {
             if weekList.count > 0 && weekPicker.selectedRowInComponent(0) == 0 {
-                let weekStart  = weekList[0].valueForKey("weekStart") as! NSDate
-                weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekStart)
-                weekStartingLabel.textColor = UIColor.blackColor()
-                let weekEnd = weekList[0].valueForKey("weekEnd") as! NSDate
-                weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekEnd)
-                weekEndingLabel.textColor = UIColor.blackColor()
+                if AddNewScheduleObjects.scheduledObject == nil {
+                    let weekStart  = weekList[0].valueForKey("weekStart") as! NSDate
+                    weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekStart)
+                    weekStartingLabel.textColor = UIColor.blackColor()
+                    let weekEnd = weekList[0].valueForKey("weekEnd") as! NSDate
+                    weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekEnd)
+                    weekEndingLabel.textColor = UIColor.blackColor()
+                } else {
+                    let theSchedule = AddNewScheduleObjects.scheduledObject
+                    weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyle(theSchedule!.weekStart)
+                    weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyle(theSchedule!.weekEnd)
+                }
                 
                 if dateWeekRange.count == 0 {
                     dateForDatePicker()
@@ -235,11 +253,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
             whatToReturn = typeOfWinterCover[row]
         }
-        
+    
         if pickerView == dateClosingPicker {
             if pickerView.hidden == false {
                 whatToReturn = dateWeekRange[row]
-                selectClosingDate.text = dateWeekRange[0]
+                if AddNewScheduleObjects.scheduledObject?.confirmedDate == nil {
+                    selectClosingDate.text = dateWeekRange[0]
+                }
                 selectClosingDate.textColor = UIColor.blackColor()
             }
         }
@@ -397,8 +417,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                     self.dismissViewControllerAnimated(true, completion: nil)
                     NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
                     AddNewScheduleObjects.isOpening = nil
-                    if self.selectClosingDate.text != "Not Set" {
+                    if self.selectClosingDate.text != "Not Set" && sender as! NSObject == self.confirmButton {
                         NSNotificationCenter.defaultCenter().postNotificationName("NotifyAppointmentConfirmed", object: nil)
+                        NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
                     }
                 }
             }
@@ -700,5 +721,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     override func viewWillDisappear(animated: Bool) {
         AddNewScheduleObjects.scheduledObject = nil
+        AddNewScheduleObjects.isOpening = nil
     }
 }

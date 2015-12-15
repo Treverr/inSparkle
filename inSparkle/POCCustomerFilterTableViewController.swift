@@ -19,7 +19,7 @@ class POCCustomerFilterTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "allCustomers" {
-            filters?.append("allCustomers")
+            POCReportFilters.filter.append("allCustomers")
         }
     }
 

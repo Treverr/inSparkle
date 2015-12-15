@@ -62,9 +62,10 @@ class ScheduleTableViewController: UITableViewController {
         let query : PFQuery = PFQuery(className: "Schedule")
         query.whereKey("isActive", equalTo: true)
         query.whereKey("type", equalTo: filterOption)
-        query.orderByDescending("weekStart")
+        query.orderByAscending("weekStart")
         query.findObjectsInBackgroundWithBlock { (scheduleObjects :[PFObject]?, error: NSError?) -> Void in
             if error == nil {
+                self.scheduleArray.removeAllObjects()
                 for object in scheduleObjects! {
                     self.scheduleArray.addObject(object)
                     self.tableView.reloadData()
@@ -164,7 +165,7 @@ class ScheduleTableViewController: UITableViewController {
         return returnValue!
     }
     @IBAction func segToAdd(sender: AnyObject) {
-        AddNewScheduleObjects.scheduledObject = nil
+        
        let alert = UIAlertController(title: "Type?", message: "Is this an opening or closing?", preferredStyle: .Alert)
         let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
         

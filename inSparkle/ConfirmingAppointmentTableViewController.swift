@@ -51,7 +51,7 @@ class ConfirmingAppointmentTableViewController: UITableViewController, UIPopover
         var returnString : String = ""
         if section == 0 {
             
-            let schObj = AddNewScheduleObjects.scheduledObject as! ScheduleObject
+            let schObj = AddNewScheduleObjects.scheduledObject!
             returnString = "Confirming Appointment for \(schObj.customerName.capitalizedString). " + "\nWeek of \(GlobalFunctions().stringFromDateShortStyle(schObj.weekStart))" + " - \(GlobalFunctions().stringFromDateShortStyle(schObj.weekEnd))"
         }
         return returnString
@@ -62,7 +62,7 @@ class ConfirmingAppointmentTableViewController: UITableViewController, UIPopover
     }
     
     @IBAction func confirmButton(sender: AnyObject) {
-        let schObj = AddNewScheduleObjects.scheduledObject as! ScheduleObject
+        let schObj = AddNewScheduleObjects.scheduledObject!
         schObj.confirmedDate = GlobalFunctions().dateFromMediumDateString(dateLbel.text!)
         schObj.confrimed = true
         schObj.confrimedBy = PFUser.currentUser()!.username!.capitalizedString
