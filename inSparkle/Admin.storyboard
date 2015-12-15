@@ -119,6 +119,27 @@
                                             <segue destination="6qK-Fk-eSw" kind="showDetail" action="showViewController:sender:" id="oBL-x6-Wxx"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="yrt-CH-B5c" imageView="QWE-CD-CVd" rowHeight="48" style="IBUITableViewCellStyleDefault" id="a6A-x3-zcf">
+                                        <rect key="frame" x="0.0" y="147" width="600" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a6A-x3-zcf" id="Edx-20-6EX">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="47"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="POC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yrt-CH-B5c">
+                                                    <rect key="frame" x="64" y="0.0" width="501" height="47"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="POCReport" id="QWE-CD-CVd">
+                                                    <rect key="frame" x="15" y="6" width="34" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -139,7 +160,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="t4v-cb-Woc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="employeeCell" textLabel="5UV-fH-sZw" style="IBUITableViewCellStyleDefault" id="6HZ-SO-POk">
                                 <rect key="frame" x="0.0" y="114" width="600" height="44"/>
@@ -152,7 +173,7 @@
                                             <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -187,7 +208,7 @@
                 <viewControllerPlaceholder storyboardName="TimeClockReport" id="6qK-Fk-eSw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTO-Wq-PuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3235.5" y="222"/>
+            <point key="canvasLocation" x="3236.5" y="99"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bb3-KV-LvY">
@@ -209,6 +230,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="POCReport" width="34" height="34"/>
         <image name="Report" width="30" height="40"/>
         <image name="TimeCard" width="34" height="34"/>
         <image name="TimeCardReport" width="34" height="34"/>
