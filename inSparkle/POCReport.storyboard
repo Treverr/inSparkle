@@ -126,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="1999" y="444"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Active Inactive All Filter Table View Controller-->
         <scene sceneID="JyV-2E-0u0">
             <objects>
-                <tableViewController id="P6g-qn-reh" sceneMemberID="viewController">
+                <tableViewController id="P6g-qn-reh" customClass="POCActiveInactiveAllFilterTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="jVw-rL-PRo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,14 +222,14 @@
             </objects>
             <point key="canvasLocation" x="2876" y="444"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Run Report Final Table View Controller-->
         <scene sceneID="U9h-S3-ehD">
             <objects>
-                <tableViewController id="aR2-5H-LJ2" sceneMemberID="viewController">
+                <tableViewController id="aR2-5H-LJ2" customClass="POCRunReportFinalTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Q0I-Fs-J8K">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="W7D-KR-Rq0">
                                 <cells>
@@ -244,11 +244,11 @@
                                                     <rect key="frame" x="15" y="12" width="74" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cak-4I-gLw">
-                                                    <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="select" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cak-4I-gLw">
+                                                    <rect key="frame" x="541" y="12" width="44" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -265,14 +265,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wqd-Mb-wql">
-                                                    <rect key="frame" x="-19" y="12" width="66" height="20"/>
+                                                    <rect key="frame" x="15" y="12" width="66" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QWD-CC-Pd6">
-                                                    <rect key="frame" x="543" y="12" width="42" height="20"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="select" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QWD-CC-Pd6">
+                                                    <rect key="frame" x="541" y="12" width="44" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -292,11 +292,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0X-Jq-qYz">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0X-Jq-qYz">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                                     <state key="normal" title="Run Report"/>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="U0X-Jq-qYz" secondAttribute="bottom" id="17e-Jh-hb6"/>
+                                                <constraint firstItem="U0X-Jq-qYz" firstAttribute="top" secondItem="5T1-qv-CgL" secondAttribute="top" id="5Cs-v7-8zV"/>
+                                                <constraint firstAttribute="trailing" secondItem="U0X-Jq-qYz" secondAttribute="trailing" id="BMY-aE-v3t"/>
+                                                <constraint firstItem="U0X-Jq-qYz" firstAttribute="leading" secondItem="5T1-qv-CgL" secondAttribute="leading" id="qL5-li-W4D"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -307,6 +313,10 @@
                             <outlet property="delegate" destination="aR2-5H-LJ2" id="uqZ-ae-yO3"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="endDate" destination="QWD-CC-Pd6" id="8Um-Ep-4Ue"/>
+                        <outlet property="startDate" destination="cak-4I-gLw" id="Aqp-zl-G1O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOu-wY-1Ai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -341,6 +351,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6Od-Q0-tIT"/>
-        <segue reference="Lst-7w-2kx"/>
+        <segue reference="LZA-K9-ffI"/>
     </inferredMetricsTieBreakers>
 </document>

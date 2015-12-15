@@ -24,10 +24,10 @@ class POCOpenCloseTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "openings" {
-            filter!.append("openings")
+            filter!.append("Opening")
         }
         if segue.identifier == "closings" {
-            filter!.append("closings")
+            filter!.append("Closing")
         }
     }
 
