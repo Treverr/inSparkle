@@ -82,13 +82,19 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         }
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        AddEditCustomers.theCustomer = nil
+    }
+    
 }
 
 extension AddEditCustomerTableViewController : GooglePlacesAutocompleteDelegate {
     
     func placeSelected(place: Place) {
+        let houseNumbers = place.desc.componentsSeparatedByString(" ")[0]
         place.getDetails({ (thePlaceDetails) -> () in
-            GoogleAddress.address = thePlaceDetails.fullAddress
+            GoogleAddress.address = houseNumbers + " " + thePlaceDetails.fullAddress
+            print(houseNumbers + " " + thePlaceDetails.fullAddress)
         NSNotificationCenter.defaultCenter().postNotificationName("NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
         self.dismissViewControllerAnimated(true, completion: nil)
         })
@@ -102,4 +108,5 @@ extension AddEditCustomerTableViewController : GooglePlacesAutocompleteDelegate 
     @IBAction func cancelButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
 }
