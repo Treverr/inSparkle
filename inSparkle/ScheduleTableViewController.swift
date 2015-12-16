@@ -127,16 +127,16 @@ class ScheduleTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            var reason : String?
+            var reason : UITextField?
             let alert = UIAlertController(title: "Reason for Cancelation", message: "Please enter a reason for cancelation", preferredStyle: .Alert)
             let confirmCancel = UIAlertAction(title: "Confirm Cancel", style: .Destructive, handler: { (action) -> Void in
                 var deletingObject : ScheduleObject!
                 deletingObject = self.scheduleArray.objectAtIndex(indexPath.row)
                     as! ScheduleObject
                 deletingObject.isActive = false
-                deletingObject.cancelReason = reason!
+                deletingObject.cancelReason = reason!.text!
                 deletingObject.saveEventually()
-                                CloudCode.AlertOfCancelation(deletingObject.customerName, address: deletingObject.customerAddress.capitalizedString, phone: deletingObject.customerPhone, reason: reason!, cancelBy: PFUser.currentUser()!.username!.capitalizedString)
+                                CloudCode.AlertOfCancelation(deletingObject.customerName, address: deletingObject.customerAddress.capitalizedString, phone: deletingObject.customerPhone, reason: reason!.text!, cancelBy: PFUser.currentUser()!.username!.capitalizedString)
                 self.scheduleArray.removeObjectAtIndex(indexPath.row)
                 tableView.reloadData()
 
@@ -145,7 +145,7 @@ class ScheduleTableViewController: UITableViewController {
             alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
                 textField.placeholder = "reason"
                 textField.keyboardType = .Default
-                reason = textField.text!
+                reason = textField
             })
             alert.addAction(confirmCancel)
             alert.addAction(cancelButton)
