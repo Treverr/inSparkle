@@ -15,6 +15,11 @@ class ScheduleObject : PFObject, PFSubclassing {
         return "Schedule"
     }
     
+    var accountNumber : String? {
+        get { return objectForKey("accountNumber") as? String }
+        set { setObject(newValue!, forKey: "accountNumber") }
+    }
+    
     var customerName : String {
         get { return objectForKey("customerName") as! String }
         set { setObject(newValue, forKey: "customerName") }
