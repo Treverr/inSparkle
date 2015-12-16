@@ -351,6 +351,26 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         return true
     }
+    
+    var confirmedWith : UITextField!
+    
+    @IBAction func confirmButton(sender : AnyObject) {
+        let alert = UIAlertController(title: "Confirmed with?", message: "Please enter the name of the peson you spoke to when confirming", preferredStyle: .Alert)
+        let confirmButton = UIAlertAction(title: "Confirm", style: .Default) { (action) -> Void in
+            print(self.confirmedWith.text!)
+            self.saveButton(sender)
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            textField.placeholder = "name"
+            textField.keyboardType = .Default
+            self.confirmedWith = textField
+        }
+        alert.addAction(confirmButton)
+        alert.addAction(cancelButton)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func saveButton(sender: AnyObject) {
         if customerNameTextField.text!.isEmpty || addressLabel.text!.isEmpty || phoneNumberTextField.text!.isEmpty || typeOfWinterCoverLabel.text!.isEmpty ||  locationEssentialItems.text.isEmpty {
             displayError("Missing Field", message: "There is a field missing, check your entries and try again")
@@ -385,6 +405,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
             
             ScheduleObject.registerSubclass()
+            if sender as! NSObject == confirmButton {
+                schObj.confirmedWith = self.confirmedWith.text!
+            }
             schObj.customerName = customerName!
             schObj.customerAddress = addressLabel.text!.stringByReplacingOccurrencesOfString("\n", withString: " ")
             schObj.customerPhone = phoneNumberTextField.text!

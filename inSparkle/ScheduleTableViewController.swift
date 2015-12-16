@@ -129,11 +129,6 @@ class ScheduleTableViewController: UITableViewController {
         if editingStyle == .Delete {
             var reason : String?
             let alert = UIAlertController(title: "Reason for Cancelation", message: "Please enter a reason for cancelation", preferredStyle: .Alert)
-            alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
-                textField.placeholder = "reason"
-                textField.keyboardType = .Default
-                reason = textField.text!
-            })
             let confirmCancel = UIAlertAction(title: "Confirm Cancel", style: .Destructive, handler: { (action) -> Void in
                 var deletingObject : ScheduleObject!
                 deletingObject = self.scheduleArray.objectAtIndex(indexPath.row)
@@ -147,6 +142,11 @@ class ScheduleTableViewController: UITableViewController {
 
             })
             let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
+                textField.placeholder = "reason"
+                textField.keyboardType = .Default
+                reason = textField.text!
+            })
             alert.addAction(confirmCancel)
             alert.addAction(cancelButton)
             self.presentViewController(alert, animated: true, completion: nil)

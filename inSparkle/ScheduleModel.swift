@@ -110,4 +110,9 @@ class ScheduleObject : PFObject, PFSubclassing {
         set { setObject(newValue!, forKey: "confirmedDate") }
     }
     
+    var confirmedWith : String? {
+        get { return objectForKey("confirmedWith") as? String }
+        set { setObject(newValue!, forKey: "confirmedWith") }
+    }
+    
 }
