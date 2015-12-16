@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import Parse
 
-class POCCustomerFilterTableViewController: UITableViewController {
+class POCCustomerFilterTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
     var filters = POCReportFilters.filter
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = "POC Report"
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStart", name: "NotifyPOCUpdateStartLabel", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateEnd", name: "NotifyPOCUpdateEndLabel", object: nil)
 
     }
     
@@ -22,5 +28,6 @@ class POCCustomerFilterTableViewController: UITableViewController {
             POCReportFilters.filter.append("allCustomers")
         }
     }
-
+    
+    
 }

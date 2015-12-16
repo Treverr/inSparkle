@@ -24,14 +24,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="All Customers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="57R-Vw-vZr">
-                                                    <rect key="frame" x="64" y="0.0" width="501" height="43"/>
+                                                    <rect key="frame" x="60" y="0.0" width="505" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="All Customers" id="sEG-C5-JbG">
-                                                    <rect key="frame" x="15" y="4" width="34" height="34"/>
+                                                    <rect key="frame" x="15" y="1" width="30" height="40"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -225,7 +225,7 @@
         <!--Run Report Final Table View Controller-->
         <scene sceneID="U9h-S3-ehD">
             <objects>
-                <tableViewController id="aR2-5H-LJ2" customClass="POCRunReportFinalTableViewController" sceneMemberID="viewController">
+                <tableViewController id="aR2-5H-LJ2" customClass="POCRunReportFinalTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Q0I-Fs-J8K">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,6 +295,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0X-Jq-qYz">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                                     <state key="normal" title="Run Report"/>
+                                                    <connections>
+                                                        <action selector="runReport:" destination="aR2-5H-LJ2" eventType="touchUpInside" id="gWM-Wh-TRv"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -313,6 +316,10 @@
                             <outlet property="delegate" destination="aR2-5H-LJ2" id="uqZ-ae-yO3"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="endDateLabel" destination="QWD-CC-Pd6" id="Giw-hA-Dxy"/>
+                        <outlet property="startDateLabel" destination="cak-4I-gLw" id="fxs-6w-shg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zOu-wY-1Ai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -336,11 +343,47 @@
             </objects>
             <point key="canvasLocation" x="472" y="444"/>
         </scene>
+        <!--Cal Picker View Controller-->
+        <scene sceneID="r9m-BW-IlG">
+            <objects>
+                <viewController storyboardIdentifier="CalendarDatePicker" id="tIl-Vy-l9f" customClass="POCCalPickerViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DS8-m0-eAh"/>
+                        <viewControllerLayoutGuide type="bottom" id="CRB-L7-jtN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LOf-ps-Xv8">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3FH-Ne-1da" customClass="CalendarView" customModule="CalendarView">
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3FH-Ne-1da" firstAttribute="bottom" secondItem="CRB-L7-jtN" secondAttribute="top" id="K18-gI-KcU"/>
+                            <constraint firstItem="3FH-Ne-1da" firstAttribute="top" secondItem="LOf-ps-Xv8" secondAttribute="top" id="cSb-YS-pmS"/>
+                            <constraint firstItem="3FH-Ne-1da" firstAttribute="leading" secondItem="LOf-ps-Xv8" secondAttribute="leading" id="x6M-A5-w9v"/>
+                            <constraint firstAttribute="trailing" secondItem="3FH-Ne-1da" secondAttribute="trailing" id="yRU-Tl-Tcd"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="400"/>
+                    <connections>
+                        <outlet property="calendar" destination="3FH-Ne-1da" id="2zq-sf-6qN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q1P-Jy-tzg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4220" y="344"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Active State" width="34" height="34"/>
         <image name="All" width="34" height="34"/>
-        <image name="All Customers" width="34" height="34"/>
+        <image name="All Customers" width="30" height="40"/>
         <image name="Inactive State" width="34" height="34"/>
         <image name="Pool Closed" width="34" height="25"/>
         <image name="Pool Open" width="34" height="25"/>

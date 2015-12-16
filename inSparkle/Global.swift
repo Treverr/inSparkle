@@ -117,7 +117,20 @@ class POCReportFilters : NSObject {
     
     static var filter = [String]()
     
+    static var startDate : NSDate?
+    
+    static var endDate : NSDate?
+    
 }
+
+class POCRunReport : NSObject {
+    
+    static var selectedCell : String!
+    
+    static var selectedDate : String!
+    
+}
+
 
 class GlobalFunctions {
     

@@ -35,6 +35,7 @@ class POCActiveInactiveAllFilterTableViewController: UITableViewController {
         if segue.identifier == "active" {
             POCReportFilters.filter.append("active")
         }
+        
         print(POCReportFilters.filter)
     }
 
