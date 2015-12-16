@@ -109,10 +109,18 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         var objectsToDelete = [NSIndexPath]()
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            if tableView.indexPathsForSelectedRows != nil {
             objectsToDelete = tableView.indexPathsForSelectedRows!
             self.objects.removeObjectAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths(objectsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
-            
+                deleteParseObject()
+            } else {
+                objectsToDelete.append(indexPath)
+                objsToDelete.append(self.objects[indexPath.row] as! PFObject)
+                self.objects.removeObjectAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths(objectsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
+                deleteParseObject()
+            }
         }
     }
     

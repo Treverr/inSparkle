@@ -104,7 +104,7 @@ class AddNewScheduleObjects : NSObject {
     
     static var isOpening : Bool!
     
-    static var scheduledObject : ScheduleObject!
+    static var scheduledObject : ScheduleObject?
 }
 
 class ConfirmAppointData : NSObject {
@@ -112,6 +112,25 @@ class ConfirmAppointData : NSObject {
     static var date : String!
     
 }
+
+class POCReportFilters : NSObject {
+    
+    static var filter = [String]()
+    
+    static var startDate : NSDate?
+    
+    static var endDate : NSDate?
+    
+}
+
+class POCRunReport : NSObject {
+    
+    static var selectedCell : String!
+    
+    static var selectedDate : String!
+    
+}
+
 
 class GlobalFunctions {
     

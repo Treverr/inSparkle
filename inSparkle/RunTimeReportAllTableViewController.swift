@@ -1,4 +1,4 @@
-//
+ //
 //  RunTimeReportAllTableViewController.swift
 //  inSparkle
 //
@@ -24,6 +24,12 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStartDateLabel", name: "updateStart", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateEndDateLabel", name: "updateEnd", object: nil)
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "updateStart", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "updateEnd", object: nil)
         
     }
     
@@ -213,8 +219,7 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
     func saveCSV(whatToSave : NSMutableString) {
         let x = self.view.center
         let docs = NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true)[0] as! String
-        let pathDate = docs.stringByAppendingString("\(NSDate())")
-        let writePath = pathDate.stringByAppendingString("-TimeCardReport.csv")
+        let writePath = docs.stringByAppendingString("TimeCardReport.csv")
         do {
             try whatToSave.writeToFile(writePath, atomically: true, encoding: NSUTF8StringEncoding)
             print("Wrote File")
@@ -225,9 +230,6 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
         docController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: writePath))
         docController!.delegate = self
         docController!.presentPreviewAnimated(true)
-        //        docController!.UTI = "public.comma-separated-values-text"
-        //        docController!.name = "TimeCardReport"
-        //        docController!.presentOptionsMenuFromRect(CGRect(x: x.x, y: x.y, width: 0, height: 0), inView: self.view, animated: true)
     }
     
     func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
