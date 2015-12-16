@@ -109,7 +109,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="TimeCardReport" id="lXI-RE-WpQ">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Clock" id="lXI-RE-WpQ">
                                                     <rect key="frame" x="15" y="6" width="34" height="34"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -241,9 +241,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Clock" width="34" height="34"/>
         <image name="POCReport" width="34" height="34"/>
         <image name="Report" width="30" height="40"/>
         <image name="TimeCard" width="34" height="34"/>
-        <image name="TimeCardReport" width="34" height="34"/>
     </resources>
 </document>
