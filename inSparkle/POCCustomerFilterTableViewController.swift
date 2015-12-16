@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class POCCustomerFilterTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
+class POCCustomerFilterTableViewController: UITableViewController {
     
     var filters = POCReportFilters.filter
 
@@ -18,8 +18,7 @@ class POCCustomerFilterTableViewController: UITableViewController, UIPopoverPres
         
         self.navigationItem.title = "POC Report"
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStart", name: "NotifyPOCUpdateStartLabel", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateEnd", name: "NotifyPOCUpdateEndLabel", object: nil)
+        setupNavigationbar()
 
     }
     
@@ -29,5 +28,10 @@ class POCCustomerFilterTableViewController: UITableViewController, UIPopoverPres
         }
     }
     
-    
+    func setupNavigationbar()  {
+        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+    }
 }

@@ -23,35 +23,9 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var nc = NSNotificationCenter.defaultCenter()
-        nc.addObserver(self, selector: "updateStartLabel", name: "NotifyPOCUpdateStartLabel", object: nil)
-        nc.addObserver(self, selector: "updateEndLabel", name: "NotifyPOCUpdateEndLabel", object: nil)
-        
-        repeat {
-        theFilter = POCReportFilters.filter
-        
-        if theFilter[0] != "allCustomers" {
-            // Filtering by customer
-        }
-        
-        if theFilter[1] == "Opening" {
-            openCloseFilter = "Opening"
-        }
-        
-        if theFilter[1] == "Closing" {
-            openCloseFilter = "Opening"
-        }
-        
-        if theFilter[2] == "active" {
-            isActiveFilter = true
-        }
-        
-        if theFilter[2] == "inactive" {
-            isActiveFilter = false
-        }
-            
-        } while POCReportFilters.filter.count > 3
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStartDateLabel", name: "NotifyPOCUpdateStartLabel", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateEndDateLabel", name: "NotifyPOCUpdateEndLabel", object: nil)
 
     }
 
@@ -77,7 +51,7 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         let storyboard = UIStoryboard(name: "POCReport", bundle: nil)
         let x = self.view.center
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("CalendarDatePicker")
+        let vc = storyboard.instantiateViewControllerWithIdentifier("CalPicker")
         vc.modalPresentationStyle = UIModalPresentationStyle.Popover
         let popover : UIPopoverPresentationController = vc.popoverPresentationController!
         popover.delegate = self
@@ -89,6 +63,28 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
     }
 
     @IBAction func runReport(sender: AnyObject) {
+        
+        theFilter = POCReportFilters.filter
+        
+        if theFilter[0] != "allCustomers" {
+            // Filtering by customer
+        }
+        
+        if theFilter[1] == "Opening" {
+            openCloseFilter = "Opening"
+        }
+        
+        if theFilter[1] == "Closing" {
+            openCloseFilter = "Opening"
+        }
+        
+        if theFilter[2] == "active" {
+            isActiveFilter = true
+        }
+        
+        if theFilter[2] == "inactive" {
+            isActiveFilter = false
+        }
         
         let overlay : UIView = UIView(frame: CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height))
         overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
@@ -134,9 +130,10 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                     let object = appt as! ScheduleObject
                     let accountNumber = "TODO"
                     let custName = object.customerName
-                    let custAddress = object.customerAddress
-                    let custPhone = object.customerPhone
-                    let weekSch = GlobalFunctions().stringFromDateShortStyle(object.weekStart) + GlobalFunctions().stringFromDateShortStyle(object.weekEnd)
+                    let custAddress = object.customerAddress.stringByReplacingOccurrencesOfString(",", withString: " ")
+                    print(object.customerAddress)
+                    let custPhone = object.customerPhone.stringByReplacingOccurrencesOfString("-", withString: "")
+                    let weekSch = GlobalFunctions().stringFromDateShortStyle(object.weekStart) + " - " + GlobalFunctions().stringFromDateShortStyle(object.weekEnd)
                     var dateConfirmed : String?
                     if object.confirmedDate != nil {
                         dateConfirmed = GlobalFunctions().stringFromDateShortStyle(object.confirmedDate!)
@@ -148,7 +145,13 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                     let itemLoc = object.locEssentials
                     let chem = object.bringChem
                     let trash = object.takeTrash
-                    let notes = object.notes
+                    var notes : String?
+                    if object.notes == nil {
+                        notes = ""
+                    } else {
+                        notes = object.notes?.stringByReplacingOccurrencesOfString("\n", withString: " ")
+                    }
+                    
                     var confirmedBy : String?
                     if object.confrimedBy != nil {
                         confirmedBy = object.confrimedBy!
@@ -156,7 +159,8 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                         confirmedBy = ""
                     }
                     
-                    self.csvPOC = self.csvPOC + "\(accountNumber),\(custName),\(weekSch),\(custAddress),\(custPhone),\(dateConfirmed),\(confirmedWith),\(typeOfWC),\(itemLoc),\(chem),\(trash),\(notes),\(confirmedBy)"
+                    self.csvPOC = self.csvPOC + "\n\(accountNumber),\(custName),\(weekSch),\(custAddress),\(custPhone),\(dateConfirmed!),\(confirmedWith),\(typeOfWC),\(itemLoc),\(chem),\(trash),\(notes!),\(confirmedBy!)"
+                    print(self.csvPOC)
                     self.returnedPOC = self.returnedPOC + 1
                 }
                 
@@ -178,14 +182,20 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         textToShare.appendFormat("%@\r", self.csvPOC)
         
         let data = textToShare.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:  false)
+        saveCSV(textToShare)
     }
     
     var docController : UIDocumentInteractionController?
     
     func saveCSV(save : NSMutableString) {
-        let docs = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
-        let pathDate = docs.stringByAppendingString("\(NSDate())")
-        let writePath = pathDate.stringByAppendingString("-POCReport.csv")
+        let docs = NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true)[0]
+        let writePath = docs.stringByAppendingString("POCReport.csv")
+        
+        do {
+            try save.writeToFile(writePath, atomically: true, encoding: NSUTF8StringEncoding)
+            print("Wrote File")
+            print(writePath)
+        } catch { }
         
         docController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: writePath))
         docController!.delegate = self
@@ -201,6 +211,12 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+        var viewController: UIViewController = UIViewController()
+        self.presentViewController(viewController, animated: true, completion: nil)
+        return viewController
+    }
+    
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.selectionStyle = .None
     }
@@ -210,11 +226,17 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         return UIModalPresentationStyle.None
     }
     
-    func updateStartLabel() {
+    let global = GlobalFunctions()
+    
+    func updateStartDateLabel() {
         
+        startDateLabel.text =  POCRunReport.selectedDate
+
     }
     
-    func updateEndLabel() {
+    func updateEndDateLabel() {
+        
+        endDateLabel.text =  POCRunReport.selectedDate
         
     }
     

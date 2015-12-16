@@ -386,7 +386,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             
             ScheduleObject.registerSubclass()
             schObj.customerName = customerName!
-            schObj.customerAddress = addressLabel.text!
+            schObj.customerAddress = addressLabel.text!.stringByReplacingOccurrencesOfString("\n", withString: " ")
             schObj.customerPhone = phoneNumberTextField.text!
             schObj.weekStart = weekStartDate!
             schObj.weekEnd = weekEndDate!

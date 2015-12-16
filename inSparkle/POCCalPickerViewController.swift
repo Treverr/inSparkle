@@ -12,7 +12,8 @@ import SwiftMoment
 
 class POCCalPickerViewController: UIViewController {
     
-    @IBOutlet var calendar : CalendarView!
+    @IBOutlet var calendar: CalendarView!
+
     
     var date : Moment! {
         didSet {
@@ -52,7 +53,9 @@ extension POCCalPickerViewController : CalendarViewDelegate {
     }
     
     func calendarDidPageToDate(date: Moment) {
-        // TODO
+
+        title = date.format("MMMM yyyy")
+    
     }
     
 }
