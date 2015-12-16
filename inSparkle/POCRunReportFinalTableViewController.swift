@@ -132,7 +132,7 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                     let custName = object.customerName
                     let custAddress = object.customerAddress.stringByReplacingOccurrencesOfString(",", withString: " ")
                     print(object.customerAddress)
-                    let custPhone = object.customerPhone.stringByReplacingOccurrencesOfString("-", withString: "")
+                    let custPhone = object.customerPhone
                     let weekSch = GlobalFunctions().stringFromDateShortStyle(object.weekStart) + " - " + GlobalFunctions().stringFromDateShortStyle(object.weekEnd)
                     var dateConfirmed : String?
                     if object.confirmedDate != nil {

@@ -155,6 +155,7 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
             let selectedCx = self.customerDataArray[indexPath.row - 1]
             globalSelectedCx = selectedCx
             
+            
         }
     }
     

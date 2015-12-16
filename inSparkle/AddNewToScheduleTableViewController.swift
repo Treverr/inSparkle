@@ -406,14 +406,20 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             
             ScheduleObject.registerSubclass()
             if sender as! NSObject == confirmButton {
-                schObj.confirmedWith = self.confirmedWith.text!
+                schObj.confirmedWith = self.confirmedWith.text!.capitalizedString
+                schObj.confirmedDate = NSDate()
             }
-            schObj.customerName = customerName!
-            schObj.customerAddress = addressLabel.text!.stringByReplacingOccurrencesOfString("\n", withString: " ")
+            schObj.customerName = customerName!.capitalizedString
+            schObj.customerAddress = addressLabel.text!.stringByReplacingOccurrencesOfString("\n", withString: " ").capitalizedString
             schObj.customerPhone = phoneNumberTextField.text!
             schObj.weekStart = weekStartDate!
             schObj.weekEnd = weekEndDate!
             schObj.isActive = true
+            if self.accountNumber != nil {
+                schObj.accountNumber = self.accountNumber
+            } else {
+                schObj.accountNumber = ""
+            }
             if AddNewScheduleObjects.isOpening != nil {
                 if AddNewScheduleObjects.isOpening == true {
                     schObj.type = "Opening"
@@ -437,6 +443,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
             schObj.saveEventually { (success: Bool, error : NSError?) -> Void in
                 if error == nil {
+                    AddNewScheduleObjects.scheduledObject = nil
+                    AddNewScheduleObjects.isOpening = nil
                     self.dismissViewControllerAnimated(true, completion: nil)
                     NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
                     AddNewScheduleObjects.isOpening = nil
@@ -450,6 +458,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     }
     
     @IBAction func cancelButton(sender: AnyObject) {
+        AddNewScheduleObjects.scheduledObject = nil
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -687,6 +696,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     }
     
     @IBOutlet var notesTextView: UITextView!
+    var accountNumber : String?
     
     @IBAction func updateFields(seg : UIStoryboardSegue) {
         
@@ -706,6 +716,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             customerNameTextField.text = selectedCx.firstName!.capitalizedString + " " + selectedCx.lastName!.capitalizedString
             addressLabel.text = "\(selectedCx.addressStreet) \n \(selectedCx.addressCity), \(selectedCx.addressState) \(selectedCx.ZIP)"
             phoneNumberTextField.text = selectedCx.phoneNumber
+            self.accountNumber = selectedCx.accountNumber
         }
     }
     
@@ -740,10 +751,5 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             dateClosingPicker.reloadAllComponents()
             
         }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        AddNewScheduleObjects.scheduledObject = nil
-        AddNewScheduleObjects.isOpening = nil
     }
 }
