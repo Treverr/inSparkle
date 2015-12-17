@@ -212,6 +212,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                     let weekEnd = weekList[0].valueForKey("weekEnd") as! NSDate
                     weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekEnd)
                     weekEndingLabel.textColor = UIColor.blackColor()
+                    let theweeeeek = weekList[0]
+                    self.selectedWeekObj = theweeeeek as! WeekList
                 } else {
                     let theSchedule = AddNewScheduleObjects.scheduledObject
                     weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyle(theSchedule!.weekStart)
@@ -271,6 +273,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         return 1
     }
     
+    var selectedWeekObj = WeekList()
+    
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView == weekPicker {
@@ -291,6 +295,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             weekStartingLabel.textColor = UIColor.blackColor()
             weekEndingLabel.text = weekEndString
             weekEndingLabel.textColor = UIColor.blackColor()
+            let theObj = self.weekList[row] as! WeekList
+            selectedWeekObj = theObj
         }
         
         if pickerView == typeOfWinterCoverPicker {
@@ -414,6 +420,11 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             schObj.customerPhone = phoneNumberTextField.text!
             schObj.weekStart = weekStartDate!
             schObj.weekEnd = weekEndDate!
+            schObj.weekObj = self.selectedWeekObj
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                GlobalFunctions().updateWeeks()
+            }
             schObj.isActive = true
             if self.accountNumber != nil {
                 schObj.accountNumber = self.accountNumber
