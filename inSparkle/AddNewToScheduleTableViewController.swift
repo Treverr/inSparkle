@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import PhoneNumberKit
 
-class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var weekPicker: UIPickerView!
     @IBOutlet weak var weekStartingLabel: UILabel!
@@ -45,6 +45,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                 self.navigationItem.title = "Schedule Closing"
             }
         }
+        
+        locationEssentialItems.delegate = self
+        notesTextView.delegate = self
         
         if AddNewScheduleObjects.scheduledObject != nil {
             let object = AddNewScheduleObjects.scheduledObject!
@@ -255,7 +258,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
             whatToReturn = typeOfWinterCover[row]
         }
-    
+        
         if pickerView == dateClosingPicker {
             if pickerView.hidden == false {
                 whatToReturn = dateWeekRange[row]
@@ -312,7 +315,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         if pickerView == dateClosingPicker {
-        selectClosingDate.text! = dateWeekRange[row]
+            selectClosingDate.text! = dateWeekRange[row]
             selectClosingDate!.textColor = UIColor.blackColor()
         }
         
@@ -356,6 +359,29 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
         }
         return true
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        if theWeekPickerHidden == false || theCoverTypePickerHidden == false {
+            weekPicker.hidden = true
+            theWeekPickerHidden = true
+            typeOfWinterCoverPicker.hidden = true
+            theCoverTypePickerHidden = true
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
+        return true
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if theWeekPickerHidden == false || theCoverTypePickerHidden == false {
+            weekPicker.hidden = true
+            theWeekPickerHidden = true
+            typeOfWinterCoverPicker.hidden = true
+            theCoverTypePickerHidden = true
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
     }
     
     var confirmedWith : UITextField!
@@ -440,8 +466,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
             schObj.coverType = coverType!
             if AddNewScheduleObjects.isOpening != nil {
-            if AddNewScheduleObjects.isOpening == false {
-                schObj.aquaDoor = aquadoor
+                if AddNewScheduleObjects.isOpening == false {
+                    schObj.aquaDoor = aquadoor
                 }
             }
             schObj.locEssentials = locationOfEss
