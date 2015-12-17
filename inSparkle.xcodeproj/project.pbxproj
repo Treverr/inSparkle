@@ -10,6 +10,7 @@
 		7152D5A8CCD5E65BA2403309 /* Pods_inSparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411847EFD392F5F727796B8A /* Pods_inSparkle.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */; };
 		C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AC6411BFD85BA00E09B22 /* SOIModel.swift */; };
+		C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923D5F91C231A9100A32978 /* WeekList.swift */; };
 		C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */; };
 		C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338D831C1E306C00DC09BE /* CloudCode.swift */; };
 		C94367061BF719E10066D155 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94367051BF719E10066D155 /* Colors.swift */; };
@@ -117,6 +118,7 @@
 		C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPopViewController.swift; sourceTree = "<group>"; };
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
 		C91AC6411BFD85BA00E09B22 /* SOIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOIModel.swift; sourceTree = "<group>"; };
+		C923D5F91C231A9100A32978 /* WeekList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekList.swift; sourceTree = "<group>"; };
 		C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePunchCalcObject.swift; sourceTree = "<group>"; };
 		C9338D831C1E306C00DC09BE /* CloudCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCode.swift; sourceTree = "<group>"; };
 		C94367051BF719E10066D155 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */,
 				C94367051BF719E10066D155 /* Colors.swift */,
 				C91AC6411BFD85BA00E09B22 /* SOIModel.swift */,
+				C923D5F91C231A9100A32978 /* WeekList.swift */,
 				C95990E31C10F8DD00F6873E /* ScheduleModel.swift */,
 				C96EF7F51C13F2E700C4D2C1 /* TimeClockPunchObj.swift */,
 				C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */,
@@ -782,6 +785,7 @@
 				C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */,
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
+				C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */,
 				C94367061BF719E10066D155 /* Colors.swift in Sources */,
 				C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */,
 				C9C8E1DF1C1FCE9A0056D789 /* POCOpenCloseTableViewController.swift in Sources */,
