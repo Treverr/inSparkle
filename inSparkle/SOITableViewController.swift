@@ -152,7 +152,9 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         
         for obj in objsToDelete {
             obj["isActive"] = false
-            obj.saveInBackground()
+            do {
+                try obj.save()
+            } catch { }
         }
         self.objects.removeAllObjects()
         getParseItems()

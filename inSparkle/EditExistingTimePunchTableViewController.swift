@@ -404,27 +404,19 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
                 }
             }
             
+            if inTimeLabel.text != "N/A" {
+                let inDate = formatter.dateFromString(inTimeLabel.text!)!
+                let newPunchIn = TimeClockPunchObj()
+                newPunchIn.employee = theEmp
+                newPunchIn.timePunched = inDate
+                newPunchIn.punchOutIn = "in"
+                newPunchIn.saveInBackground()
+                NSNotificationCenter.defaultCenter().postNotificationName("NotifyEditTableViewToRefresh", object: nil)
+                
+            }
+            
             
             if self.theTimeObject != nil {
-                //                if inTimeLabel.text != "N/A" {
-                //                    let inDate = formatter.dateFromString(inTimeLabel.text!)!
-                //                    let newPunchIn = TimeClockPunchObj()
-                //                    newPunchIn.employee = theEmp
-                //                    newPunchIn.timePunched = inDate
-                //                    newPunchIn.punchOutIn = "in"
-                //                    newPunchIn.saveInBackground()
-                //                    NSNotificationCenter.defaultCenter().postNotificationName("NotifyEditTableViewToRefresh", object: nil)
-                //
-                //                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-                //                    dispatch_after(delayTime, dispatch_get_main_queue()) {
-                //                        EditTimePunchesDatePicker.dateToPass = nil
-                //                        self.dismissViewControllerAnimated(true, completion: nil)
-                //                        EditPunch.inTime = nil
-                //                        EditPunch.outTime = nil
-                //                        EditPunch.hours = nil
-                //                    }
-                //
-                //                }
                 if outTimeLabel.text != "N/A" {
                     if inTimeLabel.text == "N/A" {
                         let alert = UIAlertController(title: "Update In", message: "You should never add just an OUT punch, please adjust an exisitng IN punch.", preferredStyle: .Alert)
