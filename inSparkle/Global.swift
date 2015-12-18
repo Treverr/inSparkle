@@ -221,8 +221,17 @@ class GlobalFunctions {
             }
         })
     }
-
-
+    
+    func isMorning(date: NSDate) -> Bool {
+        let date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let startMorning = calendar.dateBySettingHour(6, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions(rawValue: 0))
+        let endMorning =  calendar.dateBySettingHour(10, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions(rawValue: 0))
+        if startMorning!.compare(date) == .OrderedAscending && endMorning!.compare(date) == .OrderedDescending {
+            return true
+        }
+        return false
+    }
 }
 
 extension NSDate {

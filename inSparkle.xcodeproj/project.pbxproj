@@ -55,7 +55,6 @@
 		C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */; };
 		C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */; };
 		C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A781221BF944740013D388 /* TabBarViewController.swift */; };
-		C9ABB5411C23453E00902084 /* ToSparkle.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C9ABB5401C23453E00902084 /* ToSparkle.gpx */; };
 		C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */; };
 		C9B5B4511BF6773200650FC4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B44F1BF6773200650FC4 /* Fabric.framework */; };
 		C9B5B4521BF6773200650FC4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B4501BF6773200650FC4 /* Crashlytics.framework */; };
@@ -85,6 +84,7 @@
 		C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */; };
 		C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */; };
 		C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */; };
+		C9E2A2B91C235D8400DBA851 /* ToSparkle.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */; };
 		C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */; };
 		C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */; };
 		C9F0FF931C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */; };
@@ -173,7 +173,6 @@
 		C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOITableViewController.swift; sourceTree = "<group>"; };
 		C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewToScheduleTableViewController.swift; sourceTree = "<group>"; };
 		C9A781221BF944740013D388 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		C9ABB5401C23453E00902084 /* ToSparkle.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToSparkle.gpx; sourceTree = "<group>"; };
 		C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TimeClockPunch.wav; sourceTree = "<group>"; };
 		C9B5B44F1BF6773200650FC4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		C9B5B4501BF6773200650FC4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
@@ -203,6 +202,7 @@
 		C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewController.swift; sourceTree = "<group>"; };
 		C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewCell.swift; sourceTree = "<group>"; };
 		C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerData.swift; sourceTree = "<group>"; };
+		C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToSparkle.gpx; sourceTree = "<group>"; };
 		C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Onboarding.storyboard; path = Onboarding/Onboarding.storyboard; sourceTree = "<group>"; };
 		C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Onboarding/LoginViewController.swift; sourceTree = "<group>"; };
 		C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCardManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 		C94367041BF719D50066D155 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				C9ABB5401C23453E00902084 /* ToSparkle.gpx */,
+				C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */,
 				C96F79AD1BFC44ED00C13615 /* inSparkle-Bridging-Header.h */,
 				C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */,
 				C94367051BF719E10066D155 /* Colors.swift */,
@@ -693,7 +693,7 @@
 				C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */,
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
 				C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */,
-				C9ABB5411C23453E00902084 /* ToSparkle.gpx in Resources */,
+				C9E2A2B91C235D8400DBA851 /* ToSparkle.gpx in Resources */,
 				C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */,
 				C96EF7FE1C14CDDD00C4D2C1 /* TimeClock.storyboard in Resources */,
 				C972FF761C1A1ACF00D34EB2 /* Schedule.storyboard in Resources */,
