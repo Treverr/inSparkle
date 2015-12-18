@@ -47,6 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
         self.locationManager.startMonitoringForRegion(regionWithGeotification())
+        let currentLoc = locationManager.location
+        print(currentLoc)
+        
         
         return true
     }
@@ -65,6 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 let notification = UILocalNotification()
                 notification.alertBody = "Don't forget to punch in!"
                 notification.regionTriggersOnce = false
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
             }
     }
     
@@ -79,8 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func regionWithGeotification() -> CLCircularRegion {
         // 1
-        let sparkle = CLLocationCoordinate2DMake(39.4904392, -87.3803517)
-        let region = CLCircularRegion(center: sparkle, radius: 50, identifier: "Sparkle")
+        let sparkle = CLLocationCoordinate2DMake(39.4931129, -87.3790228)
+        let region = CLCircularRegion(center: sparkle, radius: 200, identifier: "Sparkle")
         // 2
         region.notifyOnEntry = region.notifyOnEntry
         region.notifyOnExit = !region.notifyOnEntry
