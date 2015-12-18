@@ -236,11 +236,16 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
     var needsCalc : Bool = false
     var subLunch : Bool = false
     
-    @IBAction func updateButton(sender: AnyObject) {
-        
+    @IBAction func startUpDate(sender : AnyObject) {
         if inTimeLabel.text != "N/A" && outTimeLabel.text != "N/A" {
             needsCalc = true
+            if needsCalc == true {
+                didTakeLunch()
+            }
         }
+    }
+    
+    @IBAction func updateButton(sender: AnyObject) {
         
         if (needsCalc) {
             let formatter = NSDateFormatter()
@@ -250,11 +255,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
             
             if outDate.timeIntervalSinceDate(inDate) > 0 {
                 var minutes = outDate.minutesFrom(inDate)
-                didTakeLunch()
-                if (subLunch) {
-                    minutes = minutes - 20
-                }
-                print(minutes)
+                var subLunch : Bool?
                 let hours = String(format: "%.2f", (Double(minutes) / 60.00))
                 
                 if self.theTimeObject == nil {
@@ -286,6 +287,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
                                         dispatch_after(delayTime, dispatch_get_main_queue(), { () -> Void in
                                             newPunchIn.relatedPunch = newPunchOut
                                             newPunchIn.saveInBackground()
+                                            self.dismissViewControllerAnimated(true, completion: nil)
                                         })
                                     }
                                 })
@@ -436,11 +438,16 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
     }
     
     func didTakeLunch() {
+        var returns : Bool?
         let alert = UIAlertController(title: "Subtract Lunch?", message: nil, preferredStyle: .Alert)
         let yesButton = UIAlertAction(title: "Yes", style: .Default) { (action) -> Void in
             self.subLunch = true
+            self.updateButton(self)
         }
-        let noButton = UIAlertAction(title: "No", style: .Default, handler: nil)
+        let noButton = UIAlertAction(title: "No", style: .Default){ (action) -> Void in
+            self.subLunch = false
+            self.updateButton(self)
+        }
         
         alert.addAction(yesButton)
         alert.addAction(noButton)
@@ -456,5 +463,14 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        EditPunch.inTime = nil
+        EditPunch.outTime = nil
+        EditPunch.hours = nil
+        EditPunch.timeObj = nil
+        EditTimePunchesDatePicker.dateToPass = nil
+        EditTimePunchesDatePicker.sender = nil
     }
 }

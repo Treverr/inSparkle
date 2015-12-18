@@ -74,7 +74,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "472146076.736103"
+                  timestampString = "472154657.482686"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "357"
@@ -89,7 +89,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "472146076.736278"
+                  timestampString = "472154657.482835"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "357"
@@ -104,7 +104,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "472146076.736401"
+                  timestampString = "472154657.482966"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "357"
@@ -201,11 +201,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
-            timestampString = "472077699.768035"
+            timestampString = "472154549.64364"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "updateButton(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -217,45 +217,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
-            timestampString = "472078024.570062"
+            timestampString = "472154831.342407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "updateButton(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.EditExistingTimePunchTableViewController.updateButton (inSparkle.EditExistingTimePunchTableViewController)(Swift.AnyObject) -&gt; ()"
-                  moduleName = "inSparkle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EditExistingTimePunchTableViewController.swift"
-                  timestampString = "472146076.74391"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "332"
-                  endingLineNumber = "332"
-                  offsetFromSymbolStart = "5196">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.EditExistingTimePunchTableViewController.updateButton (inSparkle.EditExistingTimePunchTableViewController)(Swift.AnyObject) -&gt; ()"
-                  moduleName = "inSparkle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EditExistingTimePunchTableViewController.swift"
-                  timestampString = "472146076.744062"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "332"
-                  endingLineNumber = "332"
-                  offsetFromSymbolStart = "5212">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
+            timestampString = "472154549.64364"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "updateButton(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
+            timestampString = "472154549.64364"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
+            landmarkName = "updateButton(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
+            timestampString = "472154831.342407"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
+            landmarkName = "updateButton(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
+            timestampString = "472154831.342407"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
+            landmarkName = "updateButton(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
