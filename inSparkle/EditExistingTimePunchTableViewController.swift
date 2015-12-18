@@ -255,7 +255,9 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
             
             if outDate.timeIntervalSinceDate(inDate) > 0 {
                 var minutes = outDate.minutesFrom(inDate)
-                var subLunch : Bool?
+                if self.subLunch == true {
+                    minutes = minutes - 20
+                }
                 let hours = String(format: "%.2f", (Double(minutes) / 60.00))
                 
                 if self.theTimeObject == nil {
