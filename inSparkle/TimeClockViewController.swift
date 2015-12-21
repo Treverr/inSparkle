@@ -212,8 +212,7 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
       
             let theLastPunchDate = self.lastPunch?.valueForKey("timePunched") as! NSDate
             var theMinutes = NSDate().minutesFrom(theLastPunchDate)
-            print(lunchResult!)
-            if (lunchResult!) {
+            if theMinutes > 240 {
                 theMinutes = theMinutes - 20
             }
             print(theMinutes)
@@ -254,20 +253,10 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
     func didTakeLunch(theEmployee : Employee, tcpo : TimeClockPunchObj) {
         var result : Bool = false
         
-        let alert = UIAlertController(title: "Lunch?", message: "Did you take a lunch today?", preferredStyle: .Alert)
-        let yesButton = UIAlertAction(title: "Yes", style: .Default) { (action) -> Void in
-            self.lunchResult = true
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.calculateTime(theEmployee as! Employee, thePunch: tcpo)
         }
-        
-        let noButton = UIAlertAction(title: "No", style: .Destructive) { (action) -> Void in
-            self.lunchResult = false
-            self.calculateTime(theEmployee as! Employee, thePunch: tcpo)
-        }
-        
-        alert.addAction(yesButton)
-        alert.addAction(noButton)
-        self.presentViewController(alert, animated: true, completion: nil)
         
     }
     

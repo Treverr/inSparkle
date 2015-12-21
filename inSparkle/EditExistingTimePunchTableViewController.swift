@@ -131,7 +131,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
         }
         if sender == outTimeLabel {
             if sender.text != "N/A" {
-                EditTimePunchesDatePicker.dateToPass = formatter.dateFromString(outTimeLabel.text!)
+                EditTimePunchesDatePicker.dateToPass = formatter.dateFromString(inTimeLabel.text!)
                 EditTimePunchesDatePicker.sender = sender
             } else {
                 EditTimePunchesDatePicker.dateToPass = NSDate()
@@ -239,9 +239,10 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
     @IBAction func startUpDate(sender : AnyObject) {
         if inTimeLabel.text != "N/A" && outTimeLabel.text != "N/A" {
             needsCalc = true
-            if needsCalc == true {
-                didTakeLunch()
-            }
+            updateButton(self)
+        } else {
+            needsCalc = false
+            updateButton(self)
         }
     }
     
@@ -255,7 +256,9 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
             
             if outDate.timeIntervalSinceDate(inDate) > 0 {
                 var minutes = outDate.minutesFrom(inDate)
-                var subLunch : Bool?
+                if minutes > 240 {
+                    minutes = minutes - 20
+                }
                 let hours = String(format: "%.2f", (Double(minutes) / 60.00))
                 
                 if self.theTimeObject == nil {
