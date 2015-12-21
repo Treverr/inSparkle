@@ -36,6 +36,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        if UIDevice.currentDevice().name == "Time Clock" {
+            let sb = UIStoryboard(name: "TimeClock", bundle: nil)
+            let vc = sb.instantiateViewControllerWithIdentifier("punch")
+            self.presentViewController(vc, animated: true, completion: nil)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
