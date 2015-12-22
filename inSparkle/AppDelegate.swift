@@ -41,15 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             print("Error")
         }
         
-        let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert, categories: nil)
+        let notificationSettings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        
-        locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
-        self.locationManager.startMonitoringForRegion(regionWithGeotification())
-        let currentLoc = locationManager.location
-        print(currentLoc)
-        
         
         return true
     }
@@ -60,39 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         TimePunchCalcObject.registerSubclass()
         CustomerData.registerSubclass()
         WeekList.registerSubclass()
-    }
-    
-    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        
-            if region.identifier == "Sparkle" {
-                let notification = UILocalNotification()
-                notification.alertBody = "Don't forget to punch in!"
-                notification.regionTriggersOnce = false
-                UIApplication.sharedApplication().scheduleLocalNotification(notification)
-            }
-    }
-    
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        if region.identifier == "Sparkle" {
-            let notification = UILocalNotification()
-            notification.alertBody = "Don't forget to punch out!"
-            notification.regionTriggersOnce = false
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        }
-    }
-    
-    func regionWithGeotification() -> CLCircularRegion {
-        // 1
-        let sparkle = CLLocationCoordinate2DMake(39.4931129, -87.3790228)
-        let region = CLCircularRegion(center: sparkle, radius: 200, identifier: "Sparkle")
-        // 2
-        region.notifyOnEntry = region.notifyOnEntry
-        region.notifyOnExit = !region.notifyOnEntry
-        return region
-    }
-    
-    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
-        print(error)
     }
     
     func applicationWillResignActive(application: UIApplication) {
