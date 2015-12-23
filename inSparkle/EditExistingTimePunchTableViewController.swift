@@ -122,7 +122,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
         
         if sender == inTimeLabel {
             if sender.text != "N/A" {
-                EditTimePunchesDatePicker.dateToPass = formatter.dateFromString(inTimeLabel.text!)
+                EditTimePunchesDatePicker.dateToPass = formatter.dateFromString(sender.text!)
                 EditTimePunchesDatePicker.sender = sender
             } else {
                 EditTimePunchesDatePicker.dateToPass = NSDate()
