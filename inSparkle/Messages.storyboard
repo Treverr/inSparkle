@@ -34,11 +34,13 @@
             </objects>
             <point key="canvasLocation" x="1202" y="576"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Messages-->
         <scene sceneID="3Rr-uf-heO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Pxf-Ea-f3j" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Messages" image="Messages Unfilled" selectedImage="Messages Filled" id="Oi5-Ct-BCh"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SH7-Um-n1J">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -53,4 +55,8 @@
             <point key="canvasLocation" x="390" y="576"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Messages Filled" width="25" height="25"/>
+        <image name="Messages Unfilled" width="25" height="25"/>
+    </resources>
 </document>

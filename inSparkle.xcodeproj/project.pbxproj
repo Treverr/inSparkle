@@ -280,6 +280,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C91BB36E1C2A6CF200132946 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Messages;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		C94367041BF719D50066D155 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,9 +412,9 @@
 		C99D3E411BF5BD3700D30F96 /* inSparkle */ = {
 			isa = PBXGroup;
 			children = (
-				C972FF711C19F9F100D34EB2 /* Messages */,
 				C90915641C183D8600FC7E54 /* inSparkle.entitlements */,
 				C9585F321C17588D008AB918 /* Admin */,
+				C972FF711C19F9F100D34EB2 /* Messages */,
 				C9585F231C16511A008AB918 /* Resource */,
 				C96EF7FF1C14CE1C00C4D2C1 /* Chemical Check */,
 				C96EF7FC1C14BFD800C4D2C1 /* TimeClock */,
@@ -502,6 +510,7 @@
 		C9CC66A41C0D0E6D0000EDE6 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				C91BB36E1C2A6CF200132946 /* Messages */,
 				C972FF741C1A1ACF00D34EB2 /* Schedule.storyboard */,
 				C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */,
 				C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */,
