@@ -11,6 +11,7 @@
 		C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */; };
 		C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AC6411BFD85BA00E09B22 /* SOIModel.swift */; };
 		C91BB3701C2A705F00132946 /* MessagesMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BB36F1C2A705F00132946 /* MessagesMainTableViewCell.swift */; };
+		C91BB3721C2A72B900132946 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */; };
 		C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923D5F91C231A9100A32978 /* WeekList.swift */; };
 		C928CF9E1C233BF000C83345 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928CF9D1C233BF000C83345 /* LocalNotifications.swift */; };
 		C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */; };
@@ -122,6 +123,7 @@
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
 		C91AC6411BFD85BA00E09B22 /* SOIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOIModel.swift; sourceTree = "<group>"; };
 		C91BB36F1C2A705F00132946 /* MessagesMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesMainTableViewCell.swift; sourceTree = "<group>"; };
+		C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		C923D5F91C231A9100A32978 /* WeekList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekList.swift; sourceTree = "<group>"; };
 		C928CF9D1C233BF000C83345 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePunchCalcObject.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				C972FF721C19FA0900D34EB2 /* Messages.storyboard */,
+				C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */,
 				C91BB36F1C2A705F00132946 /* MessagesMainTableViewCell.swift */,
 			);
 			name = Messages;
@@ -814,6 +817,7 @@
 				C96EF7F61C13F2E700C4D2C1 /* TimeClockPunchObj.swift in Sources */,
 				C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */,
 				C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */,
+				C91BB3721C2A72B900132946 /* MessagesTableViewController.swift in Sources */,
 				C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */,
 				C972FF6E1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift in Sources */,
 				C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */,
