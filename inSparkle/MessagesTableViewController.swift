@@ -30,7 +30,7 @@ class MessagesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("messageCell") as! MessagesMainTableViewCell
         
-        cell.configureCell("Trever Ewing", date: NSDate(), messageStatus: "Respond", unread: true)
+        cell.configureCell("Trever Ewing", date: NSDate(), messageStatus: "Responded", statusTime: NSDate(), unread: true)
         
         return cell
         

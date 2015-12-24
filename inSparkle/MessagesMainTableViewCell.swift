@@ -15,8 +15,9 @@ public class MessagesMainTableViewCell: UITableViewCell {
     @IBOutlet var customerName: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var statusOfMessageLabel: UILabel!
+    @IBOutlet var statusTimeLabel: UILabel!
     
-    public func configureCell(customerName_ : String, date : NSDate, messageStatus : String, unread : Bool) {
+    public func configureCell(customerName_ : String, date : NSDate, messageStatus : String, statusTime : NSDate, unread : Bool) {
         
         if !unread {
             unreadIndicator.hidden = true
@@ -31,6 +32,12 @@ public class MessagesMainTableViewCell: UITableViewCell {
         dateLabel.text! = formatter.stringFromDate(date)
         
         statusOfMessageLabel.text! = messageStatus
+        
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.dateStyle = .ShortStyle
+        timeFormatter.timeStyle = .ShortStyle
+        
+        statusTimeLabel.text! = timeFormatter.stringFromDate(statusTime)
         
     }
 
