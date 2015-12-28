@@ -48,8 +48,8 @@
                     <connections>
                         <segue destination="5vp-uZ-Cxg" kind="relationship" relationship="viewControllers" id="RNZ-Hh-sb7"/>
                         <segue destination="6QX-js-vdg" kind="relationship" relationship="viewControllers" id="Z2U-dK-FqC"/>
+                        <segue destination="Ev2-g2-idG" kind="relationship" relationship="viewControllers" id="wfW-KX-hcZ"/>
                         <segue destination="ZnD-Zf-9vi" kind="relationship" relationship="viewControllers" id="qBY-My-lnJ"/>
-                        <segue destination="Ev2-g2-idG" kind="show" id="cBR-Pu-YXj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tyh-LW-u1X" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,10 +181,12 @@
         <!--Messages-->
         <scene sceneID="za6-En-aHh">
             <objects>
-                <viewControllerPlaceholder storyboardName="Messages" id="Ev2-g2-idG" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Messages" id="Ev2-g2-idG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Messages" image="Messages Unfilled" selectedImage="Messages Filled" id="ydF-9P-kyo"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFI-Rt-GAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954.5" y="490"/>
+            <point key="canvasLocation" x="918.5" y="503"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lQy-Sn-Lqj">
@@ -255,6 +257,8 @@
     <resources>
         <image name="Administrator" width="22" height="22"/>
         <image name="Flash On" width="22" height="22"/>
+        <image name="Messages Filled" width="25" height="25"/>
+        <image name="Messages Unfilled" width="25" height="25"/>
         <image name="SOI" width="25" height="25"/>
         <image name="Swimming" width="25" height="25"/>
         <image name="Time Span" width="34" height="34"/>
