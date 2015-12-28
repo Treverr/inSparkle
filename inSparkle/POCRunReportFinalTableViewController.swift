@@ -121,14 +121,16 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
     func getSchedule(startDate: NSDate, endDate: NSDate, isActive : Bool?, customers : CustomerData?) {
 
         let query = ScheduleObject.query()
-        query?.whereKey("weekStart", greaterThan: startDate)
-        query?.whereKey("weekEnd", lessThan: endDate)
+        query?.whereKey("weekStart", greaterThanOrEqualTo: startDate)
+        print(startDate)
+        query?.whereKey("weekEnd", lessThanOrEqualTo: endDate)
+        print(endDate)
         expectedReturn = expectedReturn + (query?.countObjects(error))!
         query?.findObjectsInBackgroundWithBlock({ (appts : [PFObject]?, error : NSError?) -> Void in
             if error == nil {
                 for appt in appts! {
                     let object = appt as! ScheduleObject
-                    let accountNumber = "TODO"
+                    let accountNumber = object.accountNumber!
                     let custName = object.customerName
                     let custAddress = object.customerAddress.stringByReplacingOccurrencesOfString(",", withString: " ")
                     print(object.customerAddress)
