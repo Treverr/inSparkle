@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         TimePunchCalcObject.registerSubclass()
         CustomerData.registerSubclass()
         WeekList.registerSubclass()
+        Employee.registerSubclass()
     }
     
     func applicationWillResignActive(application: UIApplication) {

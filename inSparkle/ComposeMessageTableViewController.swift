@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ComposeMessageTableViewController: UITableViewController {
     
@@ -24,11 +25,20 @@ class ComposeMessageTableViewController: UITableViewController {
     var selectedEmployee : Employee?
     var formatter = NSDateFormatter()
     
+    override func viewWillAppear(animated: Bool) {
+        let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
+        print(employeeData)
+        employeeData.fetchIfNeededInBackgroundWithBlock { (employee : PFObject?, error : NSError?) -> Void in
+            if error == nil {
+                self.signedLabel.text = "Signed: " + employeeData.firstName + " " + employeeData.lastName
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recipientLabel.text = "Add Recipient"
+        self.recipientLabel.text = "Add Recipient"
         
         formatter.timeStyle = .ShortStyle
         formatter.dateStyle = .ShortStyle
@@ -53,13 +63,25 @@ class ComposeMessageTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.selectionStyle = .None
+    }
+    
     
     @IBAction func saveButton(sender: AnyObject) {
         
         if isNewMessage == true {
             let messObj = Messages()
             messObj.dateTimeMessage = NSDate()
-//            messObj.recipient
+            messObj.recipient = selectedEmployee!
+            messObj.messageFromName = nameLabel.text!
+            messObj.messageFromPhone = phoneLabel.text!
+            if (addressLabel.text?.isEmpty) == false {
+                messObj.messageFromAddress = addressLabel.text!
+            }
+            messObj.theMessage = messageTextView.text!
+            messObj.signed = PFUser.currentUser()!
+            
             
         }
     }
