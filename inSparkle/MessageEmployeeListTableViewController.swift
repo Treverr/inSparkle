@@ -52,4 +52,17 @@ class MessageEmployeeListTableViewController: UITableViewController {
             }
         })
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let indexPath = self.tableView.indexPathForSelectedRow
+        
+        let selectedEmployee = employees[indexPath!.row]
+        
+        let vc = segue.destinationViewController as! ComposeMessageTableViewController
+        
+        vc.selectedEmployee = selectedEmployee
+        
+    }
+    
 }

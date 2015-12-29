@@ -133,21 +133,37 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="xGu-9d-QDY" style="IBUITableViewCellStyleDefault" id="LtI-tm-AYJ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LtI-tm-AYJ">
                                         <rect key="frame" x="0.0" y="143" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LtI-tm-AYJ" id="NLw-P5-slW">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Recipient" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xGu-9d-QDY">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Recipient" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xkf-qt-dlw">
+                                                    <rect key="frame" x="242" y="8" width="116" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="116" id="B1e-DF-HzL"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plus Filled" translatesAutoresizingMaskIntoConstraints="NO" id="5mN-l8-1uT">
+                                                    <rect key="frame" x="213" y="11" width="21" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="21" id="E2A-AZ-9s8"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5mN-l8-1uT" firstAttribute="centerY" secondItem="Xkf-qt-dlw" secondAttribute="centerY" id="2sX-ic-2cN"/>
+                                                <constraint firstItem="5mN-l8-1uT" firstAttribute="top" secondItem="NLw-P5-slW" secondAttribute="topMargin" constant="3" id="6tj-Kw-yrO"/>
+                                                <constraint firstItem="Xkf-qt-dlw" firstAttribute="top" secondItem="NLw-P5-slW" secondAttribute="topMargin" id="HMT-eF-BA5"/>
+                                                <constraint firstItem="Xkf-qt-dlw" firstAttribute="bottom" secondItem="NLw-P5-slW" secondAttribute="bottomMargin" id="Pl7-z7-1Wu"/>
+                                                <constraint firstItem="Xkf-qt-dlw" firstAttribute="centerX" secondItem="NLw-P5-slW" secondAttribute="centerX" id="S7T-XB-eoV"/>
+                                                <constraint firstItem="Xkf-qt-dlw" firstAttribute="leading" secondItem="5mN-l8-1uT" secondAttribute="trailing" constant="8" symbolic="YES" id="hAP-2o-67I"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="Lf1-Ep-6Qp" kind="popoverPresentation" popoverAnchorView="LtI-tm-AYJ" id="63w-CT-mgU">
@@ -234,13 +250,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="214"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3r-Cd-h7j">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3r-Cd-h7j">
                                                     <rect key="frame" x="14" y="11" width="74" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hv5-J5-1kE">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hv5-J5-1kE">
                                                     <rect key="frame" x="8" y="40" width="584" height="166"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -248,6 +264,14 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hv5-J5-1kE" firstAttribute="leading" secondItem="fFH-Xw-pok" secondAttribute="leadingMargin" id="1zE-uH-WcP"/>
+                                                <constraint firstItem="hv5-J5-1kE" firstAttribute="bottom" secondItem="fFH-Xw-pok" secondAttribute="bottomMargin" id="5Pd-tn-wU3"/>
+                                                <constraint firstItem="C3r-Cd-h7j" firstAttribute="leading" secondItem="fFH-Xw-pok" secondAttribute="leadingMargin" constant="6" id="HBG-9I-DYX"/>
+                                                <constraint firstItem="hv5-J5-1kE" firstAttribute="top" secondItem="C3r-Cd-h7j" secondAttribute="bottom" constant="8" symbolic="YES" id="O2T-rj-g9V"/>
+                                                <constraint firstItem="C3r-Cd-h7j" firstAttribute="top" secondItem="fFH-Xw-pok" secondAttribute="topMargin" constant="3" id="aze-re-oBJ"/>
+                                                <constraint firstItem="hv5-J5-1kE" firstAttribute="trailing" secondItem="fFH-Xw-pok" secondAttribute="trailingMargin" id="gOH-ij-Ja5"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="gNl-le-Fkm" style="IBUITableViewCellStyleDefault" id="UND-FA-P6O">
@@ -285,12 +309,13 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="addImage" destination="5mN-l8-1uT" id="B3H-ug-aNP"/>
                         <outlet property="addressLabel" destination="mBP-VX-h4p" id="pGz-76-E7J"/>
                         <outlet property="dateTimeOfMessage" destination="9Hb-Ys-KLm" id="tn9-AC-DRB"/>
                         <outlet property="messageTextView" destination="hv5-J5-1kE" id="daO-eV-H4e"/>
                         <outlet property="nameLabel" destination="gkn-Wo-wgG" id="hi2-B2-IiK"/>
                         <outlet property="phoneLabel" destination="H28-SH-3ou" id="3A9-bL-h1h"/>
-                        <outlet property="recipientLabel" destination="xGu-9d-QDY" id="vTG-Cu-DhL"/>
+                        <outlet property="recipientLabel" destination="Xkf-qt-dlw" id="vQQ-xP-gIl"/>
                         <outlet property="signedLabel" destination="gNl-le-Fkm" id="eFy-hr-JK0"/>
                     </connections>
                 </tableViewController>
@@ -323,6 +348,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="JvF-vC-D6n" kind="unwind" unwindAction="returnFromEmployeeSelection:" id="CFA-c3-AWl"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -332,6 +360,7 @@
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAO-yA-V0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JvF-vC-D6n" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2709" y="172"/>
         </scene>
@@ -359,6 +388,7 @@
     <resources>
         <image name="Messages Filled" width="25" height="25"/>
         <image name="Messages Unfilled" width="25" height="25"/>
+        <image name="Plus Filled" width="32" height="32"/>
         <image name="Unread Indicator" width="26" height="26"/>
     </resources>
 </document>
