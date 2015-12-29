@@ -9,13 +9,16 @@
 import UIKit
 
 class ComposeMessageTableViewController: UITableViewController {
-
+    
+    var isNewMessage : Bool = true
+    
     @IBOutlet var dateTimeOfMessage: UILabel!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var phoneLabel: UILabel!
     @IBOutlet var messageTextView: UITextView!
     @IBOutlet var signedLabel: UILabel!
+    @IBOutlet weak var recipientLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -31,5 +34,25 @@ class ComposeMessageTableViewController: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        if isNewMessage == false && indexPath.section == 1 && indexPath.row == 0 {
+            return 0
+        } else {
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
+    }
+    
+    
+    @IBAction func saveButton(sender: AnyObject) {
+        
+        if isNewMessage == true {
+            let messObj = Messages()
+            messObj.dateTimeMessage = NSDate()
+            
+        }
+        
+        
+    }
 
 }

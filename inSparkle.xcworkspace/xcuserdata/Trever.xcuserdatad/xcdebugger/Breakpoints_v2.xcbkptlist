@@ -58,12 +58,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "473024735.612169"
+                  timestampString = "473045498.030624"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "357"
                   endingLineNumber = "357"
-                  offsetFromSymbolStart = "1895">
+                  offsetFromSymbolStart = "672">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -73,12 +73,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "473024735.61242"
+                  timestampString = "473045498.030893"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "357"
                   endingLineNumber = "357"
-                  offsetFromSymbolStart = "1934">
+                  offsetFromSymbolStart = "1528">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -88,12 +88,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "473024735.612568"
+                  timestampString = "473045498.031081"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "357"
                   endingLineNumber = "357"
-                  offsetFromSymbolStart = "2211">
+                  offsetFromSymbolStart = "1768">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -217,12 +217,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EditExistingTimePunchTableViewController.swift"
-                  timestampString = "473024735.618036"
+                  timestampString = "473045498.067746"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "335"
                   endingLineNumber = "335"
-                  offsetFromSymbolStart = "4777">
+                  offsetFromSymbolStart = "4040">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -232,12 +232,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EditExistingTimePunchTableViewController.swift"
-                  timestampString = "473024735.618155"
+                  timestampString = "473045498.067969"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "335"
                   endingLineNumber = "335"
-                  offsetFromSymbolStart = "1526">
+                  offsetFromSymbolStart = "1488">
                </Location>
             </Locations>
          </BreakpointContent>

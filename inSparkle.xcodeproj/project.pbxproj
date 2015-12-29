@@ -80,6 +80,8 @@
 		C9C192961BF64DF400862F52 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192951BF64DF400862F52 /* SystemConfiguration.framework */; };
 		C9C192981BF64DFE00862F52 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192971BF64DFE00862F52 /* libz.tbd */; };
 		C9C1929A1BF64E0500862F52 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192991BF64E0500862F52 /* libsqlite3.tbd */; };
+		C9C8E1C11C32141800191C17 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1C01C32141800191C17 /* MessageModel.swift */; };
+		C9C8E1C31C32175600191C17 /* MessageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1C21C32175600191C17 /* MessageEmployeeListTableViewController.swift */; };
 		C9C8E1DD1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1DC1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift */; };
 		C9C8E1DF1C1FCE9A0056D789 /* POCOpenCloseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1DE1C1FCE9A0056D789 /* POCOpenCloseTableViewController.swift */; };
 		C9C8E1E11C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1E01C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift */; };
@@ -202,6 +204,8 @@
 		C9C192951BF64DF400862F52 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C9C192971BF64DFE00862F52 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C9C192991BF64E0500862F52 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C9C8E1C01C32141800191C17 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		C9C8E1C21C32175600191C17 /* MessageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
 		C9C8E1DC1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCCustomerFilterTableViewController.swift; sourceTree = "<group>"; };
 		C9C8E1DE1C1FCE9A0056D789 /* POCOpenCloseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCOpenCloseTableViewController.swift; sourceTree = "<group>"; };
 		C9C8E1E01C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCActiveInactiveAllFilterTableViewController.swift; sourceTree = "<group>"; };
@@ -391,8 +395,10 @@
 		C972FF711C19F9F100D34EB2 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				C9C8E1C21C32175600191C17 /* MessageEmployeeListTableViewController.swift */,
 				C972FF721C19FA0900D34EB2 /* Messages.storyboard */,
 				C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */,
+				C9C8E1C01C32141800191C17 /* MessageModel.swift */,
 				C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */,
 				C91BB36F1C2A705F00132946 /* MessagesMainTableViewCell.swift */,
 			);
@@ -827,6 +833,7 @@
 				C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */,
 				C972FF6E1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift in Sources */,
 				C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */,
+				C9C8E1C31C32175600191C17 /* MessageEmployeeListTableViewController.swift in Sources */,
 				C974FAD71C205845004D69E4 /* POCRunReportFinalTableViewController.swift in Sources */,
 				C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */,
 				C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */,
@@ -854,6 +861,7 @@
 				C972FF701C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift in Sources */,
 				C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */,
 				C9585F271C169491008AB918 /* RunTimeReportAllTableViewController.swift in Sources */,
+				C9C8E1C11C32141800191C17 /* MessageModel.swift in Sources */,
 				C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */,
 				C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */,
 			);
