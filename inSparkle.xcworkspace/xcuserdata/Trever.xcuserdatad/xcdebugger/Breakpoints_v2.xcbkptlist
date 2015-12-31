@@ -58,12 +58,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "473116278.276807"
+                  timestampString = "473285139.747989"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "357"
                   endingLineNumber = "357"
-                  offsetFromSymbolStart = "672">
+                  offsetFromSymbolStart = "1895">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -73,27 +73,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "473116278.277018"
+                  timestampString = "473285139.748269"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "357"
                   endingLineNumber = "357"
-                  offsetFromSymbolStart = "1528">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.AddNewToScheduleTableViewController.textFieldShouldEndEditing (inSparkle.AddNewToScheduleTableViewController)(__ObjC.UITextField) -&gt; Swift.Bool"
-                  moduleName = "inSparkle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "473116278.277181"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "357"
-                  endingLineNumber = "357"
-                  offsetFromSymbolStart = "1768">
+                  offsetFromSymbolStart = "1934">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -217,12 +202,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EditExistingTimePunchTableViewController.swift"
-                  timestampString = "473116278.281717"
+                  timestampString = "473285139.793821"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "335"
                   endingLineNumber = "335"
-                  offsetFromSymbolStart = "4040">
+                  offsetFromSymbolStart = "4777">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -232,12 +217,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EditExistingTimePunchTableViewController.swift"
-                  timestampString = "473116278.281855"
+                  timestampString = "473285139.794043"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "335"
                   endingLineNumber = "335"
-                  offsetFromSymbolStart = "1488">
+                  offsetFromSymbolStart = "1526">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -319,6 +304,22 @@
             startingLineNumber = "123"
             endingLineNumber = "123"
             landmarkName = "pickDate(_:timeObject:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/ComposeMessageTableViewController.swift"
+            timestampString = "473284806.984046"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "popover(_:vcID:sender:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

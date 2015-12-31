@@ -39,4 +39,9 @@ class Employee: PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "lastName") }
     }
     
+    var messages : Bool {
+        get {return objectForKey("messages") as! Bool}
+        set { setObject(newValue, forKey: "messages") }
+    }
+    
 }

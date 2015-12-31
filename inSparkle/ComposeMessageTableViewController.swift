@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class ComposeMessageTableViewController: UITableViewController {
+class ComposeMessageTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
     var isNewMessage : Bool = true
     
@@ -86,10 +86,38 @@ class ComposeMessageTableViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var addRecipCell: UITableViewCell!
+    
     @IBAction func returnFromEmployeeSelection(segue : UIStoryboardSegue) {
         let recipName = selectedEmployee!.firstName + " " + selectedEmployee!.lastName
         recipientLabel.text = "To: " + recipName
         addImage.hidden = true
+        
+        recipientLabel.bounds = addRecipCell.frame
+        recipientLabel.textAlignment = .Center
+        
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 && indexPath.row == 1 {
+            popover("Messages", vcID: "EmpPopover", sender: tableView.cellForRowAtIndexPath(indexPath)!)
+        }
+    }
+    
+    func popover (sb : String, vcID : String, sender : UITableViewCell) {
+        let storyboard = UIStoryboard(name: sb, bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier(vcID)
+        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let popover : UIPopoverPresentationController = vc.popoverPresentationController!
+        popover.delegate = self
+        popover.sourceView = sender
+        popover.sourceRect = sender.bounds
+        presentViewController(vc, animated: true, completion: nil)
+        
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
 
 }

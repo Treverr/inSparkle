@@ -17,6 +17,8 @@ class MessageEmployeeListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         getEmployees()
+        
+        
 
     }
 
@@ -42,12 +44,15 @@ class MessageEmployeeListTableViewController: UITableViewController {
     
     func getEmployees() {
         let emp = Employee.query()
+        emp?.whereKey("messages", equalTo: true)
+        emp?.orderByAscending("lastName")
         emp?.findObjectsInBackgroundWithBlock({ (emps : [PFObject]?, error : NSError?) -> Void in
             if error == nil && emps != nil {
                 print(emps)
                 for emp in emps! {
                     self.employees.append(emp as! Employee)
                     self.tableView.reloadData()
+                    self.preferredContentSize = self.tableView.contentSize
                 }
             }
         })

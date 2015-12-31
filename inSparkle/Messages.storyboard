@@ -165,11 +165,6 @@
                                                 <constraint firstItem="Xkf-qt-dlw" firstAttribute="leading" secondItem="GxH-vw-qeu" secondAttribute="trailing" constant="8" symbolic="YES" id="qg5-6Q-nJ7"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Lf1-Ep-6Qp" kind="popoverPresentation" popoverAnchorView="LtI-tm-AYJ" id="63w-CT-mgU">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -310,6 +305,7 @@
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
                         <outlet property="addImage" destination="GxH-vw-qeu" id="ZsU-8f-b5f"/>
+                        <outlet property="addRecipCell" destination="LtI-tm-AYJ" id="me5-dD-e2C"/>
                         <outlet property="addressLabel" destination="mBP-VX-h4p" id="pGz-76-E7J"/>
                         <outlet property="dateTimeOfMessage" destination="9Hb-Ys-KLm" id="tn9-AC-DRB"/>
                         <outlet property="messageTextView" destination="hv5-J5-1kE" id="daO-eV-H4e"/>
@@ -326,7 +322,7 @@
         <!--Message Employee List Table View Controller-->
         <scene sceneID="dyh-Jd-3B9">
             <objects>
-                <tableViewController id="Lf1-Ep-6Qp" customClass="MessageEmployeeListTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EmpPopover" id="Lf1-Ep-6Qp" customClass="MessageEmployeeListTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="UHL-AD-xDi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
