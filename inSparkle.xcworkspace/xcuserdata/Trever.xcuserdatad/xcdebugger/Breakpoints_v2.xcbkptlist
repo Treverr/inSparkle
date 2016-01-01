@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/SOITableViewController.swift"
-            timestampString = "471992308.807931"
+            filePath = "inSparkle/AddEditCustomerTableViewController.swift"
+            timestampString = "473384683.880462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "deleteParseObject()"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "saveUpdate(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
-            timestampString = "471996520.728429"
+            filePath = "inSparkle/AddEditCustomerTableViewController.swift"
+            timestampString = "473384683.880462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
-            landmarkName = "textFieldShouldBeginEditing(_:)"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "placeSelected(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,61 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
-            timestampString = "471996199.326091"
+            filePath = "inSparkle/AddEditCustomerTableViewController.swift"
+            timestampString = "473384683.880462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
-            landmarkName = "textFieldShouldEndEditing(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.AddNewToScheduleTableViewController.textFieldShouldEndEditing (inSparkle.AddNewToScheduleTableViewController)(__ObjC.UITextField) -&gt; Swift.Bool"
-                  moduleName = "inSparkle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "473285139.747989"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "357"
-                  endingLineNumber = "357"
-                  offsetFromSymbolStart = "1895">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.AddNewToScheduleTableViewController.textFieldShouldEndEditing (inSparkle.AddNewToScheduleTableViewController)(__ObjC.UITextField) -&gt; Swift.Bool"
-                  moduleName = "inSparkle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewToScheduleTableViewController.swift"
-                  timestampString = "473285139.748269"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "357"
-                  endingLineNumber = "357"
-                  offsetFromSymbolStart = "1934">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
-            timestampString = "471996927.174773"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
-            landmarkName = "textFieldShouldEndEditing(_:)"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "placeSelected(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
-            timestampString = "471996927.174773"
+            filePath = "inSparkle/AddEditCustomerTableViewController.swift"
+            timestampString = "473384683.880462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
-            landmarkName = "textFieldShouldEndEditing(_:)"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "placeSelected(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -121,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
-            timestampString = "471996955.254741"
+            filePath = "inSparkle/AddEditCustomerTableViewController.swift"
+            timestampString = "473384683.880462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
-            landmarkName = "textFieldShouldBeginEditing(_:)"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "placeSelected(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
-            timestampString = "471996963.107341"
+            filePath = "inSparkle/AddEditCustomerTableViewController.swift"
+            timestampString = "473384562.518527"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
-            landmarkName = "textFieldShouldEndEditing(_:)"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "saveUpdate(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,13 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/SOITableViewController.swift"
-            timestampString = "472070649.268731"
+            filePath = "inSparkle/AddEditCustomerTableViewController.swift"
+            timestampString = "473382163.746717"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "tableView(_:commitEditingStyle:forRowAtIndexPath:)"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "saveUpdate(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -169,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
-            timestampString = "472521874.273404"
+            filePath = "inSparkle/AddEditCustomerTableViewController.swift"
+            timestampString = "473384683.880462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "updateButton(_:)"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "placeSelected(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,141 +137,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
-            timestampString = "472521874.273404"
+            filePath = "inSparkle/AddEditCustomerTableViewController.swift"
+            timestampString = "473384683.880462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
-            landmarkName = "updateButton(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.EditExistingTimePunchTableViewController.updateButton (inSparkle.EditExistingTimePunchTableViewController)(Swift.AnyObject) -&gt; ()"
-                  moduleName = "inSparkle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EditExistingTimePunchTableViewController.swift"
-                  timestampString = "473285139.793821"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335"
-                  offsetFromSymbolStart = "4777">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.EditExistingTimePunchTableViewController.(updateButton (inSparkle.EditExistingTimePunchTableViewController) -&gt; (Swift.AnyObject) -&gt; ()).(closure #2)"
-                  moduleName = "inSparkle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EditExistingTimePunchTableViewController.swift"
-                  timestampString = "473285139.794043"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "335"
-                  endingLineNumber = "335"
-                  offsetFromSymbolStart = "1526">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
-            timestampString = "472521874.273404"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "updateButton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
-            timestampString = "472521874.273404"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "updateButton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
-            timestampString = "472521874.273404"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
-            landmarkName = "updateButton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
-            timestampString = "472521874.273404"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
-            landmarkName = "updateButton(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "inSparkle/EditExistingTimePunchTableViewController.swift"
-            timestampString = "472521787.217848"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "pickDate(_:timeObject:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "inSparkle/ComposeMessageTableViewController.swift"
-            timestampString = "473284806.984046"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "popover(_:vcID:sender:)"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "saveUpdate(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

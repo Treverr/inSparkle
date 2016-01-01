@@ -9,6 +9,7 @@
 import UIKit
 import GooglePlacesAutocomplete
 import Parse
+import PhoneNumberKit
 
 class AddEditCustomerTableViewController: UITableViewController, UITextFieldDelegate {
     
@@ -34,6 +35,8 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
                 self.addressLabel.text = "\(self.customer!.addressStreet.capitalizedString) \n" + "\(self.customer!.addressCity.capitalizedString), \(self.customer!.addressState.uppercaseString) \(self.customer!.ZIP)"
             }
         }
+        
+        phoneNumberTextField.delegate = self
         
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatedAddressLabel", name: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
@@ -71,9 +74,41 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         if self.customer != nil {
             accountNumber = customer?.accountNumber
         } else {
-            accountNumber = nil
+            var firstSeven : String!
+            if phoneNumberTextField.text?.characters.count > 7 {
+                let nonFormttedArray = phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+                let acctNumber = nonFormttedArray.joinWithSeparator("")
+                firstSeven = acctNumber.substringFromIndex(phoneNumber.startIndex.advancedBy(3))
+                print(firstSeven)
+                accountNumber = firstSeven
+            }
         }
         CloudCode.AddUpdateCustomerRecord(accountNumber, name: name, address: address, phoneNumber: phoneNumber)
+        let stringArray = address.componentsSeparatedByString(",")
+        let addressStreet = stringArray[0]
+        let addressCity = stringArray[1]
+        let cityStateArray = stringArray[2].componentsSeparatedByString(" ")
+        let addressState = cityStateArray[1]
+        let addressZIP = cityStateArray[2]
+        
+        if self.customer == nil {
+            self.customer = CustomerData()
+        }
+        
+        self.customer?.accountNumber = accountNumber!
+        self.customer?.firstName = firstNameTextField.text!.uppercaseString
+        self.customer?.lastName = lastNameTextField.text!.uppercaseString
+        self.customer?.fullName = lastNameTextField.text!.uppercaseString + ", " + firstNameTextField.text!.uppercaseString
+        self.customer?.addressStreet = addressStreet.uppercaseString
+        self.customer?.addressCity = addressCity.uppercaseString
+        self.customer?.addressState = addressState.uppercaseString
+        self.customer?.phoneNumber = phoneNumberTextField.text!
+        self.customer?.ZIP = String(addressZIP)
+        self.customer?.currentBalance = 0
+        self.customer?.customerOpened = NSDate()
+        self.customer?.saveInBackground()
+        print(self.customer)
+        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -86,6 +121,34 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         AddEditCustomers.theCustomer = nil
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == phoneNumberTextField {
+            do {
+                let phoneNumber = try PhoneNumber(rawNumber: phoneNumberTextField.text!)
+                phoneNumberTextField.text = phoneNumber.toNational()
+            } catch {
+                
+            }
+        }
+        return false
+    }
+    
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        if textField == phoneNumberTextField {
+            do {
+                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
+                phoneNumberTextField.text! = phoneNumber.toNational()
+            } catch {
+                print("error")
+            }
+        }
+        return true
+    }
+    
 }
 
 extension AddEditCustomerTableViewController : GooglePlacesAutocompleteDelegate {
@@ -93,12 +156,21 @@ extension AddEditCustomerTableViewController : GooglePlacesAutocompleteDelegate 
     func placeSelected(place: Place) {
         let houseNumbers = place.desc.componentsSeparatedByString(" ")[0]
         place.getDetails({ (thePlaceDetails) -> () in
-            GoogleAddress.address = houseNumbers + " " + thePlaceDetails.fullAddress
-            print(houseNumbers + " " + thePlaceDetails.fullAddress)
+            let fullAddress = thePlaceDetails.fullAddress.componentsSeparatedByString(" ")[0]
+            if self.isNumeric(fullAddress) {
+                print(place.desc)
+                GoogleAddress.address = thePlaceDetails.fullAddress
+            } else {
+                GoogleAddress.address = houseNumbers + " " + thePlaceDetails.fullAddress
+            }
         NSNotificationCenter.defaultCenter().postNotificationName("NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
         self.dismissViewControllerAnimated(true, completion: nil)
         })
         
+    }
+    
+    func isNumeric(a: String) -> Bool {
+        return Int(a) != nil
     }
     
     func placeViewClosed() {

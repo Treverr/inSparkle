@@ -56,7 +56,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        if isNewMessage == false && indexPath.section == 1 && indexPath.row == 0 {
+        if isNewMessage == true && indexPath.section == 1 && indexPath.row == 0 {
             return 0
         } else {
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)

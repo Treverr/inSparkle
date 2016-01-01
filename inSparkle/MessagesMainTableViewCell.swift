@@ -31,13 +31,14 @@ public class MessagesMainTableViewCell: UITableViewCell {
         
         dateLabel.text! = formatter.stringFromDate(date)
         
-        statusOfMessageLabel.text! = messageStatus
-        
         let timeFormatter = NSDateFormatter()
         timeFormatter.dateStyle = .ShortStyle
         timeFormatter.timeStyle = .ShortStyle
+        timeFormatter.doesRelativeDateFormatting = true
         
-        statusTimeLabel.text! = timeFormatter.stringFromDate(statusTime)
+        statusOfMessageLabel.text! = messageStatus + " - " + timeFormatter.stringFromDate(statusTime)
+        
+        
         
     }
 
