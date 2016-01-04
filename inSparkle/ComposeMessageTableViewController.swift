@@ -14,9 +14,9 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     var isNewMessage : Bool = true
     
     @IBOutlet var dateTimeOfMessage: UILabel!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var addressLabel: UILabel!
-    @IBOutlet var phoneLabel: UILabel!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var addressTextField: UITextField!
+    @IBOutlet var phoneTextField: UITextField!
     @IBOutlet var messageTextView: UITextView!
     @IBOutlet var signedLabel: UILabel!
     @IBOutlet weak var recipientLabel: UILabel!
@@ -74,10 +74,10 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             let messObj = Messages()
             messObj.dateTimeMessage = NSDate()
             messObj.recipient = selectedEmployee!
-            messObj.messageFromName = nameLabel.text!
-            messObj.messageFromPhone = phoneLabel.text!
-            if (addressLabel.text?.isEmpty) == false {
-                messObj.messageFromAddress = addressLabel.text!
+            messObj.messageFromName = nameTextField.text!
+            messObj.messageFromPhone = phoneTextField.text!
+            if (addressTextField.text?.isEmpty) == false {
+                messObj.messageFromAddress = addressTextField.text!
             }
             messObj.theMessage = messageTextView.text!
             messObj.signed = PFUser.currentUser()!
@@ -120,4 +120,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         return UIModalPresentationStyle.None
     }
 
+    @IBAction func customerLookup(sender: AnyObject) {
+        
+    }
 }
