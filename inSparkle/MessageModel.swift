@@ -35,6 +35,11 @@ class Messages : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "status") }
     }
     
+    var unread : Bool {
+        get {return objectForKey("unread") as! Bool}
+        set { setObject(newValue, forKey: "unread") }
+    }
+    
     var messageFromName : String {
         get {return objectForKey("messageFromName") as! String}
         set { setObject(newValue, forKey: "messageFromName") }
@@ -53,6 +58,11 @@ class Messages : PFObject, PFSubclassing {
     var theMessage : String {
         get {return objectForKey("theMessage") as! String}
         set { setObject(newValue, forKey: "theMessage") }
+    }
+    
+    var dateEntered : NSDate {
+        get {return objectForKey("dateEntered") as! NSDate}
+        set { setObject(newValue, forKey: "dateEntered") }
     }
     
     var signed : PFUser {
