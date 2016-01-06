@@ -68,9 +68,9 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
     @IBAction func saveUpdate(sender: AnyObject) {
         saveUpdateButton.setTitle("Saving...", forState: .Normal)
         var accountNumber : String?
-        var name : String! = firstNameTextField.text! + " " + lastNameTextField.text!
-        var address : String! = addressLabel.text!
-        var phoneNumber : String = phoneNumberTextField.text!
+        let name : String! = firstNameTextField.text! + " " + lastNameTextField.text!
+        let address : String! = addressLabel.text!
+        let phoneNumber : String = phoneNumberTextField.text!
         if self.customer != nil {
             accountNumber = customer?.accountNumber
         } else {
@@ -110,9 +110,16 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         
         
         CustomerLookupObjects.slectedCustomer = self.customer!
-        NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnSchedule", object: nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
         
+        if CustomerLookupObjects.fromVC == "AddSchedule" {
+            NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnSchedule", object: nil)
+        }
+        if CustomerLookupObjects.fromVC == "NewMessage" {
+            NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnNewMessage", object: nil)
+        }
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        CustomerLookupObjects.fromVC = nil
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

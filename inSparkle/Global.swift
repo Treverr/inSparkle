@@ -139,6 +139,12 @@ class POCRunReport : NSObject {
     
 }
 
+class MessagesDataObjects : NSObject {
+    
+    static var selectedEmp : Employee!
+    
+}
+
 
 class GlobalFunctions {
     

@@ -58,6 +58,12 @@ class MessageEmployeeListTableViewController: UITableViewController {
         })
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedEmployee = employees[indexPath.row]
+        MessagesDataObjects.selectedEmp = selectedEmployee
+    }
+
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let indexPath = self.tableView.indexPathForSelectedRow

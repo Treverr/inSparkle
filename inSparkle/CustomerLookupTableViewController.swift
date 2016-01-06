@@ -108,7 +108,7 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
             
             cell.customerName.text = customer.firstName!.capitalizedString + " " + customer.lastName!.capitalizedString
             cell.addressStreet.text = customer.addressStreet.capitalizedString
-            cell.addressRest.text = customer.addressCity.capitalizedString + " " + customer.addressState.uppercaseString + ", " + customer.ZIP
+            cell.addressRest.text = customer.addressCity.capitalizedString + ", " + customer.addressState.uppercaseString + " " + customer.ZIP
             cell.phoneNumber.text = customer.phoneNumber
             if customer.currentBalance > 0 {
                 print(customer.currentBalance)
@@ -159,6 +159,12 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
                 CustomerLookupObjects.slectedCustomer = selectedCx
                 CustomerLookupObjects.fromVC = nil
                 NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnSchedule", object: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            if fromVC == "NewMessage" {
+                CustomerLookupObjects.slectedCustomer = selectedCx
+                CustomerLookupObjects.fromVC = nil
+                NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnNewMessage", object: nil)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         }

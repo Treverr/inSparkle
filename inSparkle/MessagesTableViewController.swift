@@ -14,7 +14,7 @@ class MessagesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupNavigationbar()
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,5 +42,7 @@ class MessagesTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
+    
+
 
 }

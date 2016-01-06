@@ -26,6 +26,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     var formatter = NSDateFormatter()
     
     override func viewWillAppear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnNewMessage", object: nil)
         let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
         print(employeeData)
         employeeData.fetchIfNeededInBackgroundWithBlock { (employee : PFObject?, error : NSError?) -> Void in
@@ -69,6 +70,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     
     @IBAction func saveButton(sender: AnyObject) {
+        selectedEmployee = MessagesDataObjects.selectedEmp
         
         if isNewMessage == true {
             let messObj = Messages()
@@ -81,8 +83,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             }
             messObj.theMessage = messageTextView.text!
             messObj.signed = PFUser.currentUser()!
-            
-            
+            messObj.saveInBackground()
         }
     }
     
@@ -119,8 +120,23 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
     }
-
-    @IBAction func customerLookup(sender: AnyObject) {
+    
+    func updateFields() {
+        
+        let selectCx = CustomerLookupObjects.slectedCustomer
+        print(selectCx)
+        nameTextField.text = selectCx!.firstName!.capitalizedString + " " + selectCx!.lastName!.capitalizedString
+        phoneTextField.text = selectCx!.phoneNumber
+        addressTextField.text = "\(selectCx!.addressStreet.capitalizedString) \(selectCx!.addressCity.capitalizedString), \(selectCx!.addressState) \(selectCx!.ZIP)"
+        selectedEmployee = MessagesDataObjects.selectedEmp
+        
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "CustomerLookup" {
+            CustomerLookupObjects.fromVC = "NewMessage"
+        }
+    }
+    
 }

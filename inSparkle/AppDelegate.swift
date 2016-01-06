@@ -54,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         CustomerData.registerSubclass()
         WeekList.registerSubclass()
         Employee.registerSubclass()
+        Messages.registerSubclass()
     }
     
     func applicationWillResignActive(application: UIApplication) {
