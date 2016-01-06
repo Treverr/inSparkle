@@ -107,7 +107,11 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         self.customer?.currentBalance = 0
         self.customer?.customerOpened = NSDate()
         self.customer?.saveInBackground()
-        print(self.customer)
+        
+        
+        CustomerLookupObjects.slectedCustomer = self.customer!
+        NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnSchedule", object: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
         
     }
     

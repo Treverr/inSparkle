@@ -35,6 +35,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnSchedule", object: nil)
+        
         var isOpening : Bool?
         
         if AddNewScheduleObjects.isOpening != nil {
@@ -735,27 +737,43 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet var notesTextView: UITextView!
     var accountNumber : String?
     
-    @IBAction func updateFields(seg : UIStoryboardSegue) {
+    func updateFields() {
         
+        var selectedCx = CustomerLookupObjects.slectedCustomer
+        customerNameTextField.text = selectedCx!.firstName!.capitalizedString + " " + selectedCx!.lastName!.capitalizedString
+        addressLabel.text = "\(selectedCx!.addressStreet.capitalizedString) \n \(selectedCx!.addressCity.capitalizedString), \(selectedCx!.addressState.uppercaseString) \(selectedCx!.ZIP)"
+        phoneNumberTextField.text = selectedCx?.phoneNumber
+        self.accountNumber = selectedCx?.accountNumber
         
-        if seg.identifier == "updateFromAddEdit" {
-            let fromVC = seg.sourceViewController as! AddEditCustomerTableViewController
-            
-            customerNameTextField.text = fromVC.firstNameTextField.text!.capitalizedString + " " + fromVC.lastNameTextField.text!.capitalizedString
-            addressLabel.text = fromVC.addressLabel.text
-            addressLabel.textColor = UIColor.blackColor()
-            phoneNumberTextField.text = fromVC.phoneNumberTextField.text
-        } else {
-            let fromVC = seg.sourceViewController as! CustomerLookupTableViewController
-            
-            var selectedCx = fromVC.globalSelectedCx
-            
-            customerNameTextField.text = selectedCx.firstName!.capitalizedString + " " + selectedCx.lastName!.capitalizedString
-            addressLabel.text = "\(selectedCx.addressStreet) \n \(selectedCx.addressCity), \(selectedCx.addressState) \(selectedCx.ZIP)"
-            phoneNumberTextField.text = selectedCx.phoneNumber
-            self.accountNumber = selectedCx.accountNumber
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "selectCustomerForSchedule" {
+            CustomerLookupObjects.fromVC = "AddSchedule"
         }
     }
+    
+//    @IBAction func updateFields(seg : UIStoryboardSegue) {
+//        
+//        
+//        if seg.identifier == "updateFromAddEdit" {
+//            let fromVC = seg.sourceViewController as! AddEditCustomerTableViewController
+//            
+//            customerNameTextField.text = fromVC.firstNameTextField.text!.capitalizedString + " " + fromVC.lastNameTextField.text!.capitalizedString
+//            addressLabel.text = fromVC.addressLabel.text
+//            addressLabel.textColor = UIColor.blackColor()
+//            phoneNumberTextField.text = fromVC.phoneNumberTextField.text
+//        } else {
+//            let fromVC = seg.sourceViewController as! CustomerLookupTableViewController
+//            
+//            var selectedCx = fromVC.globalSelectedCx
+//            
+//            customerNameTextField.text = selectedCx.firstName!.capitalizedString + " " + selectedCx.lastName!.capitalizedString
+//            addressLabel.text = "\(selectedCx.addressStreet) \n \(selectedCx.addressCity), \(selectedCx.addressState) \(selectedCx.ZIP)"
+//            phoneNumberTextField.text = selectedCx.phoneNumber
+//            self.accountNumber = selectedCx.accountNumber
+//        }
+//    }
     
     override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         customerNameTextField.resignFirstResponder()

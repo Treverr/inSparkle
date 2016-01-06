@@ -107,6 +107,14 @@ class AddNewScheduleObjects : NSObject {
     static var scheduledObject : ScheduleObject?
 }
 
+class CustomerLookupObjects : NSObject {
+    
+    static var slectedCustomer : CustomerData?
+    
+    static var fromVC : String!
+    
+}
+
 class ConfirmAppointData : NSObject {
     
     static var date : String!

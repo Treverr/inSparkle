@@ -149,27 +149,20 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let fromVC = CustomerLookupObjects.fromVC
         if indexPath.section == 0 && indexPath.row == 0 {
             // Do nothing
         } else {
             let selectedCx = self.customerDataArray[indexPath.row - 1]
             globalSelectedCx = selectedCx
-            
-            
+            if fromVC == "AddSchedule" {
+                CustomerLookupObjects.slectedCustomer = selectedCx
+                CustomerLookupObjects.fromVC = nil
+                NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnSchedule", object: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
     }
     
     var globalSelectedCx : CustomerData!
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "selectCustomerForSchedule" {
-            let cell = sender as! CustomerLookupTableViewCell
-            let indexPath = tableView.indexPathForCell(cell)
-            
-            globalSelectedCx = customerDataArray[(indexPath!.row - 1)]
-            
-        }
-        
-        
-    }
 }
