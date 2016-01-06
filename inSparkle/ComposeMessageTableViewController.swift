@@ -84,6 +84,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             messObj.theMessage = messageTextView.text!
             messObj.signed = PFUser.currentUser()!
             messObj.saveInBackground()
+            self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
     
