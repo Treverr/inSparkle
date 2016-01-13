@@ -171,7 +171,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         let date_ = dateLabel.text
         
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MM/dd/YYYY"
+        formatter.dateFormat = "MM/dd/yy"
         let sendDate : NSDate? = formatter.dateFromString(date_!)
         print(sendDate)
         

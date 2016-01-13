@@ -68,13 +68,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         
         let installation = PFInstallation.currentInstallation()
-        let employee = PFUser.currentUser()?.objectForKey("employee") as! Employee
         
-        do {
-            try employee.fetchIfNeeded()
-        } catch { }
-        
-        installation.setObject(employee, forKey: "employee")
+        if PFUser.currentUser() != nil {
+            let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
+            print(PFUser.currentUser())
+            print(employee)
+            
+            do {
+                try employee!.fetchIfNeeded()
+            } catch { }
+            
+            installation.setObject(employee!, forKey: "employee")
+        }
         installation.setDeviceTokenFromData(deviceToken)
         installation.saveInBackground()
         
