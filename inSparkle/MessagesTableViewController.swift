@@ -37,9 +37,10 @@ class MessagesTableViewController: UITableViewController {
             let name = theMesages[indexPath.row].messageFromName
             let date = theMesages[indexPath.row].dateEntered
             let status = theMesages[indexPath.row].status
+            let statusTime = theMesages[indexPath.row].statusTime
             let unread = theMesages[indexPath.row].unread
             
-            cell.configureCell(name, date: date, messageStatus: status, statusTime: NSDate(), unread: unread)
+            cell.configureCell(name, date: date, messageStatus: status, statusTime: statusTime, unread: unread)
         }
         
         return cell

@@ -44,6 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let notificationSettings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
         
+        let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
+        print(PFInstallation.currentInstallation().deviceToken)
+        PFInstallation.currentInstallation().saveEventually()
+        
+        
         return true
     }
     
@@ -55,6 +63,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         WeekList.registerSubclass()
         Employee.registerSubclass()
         Messages.registerSubclass()
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        
+        let installation = PFInstallation.currentInstallation()
+        let employee = PFUser.currentUser()?.objectForKey("employee") as! Employee
+        
+        do {
+            try employee.fetchIfNeeded()
+        } catch { }
+        
+        installation.setObject(employee, forKey: "employee")
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+        
     }
     
     func applicationWillResignActive(application: UIApplication) {

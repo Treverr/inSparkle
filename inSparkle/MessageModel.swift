@@ -35,6 +35,11 @@ class Messages : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "status") }
     }
     
+    var statusTime : NSDate {
+        get {return objectForKey("statusTime") as! NSDate}
+        set { setObject(newValue, forKey: "statusTime") }
+    }
+    
     var unread : Bool {
         get {return objectForKey("unread") as! Bool}
         set { setObject(newValue, forKey: "unread") }

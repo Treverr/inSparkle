@@ -86,6 +86,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             messObj.unread = true
             messObj.dateEntered = NSDate()
             messObj.status = "New"
+            messObj.statusTime = NSDate()
             messObj.saveInBackground()
             self.dismissViewControllerAnimated(true, completion: nil)
         }
