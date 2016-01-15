@@ -168,6 +168,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         query.whereKey("weekEnd", greaterThan: NSDate())
         query.whereKey("apptsRemain", greaterThan: 0)
         query.whereKey("isOpenWeek", equalTo: isOpeningWeek)
+        query.addAscendingOrder("weekStart")
         query.findObjectsInBackgroundWithBlock { (weeks:[PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 print(weeks!)
