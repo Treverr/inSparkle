@@ -25,7 +25,7 @@
 		C9585F201C163FF1008AB918 /* ConfirmPunchInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F1F1C163FF1008AB918 /* ConfirmPunchInViewController.swift */; };
 		C9585F221C164013008AB918 /* ConfirmPunchOutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F211C164013008AB918 /* ConfirmPunchOutViewController.swift */; };
 		C9585F251C165179008AB918 /* ScannerBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9585F241C165179008AB918 /* ScannerBeep.wav */; };
-		C9585F271C169491008AB918 /* RunTimeReportAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F261C169491008AB918 /* RunTimeReportAllTableViewController.swift */; };
+		C9585F271C169491008AB918 /* RunTimeReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F261C169491008AB918 /* RunTimeReportTableViewController.swift */; };
 		C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F281C174A3B008AB918 /* CalendarDatePickerViewController.swift */; };
 		C9585F2B1C174C0F008AB918 /* TimeClockReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9585F2A1C174C0F008AB918 /* TimeClockReport.storyboard */; };
 		C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9585F2E1C175505008AB918 /* Admin.storyboard */; };
@@ -143,7 +143,7 @@
 		C9585F1F1C163FF1008AB918 /* ConfirmPunchInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPunchInViewController.swift; sourceTree = "<group>"; };
 		C9585F211C164013008AB918 /* ConfirmPunchOutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPunchOutViewController.swift; sourceTree = "<group>"; };
 		C9585F241C165179008AB918 /* ScannerBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ScannerBeep.wav; sourceTree = "<group>"; };
-		C9585F261C169491008AB918 /* RunTimeReportAllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeReportAllTableViewController.swift; sourceTree = "<group>"; };
+		C9585F261C169491008AB918 /* RunTimeReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunTimeReportTableViewController.swift; sourceTree = "<group>"; };
 		C9585F281C174A3B008AB918 /* CalendarDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDatePickerViewController.swift; sourceTree = "<group>"; };
 		C9585F2A1C174C0F008AB918 /* TimeClockReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeClockReport.storyboard; sourceTree = "<group>"; };
 		C9585F2E1C175505008AB918 /* Admin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Admin.storyboard; sourceTree = "<group>"; };
@@ -361,6 +361,7 @@
 		C9585F331C1758A7008AB918 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
+				C9585F341C175AE8008AB918 /* Report */,
 				C9FE5BE81C1FC5BF00293836 /* POC */,
 				C9585F301C175887008AB918 /* ReportsTableViewController.swift */,
 			);
@@ -371,7 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				C9585F2A1C174C0F008AB918 /* TimeClockReport.storyboard */,
-				C9585F261C169491008AB918 /* RunTimeReportAllTableViewController.swift */,
+				C9585F261C169491008AB918 /* RunTimeReportTableViewController.swift */,
 				C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */,
 			);
 			name = Report;
@@ -380,7 +381,6 @@
 		C96EF7FC1C14BFD800C4D2C1 /* TimeClock */ = {
 			isa = PBXGroup;
 			children = (
-				C9585F341C175AE8008AB918 /* Report */,
 				C96EF7FA1C14BFC400C4D2C1 /* TimeClockViewController.swift */,
 				C96EF7FD1C14CDDD00C4D2C1 /* TimeClock.storyboard */,
 				C9585F281C174A3B008AB918 /* CalendarDatePickerViewController.swift */,
@@ -876,7 +876,7 @@
 				C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */,
 				C972FF701C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift in Sources */,
 				C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */,
-				C9585F271C169491008AB918 /* RunTimeReportAllTableViewController.swift in Sources */,
+				C9585F271C169491008AB918 /* RunTimeReportTableViewController.swift in Sources */,
 				C9C8E1C11C32141800191C17 /* MessageModel.swift in Sources */,
 				C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */,
 				C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */,

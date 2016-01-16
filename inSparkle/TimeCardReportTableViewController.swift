@@ -32,5 +32,12 @@ class TimeCardReportTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "summary" {
+            let vc = segue.destinationViewController as! RunTimeReportTableViewController
+            vc.detail = false
+        }
+    }
 
 }

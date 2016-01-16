@@ -9,10 +9,12 @@
 import UIKit
 import Parse
 
-class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UIActionSheetDelegate, UIDocumentInteractionControllerDelegate  {
+class RunTimeReportTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UIActionSheetDelegate, UIDocumentInteractionControllerDelegate  {
     
     @IBOutlet var startDateLabel: UILabel!
     @IBOutlet var endDateLabel: UILabel!
+    
+    var detail : Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,12 +134,17 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
         })
     }
     
+    
     var csvPunches : String = "Employee,TimePunchedIn,TimePunchedOut,TotalTime\n"
     var expectedPunches = 0
     var returnedPunches = 0
     var error = NSErrorPointer()
     
     func getTimeCardForEachEmployee(employee : Employee, startDate : NSDate, endDate : NSDate) {
+        if !detail {
+            csvPunches = "Employee,StandardHours,OvertimeHours,VacationHours,TotalTime\n"
+        }
+        var employeeName : String?
         var complete : Bool = false
         let timeCardQuery = TimePunchCalcObject.query()
         timeCardQuery?.whereKey("employee", equalTo: employee)
@@ -156,7 +163,7 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
                     formatter.dateStyle = .MediumStyle
                     formatter.timeStyle = .ShortStyle
                     
-                    let employeeName = "\(employee.firstName) \(employee.lastName)"
+                    employeeName = "\(employee.firstName) \(employee.lastName)"
                     var timePunchedIn = formatter.stringFromDate(thePunch.timePunchedIn)
                     timePunchedIn = timePunchedIn.stringByReplacingOccurrencesOfString(",", withString: " ")
                     var timePunchedOut = formatter.stringFromDate(thePunch.timePunchedOut)
@@ -167,7 +174,10 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
                     totalForEmp = totalForEmp + theTotal
                     print(totalForEmp)
                     
-                    self.csvPunches = self.csvPunches + "\(employeeName),\(timePunchedIn),\(timePunchedOut),\(totalTime)\n"
+                    if self.detail {
+                        self.csvPunches = self.csvPunches + "\(employeeName!),\(timePunchedIn),\(timePunchedOut),\(totalTime)\n"
+                    }
+                    
                     self.returnedPunches = self.returnedPunches + 1
                 }
                 
@@ -183,7 +193,29 @@ class RunTimeReportAllTableViewController: UITableViewController, UIPopoverPrese
                 }
                 
                 if totalForEmp != 0 {
-                    self.csvPunches = self.csvPunches + ",,TOTAL:,\(totalForEmp)\n" + ",,,\n"
+                    if (self.detail) {
+                        self.csvPunches = self.csvPunches + ",,TOTAL:,\(totalForEmp)\n" + ",,,\n"
+                    }
+                    
+                    var standardHours : Double!
+                    var overtimeHours : Double!
+                    var totalHours : Double!
+                    
+                    if totalForEmp > 40 {
+                        standardHours = 40
+                        overtimeHours = (totalForEmp - 40)
+                        totalHours = totalForEmp
+                    } else {
+                        standardHours = totalForEmp
+                        totalHours = totalForEmp
+                        overtimeHours = 0
+                    }
+                    
+                    
+                    if (!self.detail) {
+                        self.csvPunches = self.csvPunches + "\(employeeName!),\(standardHours),\(overtimeHours),0,\(totalForEmp)\n"
+                    }
+                    
                     
                     print(self.expectedPunches)
                     print(self.returnedPunches)
