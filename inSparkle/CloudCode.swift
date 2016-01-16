@@ -33,14 +33,16 @@ class CloudCode {
         }
     }
     
-    class func AlertOfCancelation(name : String, address : String, phone : String, reason : String, cancelBy : String) {
+    class func AlertOfCancelation(name : String, address : String, phone : String, reason : String, cancelBy : String, theDates : String, theType : String) {
         do {
             try PFCloud.callFunction("AlertOfCancelation", withParameters: [
                 "cxname" : name,
                 "FullAddress" : address,
                 "cxPhoneNumber" : phone,
                 "cancelationReason" : reason,
-                "whoCancel" : cancelBy
+                "whoCancel" : cancelBy,
+                "theDates" : theDates,
+                "theType" : theType,
                 ])
         } catch { }
         

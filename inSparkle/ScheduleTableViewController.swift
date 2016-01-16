@@ -136,7 +136,8 @@ class ScheduleTableViewController: UITableViewController {
                 deletingObject.isActive = false
                 deletingObject.cancelReason = reason!.text!
                 deletingObject.saveEventually()
-                                CloudCode.AlertOfCancelation(deletingObject.customerName, address: deletingObject.customerAddress.capitalizedString, phone: deletingObject.customerPhone, reason: reason!.text!, cancelBy: PFUser.currentUser()!.username!.capitalizedString)
+                let weekRange = "\(GlobalFunctions().stringFromDateShortStyle(deletingObject.weekStart)) - \(GlobalFunctions().stringFromDateShortStyle(deletingObject.weekEnd))"
+                CloudCode.AlertOfCancelation(deletingObject.customerName, address: deletingObject.customerAddress.capitalizedString, phone: deletingObject.customerPhone, reason: reason!.text!, cancelBy: PFUser.currentUser()!.username!.capitalizedString, theDates: weekRange, theType: deletingObject.type)
                 self.scheduleArray.removeObjectAtIndex(indexPath.row)
                 tableView.reloadData()
 
