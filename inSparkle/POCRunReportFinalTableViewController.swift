@@ -152,6 +152,7 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                         notes = ""
                     } else {
                         notes = object.notes?.stringByReplacingOccurrencesOfString("\n", withString: " ")
+                        notes = object.notes?.stringByReplacingOccurrencesOfString(",", withString: "")
                     }
                     
                     var confirmedBy : String?

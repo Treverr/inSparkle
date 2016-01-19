@@ -135,6 +135,14 @@ class ScheduleTableViewController: UITableViewController {
                     as! ScheduleObject
                 deletingObject.isActive = false
                 deletingObject.cancelReason = reason!.text!
+                deletingObject.weekObj.fetchInBackgroundWithBlock({ (weekObj : PFObject?, error :NSError?) -> Void in
+                    if error == nil {
+                        let theWeek = weekObj as! WeekList
+                        theWeek.numApptsSch = theWeek.numApptsSch - 1
+                        theWeek.apptsRemain = theWeek.apptsRemain + 1
+                        theWeek.saveEventually()
+                    }
+                })
                 deletingObject.saveEventually()
                 let weekRange = "\(GlobalFunctions().stringFromDateShortStyle(deletingObject.weekStart)) - \(GlobalFunctions().stringFromDateShortStyle(deletingObject.weekEnd))"
                 CloudCode.AlertOfCancelation(deletingObject.customerName, address: deletingObject.customerAddress.capitalizedString, phone: deletingObject.customerPhone, reason: reason!.text!, cancelBy: PFUser.currentUser()!.username!.capitalizedString, theDates: weekRange, theType: deletingObject.type)

@@ -255,7 +255,12 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             if typeOfWinterCover.count > 0 && pickerView.selectedRowInComponent(0) == 0 {
                 if pickerView.hidden == false {
                     typeOfWinterCoverLabel.textColor = UIColor.blackColor()
-                    typeOfWinterCoverLabel.text = typeOfWinterCover.first
+                    if AddNewScheduleObjects.scheduledObject == nil {
+                        typeOfWinterCoverLabel.text = typeOfWinterCover.first
+                    } else {
+                        typeOfWinterCoverLabel.text = AddNewScheduleObjects.scheduledObject!.coverType
+                    }
+                    
                 }
                 
             }
@@ -450,10 +455,18 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             schObj.weekStart = weekStartDate!
             schObj.weekEnd = weekEndDate!
             schObj.weekObj = self.selectedWeekObj
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                GlobalFunctions().updateWeeks()
-            }
+            print(self.selectedWeekObj)
+            self.selectedWeekObj.fetchInBackgroundWithBlock({ (weeker : PFObject?, error : NSError?) -> Void in
+                if error == nil {
+                    self.selectedWeekObj.apptsRemain = self.selectedWeekObj.apptsRemain - 1
+                    self.selectedWeekObj.numApptsSch = self.selectedWeekObj.numApptsSch + 1
+                    self.selectedWeekObj.saveInBackground()
+                }
+            })
+//            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+//            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+//                GlobalFunctions().updateWeeks()
+//            }
             schObj.isActive = true
             if self.accountNumber != nil {
                 schObj.accountNumber = self.accountNumber
@@ -807,5 +820,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             dateClosingPicker.reloadAllComponents()
             
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        AddNewScheduleObjects.scheduledObject = nil
     }
 }
