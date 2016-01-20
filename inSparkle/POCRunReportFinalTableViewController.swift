@@ -132,7 +132,7 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                     let object = appt as! ScheduleObject
                     let accountNumber = object.accountNumber!
                     let custName = object.customerName
-                    let custAddress = object.customerAddress.stringByReplacingOccurrencesOfString(",", withString: " ")
+                    let custAddress = object.customerAddress.stringByReplacingOccurrencesOfString(",", withString: " ").capitalizedString
                     print(object.customerAddress)
                     let custPhone = object.customerPhone
                     let weekSch = GlobalFunctions().stringFromDateShortStyle(object.weekStart) + " - " + GlobalFunctions().stringFromDateShortStyle(object.weekEnd)
@@ -164,7 +164,7 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                         notes = ""
                     } else {
                         notes = object.notes?.stringByReplacingOccurrencesOfString("\n", withString: " ")
-                        notes = object.notes?.stringByReplacingOccurrencesOfString(",", withString: "")
+                        notes = notes?.stringByReplacingOccurrencesOfString(",", withString: "")
                         print(notes)
                     }
                     
