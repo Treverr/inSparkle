@@ -284,7 +284,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         return 1
     }
     
-    var selectedWeekObj = WeekList()
+    var selectedWeekObj : WeekList?
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
@@ -454,19 +454,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             schObj.customerPhone = phoneNumberTextField.text!
             schObj.weekStart = weekStartDate!
             schObj.weekEnd = weekEndDate!
-            schObj.weekObj = self.selectedWeekObj
-            print(self.selectedWeekObj)
-            self.selectedWeekObj.fetchInBackgroundWithBlock({ (weeker : PFObject?, error : NSError?) -> Void in
-                if error == nil {
-                    self.selectedWeekObj.apptsRemain = self.selectedWeekObj.apptsRemain - 1
-                    self.selectedWeekObj.numApptsSch = self.selectedWeekObj.numApptsSch + 1
-                    self.selectedWeekObj.saveInBackground()
-                }
-            })
-//            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-//            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-//                GlobalFunctions().updateWeeks()
-//            }
+            if self.selectedWeekObj != nil {
+                schObj.weekObj = self.selectedWeekObj!
+            }
             schObj.isActive = true
             if self.accountNumber != nil || schObj.accountNumber != nil {
                 if schObj.accountNumber != nil {
