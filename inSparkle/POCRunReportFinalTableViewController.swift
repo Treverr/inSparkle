@@ -146,13 +146,26 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                     let typeOfWC = object.coverType
                     let itemLoc = object.locEssentials
                     let chem = object.bringChem
+                    var takeChem : String!
+                    if (chem) {
+                        takeChem = "Yes"
+                    } else {
+                        takeChem = "No"
+                    }
                     let trash = object.takeTrash
+                    var takeTrash : String!
+                    if (trash) {
+                        takeTrash = "Yes"
+                    } else {
+                        takeTrash = "No"
+                    }
                     var notes : String?
                     if object.notes == nil {
                         notes = ""
                     } else {
                         notes = object.notes?.stringByReplacingOccurrencesOfString("\n", withString: " ")
                         notes = object.notes?.stringByReplacingOccurrencesOfString(",", withString: "")
+                        print(notes)
                     }
                     
                     var confirmedBy : String?
@@ -162,7 +175,7 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                         confirmedBy = ""
                     }
                     
-                    self.csvPOC = self.csvPOC + "\n\(accountNumber),\(custName),\(weekSch),\(custAddress),\(custPhone),\(dateConfirmed!),\(confirmedWith),\(typeOfWC),\(itemLoc),\(chem),\(trash),\(notes!),\(confirmedBy!)"
+                    self.csvPOC = self.csvPOC + "\n\(accountNumber),\(custName),\(weekSch),\(custAddress),\(custPhone),\(dateConfirmed!),\(confirmedWith),\(typeOfWC),\(itemLoc),\(takeChem),\(takeTrash),\(notes!),\(confirmedBy!)"
                     print(self.csvPOC)
                     self.returnedPOC = self.returnedPOC + 1
                 }
@@ -172,6 +185,7 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                 }
                 
                 if self.expectedReturn - self.returnedPOC == 0 {
+                    self.csvPOC = self.csvPOC + "\n,,,,,,,,,,,,"
                     self.shareTime()
                 }
                 

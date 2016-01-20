@@ -468,8 +468,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
 //                GlobalFunctions().updateWeeks()
 //            }
             schObj.isActive = true
-            if self.accountNumber != nil {
-                schObj.accountNumber = self.accountNumber
+            if self.accountNumber != nil || schObj.accountNumber != nil {
+                if schObj.accountNumber != nil {
+                    schObj.accountNumber = schObj.accountNumber
+                }
+                if self.accountNumber != nil {
+                    schObj.accountNumber = self.accountNumber
+                }
             } else {
                 schObj.accountNumber = ""
             }
