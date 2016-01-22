@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Run Report-->
@@ -182,7 +183,7 @@
         <!--Calendar Date Picker View Controller-->
         <scene sceneID="gos-Yz-bw1">
             <objects>
-                <viewController storyboardIdentifier="CalendarDatePicker" id="kS5-az-gmI" customClass="CalendarDatePickerViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="kS5-az-gmI" customClass="CalendarDatePickerViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HHX-Vs-G3a"/>
                         <viewControllerLayoutGuide type="bottom" id="dPu-E0-Ipq"/>
@@ -192,18 +193,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDn-Oz-PJg" customClass="CalendarView" customModule="CalendarView">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                                <rect key="frame" x="0.0" y="40" width="400" height="360"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NDn-Oz-PJg" firstAttribute="leading" secondItem="nUi-JU-xOs" secondAttribute="leading" id="KRZ-DP-IOl"/>
-                            <constraint firstItem="NDn-Oz-PJg" firstAttribute="bottom" secondItem="dPu-E0-Ipq" secondAttribute="top" id="aFG-on-Ybo"/>
-                            <constraint firstAttribute="trailing" secondItem="NDn-Oz-PJg" secondAttribute="trailing" id="atX-J6-RVG"/>
-                            <constraint firstItem="NDn-Oz-PJg" firstAttribute="top" secondItem="nUi-JU-xOs" secondAttribute="top" id="cGN-20-UU5"/>
+                            <constraint firstItem="NDn-Oz-PJg" firstAttribute="top" secondItem="nUi-JU-xOs" secondAttribute="topMargin" constant="40" id="7T1-LF-Wus"/>
+                            <constraint firstAttribute="trailing" secondItem="NDn-Oz-PJg" secondAttribute="trailing" id="DvP-DK-Jj0"/>
+                            <constraint firstItem="NDn-Oz-PJg" firstAttribute="leading" secondItem="nUi-JU-xOs" secondAttribute="leading" id="iLU-JT-PmX"/>
+                            <constraint firstItem="NDn-Oz-PJg" firstAttribute="bottom" secondItem="dPu-E0-Ipq" secondAttribute="top" id="oRW-WT-0gP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="3FR-81-IqF"/>
                     <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="400"/>
@@ -213,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PWh-a1-ajH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2513" y="1010"/>
+            <point key="canvasLocation" x="3325" y="1010"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="qyg-dg-qzz">
@@ -260,6 +262,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kaH-JW-QeR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="518" y="1160"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dhB-xN-RxR">
+            <objects>
+                <navigationController storyboardIdentifier="CalendarDatePicker" automaticallyAdjustsScrollViewInsets="NO" id="wTN-xM-wrh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <value key="contentSizeForViewInPopover" type="size" width="400" height="400"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="400" height="400"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="89C-78-2RN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kS5-az-gmI" kind="relationship" relationship="rootViewController" id="yXx-Ih-DYO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M5w-iG-BlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2751" y="1010"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
