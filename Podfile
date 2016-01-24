@@ -9,7 +9,6 @@ pod "SimpleAlert"
 pod 'BRYXBanner'
 pod "SwiftGifOrigin"
 pod "CalendarView"
-pod 'ReachabilitySwift', git: 'https://github.com/ashleymills/Reachability.swift'
 pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_places_autocomplete'
 pod 'PhoneNumberKit', '~> 0.1'
 

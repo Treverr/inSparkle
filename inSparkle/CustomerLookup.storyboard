@@ -254,26 +254,26 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dso-QY-ZuM">
                                                     <rect key="frame" x="8" y="11" width="63" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="63" id="ktR-gO-Wte"/>
+                                                        <constraint firstAttribute="width" constant="63" id="6RF-ix-w3N"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvf-LF-S6O">
-                                                    <rect key="frame" x="79" y="8" width="513" height="49"/>
+                                                    <rect key="frame" x="79" y="8" width="513" height="55"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Dso-QY-ZuM" firstAttribute="top" secondItem="SKA-ID-DJg" secondAttribute="topMargin" constant="3" id="FgC-Ic-5HB"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="gvf-LF-S6O" secondAttribute="bottom" constant="6" id="GEJ-aG-w3G"/>
-                                                <constraint firstItem="Dso-QY-ZuM" firstAttribute="leading" secondItem="SKA-ID-DJg" secondAttribute="leadingMargin" id="HWk-Xd-MiT"/>
-                                                <constraint firstItem="gvf-LF-S6O" firstAttribute="leading" secondItem="Dso-QY-ZuM" secondAttribute="trailing" constant="8" symbolic="YES" id="LZk-Al-UJC"/>
-                                                <constraint firstItem="gvf-LF-S6O" firstAttribute="top" secondItem="SKA-ID-DJg" secondAttribute="topMargin" id="POF-tA-Yla"/>
-                                                <constraint firstItem="gvf-LF-S6O" firstAttribute="trailing" secondItem="SKA-ID-DJg" secondAttribute="trailingMargin" id="d14-be-hMa"/>
+                                                <constraint firstItem="gvf-LF-S6O" firstAttribute="bottom" secondItem="SKA-ID-DJg" secondAttribute="bottomMargin" id="15x-XU-q5A"/>
+                                                <constraint firstItem="gvf-LF-S6O" firstAttribute="top" secondItem="SKA-ID-DJg" secondAttribute="topMargin" id="5F6-7r-vcF"/>
+                                                <constraint firstItem="gvf-LF-S6O" firstAttribute="leading" secondItem="Dso-QY-ZuM" secondAttribute="trailing" constant="8" symbolic="YES" id="FoH-x5-cup"/>
+                                                <constraint firstItem="Dso-QY-ZuM" firstAttribute="top" secondItem="SKA-ID-DJg" secondAttribute="topMargin" constant="3" id="Tvx-Ds-cDi"/>
+                                                <constraint firstItem="gvf-LF-S6O" firstAttribute="trailing" secondItem="SKA-ID-DJg" secondAttribute="trailingMargin" id="ale-t8-zZD"/>
+                                                <constraint firstItem="Dso-QY-ZuM" firstAttribute="leading" secondItem="SKA-ID-DJg" secondAttribute="leadingMargin" id="yfr-PK-YNd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

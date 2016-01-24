@@ -24,17 +24,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>GooglePlacesAutocomplete (Trever’s MacBook Pro's conflicted copy 2015-12-10).xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>GooglePlacesAutocomplete.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PhoneNumberKit (Trever’s MacBook Pro's conflicted copy 2015-12-10).xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -50,11 +40,6 @@
 			<false/>
 		</dict>
 		<key>RSBarcodes_Swift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ReachabilitySwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -77,12 +62,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0C66C30381F86C3D642FC983CCADEBB6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2239C176B9CD8766D8E83A8542529AA9</key>
+		<key>217FB3470A82C4DD453DD6471BF332C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,12 +72,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2E458F9C89AE62C3C7636ED5FF25D29F</key>
+		<key>2EB67C0F5243DC1327177C21B03E1289</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4F57BBDFD9D30A2FC489406BAEDACD96</key>
+		<key>43C46F7060CBCEED6137B672350A3D1D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4CFFE9A8DEA0504DE7C483B741A259A4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>665C2637F7A7C7F60337BFAAABEE5148</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,17 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9B96E0DE1DC3EC00F22AF1BAD1B5EED7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B0CC03BBB6E7A6CC1022209C3E09DAC5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B662BA5D6564C50F418B8B77860F9AEF</key>
+		<key>8CC444F0AC246C7E680305E383486492</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,7 +112,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E47E46FD96422F9D29CFC8FDE06000DE</key>
+		<key>D620624F4705FA50DDE71BCDAFD8587E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

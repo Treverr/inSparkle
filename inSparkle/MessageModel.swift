@@ -75,4 +75,19 @@ class Messages : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "signed") }
     }
     
+    var isUrgent : Bool {
+        get {return objectForKey("isUrgent") as! Bool}
+        set { setObject(newValue, forKey: "isUrgent") }
+    }
+    
+    var altPhone : String? {
+        get {return objectForKey("altPhone") as? String}
+        set { setObject(newValue!, forKey: "altPhone") }
+    }
+    
+    var emailAddy : String? {
+        get {return objectForKey("emailAddy") as? String}
+        set { setObject(newValue!, forKey: "emailAddy") }
+    }
+    
 }

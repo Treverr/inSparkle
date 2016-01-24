@@ -7,338 +7,325 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E4002E1E2099DCAE2DF9807D997084 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
+		025FE37DC3B2359209373845E34C1A75 /* PhoneNumberKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD7137EC9C0D2E73E2DD73CEF6B250A /* PhoneNumberKit-dummy.m */; };
 		0908AB04AAF6767461A05059E86A1AF7 /* RSCode39Mod43Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3D65391D456EC5CD11D75A333871EB /* RSCode39Mod43Generator.swift */; };
 		0A6712EE1E1F2A1DB4B5F7DEA346B9F0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863DBACEE1DA0412A8B354B88C1DCF1 /* Extensions.swift */; };
 		0AFB787B1D9AA76F9E8A1E5C3A1640FB /* SimpleAlert.xib in Sources */ = {isa = PBXBuildFile; fileRef = 509A9455B0C246A0677776F89BFA67B3 /* SimpleAlert.xib */; };
-		0CD1233BB173241C108DEE6C31AB030C /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B08A7770110DBBA4FD104DFBC36084 /* DayView.swift */; };
-		101752D88E44A553A99D098AAEAE0F2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
+		0CD4CAA8277BFCE5B8960595C5EBF89A /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045DF22B6DC8B4AD28C08D8DE52B4BEC /* CalendarView.swift */; };
 		13DB5E047085E6AFADE7D3EA78543464 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
+		16F395508DBD2348B750C1D141140600 /* Pods-inSparkle-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FC063F3BBF55392BD3DE36F5B726F447 /* Pods-inSparkle-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1A86BABEF87866724D06C1C660474C6F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589375DED7EC3C797DCA3E19502CDB2 /* StringExtension.swift */; };
 		1C986287111D389B97A2D1818D2C89CA /* RSCodeDataMatrixGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE77CA658661ACFAE62F78EF1B39B631 /* RSCodeDataMatrixGenerator.swift */; };
-		1E55DB23297F0C3A2F058A39B95CE76E /* BRYXBanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 66498360AF4338D5EA9F2FDB278147AA /* BRYXBanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2104EF1F8BDB5264DD39C0F4FF77A4AE /* EasyCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057FA4090BBFE1DC2EB8548FFD09CF31 /* EasyCast.swift */; };
-		23A034CBFC1BF5C319E311CCBCEB4894 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5429E8BB28A7905685D7734C9428B0C3 /* Constants.swift */; };
+		1FF86AF35DF838BF470650459A55372F /* ParseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0DCC6A350D546BCE0C9C506A0DBDC /* ParseOperation.swift */; };
 		2DA27C334CAA427023089DDBCE69EFD4 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 428F0ECA60A973E707583C08A9AC1AC4 /* CoreImage.framework */; };
-		2DE6E4ED38F8869175A21278113F6C23 /* MetadataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3386E82835405DE697F2137E70EE1577 /* MetadataTypes.swift */; };
+		308C9AF7F53B1458EFC9462FBA721AAE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
 		345A3BFD9B82431D2EFFF4B1E34CD85D /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5371C67A41980754C646914B15A78BE7 /* Duration.swift */; };
+		34DA9A6AA50709E9578679CEE5711048 /* PhoneNumberKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC6837FEAB40CCABFA1FA6474CF59D2 /* PhoneNumberKit.swift */; };
 		369AFCAE017A40D26ACFF7B3431EF0E3 /* RSBarcodes_Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 402A5C898D2629D26A43C3C85DB54605 /* RSBarcodes_Swift-dummy.m */; };
-		3919AB77E5E8F8612EFBBF1471FFCD50 /* PhoneNumberKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4EDDCB4862CF655601A45CE4C0DF708C /* PhoneNumberKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		379ED55272547C8C57374F4081A448BB /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F2642F96E6C01B5FB5B514C3E2674 /* MonthView.swift */; };
 		39A88A0AE2157A159B1529A3DF27BDC1 /* RSUPCEGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3BB2E5ACC98D5AF2B75C72F60BDA43 /* RSUPCEGenerator.swift */; };
-		39CE0371378B0161C8CF4324839D4BF9 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB43B91857AD77306719BAAEEC87075 /* MonthView.swift */; };
-		41535DCA5CF3DEEDE0276C426E77A6CA /* GooglePlacesAutocomplete.h in Headers */ = {isa = PBXBuildFile; fileRef = BBEF29699AF9C0DDBC5701EFFCD97A7E /* GooglePlacesAutocomplete.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		42427C61C742B0AF4167B5202FCB41DC /* Pods-inSparkle-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CFD2161DAB1CDFEC507808B787F02201 /* Pods-inSparkle-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4341DDBE3C8FB3626B2732991EDA2436 /* BRYXBanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6000FFBBB969FCFB07D14EB880C834D2 /* BRYXBanner.bundle */; };
+		3CAD231DB7B5F1146AA8D6FAB679DC2F /* CalendarView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0191BA57CB7A78520BA7A8198A625E5 /* CalendarView.bundle */; };
+		41FE106EB3F14BD509B8743DEC937F34 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC914FA14CF5580EAC0ED69F5C5679 /* Formatter.swift */; };
+		42C891A1452D7E7875B0071A43B4FD32 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D677F95A54B2C06D761851DE5B76112E /* WeekView.swift */; };
+		4555A5EC833803C0F1E834546258C993 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51474B84C0456E10BDEB3E083332FC40 /* Banner.swift */; };
+		4A34FC8BFCA40D646A894E146E88AB9F /* RegularExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE393BD760D3F7D164E32311E0D9951 /* RegularExpressions.swift */; };
 		4AFCDED3A48D432866E1627DCE4E65B4 /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E72E7B1065F362B81918EA0CF90A5E7 /* TimeUnit.swift */; };
-		4E3BDE135AFBA6E413A21E4996D4E1F8 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99A336F9624D6EB2BF845D65E902ABD /* Metadata.swift */; };
-		4EC96E7D8B5DD050B31997BF4A63AFE2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
-		4F269FDC92A05B7A83DD2A508898792D /* PhoneNumberKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 732C2B34827FCD4F13B1BC789C9A9983 /* PhoneNumberKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B5AC830C73CFE97E3EF81F0F5708770 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAA358F443610083F0BB4F3972D19FD /* ContentView.swift */; };
+		54312969CCA32B783BC698FE56E13820 /* GooglePlacesAutocomplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC3D583CC11CB0A023B21B4174D7E110 /* GooglePlacesAutocomplete.xib */; };
+		54C8662352A51082C492C10A07074F81 /* PhoneNumberParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167F93F1BE0F28C5A793E86CD2EC6DBD /* PhoneNumberParser.swift */; };
 		557728229EFCE95A4C5969FFC755C4DC /* RSCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8920FDEB4942C72905EE51D4898E62 /* RSCodeGenerator.swift */; };
-		5E90DB64C8823518F1F25ADCD426817F /* Pods-inSparkle-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 808A2CC91906028ECC977162A6F1E7A6 /* Pods-inSparkle-dummy.m */; };
-		630B7C55EE57FC4BCC1ACCA5E9198140 /* ParseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF57C98D4BF0D78AAAE33505FF17662 /* ParseOperation.swift */; };
-		63B038BCDB731C2F8B93A35AB9626B09 /* GooglePlacesAutocomplete-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AA17093D1DF049EC5ACBA7C98728C2CD /* GooglePlacesAutocomplete-dummy.m */; };
-		63BA903D645A6D2DDEBBCAB3B9F3A475 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6029C04CC5C774C84B12E7365422A83 /* ContentView.swift */; };
+		5CEA711411D79B42E75D130968B2ACA6 /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C544BFC3BB17306D8EC8FD79BB8B92 /* Metadata.swift */; };
 		64626A62E31B5377C7B710CBA2CB5323 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A949504BAD5138F509DA281C5312783 /* QuartzCore.framework */; };
+		67747F8EEC8D3992A5836130C3A547D0 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9152C81A5BE2C6D8B555D5A9A1856BFD /* CoreTelephony.framework */; };
+		6964DEB508608A048365732E1A375431 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
 		6AA372B29FDFECE4C83B4EE4FF97A3D6 /* RSCode93Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B779B7D3A6C8B1321715520380363C07 /* RSCode93Generator.swift */; };
-		6BA6D490DB74E6D941F7335C94C37DE6 /* CalendarView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CC0221FFC3B23EA476520E1C1B394C23 /* CalendarView.bundle */; };
 		6C023E9CC7B7AC99532601A4C00121C9 /* RSCode128Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A6140F972E8D64AE88B029C4BF4142 /* RSCode128Generator.swift */; };
-		6E0B32BB9D7E10891D49EF9D239B20D8 /* ReachabilitySwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 42443BE4CFDB3686DCE7BD49A7251FBD /* ReachabilitySwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6E78F999BEDF50E29DEC988150976778 /* PhoneNumberParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F16E7B4932BD81E80D75BCA513A452 /* PhoneNumberParser.swift */; };
+		6F69BF565C64DE95F37F1997629BAB57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
 		6F7BD9B7619D54058CBEE79E7884AB45 /* SimpleAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = EA2B75A31A0A1D20EB37DEBE9B99023F /* SimpleAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F9B3F1F79CD1F12A5B7C7DC8CC841CA /* RSCodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421839C39B69CDF8007C1D687CCC5BC5 /* RSCodeReaderViewController.swift */; };
-		7015F3B0A946E3EAB9F12D23ED78AE0B /* CalendarView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FFA057879864909B6F1390B049B74D7 /* CalendarView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		70DE0CE03D63E8713777585F4652D345 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 411C9CB70BCE07EB96509AB7FC32F209 /* Images.xcassets */; };
 		72B028F7024FDE7CD04A2A0E6A60089C /* RSITFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726BB3D2F90F5A1646BDF07D1E8A309B /* RSITFGenerator.swift */; };
-		73AFB0EEB1632E5E81052FAE09E76450 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B25A406CCF9B463AB8AA50C9F874F54 /* UIKit.framework */; };
 		75E8C04562A1B70B1226C0C9D97FA60D /* RSBarcodes_Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 902308B13351E91338B8F877B6C4E49D /* RSBarcodes_Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		763173252599467763EE2BE15B67587A /* MetadataTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B88F3D90EEB13BC92ACAAD1B62CA94 /* MetadataTypes.swift */; };
 		7793FA7BA1FE418A3BBEF0837E50412C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
-		7806E8A24CA4F8E7888D0786ED541F8A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D91FCCD5DFD97296D8586480AD4D17C /* CoreTelephony.framework */; };
 		7B3B89CA8755B93BEDBB2793EA72F30D /* RSCornersLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9D83C968222AB5DF5EBBA961214711 /* RSCornersLayer.swift */; };
-		7C86FE864DF4F12202D1065FB7880C00 /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B53DE5A31D44FD4039604B2DB1F9DAC /* GooglePlacesAutocomplete.swift */; };
-		7DF50A6FBB59FE5701AC1E8D0BF89C0E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0AE6E7F5B0D3769350232F3FCEC018 /* Reachability.swift */; };
-		7EB49476E2EE18B86E7FA605B55A4F88 /* SwiftMoment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D10D48BD450FA135EC57E99F1D49D5F /* SwiftMoment.framework */; };
-		7ED6C4313610EF5C6DF992A642BF9419 /* BRYXBanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C6913C0644BF7C732265F609212CD4F9 /* BRYXBanner-dummy.m */; };
-		7FAD0C3DC8B2B30663C212920DDFA6ED /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC855BB016152A3F33A9C678E669E0F /* PhoneNumber.swift */; };
-		82A1965A2F960149D564EAA84B7098A2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B25A406CCF9B463AB8AA50C9F874F54 /* UIKit.framework */; };
+		7CB8E705E84635FADFD7BD53D6C4CCC5 /* CalendarView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62346828507CBB43E5D965787118DCCD /* CalendarView-dummy.m */; };
+		7FA32C7C5259FDC20AA021E36C1DCB1C /* GooglePlacesAutocomplete-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B106D5C39C311C23CA272D110167FDEE /* GooglePlacesAutocomplete-dummy.m */; };
+		817C0B7BA3B810BB87B0A01E10AF3F73 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C1F359CB13A4DF0790B9E7FB5DC906 /* DayView.swift */; };
 		8584ABF2CBB0521C7DE6BD5716CC9A8D /* RSCodeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF12F9ABF65CAE1C5CC8E3CC3F3D4FA /* RSCodeLayer.swift */; };
 		85EDE6D53A9CFA15645FCC29B091F89F /* SwiftMoment-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 53361901E9A7B9B3B22CD372926AA5F2 /* SwiftMoment-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9360C39CAC00DB29A5C84F28F831E772 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
-		975684F7534BA6E653B2B1DC6D013995 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567DD2F7F01E32E4642A6D8F035FEE2F /* Formatter.swift */; };
+		8E9FA56009B41100F1F891C12B6482A8 /* PhoneNumberKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C62E5262A6077059BD848F6510795D1 /* PhoneNumberKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9781EA2BF2B1E9DC2FF56ACD4884EFC1 /* PhoneNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8855C5C01A18CD29D82E43F927CFCC8F /* PhoneNumber.swift */; };
 		9886B8419E10928652D9B974EEFD6E17 /* Moment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C554514A88FFBB71A50F44E5E84EC62B /* Moment.swift */; };
-		9DF0A2CC021A82376A1AC1796F66CAFD /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FF56CE6F380B4EE49F0F881E22E4CBE /* PhoneNumberMetadata.json */; };
-		9ECC03A53330C6931BF5D8FE931E8EF3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B935E36816E2511A5E51D6A986998A4A /* Images.xcassets */; };
-		9F812F69618E146ECCE1FF050486CC8F /* GooglePlacesAutocomplete.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4880EA1FBDB8943F7956F3ABCB0968ED /* GooglePlacesAutocomplete.xib */; };
-		A7E7B2E6F607C1AB4403B415B990003E /* PhoneNumberKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD063CD41D81DCF407D831B62DE7771 /* PhoneNumberKit-dummy.m */; };
+		A226528CDF5F92763E642DF834639B19 /* Pods-inSparkle-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 41A0A763320CAAE60128EDC3C918DB5A /* Pods-inSparkle-dummy.m */; };
+		A5A604AFF84D5FB4AE477FCFCA1AAE5A /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EAF2CCBDCC94EE31C977426C45D228 /* ParseManager.swift */; };
 		A8BED3FC86E2E7F799AAF697E0C46066 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B25A406CCF9B463AB8AA50C9F874F54 /* UIKit.framework */; };
+		A9682B408C4CB6B7AC6CF88A4CFCAA54 /* GooglePlacesAutocomplete.h in Headers */ = {isa = PBXBuildFile; fileRef = 25B9387EF14EA3B6B03F40C338C76185 /* GooglePlacesAutocomplete.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD1EDAFFCA72D975BA666E4E59D9394C /* GooglePlacesAutocomplete-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 185118EC653821C406C15354286B8662 /* GooglePlacesAutocomplete-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADD822567FC6F9E025848BD536BAD183 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2A0FF9163C25E7883145E2F3F7672AE /* AVFoundation.framework */; };
 		AE9445605907C411D5EA2CD410893F70 /* RSExtendedCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7825800C44456BD85DB2F9A88D392A /* RSExtendedCode39Generator.swift */; };
+		AEC7B6212C9D321CAB2C61A0DE37C48B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B25A406CCF9B463AB8AA50C9F874F54 /* UIKit.framework */; };
 		AF53B42CE6011672F1668F9839231B69 /* SwiftMoment.h in Headers */ = {isa = PBXBuildFile; fileRef = DDEC413D186F6FD2DC73FD9AC2DBABE3 /* SwiftMoment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AFCB290E91343082B73BB825575851C4 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2325933C6A870A8317A8079656CC79 /* WeekView.swift */; };
 		B11AFCBA3F71ACA6B12646D3B1AD0568 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBB80EF98ACD2B73B21386EF432B5A1 /* UIImage+Gif.swift */; };
-		B126D7CDB779B875367B536BB5ED56ED /* GooglePlacesAutocomplete-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 06099BF4820FFC01A59464B56EDCFA19 /* GooglePlacesAutocomplete-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B241596A725EC3D6DD8608B95361F1F5 /* RSITF14Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761C7221C7650696965D0A56F416CA04 /* RSITF14Generator.swift */; };
-		B58875AB44644539486BB1E19A5E27A3 /* CalendarView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF60F4331E606A438317EF67FDB8799 /* CalendarView-dummy.m */; };
+		B24F0F7E1737C00545F4152285C486AF /* BRYXBanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CA6ECCE1D9708085DDC9AFBEEB90816 /* BRYXBanner.bundle */; };
 		B9A1644B2E3B7BD7C6D4C1BA6CBC2BA0 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5E9D5495B486A48835C5E2C19162B /* Operators.swift */; };
 		BB77E45EC087634FD829BF0F5BB8A5C9 /* SwiftGifOrigin-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C3BEFD7ADBE1D327A97E6468D396CEAD /* SwiftGifOrigin-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BDACF1FCE8993E6AAD7F946422F3D48A /* SwiftGifOrigin-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 859F590F3C8C1E8297095B96B678C60A /* SwiftGifOrigin-dummy.m */; };
 		C29F5C6D517361E939111859A62EBA5D /* SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CDC6E459639009B4B087AB277D908D /* SimpleAlert.swift */; };
-		C696892E0B1CC220B97258AC1BE05820 /* ReachabilitySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 116A69333702B7E00BBBEC1B8CBB5421 /* ReachabilitySwift-dummy.m */; };
+		C54BF3D83805EF168957F031E730BFC5 /* BRYXBanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 108F1FF5D0D021B103FA1DBB4A16675F /* BRYXBanner-dummy.m */; };
+		C6CBBC591BC71D21F6998E190F10722A /* PhoneNumberKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 177CE3D983065B2FA5FFAD7002205FF6 /* PhoneNumberKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C90B96D05655B79934EC9A205E17F85B /* SimpleAlert-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6715FF0DD74708735E42DB0A5A038C1F /* SimpleAlert-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CAD1FF7105BF8FCC9B0244966E6B6511 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBD1233083EB082237BEA50D944B247 /* Banner.swift */; };
+		C95C4269D083BA56EEE1E9823A76E365 /* EasyCast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FA1D53435DAEE0279932C5EF3B528 /* EasyCast.swift */; };
+		CADF74600CB78EF59BE67137316E6265 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B25A406CCF9B463AB8AA50C9F874F54 /* UIKit.framework */; };
+		CB3001594F218D9D84AB495DCD028A00 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18A3A45B70DA8614DA54DD74F0B7CB0 /* Constants.swift */; };
+		CCE17F6B99AD8C484689B7DE5629950D /* CalendarView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A34E3CED2056265E0A0DE4AD6F2AA115 /* CalendarView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD2FB6CEA1F86F1BFEC7CD5D71E4FC06 /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 222509309F3E1A1B9DE622F8ED246EC2 /* PhoneNumberMetadata.json */; };
 		D4630EABB66FE2A21A4CDB8F0B7A2F22 /* SimpleAlert-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3F014EC29EBDD6D9B72A9F084FC5293 /* SimpleAlert-dummy.m */; };
+		D59638D15B38A18F142B4C09D6A2930F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
+		D803A9E1E987B65B824A16714AA87985 /* SwiftMoment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DE26B828546D7C3B4DF036EC602120 /* SwiftMoment.framework */; };
 		DA3A7BC4074CDED8C8343F834A98EC8B /* RSFocusMarkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7A9F0CBDFEED41A8A453FEAE3A213E /* RSFocusMarkLayer.swift */; };
-		DC06419AEE54239C3C6E4E67AB25A13C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
-		E123BA136E8102822E0723D0CB55FBA6 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4492F0487C5BE5DAF0916EED94C7942D /* CalendarView.swift */; };
-		EB21BCCD0AA67381E43E0D7017443BA2 /* PhoneNumberKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A878836EE87D265CD8AC8FA17C9F8F4F /* PhoneNumberKit.swift */; };
+		DF2955FF8502C26DF01E35D284D0015B /* BRYXBanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DA2C33F7F0B7824381FFE601FB776940 /* BRYXBanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EC16728C0B1494FD0CAC59CB7150A97C /* RSEANGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C692FC8E745E758F8B559A8F9EC190 /* RSEANGenerator.swift */; };
-		EE26A3FCC4707877528E7969065E65DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
+		ECDCE46F1AA926CE0E3EFA0599B3E6F5 /* GooglePlacesAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F86E4FE6285C1A50ECDCDB705C764B /* GooglePlacesAutocomplete.swift */; };
 		EF19539064CF6FD860F168592C77BEC6 /* RSUnifiedCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBBBEBF1F3BA5C62E877D2714129051 /* RSUnifiedCodeGenerator.swift */; };
-		F0802F3AFAF7D8A77352554B823D27C3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD57B2EC67C756B7EB4D09F0340DC538 /* SystemConfiguration.framework */; };
 		F1C014AD935CAB24BAFD1DCCCC8B9311 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
 		F1C686B9C8ADDCB13F4238AC68D56A07 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
-		F326A263E646F0314EE0240AB31B4A55 /* RegularExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E7FD91C3567D5251FF1EE73B2D2A60 /* RegularExpressions.swift */; };
 		F3F33BFD8A389A7A964722E092AF6C59 /* RSCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F5D4490F312C80AA83334C62CA96D6 /* RSCode39Generator.swift */; };
-		F5C0E984A3C2FA8BC8F2B9A595E84110 /* ParseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA38A979DE92C316070651B098762D2 /* ParseManager.swift */; };
 		F990665A39709010FD8B6A439FAABC23 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3A9A6A91759FCA88035198C030C3C8 /* UIColorExtension.swift */; };
+		FF63525252B92FB92FB4CC6E56E53C1B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */; };
 		FFFF901CBA1FC75305CF443DC6483E1D /* SwiftMoment-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DF060819618B7F2655811C08F1E5EED6 /* SwiftMoment-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		06EC49532993EF4CC6A8A30DCEAC0180 /* PBXContainerItemProxy */ = {
+		019145F40DDD9F3092A69819680474CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CD466B4DB127D2A412BC74B73E8A971F;
-			remoteInfo = SwiftGifOrigin;
-		};
-		1DFF3D77DF899166EA1C1BCF33E83D32 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 66D005083813866908DDB895F347CD7B;
-			remoteInfo = SwiftMoment;
-		};
-		3416E0F4D3C0701ACC16B2DB81F69AD4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2E458F9C89AE62C3C7636ED5FF25D29F;
+			remoteGlobalIDString = 43C46F7060CBCEED6137B672350A3D1D;
 			remoteInfo = CalendarView;
 		};
-		47BD8085815C365FCF349F46CF083D7E /* PBXContainerItemProxy */ = {
+		3ECB65F8A43650FB7C8E10B1A70DDA79 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9B96E0DE1DC3EC00F22AF1BAD1B5EED7;
+			remoteGlobalIDString = 665C2637F7A7C7F60337BFAAABEE5148;
+			remoteInfo = PhoneNumberKit;
+		};
+		5A323C2C9612D9AE5FB8C6CAF2019FBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 217FB3470A82C4DD453DD6471BF332C2;
+			remoteInfo = "CalendarView-CalendarView";
+		};
+		5BA478D4F7479A607D7AF5296DDE1AF3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D620624F4705FA50DDE71BCDAFD8587E;
 			remoteInfo = "BRYXBanner-BRYXBanner";
 		};
-		5D9EAE490FBBC83D2F1DED218F6E71B2 /* PBXContainerItemProxy */ = {
+		7E910A9C22BA86AFCE8F93AB7AB4ADBA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 66D005083813866908DDB895F347CD7B;
-			remoteInfo = SwiftMoment;
+			remoteGlobalIDString = 4CFFE9A8DEA0504DE7C483B741A259A4;
+			remoteInfo = GooglePlacesAutocomplete;
 		};
-		727D1F2B80813CA125287C71EFEACFB4 /* PBXContainerItemProxy */ = {
+		8386A27BCB4ADF1D9448ED4D3119320E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CC444F0AC246C7E680305E383486492;
+			remoteInfo = BRYXBanner;
+		};
+		9471BB7F7A44ED31999903946C5F1EB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2293EC2563814D4DD54181F5732E39A1;
 			remoteInfo = RSBarcodes_Swift;
 		};
-		88B83A348D93D8474A927AEB180B9B6B /* PBXContainerItemProxy */ = {
+		A2847AA17D83FD85FEABE3D9929312E3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0C66C30381F86C3D642FC983CCADEBB6;
-			remoteInfo = ReachabilitySwift;
+			remoteGlobalIDString = 66D005083813866908DDB895F347CD7B;
+			remoteInfo = SwiftMoment;
 		};
-		9DFB603BDDDB24AE5D9A52C5487391BC /* PBXContainerItemProxy */ = {
+		CBCDA65018B8E289504CFF6B526FBAE2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD466B4DB127D2A412BC74B73E8A971F;
+			remoteInfo = SwiftGifOrigin;
+		};
+		D233A1CF10FAC3E78DEB70C63EB50DBD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 744DAA31A10AD23500F2027C789597D6;
 			remoteInfo = SimpleAlert;
 		};
-		A3067B587F71705A20FADC8D7AABF33F /* PBXContainerItemProxy */ = {
+		DEFA012490538EE603BDC44AF07D44A1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E47E46FD96422F9D29CFC8FDE06000DE;
-			remoteInfo = BRYXBanner;
-		};
-		B4B88B02E840AA9498734841CD8674F1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2239C176B9CD8766D8E83A8542529AA9;
-			remoteInfo = PhoneNumberKit;
-		};
-		BF3F03EF5F79E81E7F108E7B7F2A2B24 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4F57BBDFD9D30A2FC489406BAEDACD96;
-			remoteInfo = GooglePlacesAutocomplete;
-		};
-		F900920000DFDDC97560FAF885678DBB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B0CC03BBB6E7A6CC1022209C3E09DAC5;
-			remoteInfo = "CalendarView-CalendarView";
+			remoteGlobalIDString = 66D005083813866908DDB895F347CD7B;
+			remoteInfo = SwiftMoment;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		02C1E5B48CF676644757FC7FEB522169 /* PhoneNumberKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhoneNumberKit-prefix.pch"; sourceTree = "<group>"; };
-		057FA4090BBFE1DC2EB8548FFD09CF31 /* EasyCast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasyCast.swift; path = CalendarView/CalendarView/Classes/EasyCast.swift; sourceTree = "<group>"; };
-		06099BF4820FFC01A59464B56EDCFA19 /* GooglePlacesAutocomplete-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GooglePlacesAutocomplete-umbrella.h"; sourceTree = "<group>"; };
+		045DF22B6DC8B4AD28C08D8DE52B4BEC /* CalendarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = CalendarView/CalendarView/Classes/CalendarView.swift; sourceTree = "<group>"; };
+		0767860C4DD6F058E54337CCDF328109 /* SwiftMoment.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftMoment.modulemap; sourceTree = "<group>"; };
 		0863DBACEE1DA0412A8B354B88C1DCF1 /* Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = SwiftMoment/SwiftMoment/Extensions.swift; sourceTree = "<group>"; };
-		0AB43B91857AD77306719BAAEEC87075 /* MonthView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonthView.swift; path = CalendarView/CalendarView/Classes/MonthView.swift; sourceTree = "<group>"; };
-		0EC855BB016152A3F33A9C678E669E0F /* PhoneNumber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumber.swift; path = PhoneNumberKit/PhoneNumber.swift; sourceTree = "<group>"; };
-		0FFB86B127BDE2D8A7CDBE1C07E291B2 /* ReachabilitySwift-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ReachabilitySwift-Private.xcconfig"; sourceTree = "<group>"; };
-		116A69333702B7E00BBBEC1B8CBB5421 /* ReachabilitySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReachabilitySwift-dummy.m"; sourceTree = "<group>"; };
+		0D8AA3A69BEC2C18EF1D9020914DF573 /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		108F1FF5D0D021B103FA1DBB4A16675F /* BRYXBanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BRYXBanner-dummy.m"; sourceTree = "<group>"; };
 		11A6140F972E8D64AE88B029C4BF4142 /* RSCode128Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCode128Generator.swift; path = Source/RSCode128Generator.swift; sourceTree = "<group>"; };
 		1589375DED7EC3C797DCA3E19502CDB2 /* StringExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Source/StringExtension.swift; sourceTree = "<group>"; };
-		1728696E41E185B89E9687AF837DAD12 /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		19C0AFE592A03A37C3BFC2BAA770DCB7 /* BRYXBanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BRYXBanner.modulemap; sourceTree = "<group>"; };
-		1B53DE5A31D44FD4039604B2DB1F9DAC /* GooglePlacesAutocomplete.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GooglePlacesAutocomplete.swift; path = GooglePlacesAutocomplete/GooglePlacesAutocomplete.swift; sourceTree = "<group>"; };
-		203FCA45B9078A914FA9BFADDCF1CC95 /* RSBarcodes_Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSBarcodes_Swift.xcconfig; sourceTree = "<group>"; };
+		165899CB628B548B9B036727BF50B61D /* PhoneNumberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PhoneNumberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		165931BC3E5D0FF9BFB7BDBB135D1C9D /* RSBarcodes_Swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSBarcodes_Swift.xcconfig; sourceTree = "<group>"; };
+		167F93F1BE0F28C5A793E86CD2EC6DBD /* PhoneNumberParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberParser.swift; path = PhoneNumberKit/PhoneNumberParser.swift; sourceTree = "<group>"; };
+		177CE3D983065B2FA5FFAD7002205FF6 /* PhoneNumberKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhoneNumberKit-umbrella.h"; sourceTree = "<group>"; };
+		185118EC653821C406C15354286B8662 /* GooglePlacesAutocomplete-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GooglePlacesAutocomplete-umbrella.h"; sourceTree = "<group>"; };
+		1869F177696289A9FB37A35BD167A8B9 /* CalendarView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "CalendarView-Private.xcconfig"; sourceTree = "<group>"; };
+		1C0F9D74A9F4AF512C5A2F72626638DF /* BRYXBanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BRYXBanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CA6ECCE1D9708085DDC9AFBEEB90816 /* BRYXBanner.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BRYXBanner.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E3F44CD777AE729F6090846561E2E34 /* GooglePlacesAutocomplete.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GooglePlacesAutocomplete.modulemap; sourceTree = "<group>"; };
+		20EAF2CCBDCC94EE31C977426C45D228 /* ParseManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseManager.swift; path = PhoneNumberKit/ParseManager.swift; sourceTree = "<group>"; };
+		222509309F3E1A1B9DE622F8ED246EC2 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = PhoneNumberMetadata.json; path = PhoneNumberKit/Resources/PhoneNumberMetadata.json; sourceTree = "<group>"; };
+		25B9387EF14EA3B6B03F40C338C76185 /* GooglePlacesAutocomplete.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GooglePlacesAutocomplete.h; path = GooglePlacesAutocomplete/GooglePlacesAutocomplete.h; sourceTree = "<group>"; };
+		28B6178D2B37E499758613683C419D12 /* GooglePlacesAutocomplete-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GooglePlacesAutocomplete-prefix.pch"; sourceTree = "<group>"; };
 		2B01B8C68C9D67F28FC9157C389CC446 /* SimpleAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D10D48BD450FA135EC57E99F1D49D5F /* SwiftMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EDB3C86EDDC64F9C6117B15EF3F314B /* PhoneNumberKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PhoneNumberKit.xcconfig; sourceTree = "<group>"; };
-		326E68B92C3E5A137E6A01DD02C152E3 /* SwiftMoment-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftMoment-Private.xcconfig"; sourceTree = "<group>"; };
-		32B849963312B86EF21190850870F952 /* GooglePlacesAutocomplete.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GooglePlacesAutocomplete.xcconfig; sourceTree = "<group>"; };
-		3386E82835405DE697F2137E70EE1577 /* MetadataTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataTypes.swift; path = PhoneNumberKit/MetadataTypes.swift; sourceTree = "<group>"; };
+		2B74160C4CF2CAA639D05CE20464FDEA /* PhoneNumberKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PhoneNumberKit.xcconfig; sourceTree = "<group>"; };
 		346AD49F4C54168817A17FADB71F33E2 /* Pods-inSparkle.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-inSparkle.modulemap"; sourceTree = "<group>"; };
-		35A02A9923E85884ED19935CDDC06CF2 /* BRYXBanner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-prefix.pch"; sourceTree = "<group>"; };
-		36235317FD9FEADC4059ED1BF8794847 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		356BD8A22F5D0B7716B0A6F3F55A1E97 /* GooglePlacesAutocomplete-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "GooglePlacesAutocomplete-Private.xcconfig"; sourceTree = "<group>"; };
 		37B5E9D5495B486A48835C5E2C19162B /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = SwiftMoment/SwiftMoment/Operators.swift; sourceTree = "<group>"; };
 		37CDC6E459639009B4B087AB277D908D /* SimpleAlert.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SimpleAlert.swift; path = SimpleAlert/SimpleAlert.swift; sourceTree = "<group>"; };
+		3EF2BD6A251A9C5F764DB055549FD0AD /* SwiftGifOrigin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftGifOrigin.xcconfig; sourceTree = "<group>"; };
 		402A5C898D2629D26A43C3C85DB54605 /* RSBarcodes_Swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RSBarcodes_Swift-dummy.m"; sourceTree = "<group>"; };
 		4039ED6B0CE77A3159514AFF54CBE7CE /* SimpleAlert-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SimpleAlert-Private.xcconfig"; sourceTree = "<group>"; };
 		403F86B0C121C74DD961CB197B86B59E /* SwiftGifOrigin-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftGifOrigin-Private.xcconfig"; sourceTree = "<group>"; };
-		4097F5D38DB4B77D20E2501CFEB1AD08 /* GooglePlacesAutocomplete-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GooglePlacesAutocomplete-prefix.pch"; sourceTree = "<group>"; };
-		40E7FD91C3567D5251FF1EE73B2D2A60 /* RegularExpressions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegularExpressions.swift; path = PhoneNumberKit/RegularExpressions.swift; sourceTree = "<group>"; };
+		411C9CB70BCE07EB96509AB7FC32F209 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GooglePlacesAutocomplete/Images.xcassets; sourceTree = "<group>"; };
+		41A0A763320CAAE60128EDC3C918DB5A /* Pods-inSparkle-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-inSparkle-dummy.m"; sourceTree = "<group>"; };
 		421839C39B69CDF8007C1D687CCC5BC5 /* RSCodeReaderViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCodeReaderViewController.swift; path = Source/RSCodeReaderViewController.swift; sourceTree = "<group>"; };
-		42443BE4CFDB3686DCE7BD49A7251FBD /* ReachabilitySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-umbrella.h"; sourceTree = "<group>"; };
 		428F0ECA60A973E707583C08A9AC1AC4 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreImage.framework; sourceTree = DEVELOPER_DIR; };
-		4492F0487C5BE5DAF0916EED94C7942D /* CalendarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarView.swift; path = CalendarView/CalendarView/Classes/CalendarView.swift; sourceTree = "<group>"; };
-		4559B88681DF4510856A4E8E9881F129 /* ReachabilitySwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReachabilitySwift.xcconfig; sourceTree = "<group>"; };
-		45786764B04BCEF3B2AD3E819F0098C8 /* BRYXBanner-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "BRYXBanner-Private.xcconfig"; sourceTree = "<group>"; };
-		45936450ED62566600AF664630404DDB /* SimpleAlert.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimpleAlert.xcconfig; sourceTree = "<group>"; };
+		4457F4B43690678D6368455F83538DEB /* Pods-inSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-inSparkle.debug.xcconfig"; sourceTree = "<group>"; };
 		45E828B525A0672AB663D41E104F910E /* Pods-inSparkle-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-inSparkle-acknowledgements.plist"; sourceTree = "<group>"; };
+		465FA1D53435DAEE0279932C5EF3B528 /* EasyCast.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EasyCast.swift; path = CalendarView/CalendarView/Classes/EasyCast.swift; sourceTree = "<group>"; };
+		46BA839A091525E7D05302109648515B /* SwiftMoment.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMoment.xcconfig; sourceTree = "<group>"; };
 		46F5D4490F312C80AA83334C62CA96D6 /* RSCode39Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCode39Generator.swift; path = Source/RSCode39Generator.swift; sourceTree = "<group>"; };
-		4880EA1FBDB8943F7956F3ABCB0968ED /* GooglePlacesAutocomplete.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = GooglePlacesAutocomplete.xib; path = GooglePlacesAutocomplete/GooglePlacesAutocomplete.xib; sourceTree = "<group>"; };
+		47BF30A4ABF4392F1607C9EA18966C6D /* SwiftGifOrigin.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftGifOrigin.modulemap; sourceTree = "<group>"; };
 		4A949504BAD5138F509DA281C5312783 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		4B25A406CCF9B463AB8AA50C9F874F54 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		4DA613A6D0EEAF59FFAFC57FE9B618EE /* SwiftMoment-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMoment-prefix.pch"; sourceTree = "<group>"; };
-		4EDDCB4862CF655601A45CE4C0DF708C /* PhoneNumberKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PhoneNumberKit.h; path = PhoneNumberKit/PhoneNumberKit.h; sourceTree = "<group>"; };
 		4F3A9A6A91759FCA88035198C030C3C8 /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Source/UIColorExtension.swift; sourceTree = "<group>"; };
 		4F8920FDEB4942C72905EE51D4898E62 /* RSCodeGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCodeGenerator.swift; path = Source/RSCodeGenerator.swift; sourceTree = "<group>"; };
-		4FF56CE6F380B4EE49F0F881E22E4CBE /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = PhoneNumberMetadata.json; path = PhoneNumberKit/Resources/PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		509A9455B0C246A0677776F89BFA67B3 /* SimpleAlert.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = SimpleAlert.xib; path = SimpleAlert/SimpleAlert.xib; sourceTree = "<group>"; };
-		51CD6437EB129FE1C4A467AF52A2EAD6 /* SwiftGifOrigin-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftGifOrigin-prefix.pch"; sourceTree = "<group>"; };
+		51474B84C0456E10BDEB3E083332FC40 /* Banner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = Pod/Classes/Banner.swift; sourceTree = "<group>"; };
+		51C1F359CB13A4DF0790B9E7FB5DC906 /* DayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DayView.swift; path = CalendarView/CalendarView/Classes/DayView.swift; sourceTree = "<group>"; };
 		53361901E9A7B9B3B22CD372926AA5F2 /* SwiftMoment-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMoment-umbrella.h"; sourceTree = "<group>"; };
 		5371C67A41980754C646914B15A78BE7 /* Duration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Duration.swift; path = SwiftMoment/SwiftMoment/Duration.swift; sourceTree = "<group>"; };
-		5429E8BB28A7905685D7734C9428B0C3 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = PhoneNumberKit/Constants.swift; sourceTree = "<group>"; };
-		567DD2F7F01E32E4642A6D8F035FEE2F /* Formatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Formatter.swift; path = PhoneNumberKit/Formatter.swift; sourceTree = "<group>"; };
 		56C692FC8E745E758F8B559A8F9EC190 /* RSEANGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSEANGenerator.swift; path = Source/RSEANGenerator.swift; sourceTree = "<group>"; };
 		5BB3E288775084C23AAF5218D0C5D7C2 /* Pods-inSparkle-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-inSparkle-frameworks.sh"; sourceTree = "<group>"; };
-		5D259EBA8D51260E1CA33561FD84CBB5 /* Pods-inSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-inSparkle.debug.xcconfig"; sourceTree = "<group>"; };
 		5E7A9F0CBDFEED41A8A453FEAE3A213E /* RSFocusMarkLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSFocusMarkLayer.swift; path = Source/RSFocusMarkLayer.swift; sourceTree = "<group>"; };
-		5EF57C98D4BF0D78AAAE33505FF17662 /* ParseOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseOperation.swift; path = PhoneNumberKit/ParseOperation.swift; sourceTree = "<group>"; };
-		5FD063CD41D81DCF407D831B62DE7771 /* PhoneNumberKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PhoneNumberKit-dummy.m"; sourceTree = "<group>"; };
-		6000FFBBB969FCFB07D14EB880C834D2 /* BRYXBanner.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BRYXBanner.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		62384151EBD793096A1AAF3E92D94B8D /* ReachabilitySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReachabilitySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		66498360AF4338D5EA9F2FDB278147AA /* BRYXBanner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-umbrella.h"; sourceTree = "<group>"; };
+		62346828507CBB43E5D965787118DCCD /* CalendarView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CalendarView-dummy.m"; sourceTree = "<group>"; };
+		641ADE8505F86378AA862C5029A1EBF6 /* SwiftGifOrigin-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftGifOrigin-prefix.pch"; sourceTree = "<group>"; };
 		6715FF0DD74708735E42DB0A5A038C1F /* SimpleAlert-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimpleAlert-umbrella.h"; sourceTree = "<group>"; };
-		68EDFC8F816BC8D70888D9ED1CBFCBFB /* CalendarView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CalendarView.xcconfig; sourceTree = "<group>"; };
-		6A22018A1F5B8F1F2CAF2F5589B77833 /* SwiftMoment.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftMoment.xcconfig; sourceTree = "<group>"; };
-		6BF60F4331E606A438317EF67FDB8799 /* CalendarView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CalendarView-dummy.m"; sourceTree = "<group>"; };
+		68420D0191D66DC9932BA02F311587B3 /* RSBarcodes_Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSBarcodes_Swift-prefix.pch"; sourceTree = "<group>"; };
 		6EF12F9ABF65CAE1C5CC8E3CC3F3D4FA /* RSCodeLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCodeLayer.swift; path = Source/RSCodeLayer.swift; sourceTree = "<group>"; };
-		6FFA057879864909B6F1390B049B74D7 /* CalendarView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CalendarView-umbrella.h"; sourceTree = "<group>"; };
+		6FC0DCC6A350D546BCE0C9C506A0DBDC /* ParseOperation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseOperation.swift; path = PhoneNumberKit/ParseOperation.swift; sourceTree = "<group>"; };
 		726BB3D2F90F5A1646BDF07D1E8A309B /* RSITFGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSITFGenerator.swift; path = Source/RSITFGenerator.swift; sourceTree = "<group>"; };
-		732C2B34827FCD4F13B1BC789C9A9983 /* PhoneNumberKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhoneNumberKit-umbrella.h"; sourceTree = "<group>"; };
+		74B88F3D90EEB13BC92ACAAD1B62CA94 /* MetadataTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MetadataTypes.swift; path = PhoneNumberKit/MetadataTypes.swift; sourceTree = "<group>"; };
 		761C7221C7650696965D0A56F416CA04 /* RSITF14Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSITF14Generator.swift; path = Source/RSITF14Generator.swift; sourceTree = "<group>"; };
-		76359779C68FB390CD9787C861242507 /* CalendarView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CalendarView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7999EC83C533D3CFDAE961E6C05F1C0C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78615D0C0DA4C4AF3618B0A08C9EB9EB /* CalendarView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CalendarView.xcconfig; sourceTree = "<group>"; };
+		788CC3CA468ED839500EFF4097EC8AD3 /* BRYXBanner-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "BRYXBanner-Private.xcconfig"; sourceTree = "<group>"; };
 		7A3D65391D456EC5CD11D75A333871EB /* RSCode39Mod43Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCode39Mod43Generator.swift; path = Source/RSCode39Mod43Generator.swift; sourceTree = "<group>"; };
-		7CA8A31394FF0B02FFE4872F071297F7 /* SwiftMoment.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftMoment.modulemap; sourceTree = "<group>"; };
-		7D91FCCD5DFD97296D8586480AD4D17C /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		7BAC914FA14CF5580EAC0ED69F5C5679 /* Formatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Formatter.swift; path = PhoneNumberKit/Formatter.swift; sourceTree = "<group>"; };
+		7C62E5262A6077059BD848F6510795D1 /* PhoneNumberKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = PhoneNumberKit.h; path = PhoneNumberKit/PhoneNumberKit.h; sourceTree = "<group>"; };
 		7E72E7B1065F362B81918EA0CF90A5E7 /* TimeUnit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TimeUnit.swift; path = SwiftMoment/SwiftMoment/TimeUnit.swift; sourceTree = "<group>"; };
-		808A2CC91906028ECC977162A6F1E7A6 /* Pods-inSparkle-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-inSparkle-dummy.m"; sourceTree = "<group>"; };
-		812A627881F7C39CD4D344D555704CF9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7ED1F516195148564B50BC6E7DD6F1B6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7EF78F1718CCF630C688656CEC88D616 /* PhoneNumberKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PhoneNumberKit-prefix.pch"; sourceTree = "<group>"; };
+		7FA1752C51C36E9F9452DF1D74206EC2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80DE26B828546D7C3B4DF036EC602120 /* SwiftMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A08CC3D09614F9D58B2DD39E918051 /* RSBarcodes_Swift-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "RSBarcodes_Swift-Private.xcconfig"; sourceTree = "<group>"; };
-		8544AAE9A6DEB54BF1F0FD668973F4E7 /* SimpleAlert.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SimpleAlert.modulemap; sourceTree = "<group>"; };
+		828A845AE13281CA084EB9DBF5AA04C8 /* BRYXBanner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-prefix.pch"; sourceTree = "<group>"; };
+		85506044D4EACB75F501E231E30EB861 /* SwiftMoment-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SwiftMoment-Private.xcconfig"; sourceTree = "<group>"; };
 		859F590F3C8C1E8297095B96B678C60A /* SwiftGifOrigin-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftGifOrigin-dummy.m"; sourceTree = "<group>"; };
-		86C7A83CF4561C0A0A1212D9DB3DDD9C /* CalendarView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CalendarView.modulemap; sourceTree = "<group>"; };
-		8B616F3730CB508BAC77F426DAD03759 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8855C5C01A18CD29D82E43F927CFCC8F /* PhoneNumber.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumber.swift; path = PhoneNumberKit/PhoneNumber.swift; sourceTree = "<group>"; };
 		8BBB80EF98ACD2B73B21386EF432B5A1 /* UIImage+Gif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Gif.swift"; path = "SwiftGifCommon/UIImage+Gif.swift"; sourceTree = "<group>"; };
-		8BBD1233083EB082237BEA50D944B247 /* Banner.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = Pod/Classes/Banner.swift; sourceTree = "<group>"; };
+		8E9C71FE88452FFEE7627DD6D9146A33 /* Pods-inSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-inSparkle.release.xcconfig"; sourceTree = "<group>"; };
 		902308B13351E91338B8F877B6C4E49D /* RSBarcodes_Swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSBarcodes_Swift-umbrella.h"; sourceTree = "<group>"; };
-		975E5E1949E48BA5D65A2FB33D26BCFF /* ReachabilitySwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ReachabilitySwift.modulemap; sourceTree = "<group>"; };
-		9776811C85349DA1D3A5075CE32A960F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		97AD15AD4DE344263D3AAE44C88AE7DC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		98ACE543BACE34DABDE267E62ED69D0F /* PhoneNumberKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PhoneNumberKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D3B938162F6DBEBACB3FA311BAA470 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9152C81A5BE2C6D8B555D5A9A1856BFD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		9977A041E1529AC610C4DE73D7463BED /* SwiftMoment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftMoment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BF4FCD55C7C8FD9F135707076E5096D /* Pods-inSparkle-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-inSparkle-resources.sh"; sourceTree = "<group>"; };
-		9C9905FE3DD8C0AE83DBEE3F25E5BA46 /* PhoneNumberKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PhoneNumberKit.modulemap; sourceTree = "<group>"; };
-		9CEA20436C5DF5751901437F5A9637B8 /* PhoneNumberKit-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "PhoneNumberKit-Private.xcconfig"; sourceTree = "<group>"; };
-		9D3566DA69C41B7B02AA55A0F4E67C70 /* RSBarcodes_Swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSBarcodes_Swift-prefix.pch"; sourceTree = "<group>"; };
-		9F191BAFF06D4D3C5BEF361A2B4E2267 /* ReachabilitySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-prefix.pch"; sourceTree = "<group>"; };
-		9F2E88CFC08C145E98E598E6CA0E3CE5 /* SimpleAlert-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimpleAlert-prefix.pch"; sourceTree = "<group>"; };
-		A56306FAC2FED5F1FBFD43123B2986F6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6F16E7B4932BD81E80D75BCA513A452 /* PhoneNumberParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberParser.swift; path = PhoneNumberKit/PhoneNumberParser.swift; sourceTree = "<group>"; };
-		A878836EE87D265CD8AC8FA17C9F8F4F /* PhoneNumberKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberKit.swift; path = PhoneNumberKit/PhoneNumberKit.swift; sourceTree = "<group>"; };
-		A9E90B3A638D3D9FB25BD4BF45708D96 /* RSBarcodes_Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RSBarcodes_Swift.modulemap; sourceTree = "<group>"; };
-		AA17093D1DF049EC5ACBA7C98728C2CD /* GooglePlacesAutocomplete-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GooglePlacesAutocomplete-dummy.m"; sourceTree = "<group>"; };
-		AB2641783A17A3523FFB9481CC8AD675 /* GooglePlacesAutocomplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GooglePlacesAutocomplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB864DFA65F6D8D7A26925EB2102B420 /* BRYXBanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BRYXBanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EE393BD760D3F7D164E32311E0D9951 /* RegularExpressions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegularExpressions.swift; path = PhoneNumberKit/RegularExpressions.swift; sourceTree = "<group>"; };
+		9F0C302CE7994CF883DA736352A13A5C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0191BA57CB7A78520BA7A8198A625E5 /* CalendarView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0DC9C4472E33502FDDC094C65C6C977 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A18A3A45B70DA8614DA54DD74F0B7CB0 /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = PhoneNumberKit/Constants.swift; sourceTree = "<group>"; };
+		A34E3CED2056265E0A0DE4AD6F2AA115 /* CalendarView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CalendarView-umbrella.h"; sourceTree = "<group>"; };
+		A8AD262418B60232987AE298B8958076 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB86AEA309874D125F914139F9BEA04D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ADB0AE711250AFF5CF7073C3E0B66C62 /* GooglePlacesAutocomplete.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GooglePlacesAutocomplete.modulemap; sourceTree = "<group>"; };
+		AEC1FE9B29BD094C556BB1C0D5B4A42C /* CalendarView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CalendarView-prefix.pch"; sourceTree = "<group>"; };
 		AF9D83C968222AB5DF5EBBA961214711 /* RSCornersLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCornersLayer.swift; path = Source/RSCornersLayer.swift; sourceTree = "<group>"; };
-		B1823BF39060B6B2D5C0403F52C75EEC /* Pods-inSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-inSparkle.release.xcconfig"; sourceTree = "<group>"; };
+		B106D5C39C311C23CA272D110167FDEE /* GooglePlacesAutocomplete-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GooglePlacesAutocomplete-dummy.m"; sourceTree = "<group>"; };
+		B3A6C21A0EA7458730AD30DD23B8FB82 /* SimpleAlert.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SimpleAlert.xcconfig; sourceTree = "<group>"; };
 		B3F014EC29EBDD6D9B72A9F084FC5293 /* SimpleAlert-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SimpleAlert-dummy.m"; sourceTree = "<group>"; };
-		B6029C04CC5C774C84B12E7365422A83 /* ContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = CalendarView/CalendarView/Classes/ContentView.swift; sourceTree = "<group>"; };
 		B779B7D3A6C8B1321715520380363C07 /* RSCode93Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCode93Generator.swift; path = Source/RSCode93Generator.swift; sourceTree = "<group>"; };
-		B7B08A7770110DBBA4FD104DFBC36084 /* DayView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DayView.swift; path = CalendarView/CalendarView/Classes/DayView.swift; sourceTree = "<group>"; };
-		B935E36816E2511A5E51D6A986998A4A /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GooglePlacesAutocomplete/Images.xcassets; sourceTree = "<group>"; };
 		B94027B95B5837513AC0498A21F44B52 /* Pods-inSparkle-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-inSparkle-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BBEF29699AF9C0DDBC5701EFFCD97A7E /* GooglePlacesAutocomplete.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GooglePlacesAutocomplete.h; path = GooglePlacesAutocomplete/GooglePlacesAutocomplete.h; sourceTree = "<group>"; };
-		BD92E5BBABD9E3715CB62DC798913FAF /* SwiftGifOrigin.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftGifOrigin.modulemap; sourceTree = "<group>"; };
-		C29E005D0704BC4037A79CD69C3A30B3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAFA2F1C6358326B0C4B8B16FE84AD04 /* PhoneNumberKit-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "PhoneNumberKit-Private.xcconfig"; sourceTree = "<group>"; };
+		BBAA358F443610083F0BB4F3972D19FD /* ContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = CalendarView/CalendarView/Classes/ContentView.swift; sourceTree = "<group>"; };
+		BCFBA3740823D2FB95765560C32D0A30 /* BRYXBanner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRYXBanner.xcconfig; sourceTree = "<group>"; };
+		BD8A078ABEE397FD56519B83916E27D1 /* RSBarcodes_Swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = RSBarcodes_Swift.modulemap; sourceTree = "<group>"; };
+		C116F3ABB998AE3F9B79A165183D3C63 /* CalendarView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CalendarView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2A0FF9163C25E7883145E2F3F7672AE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		C3BEFD7ADBE1D327A97E6468D396CEAD /* SwiftGifOrigin-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftGifOrigin-umbrella.h"; sourceTree = "<group>"; };
+		C41D2823EECCBE292D76CB09F5610F58 /* BRYXBanner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BRYXBanner.modulemap; sourceTree = "<group>"; };
 		C554514A88FFBB71A50F44E5E84EC62B /* Moment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Moment.swift; path = SwiftMoment/SwiftMoment/Moment.swift; sourceTree = "<group>"; };
-		C6913C0644BF7C732265F609212CD4F9 /* BRYXBanner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BRYXBanner-dummy.m"; sourceTree = "<group>"; };
-		CC0221FFC3B23EA476520E1C1B394C23 /* CalendarView.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalendarView.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD57B2EC67C756B7EB4D09F0340DC538 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		C63BB3B412F3EA139FB2C9E8638D48AF /* GooglePlacesAutocomplete.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GooglePlacesAutocomplete.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7F86E4FE6285C1A50ECDCDB705C764B /* GooglePlacesAutocomplete.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GooglePlacesAutocomplete.swift; path = GooglePlacesAutocomplete/GooglePlacesAutocomplete.swift; sourceTree = "<group>"; };
 		CE3BB2E5ACC98D5AF2B75C72F60BDA43 /* RSUPCEGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSUPCEGenerator.swift; path = Source/RSUPCEGenerator.swift; sourceTree = "<group>"; };
 		CE7825800C44456BD85DB2F9A88D392A /* RSExtendedCode39Generator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSExtendedCode39Generator.swift; path = Source/RSExtendedCode39Generator.swift; sourceTree = "<group>"; };
-		CF0AE6E7F5B0D3769350232F3FCEC018 /* Reachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Reachability/Reachability.swift; sourceTree = "<group>"; };
-		CFD2161DAB1CDFEC507808B787F02201 /* Pods-inSparkle-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-inSparkle-umbrella.h"; sourceTree = "<group>"; };
+		D0E71A7FA0F9F37F27223E09BB50B056 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D11B5FC1AEE7382AB1E511AF28ABAC49 /* SwiftMoment-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftMoment-prefix.pch"; sourceTree = "<group>"; };
 		D464773611C8DE152D6A8015FCB059FA /* SwiftGifOrigin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftGifOrigin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D99A336F9624D6EB2BF845D65E902ABD /* Metadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Metadata.swift; path = PhoneNumberKit/Metadata.swift; sourceTree = "<group>"; };
+		D677F95A54B2C06D761851DE5B76112E /* WeekView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeekView.swift; path = CalendarView/CalendarView/Classes/WeekView.swift; sourceTree = "<group>"; };
+		D70F9B360E34B1AE0073DBDB7DC9F19F /* PhoneNumberKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = PhoneNumberKit.modulemap; sourceTree = "<group>"; };
+		D7C544BFC3BB17306D8EC8FD79BB8B92 /* Metadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Metadata.swift; path = PhoneNumberKit/Metadata.swift; sourceTree = "<group>"; };
+		DA2C33F7F0B7824381FFE601FB776940 /* BRYXBanner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BRYXBanner-umbrella.h"; sourceTree = "<group>"; };
+		DA2F46F898792903F8B6C68FA5E8018F /* SimpleAlert.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SimpleAlert.modulemap; sourceTree = "<group>"; };
+		DC3D583CC11CB0A023B21B4174D7E110 /* GooglePlacesAutocomplete.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = GooglePlacesAutocomplete.xib; path = GooglePlacesAutocomplete/GooglePlacesAutocomplete.xib; sourceTree = "<group>"; };
 		DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DDA38A979DE92C316070651B098762D2 /* ParseManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParseManager.swift; path = PhoneNumberKit/ParseManager.swift; sourceTree = "<group>"; };
+		DDC51097BE2FFC655330D8630BA47C23 /* CalendarView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CalendarView.modulemap; sourceTree = "<group>"; };
 		DDEC413D186F6FD2DC73FD9AC2DBABE3 /* SwiftMoment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftMoment.h; path = SwiftMoment/SwiftMoment/SwiftMoment.h; sourceTree = "<group>"; };
 		DF060819618B7F2655811C08F1E5EED6 /* SwiftMoment-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftMoment-dummy.m"; sourceTree = "<group>"; };
-		E1202C2F2EF41CC22D61254DB8B35291 /* CalendarView-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "CalendarView-Private.xcconfig"; sourceTree = "<group>"; };
-		E4059892E7FC5B285F4295AE249BA1CA /* CalendarView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CalendarView-prefix.pch"; sourceTree = "<group>"; };
 		E9A93A5469852EB1B6EAD6C2C539A4C8 /* RSBarcodes_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RSBarcodes_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA2B75A31A0A1D20EB37DEBE9B99023F /* SimpleAlert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SimpleAlert.h; path = SimpleAlert/SimpleAlert.h; sourceTree = "<group>"; };
+		EAD7137EC9C0D2E73E2DD73CEF6B250A /* PhoneNumberKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PhoneNumberKit-dummy.m"; sourceTree = "<group>"; };
+		EB8F2642F96E6C01B5FB5B514C3E2674 /* MonthView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MonthView.swift; path = CalendarView/CalendarView/Classes/MonthView.swift; sourceTree = "<group>"; };
+		ED3D45964468BF3389341D3F2481230E /* SimpleAlert-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SimpleAlert-prefix.pch"; sourceTree = "<group>"; };
 		EE77CA658661ACFAE62F78EF1B39B631 /* RSCodeDataMatrixGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSCodeDataMatrixGenerator.swift; path = Source/RSCodeDataMatrixGenerator.swift; sourceTree = "<group>"; };
 		EEBBBEBF1F3BA5C62E877D2714129051 /* RSUnifiedCodeGenerator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RSUnifiedCodeGenerator.swift; path = Source/RSUnifiedCodeGenerator.swift; sourceTree = "<group>"; };
-		F08D01E210A5DACE5737A5BCA3E89A17 /* BRYXBanner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BRYXBanner.xcconfig; sourceTree = "<group>"; };
-		F4D9870AAAD8AD9F0D539779219A3694 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAE10F30AB17606270BEF6A7D62BE59A /* SwiftGifOrigin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftGifOrigin.xcconfig; sourceTree = "<group>"; };
-		FB1B4C012034213CF432FB223AC46131 /* GooglePlacesAutocomplete-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "GooglePlacesAutocomplete-Private.xcconfig"; sourceTree = "<group>"; };
-		FF2325933C6A870A8317A8079656CC79 /* WeekView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WeekView.swift; path = CalendarView/CalendarView/Classes/WeekView.swift; sourceTree = "<group>"; };
+		F168E73703C51E287BE1A1C69522C990 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC063F3BBF55392BD3DE36F5B726F447 /* Pods-inSparkle-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-inSparkle-umbrella.h"; sourceTree = "<group>"; };
+		FE40238745B3A7C22D64A44607A1FB45 /* GooglePlacesAutocomplete.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GooglePlacesAutocomplete.xcconfig; sourceTree = "<group>"; };
+		FFC6837FEAB40CCABFA1FA6474CF59D2 /* PhoneNumberKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhoneNumberKit.swift; path = PhoneNumberKit/PhoneNumberKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		029AE3E2A3338CE519E9607FCD9CDCD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67747F8EEC8D3992A5836130C3A547D0 /* CoreTelephony.framework in Frameworks */,
+				6F69BF565C64DE95F37F1997629BAB57 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		02DCCE464342C38921D9B331FBCB6437 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -356,28 +343,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		258AD766A35EFF402341085C2B3BC491 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4EC96E7D8B5DD050B31997BF4A63AFE2 /* Foundation.framework in Frameworks */,
-				82A1965A2F960149D564EAA84B7098A2 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		25A8615B3105FE3B838ABCC4AD9BC384 /* Frameworks */ = {
+		0E6CBFCCD7B1AED0BC2F24BE3DE83D25 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		48E138D79BE70E4F818CD9FC2756599F /* Frameworks */ = {
+		181280AA751C32D89A8E76348DE0BE79 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7806E8A24CA4F8E7888D0786ED541F8A /* CoreTelephony.framework in Frameworks */,
-				00E4002E1E2099DCAE2DF9807D997084 /* Foundation.framework in Frameworks */,
+				D59638D15B38A18F142B4C09D6A2930F /* Foundation.framework in Frameworks */,
+				AEC7B6212C9D321CAB2C61A0DE37C48B /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4E8B6C43CFA2D20D7C165B9C12AE1509 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,31 +377,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		821B9DFB4CB132A9466E1ED203639B3C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9BE38803F59B6F787B75FB5C11377BBF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				101752D88E44A553A99D098AAEAE0F2E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9BF17F9CE02CABAC881AF9A81571074F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9360C39CAC00DB29A5C84F28F831E772 /* Foundation.framework in Frameworks */,
-				7EB49476E2EE18B86E7FA605B55A4F88 /* SwiftMoment.framework in Frameworks */,
-				73AFB0EEB1632E5E81052FAE09E76450 /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A6FE52AF14CF31C50C8BAC12759388A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,54 +385,205 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BB3CB429F909B025BE59D399D2B24E98 /* Frameworks */ = {
+		C87EC3C91682B048BA61DB1AD4D8950D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE26A3FCC4707877528E7969065E65DC /* Foundation.framework in Frameworks */,
+				308C9AF7F53B1458EFC9462FBA721AAE /* Foundation.framework in Frameworks */,
+				D803A9E1E987B65B824A16714AA87985 /* SwiftMoment.framework in Frameworks */,
+				CADF74600CB78EF59BE67137316E6265 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F1D167E93B38A2DD7E7F4AF9D540D9E7 /* Frameworks */ = {
+		C94069299F34D80EBC4BE89B5FE87065 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC06419AEE54239C3C6E4E67AB25A13C /* Foundation.framework in Frameworks */,
-				F0802F3AFAF7D8A77352554B823D27C3 /* SystemConfiguration.framework in Frameworks */,
+				6964DEB508608A048365732E1A375431 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF319F1D97E0FF062F4F3E770DB72DA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF63525252B92FB92FB4CC6E56E53C1B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		289BC94F569B549FE68B1540C20F4DA2 /* Pods */ = {
+		019DC172CFB76C6E0BDF3E2756C733C9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D38B1092484ACFACA8D232D86B651F4D /* BRYXBanner */,
-				8C69DB3A1F722DF84FA93C9B99066A11 /* CalendarView */,
-				E84380D24255B9FCF5E9E69228135CD4 /* GooglePlacesAutocomplete */,
-				546DFA2BFD9DF29DFB39DD4FEB3D52C3 /* PhoneNumberKit */,
-				34C965B39B5367B6EDB3833996A249CB /* RSBarcodes_Swift */,
-				8EDA07AECC12DFF814E345BC8DAC1B28 /* ReachabilitySwift */,
-				2A54BB06AE5DB31A07AE6A08EEC8355F /* SimpleAlert */,
-				90D60718ACF956E21EA1F3FCE0D8EBAF /* SwiftGifOrigin */,
-				A3AF43587E9A595B45AB5197ED5D8B42 /* SwiftMoment */,
+				DC3D583CC11CB0A023B21B4174D7E110 /* GooglePlacesAutocomplete.xib */,
+				411C9CB70BCE07EB96509AB7FC32F209 /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		0A87EE4AD4EF245AE9AE7A68CA7ECAD5 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				51474B84C0456E10BDEB3E083332FC40 /* Banner.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		198503AA759DE0C632AD806D4CCBA2EF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F168E73703C51E287BE1A1C69522C990 /* Info.plist */,
+				D70F9B360E34B1AE0073DBDB7DC9F19F /* PhoneNumberKit.modulemap */,
+				2B74160C4CF2CAA639D05CE20464FDEA /* PhoneNumberKit.xcconfig */,
+				BAFA2F1C6358326B0C4B8B16FE84AD04 /* PhoneNumberKit-Private.xcconfig */,
+				EAD7137EC9C0D2E73E2DD73CEF6B250A /* PhoneNumberKit-dummy.m */,
+				7EF78F1718CCF630C688656CEC88D616 /* PhoneNumberKit-prefix.pch */,
+				177CE3D983065B2FA5FFAD7002205FF6 /* PhoneNumberKit-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PhoneNumberKit";
+			sourceTree = "<group>";
+		};
+		2F91008C419E4830E3BB0FC155C542F0 /* SwiftMoment */ = {
+			isa = PBXGroup;
+			children = (
+				5371C67A41980754C646914B15A78BE7 /* Duration.swift */,
+				0863DBACEE1DA0412A8B354B88C1DCF1 /* Extensions.swift */,
+				C554514A88FFBB71A50F44E5E84EC62B /* Moment.swift */,
+				37B5E9D5495B486A48835C5E2C19162B /* Operators.swift */,
+				DDEC413D186F6FD2DC73FD9AC2DBABE3 /* SwiftMoment.h */,
+				7E72E7B1065F362B81918EA0CF90A5E7 /* TimeUnit.swift */,
+				510AABBEECE7A740B9EA2FF87067D476 /* Support Files */,
+			);
+			path = SwiftMoment;
+			sourceTree = "<group>";
+		};
+		3D08E226FEF7B13ED86A679C1CA7DA87 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				045DF22B6DC8B4AD28C08D8DE52B4BEC /* CalendarView.swift */,
+				BBAA358F443610083F0BB4F3972D19FD /* ContentView.swift */,
+				51C1F359CB13A4DF0790B9E7FB5DC906 /* DayView.swift */,
+				465FA1D53435DAEE0279932C5EF3B528 /* EasyCast.swift */,
+				EB8F2642F96E6C01B5FB5B514C3E2674 /* MonthView.swift */,
+				D677F95A54B2C06D761851DE5B76112E /* WeekView.swift */,
+				78B168593A2AE0B75460FA89C96C4198 /* Support Files */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		510AABBEECE7A740B9EA2FF87067D476 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A8AD262418B60232987AE298B8958076 /* Info.plist */,
+				0767860C4DD6F058E54337CCDF328109 /* SwiftMoment.modulemap */,
+				46BA839A091525E7D05302109648515B /* SwiftMoment.xcconfig */,
+				85506044D4EACB75F501E231E30EB861 /* SwiftMoment-Private.xcconfig */,
+				DF060819618B7F2655811C08F1E5EED6 /* SwiftMoment-dummy.m */,
+				D11B5FC1AEE7382AB1E511AF28ABAC49 /* SwiftMoment-prefix.pch */,
+				53361901E9A7B9B3B22CD372926AA5F2 /* SwiftMoment-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftMoment";
+			sourceTree = "<group>";
+		};
+		5731CE9D935875F78C24D254BD3F582F /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED3A6EFD3EA12E0784565764EC98A166 /* Pods-inSparkle */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		5C22D8BF5B26A56E2433C1C725F73D9A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				804527D20F491479770FEABFDA1C14A5 /* BRYXBanner */,
+				3D08E226FEF7B13ED86A679C1CA7DA87 /* CalendarView */,
+				764D0316B1DB6B49FB8329AD95FFEAA6 /* GooglePlacesAutocomplete */,
+				C0357EEB1C5A84777A17BFDF09F22D53 /* PhoneNumberKit */,
+				7D918017960645C8F1273A32C23FDD21 /* RSBarcodes_Swift */,
+				F4B90A8A89F2987FBC77DCC31AC79297 /* SimpleAlert */,
+				F9443747214A07EB04D0E48C9FD10FE6 /* SwiftGifOrigin */,
+				2F91008C419E4830E3BB0FC155C542F0 /* SwiftMoment */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		2A54BB06AE5DB31A07AE6A08EEC8355F /* SimpleAlert */ = {
+		6873B3AC49C9308F21F9F787C7F1B7AA /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				EA2B75A31A0A1D20EB37DEBE9B99023F /* SimpleAlert.h */,
-				37CDC6E459639009B4B087AB277D908D /* SimpleAlert.swift */,
-				509A9455B0C246A0677776F89BFA67B3 /* SimpleAlert.xib */,
-				610A24ACBE8BF2F7D91C61E18274830F /* Support Files */,
+				A0DC9C4472E33502FDDC094C65C6C977 /* Info.plist */,
+				DA2F46F898792903F8B6C68FA5E8018F /* SimpleAlert.modulemap */,
+				B3A6C21A0EA7458730AD30DD23B8FB82 /* SimpleAlert.xcconfig */,
+				4039ED6B0CE77A3159514AFF54CBE7CE /* SimpleAlert-Private.xcconfig */,
+				B3F014EC29EBDD6D9B72A9F084FC5293 /* SimpleAlert-dummy.m */,
+				ED3D45964468BF3389341D3F2481230E /* SimpleAlert-prefix.pch */,
+				6715FF0DD74708735E42DB0A5A038C1F /* SimpleAlert-umbrella.h */,
 			);
-			path = SimpleAlert;
+			name = "Support Files";
+			path = "../Target Support Files/SimpleAlert";
 			sourceTree = "<group>";
 		};
-		34C965B39B5367B6EDB3833996A249CB /* RSBarcodes_Swift */ = {
+		6FFD004A90B1DA29CA27D9F111A1AD80 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				90D3B938162F6DBEBACB3FA311BAA470 /* Info.plist */,
+				47BF30A4ABF4392F1607C9EA18966C6D /* SwiftGifOrigin.modulemap */,
+				3EF2BD6A251A9C5F764DB055549FD0AD /* SwiftGifOrigin.xcconfig */,
+				403F86B0C121C74DD961CB197B86B59E /* SwiftGifOrigin-Private.xcconfig */,
+				859F590F3C8C1E8297095B96B678C60A /* SwiftGifOrigin-dummy.m */,
+				641ADE8505F86378AA862C5029A1EBF6 /* SwiftGifOrigin-prefix.pch */,
+				C3BEFD7ADBE1D327A97E6468D396CEAD /* SwiftGifOrigin-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftGifOrigin";
+			sourceTree = "<group>";
+		};
+		759910214D24AE3D41EB55789CF24C69 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C41D2823EECCBE292D76CB09F5610F58 /* BRYXBanner.modulemap */,
+				BCFBA3740823D2FB95765560C32D0A30 /* BRYXBanner.xcconfig */,
+				788CC3CA468ED839500EFF4097EC8AD3 /* BRYXBanner-Private.xcconfig */,
+				108F1FF5D0D021B103FA1DBB4A16675F /* BRYXBanner-dummy.m */,
+				828A845AE13281CA084EB9DBF5AA04C8 /* BRYXBanner-prefix.pch */,
+				DA2C33F7F0B7824381FFE601FB776940 /* BRYXBanner-umbrella.h */,
+				D0E71A7FA0F9F37F27223E09BB50B056 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/BRYXBanner";
+			sourceTree = "<group>";
+		};
+		764D0316B1DB6B49FB8329AD95FFEAA6 /* GooglePlacesAutocomplete */ = {
+			isa = PBXGroup;
+			children = (
+				25B9387EF14EA3B6B03F40C338C76185 /* GooglePlacesAutocomplete.h */,
+				C7F86E4FE6285C1A50ECDCDB705C764B /* GooglePlacesAutocomplete.swift */,
+				019DC172CFB76C6E0BDF3E2756C733C9 /* Resources */,
+				CBC55F85D73D5F441FC5AC1E7DB9143F /* Support Files */,
+			);
+			path = GooglePlacesAutocomplete;
+			sourceTree = "<group>";
+		};
+		78B168593A2AE0B75460FA89C96C4198 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DDC51097BE2FFC655330D8630BA47C23 /* CalendarView.modulemap */,
+				78615D0C0DA4C4AF3618B0A08C9EB9EB /* CalendarView.xcconfig */,
+				1869F177696289A9FB37A35BD167A8B9 /* CalendarView-Private.xcconfig */,
+				62346828507CBB43E5D965787118DCCD /* CalendarView-dummy.m */,
+				AEC1FE9B29BD094C556BB1C0D5B4A42C /* CalendarView-prefix.pch */,
+				A34E3CED2056265E0A0DE4AD6F2AA115 /* CalendarView-umbrella.h */,
+				7FA1752C51C36E9F9452DF1D74206EC2 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CalendarView";
+			sourceTree = "<group>";
+		};
+		7D918017960645C8F1273A32C23FDD21 /* RSBarcodes_Swift */ = {
 			isa = PBXGroup;
 			children = (
 				11A6140F972E8D64AE88B029C4BF4142 /* RSCode128Generator.swift */,
@@ -493,285 +604,127 @@
 				EEBBBEBF1F3BA5C62E877D2714129051 /* RSUnifiedCodeGenerator.swift */,
 				1589375DED7EC3C797DCA3E19502CDB2 /* StringExtension.swift */,
 				4F3A9A6A91759FCA88035198C030C3C8 /* UIColorExtension.swift */,
-				E49468FB32C21399FA76A1B019388AF7 /* Support Files */,
+				8ACC0365B78D83D260E9B8460DB9EAF9 /* Support Files */,
 			);
 			path = RSBarcodes_Swift;
-			sourceTree = "<group>";
-		};
-		3F5FFCC71C1418749B67169CED3299AE /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				4FF56CE6F380B4EE49F0F881E22E4CBE /* PhoneNumberMetadata.json */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		46D468B7D8DEF9028728D9AFF907145E /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				19C0AFE592A03A37C3BFC2BAA770DCB7 /* BRYXBanner.modulemap */,
-				F08D01E210A5DACE5737A5BCA3E89A17 /* BRYXBanner.xcconfig */,
-				45786764B04BCEF3B2AD3E819F0098C8 /* BRYXBanner-Private.xcconfig */,
-				C6913C0644BF7C732265F609212CD4F9 /* BRYXBanner-dummy.m */,
-				35A02A9923E85884ED19935CDDC06CF2 /* BRYXBanner-prefix.pch */,
-				66498360AF4338D5EA9F2FDB278147AA /* BRYXBanner-umbrella.h */,
-				9776811C85349DA1D3A5075CE32A960F /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/BRYXBanner";
-			sourceTree = "<group>";
-		};
-		4A4910039AD00D72B8895BB6ED5FAA82 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				812A627881F7C39CD4D344D555704CF9 /* Info.plist */,
-				BD92E5BBABD9E3715CB62DC798913FAF /* SwiftGifOrigin.modulemap */,
-				FAE10F30AB17606270BEF6A7D62BE59A /* SwiftGifOrigin.xcconfig */,
-				403F86B0C121C74DD961CB197B86B59E /* SwiftGifOrigin-Private.xcconfig */,
-				859F590F3C8C1E8297095B96B678C60A /* SwiftGifOrigin-dummy.m */,
-				51CD6437EB129FE1C4A467AF52A2EAD6 /* SwiftGifOrigin-prefix.pch */,
-				C3BEFD7ADBE1D327A97E6468D396CEAD /* SwiftGifOrigin-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftGifOrigin";
-			sourceTree = "<group>";
-		};
-		4A5051D19FE427189C37398E3C8A53E3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				2D10D48BD450FA135EC57E99F1D49D5F /* SwiftMoment.framework */,
-				FEAA7D6687629008FE409F9C90EA55F2 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		546DFA2BFD9DF29DFB39DD4FEB3D52C3 /* PhoneNumberKit */ = {
-			isa = PBXGroup;
-			children = (
-				5429E8BB28A7905685D7734C9428B0C3 /* Constants.swift */,
-				567DD2F7F01E32E4642A6D8F035FEE2F /* Formatter.swift */,
-				D99A336F9624D6EB2BF845D65E902ABD /* Metadata.swift */,
-				3386E82835405DE697F2137E70EE1577 /* MetadataTypes.swift */,
-				DDA38A979DE92C316070651B098762D2 /* ParseManager.swift */,
-				5EF57C98D4BF0D78AAAE33505FF17662 /* ParseOperation.swift */,
-				0EC855BB016152A3F33A9C678E669E0F /* PhoneNumber.swift */,
-				4EDDCB4862CF655601A45CE4C0DF708C /* PhoneNumberKit.h */,
-				A878836EE87D265CD8AC8FA17C9F8F4F /* PhoneNumberKit.swift */,
-				A6F16E7B4932BD81E80D75BCA513A452 /* PhoneNumberParser.swift */,
-				40E7FD91C3567D5251FF1EE73B2D2A60 /* RegularExpressions.swift */,
-				3F5FFCC71C1418749B67169CED3299AE /* Resources */,
-				7D137F789B8C091C331C0E1C56EBDFD1 /* Support Files */,
-			);
-			path = PhoneNumberKit;
-			sourceTree = "<group>";
-		};
-		5731CE9D935875F78C24D254BD3F582F /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				ED3A6EFD3EA12E0784565764EC98A166 /* Pods-inSparkle */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		610A24ACBE8BF2F7D91C61E18274830F /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A56306FAC2FED5F1FBFD43123B2986F6 /* Info.plist */,
-				8544AAE9A6DEB54BF1F0FD668973F4E7 /* SimpleAlert.modulemap */,
-				45936450ED62566600AF664630404DDB /* SimpleAlert.xcconfig */,
-				4039ED6B0CE77A3159514AFF54CBE7CE /* SimpleAlert-Private.xcconfig */,
-				B3F014EC29EBDD6D9B72A9F084FC5293 /* SimpleAlert-dummy.m */,
-				9F2E88CFC08C145E98E598E6CA0E3CE5 /* SimpleAlert-prefix.pch */,
-				6715FF0DD74708735E42DB0A5A038C1F /* SimpleAlert-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SimpleAlert";
-			sourceTree = "<group>";
-		};
-		7D137F789B8C091C331C0E1C56EBDFD1 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				97AD15AD4DE344263D3AAE44C88AE7DC /* Info.plist */,
-				9C9905FE3DD8C0AE83DBEE3F25E5BA46 /* PhoneNumberKit.modulemap */,
-				2EDB3C86EDDC64F9C6117B15EF3F314B /* PhoneNumberKit.xcconfig */,
-				9CEA20436C5DF5751901437F5A9637B8 /* PhoneNumberKit-Private.xcconfig */,
-				5FD063CD41D81DCF407D831B62DE7771 /* PhoneNumberKit-dummy.m */,
-				02C1E5B48CF676644757FC7FEB522169 /* PhoneNumberKit-prefix.pch */,
-				732C2B34827FCD4F13B1BC789C9A9983 /* PhoneNumberKit-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/PhoneNumberKit";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
-				4A5051D19FE427189C37398E3C8A53E3 /* Frameworks */,
-				289BC94F569B549FE68B1540C20F4DA2 /* Pods */,
+				8EA7B19732F4DDE8A9B6F27E6D13CB29 /* Frameworks */,
+				5C22D8BF5B26A56E2433C1C725F73D9A /* Pods */,
 				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
 				5731CE9D935875F78C24D254BD3F582F /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8C69DB3A1F722DF84FA93C9B99066A11 /* CalendarView */ = {
+		804527D20F491479770FEABFDA1C14A5 /* BRYXBanner */ = {
 			isa = PBXGroup;
 			children = (
-				4492F0487C5BE5DAF0916EED94C7942D /* CalendarView.swift */,
-				B6029C04CC5C774C84B12E7365422A83 /* ContentView.swift */,
-				B7B08A7770110DBBA4FD104DFBC36084 /* DayView.swift */,
-				057FA4090BBFE1DC2EB8548FFD09CF31 /* EasyCast.swift */,
-				0AB43B91857AD77306719BAAEEC87075 /* MonthView.swift */,
-				FF2325933C6A870A8317A8079656CC79 /* WeekView.swift */,
-				A9E12D9AAA18D371D4EEE497D0266855 /* Support Files */,
-			);
-			path = CalendarView;
-			sourceTree = "<group>";
-		};
-		8EDA07AECC12DFF814E345BC8DAC1B28 /* ReachabilitySwift */ = {
-			isa = PBXGroup;
-			children = (
-				CF0AE6E7F5B0D3769350232F3FCEC018 /* Reachability.swift */,
-				E0DE8FBBE5D61F1BEB51445DD0227D80 /* Support Files */,
-			);
-			path = ReachabilitySwift;
-			sourceTree = "<group>";
-		};
-		90D60718ACF956E21EA1F3FCE0D8EBAF /* SwiftGifOrigin */ = {
-			isa = PBXGroup;
-			children = (
-				8BBB80EF98ACD2B73B21386EF432B5A1 /* UIImage+Gif.swift */,
-				4A4910039AD00D72B8895BB6ED5FAA82 /* Support Files */,
-			);
-			path = SwiftGifOrigin;
-			sourceTree = "<group>";
-		};
-		A3AF43587E9A595B45AB5197ED5D8B42 /* SwiftMoment */ = {
-			isa = PBXGroup;
-			children = (
-				5371C67A41980754C646914B15A78BE7 /* Duration.swift */,
-				0863DBACEE1DA0412A8B354B88C1DCF1 /* Extensions.swift */,
-				C554514A88FFBB71A50F44E5E84EC62B /* Moment.swift */,
-				37B5E9D5495B486A48835C5E2C19162B /* Operators.swift */,
-				DDEC413D186F6FD2DC73FD9AC2DBABE3 /* SwiftMoment.h */,
-				7E72E7B1065F362B81918EA0CF90A5E7 /* TimeUnit.swift */,
-				C742071D4EC368574E658D657D2F745E /* Support Files */,
-			);
-			path = SwiftMoment;
-			sourceTree = "<group>";
-		};
-		A9E12D9AAA18D371D4EEE497D0266855 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				86C7A83CF4561C0A0A1212D9DB3DDD9C /* CalendarView.modulemap */,
-				68EDFC8F816BC8D70888D9ED1CBFCBFB /* CalendarView.xcconfig */,
-				E1202C2F2EF41CC22D61254DB8B35291 /* CalendarView-Private.xcconfig */,
-				6BF60F4331E606A438317EF67FDB8799 /* CalendarView-dummy.m */,
-				E4059892E7FC5B285F4295AE249BA1CA /* CalendarView-prefix.pch */,
-				6FFA057879864909B6F1390B049B74D7 /* CalendarView-umbrella.h */,
-				C29E005D0704BC4037A79CD69C3A30B3 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/CalendarView";
-			sourceTree = "<group>";
-		};
-		C742071D4EC368574E658D657D2F745E /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7999EC83C533D3CFDAE961E6C05F1C0C /* Info.plist */,
-				7CA8A31394FF0B02FFE4872F071297F7 /* SwiftMoment.modulemap */,
-				6A22018A1F5B8F1F2CAF2F5589B77833 /* SwiftMoment.xcconfig */,
-				326E68B92C3E5A137E6A01DD02C152E3 /* SwiftMoment-Private.xcconfig */,
-				DF060819618B7F2655811C08F1E5EED6 /* SwiftMoment-dummy.m */,
-				4DA613A6D0EEAF59FFAFC57FE9B618EE /* SwiftMoment-prefix.pch */,
-				53361901E9A7B9B3B22CD372926AA5F2 /* SwiftMoment-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftMoment";
-			sourceTree = "<group>";
-		};
-		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6000FFBBB969FCFB07D14EB880C834D2 /* BRYXBanner.bundle */,
-				AB864DFA65F6D8D7A26925EB2102B420 /* BRYXBanner.framework */,
-				CC0221FFC3B23EA476520E1C1B394C23 /* CalendarView.bundle */,
-				76359779C68FB390CD9787C861242507 /* CalendarView.framework */,
-				AB2641783A17A3523FFB9481CC8AD675 /* GooglePlacesAutocomplete.framework */,
-				98ACE543BACE34DABDE267E62ED69D0F /* PhoneNumberKit.framework */,
-				1728696E41E185B89E9687AF837DAD12 /* Pods_inSparkle.framework */,
-				E9A93A5469852EB1B6EAD6C2C539A4C8 /* RSBarcodes_Swift.framework */,
-				62384151EBD793096A1AAF3E92D94B8D /* ReachabilitySwift.framework */,
-				2B01B8C68C9D67F28FC9157C389CC446 /* SimpleAlert.framework */,
-				D464773611C8DE152D6A8015FCB059FA /* SwiftGifOrigin.framework */,
-				9977A041E1529AC610C4DE73D7463BED /* SwiftMoment.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		D38B1092484ACFACA8D232D86B651F4D /* BRYXBanner */ = {
-			isa = PBXGroup;
-			children = (
-				8BBD1233083EB082237BEA50D944B247 /* Banner.swift */,
-				46D468B7D8DEF9028728D9AFF907145E /* Support Files */,
+				0A87EE4AD4EF245AE9AE7A68CA7ECAD5 /* Core */,
+				759910214D24AE3D41EB55789CF24C69 /* Support Files */,
 			);
 			path = BRYXBanner;
 			sourceTree = "<group>";
 		};
-		E0DE8FBBE5D61F1BEB51445DD0227D80 /* Support Files */ = {
+		8ACC0365B78D83D260E9B8460DB9EAF9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8B616F3730CB508BAC77F426DAD03759 /* Info.plist */,
-				975E5E1949E48BA5D65A2FB33D26BCFF /* ReachabilitySwift.modulemap */,
-				4559B88681DF4510856A4E8E9881F129 /* ReachabilitySwift.xcconfig */,
-				0FFB86B127BDE2D8A7CDBE1C07E291B2 /* ReachabilitySwift-Private.xcconfig */,
-				116A69333702B7E00BBBEC1B8CBB5421 /* ReachabilitySwift-dummy.m */,
-				9F191BAFF06D4D3C5BEF361A2B4E2267 /* ReachabilitySwift-prefix.pch */,
-				42443BE4CFDB3686DCE7BD49A7251FBD /* ReachabilitySwift-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/ReachabilitySwift";
-			sourceTree = "<group>";
-		};
-		E224036D121BCC91A3B61E1EB047F51E /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				ADB0AE711250AFF5CF7073C3E0B66C62 /* GooglePlacesAutocomplete.modulemap */,
-				32B849963312B86EF21190850870F952 /* GooglePlacesAutocomplete.xcconfig */,
-				FB1B4C012034213CF432FB223AC46131 /* GooglePlacesAutocomplete-Private.xcconfig */,
-				AA17093D1DF049EC5ACBA7C98728C2CD /* GooglePlacesAutocomplete-dummy.m */,
-				4097F5D38DB4B77D20E2501CFEB1AD08 /* GooglePlacesAutocomplete-prefix.pch */,
-				06099BF4820FFC01A59464B56EDCFA19 /* GooglePlacesAutocomplete-umbrella.h */,
-				36235317FD9FEADC4059ED1BF8794847 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/GooglePlacesAutocomplete";
-			sourceTree = "<group>";
-		};
-		E49468FB32C21399FA76A1B019388AF7 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				F4D9870AAAD8AD9F0D539779219A3694 /* Info.plist */,
-				A9E90B3A638D3D9FB25BD4BF45708D96 /* RSBarcodes_Swift.modulemap */,
-				203FCA45B9078A914FA9BFADDCF1CC95 /* RSBarcodes_Swift.xcconfig */,
+				7ED1F516195148564B50BC6E7DD6F1B6 /* Info.plist */,
+				BD8A078ABEE397FD56519B83916E27D1 /* RSBarcodes_Swift.modulemap */,
+				165931BC3E5D0FF9BFB7BDBB135D1C9D /* RSBarcodes_Swift.xcconfig */,
 				81A08CC3D09614F9D58B2DD39E918051 /* RSBarcodes_Swift-Private.xcconfig */,
 				402A5C898D2629D26A43C3C85DB54605 /* RSBarcodes_Swift-dummy.m */,
-				9D3566DA69C41B7B02AA55A0F4E67C70 /* RSBarcodes_Swift-prefix.pch */,
+				68420D0191D66DC9932BA02F311587B3 /* RSBarcodes_Swift-prefix.pch */,
 				902308B13351E91338B8F877B6C4E49D /* RSBarcodes_Swift-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/RSBarcodes_Swift";
 			sourceTree = "<group>";
 		};
-		E84380D24255B9FCF5E9E69228135CD4 /* GooglePlacesAutocomplete */ = {
+		8EA7B19732F4DDE8A9B6F27E6D13CB29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BBEF29699AF9C0DDBC5701EFFCD97A7E /* GooglePlacesAutocomplete.h */,
-				1B53DE5A31D44FD4039604B2DB1F9DAC /* GooglePlacesAutocomplete.swift */,
-				F89C479D147FD12FC8012726942F3ED4 /* Resources */,
-				E224036D121BCC91A3B61E1EB047F51E /* Support Files */,
+				80DE26B828546D7C3B4DF036EC602120 /* SwiftMoment.framework */,
+				A2110AE9DDD1DB2BC6A64099EFFCAD90 /* iOS */,
 			);
-			path = GooglePlacesAutocomplete;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2110AE9DDD1DB2BC6A64099EFFCAD90 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				C2A0FF9163C25E7883145E2F3F7672AE /* AVFoundation.framework */,
+				428F0ECA60A973E707583C08A9AC1AC4 /* CoreImage.framework */,
+				9152C81A5BE2C6D8B555D5A9A1856BFD /* CoreTelephony.framework */,
+				DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */,
+				4A949504BAD5138F509DA281C5312783 /* QuartzCore.framework */,
+				4B25A406CCF9B463AB8AA50C9F874F54 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C0357EEB1C5A84777A17BFDF09F22D53 /* PhoneNumberKit */ = {
+			isa = PBXGroup;
+			children = (
+				A18A3A45B70DA8614DA54DD74F0B7CB0 /* Constants.swift */,
+				7BAC914FA14CF5580EAC0ED69F5C5679 /* Formatter.swift */,
+				D7C544BFC3BB17306D8EC8FD79BB8B92 /* Metadata.swift */,
+				74B88F3D90EEB13BC92ACAAD1B62CA94 /* MetadataTypes.swift */,
+				20EAF2CCBDCC94EE31C977426C45D228 /* ParseManager.swift */,
+				6FC0DCC6A350D546BCE0C9C506A0DBDC /* ParseOperation.swift */,
+				8855C5C01A18CD29D82E43F927CFCC8F /* PhoneNumber.swift */,
+				7C62E5262A6077059BD848F6510795D1 /* PhoneNumberKit.h */,
+				FFC6837FEAB40CCABFA1FA6474CF59D2 /* PhoneNumberKit.swift */,
+				167F93F1BE0F28C5A793E86CD2EC6DBD /* PhoneNumberParser.swift */,
+				9EE393BD760D3F7D164E32311E0D9951 /* RegularExpressions.swift */,
+				C9FECD78650176223B1EDE5EBECCB7B1 /* Resources */,
+				198503AA759DE0C632AD806D4CCBA2EF /* Support Files */,
+			);
+			path = PhoneNumberKit;
+			sourceTree = "<group>";
+		};
+		C9FECD78650176223B1EDE5EBECCB7B1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				222509309F3E1A1B9DE622F8ED246EC2 /* PhoneNumberMetadata.json */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CBC55F85D73D5F441FC5AC1E7DB9143F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1E3F44CD777AE729F6090846561E2E34 /* GooglePlacesAutocomplete.modulemap */,
+				FE40238745B3A7C22D64A44607A1FB45 /* GooglePlacesAutocomplete.xcconfig */,
+				356BD8A22F5D0B7716B0A6F3F55A1E97 /* GooglePlacesAutocomplete-Private.xcconfig */,
+				B106D5C39C311C23CA272D110167FDEE /* GooglePlacesAutocomplete-dummy.m */,
+				28B6178D2B37E499758613683C419D12 /* GooglePlacesAutocomplete-prefix.pch */,
+				185118EC653821C406C15354286B8662 /* GooglePlacesAutocomplete-umbrella.h */,
+				9F0C302CE7994CF883DA736352A13A5C /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GooglePlacesAutocomplete";
+			sourceTree = "<group>";
+		};
+		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1CA6ECCE1D9708085DDC9AFBEEB90816 /* BRYXBanner.bundle */,
+				1C0F9D74A9F4AF512C5A2F72626638DF /* BRYXBanner.framework */,
+				A0191BA57CB7A78520BA7A8198A625E5 /* CalendarView.bundle */,
+				C116F3ABB998AE3F9B79A165183D3C63 /* CalendarView.framework */,
+				C63BB3B412F3EA139FB2C9E8638D48AF /* GooglePlacesAutocomplete.framework */,
+				165899CB628B548B9B036727BF50B61D /* PhoneNumberKit.framework */,
+				0D8AA3A69BEC2C18EF1D9020914DF573 /* Pods_inSparkle.framework */,
+				E9A93A5469852EB1B6EAD6C2C539A4C8 /* RSBarcodes_Swift.framework */,
+				2B01B8C68C9D67F28FC9157C389CC446 /* SimpleAlert.framework */,
+				D464773611C8DE152D6A8015FCB059FA /* SwiftGifOrigin.framework */,
+				9977A041E1529AC610C4DE73D7463BED /* SwiftMoment.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		ED3A6EFD3EA12E0784565764EC98A166 /* Pods-inSparkle */ = {
@@ -781,51 +734,40 @@
 				346AD49F4C54168817A17FADB71F33E2 /* Pods-inSparkle.modulemap */,
 				B94027B95B5837513AC0498A21F44B52 /* Pods-inSparkle-acknowledgements.markdown */,
 				45E828B525A0672AB663D41E104F910E /* Pods-inSparkle-acknowledgements.plist */,
-				808A2CC91906028ECC977162A6F1E7A6 /* Pods-inSparkle-dummy.m */,
+				41A0A763320CAAE60128EDC3C918DB5A /* Pods-inSparkle-dummy.m */,
 				5BB3E288775084C23AAF5218D0C5D7C2 /* Pods-inSparkle-frameworks.sh */,
 				9BF4FCD55C7C8FD9F135707076E5096D /* Pods-inSparkle-resources.sh */,
-				CFD2161DAB1CDFEC507808B787F02201 /* Pods-inSparkle-umbrella.h */,
-				5D259EBA8D51260E1CA33561FD84CBB5 /* Pods-inSparkle.debug.xcconfig */,
-				B1823BF39060B6B2D5C0403F52C75EEC /* Pods-inSparkle.release.xcconfig */,
+				FC063F3BBF55392BD3DE36F5B726F447 /* Pods-inSparkle-umbrella.h */,
+				4457F4B43690678D6368455F83538DEB /* Pods-inSparkle.debug.xcconfig */,
+				8E9C71FE88452FFEE7627DD6D9146A33 /* Pods-inSparkle.release.xcconfig */,
 			);
 			name = "Pods-inSparkle";
 			path = "Target Support Files/Pods-inSparkle";
 			sourceTree = "<group>";
 		};
-		F89C479D147FD12FC8012726942F3ED4 /* Resources */ = {
+		F4B90A8A89F2987FBC77DCC31AC79297 /* SimpleAlert */ = {
 			isa = PBXGroup;
 			children = (
-				4880EA1FBDB8943F7956F3ABCB0968ED /* GooglePlacesAutocomplete.xib */,
-				B935E36816E2511A5E51D6A986998A4A /* Images.xcassets */,
+				EA2B75A31A0A1D20EB37DEBE9B99023F /* SimpleAlert.h */,
+				37CDC6E459639009B4B087AB277D908D /* SimpleAlert.swift */,
+				509A9455B0C246A0677776F89BFA67B3 /* SimpleAlert.xib */,
+				6873B3AC49C9308F21F9F787C7F1B7AA /* Support Files */,
 			);
-			name = Resources;
+			path = SimpleAlert;
 			sourceTree = "<group>";
 		};
-		FEAA7D6687629008FE409F9C90EA55F2 /* iOS */ = {
+		F9443747214A07EB04D0E48C9FD10FE6 /* SwiftGifOrigin */ = {
 			isa = PBXGroup;
 			children = (
-				C2A0FF9163C25E7883145E2F3F7672AE /* AVFoundation.framework */,
-				428F0ECA60A973E707583C08A9AC1AC4 /* CoreImage.framework */,
-				7D91FCCD5DFD97296D8586480AD4D17C /* CoreTelephony.framework */,
-				DD5586BCE22316ED23D4D1B96B3F723E /* Foundation.framework */,
-				4A949504BAD5138F509DA281C5312783 /* QuartzCore.framework */,
-				CD57B2EC67C756B7EB4D09F0340DC538 /* SystemConfiguration.framework */,
-				4B25A406CCF9B463AB8AA50C9F874F54 /* UIKit.framework */,
+				8BBB80EF98ACD2B73B21386EF432B5A1 /* UIImage+Gif.swift */,
+				6FFD004A90B1DA29CA27D9F111A1AD80 /* Support Files */,
 			);
-			name = iOS;
+			path = SwiftGifOrigin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		15B00FB932B10226EFAAEABD3A3E8D9B /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7015F3B0A946E3EAB9F12D23ED78AE0B /* CalendarView-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		366F29A02059155D7F706A492103288D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -835,12 +777,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		49B23CA30EB6D78196CBBA9D88BA5F79 /* Headers */ = {
+		366FF71558253E8961CB7B2D6D65D7BC /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B126D7CDB779B875367B536BB5ED56ED /* GooglePlacesAutocomplete-umbrella.h in Headers */,
-				41535DCA5CF3DEEDE0276C426E77A6CA /* GooglePlacesAutocomplete.h in Headers */,
+				AD1EDAFFCA72D975BA666E4E59D9394C /* GooglePlacesAutocomplete-umbrella.h in Headers */,
+				A9682B408C4CB6B7AC6CF88A4CFCAA54 /* GooglePlacesAutocomplete.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -853,12 +795,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		69019E43E8AF094253B9266917ABFE37 /* Headers */ = {
+		65D01A33EBB23073E5E5BFFE16BBED14 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F269FDC92A05B7A83DD2A508898792D /* PhoneNumberKit-umbrella.h in Headers */,
-				3919AB77E5E8F8612EFBBF1471FFCD50 /* PhoneNumberKit.h in Headers */,
+				DF2955FF8502C26DF01E35D284D0015B /* BRYXBanner-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,27 +811,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		78C1F74BD38B8D48B12DAD974085CD43 /* Headers */ = {
+		87523DBD470A4A006F2A0EE49F21BA3E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E55DB23297F0C3A2F058A39B95CE76E /* BRYXBanner-umbrella.h in Headers */,
+				C6CBBC591BC71D21F6998E190F10722A /* PhoneNumberKit-umbrella.h in Headers */,
+				8E9FA56009B41100F1F891C12B6482A8 /* PhoneNumberKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AD2F7189DE36DFBFFC16AD43D522D04D /* Headers */ = {
+		BBC49E2F587A87C388BA1D03DF2BBD2F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E0B32BB9D7E10891D49EF9D239B20D8 /* ReachabilitySwift-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CFDAEE3F233EA63373FC01A05A7D02E8 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				42427C61C742B0AF4167B5202FCB41DC /* Pods-inSparkle-umbrella.h in Headers */,
+				CCE17F6B99AD8C484689B7DE5629950D /* CalendarView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,43 +836,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EF1AFDA5F475A0DD9B0BCA1F9C49A14F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16F395508DBD2348B750C1D141140600 /* Pods-inSparkle-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0C66C30381F86C3D642FC983CCADEBB6 /* ReachabilitySwift */ = {
+		217FB3470A82C4DD453DD6471BF332C2 /* CalendarView-CalendarView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 882C86C75819C78E7E8EB42E9274C2D2 /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */;
+			buildConfigurationList = BFBD0CE408EEE6E77801A159C859F4A8 /* Build configuration list for PBXNativeTarget "CalendarView-CalendarView" */;
 			buildPhases = (
-				8CC520DDE0E1E2BA6CEAEE4DD115F45B /* Sources */,
-				F1D167E93B38A2DD7E7F4AF9D540D9E7 /* Frameworks */,
-				AD2F7189DE36DFBFFC16AD43D522D04D /* Headers */,
+				269BC059415B146288C703214D647198 /* Sources */,
+				0E6CBFCCD7B1AED0BC2F24BE3DE83D25 /* Frameworks */,
+				F27CD4D641EAC48CCAF4004B777E67CB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ReachabilitySwift;
-			productName = ReachabilitySwift;
-			productReference = 62384151EBD793096A1AAF3E92D94B8D /* ReachabilitySwift.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		2239C176B9CD8766D8E83A8542529AA9 /* PhoneNumberKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 551F816B5C5748F22EF78986AB3B301B /* Build configuration list for PBXNativeTarget "PhoneNumberKit" */;
-			buildPhases = (
-				655157011A4B5949005B5155567396D5 /* Sources */,
-				48E138D79BE70E4F818CD9FC2756599F /* Frameworks */,
-				69019E43E8AF094253B9266917ABFE37 /* Headers */,
-				03243F576AB2DD6D14376A2A586942E0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PhoneNumberKit;
-			productName = PhoneNumberKit;
-			productReference = 98ACE543BACE34DABDE267E62ED69D0F /* PhoneNumberKit.framework */;
-			productType = "com.apple.product-type.framework";
+			name = "CalendarView-CalendarView";
+			productName = "CalendarView-CalendarView";
+			productReference = A0191BA57CB7A78520BA7A8198A625E5 /* CalendarView.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 		2293EC2563814D4DD54181F5732E39A1 /* RSBarcodes_Swift */ = {
 			isa = PBXNativeTarget;
@@ -957,34 +881,59 @@
 			productReference = E9A93A5469852EB1B6EAD6C2C539A4C8 /* RSBarcodes_Swift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2E458F9C89AE62C3C7636ED5FF25D29F /* CalendarView */ = {
+		2EB67C0F5243DC1327177C21B03E1289 /* Pods-inSparkle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CBE753AF29BB814E41B4DEB9183AD23D /* Build configuration list for PBXNativeTarget "CalendarView" */;
+			buildConfigurationList = 053DC5C0FB8070FFDF210552C36B01AD /* Build configuration list for PBXNativeTarget "Pods-inSparkle" */;
 			buildPhases = (
-				B50610AEDBAA92E1C20294A196C5EC42 /* Sources */,
-				9BF17F9CE02CABAC881AF9A81571074F /* Frameworks */,
-				B2380AB6A91CC7148ABC52B29A314E3A /* Resources */,
-				15B00FB932B10226EFAAEABD3A3E8D9B /* Headers */,
+				63AE5C6E5F15646845806A75E9714557 /* Sources */,
+				CF319F1D97E0FF062F4F3E770DB72DA3 /* Frameworks */,
+				EF1AFDA5F475A0DD9B0BCA1F9C49A14F /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CAFFAA77F35E8ADBE53150549D904279 /* PBXTargetDependency */,
-				5E77832F49DE1F74EEE6F88E29D45812 /* PBXTargetDependency */,
+				772116F8F03C5BA368A28C9A2919F021 /* PBXTargetDependency */,
+				9EB120281711705EF93CF901F675FB51 /* PBXTargetDependency */,
+				5A346D265A48D1A208E54FF730EEEE33 /* PBXTargetDependency */,
+				B753B50D09E034AF3A497E868C73633F /* PBXTargetDependency */,
+				E200D3DAEB5DA669EBE9945DB6CAB53C /* PBXTargetDependency */,
+				6DA7DB48E2B5632F843F2F90C3D225AC /* PBXTargetDependency */,
+				FD7A9465F4F40F3000C41DEA4E7AA4A1 /* PBXTargetDependency */,
+				DAECB24A6588F8D9AC53A22C572551D1 /* PBXTargetDependency */,
+			);
+			name = "Pods-inSparkle";
+			productName = "Pods-inSparkle";
+			productReference = 0D8AA3A69BEC2C18EF1D9020914DF573 /* Pods_inSparkle.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		43C46F7060CBCEED6137B672350A3D1D /* CalendarView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10E12B9D6F4AA20B59242C2D676BFDC5 /* Build configuration list for PBXNativeTarget "CalendarView" */;
+			buildPhases = (
+				436EA2A6ACC713EC6C91DD0D59D7EEB8 /* Sources */,
+				C87EC3C91682B048BA61DB1AD4D8950D /* Frameworks */,
+				C8C7834B652FC7B376064B5D882E847A /* Resources */,
+				BBC49E2F587A87C388BA1D03DF2BBD2F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5838C5684699AEBA3252CAFB993E037 /* PBXTargetDependency */,
+				7C7E8E2BE2E8426AA3F3F6CA244ACD30 /* PBXTargetDependency */,
 			);
 			name = CalendarView;
 			productName = CalendarView;
-			productReference = 76359779C68FB390CD9787C861242507 /* CalendarView.framework */;
+			productReference = C116F3ABB998AE3F9B79A165183D3C63 /* CalendarView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		4F57BBDFD9D30A2FC489406BAEDACD96 /* GooglePlacesAutocomplete */ = {
+		4CFFE9A8DEA0504DE7C483B741A259A4 /* GooglePlacesAutocomplete */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0F030F3AE4813FDF642690E8DE67298 /* Build configuration list for PBXNativeTarget "GooglePlacesAutocomplete" */;
+			buildConfigurationList = 741868B7217745864D08E0691BDD5E0B /* Build configuration list for PBXNativeTarget "GooglePlacesAutocomplete" */;
 			buildPhases = (
-				4BA9460AE7852012F20679A2FC4A8397 /* Sources */,
-				258AD766A35EFF402341085C2B3BC491 /* Frameworks */,
-				49B23CA30EB6D78196CBBA9D88BA5F79 /* Headers */,
-				931938AD48FA19B397C6C7DDDF3BCBB0 /* Resources */,
+				94FEB9B7DFAA8770D4C0AAD57186319C /* Sources */,
+				181280AA751C32D89A8E76348DE0BE79 /* Frameworks */,
+				366FF71558253E8961CB7B2D6D65D7BC /* Headers */,
+				FD61D511D3E3F7386070F3D19B7777FC /* Resources */,
 			);
 			buildRules = (
 			);
@@ -992,7 +941,25 @@
 			);
 			name = GooglePlacesAutocomplete;
 			productName = GooglePlacesAutocomplete;
-			productReference = AB2641783A17A3523FFB9481CC8AD675 /* GooglePlacesAutocomplete.framework */;
+			productReference = C63BB3B412F3EA139FB2C9E8638D48AF /* GooglePlacesAutocomplete.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		665C2637F7A7C7F60337BFAAABEE5148 /* PhoneNumberKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E515509FDB263067F61DA208AA312A5 /* Build configuration list for PBXNativeTarget "PhoneNumberKit" */;
+			buildPhases = (
+				94866FDB58773ADDE3873EA3366CFA7D /* Sources */,
+				029AE3E2A3338CE519E9607FCD9CDCD8 /* Frameworks */,
+				87523DBD470A4A006F2A0EE49F21BA3E /* Headers */,
+				05296683697154CA7555DC49305156BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhoneNumberKit;
+			productName = PhoneNumberKit;
+			productReference = 165899CB628B548B9B036727BF50B61D /* PhoneNumberKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		66D005083813866908DDB895F347CD7B /* SwiftMoment */ = {
@@ -1029,64 +996,23 @@
 			productReference = 2B01B8C68C9D67F28FC9157C389CC446 /* SimpleAlert.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		9B96E0DE1DC3EC00F22AF1BAD1B5EED7 /* BRYXBanner-BRYXBanner */ = {
+		8CC444F0AC246C7E680305E383486492 /* BRYXBanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E9BBDE4F37416D20F3A9513DD97994DF /* Build configuration list for PBXNativeTarget "BRYXBanner-BRYXBanner" */;
+			buildConfigurationList = 3FBE6C5DE9D37241DFF52A6469F76FF5 /* Build configuration list for PBXNativeTarget "BRYXBanner" */;
 			buildPhases = (
-				48A19A574954F9B21BD612974091A93E /* Sources */,
-				25A8615B3105FE3B838ABCC4AD9BC384 /* Frameworks */,
-				FD44AB9A5BD60DA4CE6384F9E8F6E1D3 /* Resources */,
+				5805F97414A181DB0E5BBCEA6F693D0C /* Sources */,
+				C94069299F34D80EBC4BE89B5FE87065 /* Frameworks */,
+				B3425F74053A25FE376B564E49B79F01 /* Resources */,
+				65D01A33EBB23073E5E5BFFE16BBED14 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7E14F4F217E27404AB93AEFBB58D5E58 /* PBXTargetDependency */,
 			);
-			name = "BRYXBanner-BRYXBanner";
-			productName = "BRYXBanner-BRYXBanner";
-			productReference = 6000FFBBB969FCFB07D14EB880C834D2 /* BRYXBanner.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		B0CC03BBB6E7A6CC1022209C3E09DAC5 /* CalendarView-CalendarView */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1C0AA4C0376CD0771430AA2963B86FAD /* Build configuration list for PBXNativeTarget "CalendarView-CalendarView" */;
-			buildPhases = (
-				5B3275E587BF7E13F30C3C56437EF704 /* Sources */,
-				821B9DFB4CB132A9466E1ED203639B3C /* Frameworks */,
-				7B66B46601D299BE1C873287043353CA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "CalendarView-CalendarView";
-			productName = "CalendarView-CalendarView";
-			productReference = CC0221FFC3B23EA476520E1C1B394C23 /* CalendarView.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		B662BA5D6564C50F418B8B77860F9AEF /* Pods-inSparkle */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7763CCC3B559BEFCC1B60A5F794469AB /* Build configuration list for PBXNativeTarget "Pods-inSparkle" */;
-			buildPhases = (
-				A9F5D484EEE0CB4178793D9822DD389A /* Sources */,
-				BB3CB429F909B025BE59D399D2B24E98 /* Frameworks */,
-				CFDAEE3F233EA63373FC01A05A7D02E8 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				70D928CE68C07AF7D6928E3C17B08A37 /* PBXTargetDependency */,
-				48731DDAD0403366D4FF8795A8DEF61F /* PBXTargetDependency */,
-				234433901A261ED98A09F9A8D142EB24 /* PBXTargetDependency */,
-				441F63B05EFC52EFDE0D6F303DDE0593 /* PBXTargetDependency */,
-				975EB0E83213E5E8B958A627B6F84FAE /* PBXTargetDependency */,
-				0FF7D34153F89F4F9A178D71926B20FF /* PBXTargetDependency */,
-				2C2609E80A9C54254F68023C7A114DC2 /* PBXTargetDependency */,
-				DC299911B53B9FFC15A2A596AEDC1837 /* PBXTargetDependency */,
-				92DEB189FE355D55423275DF7501CB31 /* PBXTargetDependency */,
-			);
-			name = "Pods-inSparkle";
-			productName = "Pods-inSparkle";
-			productReference = 1728696E41E185B89E9687AF837DAD12 /* Pods_inSparkle.framework */;
+			name = BRYXBanner;
+			productName = BRYXBanner;
+			productReference = 1C0F9D74A9F4AF512C5A2F72626638DF /* BRYXBanner.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CD466B4DB127D2A412BC74B73E8A971F /* SwiftGifOrigin */ = {
@@ -1106,24 +1032,22 @@
 			productReference = D464773611C8DE152D6A8015FCB059FA /* SwiftGifOrigin.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E47E46FD96422F9D29CFC8FDE06000DE /* BRYXBanner */ = {
+		D620624F4705FA50DDE71BCDAFD8587E /* BRYXBanner-BRYXBanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2394F86E85CE3FDBDD7C30CB2F938358 /* Build configuration list for PBXNativeTarget "BRYXBanner" */;
+			buildConfigurationList = 0B459802C43107EA16823A3BB50CA6CB /* Build configuration list for PBXNativeTarget "BRYXBanner-BRYXBanner" */;
 			buildPhases = (
-				A8D04FD0895D2F072A589789253A0121 /* Sources */,
-				9BE38803F59B6F787B75FB5C11377BBF /* Frameworks */,
-				B0FE948D5BA6501005134D38FFC35EFE /* Resources */,
-				78C1F74BD38B8D48B12DAD974085CD43 /* Headers */,
+				6BD391BACC9DC55FFF1C211D75116953 /* Sources */,
+				4E8B6C43CFA2D20D7C165B9C12AE1509 /* Frameworks */,
+				DF6941D8D2BB7C6330CE08709EBFA94A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5FAC11955DC8FBF1B29EEE4BCBE5E6D5 /* PBXTargetDependency */,
 			);
-			name = BRYXBanner;
-			productName = BRYXBanner;
-			productReference = AB864DFA65F6D8D7A26925EB2102B420 /* BRYXBanner.framework */;
-			productType = "com.apple.product-type.framework";
+			name = "BRYXBanner-BRYXBanner";
+			productName = "BRYXBanner-BRYXBanner";
+			productReference = 1CA6ECCE1D9708085DDC9AFBEEB90816 /* BRYXBanner.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -1146,15 +1070,14 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E47E46FD96422F9D29CFC8FDE06000DE /* BRYXBanner */,
-				9B96E0DE1DC3EC00F22AF1BAD1B5EED7 /* BRYXBanner-BRYXBanner */,
-				2E458F9C89AE62C3C7636ED5FF25D29F /* CalendarView */,
-				B0CC03BBB6E7A6CC1022209C3E09DAC5 /* CalendarView-CalendarView */,
-				4F57BBDFD9D30A2FC489406BAEDACD96 /* GooglePlacesAutocomplete */,
-				2239C176B9CD8766D8E83A8542529AA9 /* PhoneNumberKit */,
-				B662BA5D6564C50F418B8B77860F9AEF /* Pods-inSparkle */,
+				8CC444F0AC246C7E680305E383486492 /* BRYXBanner */,
+				D620624F4705FA50DDE71BCDAFD8587E /* BRYXBanner-BRYXBanner */,
+				43C46F7060CBCEED6137B672350A3D1D /* CalendarView */,
+				217FB3470A82C4DD453DD6471BF332C2 /* CalendarView-CalendarView */,
+				4CFFE9A8DEA0504DE7C483B741A259A4 /* GooglePlacesAutocomplete */,
+				665C2637F7A7C7F60337BFAAABEE5148 /* PhoneNumberKit */,
+				2EB67C0F5243DC1327177C21B03E1289 /* Pods-inSparkle */,
 				2293EC2563814D4DD54181F5732E39A1 /* RSBarcodes_Swift */,
-				0C66C30381F86C3D642FC983CCADEBB6 /* ReachabilitySwift */,
 				744DAA31A10AD23500F2027C789597D6 /* SimpleAlert */,
 				CD466B4DB127D2A412BC74B73E8A971F /* SwiftGifOrigin */,
 				66D005083813866908DDB895F347CD7B /* SwiftMoment */,
@@ -1163,50 +1086,50 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		03243F576AB2DD6D14376A2A586942E0 /* Resources */ = {
+		05296683697154CA7555DC49305156BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DF0A2CC021A82376A1AC1796F66CAFD /* PhoneNumberMetadata.json in Resources */,
+				CD2FB6CEA1F86F1BFEC7CD5D71E4FC06 /* PhoneNumberMetadata.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7B66B46601D299BE1C873287043353CA /* Resources */ = {
+		B3425F74053A25FE376B564E49B79F01 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B24F0F7E1737C00545F4152285C486AF /* BRYXBanner.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8C7834B652FC7B376064B5D882E847A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CAD231DB7B5F1146AA8D6FAB679DC2F /* CalendarView.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF6941D8D2BB7C6330CE08709EBFA94A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		931938AD48FA19B397C6C7DDDF3BCBB0 /* Resources */ = {
+		F27CD4D641EAC48CCAF4004B777E67CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F812F69618E146ECCE1FF050486CC8F /* GooglePlacesAutocomplete.xib in Resources */,
-				9ECC03A53330C6931BF5D8FE931E8EF3 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B0FE948D5BA6501005134D38FFC35EFE /* Resources */ = {
+		FD61D511D3E3F7386070F3D19B7777FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4341DDBE3C8FB3626B2732991EDA2436 /* BRYXBanner.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2380AB6A91CC7148ABC52B29A314E3A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6BA6D490DB74E6D941F7335C94C37DE6 /* CalendarView.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FD44AB9A5BD60DA4CE6384F9E8F6E1D3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				54312969CCA32B783BC698FE56E13820 /* GooglePlacesAutocomplete.xib in Resources */,
+				70DE0CE03D63E8713777585F4652D345 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1226,44 +1149,48 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		48A19A574954F9B21BD612974091A93E /* Sources */ = {
+		269BC059415B146288C703214D647198 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4BA9460AE7852012F20679A2FC4A8397 /* Sources */ = {
+		436EA2A6ACC713EC6C91DD0D59D7EEB8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63B038BCDB731C2F8B93A35AB9626B09 /* GooglePlacesAutocomplete-dummy.m in Sources */,
-				7C86FE864DF4F12202D1065FB7880C00 /* GooglePlacesAutocomplete.swift in Sources */,
+				7CB8E705E84635FADFD7BD53D6C4CCC5 /* CalendarView-dummy.m in Sources */,
+				0CD4CAA8277BFCE5B8960595C5EBF89A /* CalendarView.swift in Sources */,
+				4B5AC830C73CFE97E3EF81F0F5708770 /* ContentView.swift in Sources */,
+				817C0B7BA3B810BB87B0A01E10AF3F73 /* DayView.swift in Sources */,
+				C95C4269D083BA56EEE1E9823A76E365 /* EasyCast.swift in Sources */,
+				379ED55272547C8C57374F4081A448BB /* MonthView.swift in Sources */,
+				42C891A1452D7E7875B0071A43B4FD32 /* WeekView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5B3275E587BF7E13F30C3C56437EF704 /* Sources */ = {
+		5805F97414A181DB0E5BBCEA6F693D0C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C54BF3D83805EF168957F031E730BFC5 /* BRYXBanner-dummy.m in Sources */,
+				4555A5EC833803C0F1E834546258C993 /* Banner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		655157011A4B5949005B5155567396D5 /* Sources */ = {
+		63AE5C6E5F15646845806A75E9714557 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23A034CBFC1BF5C319E311CCBCEB4894 /* Constants.swift in Sources */,
-				975684F7534BA6E653B2B1DC6D013995 /* Formatter.swift in Sources */,
-				4E3BDE135AFBA6E413A21E4996D4E1F8 /* Metadata.swift in Sources */,
-				2DE6E4ED38F8869175A21278113F6C23 /* MetadataTypes.swift in Sources */,
-				F5C0E984A3C2FA8BC8F2B9A595E84110 /* ParseManager.swift in Sources */,
-				630B7C55EE57FC4BCC1ACCA5E9198140 /* ParseOperation.swift in Sources */,
-				7FAD0C3DC8B2B30663C212920DDFA6ED /* PhoneNumber.swift in Sources */,
-				A7E7B2E6F607C1AB4403B415B990003E /* PhoneNumberKit-dummy.m in Sources */,
-				EB21BCCD0AA67381E43E0D7017443BA2 /* PhoneNumberKit.swift in Sources */,
-				6E78F999BEDF50E29DEC988150976778 /* PhoneNumberParser.swift in Sources */,
-				F326A263E646F0314EE0240AB31B4A55 /* RegularExpressions.swift in Sources */,
+				A226528CDF5F92763E642DF834639B19 /* Pods-inSparkle-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6BD391BACC9DC55FFF1C211D75116953 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1276,12 +1203,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8CC520DDE0E1E2BA6CEAEE4DD115F45B /* Sources */ = {
+		94866FDB58773ADDE3873EA3366CFA7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DF50A6FBB59FE5701AC1E8D0BF89C0E /* Reachability.swift in Sources */,
-				C696892E0B1CC220B97258AC1BE05820 /* ReachabilitySwift-dummy.m in Sources */,
+				CB3001594F218D9D84AB495DCD028A00 /* Constants.swift in Sources */,
+				41FE106EB3F14BD509B8743DEC937F34 /* Formatter.swift in Sources */,
+				5CEA711411D79B42E75D130968B2ACA6 /* Metadata.swift in Sources */,
+				763173252599467763EE2BE15B67587A /* MetadataTypes.swift in Sources */,
+				A5A604AFF84D5FB4AE477FCFCA1AAE5A /* ParseManager.swift in Sources */,
+				1FF86AF35DF838BF470650459A55372F /* ParseOperation.swift in Sources */,
+				9781EA2BF2B1E9DC2FF56ACD4884EFC1 /* PhoneNumber.swift in Sources */,
+				025FE37DC3B2359209373845E34C1A75 /* PhoneNumberKit-dummy.m in Sources */,
+				34DA9A6AA50709E9578679CEE5711048 /* PhoneNumberKit.swift in Sources */,
+				54C8662352A51082C492C10A07074F81 /* PhoneNumberParser.swift in Sources */,
+				4A34FC8BFCA40D646A894E146E88AB9F /* RegularExpressions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94FEB9B7DFAA8770D4C0AAD57186319C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7FA32C7C5259FDC20AA021E36C1DCB1C /* GooglePlacesAutocomplete-dummy.m in Sources */,
+				ECDCE46F1AA926CE0E3EFA0599B3E6F5 /* GooglePlacesAutocomplete.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1311,37 +1256,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A8D04FD0895D2F072A589789253A0121 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7ED6C4313610EF5C6DF992A642BF9419 /* BRYXBanner-dummy.m in Sources */,
-				CAD1FF7105BF8FCC9B0244966E6B6511 /* Banner.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A9F5D484EEE0CB4178793D9822DD389A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5E90DB64C8823518F1F25ADCD426817F /* Pods-inSparkle-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B50610AEDBAA92E1C20294A196C5EC42 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B58875AB44644539486BB1E19A5E27A3 /* CalendarView-dummy.m in Sources */,
-				E123BA136E8102822E0723D0CB55FBA6 /* CalendarView.swift in Sources */,
-				63BA903D645A6D2DDEBBCAB3B9F3A475 /* ContentView.swift in Sources */,
-				0CD1233BB173241C108DEE6C31AB030C /* DayView.swift in Sources */,
-				2104EF1F8BDB5264DD39C0F4FF77A4AE /* EasyCast.swift in Sources */,
-				39CE0371378B0161C8CF4324839D4BF9 /* MonthView.swift in Sources */,
-				AFCB290E91343082B73BB825575851C4 /* WeekView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EA6753D0456163C54F174E217CB19D92 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1355,120 +1269,75 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0FF7D34153F89F4F9A178D71926B20FF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ReachabilitySwift;
-			target = 0C66C30381F86C3D642FC983CCADEBB6 /* ReachabilitySwift */;
-			targetProxy = 88B83A348D93D8474A927AEB180B9B6B /* PBXContainerItemProxy */;
-		};
-		234433901A261ED98A09F9A8D142EB24 /* PBXTargetDependency */ = {
+		5A346D265A48D1A208E54FF730EEEE33 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GooglePlacesAutocomplete;
-			target = 4F57BBDFD9D30A2FC489406BAEDACD96 /* GooglePlacesAutocomplete */;
-			targetProxy = BF3F03EF5F79E81E7F108E7B7F2A2B24 /* PBXContainerItemProxy */;
+			target = 4CFFE9A8DEA0504DE7C483B741A259A4 /* GooglePlacesAutocomplete */;
+			targetProxy = 7E910A9C22BA86AFCE8F93AB7AB4ADBA /* PBXContainerItemProxy */;
 		};
-		2C2609E80A9C54254F68023C7A114DC2 /* PBXTargetDependency */ = {
+		6DA7DB48E2B5632F843F2F90C3D225AC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SimpleAlert;
 			target = 744DAA31A10AD23500F2027C789597D6 /* SimpleAlert */;
-			targetProxy = 9DFB603BDDDB24AE5D9A52C5487391BC /* PBXContainerItemProxy */;
+			targetProxy = D233A1CF10FAC3E78DEB70C63EB50DBD /* PBXContainerItemProxy */;
 		};
-		441F63B05EFC52EFDE0D6F303DDE0593 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = PhoneNumberKit;
-			target = 2239C176B9CD8766D8E83A8542529AA9 /* PhoneNumberKit */;
-			targetProxy = B4B88B02E840AA9498734841CD8674F1 /* PBXContainerItemProxy */;
-		};
-		48731DDAD0403366D4FF8795A8DEF61F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CalendarView;
-			target = 2E458F9C89AE62C3C7636ED5FF25D29F /* CalendarView */;
-			targetProxy = 3416E0F4D3C0701ACC16B2DB81F69AD4 /* PBXContainerItemProxy */;
-		};
-		5E77832F49DE1F74EEE6F88E29D45812 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SwiftMoment;
-			target = 66D005083813866908DDB895F347CD7B /* SwiftMoment */;
-			targetProxy = 5D9EAE490FBBC83D2F1DED218F6E71B2 /* PBXContainerItemProxy */;
-		};
-		5FAC11955DC8FBF1B29EEE4BCBE5E6D5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "BRYXBanner-BRYXBanner";
-			target = 9B96E0DE1DC3EC00F22AF1BAD1B5EED7 /* BRYXBanner-BRYXBanner */;
-			targetProxy = 47BD8085815C365FCF349F46CF083D7E /* PBXContainerItemProxy */;
-		};
-		70D928CE68C07AF7D6928E3C17B08A37 /* PBXTargetDependency */ = {
+		772116F8F03C5BA368A28C9A2919F021 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BRYXBanner;
-			target = E47E46FD96422F9D29CFC8FDE06000DE /* BRYXBanner */;
-			targetProxy = A3067B587F71705A20FADC8D7AABF33F /* PBXContainerItemProxy */;
+			target = 8CC444F0AC246C7E680305E383486492 /* BRYXBanner */;
+			targetProxy = 8386A27BCB4ADF1D9448ED4D3119320E /* PBXContainerItemProxy */;
 		};
-		92DEB189FE355D55423275DF7501CB31 /* PBXTargetDependency */ = {
+		7C7E8E2BE2E8426AA3F3F6CA244ACD30 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftMoment;
 			target = 66D005083813866908DDB895F347CD7B /* SwiftMoment */;
-			targetProxy = 1DFF3D77DF899166EA1C1BCF33E83D32 /* PBXContainerItemProxy */;
+			targetProxy = A2847AA17D83FD85FEABE3D9929312E3 /* PBXContainerItemProxy */;
 		};
-		975EB0E83213E5E8B958A627B6F84FAE /* PBXTargetDependency */ = {
+		7E14F4F217E27404AB93AEFBB58D5E58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "BRYXBanner-BRYXBanner";
+			target = D620624F4705FA50DDE71BCDAFD8587E /* BRYXBanner-BRYXBanner */;
+			targetProxy = 5BA478D4F7479A607D7AF5296DDE1AF3 /* PBXContainerItemProxy */;
+		};
+		9EB120281711705EF93CF901F675FB51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CalendarView;
+			target = 43C46F7060CBCEED6137B672350A3D1D /* CalendarView */;
+			targetProxy = 019145F40DDD9F3092A69819680474CE /* PBXContainerItemProxy */;
+		};
+		B753B50D09E034AF3A497E868C73633F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PhoneNumberKit;
+			target = 665C2637F7A7C7F60337BFAAABEE5148 /* PhoneNumberKit */;
+			targetProxy = 3ECB65F8A43650FB7C8E10B1A70DDA79 /* PBXContainerItemProxy */;
+		};
+		DAECB24A6588F8D9AC53A22C572551D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftMoment;
+			target = 66D005083813866908DDB895F347CD7B /* SwiftMoment */;
+			targetProxy = DEFA012490538EE603BDC44AF07D44A1 /* PBXContainerItemProxy */;
+		};
+		E200D3DAEB5DA669EBE9945DB6CAB53C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RSBarcodes_Swift;
 			target = 2293EC2563814D4DD54181F5732E39A1 /* RSBarcodes_Swift */;
-			targetProxy = 727D1F2B80813CA125287C71EFEACFB4 /* PBXContainerItemProxy */;
+			targetProxy = 9471BB7F7A44ED31999903946C5F1EB1 /* PBXContainerItemProxy */;
 		};
-		CAFFAA77F35E8ADBE53150549D904279 /* PBXTargetDependency */ = {
+		F5838C5684699AEBA3252CAFB993E037 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "CalendarView-CalendarView";
-			target = B0CC03BBB6E7A6CC1022209C3E09DAC5 /* CalendarView-CalendarView */;
-			targetProxy = F900920000DFDDC97560FAF885678DBB /* PBXContainerItemProxy */;
+			target = 217FB3470A82C4DD453DD6471BF332C2 /* CalendarView-CalendarView */;
+			targetProxy = 5A323C2C9612D9AE5FB8C6CAF2019FBE /* PBXContainerItemProxy */;
 		};
-		DC299911B53B9FFC15A2A596AEDC1837 /* PBXTargetDependency */ = {
+		FD7A9465F4F40F3000C41DEA4E7AA4A1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftGifOrigin;
 			target = CD466B4DB127D2A412BC74B73E8A971F /* SwiftGifOrigin */;
-			targetProxy = 06EC49532993EF4CC6A8A30DCEAC0180 /* PBXContainerItemProxy */;
+			targetProxy = CBCDA65018B8E289504CFF6B526FBAE2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		094B257C9A0FB298FB9075EE9829559E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1202C2F2EF41CC22D61254DB8B35291 /* CalendarView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = CalendarView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		0D81C145AC2AA8143404B87B6CEAFFB7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 326E68B92C3E5A137E6A01DD02C152E3 /* SwiftMoment-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.2.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.2.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftMoment/SwiftMoment-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftMoment/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftMoment/SwiftMoment.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftMoment;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		0E6D54E0210747BDEC916C83DEA3E6CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4039ED6B0CE77A3159514AFF54CBE7CE /* SimpleAlert-Private.xcconfig */;
@@ -1496,25 +1365,25 @@
 			};
 			name = Release;
 		};
-		16F431DAC585E6D18557B172E879BF88 /* Debug */ = {
+		12013F396D2AB6C181E11A59A75C0CA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FFB86B127BDE2D8A7CDBE1C07E291B2 /* ReachabilitySwift-Private.xcconfig */;
+			baseConfigurationReference = BAFA2F1C6358326B0C4B8B16FE84AD04 /* PhoneNumberKit-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2.3.0;
+				CURRENT_PROJECT_VERSION = 0.3.0;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 2;
+				DYLIB_COMPATIBILITY_VERSION = 0.3.0;
 				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/PhoneNumberKit/PhoneNumberKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PhoneNumberKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
+				MODULEMAP_FILE = "Target Support Files/PhoneNumberKit/PhoneNumberKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = ReachabilitySwift;
+				PRODUCT_NAME = PhoneNumberKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1524,27 +1393,25 @@
 			};
 			name = Debug;
 		};
-		1D5A0E92F4CD3DDAF268BA2EE9CB745A /* Debug */ = {
+		1C773635D383EFDC3FDBEEFA04E4A3F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D259EBA8D51260E1CA33561FD84CBB5 /* Pods-inSparkle.debug.xcconfig */;
+			baseConfigurationReference = 356BD8A22F5D0B7716B0A6F3F55A1E97 /* GooglePlacesAutocomplete-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 0.3.0;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 0.3.0;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-inSparkle/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/GooglePlacesAutocomplete/GooglePlacesAutocomplete-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GooglePlacesAutocomplete/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-inSparkle/Pods-inSparkle.modulemap";
+				MODULEMAP_FILE = "Target Support Files/GooglePlacesAutocomplete/GooglePlacesAutocomplete.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_inSparkle;
+				PRODUCT_NAME = GooglePlacesAutocomplete;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1553,6 +1420,33 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		260B0E7FD94C86C107C9C8B225CD280B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAFA2F1C6358326B0C4B8B16FE84AD04 /* PhoneNumberKit-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.3.0;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.3.0;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/PhoneNumberKit/PhoneNumberKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/PhoneNumberKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/PhoneNumberKit/PhoneNumberKit.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = PhoneNumberKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		2E8905D7D42EACC3020A868049DEC0D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1582,14 +1476,14 @@
 			};
 			name = Debug;
 		};
-		3B3BAD30BE370690F70469732361EEE6 /* Release */ = {
+		30D6F58B06BDE0CB251959EA4628CED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45786764B04BCEF3B2AD3E819F0098C8 /* BRYXBanner-Private.xcconfig */;
+			baseConfigurationReference = 788CC3CA468ED839500EFF4097EC8AD3 /* BRYXBanner-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.5.0;
+				CURRENT_PROJECT_VERSION = 0.5.2;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
+				DYLIB_COMPATIBILITY_VERSION = 0.5.2;
 				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1599,99 +1493,48 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/BRYXBanner/BRYXBanner.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = BRYXBanner;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
-		};
-		4094C01DCE5F3980490347FEFDE4DD7E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45786764B04BCEF3B2AD3E819F0098C8 /* BRYXBanner-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = BRYXBanner;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
 			name = Debug;
 		};
-		619350FAEAEDEC0ABBA11E7A1FCB8BB6 /* Debug */ = {
+		460DD1463AB70E640A4562AAC3F3F4AE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1202C2F2EF41CC22D61254DB8B35291 /* CalendarView-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = CalendarView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		6FDC5345AD0695F32CC96E18B15DB3C1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CEA20436C5DF5751901437F5A9637B8 /* PhoneNumberKit-Private.xcconfig */;
+			baseConfigurationReference = 1869F177696289A9FB37A35BD167A8B9 /* CalendarView-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.7;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.1.7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/PhoneNumberKit/PhoneNumberKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PhoneNumberKit/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/CalendarView/CalendarView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CalendarView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PhoneNumberKit/PhoneNumberKit.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = PhoneNumberKit;
+				MODULEMAP_FILE = "Target Support Files/CalendarView/CalendarView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CalendarView;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		74069F7AF020F82193416A3142BF57B1 /* Release */ = {
+		5379E64A0EAB75AF920ECBD90A4389B6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B1823BF39060B6B2D5C0403F52C75EEC /* Pods-inSparkle.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-inSparkle/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-inSparkle/Pods-inSparkle.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_inSparkle;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		83D0019AD50F9B7F57D1E1050558784C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB1B4C012034213CF432FB223AC46131 /* GooglePlacesAutocomplete-Private.xcconfig */;
+			baseConfigurationReference = 356BD8A22F5D0B7716B0A6F3F55A1E97 /* GooglePlacesAutocomplete-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 0.3.0;
@@ -1706,8 +1549,35 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GooglePlacesAutocomplete/GooglePlacesAutocomplete.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = GooglePlacesAutocomplete;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		58C5B8F11F6FF5A6A537E3A53F4DB19D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85506044D4EACB75F501E231E30EB861 /* SwiftMoment-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 0.3.0;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 0.3.0;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftMoment/SwiftMoment-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftMoment/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftMoment/SwiftMoment.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftMoment;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1717,9 +1587,21 @@
 			};
 			name = Debug;
 		};
-		8F6E5F6909038D701785E8A5DAC4F235 /* Release */ = {
+		7BADB34436C4F3BF1A1F239BF40E20C6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45786764B04BCEF3B2AD3E819F0098C8 /* BRYXBanner-Private.xcconfig */;
+			baseConfigurationReference = 1869F177696289A9FB37A35BD167A8B9 /* CalendarView-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = CalendarView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		93E25F83867D057047F14424FEB09C95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 788CC3CA468ED839500EFF4097EC8AD3 /* BRYXBanner-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				PRODUCT_NAME = BRYXBanner;
@@ -1727,7 +1609,7 @@
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
-			name = Release;
+			name = Debug;
 		};
 		AB7692549D328F8E67B361039544A9A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1757,53 +1639,25 @@
 			};
 			name = Debug;
 		};
-		AD615B794454399E9778AEEEA4884AA5 /* Debug */ = {
+		ACBF36B4EF1AFDE4587640AA95BAEF7E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1202C2F2EF41CC22D61254DB8B35291 /* CalendarView-Private.xcconfig */;
+			baseConfigurationReference = 788CC3CA468ED839500EFF4097EC8AD3 /* BRYXBanner-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 0.5.2;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_COMPATIBILITY_VERSION = 0.5.2;
 				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CalendarView/CalendarView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CalendarView/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/BRYXBanner/BRYXBanner-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BRYXBanner/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/CalendarView/CalendarView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = CalendarView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B31DE927F687644A2F2BF116A25F858C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB1B4C012034213CF432FB223AC46131 /* GooglePlacesAutocomplete-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.3.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.3.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/GooglePlacesAutocomplete/GooglePlacesAutocomplete-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GooglePlacesAutocomplete/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GooglePlacesAutocomplete/GooglePlacesAutocomplete.modulemap";
+				MODULEMAP_FILE = "Target Support Files/BRYXBanner/BRYXBanner.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = GooglePlacesAutocomplete;
+				PRODUCT_NAME = BRYXBanner;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1811,6 +1665,18 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		B7264599BCFF7CC511CC86F677830CA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1869F177696289A9FB37A35BD167A8B9 /* CalendarView-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = CalendarView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
 		};
 		BE840DB8EFBF6A2A7B2AA6B80C8EFDD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1879,6 +1745,45 @@
 			};
 			name = Debug;
 		};
+		CBDB86B50736DB9AFA99623A16A91136 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1869F177696289A9FB37A35BD167A8B9 /* CalendarView-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1.1.1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CalendarView/CalendarView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CalendarView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CalendarView/CalendarView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CalendarView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		DA13EE1F8F797CEB70AA2AB85FFA1D46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 788CC3CA468ED839500EFF4097EC8AD3 /* BRYXBanner-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = BRYXBanner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
 		DF4D92A7D86C6CB6B161DDDD91F4D91A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 81A08CC3D09614F9D58B2DD39E918051 /* RSBarcodes_Swift-Private.xcconfig */;
@@ -1905,34 +1810,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		E3FCE0CCE77B71B681C93613F7F4FC69 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 326E68B92C3E5A137E6A01DD02C152E3 /* SwiftMoment-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.2.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.2.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftMoment/SwiftMoment-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftMoment/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftMoment/SwiftMoment.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftMoment;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		E43846B588E1892F3093F3B7082B6DFB /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -1968,60 +1845,6 @@
 			};
 			name = Release;
 		};
-		E5F5318627527ED567CADB674C21A1E6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0FFB86B127BDE2D8A7CDBE1C07E291B2 /* ReachabilitySwift-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 2.3.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 2;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = ReachabilitySwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E77843450DCE4A8352D479E124D30644 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1202C2F2EF41CC22D61254DB8B35291 /* CalendarView-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1.1.0;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CalendarView/CalendarView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/CalendarView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/CalendarView/CalendarView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = CalendarView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		EA13DB54E56C99B809EFD89A4B638C58 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 403F86B0C121C74DD961CB197B86B59E /* SwiftGifOrigin-Private.xcconfig */;
@@ -2049,53 +1872,83 @@
 			};
 			name = Release;
 		};
-		EFC3811F0DE524C6CB83011D79A85A48 /* Debug */ = {
+		ECDB0792B10D30737AACB1EAA87FA629 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9CEA20436C5DF5751901437F5A9637B8 /* PhoneNumberKit-Private.xcconfig */;
+			baseConfigurationReference = 85506044D4EACB75F501E231E30EB861 /* SwiftMoment-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.1.7;
+				CURRENT_PROJECT_VERSION = 0.3.0;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.1.7;
+				DYLIB_COMPATIBILITY_VERSION = 0.3.0;
 				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/PhoneNumberKit/PhoneNumberKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/PhoneNumberKit/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftMoment/SwiftMoment-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftMoment/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/PhoneNumberKit/PhoneNumberKit.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = PhoneNumberKit;
+				MODULEMAP_FILE = "Target Support Files/SwiftMoment/SwiftMoment.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftMoment;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		F15C1F42FF8F6DE4F9ED417C393D8F31 /* Debug */ = {
+		F92A480BA4798856F103D32BD5367196 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45786764B04BCEF3B2AD3E819F0098C8 /* BRYXBanner-Private.xcconfig */;
+			baseConfigurationReference = 8E9C71FE88452FFEE7627DD6D9146A33 /* Pods-inSparkle.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 0.5.0;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 0.5.0;
-				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/BRYXBanner/BRYXBanner-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BRYXBanner/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-inSparkle/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BRYXBanner/BRYXBanner.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-inSparkle/Pods-inSparkle.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_inSparkle;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FE54513AC35A6DE5C592F41B6A679C8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4457F4B43690678D6368455F83538DEB /* Pods-inSparkle.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-inSparkle/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-inSparkle/Pods-inSparkle.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = BRYXBanner;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_inSparkle;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2108,29 +1961,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		053DC5C0FB8070FFDF210552C36B01AD /* Build configuration list for PBXNativeTarget "Pods-inSparkle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE54513AC35A6DE5C592F41B6A679C8B /* Debug */,
+				F92A480BA4798856F103D32BD5367196 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B459802C43107EA16823A3BB50CA6CB /* Build configuration list for PBXNativeTarget "BRYXBanner-BRYXBanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93E25F83867D057047F14424FEB09C95 /* Debug */,
+				DA13EE1F8F797CEB70AA2AB85FFA1D46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		10E12B9D6F4AA20B59242C2D676BFDC5 /* Build configuration list for PBXNativeTarget "CalendarView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				460DD1463AB70E640A4562AAC3F3F4AE /* Debug */,
+				CBDB86B50736DB9AFA99623A16A91136 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1AE03F518A7B8C791298113ACA835B4B /* Build configuration list for PBXNativeTarget "SwiftGifOrigin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BE840DB8EFBF6A2A7B2AA6B80C8EFDD0 /* Debug */,
 				EA13DB54E56C99B809EFD89A4B638C58 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1C0AA4C0376CD0771430AA2963B86FAD /* Build configuration list for PBXNativeTarget "CalendarView-CalendarView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				619350FAEAEDEC0ABBA11E7A1FCB8BB6 /* Debug */,
-				094B257C9A0FB298FB9075EE9829559E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2394F86E85CE3FDBDD7C30CB2F938358 /* Build configuration list for PBXNativeTarget "BRYXBanner" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F15C1F42FF8F6DE4F9ED417C393D8F31 /* Debug */,
-				3B3BAD30BE370690F70469732361EEE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2153,20 +2015,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		551F816B5C5748F22EF78986AB3B301B /* Build configuration list for PBXNativeTarget "PhoneNumberKit" */ = {
+		3FBE6C5DE9D37241DFF52A6469F76FF5 /* Build configuration list for PBXNativeTarget "BRYXBanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EFC3811F0DE524C6CB83011D79A85A48 /* Debug */,
-				6FDC5345AD0695F32CC96E18B15DB3C1 /* Release */,
+				30D6F58B06BDE0CB251959EA4628CED1 /* Debug */,
+				ACBF36B4EF1AFDE4587640AA95BAEF7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7763CCC3B559BEFCC1B60A5F794469AB /* Build configuration list for PBXNativeTarget "Pods-inSparkle" */ = {
+		4E515509FDB263067F61DA208AA312A5 /* Build configuration list for PBXNativeTarget "PhoneNumberKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D5A0E92F4CD3DDAF268BA2EE9CB745A /* Debug */,
-				74069F7AF020F82193416A3142BF57B1 /* Release */,
+				12013F396D2AB6C181E11A59A75C0CA5 /* Debug */,
+				260B0E7FD94C86C107C9C8B225CD280B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		741868B7217745864D08E0691BDD5E0B /* Build configuration list for PBXNativeTarget "GooglePlacesAutocomplete" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C773635D383EFDC3FDBEEFA04E4A3F4 /* Debug */,
+				5379E64A0EAB75AF920ECBD90A4389B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2180,38 +2051,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		882C86C75819C78E7E8EB42E9274C2D2 /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */ = {
+		BFBD0CE408EEE6E77801A159C859F4A8 /* Build configuration list for PBXNativeTarget "CalendarView-CalendarView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				16F431DAC585E6D18557B172E879BF88 /* Debug */,
-				E5F5318627527ED567CADB674C21A1E6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CBE753AF29BB814E41B4DEB9183AD23D /* Build configuration list for PBXNativeTarget "CalendarView" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				AD615B794454399E9778AEEEA4884AA5 /* Debug */,
-				E77843450DCE4A8352D479E124D30644 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D0F030F3AE4813FDF642690E8DE67298 /* Build configuration list for PBXNativeTarget "GooglePlacesAutocomplete" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				83D0019AD50F9B7F57D1E1050558784C /* Debug */,
-				B31DE927F687644A2F2BF116A25F858C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E9BBDE4F37416D20F3A9513DD97994DF /* Build configuration list for PBXNativeTarget "BRYXBanner-BRYXBanner" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4094C01DCE5F3980490347FEFDE4DD7E /* Debug */,
-				8F6E5F6909038D701785E8A5DAC4F235 /* Release */,
+				B7264599BCFF7CC511CC86F677830CA7 /* Debug */,
+				7BADB34436C4F3BF1A1F239BF40E20C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2219,8 +2063,8 @@
 		FBACF6B23BEF0D5F68E51DD375C9D119 /* Build configuration list for PBXNativeTarget "SwiftMoment" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E3FCE0CCE77B71B681C93613F7F4FC69 /* Debug */,
-				0D81C145AC2AA8143404B87B6CEAFFB7 /* Release */,
+				58C5B8F11F6FF5A6A537E3A53F4DB19D /* Debug */,
+				ECDB0792B10D30737AACB1EAA87FA629 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

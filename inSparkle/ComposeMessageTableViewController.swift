@@ -8,8 +8,10 @@
 
 import UIKit
 import Parse
+import GooglePlacesAutocomplete
+import PhoneNumberKit
 
-class ComposeMessageTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
+class ComposeMessageTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UITextFieldDelegate {
     
     var isNewMessage : Bool = true
     
@@ -17,16 +19,19 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var addressTextField: UITextField!
     @IBOutlet var phoneTextField: UITextField!
+    @IBOutlet var altPhoneTextField: UITextField!
     @IBOutlet var messageTextView: UITextView!
     @IBOutlet var signedLabel: UILabel!
     @IBOutlet weak var recipientLabel: UILabel!
     @IBOutlet weak var addImage: UIImageView!
+    @IBOutlet var emailAddress: UITextField!
     
     var selectedEmployee : Employee?
     var formatter = NSDateFormatter()
     
     override func viewWillAppear(animated: Bool) {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnNewMessage", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateAddressLabel", name: "UpdateComposeMessageLabel", object: nil)
         let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
         print(employeeData)
         employeeData.fetchIfNeededInBackgroundWithBlock { (employee : PFObject?, error : NSError?) -> Void in
@@ -34,6 +39,49 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 self.signedLabel.text = "Signed: " + employeeData.firstName + " " + employeeData.lastName
             }
         }
+        
+        addressTextField.userInteractionEnabled = true
+        addressTextField.addTarget(self, action: Selector("googlePlacesAPI"), forControlEvents: UIControlEvents.EditingDidBegin)
+        
+        phoneTextField.delegate = self
+        altPhoneTextField.delegate = self
+        
+    }
+    
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        var phoneNumber : PhoneNumber?
+        if textField == phoneTextField {
+            do {
+                phoneNumber = try PhoneNumber(rawNumber: phoneTextField.text!)
+            } catch { }
+            phoneTextField.text = phoneNumber?.toNational()
+        }
+        
+        if textField == altPhoneTextField {
+            do {
+                phoneNumber = try PhoneNumber(rawNumber: altPhoneTextField.text!)
+            } catch { }
+            altPhoneTextField.text = phoneNumber?.toNational()
+        }
+        
+        return true
+    }
+    
+    func googlePlacesAPI() {
+        
+        let gpaViewController = GooglePlacesAutocomplete(
+            apiKey: "AIzaSyCFBaUShWIatpRNiDtc8IcE8reNMs0kM7I",
+            placeType: .Address
+        )
+        
+        gpaViewController.placeDelegate = self
+        gpaViewController.locationBias = LocationBias(latitude: 39.4931008, longitude: -87.3789913, radius: 120)
+        gpaViewController.navigationBar.barStyle = UIBarStyle.Black
+        gpaViewController.navigationBar.barTintColor = Colors.sparkleBlue
+        gpaViewController.navigationBar.tintColor = UIColor.whiteColor()
+        
+        presentViewController(gpaViewController, animated: true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
@@ -85,10 +133,19 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             messObj.signed = PFUser.currentUser()!
             messObj.unread = true
             messObj.dateEntered = NSDate()
-            messObj.status = "New"
+            messObj.status = "Unread"
             messObj.statusTime = NSDate()
-            messObj.saveInBackground()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            if !altPhoneTextField.text!.isEmpty {
+                messObj.altPhone = altPhoneTextField.text!
+            }
+            if !emailAddress.text!.isEmpty {
+                messObj.emailAddy = emailAddress.text!
+            }
+            messObj.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) -> Void in
+                if error == nil && success == true {
+                    self.performSegueWithIdentifier("unwindToMessages", sender: self)
+                }
+            })
         }
     }
     
@@ -134,14 +191,49 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         phoneTextField.text = selectCx!.phoneNumber
         addressTextField.text = "\(selectCx!.addressStreet.capitalizedString) \(selectCx!.addressCity.capitalizedString), \(selectCx!.addressState) \(selectCx!.ZIP)"
         selectedEmployee = MessagesDataObjects.selectedEmp
-        
-        
+    }
+    
+    func updateAddressLabel() {
+        addressTextField.text = GoogleAddress.address
+        GoogleAddress.address = nil
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "CustomerLookup" {
             CustomerLookupObjects.fromVC = "NewMessage"
         }
+    }
+    
+}
+
+extension ComposeMessageTableViewController : GooglePlacesAutocompleteDelegate {
+    
+    func placeSelected(place: Place) {
+        let houseNumbers = place.desc.componentsSeparatedByString(" ")[0]
+        place.getDetails({ (thePlaceDetails) -> () in
+            let fullAddress = thePlaceDetails.fullAddress.componentsSeparatedByString(" ")[0]
+            if self.isNumeric(fullAddress) {
+                print(place.desc)
+                GoogleAddress.address = thePlaceDetails.fullAddress
+            } else {
+                GoogleAddress.address = houseNumbers + " " + thePlaceDetails.fullAddress
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName("UpdateComposeMessageLabel", object: nil)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        })
+        
+    }
+    
+    func isNumeric(a: String) -> Bool {
+        return Int(a) != nil
+    }
+    
+    func placeViewClosed() {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func cancelButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

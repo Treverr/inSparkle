@@ -63,6 +63,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
     func updatedAddressLabel() {
         addressLabel.text = GoogleAddress.address
         addressLabel.textColor = UIColor.blackColor()
+        GoogleAddress.address = nil
     }
     
     @IBAction func saveUpdate(sender: AnyObject) {

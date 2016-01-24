@@ -37,7 +37,7 @@ class MessagesTableViewController: UITableViewController {
             let name = theMesages[indexPath.row].messageFromName
             let date = theMesages[indexPath.row].dateEntered
             let status = theMesages[indexPath.row].status
-            let statusTime = theMesages[indexPath.row].statusTime
+            var statusTime = theMesages[indexPath.row].statusTime
             let unread = theMesages[indexPath.row].unread
             
             cell.configureCell(name, date: date, messageStatus: status, statusTime: statusTime, unread: unread)
@@ -69,6 +69,10 @@ class MessagesTableViewController: UITableViewController {
         })
     }
     
+    
+    @IBAction func unwindToMessageList(segue : UIStoryboardSegue) {
+        
+    }
 
 
 }
