@@ -14,6 +14,7 @@ import PhoneNumberKit
 class ComposeMessageTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UITextFieldDelegate {
     
     var isNewMessage : Bool = true
+    var existingMessage : Messages?
     
     @IBOutlet var dateTimeOfMessage: UILabel!
     @IBOutlet var nameTextField: UITextField!
@@ -30,15 +31,19 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     var formatter = NSDateFormatter()
     
     override func viewWillAppear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnNewMessage", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateAddressLabel", name: "UpdateComposeMessageLabel", object: nil)
-        let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
-        print(employeeData)
-        employeeData.fetchIfNeededInBackgroundWithBlock { (employee : PFObject?, error : NSError?) -> Void in
-            if error == nil {
-                self.signedLabel.text = "Signed: " + employeeData.firstName + " " + employeeData.lastName
+        
+        if isNewMessage {
+            let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
+            print(employeeData)
+            employeeData.fetchIfNeededInBackgroundWithBlock { (employee : PFObject?, error : NSError?) -> Void in
+                if error == nil {
+                    self.signedLabel.text = "Signed: " + employeeData.firstName + " " + employeeData.lastName
+                }
             }
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnNewMessage", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateAddressLabel", name: "UpdateComposeMessageLabel", object: nil)
         
         addressTextField.userInteractionEnabled = true
         addressTextField.addTarget(self, action: Selector("googlePlacesAPI"), forControlEvents: UIControlEvents.EditingDidBegin)
@@ -46,6 +51,23 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         phoneTextField.delegate = self
         altPhoneTextField.delegate = self
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        var signed : PFUser?
+        if isNewMessage == false  {
+            existingMessage?.signed.fetchInBackgroundWithBlock({ (user : PFObject?, error :NSError?) -> Void in
+                if error == nil {
+                    signed = user as! PFUser
+                    print(self.existingMessage?.signed)
+                    let signedEmployee = self.existingMessage?.signed.objectForKey("employee") as! Employee
+                    signedEmployee.fetchInBackground()
+                    
+                    self.signedLabel.text = signedEmployee.firstName + " " + signedEmployee.lastName
+                }
+            })
+            
+        }
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
