@@ -100,6 +100,9 @@
 		C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */; };
 		C9F0FF9A1C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */; };
 		C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F431171BFEB13500AC3CD8 /* Global.swift */; };
+		C9FAE77B1C57FD39005630FC /* MessageStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */; };
+		C9FAE77D1C584B2E005630FC /* MessageNotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */; };
+		C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */; };
 		C9FE5BE41C1F880600293836 /* ConfirmCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */; };
 		C9FE5BE51C1F880600293836 /* ConfirmingAppointmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */; };
 		C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */; };
@@ -226,6 +229,9 @@
 		C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimePunchesTableViewController.swift; sourceTree = "<group>"; };
 		C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditEmployeeSelectionTableViewController.swift; sourceTree = "<group>"; };
 		C9F431171BFEB13500AC3CD8 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageStatusTableViewController.swift; sourceTree = "<group>"; };
+		C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNotesTableViewController.swift; sourceTree = "<group>"; };
+		C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNotesTableViewCell.swift; sourceTree = "<group>"; };
 		C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCalViewController.swift; sourceTree = "<group>"; };
 		C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmingAppointmentTableViewController.swift; sourceTree = "<group>"; };
 		C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = POCReport.storyboard; sourceTree = "<group>"; };
@@ -403,8 +409,11 @@
 		C972FF711C19F9F100D34EB2 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */,
 				C9C8E1C21C32175600191C17 /* MessageEmployeeListTableViewController.swift */,
 				C972FF721C19FA0900D34EB2 /* Messages.storyboard */,
+				C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */,
+				C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */,
 				C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */,
 				C9C8E1C01C32141800191C17 /* MessageModel.swift */,
 				C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */,
@@ -823,6 +832,7 @@
 				C974FAD91C20B84D004D69E4 /* POCCalPickerViewController.swift in Sources */,
 				C9FE5BE51C1F880600293836 /* ConfirmingAppointmentTableViewController.swift in Sources */,
 				C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */,
+				C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */,
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
 				C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */,
@@ -848,7 +858,9 @@
 				C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */,
 				C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */,
 				C958A8411C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift in Sources */,
+				C9FAE77D1C584B2E005630FC /* MessageNotesTableViewController.swift in Sources */,
 				C9FE5BE41C1F880600293836 /* ConfirmCalViewController.swift in Sources */,
+				C9FAE77B1C57FD39005630FC /* MessageStatusTableViewController.swift in Sources */,
 				C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */,
 				C9AB005E1C469FC900595F58 /* PushNotifications.swift in Sources */,
 				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,

@@ -18,6 +18,8 @@ class MessagesTableViewController: UITableViewController {
         
         setupNavigationbar()
         getEmpMessagesFromParse()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refresh"), name: "RefreshMessagesTableViewController", object: nil)
 
     }
 
@@ -45,6 +47,11 @@ class MessagesTableViewController: UITableViewController {
         
         return cell
         
+    }
+    
+    func refresh() {
+        self.theMesages.removeAll()
+        getEmpMessagesFromParse()
     }
     
     func setupNavigationbar()  {

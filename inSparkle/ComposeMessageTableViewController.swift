@@ -26,6 +26,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     @IBOutlet weak var recipientLabel: UILabel!
     @IBOutlet weak var addImage: UIImageView!
     @IBOutlet var emailAddress: UITextField!
+    @IBOutlet var statusLabel: UILabel!
     
     var selectedEmployee : Employee?
     var formatter = NSDateFormatter()
@@ -40,6 +41,10 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                     self.signedLabel.text = "Signed: " + employeeData.firstName + " " + employeeData.lastName
                 }
             }
+        } else {
+            if MessagesDataObjects.selectedEmp != nil {
+                selectedEmployee = MessagesDataObjects.selectedEmp
+            }
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnNewMessage", object: nil)
@@ -53,21 +58,63 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    func updateSignedEmployee() {
         var signed : PFUser?
-        if isNewMessage == false  {
-            existingMessage?.signed.fetchInBackgroundWithBlock({ (user : PFObject?, error :NSError?) -> Void in
-                if error == nil {
-                    signed = user as! PFUser
-                    print(self.existingMessage?.signed)
-                    let signedEmployee = self.existingMessage?.signed.objectForKey("employee") as! Employee
-                    signedEmployee.fetchInBackground()
-                    
-                    self.signedLabel.text = signedEmployee.firstName + " " + signedEmployee.lastName
-                }
-            })
-            
+        existingMessage?.signed.fetchInBackgroundWithBlock({ (user : PFObject?, error :NSError?) -> Void in
+            if error == nil {
+                signed = user as! PFUser
+                print(self.existingMessage?.signed)
+                let signedEmployee = self.existingMessage?.signed.objectForKey("employee") as! Employee
+                signedEmployee.fetchInBackgroundWithBlock({ (signedEmployee : PFObject?, error : NSError?) in
+                    if error == nil && signedEmployee != nil {
+                        let signed = signedEmployee as! Employee
+                        self.signedLabel.text = "Signed: " + signed.firstName + " " + signed.lastName
+                    }
+                })
+            }
+        })
+        
+    }
+    
+    func updateMessageDetails() {
+        let name = existingMessage!.messageFromName
+        let address = existingMessage!.messageFromAddress
+        let phone = existingMessage!.messageFromPhone
+        let altPhone = existingMessage?.altPhone
+        let email = existingMessage?.emailAddy
+        let message = existingMessage!.theMessage
+        let status = existingMessage?.status
+        
+        nameTextField.text = name
+        addressTextField.text = address
+        phoneTextField.text = phone
+        
+        if altPhone != nil {
+            altPhoneTextField.text = altPhone!
         }
+        
+        if email != nil {
+            emailAddress.text = email!
+        }
+        
+        messageTextView.text = message
+        statusLabel.text = "Status: " + status!
+        
+    }
+    
+    func getRecip() {
+        self.addImage.hidden = true
+        let recip = existingMessage?.recipient
+        recip?.fetchInBackgroundWithBlock({ (recipient : PFObject?, error : NSError?) in
+            if error == nil {
+                let theRecip = recipient as! Employee
+                
+                self.recipientLabel.text = "To: " + theRecip.firstName + " " + theRecip.lastName
+                MessagesDataObjects.selectedEmp = theRecip
+                print(self.selectedEmployee)
+                
+            }
+        })
     }
     
     func textFieldShouldEndEditing(textField: UITextField) -> Bool {
@@ -117,6 +164,13 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
         self.tabBarController?.tabBar.hidden = true
         
+        if isNewMessage == false {
+            getRecip()
+            updateMessageDetails()
+            updateSignedEmployee()
+            self.navigationItem.title = "Message"
+        }
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -142,7 +196,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     @IBAction func saveButton(sender: AnyObject) {
         selectedEmployee = MessagesDataObjects.selectedEmp
         
-        if isNewMessage == true {
+        if (isNewMessage) {
             let messObj = Messages()
             messObj.dateTimeMessage = NSDate()
             messObj.recipient = selectedEmployee!
@@ -165,10 +219,53 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             }
             messObj.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) -> Void in
                 if error == nil && success == true {
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
                     self.performSegueWithIdentifier("unwindToMessages", sender: self)
+                    MessagesDataObjects.selectedEmp = nil
+                }
+            })
+        } else {
+            let messObj = existingMessage!
+            let sepStatus = statusLabel.text?.componentsSeparatedByString(": ")
+            let status = sepStatus![1]
+
+            messObj.recipient = selectedEmployee!
+            messObj.messageFromName = nameTextField.text!
+            messObj.messageFromPhone = phoneTextField.text!
+            if (addressTextField.text?.isEmpty) == false {
+                messObj.messageFromAddress = addressTextField.text!
+            }
+            messObj.theMessage = messageTextView.text!
+            if messObj.status != status {
+                messObj.statusTime = NSDate()
+            }
+            messObj.status = status
+            if status == "Unread" {
+                messObj.unread = true
+            } else {
+                messObj.unread = false
+            }
+            print(messObj.status)
+            
+            if !altPhoneTextField.text!.isEmpty {
+                messObj.altPhone = altPhoneTextField.text!
+            }
+            if !emailAddress.text!.isEmpty {
+                messObj.emailAddy = emailAddress.text!
+            }
+            messObj.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) -> Void in
+                if error == nil && success == true {
+                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
+                    dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
+                    self.performSegueWithIdentifier("unwindToMessages", sender: self)
+                    MessagesDataObjects.selectedEmp = nil
+                    }
                 }
             })
         }
+        
+        
     }
     
     @IBOutlet weak var addRecipCell: UITableViewCell!
@@ -224,7 +321,16 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         if segue.identifier == "CustomerLookup" {
             CustomerLookupObjects.fromVC = "NewMessage"
         }
+        
+        if segue.identifier == "ViewEditMessage" {
+            
+        }
     }
+    
+    @IBAction func updateStatusLabel(segue : UIStoryboardSegue) {
+        
+    }
+    
     
 }
 

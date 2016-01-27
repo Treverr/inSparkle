@@ -28,12 +28,11 @@ public class MessagesMainTableViewCell: UITableViewCell {
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
         formatter.timeStyle = .ShortStyle
+        dateLabel.text! = formatter.stringFromDate(date)
         
         if messageStatus == "Unread" {
             statusOfMessageLabel.text! = messageStatus
         } else {
-            dateLabel.text! = formatter.stringFromDate(date)
-            
             let timeFormatter = NSDateFormatter()
             timeFormatter.dateStyle = .ShortStyle
             timeFormatter.timeStyle = .ShortStyle
