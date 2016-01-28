@@ -11,7 +11,7 @@ import UIKit
 
  struct Colors {
     static let placeholderGray = UIColor(red: 212/255, green: 212/255, blue: 214/255, alpha: 1)
-    static let sparkleBlue = UIColor(red: 10/255, green: 86/255, blue: 164/255, alpha: 1)
-    static let sparkleGreen = UIColor(red: 20/255, green: 152/255, blue: 62/255, alpha: 1)
+    static let sparkleBlue = UIColor(red: 0/255, green: 92/255, blue: 172/255, alpha: 1)
+    static let sparkleGreen = UIColor(red: 105/255, green: 191/255, blue: 158/255, alpha: 1)
     static let groupGrey = UIColor(red: 239/255, green: 239/255, blue: 244/255, alpha: 1)
  }

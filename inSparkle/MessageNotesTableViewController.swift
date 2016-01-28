@@ -33,5 +33,47 @@ class MessageNotesTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if cell.respondsToSelector("setSeparatorInset:") {
+            cell.separatorInset = UIEdgeInsetsZero
+        }
+        
+        if cell.respondsToSelector("setLayoutMargins:") {
+            cell.layoutMargins = UIEdgeInsetsZero
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if self.tableView.respondsToSelector("setSeparatorInset:") {
+            self.tableView.separatorInset = UIEdgeInsetsZero
+        }
+        if self.tableView.respondsToSelector("setLayoutMargins:") {
+            self.tableView.layoutMargins = UIEdgeInsetsZero
+        }
+    }
+    
+    @IBAction func addNoteAction(sender: AnyObject) {
+        
+        let navigationController = self.storyboard!.instantiateViewControllerWithIdentifier("AddEditNote")
+        
+    }
+    
+    
+}
 
+extension MessageNotesTableViewController : UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+            if segue.identifier == "addNotePopoverSegue" {
+                let popoverViewController = segue.destinationViewController
+                popoverViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
+                popoverViewController.popoverPresentationController!.delegate = self
+            }
+        }
+    
 }
