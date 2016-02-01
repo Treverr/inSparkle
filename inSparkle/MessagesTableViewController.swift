@@ -84,6 +84,7 @@ class MessagesTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "ViewEditMessage" {
+            
             let dest = segue.destinationViewController as! ComposeMessageTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow
             let selectMessage = theMesages[indexPath!.row] as! Messages

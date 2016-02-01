@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MZFormSheetPresentationController
 
 class MessageNotesTableViewController: UITableViewController {
 
@@ -56,24 +57,18 @@ class MessageNotesTableViewController: UITableViewController {
     @IBAction func addNoteAction(sender: AnyObject) {
         
         let navigationController = self.storyboard!.instantiateViewControllerWithIdentifier("AddEditNote")
+        let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
+        formSheetController.contentViewControllerTransitionStyle = .SlideAndBounceFromRight
+        
+        self.presentViewController(formSheetController, animated: true, completion: nil)
         
     }
     
-    
-}
-
-extension MessageNotesTableViewController : UIPopoverPresentationControllerDelegate {
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
-    }
-    
-        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-            if segue.identifier == "addNotePopoverSegue" {
-                let popoverViewController = segue.destinationViewController
-                popoverViewController.modalPresentationStyle = UIModalPresentationStyle.FormSheet
-                popoverViewController.popoverPresentationController!.delegate = self
-            }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "addNotePopoverSegue" {
+            let presentationSegue = segue as! MZFormSheetPresentationViewControllerSegue
+            let viewController = presentationSegue.formSheetPresentationController.contentViewController! as UIViewController
+            
         }
-    
+    }
 }

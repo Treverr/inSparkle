@@ -221,7 +221,7 @@ extension GooglePlacesAutocompleteContainer: UITableViewDataSource, UITableViewD
   }
 
   public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) 
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
     // Get the corresponding candy from our candies array
     let place = self.places[indexPath.row]
