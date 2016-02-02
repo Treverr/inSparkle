@@ -12,7 +12,7 @@ pod "CalendarView"
 pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_places_autocomplete'
 pod 'PhoneNumberKit', '~> 0.1'
 pod 'MZFormSheetPresentationController'
-pod 'IQKeyboardManager'
+pod 'IQKeyboardManagerSwift'
 
 end
 

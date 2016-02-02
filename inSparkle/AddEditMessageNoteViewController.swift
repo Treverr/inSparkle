@@ -33,7 +33,7 @@ class AddEditMessageNoteViewController: UIViewController {
     
     func keyboardWillShow() {
         if deviceType == "iPhone" {
-            let moveUpBy = UIView().heightCoveredByKeyboardOfSize(<#T##keyboardSize: CGSize##CGSize#>)
+            
         }
     }
     

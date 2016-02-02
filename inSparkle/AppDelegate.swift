@@ -12,6 +12,7 @@ import Bolts
 import Fabric
 import Crashlytics
 import CoreLocation
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -51,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         print(PFInstallation.currentInstallation().deviceToken)
         PFInstallation.currentInstallation().saveEventually()
         
+        IQKeyboardManager.sharedManager().enable = true
         
         return true
     }

@@ -557,7 +557,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         let toolbarHeight : CGFloat?
         
-        if customerNameTextField.isFirstResponder() || addressLabel.isFirstResponder() || phoneNumberTextField.isFirstResponder() {
+        if customerNameTextField.isFirstResponder() || addressLabel.isFirstResponder() || phoneNumberTextField.isFirstResponder() || notesTextView.isFirstResponder() {
             return
         } else {
             
