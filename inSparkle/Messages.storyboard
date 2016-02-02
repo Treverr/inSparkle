@@ -421,7 +421,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="L4i-g4-TNu" kind="show" id="zkX-nC-Fbk"/>
+                                            <segue destination="L4i-g4-TNu" kind="show" identifier="NotesSegue" id="zkX-nC-Fbk"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -527,9 +527,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mfs-DY-EtA">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfs-DY-EtA">
                                             <rect key="frame" x="8" y="37" width="584" height="44"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
+                                            </accessibility>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -566,7 +569,7 @@
                     <navigationItem key="navigationItem" title="Message Notes" id="Uxe-UO-kXp">
                         <barButtonItem key="rightBarButtonItem" title="Add Note" id="pVg-3h-EVa">
                             <connections>
-                                <segue destination="Tuu-Rs-Z7X" kind="custom" identifier="AddEditNoteSeg" customClass="MZFormSheetPresentationViewControllerSegue" id="Vul-s5-NPP"/>
+                                <action selector="addNoteAction:" destination="L4i-g4-TNu" id="kfg-Lk-Xvn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -575,52 +578,63 @@
             </objects>
             <point key="canvasLocation" x="2001" y="1780"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Edit Message Note View Controller-->
         <scene sceneID="k33-qN-SOC">
             <objects>
-                <viewController storyboardIdentifier="AddEditNote" id="Tuu-Rs-Z7X" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddEditNote" id="Tuu-Rs-Z7X" customClass="AddEditMessageNoteViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xCo-jK-COe"/>
                         <viewControllerLayoutGuide type="bottom" id="N6p-h7-920"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3n7-oR-1PU">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="10B-At-n1m">
-                                <rect key="frame" x="0.0" y="356" width="300" height="44"/>
+                                <rect key="frame" x="0.0" y="456" width="400" height="44"/>
                                 <items>
-                                    <barButtonItem systemItem="cancel" id="ztK-pl-Rkq"/>
+                                    <barButtonItem systemItem="cancel" id="ztK-pl-Rkq">
+                                        <connections>
+                                            <action selector="cancelAction:" destination="Tuu-Rs-Z7X" id="aQc-vo-m8x"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Jch-fr-Ykd"/>
-                                    <barButtonItem systemItem="save" id="Icc-rH-KT2"/>
+                                    <barButtonItem systemItem="save" id="Icc-rH-KT2">
+                                        <connections>
+                                            <action selector="saveAction:" destination="Tuu-Rs-Z7X" id="Igb-xV-ZIS"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SU4-bO-jG3">
-                                <rect key="frame" x="6" y="5" width="287" height="340"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SU4-bO-jG3">
+                                <rect key="frame" x="11" y="5" width="379" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SU4-bO-jG3" firstAttribute="top" secondItem="3n7-oR-1PU" secondAttribute="topMargin" constant="5" id="4mR-cw-zBg"/>
-                            <constraint firstItem="SU4-bO-jG3" firstAttribute="centerX" secondItem="10B-At-n1m" secondAttribute="centerX" id="5JZ-ep-d6D"/>
-                            <constraint firstItem="10B-At-n1m" firstAttribute="leading" secondItem="3n7-oR-1PU" secondAttribute="leading" id="MQj-wd-K0E"/>
-                            <constraint firstItem="SU4-bO-jG3" firstAttribute="leading" secondItem="3n7-oR-1PU" secondAttribute="leadingMargin" constant="-10" id="QkQ-2g-dGo"/>
-                            <constraint firstAttribute="trailing" secondItem="10B-At-n1m" secondAttribute="trailing" id="bh1-6y-tcq"/>
-                            <constraint firstItem="10B-At-n1m" firstAttribute="top" secondItem="SU4-bO-jG3" secondAttribute="bottom" constant="11" id="iPJ-Sy-Pod"/>
-                            <constraint firstItem="10B-At-n1m" firstAttribute="bottom" secondItem="N6p-h7-920" secondAttribute="top" id="pga-vt-YIe"/>
+                            <constraint firstAttribute="trailing" secondItem="10B-At-n1m" secondAttribute="trailing" id="5gQ-wl-zc1"/>
+                            <constraint firstItem="10B-At-n1m" firstAttribute="bottom" secondItem="N6p-h7-920" secondAttribute="top" id="FNn-IU-AGr"/>
+                            <constraint firstItem="10B-At-n1m" firstAttribute="top" secondItem="SU4-bO-jG3" secondAttribute="bottom" constant="11" id="Hxq-qF-XeO"/>
+                            <constraint firstItem="SU4-bO-jG3" firstAttribute="top" secondItem="3n7-oR-1PU" secondAttribute="topMargin" constant="5" id="QyL-x3-wyd"/>
+                            <constraint firstItem="SU4-bO-jG3" firstAttribute="centerX" secondItem="10B-At-n1m" secondAttribute="centerX" id="s2b-yR-frI"/>
+                            <constraint firstItem="SU4-bO-jG3" firstAttribute="leading" secondItem="3n7-oR-1PU" secondAttribute="leadingMargin" constant="-9" id="s9r-fK-gvj"/>
+                            <constraint firstItem="10B-At-n1m" firstAttribute="leading" secondItem="3n7-oR-1PU" secondAttribute="leading" id="u1X-Ec-cyE"/>
                         </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="400"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="600" height="600"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="400"/>
+                    <size key="freeformSize" width="400" height="500"/>
+                    <connections>
+                        <outlet property="noteTextView" destination="SU4-bO-jG3" id="wrm-vf-Oqb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2s-AM-5uJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2630" y="1720"/>
+            <point key="canvasLocation" x="2611" y="1785"/>
         </scene>
         <!--Message Status Table View Controller-->
         <scene sceneID="9vS-AG-k0t">

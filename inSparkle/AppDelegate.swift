@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         WeekList.registerSubclass()
         Employee.registerSubclass()
         Messages.registerSubclass()
+        MessageNotes.registerSubclass()
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

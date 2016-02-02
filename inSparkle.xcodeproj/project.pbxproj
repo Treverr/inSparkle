@@ -12,6 +12,7 @@
 		C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB01C30EBE900F9D624 /* UserModel.swift */; };
 		C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */; };
 		C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AC6411BFD85BA00E09B22 /* SOIModel.swift */; };
+		C91B6B301C5FD313006C761D /* AddEditMessageNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B6B2F1C5FD313006C761D /* AddEditMessageNoteViewController.swift */; };
 		C91BB3701C2A705F00132946 /* MessagesMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BB36F1C2A705F00132946 /* MessagesMainTableViewCell.swift */; };
 		C91BB3721C2A72B900132946 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */; };
 		C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923D5F91C231A9100A32978 /* WeekList.swift */; };
@@ -135,6 +136,7 @@
 		C9140FB01C30EBE900F9D624 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageTableViewController.swift; sourceTree = "<group>"; };
 		C91AC6411BFD85BA00E09B22 /* SOIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOIModel.swift; sourceTree = "<group>"; };
+		C91B6B2F1C5FD313006C761D /* AddEditMessageNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditMessageNoteViewController.swift; sourceTree = "<group>"; };
 		C91BB36F1C2A705F00132946 /* MessagesMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesMainTableViewCell.swift; sourceTree = "<group>"; };
 		C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		C923D5F91C231A9100A32978 /* WeekList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekList.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */,
 				C9C8E1C21C32175600191C17 /* MessageEmployeeListTableViewController.swift */,
 				C972FF721C19FA0900D34EB2 /* Messages.storyboard */,
+				C91B6B2F1C5FD313006C761D /* AddEditMessageNoteViewController.swift */,
 				C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */,
 				C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */,
 				C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */,
@@ -839,6 +842,7 @@
 				C974FAD91C20B84D004D69E4 /* POCCalPickerViewController.swift in Sources */,
 				C9FE5BE51C1F880600293836 /* ConfirmingAppointmentTableViewController.swift in Sources */,
 				C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */,
+				C91B6B301C5FD313006C761D /* AddEditMessageNoteViewController.swift in Sources */,
 				C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */,
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,

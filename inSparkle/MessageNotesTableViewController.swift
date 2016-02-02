@@ -8,29 +8,56 @@
 
 import UIKit
 import MZFormSheetPresentationController
+import Parse
 
 class MessageNotesTableViewController: UITableViewController {
-
+    
+    var linkingMessage : Messages?
+    
+    var messageNotes = [MessageNotes]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 100.0
+        tableViewExtraCells()
         
+        tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh", name: "RefreshMessageNotesTableView", object: nil)
+        
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        getMessageNotes()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.messageNotes.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notesCell") as! MessageNotesTableViewCell
+        cell.notes.userInteractionEnabled = false
+        let noteObject = messageNotes[indexPath.row] 
+        let note = noteObject.note
+        let time = noteObject.createdAt!
+        print(messageNotes[indexPath.row])
+        
+        let noteTimeDateFormatter = NSDateFormatter()
+        noteTimeDateFormatter.timeStyle = .ShortStyle
+        noteTimeDateFormatter.dateStyle = .ShortStyle
+        noteTimeDateFormatter.doesRelativeDateFormatting = true
+        
+        let timeString = noteTimeDateFormatter.stringFromDate(time)
+        
+        cell.notes.text = note
+        cell.title.text = timeString
         
         return cell
     }
@@ -54,21 +81,68 @@ class MessageNotesTableViewController: UITableViewController {
         }
     }
     
+    func refresh() {
+        messageNotes.removeAll()
+        getMessageNotes()
+    }
+    
     @IBAction func addNoteAction(sender: AnyObject) {
         
-        let navigationController = self.storyboard!.instantiateViewControllerWithIdentifier("AddEditNote")
-        let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
+        let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("AddEditNote") as! AddEditMessageNoteViewController
+        if linkingMessage != nil {
+            viewController.linkingMessage = self.linkingMessage!
+        }
+        let formSheetController = MZFormSheetPresentationViewController(contentViewController: viewController)
         formSheetController.contentViewControllerTransitionStyle = .SlideAndBounceFromRight
+        formSheetController.presentationController?.shouldCenterVertically = true
+        formSheetController.presentationController?.contentViewSize = CGSizeMake(350, 500)
+        
         
         self.presentViewController(formSheetController, animated: true, completion: nil)
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "addNotePopoverSegue" {
-            let presentationSegue = segue as! MZFormSheetPresentationViewControllerSegue
-            let viewController = presentationSegue.formSheetPresentationController.contentViewController! as UIViewController
+    
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let selectedNote = messageNotes[indexPath.row]
+        
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddEditNote")as! AddEditMessageNoteViewController
+        viewController.isNewNote = false
+        viewController.existingNote = selectedNote
+        let formSheetController = MZFormSheetPresentationViewController(contentViewController: viewController)
+        formSheetController.contentViewControllerTransitionStyle = .SlideAndBounceFromRight
+        formSheetController.presentationController?.shouldCenterVertically = true
+        formSheetController.presentationController?.contentViewSize = CGSizeMake(350, 500)
+        
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        self.presentViewController(formSheetController, animated: true, completion: nil)
+        
+    }
+    
+    func tableViewExtraCells() {
+        var tblView = UIView(frame: CGRectZero)
+        tableView.tableFooterView = tblView
+        tableView.tableFooterView?.hidden = true
+        tableView.backgroundColor = UIColor.whiteColor()
+    }
+    
+    func getMessageNotes() {
+        if linkingMessage != nil {
+            let query = MessageNotes.query()
+            query?.whereKey("pointerMessage", equalTo: linkingMessage!)
+            query?.addAscendingOrder("createdAt")
+            query?.findObjectsInBackgroundWithBlock({ (notes : [PFObject]?, error : NSError?) in
+                if error == nil {
+                    for note in notes! {
+                        let theNote = note as! MessageNotes
+                        self.messageNotes.append(theNote)
+                        self.tableView.reloadData()
+                    }
+                }
+            })
             
         }
     }
+    
 }

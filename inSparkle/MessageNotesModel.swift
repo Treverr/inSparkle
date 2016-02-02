@@ -35,9 +35,4 @@ class MessageNotes: PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "note") }
     }
     
-    override var createdAt: NSDate? {
-        get {return objectForKey("createdAt") as? NSDate}
-        set { setObject(newValue!, forKey: "createdAt") }
-    }
-    
 }

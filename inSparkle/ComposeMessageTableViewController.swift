@@ -325,6 +325,13 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         if segue.identifier == "ViewEditMessage" {
             
         }
+        
+        if segue.identifier == "NotesSegue" {
+            let destinationVC = segue.destinationViewController as! MessageNotesTableViewController
+            if existingMessage != nil {
+                destinationVC.linkingMessage = existingMessage
+            }
+        }
     }
     
     @IBAction func updateStatusLabel(segue : UIStoryboardSegue) {
