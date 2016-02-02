@@ -18,9 +18,8 @@ class MessagesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         setupNavigationbar()
-        getEmpMessagesFromParse()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refresh"), name: "RefreshMessagesTableViewController", object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refresh"), name: "RefreshMessagesTableViewController", object: nil)
         
         let refreshTimer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "refresh", userInfo: nil, repeats: true)
     }
@@ -37,17 +36,29 @@ class MessagesTableViewController: UITableViewController {
             let date = theMesages[indexPath.row].dateEntered
             let status = theMesages[indexPath.row].status
             var statusTime = theMesages[indexPath.row].statusTime
-            let unread = theMesages[indexPath.row].unread
+            var unread : Bool!
+            if status == "Unread" {
+                unread = true
+            } else {
+                unread = false
+            }
+//            let unread = theMesages[indexPath.row].unread
             
             cell.configureCell(name, date: date, messageStatus: status, statusTime: statusTime, unread: unread)
+            print(theMesages)
         }
         
         return cell
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        refresh()
+    }
+    
     func refresh() {
         self.theMesages.removeAll()
+        self.tableView.reloadData()
         getEmpMessagesFromParse()
     }
     

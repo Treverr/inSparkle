@@ -19,8 +19,10 @@ public class MessagesMainTableViewCell: UITableViewCell {
     
     public func configureCell(customerName_ : String, date : NSDate, messageStatus : String, statusTime : NSDate, unread : Bool) {
         
-        if !unread {
+        if unread == false {
             unreadIndicator.hidden = true
+        } else {
+            unreadIndicator.hidden = false
         }
         
         customerName.text! = customerName_

@@ -45,6 +45,12 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             if MessagesDataObjects.selectedEmp != nil {
                 selectedEmployee = MessagesDataObjects.selectedEmp
             }
+            if existingMessage != nil {
+                existingMessage!.status = "Read"
+                existingMessage!.statusTime = NSDate()
+                existingMessage!.unread = false
+                existingMessage!.saveInBackground()
+            }
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnNewMessage", object: nil)
