@@ -14,7 +14,9 @@ class PushNotifications {
     class func messagesPushNotification(sendTo : Employee) {
         let data = [
             "alert" : "New Message",
-            "badge" : "Increment"
+            "badge" : "Increment",
+            "vc" : "messages",
+            "messageID" : "1234"
         ]
         
         let installQuery = PFInstallation.query()
@@ -24,7 +26,6 @@ class PushNotifications {
         push.setQuery(installQuery)
         push.setData(data)
         push.sendPushInBackground()
-        
     }
     
 }

@@ -103,13 +103,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        let currentInstallation = PFInstallation.currentInstallation()
+        if currentInstallation.badge != 0 {
+            currentInstallation.badge = 0
+            currentInstallation.saveEventually()
+        }
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
     
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print(userInfo)
+        if let aps = userInfo["aps"] as? NSDictionary {
+            
+            if let vc = userInfo["vc"] as? String {
+                
+                if vc == "messages" {
+                    let messageID = userInfo["messageID"] as! String
+                    handleDeepLinkForMessages(messageID)
+                }
+                
+            }
+        }
+    }
+    
+    func handleDeepLinkForMessages(messageID : String) {
+        
+        if self.window!.rootViewController as? UITabBarController != nil {
+            var tabBarController = self.window?.rootViewController as! UITabBarController
+            tabBarController.selectedIndex = 2
+        }
+        
+    }
     
 }
 

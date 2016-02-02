@@ -12,6 +12,7 @@ import Parse
 class MessagesTableViewController: UITableViewController {
     
     var theMesages = [Messages]()
+    var deepLink = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +21,10 @@ class MessagesTableViewController: UITableViewController {
         getEmpMessagesFromParse()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refresh"), name: "RefreshMessagesTableViewController", object: nil)
-
+        
+        let refreshTimer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "refresh", userInfo: nil, repeats: true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return theMesages.count
