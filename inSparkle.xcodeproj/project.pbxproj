@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7152D5A8CCD5E65BA2403309 /* Pods_inSparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411847EFD392F5F727796B8A /* Pods_inSparkle.framework */; };
 		C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */; };
+		C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */; };
 		C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB01C30EBE900F9D624 /* UserModel.swift */; };
 		C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */; };
 		C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AC6411BFD85BA00E09B22 /* SOIModel.swift */; };
@@ -97,6 +98,7 @@
 		C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */; };
 		C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */; };
 		C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */; };
+		C9DC84641C6251A300C41B6A /* OpeningPDFTemplate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9DC84631C6251A300C41B6A /* OpeningPDFTemplate.storyboard */; };
 		C9E2A2B91C235D8400DBA851 /* ToSparkle.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */; };
 		C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */; };
 		C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */; };
@@ -134,6 +136,7 @@
 		411847EFD392F5F727796B8A /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		780D3CC7ECBD99D4953539B4 /* Pods-inSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.release.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.release.xcconfig"; sourceTree = "<group>"; };
 		C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPopViewController.swift; sourceTree = "<group>"; };
+		C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolOpeningPDFViewController.swift; sourceTree = "<group>"; };
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
 		C9140FB01C30EBE900F9D624 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageTableViewController.swift; sourceTree = "<group>"; };
@@ -231,6 +234,7 @@
 		C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewController.swift; sourceTree = "<group>"; };
 		C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewCell.swift; sourceTree = "<group>"; };
 		C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerData.swift; sourceTree = "<group>"; };
+		C9DC84631C6251A300C41B6A /* OpeningPDFTemplate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OpeningPDFTemplate.storyboard; sourceTree = "<group>"; };
 		C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToSparkle.gpx; sourceTree = "<group>"; };
 		C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Onboarding.storyboard; path = Onboarding/Onboarding.storyboard; sourceTree = "<group>"; };
 		C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Onboarding/LoginViewController.swift; sourceTree = "<group>"; };
@@ -351,6 +355,8 @@
 			isa = PBXGroup;
 			children = (
 				C95008601C61C08E00F5351C /* GeneratePDF.storyboard */,
+				C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */,
+				C9DC84631C6251A300C41B6A /* OpeningPDFTemplate.storyboard */,
 				C95008621C61C11800F5351C /* PDFGenerateViewController.swift */,
 			);
 			name = "Generate PDF";
@@ -751,6 +757,7 @@
 				C99D3E4A1BF5BD3700D30F96 /* Assets.xcassets in Resources */,
 				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
 				C96EF8011C14CE3100C4D2C1 /* ChemCheck.storyboard in Resources */,
+				C9DC84641C6251A300C41B6A /* OpeningPDFTemplate.storyboard in Resources */,
 				C972FF781C1A1B1700D34EB2 /* SOI.storyboard in Resources */,
 				C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */,
 				C94C1CBF1C3CB96100F568B9 /* CustomerLookup.storyboard in Resources */,
@@ -883,6 +890,7 @@
 				C928CF9E1C233BF000C83345 /* LocalNotifications.swift in Sources */,
 				C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */,
 				C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */,
+				C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */,
 				C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */,
 				C958A8411C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift in Sources */,
 				C9FAE77D1C584B2E005630FC /* MessageNotesTableViewController.swift in Sources */,

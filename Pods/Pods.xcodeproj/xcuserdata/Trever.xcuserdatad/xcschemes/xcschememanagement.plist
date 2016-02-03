@@ -74,9 +74,19 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UIView+HierarchicalDrawing.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1704D9D5F4EAC917E9B29D45EA0EA130</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1DDE8F828FD1BFA2A8F6472B988C3B04</key>
 		<dict>
 			<key>primary</key>
@@ -87,12 +97,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41638D9B170F774D9F650F63B192526A</key>
+		<key>3A26893BE7ED188DF5977EB3874E1433</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70900FA9385452B0ECD3189FF5352449</key>
+		<key>409F7E7EEA089D88B6D1A2BB2D52799C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>41638D9B170F774D9F650F63B192526A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -103,6 +118,11 @@
 			<true/>
 		</dict>
 		<key>7CF999D94F78A934B66C1ED1D900E1E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84AA79FFACC958CACA3A755A16698BC8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,22 +142,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AABD396D1C375DEA22E086ED50D7057F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B7066348373C8FC8D4A46AD5F8CDA6DB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D00B1C306A1C89DE37D27466259A6D3E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>E45C60E65DC7B25E659C0A735F907FC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE34E99E1F949DD83F2FE198081BBFBD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

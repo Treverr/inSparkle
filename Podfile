@@ -13,6 +13,7 @@ pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_pl
 pod 'PhoneNumberKit', '~> 0.1'
 pod 'MZFormSheetPresentationController'
 pod 'IQKeyboardManagerSwift'
+pod "UIView+HierarchicalDrawing"
 
 end
 

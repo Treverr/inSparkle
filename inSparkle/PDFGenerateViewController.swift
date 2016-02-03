@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class PDFGenerateViewController: UIViewController {
     
@@ -33,7 +34,7 @@ class PDFGenerateViewController: UIViewController {
             pdfData.writeToFile(documentsFileName, atomically: true)
         }
     }
-    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
 
