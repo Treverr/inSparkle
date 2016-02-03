@@ -1,0 +1,6 @@
+framework module UIView_HierarchicalDrawing {
+  umbrella header "UIView+HierarchicalDrawing-umbrella.h"
+
+  export *
+  module * { export * }
+}
