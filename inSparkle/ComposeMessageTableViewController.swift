@@ -57,7 +57,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnNewMessage", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateAddressLabel", name: "UpdateComposeMessageLabel", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateAddressLabel"), name: "UpdateComposeMessageLabel", object: nil)
         
         addressTextField.userInteractionEnabled = true
         addressTextField.addTarget(self, action: Selector("googlePlacesAPI"), forControlEvents: UIControlEvents.EditingDidBegin)
