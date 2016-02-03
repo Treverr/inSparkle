@@ -13,6 +13,9 @@ class MessagesTableViewController: UITableViewController {
     
     var theMesages = [Messages]()
     var deepLink = false
+    var sentFilter : Bool = false
+    
+    @IBOutlet var inboxSentSegControl: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,8 @@ class MessagesTableViewController: UITableViewController {
         
         let refreshTimer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "refresh", userInfo: nil, repeats: true)
     }
+    
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -70,10 +75,18 @@ class MessagesTableViewController: UITableViewController {
     }
     
     func getEmpMessagesFromParse() {
+        let selectedSeg = inboxSentSegControl.selectedSegmentIndex
         let query = Messages.query()
         let employeeObj = PFUser.currentUser()?.objectForKey("employee") as! Employee
+        let currentUser = PFUser.currentUser()
         employeeObj.fetchIfNeededInBackground()
-        query?.whereKey("recipient", equalTo: employeeObj)
+        
+        switch selectedSeg {
+        case 0: query?.whereKey("recipient", equalTo: employeeObj)
+        case 1: query?.whereKey("signed", equalTo: currentUser!)
+        default: break
+        }
+        
         query?.findObjectsInBackgroundWithBlock({ (messages : [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 for msg in messages! {
@@ -97,10 +110,30 @@ class MessagesTableViewController: UITableViewController {
             let indexPath = self.tableView.indexPathForSelectedRow
             let selectMessage = theMesages[indexPath!.row] as! Messages
             dest.isNewMessage = false
+            if inboxSentSegControl.selectedSegmentIndex == 1 {
+                dest.isSent = true
+            } else {
+                dest.isSent = false
+            }
             dest.existingMessage = selectMessage
         }
         
     }
+    
+    var filterKey : PFObject!
 
+    @IBAction func inboxSentSegmentedControl(sender: AnyObject) {
+        let selected = inboxSentSegControl.selectedSegmentIndex
+        
+        switch selected {
+            
+        case 0: sentFilter = false
+        case 1: sentFilter = true
+        default : break
+            
+        }
+        
+        refresh()
+    }
 
 }

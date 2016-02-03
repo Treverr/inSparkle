@@ -15,6 +15,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     var isNewMessage : Bool = true
     var existingMessage : Messages?
+    var isSent : Bool = false
     
     @IBOutlet var dateTimeOfMessage: UILabel!
     @IBOutlet var nameTextField: UITextField!
@@ -45,12 +46,14 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             if MessagesDataObjects.selectedEmp != nil {
                 selectedEmployee = MessagesDataObjects.selectedEmp
             }
-            if existingMessage != nil {
+            
+            if existingMessage != nil && isSent == false {
                 existingMessage!.status = "Read"
                 existingMessage!.statusTime = NSDate()
                 existingMessage!.unread = false
                 existingMessage!.saveInBackground()
             }
+            
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnNewMessage", object: nil)
@@ -232,7 +235,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 if error == nil && success == true {
                     let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
                     dispatch_after(delayTime, dispatch_get_main_queue()) {
-                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
+//                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
                     self.performSegueWithIdentifier("unwindToMessages", sender: self)
                     PushNotifications.messagesPushNotification(self.selectedEmployee!)
                     MessagesDataObjects.selectedEmp = nil
@@ -272,7 +275,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 if error == nil && success == true {
                     let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
                     dispatch_after(delayTime, dispatch_get_main_queue()) {
-                        NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
+//                        NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
                         self.performSegueWithIdentifier("unwindToMessages", sender: self)
                         PushNotifications.messagesPushNotification(self.selectedEmployee!)
                         MessagesDataObjects.selectedEmp = nil

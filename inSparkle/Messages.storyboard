@@ -84,12 +84,27 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="NNM-GQ-My5">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="9kI-wc-RHv">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Inbox"/>
+                                <segment title="Sent"/>
+                            </segments>
+                            <connections>
+                                <action selector="inboxSentSegmentedControl:" destination="Bru-Ab-Fbf" eventType="valueChanged" id="g8j-kt-TDc"/>
+                            </connections>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="d8W-I6-HK8">
                             <connections>
                                 <segue destination="mq5-Ux-vy9" kind="show" id="Ffe-Ar-oX1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="inboxSentSegControl" destination="9kI-wc-RHv" id="SLc-cc-z2E"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="61q-bP-liY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

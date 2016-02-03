@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3TF-2K-38T">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Generate View Controller-->
+        <scene sceneID="iFD-Qj-WX1">
+            <objects>
+                <viewController id="3TF-2K-38T" customClass="PDFGenerateViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q5P-sc-qdG"/>
+                        <viewControllerLayoutGuide type="bottom" id="sJh-lg-1Ma"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bBp-yY-h6N">
+                        <rect key="frame" x="0.0" y="0.0" width="612" height="792"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZJ-wf-YIQ">
+                                <rect key="frame" x="20" y="20" width="572" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="bcl-2A-6lW"/>
+                                </constraints>
+                                <state key="normal" title="Generate"/>
+                                <connections>
+                                    <action selector="generateButton:" destination="3TF-2K-38T" eventType="touchUpInside" id="2gS-dh-cje"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UT-Dh-ZHf">
+                                <rect key="frame" x="20" y="376" width="572" height="396"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="396" id="6xg-aC-UsL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="141"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jZJ-wf-YIQ" firstAttribute="trailing" secondItem="bBp-yY-h6N" secondAttribute="trailingMargin" id="2B7-5p-oh5"/>
+                            <constraint firstItem="jZJ-wf-YIQ" firstAttribute="trailing" secondItem="4UT-Dh-ZHf" secondAttribute="trailing" id="AWI-B8-fLO"/>
+                            <constraint firstAttribute="bottom" secondItem="4UT-Dh-ZHf" secondAttribute="bottom" constant="20" symbolic="YES" id="JJY-f7-HtN"/>
+                            <constraint firstItem="jZJ-wf-YIQ" firstAttribute="leading" secondItem="bBp-yY-h6N" secondAttribute="leadingMargin" id="LSS-K3-Y2Z"/>
+                            <constraint firstItem="jZJ-wf-YIQ" firstAttribute="leading" secondItem="4UT-Dh-ZHf" secondAttribute="leading" id="ewD-xI-u04"/>
+                            <constraint firstItem="jZJ-wf-YIQ" firstAttribute="top" secondItem="Q5P-sc-qdG" secondAttribute="bottom" id="w1P-Jn-OQ5"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="612" height="792"/>
+                    <connections>
+                        <outlet property="theView" destination="bBp-yY-h6N" id="fB1-8D-KNP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="isd-mB-KwW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="667" y="419"/>
+        </scene>
+    </scenes>
+</document>

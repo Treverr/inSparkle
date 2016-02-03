@@ -21,6 +21,8 @@
 		C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338D831C1E306C00DC09BE /* CloudCode.swift */; };
 		C94367061BF719E10066D155 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94367051BF719E10066D155 /* Colors.swift */; };
 		C94C1CBF1C3CB96100F568B9 /* CustomerLookup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94C1CBE1C3CB96100F568B9 /* CustomerLookup.storyboard */; };
+		C95008611C61C08E00F5351C /* GeneratePDF.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C95008601C61C08E00F5351C /* GeneratePDF.storyboard */; };
+		C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95008621C61C11800F5351C /* PDFGenerateViewController.swift */; };
 		C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */; };
 		C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */; };
 		C9585F201C163FF1008AB918 /* ConfirmPunchInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F1F1C163FF1008AB918 /* ConfirmPunchInViewController.swift */; };
@@ -145,6 +147,8 @@
 		C9338D831C1E306C00DC09BE /* CloudCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCode.swift; sourceTree = "<group>"; };
 		C94367051BF719E10066D155 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		C94C1CBE1C3CB96100F568B9 /* CustomerLookup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerLookup.storyboard; sourceTree = "<group>"; };
+		C95008601C61C08E00F5351C /* GeneratePDF.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GeneratePDF.storyboard; sourceTree = "<group>"; };
+		C95008621C61C11800F5351C /* PDFGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFGenerateViewController.swift; sourceTree = "<group>"; };
 		C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = Onboarding/ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		C9585F1F1C163FF1008AB918 /* ConfirmPunchInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPunchInViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +347,15 @@
 			name = "Customer Lookup";
 			sourceTree = "<group>";
 		};
+		C950085F1C61C05400F5351C /* Generate PDF */ = {
+			isa = PBXGroup;
+			children = (
+				C95008601C61C08E00F5351C /* GeneratePDF.storyboard */,
+				C95008621C61C11800F5351C /* PDFGenerateViewController.swift */,
+			);
+			name = "Generate PDF";
+			sourceTree = "<group>";
+		};
 		C9585F231C16511A008AB918 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +469,7 @@
 		C99D3E411BF5BD3700D30F96 /* inSparkle */ = {
 			isa = PBXGroup;
 			children = (
+				C950085F1C61C05400F5351C /* Generate PDF */,
 				C90915641C183D8600FC7E54 /* inSparkle.entitlements */,
 				C94C1CC01C3CB98900F568B9 /* Customer Lookup */,
 				C9585F321C17588D008AB918 /* Admin */,
@@ -741,6 +755,7 @@
 				C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */,
 				C94C1CBF1C3CB96100F568B9 /* CustomerLookup.storyboard in Resources */,
 				C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */,
+				C95008611C61C08E00F5351C /* GeneratePDF.storyboard in Resources */,
 				C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */,
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
 				C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */,
@@ -846,6 +861,7 @@
 				C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */,
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
+				C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */,
 				C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */,
 				C94367061BF719E10066D155 /* Colors.swift in Sources */,
 				C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */,
