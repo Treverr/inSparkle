@@ -31,6 +31,11 @@ class ScheduleTableViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayConfirmed", name: "NotifyAppointmentConfirmed", object: nil)
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.backgroundColor = Colors.sparkleGreen
+        self.refreshControl!.tintColor = UIColor.whiteColor()
+        self.refreshControl!.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -71,6 +76,9 @@ class ScheduleTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             }
+        }
+        if (self.refreshControl!.refreshing) {
+            self.refreshControl?.endRefreshing()
         }
         
     }
@@ -122,6 +130,7 @@ class ScheduleTableViewController: UITableViewController {
     
     func refresh() {
         scheduleArray.removeAllObjects()
+        self.tableView.reloadData()
         scheduleQuery()
     }
     
