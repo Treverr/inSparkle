@@ -24,14 +24,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var isKeyboardShowing : Bool?
     
     override func viewDidLoad() {
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("lastUsername") != nil {
+            let lastUser = NSUserDefaults.standardUserDefaults().valueForKey("lastUsername") as! String
+            usernameField.text = lastUser.lowercaseString
+        }
+        
         super.viewDidLoad()
         
         usernameField.delegate = self
         passwordField.delegate = self
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+//        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
     
 
         // Do any additional setup after loading the view.
@@ -124,6 +130,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } else if password?.characters.count < 1 {
             // Alert
         } else {
+            NSUserDefaults.standardUserDefaults().setValue(username!, forKey: "lastUsername")
             var spinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
             spinner.startAnimating()
             

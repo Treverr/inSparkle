@@ -18,6 +18,7 @@ import IQKeyboardManagerSwift
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
+    var logOutTimer : NSTimer?
     
     let locationManager = CLLocationManager()
     
@@ -29,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         registerParseSubclasses()
         
         Parse.setApplicationId("M8DKwA6ifp1JJlHmSjpBL0M66tYq710f9xEnFcrv",
-            clientKey: "cy4fwRWmKVdFw8LSCCjYIflbH2yP6qCjWQnoAMzH")
+                               clientKey: "cy4fwRWmKVdFw8LSCCjYIflbH2yP6qCjWQnoAMzH")
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -89,8 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+//        logOutTimer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "logOut", userInfo: nil, repeats: false)
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        logOutTimer?.invalidate()
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
@@ -137,6 +137,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             tabBarController.selectedIndex = 2
         }
         
+    }
+    
+    func logOut() {
+        PFUser.logOut()
+        
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
+            let currentView = self.window?.rootViewController
+            currentView!.presentViewController(viewController, animated: true, completion: nil)
+        }
     }
     
 }
