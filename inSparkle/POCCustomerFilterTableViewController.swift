@@ -34,4 +34,9 @@ class POCCustomerFilterTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
+    @IBAction func closeAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true) { 
+            POCReportFilters.filter.removeAll()
+        }
+    }
 }

@@ -288,6 +288,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
+        
         if pickerView == weekPicker {
             
             if !pickerView.isFirstResponder() {
@@ -557,7 +558,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         let toolbarHeight : CGFloat?
         
-        if customerNameTextField.isFirstResponder() || addressLabel.isFirstResponder() || phoneNumberTextField.isFirstResponder() || notesTextView.isFirstResponder() {
+        if !notesTextView.isFirstResponder() {
             return
         } else {
             
@@ -583,8 +584,12 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     
     func keyboardWillHide(notification : NSNotification) {
-        self.animateTextField(false)
-        isKeyboardShowing = false
+        if (isKeyboardShowing != nil) {
+            if isKeyboardShowing! {
+                self.animateTextField(false)
+                isKeyboardShowing = false
+            }
+        }
     }
     
     func animateTextField(up: Bool) {
@@ -618,6 +623,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     let typePickerIndexPath : NSIndexPath = NSIndexPath(forItem: 7, inSection: 0)
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
         
         if theWeekPickerHidden == false {
             weekPicker.hidden = true
