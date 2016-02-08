@@ -50,8 +50,6 @@ extension CalendarDatePickerViewController : CalendarViewDelegate {
     }
     
     func calendarDidPageToDate(date: Moment) {
-        self.date = date
-        
         title = date.format("MMMM yyyy")
     }
     

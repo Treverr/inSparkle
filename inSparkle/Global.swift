@@ -9,6 +9,7 @@
 import Foundation
 import Parse
 import AVFoundation
+import CoreImage
 
 class DataManager: NSObject {
     
@@ -145,6 +146,25 @@ class MessagesDataObjects : NSObject {
     
 }
 
+class POCReportData : NSObject {
+    
+    static var POCData : [ScheduleObject]!
+    
+}
+
+class Barcode {
+    
+    class func fromString(string : String) -> UIImage? {
+        
+        let data = string.dataUsingEncoding(NSASCIIStringEncoding)
+        let filter = CIFilter(name: "CICode128BarcodeGenerator")
+        filter!.setValue(data, forKey: "inputMessage")
+        return UIImage(CIImage: filter!.outputImage!)
+        
+    }
+    
+}
+
 
 class GlobalFunctions {
     
@@ -246,6 +266,7 @@ class GlobalFunctions {
         }
         return false
     }
+    
 }
 
 extension NSDate {

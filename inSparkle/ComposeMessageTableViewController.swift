@@ -277,7 +277,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                     dispatch_after(delayTime, dispatch_get_main_queue()) {
 //                        NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
                         self.performSegueWithIdentifier("unwindToMessages", sender: self)
-                        if isNewMessage == true {
+                        if self.isNewMessage == true {
                             PushNotifications.messagesPushNotification(self.selectedEmployee!)
                         }
                         MessagesDataObjects.selectedEmp = nil

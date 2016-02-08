@@ -9,12 +9,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/PoolOpeningPDFViewController.swift"
-            timestampString = "476326844.556028"
+            filePath = "inSparkle/Global.swift"
+            timestampString = "476597083.902189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68">
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "fromString(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

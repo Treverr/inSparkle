@@ -88,12 +88,14 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         
         let overlay : UIView = UIView(frame: CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height))
         overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        overlay.tag = 6969
         self.view.addSubview(overlay)
         
         let activityMonitor = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
         activityMonitor.alpha = 1.0
         activityMonitor.center = self.view.center
         activityMonitor.hidesWhenStopped = true
+        activityMonitor.tag = 6868
         self.view.addSubview(activityMonitor)
         activityMonitor.startAnimating()
         
@@ -127,69 +129,84 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         print(endDate)
         expectedReturn = expectedReturn + (query?.countObjects(error))!
         query?.findObjectsInBackgroundWithBlock({ (appts : [PFObject]?, error : NSError?) -> Void in
+//            if error == nil {
+//                for appt in appts! {
+//                    let object = appt as! ScheduleObject
+//                    let accountNumber = object.accountNumber!
+//                    let custName = object.customerName
+//                    let custAddress = object.customerAddress.stringByReplacingOccurrencesOfString(",", withString: " ").capitalizedString
+//                    print(object.customerAddress)
+//                    let custPhone = object.customerPhone
+//                    let weekSch = GlobalFunctions().stringFromDateShortStyle(object.weekStart) + " - " + GlobalFunctions().stringFromDateShortStyle(object.weekEnd)
+//                    var dateConfirmed : String?
+//                    if object.confirmedDate != nil {
+//                        dateConfirmed = GlobalFunctions().stringFromDateShortStyle(object.confirmedDate!)
+//                    } else {
+//                        dateConfirmed = ""
+//                    }
+//                    let confirmedWith = ""
+//                    let typeOfWC = object.coverType
+//                    let itemLoc = object.locEssentials
+//                    let chem = object.bringChem
+//                    var takeChem : String!
+//                    if (chem) {
+//                        takeChem = "Yes"
+//                    } else {
+//                        takeChem = "No"
+//                    }
+//                    let trash = object.takeTrash
+//                    var takeTrash : String!
+//                    if (trash) {
+//                        takeTrash = "Yes"
+//                    } else {
+//                        takeTrash = "No"
+//                    }
+//                    var notes : String?
+//                    if object.notes == nil {
+//                        notes = ""
+//                    } else {
+//                        notes = object.notes?.stringByReplacingOccurrencesOfString("\n", withString: " ")
+//                        notes = notes?.stringByReplacingOccurrencesOfString(",", withString: "")
+//                        print(notes)
+//                    }
+//                    
+//                    var confirmedBy : String?
+//                    if object.confrimedBy != nil {
+//                        confirmedBy = object.confrimedBy!
+//                    } else {
+//                        confirmedBy = ""
+//                    }
+//                    
+//                    self.csvPOC = self.csvPOC + "\n\(accountNumber),\(custName),\(weekSch),\(custAddress),\(custPhone),\(dateConfirmed!),\(confirmedWith),\(typeOfWC),\(itemLoc),\(takeChem),\(takeTrash),\(notes!),\(confirmedBy!)"
+//                    print(self.csvPOC)
+//                    self.returnedPOC = self.returnedPOC + 1
+//                }
+//                
+//                if self.expectedReturn == 0 {
+//                    // TODO: Alert
+//                }
+//                
+//                if self.expectedReturn - self.returnedPOC == 0 {
+//                    self.csvPOC = self.csvPOC + "\n,,,,,,,,,,,,"
+//                    self.shareTime()
+//                }
+//                
+//            }
+            
             if error == nil {
-                for appt in appts! {
-                    let object = appt as! ScheduleObject
-                    let accountNumber = object.accountNumber!
-                    let custName = object.customerName
-                    let custAddress = object.customerAddress.stringByReplacingOccurrencesOfString(",", withString: " ").capitalizedString
-                    print(object.customerAddress)
-                    let custPhone = object.customerPhone
-                    let weekSch = GlobalFunctions().stringFromDateShortStyle(object.weekStart) + " - " + GlobalFunctions().stringFromDateShortStyle(object.weekEnd)
-                    var dateConfirmed : String?
-                    if object.confirmedDate != nil {
-                        dateConfirmed = GlobalFunctions().stringFromDateShortStyle(object.confirmedDate!)
-                    } else {
-                        dateConfirmed = ""
+                let sb = UIStoryboard(name: "OpeningPDFTemplate", bundle: nil)
+                let vc = sb.instantiateViewControllerWithIdentifier("PoolOpeningTemplate")
+                POCReportData.POCData = appts as! [ScheduleObject]
+                self.presentViewController(vc, animated: true, completion: {
+                    if let overlayView = self.view.viewWithTag(6969) {
+                        overlayView.removeFromSuperview()
                     }
-                    let confirmedWith = ""
-                    let typeOfWC = object.coverType
-                    let itemLoc = object.locEssentials
-                    let chem = object.bringChem
-                    var takeChem : String!
-                    if (chem) {
-                        takeChem = "Yes"
-                    } else {
-                        takeChem = "No"
+                    if let activityIndicator = self.view.viewWithTag(6868) {
+                        activityIndicator.removeFromSuperview()
                     }
-                    let trash = object.takeTrash
-                    var takeTrash : String!
-                    if (trash) {
-                        takeTrash = "Yes"
-                    } else {
-                        takeTrash = "No"
-                    }
-                    var notes : String?
-                    if object.notes == nil {
-                        notes = ""
-                    } else {
-                        notes = object.notes?.stringByReplacingOccurrencesOfString("\n", withString: " ")
-                        notes = notes?.stringByReplacingOccurrencesOfString(",", withString: "")
-                        print(notes)
-                    }
-                    
-                    var confirmedBy : String?
-                    if object.confrimedBy != nil {
-                        confirmedBy = object.confrimedBy!
-                    } else {
-                        confirmedBy = ""
-                    }
-                    
-                    self.csvPOC = self.csvPOC + "\n\(accountNumber),\(custName),\(weekSch),\(custAddress),\(custPhone),\(dateConfirmed!),\(confirmedWith),\(typeOfWC),\(itemLoc),\(takeChem),\(takeTrash),\(notes!),\(confirmedBy!)"
-                    print(self.csvPOC)
-                    self.returnedPOC = self.returnedPOC + 1
-                }
-                
-                if self.expectedReturn == 0 {
-                    // TODO: Alert
-                }
-                
-                if self.expectedReturn - self.returnedPOC == 0 {
-                    self.csvPOC = self.csvPOC + "\n,,,,,,,,,,,,"
-                    self.shareTime()
-                }
-                
+                })
             }
+            
         })
         
     }

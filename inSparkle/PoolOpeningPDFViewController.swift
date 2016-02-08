@@ -8,6 +8,7 @@
 
 import UIKit
 import UIView_HierarchicalDrawing
+import Parse
 
 class PoolOpeningPDFViewController: UIViewController {
     
@@ -28,39 +29,128 @@ class PoolOpeningPDFViewController: UIViewController {
     
     var pageCount : Int = 0
     var pagesLeft : Int = 0
+    var data = [ScheduleObject]()
+    var firsRun : Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        generatePDF()
+        notes.numberOfLines = 0
+        notes.sizeToFit()
+        
+        self.data = POCReportData.POCData
+        
+        
         
     }
     
-    @IBAction func generatePDF() {
-        repeat {
+    override func viewDidAppear(animated: Bool) {
         createPdfFromView(theView, saveToDocumentsWithFileName: "POC")
-        } while pagesLeft > 0
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.data = POCReportData.POCData
     }
     
     func createPdfFromView(aView: UIView, saveToDocumentsWithFileName fileName: String) {
         
+        if firsRun {
+            pagesLeft = data.count
+            firsRun = false
+        }
+        
         let pdfData = NSMutableData()
         UIGraphicsBeginPDFContextToData(pdfData, CGRectZero, nil)
-        UIGraphicsBeginPDFPage()
         
-        guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
-        
-        CGContextSetInterpolationQuality(pdfContext, .High)
-        aView.drawHierarchy()
-        UIGraphicsEndPDFContext()
-        
-        if pagesLeft == 0 {
-            if let documentDirectories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first {
-                let documentsFileName = documentDirectories + "/" + fileName + ".pdf"
-                debugPrint(documentsFileName)
-                pdfData.writeToFile(documentsFileName, atomically: true)
+        while pagesLeft > 0 {
+            
+            print(pagesLeft)
+            
+            if pagesLeft != 0 {
+                let num = data[pagesLeft - 1]
+                
+                print(num)
+                
+                print(customerName)
+                
+                customerName.text = num.customerName
+                address.text = num.customerAddress
+                phoneNumber.text = num.customerPhone
+                openingWeek.text! = GlobalFunctions().stringFromDateShortStyle(num.weekStart) + " - " + GlobalFunctions().stringFromDateShortStyleNoTimezone(num.weekEnd)
+                if num.confirmedDate != nil {
+                    openingDate.text = GlobalFunctions().stringFromDateShortStyle(num.confirmedDate!)
+                } else {
+                    openingDate.text = "NOT CONFIRMED"
+                }
+                if num.confirmedWith != nil {
+                    confirmedWith.text = num.confirmedWith!
+                } else {
+                    confirmedWith.text = "NOT CONFIRMED"
+                }
+                typeOfWinterCover.text = num.coverType
+                itemLocation.text = num.locEssentials
+                if (num.bringChem) {
+                    bringChemicals.text = "Yes"
+                } else {
+                    bringChemicals.text = "No"
+                }
+                if (num.takeTrash) {
+                    takeTrash.text = "Yes"
+                } else {
+                    takeTrash.text = "No"
+                }
+                notes.text = num.notes!
+                accountNumber.text! = num.accountNumber!
+                accountNumberBarcode.image = Barcode.fromString(num.accountNumber!)!
+                
+                UIGraphicsBeginPDFPage()
+                
+                guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
+                
+                CGContextSetInterpolationQuality(pdfContext, .High)
+                aView.drawHierarchy()
+                
+                pagesLeft = pagesLeft - 1
+                
+            }
+            
+            if pagesLeft == 0 {
+                
+                UIGraphicsEndPDFContext()
+                
+                if let documentDirectories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first {
+                    let documentsFileName = documentDirectories + "/" + fileName + ".pdf"
+                    debugPrint(documentsFileName)
+                    pdfData.writeToFile(documentsFileName, atomically: true)
+                    
+                    let docURL = NSURL.fileURLWithPath(documentsFileName)
+                    var docController : UIDocumentInteractionController!
+                    docController = UIDocumentInteractionController(URL: docURL)
+                    docController.delegate = self
+                    docController.presentPreviewAnimated(true)
+                }
             }
         }
     }
+    
+}
 
+extension PoolOpeningPDFViewController : UIDocumentInteractionControllerDelegate {
+    
+    func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
+        return self.view.frame
+    }
+    
+    func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+        let viewController: UIViewController = UIViewController()
+        self.presentViewController(viewController, animated: true, completion: nil)
+        return viewController
+    }
+    
 }
