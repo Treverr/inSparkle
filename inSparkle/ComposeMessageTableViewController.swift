@@ -197,9 +197,14 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
         if isNewMessage == true && indexPath.section == 1 && indexPath.row == 0 {
             return 0
+        }
+        
+        if isNewMessage == true && indexPath.section == 2 && indexPath.row == 0 {
+            return 0
         } else {
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
+        
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
