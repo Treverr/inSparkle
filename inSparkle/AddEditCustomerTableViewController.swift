@@ -60,13 +60,17 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         
     }
     
+    var updatedAddress = false
+    
     func updatedAddressLabel() {
+        updatedAddress = true
         addressLabel.text = GoogleAddress.address
         addressLabel.textColor = UIColor.blackColor()
         GoogleAddress.address = nil
     }
     
     @IBAction func saveUpdate(sender: AnyObject) {
+        
         saveUpdateButton.setTitle("Saving...", forState: .Normal)
         var accountNumber : String?
         let name : String! = firstNameTextField.text! + " " + lastNameTextField.text!
@@ -85,12 +89,20 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
             }
         }
         CloudCode.AddUpdateCustomerRecord(accountNumber, name: name, address: address, phoneNumber: phoneNumber)
-        let stringArray = address.componentsSeparatedByString(",")
-        let addressStreet = stringArray[0]
-        let addressCity = stringArray[1]
-        let cityStateArray = stringArray[2].componentsSeparatedByString(" ")
-        let addressState = cityStateArray[1]
-        let addressZIP = cityStateArray[2]
+        var addressStreet : String?
+        var addressCity : String?
+        var addressState : String?
+        var addressZIP : String?
+        
+        if updatedAddress == true {
+            let stringArray = address.componentsSeparatedByString(",")
+            addressStreet = stringArray[0]
+            addressCity = stringArray[1]
+            let cityStateArray = stringArray[2].componentsSeparatedByString(" ")
+            addressState = cityStateArray[1]
+            addressZIP = cityStateArray[2]
+        }
+      
         
         if self.customer == nil {
             self.customer = CustomerData()
@@ -100,11 +112,13 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         self.customer?.firstName = firstNameTextField.text!.uppercaseString
         self.customer?.lastName = lastNameTextField.text!.uppercaseString
         self.customer?.fullName = lastNameTextField.text!.uppercaseString + ", " + firstNameTextField.text!.uppercaseString
-        self.customer?.addressStreet = addressStreet.uppercaseString
-        self.customer?.addressCity = addressCity.uppercaseString
-        self.customer?.addressState = addressState.uppercaseString
+        if updatedAddress == true {
+            self.customer?.addressStreet = addressStreet!.uppercaseString
+            self.customer?.addressCity = addressCity!.uppercaseString
+            self.customer?.addressState = addressState!.uppercaseString
+            self.customer?.ZIP = String(addressZIP!)
+        }
         self.customer?.phoneNumber = phoneNumberTextField.text!
-        self.customer?.ZIP = String(addressZIP)
         self.customer?.currentBalance = 0
         self.customer?.customerOpened = NSDate()
         self.customer?.saveInBackground()
