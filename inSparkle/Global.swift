@@ -157,10 +157,16 @@ class Barcode {
     class func fromString(string : String) -> UIImage? {
         
         let data = string.dataUsingEncoding(NSASCIIStringEncoding)
-        let filter = CIFilter(name: "CICode128BarcodeGenerator")
-        filter!.setValue(data, forKey: "inputMessage")
-        return UIImage(CIImage: filter!.outputImage!)
         
+        if let filter = CIFilter(name: "CICode128BarcodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransformMakeScale(3, 3)
+            
+            if let output = filter.outputImage?.imageByApplyingTransform(transform) {
+                return UIImage(CIImage: output)
+            }
+        }
+        return nil
     }
     
 }
