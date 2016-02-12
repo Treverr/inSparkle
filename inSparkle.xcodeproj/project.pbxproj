@@ -71,6 +71,7 @@
 		C9B5B4521BF6773200650FC4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B4501BF6773200650FC4 /* Crashlytics.framework */; };
 		C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */; };
 		C9BA20101C59B6B400F8E44B /* FromBottomCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA200F1C59B6B400F8E44B /* FromBottomCustomSegue.swift */; };
+		C9C039EC1C6D60530064FDBA /* ChemicalCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C039EB1C6D60530064FDBA /* ChemicalCheckoutViewController.swift */; };
 		C9C192801BF64D8200862F52 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192791BF64D8200862F52 /* Bolts.framework */; };
 		C9C192811BF64D8200862F52 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1927A1BF64D8200862F52 /* Parse.framework */; };
 		C9C192821BF64D8200862F52 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1927B1BF64D8200862F52 /* ParseCrashReporting.framework */; };
@@ -207,6 +208,7 @@
 		C9B5B4501BF6773200650FC4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewSOITableViewController.swift; sourceTree = "<group>"; };
 		C9BA200F1C59B6B400F8E44B /* FromBottomCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromBottomCustomSegue.swift; sourceTree = "<group>"; };
+		C9C039EB1C6D60530064FDBA /* ChemicalCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemicalCheckoutViewController.swift; sourceTree = "<group>"; };
 		C9C192791BF64D8200862F52 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		C9C1927A1BF64D8200862F52 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		C9C1927B1BF64D8200862F52 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				C96EF8001C14CE3100C4D2C1 /* ChemCheck.storyboard */,
+				C9C039EB1C6D60530064FDBA /* ChemicalCheckoutViewController.swift */,
 			);
 			name = "Chemical Check";
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				C9FAE77B1C57FD39005630FC /* MessageStatusTableViewController.swift in Sources */,
 				C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */,
 				C9AB005E1C469FC900595F58 /* PushNotifications.swift in Sources */,
+				C9C039EC1C6D60530064FDBA /* ChemicalCheckoutViewController.swift in Sources */,
 				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,
 				C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */,
 				C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */,
