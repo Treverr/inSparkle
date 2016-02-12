@@ -96,6 +96,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-inSparkle/SwiftGifOrigin.framework"
   install_framework "Pods-inSparkle/SwiftMoment.framework"
   install_framework "Pods-inSparkle/UIView_HierarchicalDrawing.framework"
+  install_framework "Pods-inSparkle/iCarousel.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-inSparkle/BRYXBanner.framework"
@@ -110,4 +111,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-inSparkle/SwiftGifOrigin.framework"
   install_framework "Pods-inSparkle/SwiftMoment.framework"
   install_framework "Pods-inSparkle/UIView_HierarchicalDrawing.framework"
+  install_framework "Pods-inSparkle/iCarousel.framework"
 fi

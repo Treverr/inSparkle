@@ -14,6 +14,7 @@ pod 'PhoneNumberKit', '~> 0.1'
 pod 'MZFormSheetPresentationController'
 pod 'IQKeyboardManagerSwift'
 pod "UIView+HierarchicalDrawing"
+pod "iCarousel"
 
 end
 

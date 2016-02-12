@@ -157,6 +157,21 @@ class RegularExpressions {
         }
     }
     
+    func matchedStringByRegex(pattern: String, string: String) throws -> [String] {
+        do {
+            let matches = try regexMatches(pattern, string: string)
+            var matchedStrings = [String]()
+            for match in matches {
+                let processedString = string.substringWithNSRange(match.range)
+                matchedStrings.append(processedString)
+            }
+            return matchedStrings
+        }
+        catch {
+        }
+        return []
+    }
+    
     // MARK: String and replace
     
     func replaceStringByRegex(pattern: String, string: String) -> String {
@@ -228,7 +243,7 @@ class RegularExpressions {
     func stringByReplacingOccurrences(string: String, map: [String:String], removeNonMatches: Bool) -> String {
         var targetString = String()
         let copiedString = string
-        for var i = 0; i < string.characters.count; i++ {
+        for i in 0 ..< string.characters.count {
             let oneChar = copiedString[copiedString.startIndex.advancedBy(i)]
             let keyString = String(oneChar)
             if let mappedValue = map[keyString.uppercaseString] {
