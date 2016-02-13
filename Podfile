@@ -16,6 +16,7 @@ pod 'IQKeyboardManagerSwift'
 pod "UIView+HierarchicalDrawing"
 pod "iCarousel"
 pod "MIBadgeButton-Swift"
+pod 'FXImageView'
 
 end
 
