@@ -111,6 +111,7 @@
 		C9FAE77B1C57FD39005630FC /* MessageStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */; };
 		C9FAE77D1C584B2E005630FC /* MessageNotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */; };
 		C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */; };
+		C9FB1ED91C6EC5A100663EB7 /* ChemicalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FB1ED81C6EC5A100663EB7 /* ChemicalData.swift */; };
 		C9FE5BE41C1F880600293836 /* ConfirmCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */; };
 		C9FE5BE51C1F880600293836 /* ConfirmingAppointmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */; };
 		C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */; };
@@ -248,6 +249,7 @@
 		C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageStatusTableViewController.swift; sourceTree = "<group>"; };
 		C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNotesTableViewController.swift; sourceTree = "<group>"; };
 		C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNotesTableViewCell.swift; sourceTree = "<group>"; };
+		C9FB1ED81C6EC5A100663EB7 /* ChemicalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemicalData.swift; sourceTree = "<group>"; };
 		C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCalViewController.swift; sourceTree = "<group>"; };
 		C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmingAppointmentTableViewController.swift; sourceTree = "<group>"; };
 		C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = POCReport.storyboard; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 			children = (
 				C96EF8001C14CE3100C4D2C1 /* ChemCheck.storyboard */,
 				C9C039EB1C6D60530064FDBA /* ChemicalCheckoutViewController.swift */,
+				C9FB1ED81C6EC5A100663EB7 /* ChemicalData.swift */,
 			);
 			name = "Chemical Check";
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				C91B6B301C5FD313006C761D /* AddEditMessageNoteViewController.swift in Sources */,
 				C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */,
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
+				C9FB1ED91C6EC5A100663EB7 /* ChemicalData.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
 				C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */,
 				C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */,
