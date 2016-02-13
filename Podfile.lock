@@ -6,7 +6,8 @@ PODS:
     - SwiftMoment (~> 0.1)
   - GooglePlacesAutocomplete (0.3.0)
   - iCarousel (1.8.2)
-  - IQKeyboardManagerSwift (3.3.7)
+  - IQKeyboardManagerSwift (4.0.0)
+  - MIBadgeButton-Swift (0.1)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.2.1):
     - MZAppearance
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - GooglePlacesAutocomplete (from `https://github.com/watsonbox/ios_google_places_autocomplete`)
   - iCarousel
   - IQKeyboardManagerSwift
+  - MIBadgeButton-Swift
   - MZFormSheetPresentationController
   - PhoneNumberKit (~> 0.1)
   - RSBarcodes_Swift (~> 0.1.4)
@@ -44,7 +46,8 @@ SPEC CHECKSUMS:
   CalendarView: 5eae22e02cbed4e0282677885a72d97dfd34b7a5
   GooglePlacesAutocomplete: 7694636fce561c9d8ac807b8e490d299a730a633
   iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
-  IQKeyboardManagerSwift: 7d06186460470f3f7e767630861a1303980ee5cf
+  IQKeyboardManagerSwift: ede2a27b4e1ce053d03073b9c7fa439322f5e405
+  MIBadgeButton-Swift: 7e235a701726414d4bb95d6a3caea0b8a24cb84d
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: 97b4ea7a52a8bd451ac93c1a1c6b5095e2326d1c
   PhoneNumberKit: 683f1287a88c1f27386b27cad851081c7c45cb62

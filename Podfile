@@ -15,6 +15,7 @@ pod 'MZFormSheetPresentationController'
 pod 'IQKeyboardManagerSwift'
 pod "UIView+HierarchicalDrawing"
 pod "iCarousel"
+pod "MIBadgeButton-Swift"
 
 end
 
