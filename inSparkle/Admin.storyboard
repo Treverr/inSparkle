@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C47a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pdb-5y-vV0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pdb-5y-vV0">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
     </dependencies>
     <scenes>
         <!--Admin-->
@@ -143,6 +143,30 @@
                                             <segue destination="ze4-mh-ANN" kind="show" id="2wu-Fl-WSX"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="y69-bs-zjM" imageView="q8K-ie-9m9" style="IBUITableViewCellStyleDefault" id="m6G-JD-cji">
+                                        <rect key="frame" x="0.0" y="195" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m6G-JD-cji" id="VUh-bD-MQ4">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Chemcial Checkout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y69-bs-zjM">
+                                                    <rect key="frame" x="64" y="0.0" width="521" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Chemical Checkout Report" id="q8K-ie-9m9">
+                                                    <rect key="frame" x="15" y="4" width="34" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="R74-aC-As3" kind="show" id="tHz-de-IRQ"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -211,7 +235,7 @@
                 <viewControllerPlaceholder storyboardName="TimeClockReport" id="6qK-Fk-eSw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTO-Wq-PuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3236.5" y="99"/>
+            <point key="canvasLocation" x="3249.5" y="83"/>
         </scene>
         <!--POCReport-->
         <scene sceneID="0iS-Im-LMy">
@@ -219,7 +243,15 @@
                 <viewControllerPlaceholder storyboardName="POCReport" id="ze4-mh-ANN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efJ-PS-hqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3236.5" y="505"/>
+            <point key="canvasLocation" x="3249" y="411"/>
+        </scene>
+        <!--ChemicalCheckoutReport-->
+        <scene sceneID="f9W-RQ-EpN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChemicalCheckoutReport" id="R74-aC-As3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A5M-ei-P1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3221.5" y="612"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bb3-KV-LvY">
@@ -241,6 +273,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Chemical Checkout Report" width="34" height="34"/>
         <image name="Clock" width="34" height="34"/>
         <image name="POCReport" width="34" height="34"/>
         <image name="Report" width="30" height="40"/>

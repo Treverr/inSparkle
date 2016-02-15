@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		7152D5A8CCD5E65BA2403309 /* Pods_inSparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411847EFD392F5F727796B8A /* Pods_inSparkle.framework */; };
 		C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */; };
+		C90340C61C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90340C51C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard */; };
+		C90340C81C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340C71C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift */; };
+		C90340CA1C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340C91C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift */; };
+		C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90340CB1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard */; };
+		C90340CF1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */; };
 		C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */; };
 		C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB01C30EBE900F9D624 /* UserModel.swift */; };
 		C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */; };
@@ -109,6 +114,10 @@
 		C9F0FF9A1C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */; };
 		C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F431171BFEB13500AC3CD8 /* Global.swift */; };
 		C9F7A9B01C6FD994001A6555 /* MIBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9AF1C6FD994001A6555 /* MIBadgeButton.swift */; };
+		C9F7A9B21C6FE771001A6555 /* ChemCartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9B11C6FE771001A6555 /* ChemCartTableViewController.swift */; };
+		C9F7A9B41C70149E001A6555 /* UserPIN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F7A9B31C70149E001A6555 /* UserPIN.storyboard */; };
+		C9F7A9B61C701614001A6555 /* UserPINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9B51C701614001A6555 /* UserPINViewController.swift */; };
+		C9F7A9B81C701BE1001A6555 /* CheckoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9B71C701BE1001A6555 /* CheckoutModel.swift */; };
 		C9FAE77B1C57FD39005630FC /* MessageStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */; };
 		C9FAE77D1C584B2E005630FC /* MessageNotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */; };
 		C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */; };
@@ -139,6 +148,11 @@
 		411847EFD392F5F727796B8A /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		780D3CC7ECBD99D4953539B4 /* Pods-inSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.release.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.release.xcconfig"; sourceTree = "<group>"; };
 		C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPopViewController.swift; sourceTree = "<group>"; };
+		C90340C51C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChemicalCheckoutReportPDFTemplate.storyboard; sourceTree = "<group>"; };
+		C90340C71C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemCheckoutPDFReportTemplateViewController.swift; sourceTree = "<group>"; };
+		C90340C91C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemicalCheckoutTableViewCell.swift; sourceTree = "<group>"; };
+		C90340CB1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChemicalCheckoutReport.storyboard; sourceTree = "<group>"; };
+		C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSelectionChemCheckoutTableViewController.swift; sourceTree = "<group>"; };
 		C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolOpeningPDFViewController.swift; sourceTree = "<group>"; };
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
 		C9140FB01C30EBE900F9D624 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -248,6 +262,10 @@
 		C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditEmployeeSelectionTableViewController.swift; sourceTree = "<group>"; };
 		C9F431171BFEB13500AC3CD8 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		C9F7A9AF1C6FD994001A6555 /* MIBadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIBadgeButton.swift; sourceTree = "<group>"; };
+		C9F7A9B11C6FE771001A6555 /* ChemCartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemCartTableViewController.swift; sourceTree = "<group>"; };
+		C9F7A9B31C70149E001A6555 /* UserPIN.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPIN.storyboard; sourceTree = "<group>"; };
+		C9F7A9B51C701614001A6555 /* UserPINViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPINViewController.swift; sourceTree = "<group>"; };
+		C9F7A9B71C701BE1001A6555 /* CheckoutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutModel.swift; sourceTree = "<group>"; };
 		C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageStatusTableViewController.swift; sourceTree = "<group>"; };
 		C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNotesTableViewController.swift; sourceTree = "<group>"; };
 		C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNotesTableViewCell.swift; sourceTree = "<group>"; };
@@ -322,9 +340,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C90340CD1C722C9F0028F865 /* Chemical Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */,
+				C90340CB1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard */,
+			);
+			name = "Chemical Checkout";
+			sourceTree = "<group>";
+		};
 		C94367041BF719D50066D155 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C9F7A9B31C70149E001A6555 /* UserPIN.storyboard */,
+				C9F7A9B51C701614001A6555 /* UserPINViewController.swift */,
 				C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */,
 				C96F79AD1BFC44ED00C13615 /* inSparkle-Bridging-Header.h */,
 				C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */,
@@ -394,6 +423,7 @@
 				C9585F341C175AE8008AB918 /* Report */,
 				C9FE5BE81C1FC5BF00293836 /* POC */,
 				C9585F301C175887008AB918 /* ReportsTableViewController.swift */,
+				C90340CD1C722C9F0028F865 /* Chemical Checkout */,
 			);
 			name = Reports;
 			sourceTree = "<group>";
@@ -424,9 +454,14 @@
 		C96EF7FF1C14CE1C00C4D2C1 /* Chemical Check */ = {
 			isa = PBXGroup;
 			children = (
+				C90340C91C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift */,
+				C90340C51C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard */,
+				C90340C71C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift */,
 				C96EF8001C14CE3100C4D2C1 /* ChemCheck.storyboard */,
+				C9F7A9B11C6FE771001A6555 /* ChemCartTableViewController.swift */,
 				C9C039EB1C6D60530064FDBA /* ChemicalCheckoutViewController.swift */,
 				C9FB1ED81C6EC5A100663EB7 /* ChemicalData.swift */,
+				C9F7A9B71C701BE1001A6555 /* CheckoutModel.swift */,
 			);
 			name = "Chemical Check";
 			sourceTree = "<group>";
@@ -764,14 +799,17 @@
 				C99D3E4D1BF5BD3700D30F96 /* LaunchScreen.storyboard in Resources */,
 				C9585F251C165179008AB918 /* ScannerBeep.wav in Resources */,
 				C99D3E4A1BF5BD3700D30F96 /* Assets.xcassets in Resources */,
+				C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */,
 				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
 				C96EF8011C14CE3100C4D2C1 /* ChemCheck.storyboard in Resources */,
 				C9DC84641C6251A300C41B6A /* OpeningPDFTemplate.storyboard in Resources */,
+				C9F7A9B41C70149E001A6555 /* UserPIN.storyboard in Resources */,
 				C972FF781C1A1B1700D34EB2 /* SOI.storyboard in Resources */,
 				C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */,
 				C94C1CBF1C3CB96100F568B9 /* CustomerLookup.storyboard in Resources */,
 				C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */,
 				C95008611C61C08E00F5351C /* GeneratePDF.storyboard in Resources */,
+				C90340C61C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard in Resources */,
 				C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */,
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
 				C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */,
@@ -866,6 +904,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */,
+				C90340CA1C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift in Sources */,
 				C9F0FF931C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift in Sources */,
 				C9585F221C164013008AB918 /* ConfirmPunchOutViewController.swift in Sources */,
 				C9BA20101C59B6B400F8E44B /* FromBottomCustomSegue.swift in Sources */,
@@ -878,6 +917,7 @@
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C9FB1ED91C6EC5A100663EB7 /* ChemicalData.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
+				C9F7A9B21C6FE771001A6555 /* ChemCartTableViewController.swift in Sources */,
 				C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */,
 				C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */,
 				C94367061BF719E10066D155 /* Colors.swift in Sources */,
@@ -887,6 +927,7 @@
 				C9F7A9B01C6FD994001A6555 /* MIBadgeButton.swift in Sources */,
 				C99D3E711BF5C04200D30F96 /* SOITableViewCell.swift in Sources */,
 				C9C8E1DD1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift in Sources */,
+				C9F7A9B81C701BE1001A6555 /* CheckoutModel.swift in Sources */,
 				C96EF7F61C13F2E700C4D2C1 /* TimeClockPunchObj.swift in Sources */,
 				C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */,
 				C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */,
@@ -896,6 +937,7 @@
 				C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */,
 				C9C8E1C31C32175600191C17 /* MessageEmployeeListTableViewController.swift in Sources */,
 				C974FAD71C205845004D69E4 /* POCRunReportFinalTableViewController.swift in Sources */,
+				C90340CF1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift in Sources */,
 				C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */,
 				C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */,
 				C928CF9E1C233BF000C83345 /* LocalNotifications.swift in Sources */,
@@ -925,12 +967,14 @@
 				C9C8E1E11C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift in Sources */,
 				C9585F361C175B08008AB918 /* TimeCardReportTableViewController.swift in Sources */,
 				C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */,
+				C90340C81C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift in Sources */,
 				C972FF701C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift in Sources */,
 				C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */,
 				C9585F271C169491008AB918 /* RunTimeReportTableViewController.swift in Sources */,
 				C9C8E1C11C32141800191C17 /* MessageModel.swift in Sources */,
 				C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */,
 				C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */,
+				C9F7A9B61C701614001A6555 /* UserPINViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

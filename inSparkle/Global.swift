@@ -152,6 +152,12 @@ class POCReportData : NSObject {
     
 }
 
+class ChecmicalCheckoutData : NSObject {
+    
+    static var cart : [String]!
+    
+}
+
 class Barcode {
     
     class func fromString(string : String) -> UIImage? {

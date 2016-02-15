@@ -12,7 +12,7 @@ import MIBadgeButton_Swift
 import FXImageView
 
 class ChemicalCheckoutViewController: UIViewController, iCarouselDelegate, iCarouselDataSource {
-
+    
     @IBOutlet var carousel : iCarousel!
     @IBOutlet var cart: MIBadgeButton!
     @IBOutlet var itemListTableView: UITableView!
@@ -22,6 +22,8 @@ class ChemicalCheckoutViewController: UIViewController, iCarouselDelegate, iCaro
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("clearCart"), name: "ClearChemCart", object: nil)
         
         switch flowListSegmentControl.selectedSegmentIndex {
         case 0:
@@ -42,7 +44,7 @@ class ChemicalCheckoutViewController: UIViewController, iCarouselDelegate, iCaro
         cart.badgeString = nil
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -135,6 +137,32 @@ class ChemicalCheckoutViewController: UIViewController, iCarouselDelegate, iCaro
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.3 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    func clearCart() {
+        cartItems.removeAll()
+        numberInCart = 0
+        self.dismissViewControllerAnimated(true, completion: nil)
+        cart.badgeString = nil
+        let alert = UIAlertController(title: "Success", message: "The chemical(s) have been checked out to you", preferredStyle: .Alert)
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.presentViewController(alert, animated: true) {
+                let delayTime2 = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime2, dispatch_get_main_queue()) {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toCart" {
+            let navVC = segue.destinationViewController as! UINavigationController
+            let vc = navVC.viewControllers.first as! ChemCartTableViewController
+            vc.cart = self.cartItems
+            print(vc.cart)
         }
     }
 }
