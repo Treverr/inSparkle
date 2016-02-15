@@ -36,6 +36,11 @@ class ChemCheckoutPDFReportTemplateViewController: UIViewController {
         let reportDateString = reportDateFormatter.stringFromDate(NSDate())
         reportDateLabel.text = reportDateString
         
+        let forDateFormatter = NSDateFormatter()
+        forDateFormatter.dateStyle = .ShortStyle
+        forDateFormatter.timeStyle = .NoStyle
+        forDateLabel.text = forDateFormatter.stringFromDate(NSDate())
+        
         chemicalCheckoutTableView.delegate = self
         chemicalCheckoutTableView.dataSource = self
         
@@ -50,18 +55,29 @@ class ChemCheckoutPDFReportTemplateViewController: UIViewController {
     
         var theEmployee = theEmployees![onEmployee]
         let query = CheckoutModel.query()
+        let todayStart = NSDate().startOfDay
+        let todayEnd = NSDate().endOfDay!
+        
         query!.whereKey("employee", equalTo: theEmployee)
+        query?.whereKey("timeCheckedOut", greaterThan: todayStart)
+        query?.whereKey("timeCheckedOut", lessThan: todayEnd)
         query?.findObjectsInBackgroundWithBlock({ (results : [PFObject]?, error : NSError?) in
             if error == nil {
-                print(results)
-                for result in results! {
-                    let theRes = result.objectForKey("chemicalsCheckedOut") as! Array<String>
-                    //                    let theChems = theRes.chemicalsCheckedOut as! NSArray
-                    self.chemicals.addObjectsFromArray(theRes as [String])
-                    print(self.chemicals)
-                }
-                for item in self.chemicals {
-                    self.counts[item as! String] = (self.counts[item as! String] ?? 0) + 1
+                if results?.count != 0 {
+                    for result in results! {
+                        let theRes = result.objectForKey("chemicalsCheckedOut") as! Array<String>
+                        //                    let theChems = theRes.chemicalsCheckedOut as! NSArray
+                        self.chemicals.addObjectsFromArray(theRes as [String])
+                        print(self.chemicals)
+                    }
+                    for item in self.chemicals {
+                        self.counts[item as! String] = (self.counts[item as! String] ?? 0) + 1
+                    }
+                } else {
+                    self.chemicals.addObject("NONE")
+                    for item in self.chemicals {
+                        self.counts[item as! String] = (self.counts[item as! String] ?? 0) + 1
+                    }
                 }
                 self.chemicalCheckoutTableView.reloadData()
             }
@@ -94,13 +110,22 @@ class ChemCheckoutPDFReportTemplateViewController: UIViewController {
                 print(documentFileName)
                 pdfData.writeToFile(documentFileName, atomically: true)
                 
-                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-                dispatch_after(delayTime, dispatch_get_main_queue()) {
-                let docURL = NSURL.fileURLWithPath(documentFileName)
-                var docController : UIDocumentInteractionController!
-                docController = UIDocumentInteractionController(URL: docURL)
-                docController.delegate = self
-                docController.presentPreviewAnimated(true)
+                if self.isViewLoaded() {
+                        let docURL = NSURL.fileURLWithPath(documentFileName)
+                        var docController : UIDocumentInteractionController!
+                        docController = UIDocumentInteractionController(URL: docURL)
+                        docController.delegate = self
+                        docController.presentPreviewAnimated(true)
+                } else  {
+                    while self.isViewLoaded() == false {
+                        if self.isViewLoaded() {
+                            let docURL = NSURL.fileURLWithPath(documentFileName)
+                            var docController : UIDocumentInteractionController!
+                            docController = UIDocumentInteractionController(URL: docURL)
+                            docController.delegate = self
+                            docController.presentPreviewAnimated(true)
+                        }
+                    }
                 }
             }
             

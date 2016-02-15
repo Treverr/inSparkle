@@ -315,6 +315,19 @@ extension NSDate {
     }
 }
 
+extension NSDate {
+    var startOfDay: NSDate {
+        return NSCalendar.currentCalendar().startOfDayForDate(self)
+    }
+    
+    var endOfDay: NSDate? {
+        let components = NSDateComponents()
+        components.day = 1
+        components.second = -1
+        return NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: startOfDay, options: NSCalendarOptions())
+    }
+}
+
 //func setupNavigationbar()  {
 //    self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
 //    self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
