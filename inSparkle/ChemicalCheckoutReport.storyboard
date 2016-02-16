@@ -25,7 +25,7 @@
                                             <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -38,6 +38,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="TsE-XI-Mf5">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="zJ4-8N-TxD">
+                            <connections>
+                                <action selector="closeAction:" destination="3mq-rm-EUE" id="bJi-a0-JMb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="xiw-wx-4R3">
                             <connections>
                                 <segue destination="Aev-Of-Hi7" kind="show" id="0H7-qH-79c"/>

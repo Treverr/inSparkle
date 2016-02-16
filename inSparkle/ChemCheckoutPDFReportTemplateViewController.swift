@@ -46,6 +46,10 @@ class ChemCheckoutPDFReportTemplateViewController: UIViewController {
         
         numberOfEmployees = theEmployees!.count
         
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         getData()
     }
     
@@ -124,6 +128,8 @@ class ChemCheckoutPDFReportTemplateViewController: UIViewController {
                             docController = UIDocumentInteractionController(URL: docURL)
                             docController.delegate = self
                             docController.presentPreviewAnimated(true)
+                        } else {
+                            print("NOT")
                         }
                     }
                 }

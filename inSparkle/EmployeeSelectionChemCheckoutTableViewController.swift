@@ -83,4 +83,7 @@ class EmployeeSelectionChemCheckoutTableViewController: UITableViewController {
         vc.theEmployees = selectedEmps
     }
 
+    @IBAction func closeAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
