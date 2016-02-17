@@ -211,9 +211,13 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         cell.selectionStyle = .None
     }
     
+    @IBOutlet var saveButton: UIBarButtonItem!
     
     @IBAction func saveButton(sender: AnyObject) {
         selectedEmployee = MessagesDataObjects.selectedEmp
+        
+        saveButton.tintColor = UIColor.grayColor()
+        saveButton.enabled = false
         
         if (isNewMessage) {
             let messObj = Messages()
@@ -245,6 +249,20 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                     PushNotifications.messagesPushNotification(self.selectedEmployee!)
                     MessagesDataObjects.selectedEmp = nil
                     }
+                }
+                if error != nil {
+                    self.saveButton.tintColor = UIColor.blueColor()
+                    self.saveButton.enabled = true
+                    let alert = UIAlertController()
+                    switch error!.code {
+                    case 100:
+                        alert.title = "Error"
+                        alert.message = "Check network connection and try again"
+                        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                        alert.addAction(okayButton)
+                    default: break
+                    }
+                    self.presentViewController(alert, animated: true, completion: nil)
                 }
             })
         } else {
