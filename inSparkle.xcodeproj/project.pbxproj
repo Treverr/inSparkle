@@ -15,6 +15,8 @@
 		C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90340CB1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard */; };
 		C90340CF1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */; };
 		C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */; };
+		C91120861C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */; };
+		C91120881C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */; };
 		C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB01C30EBE900F9D624 /* UserModel.swift */; };
 		C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */; };
 		C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AC6411BFD85BA00E09B22 /* SOIModel.swift */; };
@@ -53,6 +55,10 @@
 		C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C96EF8021C14E0FD00C4D2C1 /* TimeClock.xcassets */; };
 		C96F79AB1BFC41AB00C13615 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96F79AA1BFC41AB00C13615 /* LocalAuthentication.framework */; };
 		C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C96F79AF1BFC44ED00C13615 /* KeychainWrapper.m */; };
+		C9709C1C1C72D144000ED6EA /* WorkOrderMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9709C1B1C72D144000ED6EA /* WorkOrderMain.storyboard */; };
+		C9709C1E1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9709C1D1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift */; };
+		C9709C201C72D3A4000ED6EA /* WorkOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9709C1F1C72D3A4000ED6EA /* WorkOrdersTableViewController.swift */; };
+		C9709C221C72D3C9000ED6EA /* WorkOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9709C211C72D3C9000ED6EA /* WorkOrderModel.swift */; };
 		C972FF6E1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972FF6D1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift */; };
 		C972FF701C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972FF6F1C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift */; };
 		C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C972FF721C19FA0900D34EB2 /* Messages.storyboard */; };
@@ -155,6 +161,8 @@
 		C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSelectionChemCheckoutTableViewController.swift; sourceTree = "<group>"; };
 		C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolOpeningPDFViewController.swift; sourceTree = "<group>"; };
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
+		C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkOrderPDFTemplate.storyboard; sourceTree = "<group>"; };
+		C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderPDFTemplateViewController.swift; sourceTree = "<group>"; };
 		C9140FB01C30EBE900F9D624 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageTableViewController.swift; sourceTree = "<group>"; };
 		C91AC6411BFD85BA00E09B22 /* SOIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOIModel.swift; sourceTree = "<group>"; };
@@ -195,6 +203,10 @@
 		C96F79AD1BFC44ED00C13615 /* inSparkle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "inSparkle-Bridging-Header.h"; sourceTree = "<group>"; };
 		C96F79AE1BFC44ED00C13615 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		C96F79AF1BFC44ED00C13615 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		C9709C1B1C72D144000ED6EA /* WorkOrderMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkOrderMain.storyboard; sourceTree = "<group>"; };
+		C9709C1D1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrdersMainTableViewCell.swift; sourceTree = "<group>"; };
+		C9709C1F1C72D3A4000ED6EA /* WorkOrdersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrdersTableViewController.swift; sourceTree = "<group>"; };
+		C9709C211C72D3C9000ED6EA /* WorkOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderModel.swift; sourceTree = "<group>"; };
 		C972FF6D1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExistingTimePunchTableViewController.swift; sourceTree = "<group>"; };
 		C972FF6F1C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimeDatePickerViewController.swift; sourceTree = "<group>"; };
 		C972FF721C19FA0900D34EB2 /* Messages.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Messages.storyboard; sourceTree = "<group>"; };
@@ -390,8 +402,6 @@
 			isa = PBXGroup;
 			children = (
 				C95008601C61C08E00F5351C /* GeneratePDF.storyboard */,
-				C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */,
-				C9DC84631C6251A300C41B6A /* OpeningPDFTemplate.storyboard */,
 				C95008621C61C11800F5351C /* PDFGenerateViewController.swift */,
 			);
 			name = "Generate PDF";
@@ -475,6 +485,19 @@
 			name = KeychainWrapper;
 			sourceTree = "<group>";
 		};
+		C9709C1A1C72D12F000ED6EA /* Work Orders */ = {
+			isa = PBXGroup;
+			children = (
+				C9709C1B1C72D144000ED6EA /* WorkOrderMain.storyboard */,
+				C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */,
+				C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */,
+				C9709C1D1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift */,
+				C9709C1F1C72D3A4000ED6EA /* WorkOrdersTableViewController.swift */,
+				C9709C211C72D3C9000ED6EA /* WorkOrderModel.swift */,
+			);
+			name = "Work Orders";
+			sourceTree = "<group>";
+		};
 		C972FF711C19F9F100D34EB2 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +544,7 @@
 				C950085F1C61C05400F5351C /* Generate PDF */,
 				C90915641C183D8600FC7E54 /* inSparkle.entitlements */,
 				C94C1CC01C3CB98900F568B9 /* Customer Lookup */,
+				C9709C1A1C72D12F000ED6EA /* Work Orders */,
 				C9585F321C17588D008AB918 /* Admin */,
 				C972FF711C19F9F100D34EB2 /* Messages */,
 				C9585F231C16511A008AB918 /* Resource */,
@@ -619,6 +643,8 @@
 		C9CC66A41C0D0E6D0000EDE6 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */,
+				C9DC84631C6251A300C41B6A /* OpeningPDFTemplate.storyboard */,
 				C972FF741C1A1ACF00D34EB2 /* Schedule.storyboard */,
 				C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */,
 				C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */,
@@ -798,6 +824,7 @@
 				C9F0FF961C18A646005EEE28 /* TimeCardManagement.storyboard in Resources */,
 				C99D3E4D1BF5BD3700D30F96 /* LaunchScreen.storyboard in Resources */,
 				C9585F251C165179008AB918 /* ScannerBeep.wav in Resources */,
+				C9709C1C1C72D144000ED6EA /* WorkOrderMain.storyboard in Resources */,
 				C99D3E4A1BF5BD3700D30F96 /* Assets.xcassets in Resources */,
 				C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */,
 				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
@@ -817,6 +844,7 @@
 				C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */,
 				C96EF7FE1C14CDDD00C4D2C1 /* TimeClock.storyboard in Resources */,
 				C972FF761C1A1ACF00D34EB2 /* Schedule.storyboard in Resources */,
+				C91120861C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard in Resources */,
 				C9585F2B1C174C0F008AB918 /* TimeClockReport.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -916,6 +944,7 @@
 				C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */,
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C9FB1ED91C6EC5A100663EB7 /* ChemicalData.swift in Sources */,
+				C9709C1E1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
 				C9F7A9B21C6FE771001A6555 /* ChemCartTableViewController.swift in Sources */,
 				C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */,
@@ -932,7 +961,9 @@
 				C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */,
 				C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */,
 				C91BB3721C2A72B900132946 /* MessagesTableViewController.swift in Sources */,
+				C9709C221C72D3C9000ED6EA /* WorkOrderModel.swift in Sources */,
 				C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */,
+				C9709C201C72D3A4000ED6EA /* WorkOrdersTableViewController.swift in Sources */,
 				C972FF6E1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift in Sources */,
 				C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */,
 				C9C8E1C31C32175600191C17 /* MessageEmployeeListTableViewController.swift in Sources */,
@@ -975,6 +1006,7 @@
 				C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */,
 				C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */,
 				C9F7A9B61C701614001A6555 /* UserPINViewController.swift in Sources */,
+				C91120881C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
