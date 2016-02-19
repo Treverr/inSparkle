@@ -26,6 +26,4 @@ public class WorkOrdersMainTableViewCell: UITableViewCell {
         statusLabel.text = status
         
     }
-    
-    
 }

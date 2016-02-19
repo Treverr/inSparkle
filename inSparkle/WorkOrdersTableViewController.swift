@@ -7,34 +7,50 @@
 //
 
 import UIKit
+import Parse
 
 class WorkOrdersTableViewController: UITableViewController {
+    
+    var theWorkOrders : [WorkOrders]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    override func viewWillAppear(animated: Bool) {
+        getWorkOrders()
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return theWorkOrders.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("workOrder") as! WorkOrdersMainTableViewCell
+        
+        let customerName = theWorkOrders[indexPath.row].customerName
+        let dateCreated = GlobalFunctions().stringFromDateShortStyle(theWorkOrders[indexPath.row].date)
+        let theStatus = theWorkOrders[indexPath.row].status
+        
+        cell.configureCell(customerName, dateCreated: dateCreated, status: theStatus)
+        
+        return cell
+    }
+    
+    func getWorkOrders() {
+        
+        let query = WorkOrders.query()
+        query?.findObjectsInBackgroundWithBlock({ (workOrders : [PFObject]?, error :NSError?) in
+            if error == nil {
+                for order in workOrders! {
+                    self.theWorkOrders.append(order as! WorkOrders)
+                }
+                self.tableView.reloadData()
+            }
+        })
+        
     }
 
 }

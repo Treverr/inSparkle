@@ -47,7 +47,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 selectedEmployee = MessagesDataObjects.selectedEmp
             }
             
-            if existingMessage != nil && isSent == false {
+            if existingMessage != nil && isSent == false && existingMessage?.unread == true {
                 existingMessage!.status = "Read"
                 existingMessage!.statusTime = NSDate()
                 existingMessage!.unread = false

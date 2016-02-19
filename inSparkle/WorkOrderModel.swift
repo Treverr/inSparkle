@@ -44,9 +44,14 @@ class WorkOrders : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "customerAltPhone") }
     }
     
-    var dateLabel : NSDate! {
-        get {return objectForKey("dateLabel") as! NSDate}
-        set { setObject(newValue, forKey: "dateLabel") }
+    var date : NSDate! {
+        get {return objectForKey("date") as! NSDate}
+        set { setObject(newValue, forKey: "date") }
+    }
+    
+    var status : String {
+        get {return objectForKey("status") as! String}
+        set { setObject(newValue, forKey: "status") }
     }
     
     var schedTime : NSDate? {
