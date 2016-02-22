@@ -39,9 +39,9 @@ class WorkOrders : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "customerPhone") }
     }
     
-    var customerAltPhone : String! {
-        get {return objectForKey("customerAltPhone") as! String}
-        set { setObject(newValue, forKey: "customerAltPhone") }
+    var customerAltPhone : String? {
+        get {return objectForKey("customerAltPhone") as? String}
+        set { setObject(newValue!, forKey: "customerAltPhone") }
     }
     
     var date : NSDate! {

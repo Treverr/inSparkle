@@ -194,4 +194,8 @@ extension ChemicalCheckoutViewController : UITableViewDelegate, UITableViewDataS
         
     }
     
+    @IBAction func close(sender : AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }

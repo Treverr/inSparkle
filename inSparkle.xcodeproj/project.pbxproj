@@ -17,6 +17,7 @@
 		C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */; };
 		C91120861C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */; };
 		C91120881C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */; };
+		C911BA381C7B637000AC8364 /* AddEditWorkOderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911BA371C7B637000AC8364 /* AddEditWorkOderTableViewController.swift */; };
 		C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB01C30EBE900F9D624 /* UserModel.swift */; };
 		C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */; };
 		C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AC6411BFD85BA00E09B22 /* SOIModel.swift */; };
@@ -163,6 +164,7 @@
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
 		C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkOrderPDFTemplate.storyboard; sourceTree = "<group>"; };
 		C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderPDFTemplateViewController.swift; sourceTree = "<group>"; };
+		C911BA371C7B637000AC8364 /* AddEditWorkOderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditWorkOderTableViewController.swift; sourceTree = "<group>"; };
 		C9140FB01C30EBE900F9D624 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageTableViewController.swift; sourceTree = "<group>"; };
 		C91AC6411BFD85BA00E09B22 /* SOIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOIModel.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */,
 				C9709C1D1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift */,
 				C9709C1F1C72D3A4000ED6EA /* WorkOrdersTableViewController.swift */,
+				C911BA371C7B637000AC8364 /* AddEditWorkOderTableViewController.swift */,
 				C9709C211C72D3C9000ED6EA /* WorkOrderModel.swift */,
 			);
 			name = "Work Orders";
@@ -942,6 +945,7 @@
 				C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */,
 				C91B6B301C5FD313006C761D /* AddEditMessageNoteViewController.swift in Sources */,
 				C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */,
+				C911BA381C7B637000AC8364 /* AddEditWorkOderTableViewController.swift in Sources */,
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C9FB1ED91C6EC5A100663EB7 /* ChemicalData.swift in Sources */,
 				C9709C1E1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift in Sources */,

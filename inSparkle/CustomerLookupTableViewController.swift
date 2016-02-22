@@ -167,6 +167,12 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
                 NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnNewMessage", object: nil)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
+            if fromVC == "AddEditWorkOrder" {
+                CustomerLookupObjects.slectedCustomer = selectedCx
+                CustomerLookupObjects.fromVC = nil
+                NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnAddEditWorkOrder", object: nil)
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
     }
     

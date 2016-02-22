@@ -11,7 +11,7 @@ import Parse
 
 class WorkOrdersTableViewController: UITableViewController {
     
-    var theWorkOrders : [WorkOrders]!
+    var theWorkOrders = [WorkOrders]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class WorkOrdersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("workOrder") as! WorkOrdersMainTableViewCell
         
         let customerName = theWorkOrders[indexPath.row].customerName
-        let dateCreated = GlobalFunctions().stringFromDateShortStyle(theWorkOrders[indexPath.row].date)
+        let dateCreated = theWorkOrders[indexPath.row].date
         let theStatus = theWorkOrders[indexPath.row].status
         
         cell.configureCell(customerName, dateCreated: dateCreated, status: theStatus)
@@ -40,6 +40,7 @@ class WorkOrdersTableViewController: UITableViewController {
     }
     
     func getWorkOrders() {
+        self.theWorkOrders.removeAll()
         
         let query = WorkOrders.query()
         query?.findObjectsInBackgroundWithBlock({ (workOrders : [PFObject]?, error :NSError?) in
