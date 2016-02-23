@@ -14,5 +14,6 @@ public class PartsTableViewCell: UITableViewCell {
     @IBOutlet var qtyLabel: UILabel!
     @IBOutlet var addQty: UIButton!
     @IBOutlet var subQty: UIButton!
+    @IBOutlet var qtyTextField: UITextField!
 
 }
