@@ -224,6 +224,14 @@ class GlobalFunctions {
         return theReturn!
     }
     
+    func dateFromShortDateShortTime(dateString : String) -> NSDate {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MM/dd/yy h:mm a"
+        let theReturn = formatter.dateFromString(dateString)
+        
+        return theReturn!
+    }
+    
     func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
         let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
         let url = NSURL.fileURLWithPath(path!)

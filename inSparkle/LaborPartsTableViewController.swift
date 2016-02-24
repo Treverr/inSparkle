@@ -84,7 +84,8 @@ class LaborPartsTableViewController : UITableViewController {
     }
     
     @IBAction func saveLabor(sender : AnyObject) {
-        
+        NSNotificationCenter.defaultCenter().postNotificationName("UpdateLaborArray", object: self.labor)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func cancel(sender : AnyObject) {

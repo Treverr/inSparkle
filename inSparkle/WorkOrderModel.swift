@@ -29,11 +29,6 @@ class WorkOrders : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "customerAddress") }
     }
     
-    var customerAddressCity : String! {
-        get {return objectForKey("customerAddressCity") as! String}
-        set { setObject(newValue, forKey: "customerAddressCity") }
-    }
-    
     var customerPhone : String! {
         get {return objectForKey("customerPhone") as! String}
         set { setObject(newValue, forKey: "customerPhone") }
@@ -49,9 +44,9 @@ class WorkOrders : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "date") }
     }
     
-    var status : String {
-        get {return objectForKey("status") as! String}
-        set { setObject(newValue, forKey: "status") }
+    var status : String? {
+        get {return objectForKey("status") as? String}
+        set { setObject(newValue!, forKey: "status") }
     }
     
     var schedTime : NSDate? {
@@ -79,29 +74,24 @@ class WorkOrders : PFObject, PFSubclassing {
         set { setObject(newValue!, forKey: "reccomendation") }
     }
     
-    var tripOneDate : NSDate? {
-        get {return objectForKey("tripOneDate") as? NSDate}
-        set { setObject(newValue!, forKey: "tripOneDate") }
+    var tripOneArrive : NSDate? {
+        get {return objectForKey("tripOneArrive") as? NSDate}
+        set { setObject(newValue!, forKey: "tripOneArrive") }
     }
     
-    var tripOneTimeArrival : NSDate? {
-        get {return objectForKey("tripOneTimeArrival") as? NSDate}
-        set { setObject(newValue!, forKey: "tripOneTimeArrival") }
+    var tripOneDepart : NSDate? {
+        get {return objectForKey("tripOneDepart") as? NSDate}
+        set { setObject(newValue!, forKey: "tripOneDepart") }
     }
     
-    var tripOneTimeDepart : NSDate? {
-        get {return objectForKey("tripOneTimeDepart") as? NSDate}
-        set { setObject(newValue!, forKey: "tripOneTimeDepart") }
+    var tripTwoArrive : NSDate? {
+        get {return objectForKey("tripTwoArrive") as? NSDate}
+        set { setObject(newValue!, forKey: "tripTwoArrive") }
     }
     
-    var tripTwoTimeArrival : NSDate? {
-        get {return objectForKey("tripTwoTimeArrival") as? NSDate}
-        set { setObject(newValue!, forKey: "tripTwoTimeArrival") }
-    }
-    
-    var tripTwoTimeDepart : NSDate? {
-        get {return objectForKey("tripTwoTimeDepart") as? NSDate}
-        set { setObject(newValue!, forKey: "tripTwoTimeDepart") }
+    var tripTwoDepart : NSDate? {
+        get {return objectForKey("tripTwoDepart") as? NSDate}
+        set { setObject(newValue!, forKey: "tripTwoDepart") }
     }
     
     var unitMake : String? {
