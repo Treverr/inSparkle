@@ -31,8 +31,10 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if parts.count != 0 {
-            managePartsLabel.text = String(parts.count)
+        if parts != nil {
+            if parts.count != 0 {
+              managePartsLabel.text = "Manage Parts (\(self.parts.count))"
+            }
         }
         
         workOrderDatePickerChanged()
@@ -49,7 +51,9 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         if segue.identifier == "parts" {
             let dest = segue.destinationViewController as! WorkOrderPartsTableViewController
             if parts != nil {
-                dest.parts = self.parts
+                if parts.count != 0 {
+                    managePartsLabel.text = String(parts.count)
+                }
             }
         }
     }
@@ -57,7 +61,7 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     func UpdatePartsArray(notification : NSNotification) {
         self.parts = notification.object as! [String]
         if parts.count != 0 {
-            managePartsLabel.text = String(parts.count)
+            managePartsLabel.text = "Manage Parts (\(self.parts.count))"
         }
     }
     
