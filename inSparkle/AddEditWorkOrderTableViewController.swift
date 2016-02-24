@@ -20,25 +20,44 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     @IBOutlet var unitMake: UITextField!
     @IBOutlet var unitModel: UITextField!
     @IBOutlet var unitSerial: UITextField!
+    @IBOutlet var managePartsLabel: UILabel!
+    
+    var parts : [String]!
     
     @IBOutlet var wordOrderDatePicker: UIDatePicker!
     
+    @IBOutlet public var partsContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        wtbpTextView.delegate = self
+        if parts.count != 0 {
+            managePartsLabel.text = String(parts.count)
+        }
         
         workOrderDatePickerChanged()
         wordOrderDatePicker.hidden = true
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("UpdateCustomerFields"), name: "UpdateFieldsOnAddEditWorkOrder", object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("UpdatePartsArray:"), name: "UpdatePartsArray", object: nil)
     }
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "customerLookup" {
             CustomerLookupObjects.fromVC = "AddEditWorkOrder"
+        }
+        if segue.identifier == "parts" {
+            let dest = segue.destinationViewController as! WorkOrderPartsTableViewController
+            if parts != nil {
+                dest.parts = self.parts
+            }
+        }
+    }
+    
+    func UpdatePartsArray(notification : NSNotification) {
+        self.parts = notification.object as! [String]
+        if parts.count != 0 {
+            managePartsLabel.text = String(parts.count)
         }
     }
     
@@ -89,6 +108,7 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
     
     
     @IBAction func datePromisedPickerAction(sender: AnyObject) {

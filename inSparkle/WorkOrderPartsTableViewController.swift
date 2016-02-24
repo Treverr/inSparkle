@@ -10,9 +10,10 @@ import UIKit
 
 class WorkOrderPartsTableViewController: UITableViewController {
     
-    var parts = ["dildo", "penis", "dildo"]
+    var parts = [String]()
     var counts : [String:Int] = [:]
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,18 +23,31 @@ class WorkOrderPartsTableViewController: UITableViewController {
         
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resize"), name: UIKeyboardWillHideNotification, object: nil)
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return counts.count + 1
+    }
+    
+    @IBAction func saveParts(sender: AnyObject) {
+        NSNotificationCenter.defaultCenter().postNotificationName("UpdatePartsArray", object: self.parts)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func cancelAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func resize() {
+        self.preferredContentSize = self.view.intrinsicContentSize()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -78,12 +92,12 @@ class WorkOrderPartsTableViewController: UITableViewController {
                 for item in self.parts {
                     self.counts[item] = (self.counts[item] ?? 0) + 1
                 }
-//                self.tableView.beginUpdates()
-//                self.tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: self.parts.count - 1, inSection: 0)], withRowAnimation: .Automatic)
-//                self.tableView.endUpdates()
                 self.tableView.reloadData()
                 print(self.parts)
                 print(self.counts)
+                self.tableView.setNeedsDisplay()
+                self.preferredContentSize = self.tableView.contentSize
+                
             })
             addPart.addAction(cancel)
             addPart.addAction(add)
@@ -95,6 +109,7 @@ class WorkOrderPartsTableViewController: UITableViewController {
 extension WorkOrderPartsTableViewController : UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
+        
         let row = textField.tag
         let part = parts[row]
         var current = counts[part]

@@ -16,6 +16,8 @@ class WorkOrdersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationbar() 
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -52,6 +54,13 @@ class WorkOrdersTableViewController: UITableViewController {
             }
         })
         
+    }
+    
+    func setupNavigationbar()  {
+        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
 
 }

@@ -46,10 +46,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="5vp-uZ-Cxg" kind="relationship" relationship="viewControllers" id="RNZ-Hh-sb7"/>
+                        <segue destination="Ev2-g2-idG" kind="relationship" relationship="viewControllers" id="wfW-KX-hcZ"/>
                         <segue destination="6QX-js-vdg" kind="relationship" relationship="viewControllers" id="Z2U-dK-FqC"/>
                         <segue destination="Dq3-5h-CbB" kind="relationship" relationship="viewControllers" id="jGD-rs-2Er"/>
-                        <segue destination="Ev2-g2-idG" kind="relationship" relationship="viewControllers" id="wfW-KX-hcZ"/>
+                        <segue destination="5vp-uZ-Cxg" kind="relationship" relationship="viewControllers" id="RNZ-Hh-sb7"/>
                         <segue destination="ZnD-Zf-9vi" kind="relationship" relationship="viewControllers" id="qBY-My-lnJ"/>
                     </connections>
                 </tabBarController>
