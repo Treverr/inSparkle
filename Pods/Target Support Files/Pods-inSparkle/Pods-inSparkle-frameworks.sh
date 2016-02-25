@@ -86,6 +86,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-inSparkle/BRYXBanner.framework"
   install_framework "Pods-inSparkle/CalendarView.framework"
+  install_framework "Pods-inSparkle/DropDown.framework"
   install_framework "Pods-inSparkle/FXImageView.framework"
   install_framework "Pods-inSparkle/GooglePlacesAutocomplete.framework"
   install_framework "Pods-inSparkle/IQKeyboardManagerSwift.framework"
@@ -103,6 +104,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-inSparkle/BRYXBanner.framework"
   install_framework "Pods-inSparkle/CalendarView.framework"
+  install_framework "Pods-inSparkle/DropDown.framework"
   install_framework "Pods-inSparkle/FXImageView.framework"
   install_framework "Pods-inSparkle/GooglePlacesAutocomplete.framework"
   install_framework "Pods-inSparkle/IQKeyboardManagerSwift.framework"

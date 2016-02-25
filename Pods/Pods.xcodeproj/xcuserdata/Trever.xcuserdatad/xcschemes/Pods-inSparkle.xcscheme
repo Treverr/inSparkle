@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BEEA831F8275597BE3606D8C'
+               BlueprintIdentifier = '231B000A71035FAC2FE1DCAC'
                BlueprintName = 'Pods-inSparkle'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_inSparkle.framework'>

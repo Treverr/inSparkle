@@ -36,7 +36,7 @@ class WorkOrdersTableViewController: UITableViewController {
         let dateCreated = theWorkOrders[indexPath.row].date
         let theStatus = theWorkOrders[indexPath.row].status
         
-        cell.configureCell(customerName, dateCreated: dateCreated, status: theStatus)
+        cell.configureCell(customerName, dateCreated: dateCreated, status: theStatus!)
         
         return cell
     }
@@ -62,5 +62,16 @@ class WorkOrdersTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "existing" {
+            let selected = theWorkOrders[tableView.indexPathForSelectedRow!.row]
+            let dest = segue.destinationViewController as! AddEditWorkOrderTableViewController
+            dest.workOrderObject = selected
+        }
+    }
+    
+    @IBAction func unwindToWOMain(segue : UIStoryboardSegue) {
+        
+    }
 }

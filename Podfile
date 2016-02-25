@@ -17,6 +17,7 @@ pod "UIView+HierarchicalDrawing"
 pod "iCarousel"
 pod "MIBadgeButton-Swift"
 pod 'FXImageView'
+pod 'DropDown'
 
 end
 

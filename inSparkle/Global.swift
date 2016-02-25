@@ -208,6 +208,15 @@ class GlobalFunctions {
         return dateString
     }
     
+    func stringFromDateShortTimeShortDate(theDate : NSDate) -> String {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .ShortStyle
+        let dateString = formatter.stringFromDate(theDate)
+        
+        return dateString
+    }
+    
     func dateFromShortDateString(dateString : String) -> NSDate {
         let formatter = NSDateFormatter()
         formatter.dateFormat = "MM/dd/yy"
@@ -226,7 +235,7 @@ class GlobalFunctions {
     
     func dateFromShortDateShortTime(dateString : String) -> NSDate {
         let formatter = NSDateFormatter()
-        formatter.dateFormat = "MM/dd/yy h:mm a"
+        formatter.dateFormat = "MM/dd/yy, h:mm a"
         let theReturn = formatter.dateFromString(dateString)
         
         return theReturn!
@@ -274,6 +283,16 @@ class GlobalFunctions {
                 }
             }
         })
+    }
+    
+    func qsort(input: [String]) -> [String] {
+        if let (pivot, rest) = input.decompose {
+            let lesser = rest.filter { $0 < pivot }
+            let greater = rest.filter { $0 >= pivot }
+            return qsort(lesser) + [pivot] + qsort(greater)
+        } else {
+            return []
+        }
     }
     
     func isMorning(date: NSDate) -> Bool {

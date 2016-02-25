@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import DropDown
 
 class AddEditWorkOrderTableViewController: UITableViewController {
     
@@ -29,11 +30,18 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     @IBOutlet var tripTwoDateTimeDepartLabel: UILabel!
     @IBOutlet var techLabel: UILabel!
     @IBOutlet var reccomendationTextView: UITextView!
+    @IBOutlet var techCell: UITableViewCell!
+    @IBOutlet var statusLabel: UILabel!
     
     var parts : [String]!
     var labor : [String]!
+    var techDataSource = [String]()
+    var techDict = [String : Employee]()
+    var selectedTech : Employee?
     
     var workOrderObject : WorkOrders?
+    
+    let dropDownTech = DropDown()
     
     @IBOutlet var wordOrderDatePicker: UIDatePicker!
     @IBOutlet var tripOneArrivePicker: UIDatePicker!
@@ -44,9 +52,18 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getTechs()
+        
+        statusLabel.text = "New"
+        
+        if workOrderObject != nil {
+            displayExistingWorkOrder()
+            self.navigationItem.title = "Edit Work Order"
+        }
+        
         if parts != nil {
             if parts.count != 0 {
-                managePartsLabel.text = "Manage Parts (\(self.parts.count))"
+                
             }
         }
         
@@ -61,6 +78,122 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("UpdateCustomerFields"), name: "UpdateFieldsOnAddEditWorkOrder", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("UpdatePartsArray:"), name: "UpdatePartsArray", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("UpdateLaborArray:"), name: "UpdateLaborArray", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateStatusLabel:"), name: "updateStatusLabel", object: nil)
+        
+        setUpDropDownTech()
+
+    }
+    
+    func getTechs() {
+        let techs = Employee.query()
+        techs?.orderByAscending("firstName")
+        techs?.findObjectsInBackgroundWithBlock({ (techs : [PFObject]?, error : NSError?) in
+            if error == nil {
+                let theTechs = techs as! [Employee]
+                for tech in theTechs {
+                    self.techDict[tech.firstName + " " + tech.lastName] = tech
+                }
+                print(self.techDict)
+                var techList : [String] {
+                    get {
+                        return Array(self.techDict.keys)
+                    }
+                }
+                print(techList)
+                var sorted = GlobalFunctions().qsort(techList)
+                print(techList)
+                self.techDataSource = sorted
+                self.dropDownTech.dataSource = self.techDataSource
+            }
+        })
+    }
+    
+    func setUpDropDownTech() {
+        dropDownTech.anchorView = techCell
+        dropDownTech.direction = .Any
+        dropDownTech.bottomOffset = CGPoint(x: dropDownTech.anchorView!.bounds.width, y: dropDownTech.anchorView!.bounds.height)
+        dropDownTech.topOffset = CGPoint(x: dropDownTech.anchorView!.bounds.width, y: -dropDownTech.anchorView!.bounds.height)
+        dropDownTech.dismissMode = .Automatic
+        dropDownTech.width = self.view.frame.size.width / 2
+        dropDownTech.selectionAction = { [unowned self] (index, item) in
+            self.techLabel.text = item
+            self.techLabel.textColor = UIColor.blackColor()
+            self.selectedTech = self.techDict[item]
+            print(self.selectedTech!)
+        }
+    }
+    
+    func updateStatusLabel(notification : NSNotification) {
+        let status = notification.object as! String
+        statusLabel.text = status
+    }
+    
+    func displayExistingWorkOrder() {
+        if workOrderObject?.customerName != nil {
+            customerNameTextField.text = workOrderObject!.customerName
+        }
+        if workOrderObject?.customerAddress != nil {
+            customerAddressTextField.text = workOrderObject!.customerAddress
+        }
+        if workOrderObject?.customerPhone != nil {
+            customerPhoneTextField.text = workOrderObject!.customerPhone
+        }
+        if workOrderObject?.customerAltPhone != nil {
+            customerAltPhoneTextField.text = workOrderObject!.customerAltPhone
+        }
+        if workOrderObject?.date != nil {
+            dateLabel.text = GlobalFunctions().stringFromDateShortStyle(workOrderObject!.date)
+            dateLabel.textColor = UIColor.blackColor()
+        }
+        if workOrderObject?.technician != nil {
+            techLabel.text = workOrderObject!.technician!
+            techLabel.textColor = UIColor.blackColor()
+        }
+        if workOrderObject?.workToBePerformed != nil {
+            wtbpTextView.text = workOrderObject!.workToBePerformed
+        }
+        if workOrderObject?.descOfWork != nil {
+            descOfWork.text = workOrderObject!.descOfWork
+        }
+        if workOrderObject?.reccomendation != nil {
+            reccomendationTextView.text = workOrderObject!.reccomendation
+        }
+        if workOrderObject?.unitMake != nil {
+            unitMake.text = workOrderObject!.unitMake
+        }
+        if workOrderObject?.unitModel != nil {
+            unitModel.text = workOrderObject!.unitModel
+        }
+        if workOrderObject?.unitSerial != nil {
+            unitSerial.text = workOrderObject!.unitSerial
+        }
+        if workOrderObject?.parts != nil {
+            self.parts = workOrderObject!.parts as! [String]
+            if parts.count != 0 {
+            managePartsLabel.text = "Manage Parts (\(self.parts.count))"
+            }
+        }
+        if workOrderObject?.status != nil {
+            statusLabel.text = workOrderObject?.status
+        }
+        if workOrderObject?.labor != nil {
+            self.labor = workOrderObject!.labor as! [String]
+            if labor.count != 0 {
+            manageLaborLabel.text = "Manage Parts (\(self.labor.count))"
+            }
+        }
+        if workOrderObject?.tripOneArrive != nil {
+            tripOneDateTimeArriveLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripOneArrive!)
+        }
+        if workOrderObject?.tripOneDepart != nil {
+            tripOneDateTimeDepartLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripOneDepart!)
+        }
+        if workOrderObject?.tripTwoArrive != nil {
+            tripTwoDateTimeArriveLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripTwoArrive!)
+        }
+        if workOrderObject?.tripTwoDepart != nil {
+            tripTwoDateTimeDepartLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripTwoDepart!)
+        }
     }
     
     
@@ -91,12 +224,19 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         if parts.count != 0 {
             managePartsLabel.text = "Manage Parts (\(self.parts.count))"
         }
+        if parts.count == 0 {
+            managePartsLabel.text = "Manage Parts"
+        }
     }
     
     func UpdateLaborArray(notification : NSNotification) {
         self.labor = notification.object as! [String]
+        print(notification.object)
         if labor.count != 0 {
             manageLaborLabel.text = "Manage Labor (\(self.labor.count))"
+        }
+        if labor.count == 0 {
+            manageLaborLabel.text = "Manage Labor"
         }
     }
     
@@ -152,6 +292,10 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         
         if cell?.reuseIdentifier == "tripTwoDepart" {
             toggleTripTwoDepartPicker()
+        }
+        
+        if cell?.reuseIdentifier == "techCell" {
+            dropDownTech.show()
         }
         
     }
@@ -295,9 +439,13 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     }
     
     @IBAction func tripTwoArrivePickerAction(sender: AnyObject) {
+        tripTwoDateTimeArriveLabel.textColor = UIColor.blackColor()
+        tripTwoArrivePickerChanged()
     }
     
     @IBAction func tripTwoDepartPickerAction(sender: AnyObject) {
+        tripTwoDateTimeDepartLabel.textColor = UIColor.blackColor()
+        tripTwoDepartPickerChanged()
     }
     
     @IBAction func saveAction(sender: AnyObject) {
@@ -339,12 +487,16 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                 workOrderObject?.unitSerial = unitSerial.text
             }
             if self.parts != nil {
-                if self.parts.count != 0 {
+                if self.parts.count == 0 {
+                    workOrderObject?.parts = []
+                } else {
                     workOrderObject?.parts = self.parts
                 }
             }
             if self.labor != nil {
-                if self.labor.count != 0 {
+                if self.labor.count == 0 {
+                    workOrderObject?.labor? = []
+                } else {
                     workOrderObject?.labor = self.labor
                 }
             }
@@ -360,24 +512,27 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             if tripTwoDateTimeDepartLabel.text != "date & time" {
                 workOrderObject?.tripTwoDepart = GlobalFunctions().dateFromShortDateShortTime(tripTwoDateTimeDepartLabel.text!)
             }
-            workOrderObject?.status = "New"
+            workOrderObject?.status = statusLabel.text
             print(workOrderObject)
             workOrderObject?.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
                 if success == true {
-                    let successAlert = UIAlertController(title: "Success", message: nil, preferredStyle: .Alert)
+                    let successAlert = UIAlertController(title: "Saved!", message: nil, preferredStyle: .Alert)
                     self.presentViewController(successAlert, animated: true, completion: {
                         let delay = 1.0 * Double(NSEC_PER_SEC)
                         let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                         
                         dispatch_after(time, dispatch_get_main_queue(), {
                             self.dismissViewControllerAnimated(true, completion: {
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                                self.performSegueWithIdentifier("unwindToWOMain", sender: nil)
                             })
                         })
                     })
                 }
                 if error != nil {
-                    print(error)
+                    let errorAlert = UIAlertController(title: "Error", message: "There was an error attempting to save the work order, please try again.", preferredStyle: .Alert)
+                    let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                    errorAlert.addAction(okayButton)
+                    self.presentViewController(errorAlert, animated: true, completion: nil)
                 }
             })
         }
@@ -386,4 +541,10 @@ class AddEditWorkOrderTableViewController: UITableViewController {
 
 extension AddEditWorkOrderTableViewController : UITextViewDelegate {
     
+}
+
+extension Array {
+    var decompose : (head: Element, tail: [Element])? {
+        return (count > 0) ? (self[0], Array(self[1..<count])) : nil
+    }
 }
