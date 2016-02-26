@@ -58,7 +58,27 @@ class MessagesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        refresh()
+        let currentUser : PFUser?
+        
+        currentUser = PFUser.currentUser()
+        
+        if (currentUser == nil) {
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                
+                let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+                self.presentViewController(viewController, animated: true, completion: nil)
+            })
+        }
+        
+        if (currentUser?.sessionToken == nil) {
+            PFUser.logOut()
+            let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+            self.presentViewController(viewController, animated: true, completion: nil)
+        }
+        
+        if currentUser != nil {
+            refresh()
+        }
     }
     
     func refresh() {

@@ -24,6 +24,8 @@ class LaborPartsTableViewController : UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resize"), name: UIKeyboardWillHideNotification, object: nil)
         
+        self.tableView.contentInset = UIEdgeInsets(top: 22, left: 0, bottom: 0, right: 0)
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

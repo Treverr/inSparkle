@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import UIView_HierarchicalDrawing
 
 class WorkOrderPDFTemplateViewController: UIViewController {
     
+    var workOrderObject : WorkOrders!
+    
+    var timeToDismiss : Bool = false
+    
+    @IBOutlet var pdfView: UIView!
     @IBOutlet var customerNameLabel: UILabel!
     @IBOutlet var customerAddressLabel: UILabel!
     @IBOutlet var customerAddressCityLabel: UILabel!
@@ -32,12 +38,262 @@ class WorkOrderPDFTemplateViewController: UIViewController {
     @IBOutlet var unitSerialLabel: UILabel!
     @IBOutlet var partsTableView: UITableView!
     @IBOutlet var laborTableView: UITableView!
+    @IBOutlet var dateCreatedLabel: UILabel!
     
-
+    var partCounts : [String : Int] = [:]
+    var laborCounts : [String : Int] = [:]
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
+        if workOrderObject.parts != nil {
+            for item in workOrderObject.parts! {
+                partCounts[item as! String] = (partCounts[item as! String] ?? 0) + 1
+            }
+        }
+        
+        if workOrderObject.labor != nil {
+            for item in workOrderObject.labor! {
+                laborCounts[item as! String] = (laborCounts[item as! String] ?? 0) + 1
+            }
+        }
+        
+        dateCreatedLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.createdAt!, dateStyle: .ShortStyle, timeStyle: .NoStyle)
+        
+        schedTimeLabel.text = ""
+        customerAddressCityLabel.text = ""
+        
+        laborTableView.delegate = self
+        laborTableView.separatorInset = UIEdgeInsetsZero
+        partsTableView.delegate = self
+        partsTableView.separatorInset = UIEdgeInsetsZero
+        laborTableView.dataSource = self
+        partsTableView.dataSource = self
+        partsTableView.reloadData()
+        laborTableView.reloadData()
+        
+        let gf = GlobalFunctions()
+        if workOrderObject != nil {
+            customerNameLabel.text = workOrderObject.customerName
+            customerAddressLabel.text = workOrderObject.customerAddress
+            customerPhoneLabel.text = workOrderObject.customerPhone
+            if workOrderObject.customerAltPhone != nil {
+                customerAltPhoneLabel.text = workOrderObject.customerAltPhone
+            } else {
+                customerAltPhoneLabel.text = ""
+            }
+            if workOrderObject.date != nil {
+                dateLabel.text = gf.stringFromDateShortStyle(workOrderObject.date)
+            }
+            if workOrderObject.technician != nil {
+                techLabel.text = workOrderObject.technician
+            }
+            if workOrderObject.workToBePerformed != nil {
+                wtbpTextView.text = workOrderObject.workToBePerformed
+            }
+            if workOrderObject.descOfWork != nil {
+                dowTextView.text = workOrderObject.descOfWork
+            }
+            if workOrderObject.reccomendation != nil {
+                recTextView.text = workOrderObject.reccomendation
+            }
+            if workOrderObject.tripOneArrive != nil {
+                tripOneDateLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripOneArrive!, dateStyle: .ShortStyle, timeStyle: .NoStyle)
+                tripOneTimeArriveLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripOneArrive!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+            }
+            if workOrderObject.tripOneDepart != nil {
+                tripOneTimeDepartLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripOneDepart!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+            }
+            if workOrderObject.tripTwoArrive != nil {
+                tripTwoDateLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoArrive!, dateStyle: .ShortStyle, timeStyle: .NoStyle)
+                tripTwoTimeArriveLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoArrive!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+            }
+            if workOrderObject.tripTwoDepart != nil {
+                tripTwoDepartLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoDepart!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+            }
+            if workOrderObject.unitMake != nil {
+                unitMakeLabel.text = workOrderObject.unitMake
+            }
+            if workOrderObject.unitModel != nil {
+                unitModelLabel.text = workOrderObject.unitModel
+            }
+            if workOrderObject.unitSerial != nil {
+                unitSerialLabel.text = workOrderObject.unitSerial
+            }
+        }
 
-        // Do any additional setup after loading the view.
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        if timeToDismiss == false {
+            generatePDF()
+        } else {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+    }
+    
+    func generatePDF() {
+        var pdfData = NSMutableData()
+        let bounds = CGRectMake(0, 0, 612, 792)
+        
+        UIGraphicsBeginPDFContextToData(pdfData, bounds, nil)
+        
+        UIGraphicsBeginPDFPage()
+        
+        guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
+        
+        CGContextSetInterpolationQuality(pdfContext, .High)
+        pdfView.drawHierarchy()
+        
+        UIGraphicsEndPDFContext()
+        
+        if let docDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first {
+            let documentFileName = docDir + "/" + "WorkOrder.pdf"
+            print(documentFileName)
+            pdfData.writeToFile(documentFileName, atomically: true)
+            
+            if self.isViewLoaded() {
+                let docURL = NSURL.fileURLWithPath(documentFileName)
+                print(docURL)
+                var docController : UIDocumentInteractionController!
+                docController = UIDocumentInteractionController(URL: docURL)
+                docController.delegate = self
+                docController.presentPreviewAnimated(true)
+            } else {
+                while self.isViewLoaded() == false {
+                    if self.isViewLoaded() {
+                        let docURL = NSURL.fileURLWithPath(documentFileName)
+                        print(docURL)
+                        var docController : UIDocumentInteractionController!
+                        docController = UIDocumentInteractionController(URL: docURL)
+                        docController.delegate = self
+                        docController.presentPreviewAnimated(true)
+                    } else {
+                        print("Not")
+                    }
+                }
+            }
+        }
+    }
 }
+
+extension WorkOrderPDFTemplateViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var theReturn : Int!
+        if tableView == partsTableView {
+            theReturn = partCounts.count
+        }
+        
+        if tableView == laborTableView {
+            if workOrderObject.labor != nil {
+                theReturn = workOrderObject.labor!.count
+            } else {
+                theReturn = 0
+            }
+        }
+        
+        return theReturn
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var returnCell : UITableViewCell!
+        
+        if tableView == partsTableView {
+            if workOrderObject.parts != nil {
+
+                var keyList : [String] {
+                    get {
+                        return Array(partCounts.keys)
+                    }
+                }
+
+                let cell = tableView.dequeueReusableCellWithIdentifier("partCell") as! PDFPartTableViewCell
+                
+                let partTitle = keyList[indexPath.row]
+                
+                cell.qty.text = String(partCounts[partTitle]!)
+                cell.part.text = partTitle
+                cell.layoutMargins = UIEdgeInsetsZero
+                
+                returnCell = cell
+            }
+        }
+        
+        if tableView == laborTableView {
+            if workOrderObject.parts != nil {
+                
+                var keyList : [String] {
+                    get {
+                        return Array(laborCounts.keys)
+                    }
+                }
+                print(self.partCounts)
+                
+                let cell = tableView.dequeueReusableCellWithIdentifier("laborCell") as! PDFLaborTableViewCell
+                
+                let partTitle = keyList[indexPath.row]
+                
+                cell.qty.text = String(laborCounts[partTitle]!)
+                cell.part.text = partTitle
+                cell.layoutMargins = UIEdgeInsetsZero
+                
+                returnCell = cell
+            }
+        }
+        
+        return returnCell
+    }
+}
+
+
+extension WorkOrderPDFTemplateViewController : UIDocumentInteractionControllerDelegate {
+    
+    func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
+        return self.view.frame
+    }
+    
+    func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
+        timeToDismiss = true
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+        let viewController: UIViewController = UIViewController()
+        self.presentViewController(viewController, animated: true, completion: nil)
+        return viewController
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

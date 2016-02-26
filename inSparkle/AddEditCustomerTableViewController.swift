@@ -145,6 +145,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
     
     override func viewWillDisappear(animated: Bool) {
         AddEditCustomers.theCustomer = nil
+        GoogleAddress.address = nil
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
@@ -174,6 +175,8 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         }
         return true
     }
+    
+    
     
 }
 

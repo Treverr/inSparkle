@@ -111,10 +111,9 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     func setUpDropDownTech() {
         dropDownTech.anchorView = techCell
         dropDownTech.direction = .Any
-        dropDownTech.bottomOffset = CGPoint(x: dropDownTech.anchorView!.bounds.width, y: dropDownTech.anchorView!.bounds.height)
-        dropDownTech.topOffset = CGPoint(x: dropDownTech.anchorView!.bounds.width, y: -dropDownTech.anchorView!.bounds.height)
+        dropDownTech.bottomOffset = CGPoint(x: 0, y: dropDownTech.anchorView!.bounds.height)
+        dropDownTech.topOffset = CGPoint(x: 0, y: -dropDownTech.anchorView!.bounds.height)
         dropDownTech.dismissMode = .Automatic
-        dropDownTech.width = self.view.frame.size.width / 2
         dropDownTech.selectionAction = { [unowned self] (index, item) in
             self.techLabel.text = item
             self.techLabel.textColor = UIColor.blackColor()
@@ -179,19 +178,23 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         if workOrderObject?.labor != nil {
             self.labor = workOrderObject!.labor as! [String]
             if labor.count != 0 {
-            manageLaborLabel.text = "Manage Parts (\(self.labor.count))"
+            manageLaborLabel.text = "Manage Labor (\(self.labor.count))"
             }
         }
         if workOrderObject?.tripOneArrive != nil {
+            tripOneDateTimeArriveLabel.textColor = UIColor.blackColor()
             tripOneDateTimeArriveLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripOneArrive!)
         }
         if workOrderObject?.tripOneDepart != nil {
+            tripOneDateTimeDepartLabel.textColor = UIColor.blackColor()
             tripOneDateTimeDepartLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripOneDepart!)
         }
         if workOrderObject?.tripTwoArrive != nil {
+            tripTwoDateTimeArriveLabel.textColor = UIColor.blackColor()
             tripTwoDateTimeArriveLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripTwoArrive!)
         }
         if workOrderObject?.tripTwoDepart != nil {
+            tripTwoDateTimeDepartLabel.textColor = UIColor.blackColor()
             tripTwoDateTimeDepartLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripTwoDepart!)
         }
     }
@@ -225,7 +228,7 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             managePartsLabel.text = "Manage Parts (\(self.parts.count))"
         }
         if parts.count == 0 {
-            managePartsLabel.text = "Manage Parts"
+            managePartsLabel.text = "Manage Labor"
         }
     }
     
@@ -424,11 +427,14 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     }
     
     @IBAction func datePromisedPickerAction(sender: AnyObject) {
+        tripOneArrivePicker.minimumDate = wordOrderDatePicker.date
+        tripTwoArrivePicker.minimumDate = wordOrderDatePicker.date
         dateLabel.textColor = UIColor.blackColor()
         workOrderDatePickerChanged()
     }
     
     @IBAction func tripOneArrivePickerAction(sender: AnyObject) {
+        tripOneDepartPicker.minimumDate = tripOneArrivePicker.date
         tripOneDateTimeArriveLabel.textColor = UIColor.blackColor()
         tripOneArrivePickerChanged()
     }
@@ -439,6 +445,7 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     }
     
     @IBAction func tripTwoArrivePickerAction(sender: AnyObject) {
+        tripTwoDepartPicker.minimumDate = tripTwoArrivePicker.date
         tripTwoDateTimeArriveLabel.textColor = UIColor.blackColor()
         tripTwoArrivePickerChanged()
     }
@@ -537,6 +544,15 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             })
         }
     }
+    
+    @IBAction func generatePDF(sender: AnyObject) {
+        let sb = UIStoryboard(name: "WorkOrderPDFTemplate", bundle: nil)
+        let vc = sb.instantiateViewControllerWithIdentifier("workOrderPDF") as! WorkOrderPDFTemplateViewController
+        vc.workOrderObject = self.workOrderObject
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    
 }
 
 extension AddEditWorkOrderTableViewController : UITextViewDelegate {

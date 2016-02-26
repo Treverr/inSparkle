@@ -358,7 +358,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     func updateAddressLabel() {
         addressTextField.text = GoogleAddress.address
-        GoogleAddress.address = nil
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
