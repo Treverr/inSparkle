@@ -30,7 +30,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
             self.firstNameTextField.text = self.customer?.firstName?.capitalizedString
             self.lastNameTextField.text = self.customer?.lastName?.capitalizedString
             self.phoneNumberTextField.text = self.customer?.phoneNumber.capitalizedString
-            if self.customer?.addressStreet != nil || self.customer?.addressStreet != "" {
+            if self.customer?.addressStreet != nil {
                 self.addressLabel.textColor = UIColor.blackColor()
                 self.addressLabel.text = "\(self.customer!.addressStreet.capitalizedString) \n" + "\(self.customer!.addressCity.capitalizedString), \(self.customer!.addressState.uppercaseString) \(self.customer!.ZIP)"
             }

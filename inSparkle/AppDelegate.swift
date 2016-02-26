@@ -117,6 +117,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         print(userInfo)
+        if application.applicationState == .Active {
+            let currentInstall = PFInstallation.currentInstallation()
+            if currentInstall.badge != 0 {
+                currentInstall.badge = 0
+                currentInstall.saveEventually()
+            }
+        }
+        
         if let aps = userInfo["aps"] as? NSDictionary {
             
             if let vc = userInfo["vc"] as? String {
