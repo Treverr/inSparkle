@@ -28,8 +28,9 @@ class ManageEmployeeListTableViewController: UITableViewController {
             if error == nil {
                 for emprRes in employeeResults! {
                     self.employeeList.append(emprRes as! Employee)
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
+                
             }
         })
     }
