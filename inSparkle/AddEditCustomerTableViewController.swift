@@ -73,11 +73,22 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         
         saveUpdateButton.setTitle("Saving...", forState: .Normal)
         var accountNumber : String?
+        var oldAccountNumber : String?
+        var emailAccountNumber : String?
         let name : String! = firstNameTextField.text! + " " + lastNameTextField.text!
         let address : String! = addressLabel.text!
         let phoneNumber : String = phoneNumberTextField.text!
         if self.customer != nil {
-            accountNumber = customer?.accountNumber
+            oldAccountNumber = customer?.accountNumber
+            var firstSeven : String!
+            if phoneNumberTextField.text?.characters.count > 7 {
+                let nonFormttedArray = phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+                let acctNumber = nonFormttedArray.joinWithSeparator("")
+                firstSeven = acctNumber.substringFromIndex(phoneNumber.startIndex.advancedBy(3))
+                print(firstSeven)
+                accountNumber = firstSeven
+                emailAccountNumber = oldAccountNumber! + "->" + accountNumber!
+            }
         } else {
             var firstSeven : String!
             if phoneNumberTextField.text?.characters.count > 7 {
@@ -86,9 +97,10 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
                 firstSeven = acctNumber.substringFromIndex(phoneNumber.startIndex.advancedBy(3))
                 print(firstSeven)
                 accountNumber = firstSeven
+                emailAccountNumber = accountNumber
             }
         }
-        CloudCode.AddUpdateCustomerRecord(accountNumber, name: name, address: address, phoneNumber: phoneNumber)
+        CloudCode.AddUpdateCustomerRecord(emailAccountNumber, name: name, address: address, phoneNumber: phoneNumber)
         var addressStreet : String?
         var addressCity : String?
         var addressState : String?
