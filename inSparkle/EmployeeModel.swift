@@ -44,4 +44,10 @@ class Employee: PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "messages") }
     }
     
+    var user : PFUser? {
+        get {return objectForKey("user") as? PFUser}
+        set { setObject(newValue!, forKey: "user") }
+    }
+    
+    
 }

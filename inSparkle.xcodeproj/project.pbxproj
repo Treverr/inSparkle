@@ -70,6 +70,8 @@
 		C974FAD71C205845004D69E4 /* POCRunReportFinalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974FAD61C205845004D69E4 /* POCRunReportFinalTableViewController.swift */; };
 		C974FAD91C20B84D004D69E4 /* POCCalPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974FAD81C20B84D004D69E4 /* POCCalPickerViewController.swift */; };
 		C97757091C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97757081C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift */; };
+		C97D3D3A1C815D55006B9E90 /* Manage Emps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */; };
+		C97D3D3C1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */; };
 		C9856A011C7D648D00E6C87F /* LaborPartsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9856A001C7D648D00E6C87F /* LaborPartsTableViewController.swift */; };
 		C9856A031C7D664800E6C87F /* LaborPartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9856A021C7D664800E6C87F /* LaborPartsTableViewCell.swift */; };
 		C9856A051C7E8B1E00E6C87F /* Work Order Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9856A041C7E8B1E00E6C87F /* Work Order Assets.xcassets */; };
@@ -227,6 +229,8 @@
 		C974FAD61C205845004D69E4 /* POCRunReportFinalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCRunReportFinalTableViewController.swift; sourceTree = "<group>"; };
 		C974FAD81C20B84D004D69E4 /* POCCalPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCCalPickerViewController.swift; sourceTree = "<group>"; };
 		C97757081C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderStatusTableViewController.swift; sourceTree = "<group>"; };
+		C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Manage Emps.storyboard"; sourceTree = "<group>"; };
+		C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
 		C9856A001C7D648D00E6C87F /* LaborPartsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaborPartsTableViewController.swift; sourceTree = "<group>"; };
 		C9856A021C7D664800E6C87F /* LaborPartsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaborPartsTableViewCell.swift; sourceTree = "<group>"; };
 		C9856A041C7E8B1E00E6C87F /* Work Order Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Work Order Assets.xcassets"; sourceTree = "<group>"; };
@@ -440,6 +444,7 @@
 				C9F0FF941C189B66005EEE28 /* Time Card Management */,
 				C9585F331C1758A7008AB918 /* Reports */,
 				C9585F2E1C175505008AB918 /* Admin.storyboard */,
+				C97D3D381C815D14006B9E90 /* Manage Emp */,
 				C9585F371C175BC0008AB918 /* AdminTableViewController.swift */,
 			);
 			name = Admin;
@@ -541,6 +546,15 @@
 				C95AAF411C59A34C009EE697 /* MessageNotesModel.swift */,
 			);
 			name = Messages;
+			sourceTree = "<group>";
+		};
+		C97D3D381C815D14006B9E90 /* Manage Emp */ = {
+			isa = PBXGroup;
+			children = (
+				C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */,
+				C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */,
+			);
+			name = "Manage Emp";
 			sourceTree = "<group>";
 		};
 		C99D3E361BF5BD3700D30F96 = {
@@ -850,6 +864,7 @@
 			files = (
 				C9F0FF961C18A646005EEE28 /* TimeCardManagement.storyboard in Resources */,
 				C99D3E4D1BF5BD3700D30F96 /* LaunchScreen.storyboard in Resources */,
+				C97D3D3A1C815D55006B9E90 /* Manage Emps.storyboard in Resources */,
 				C9585F251C165179008AB918 /* ScannerBeep.wav in Resources */,
 				C9709C1C1C72D144000ED6EA /* WorkOrderMain.storyboard in Resources */,
 				C99D3E4A1BF5BD3700D30F96 /* Assets.xcassets in Resources */,
@@ -995,6 +1010,7 @@
 				C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */,
 				C91BB3721C2A72B900132946 /* MessagesTableViewController.swift in Sources */,
 				C9709C221C72D3C9000ED6EA /* WorkOrderModel.swift in Sources */,
+				C97D3D3C1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift in Sources */,
 				C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */,
 				C9709C201C72D3A4000ED6EA /* WorkOrdersTableViewController.swift in Sources */,
 				C972FF6E1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift in Sources */,
