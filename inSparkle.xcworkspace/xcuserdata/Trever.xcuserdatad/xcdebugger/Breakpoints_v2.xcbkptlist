@@ -129,6 +129,38 @@
             endingLineNumber = "201"
             landmarkName = "disableEnableEmployeeAction(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "inSparkle.EmployeeDataTableViewController.disableEnableEmployeeAction (Swift.AnyObject) -&gt; ()"
+                  moduleName = "inSparkle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
+                  timestampString = "478645655.031975"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "202"
+                  endingLineNumber = "202"
+                  offsetFromSymbolStart = "948">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "inSparkle.EmployeeDataTableViewController.(disableEnableEmployeeAction (Swift.AnyObject) -&gt; ()).(closure #1)"
+                  moduleName = "inSparkle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
+                  timestampString = "478645655.032054"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "202"
+                  endingLineNumber = "202"
+                  offsetFromSymbolStart = "2204">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,7 +186,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "478586950.433697"
+                  timestampString = "478645655.032576"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "172"
@@ -169,7 +201,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "478586950.433797"
+                  timestampString = "478645655.032661"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "174"
@@ -202,7 +234,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "478586950.72773"
+                  timestampString = "478645655.033177"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "173"
@@ -217,7 +249,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "478586950.727824"
+                  timestampString = "478645655.033263"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "173"
@@ -298,7 +330,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "478586952.313786"
+                  timestampString = "478645655.034903"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
@@ -313,7 +345,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "478586952.313887"
+                  timestampString = "478645655.034979"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
@@ -378,7 +410,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "478586955.912957"
+                  timestampString = "478645655.036235"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -393,12 +425,12 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "478586955.913062"
+                  timestampString = "478645655.036314"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "192"
-                  endingLineNumber = "192"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "191"
+                  endingLineNumber = "191"
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -416,6 +448,22 @@
             startingLineNumber = "177"
             endingLineNumber = "177"
             landmarkName = "disableEnableEmployeeAction(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
+            timestampString = "478645422.823614"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

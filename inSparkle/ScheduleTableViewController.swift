@@ -87,6 +87,14 @@ class ScheduleTableViewController: UITableViewController {
         
         let scheduledObject = self.scheduleArray[indexPath.row] as! ScheduleObject
         AddNewScheduleObjects.scheduledObject = scheduledObject
+        switch openCloseSegControl.selectedSegmentIndex {
+        case 0:
+            AddNewScheduleObjects.isOpening = true
+        case 1:
+            AddNewScheduleObjects.isOpening = false
+        default:
+            break
+        }
         let sb = UIStoryboard(name: "Schedule", bundle: nil)
         let vc = sb.instantiateViewControllerWithIdentifier("addEditSche")
         self.presentViewController(vc, animated: true, completion: nil)

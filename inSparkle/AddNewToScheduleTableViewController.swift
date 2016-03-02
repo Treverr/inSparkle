@@ -41,6 +41,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
         if AddNewScheduleObjects.isOpening != nil {
             isOpening = AddNewScheduleObjects.isOpening as Bool
+            print(AddNewScheduleObjects.isOpening)
             if (isOpening!) {
                 self.navigationItem.title = "Schedule Opening"
             } else {

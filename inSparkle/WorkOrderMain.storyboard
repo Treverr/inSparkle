@@ -779,7 +779,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="fST-HU-fT4" kind="presentation" modalPresentationStyle="formSheet" id="Pgc-js-TTS"/>
+                                            <segue destination="jtY-6w-hji" kind="presentation" modalPresentationStyle="formSheet" id="Pgc-js-TTS"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1084,7 +1084,7 @@
                             <tableViewSection headerTitle="Status" id="ZEE-rV-t4r">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="x5p-bR-FuF" imageView="Cj8-3e-otI" style="IBUITableViewCellStyleDefault" id="eyq-pC-Ega">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="94" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eyq-pC-Ega" id="mB2-mA-WUa">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1105,7 +1105,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="GxR-Sd-LFZ" imageView="myg-hc-XVS" style="IBUITableViewCellStyleDefault" id="Iee-G6-LTA">
-                                        <rect key="frame" x="0.0" y="94" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="138" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Iee-G6-LTA" id="4Kb-tj-kaT">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1126,7 +1126,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="SAf-FG-cR2" imageView="GAK-bC-EXo" style="IBUITableViewCellStyleDefault" id="T6C-N4-L2d">
-                                        <rect key="frame" x="0.0" y="138" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="182" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T6C-N4-L2d" id="h7I-m6-gB6">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1147,7 +1147,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="rA5-eT-5dj" imageView="3yq-wa-OVN" style="IBUITableViewCellStyleDefault" id="Ie6-Qw-R1k">
-                                        <rect key="frame" x="0.0" y="182" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="226" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ie6-Qw-R1k" id="IYk-zf-gjT">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1168,7 +1168,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="dGO-gm-5wZ" imageView="Nxq-x4-20v" style="IBUITableViewCellStyleDefault" id="mpY-rS-2lV">
-                                        <rect key="frame" x="0.0" y="226" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="270" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mpY-rS-2lV" id="9Vc-lG-SFh">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1189,7 +1189,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="fn1-dQ-xGz" imageView="dVT-JM-OLM" style="IBUITableViewCellStyleDefault" id="Yqf-sv-e26">
-                                        <rect key="frame" x="0.0" y="270" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="314" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yqf-sv-e26" id="aX4-Gc-HB3">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1217,10 +1217,17 @@
                             <outlet property="delegate" destination="fST-HU-fT4" id="UqM-pZ-YOG"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="UQj-Xp-rFS">
+                        <barButtonItem key="leftBarButtonItem" title="Dismiss" id="E39-tW-4YN">
+                            <connections>
+                                <action selector="dismissButtonAction:" destination="fST-HU-fT4" id="JyI-26-hjm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52D-mf-2iy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2746" y="1721"/>
+            <point key="canvasLocation" x="3558" y="1721"/>
         </scene>
         <!--Work Orders-->
         <scene sceneID="mRw-wl-DwX">
@@ -1241,6 +1248,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aod-ot-g3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="246" y="468"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="G2U-ha-PNl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jtY-6w-hji" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JI9-Gs-Kfm">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fST-HU-fT4" kind="relationship" relationship="rootViewController" id="gqp-u7-IYV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Kr-Qp-aam" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2746" y="1721"/>
         </scene>
     </scenes>
     <resources>
