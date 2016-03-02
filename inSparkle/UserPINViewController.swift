@@ -97,6 +97,7 @@ class UserPINViewController: UIViewController {
     
     func authenticateEmployee() {
         let employeeQuery = Employee.query()
+        employeeQuery?.whereKey("active", equalTo: true)
         let pinToCheck = pinString
         employeeQuery?.whereKey("pinNumber", equalTo: pinToCheck)
         employeeQuery?.findObjectsInBackgroundWithBlock({ (employees : [PFObject]?, error : NSError?) in

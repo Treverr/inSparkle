@@ -13,6 +13,7 @@ public class WorkOrdersMainTableViewCell: UITableViewCell {
     @IBOutlet var customerNameLabel: UILabel!
     @IBOutlet var dateCreatedLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var iconImageView: UIImageView!
 
     public func configureCell(customerName : String, dateCreated : NSDate, status : String) {
         

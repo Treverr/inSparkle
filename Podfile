@@ -18,6 +18,7 @@ pod "iCarousel"
 pod "MIBadgeButton-Swift"
 pod 'FXImageView'
 pod 'DropDown'
+pod 'MobihelpSDK'
 
 end
 

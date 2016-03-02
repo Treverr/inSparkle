@@ -38,7 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         do {
             try PFUser.currentUser()?.fetch()
             print(PFUser.currentUser())
-            print("Updated User")
+            if PFUser.currentUser() != nil {
+                let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
+                do {
+                    try employee!.fetch()
+                    mobihelpIntegration()
+                } catch { }
+            }
         } catch {
             print("Error")
         }
@@ -58,6 +64,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return true
     }
     
+    func mobihelpIntegration(){
+        var config : MobihelpConfig = MobihelpConfig(domain: "insparkle.freshdesk.com", withAppKey: "insparkle-2-eeccef6dda3ed4ae678466b2b0c5847e", andAppSecret: "51525287e07b865f00b5dfef42c3f2fe45a760a4")
+        config.feedbackType = FEEDBACK_TYPE.NAME_AND_EMAIL_REQUIRED
+        config.enableAutoReply = true // Enable Auto Reply.
+        config.setThemeName("SparkleTheme")
+        
+        //Initialize Mobihelp. This needs to be called only once in the App.
+        Mobihelp.sharedInstance().clearUserData()
+        Mobihelp.sharedInstance().initWithConfig(config)
+        Mobihelp.sharedInstance().userName = PFUser.currentUser()?.username!
+        Mobihelp.sharedInstance().emailAddress = PFUser.currentUser()?.email!
+        
+    }
+    
     func registerParseSubclasses() {
         ScheduleObject.registerSubclass()
         TimeClockPunchObj.registerSubclass()
@@ -67,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         Employee.registerSubclass()
         Messages.registerSubclass()
         MessageNotes.registerSubclass()
+        SpecialAccessObj.registerSubclass()
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -90,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func applicationWillResignActive(application: UIApplication) {
-//        logOutTimer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "logOut", userInfo: nil, repeats: false)
+        //        logOutTimer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "logOut", userInfo: nil, repeats: false)
     }
     
     func applicationDidEnterBackground(application: UIApplication) {

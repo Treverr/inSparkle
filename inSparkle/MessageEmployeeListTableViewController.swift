@@ -44,6 +44,7 @@ class MessageEmployeeListTableViewController: UITableViewController {
     
     func getEmployees() {
         let emp = Employee.query()
+        emp?.whereKey("active", equalTo: true)
         emp?.whereKey("messages", equalTo: true)
         emp?.orderByAscending("lastName")
         emp?.findObjectsInBackgroundWithBlock({ (emps : [PFObject]?, error : NSError?) -> Void in

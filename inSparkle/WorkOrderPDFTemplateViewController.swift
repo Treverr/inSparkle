@@ -82,41 +82,67 @@ class WorkOrderPDFTemplateViewController: UIViewController {
             }
             if workOrderObject.date != nil {
                 dateLabel.text = gf.stringFromDateShortStyle(workOrderObject.date)
+            } else {
+                dateLabel.text = ""
             }
             if workOrderObject.technician != nil {
                 techLabel.text = workOrderObject.technician
+            } else {
+                techLabel.text = ""
             }
             if workOrderObject.workToBePerformed != nil {
                 wtbpTextView.text = workOrderObject.workToBePerformed
+            } else  {
+                wtbpTextView.text = ""
             }
             if workOrderObject.descOfWork != nil {
                 dowTextView.text = workOrderObject.descOfWork
+            } else {
+                dowTextView.text = ""
             }
             if workOrderObject.reccomendation != nil {
                 recTextView.text = workOrderObject.reccomendation
+            } else {
+                recTextView.text = ""
             }
             if workOrderObject.tripOneArrive != nil {
                 tripOneDateLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripOneArrive!, dateStyle: .ShortStyle, timeStyle: .NoStyle)
                 tripOneTimeArriveLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripOneArrive!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+            } else {
+                tripOneDateLabel.text = ""
+                tripOneTimeArriveLabel.text = ""
             }
             if workOrderObject.tripOneDepart != nil {
                 tripOneTimeDepartLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripOneDepart!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+            } else {
+                tripOneTimeDepartLabel.text = ""
             }
             if workOrderObject.tripTwoArrive != nil {
                 tripTwoDateLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoArrive!, dateStyle: .ShortStyle, timeStyle: .NoStyle)
                 tripTwoTimeArriveLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoArrive!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+            } else {
+                tripTwoDateLabel.text = ""
+                tripTwoTimeArriveLabel.text = ""
             }
             if workOrderObject.tripTwoDepart != nil {
                 tripTwoDepartLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoDepart!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
+            } else {
+                 tripTwoDepartLabel.text = ""
             }
             if workOrderObject.unitMake != nil {
                 unitMakeLabel.text = workOrderObject.unitMake
+            } else {
+                unitMakeLabel.text = ""
             }
             if workOrderObject.unitModel != nil {
                 unitModelLabel.text = workOrderObject.unitModel
+            } else {
+                unitModelLabel.text = ""
             }
             if workOrderObject.unitSerial != nil {
                 unitSerialLabel.text = workOrderObject.unitSerial
+            } else {
+                unitSerialLabel.text = ""
             }
         }
 

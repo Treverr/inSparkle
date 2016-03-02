@@ -32,6 +32,7 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     @IBOutlet var reccomendationTextView: UITextView!
     @IBOutlet var techCell: UITableViewCell!
     @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var statusCell: UITableViewCell!
     
     var parts : [String]!
     var labor : [String]!
@@ -81,11 +82,12 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateStatusLabel:"), name: "updateStatusLabel", object: nil)
         
         setUpDropDownTech()
-
+        
     }
     
     func getTechs() {
         let techs = Employee.query()
+        techs?.whereKey("active", equalTo: true)
         techs?.orderByAscending("firstName")
         techs?.findObjectsInBackgroundWithBlock({ (techs : [PFObject]?, error : NSError?) in
             if error == nil {
@@ -125,6 +127,22 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     func updateStatusLabel(notification : NSNotification) {
         let status = notification.object as! String
         statusLabel.text = status
+        switch notification.object as! String {
+        case "New":
+            statusCell.imageView?.image = UIImage(named: "WO New")
+        case "In Progress":
+            statusCell.imageView?.image = UIImage(named: "WO In Progress")
+        case "On Hold":
+            statusCell.imageView?.image = UIImage(named: "WO On Hold")
+        case "Assigned":
+            statusCell.imageView?.image = UIImage(named: "WO Assinged")
+        case "Completed":
+            statusCell.imageView?.image = UIImage(named: "WO Completed")
+        case "Billed":
+            statusCell.imageView?.image = UIImage(named: "WO Billed")
+        default:
+            statusCell.imageView?.image = nil
+        }
     }
     
     func displayExistingWorkOrder() {
@@ -169,16 +187,32 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         if workOrderObject?.parts != nil {
             self.parts = workOrderObject!.parts as! [String]
             if parts.count != 0 {
-            managePartsLabel.text = "Manage Parts (\(self.parts.count))"
+                managePartsLabel.text = "Manage Parts (\(self.parts.count))"
             }
         }
         if workOrderObject?.status != nil {
             statusLabel.text = workOrderObject?.status
+            switch workOrderObject!.status! {
+            case "New":
+                statusCell.imageView?.image = UIImage(named: "WO New")
+            case "In Progress":
+                statusCell.imageView?.image = UIImage(named: "WO In Progress")
+            case "On Hold":
+                statusCell.imageView?.image = UIImage(named: "WO On Hold")
+            case "Assigned":
+                statusCell.imageView?.image = UIImage(named: "WO Assinged")
+            case "Completed":
+                statusCell.imageView?.image = UIImage(named: "WO Completed")
+            case "Billed":
+                statusCell.imageView?.image = UIImage(named: "WO Billed")
+            default:
+                statusCell.imageView?.image = nil
+            }
         }
         if workOrderObject?.labor != nil {
             self.labor = workOrderObject!.labor as! [String]
             if labor.count != 0 {
-            manageLaborLabel.text = "Manage Labor (\(self.labor.count))"
+                manageLaborLabel.text = "Manage Labor (\(self.labor.count))"
             }
         }
         if workOrderObject?.tripOneArrive != nil {

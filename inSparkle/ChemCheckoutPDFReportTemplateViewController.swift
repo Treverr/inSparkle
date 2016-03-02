@@ -152,7 +152,12 @@ extension ChemCheckoutPDFReportTemplateViewController : UITableViewDelegate, UIT
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = chemicalCheckoutTableView.dequeueReusableCellWithIdentifier("chemCell") as! ChemicalCheckoutPDFTemplateTableViewCell
-        let itemName = chemicals[indexPath.row] as! String
+        var keys : [String] {
+            get {
+                return Array(self.counts.keys)
+            }
+        }
+        let itemName = keys[indexPath.row] as! String
         let theEmp = theEmployees![onEmployee]
         
         cell.chemicalName.text = itemName

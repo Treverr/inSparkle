@@ -48,4 +48,127 @@ class CloudCode {
         
     }
     
+    class func UpdateUserAdminStatus(username : String, adminStatus : Bool, alert : UIAlertController, completion : (complete : Bool) -> Void) {
+        let parameters = [
+        "username" : username,
+        "adminStatus" : adminStatus,
+        ]
+        
+        do {
+            try PFCloud.callFunctionInBackground("modifyAdminStatus", withParameters: parameters as [NSObject : AnyObject], block: { (response : AnyObject?, error : NSError?) in
+                if error == nil {
+                    alert.dismissViewControllerAnimated(true, completion: nil)
+                }
+            })
+        } catch { }
+        completion(complete: true)
+    }
+    
+    class func UpdateUserInfo(username : String, email : String, objectId : String, completion : (isComplete : Bool) -> Void) {
+        let params = [
+        "username" : username,
+        "emailAddy" : email,
+        "objId" : objectId
+        ]
+        
+        do {
+            try PFCloud.callFunctionInBackground("updateUserInformation", withParameters: params, block: { (response : AnyObject?, error : NSError?) in
+                if error == nil {
+                    completion(isComplete: true)
+                }
+            })
+        }
+    }
+    
+    class func UpdateUserSpecialAccess(objId : String, specialAccesses : NSArray, completion : (isComplete : Bool) -> Void) {
+        let params = [
+            "objId" : objId,
+            "specAccess" : specialAccesses,
+        ]
+        
+        do {
+            try PFCloud.callFunctionInBackground("UpdateUserSpecialAccess", withParameters: params, block: { (response : AnyObject?, error : NSError?) in
+                if error == nil {
+                    completion(isComplete: true)
+                }
+            })
+        }
+        
+    }
+    
+    class func CreateNewUser(username : String, password : String, emailAddy : String, adminStatus : Bool, empID : String, completion : (isComplete : Bool, objectID : String) -> Void) {
+        
+        let params = [
+            "username" : username,
+            "password" : password,
+            "emailAddy" : emailAddy,
+            "adminStatus" : adminStatus,
+            "empID" : empID,
+        ]
+        
+        do {
+            PFCloud.callFunctionInBackground("CreateNewUser", withParameters: params as [NSObject : AnyObject], block: { (response : AnyObject?, error : NSError?) in
+                if error == nil {
+                    completion(isComplete: true, objectID: response as! String)
+                }
+            })
+        }
+    }
+    
+    class func DeleteUser(userObjID : String, completion : (complete : Bool) -> Void) {
+       let params = [
+        "objId" : userObjID
+        ]
+        
+        do {
+            PFCloud.callFunctionInBackground("DeleteUser", withParameters: params, block: { (response : AnyObject?, error : NSError?) in
+                if error == nil {
+                   completion(complete: true)
+                }
+            })
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

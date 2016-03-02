@@ -43,5 +43,8 @@ class MoreTableViewController: UITableViewController {
     }
 
     
+    @IBAction func supportAction(sender: AnyObject) {
+        Mobihelp.sharedInstance().presentSupport(self)
+    }
 
 }

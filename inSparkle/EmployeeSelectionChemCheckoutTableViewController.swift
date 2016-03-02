@@ -66,6 +66,7 @@ class EmployeeSelectionChemCheckoutTableViewController: UITableViewController {
     
     func getServiceEmployees() {
         let query = Employee.query()
+        query?.whereKey("active", equalTo: true)
         query?.findObjectsInBackgroundWithBlock({ (emps : [PFObject]?, error : NSError?) in
             if error == nil {
                 for emp in emps! {

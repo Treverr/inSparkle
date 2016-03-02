@@ -24,9 +24,9 @@ class Employee: PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "objectId") }
     }
     
-    var pinNumber : String {
-        get {return objectForKey("pinNumber") as! String}
-        set { setObject(newValue, forKey: "pin") }
+    var pinNumber : String? {
+        get {return objectForKey("pinNumber") as? String}
+        set { setObject(newValue!, forKey: "pinNumber") }
     }
     
     var firstName : String {
@@ -44,10 +44,18 @@ class Employee: PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "messages") }
     }
     
-    var user : PFUser? {
-        get {return objectForKey("user") as? PFUser}
-        set { setObject(newValue!, forKey: "user") }
+    var userPoint : PFUser? {
+        get {return objectForKey("userPointer") as? PFUser}
+        set { setObject(newValue!, forKey: "userPointer") }
     }
     
+    var roleType : Role? {
+        get {return objectForKey("roleType") as? Role}
+        set {setObject(newValue!, forKey: "roleType") }
+    }
     
+    var active : Bool {
+        get { return objectForKey("active") as! Bool }
+        set { setObject(newValue, forKey: "active") }
+    }
 }

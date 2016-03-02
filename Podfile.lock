@@ -10,6 +10,7 @@ PODS:
   - iCarousel (1.8.2)
   - IQKeyboardManagerSwift (4.0.0)
   - MIBadgeButton-Swift (0.1)
+  - MobihelpSDK (1.6.5)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.2.1):
     - MZAppearance
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - iCarousel
   - IQKeyboardManagerSwift
   - MIBadgeButton-Swift
+  - MobihelpSDK
   - MZFormSheetPresentationController
   - PhoneNumberKit (~> 0.1)
   - RSBarcodes_Swift (~> 0.1.4)
@@ -54,6 +56,7 @@ SPEC CHECKSUMS:
   iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
   IQKeyboardManagerSwift: ede2a27b4e1ce053d03073b9c7fa439322f5e405
   MIBadgeButton-Swift: 7e235a701726414d4bb95d6a3caea0b8a24cb84d
+  MobihelpSDK: b0311fff3101e6767dfb37c6b2c8c939c3420ed3
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: 97b4ea7a52a8bd451ac93c1a1c6b5095e2326d1c
   PhoneNumberKit: 683f1287a88c1f27386b27cad851081c7c45cb62

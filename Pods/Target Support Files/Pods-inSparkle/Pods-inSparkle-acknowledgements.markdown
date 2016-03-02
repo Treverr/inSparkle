@@ -196,6 +196,10 @@ SOFTWARE.
 
 
 
+## MobihelpSDK
+
+See http://www.freshdesk.com/terms
+
 ## PhoneNumberKit
 
 The MIT License (MIT)

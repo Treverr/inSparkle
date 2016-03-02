@@ -36,7 +36,26 @@ class WorkOrdersTableViewController: UITableViewController {
         let dateCreated = theWorkOrders[indexPath.row].date
         let theStatus = theWorkOrders[indexPath.row].status
         
-        cell.configureCell(customerName, dateCreated: dateCreated, status: theStatus!)
+        cell.customerNameLabel.text = customerName
+        cell.dateCreatedLabel.text = GlobalFunctions().stringFromDateShortStyle(dateCreated)
+        cell.statusLabel.text = theStatus!
+        cell.statusLabel.sizeToFit()
+        switch theStatus! {
+        case "New":
+            cell.iconImageView?.image = UIImage(named: "WO New")
+        case "In Progress":
+            cell.iconImageView?.image = UIImage(named: "WO In Progress")
+        case "On Hold":
+            cell.iconImageView?.image = UIImage(named: "WO On Hold")
+        case "Assigned":
+            cell.iconImageView?.image = UIImage(named: "WO Assinged")
+        case "Completed":
+            cell.iconImageView?.image = UIImage(named: "WO Completed")
+        case "Billed":
+            cell.iconImageView?.image = UIImage(named: "WO Billed")
+        default:
+            cell.iconImageView?.image = nil
+        }
         
         return cell
     }

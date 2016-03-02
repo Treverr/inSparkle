@@ -87,7 +87,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
                 firstSeven = acctNumber.substringFromIndex(phoneNumber.startIndex.advancedBy(3))
                 print(firstSeven)
                 accountNumber = firstSeven
-                emailAccountNumber = oldAccountNumber! + "->" + accountNumber!
+                emailAccountNumber = oldAccountNumber! + " --> " + accountNumber!
             }
         } else {
             var firstSeven : String!
