@@ -116,8 +116,12 @@ class MessagesTableViewController: UITableViewController {
                 employeeObj.fetchIfNeededInBackground()
                 
                 switch selectedSeg {
-                case 0: query?.whereKey("recipient", equalTo: employeeObj)
-                case 1: query?.whereKey("signed", equalTo: currentUser!)
+                case 0:
+                    query?.whereKey("recipient", equalTo: employeeObj)
+                    query?.orderByDescending("dateTimeMessage")
+                case 1:
+                    query?.whereKey("signed", equalTo: currentUser!)
+                    query?.orderByDescending("dateTimeMessage")
                 default: break
                 }
                 
