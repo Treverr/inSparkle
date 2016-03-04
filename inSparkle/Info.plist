@@ -49,6 +49,8 @@
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Remind you of things</string>
+	<key>UIBackgroundModes</key>
+	<array/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
