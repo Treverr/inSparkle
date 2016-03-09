@@ -22,6 +22,8 @@ class ScheduleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.setContentOffset(CGPointMake(0, searchBar.frame.size.height), animated: false)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh", name: "NotifyScheduleTableToRefresh", object: nil)
         
         setFilterType()

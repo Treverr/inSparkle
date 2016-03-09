@@ -11,6 +11,8 @@ import Parse
 
 class MessagesTableViewController: UITableViewController {
     
+    @IBOutlet var searchBar: UISearchBar!
+    
     var theMesages = [Messages]()
     var deepLink = false
     var sentFilter : Bool = false
@@ -19,6 +21,10 @@ class MessagesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.setContentOffset(CGPointMake(0, searchBar.frame.size.height), animated: false)
+        
+        searchBar.delegate = self
         
         setupNavigationbar()
         
@@ -108,6 +114,7 @@ class MessagesTableViewController: UITableViewController {
     func getEmpMessagesFromParse() {
         if PFUser.currentUser()?.objectForKey("employee") != nil {
             let emp = PFUser.currentUser()?.objectForKey("employee") as! Employee
+            emp.fetchInBackground()
             if emp.messages {
                 let selectedSeg = inboxSentSegControl.selectedSegmentIndex
                 let query = Messages.query()
@@ -174,6 +181,63 @@ class MessagesTableViewController: UITableViewController {
         }
         
         refresh()
+    }
+    
+}
+
+extension MessagesTableViewController : UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        self.theMesages.removeAll()
+        self.getEmpMessagesFromParse()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        self.theMesages.removeAll()
+        if !searchBar.text!.isEmpty {
+            if PFUser.currentUser()?.objectForKey("employee") != nil {
+                let emp = PFUser.currentUser()?.objectForKey("employee") as! Employee
+                if emp.messages {
+                    let selectedSeg = inboxSentSegControl.selectedSegmentIndex
+                    let query = Messages.query()
+                    let employeeObj = PFUser.currentUser()?.objectForKey("employee") as! Employee
+                    let currentUser = PFUser.currentUser()
+                    employeeObj.fetchIfNeededInBackground()
+                    
+                    switch selectedSeg {
+                    case 0:
+                        query?.whereKey("recipient", equalTo: employeeObj)
+                        query?.whereKey("messageFromName", containsString: searchBar.text!)
+                        query?.orderByDescending("dateTimeMessage")
+                    case 1:
+                        query?.whereKey("signed", equalTo: currentUser!)
+                        query?.whereKey("messageFromName", containsString: searchBar.text!)
+                        query?.orderByDescending("dateTimeMessage")
+                    default: break
+                    }
+                    
+                    query?.findObjectsInBackgroundWithBlock({ (messages : [PFObject]?, error: NSError?) -> Void in
+                        if error == nil {
+                            for msg in messages! {
+                                self.theMesages.append(msg as! Messages)
+                                self.tableView.reloadData()
+                            }
+                        }
+                    })
+                }
+            }
+        }}
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        if searchBar.text!.isEmpty {
+            self.theMesages.removeAll()
+            self.getEmpMessagesFromParse()
+        }
     }
     
 }

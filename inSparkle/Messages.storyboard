@@ -16,9 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="customer name" id="ojT-S2-TaX">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" rowHeight="69" id="lNT-YG-45C" customClass="MessagesMainTableViewCell" customModule="inSparkle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="69"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="69"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lNT-YG-45C" id="lsL-Te-kLg">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="68"/>
@@ -104,6 +109,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="inboxSentSegControl" destination="9kI-wc-RHv" id="SLc-cc-z2E"/>
+                        <outlet property="searchBar" destination="ojT-S2-TaX" id="1Qc-Yt-50V"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="61q-bP-liY" userLabel="First Responder" sceneMemberID="firstResponder"/>
