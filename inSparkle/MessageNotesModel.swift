@@ -25,9 +25,9 @@ class MessageNotes: PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "pointerMessage") }
     }
     
-    var createdBy : Employee {
-        get {return objectForKey("createdBy") as! Employee}
-        set { setObject(newValue, forKey: "createdBy") }
+    var createdBy : Employee? {
+        get {return objectForKey("createdBy") as? Employee}
+        set { setObject(newValue!, forKey: "createdBy") }
     }
 
     var note : String {

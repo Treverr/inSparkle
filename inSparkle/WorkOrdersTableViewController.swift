@@ -12,20 +12,32 @@ import Parse
 class WorkOrdersTableViewController: UITableViewController {
     
     var theWorkOrders = [WorkOrders]()
-
+    var filtered = [WorkOrders]()
+    var searchActive = false
+    
+    @IBOutlet var searchBar : UISearchBar!
+    
     override func viewDidLoad() {
+        self.tableView.setContentOffset(CGPointMake(0, searchBar.frame.size.height), animated: false)
+        
         super.viewDidLoad()
         
-        setupNavigationbar() 
+        setupNavigationbar()
         
+        searchBar.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
-        getWorkOrders()
-    }
 
+        if searchActive {
+            searchForFilter(searchBar.text!)
+        } else {
+            getWorkOrders()
+        }
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return theWorkOrders.count
     }
     
@@ -94,4 +106,49 @@ class WorkOrdersTableViewController: UITableViewController {
     @IBAction func unwindToWOMain(segue : UIStoryboardSegue) {
         
     }
+    
+}
+
+extension WorkOrdersTableViewController : UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = true
+        if !(searchBar.text?.isEmpty)! {
+            searchForFilter(searchBar.text!)
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        searchActive = true
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: false)
+        searchActive = false
+        searchBar.text = nil
+        searchBar.resignFirstResponder()
+        getWorkOrders()
+    }
+    
+    func searchForFilter(searchText : String) {
+        let searchCustomerName = WorkOrders.query()
+        searchCustomerName?.whereKey("customerName", containsString: searchText)
+        
+        let searchCustomerAddy = WorkOrders.query()
+        searchCustomerAddy?.whereKey("customerAddress", containsString: searchText)
+        
+        let searchQuery = PFQuery.orQueryWithSubqueries([searchCustomerName!, searchCustomerAddy!])
+        searchQuery.findObjectsInBackgroundWithBlock { (foundForSearch : [PFObject]?, error : NSError?) in
+            if error == nil {
+                self.theWorkOrders = foundForSearch as! [WorkOrders]
+            }
+            self.tableView.reloadData()
+        }
+    }
+    
 }

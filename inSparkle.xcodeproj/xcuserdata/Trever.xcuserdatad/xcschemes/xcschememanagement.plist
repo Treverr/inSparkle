@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DocumentLocker.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
+		<key>DocumentLockerFileProvider.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
+		</dict>
 		<key>inSparkle.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -23,6 +33,16 @@
 			<true/>
 		</dict>
 		<key>C99D3E5D1BF5BD3700D30F96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C9A01E9F1C8FAA5A002D75AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C9A01EAD1C8FAA5A002D75AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

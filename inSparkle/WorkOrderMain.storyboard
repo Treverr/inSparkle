@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Work Orders Table View Controller-->
+        <!--Work Orders-->
         <scene sceneID="FOK-Lb-AOo">
             <objects>
                 <tableViewController id="Uvi-Pj-Qa7" customClass="WorkOrdersTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
@@ -14,9 +14,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="name or address" id="cQ1-xJ-yXD">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="workOrder" rowHeight="73" id="1NG-iQ-f0m" customClass="WorkOrdersMainTableViewCell" customModule="inSparkle" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="73"/>
+                                <rect key="frame" x="0.0" y="136" width="600" height="73"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1NG-iQ-f0m" id="jdI-PA-vxJ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="72"/>
@@ -74,13 +80,16 @@
                             <outlet property="delegate" destination="Uvi-Pj-Qa7" id="WbH-WP-tnX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6PH-SK-Xzw">
+                    <navigationItem key="navigationItem" title="Work Orders" id="6PH-SK-Xzw">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Gt3-wR-0F7">
                             <connections>
                                 <segue destination="0Zv-3K-qxY" kind="show" id="zyL-3V-Mn9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="cQ1-xJ-yXD" id="Sv3-QX-EaI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fon-cf-5o8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

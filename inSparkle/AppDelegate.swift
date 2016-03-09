@@ -78,6 +78,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
     }
     
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        let rootView = self.window!.rootViewController as! TabBarViewController
+        rootView.selectedIndex = 4
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let navVC = storyBoard.instantiateViewControllerWithIdentifier("moreNav") as! UINavigationController
+        storyBoard.instantiateViewControllerWithIdentifier("moreView") as! MoreTableViewController
+        let vc = navVC.visibleViewController as! MoreTableViewController
+
+        
+        let pdfLockerSB = UIStoryboard(name: "PDFLocker", bundle: nil)
+        let pdfvc = pdfLockerSB.instantiateViewControllerWithIdentifier("pdfLockerTable") as! PDFLockerTableViewController
+        
+        rootView.selectedViewController?.performSegueWithIdentifier("pushToPDFLocker", sender: nil)
+        
+        return true
+    }
+    
     func registerParseSubclasses() {
         ScheduleObject.registerSubclass()
         TimeClockPunchObj.registerSubclass()

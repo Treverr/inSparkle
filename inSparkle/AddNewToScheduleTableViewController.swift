@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import PhoneNumberKit
+import SVProgressHUD
 
 class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate {
     
@@ -127,9 +128,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         weekPickerTapGesture.numberOfTapsRequired = 1
         weekPicker.addGestureRecognizer(weekPickerTapGesture)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
@@ -492,7 +493,26 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                 schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
             }
             schObj.saveEventually { (success: Bool, error : NSError?) -> Void in
-                if error == nil {
+                if success {
+                    var jokeArray = Array(JokeDictionary.jokesDict.keys)
+                    let random = GlobalFunctions().RandomInt(min: 0, max: jokeArray.count - 1)
+                    
+                    SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+                    SVProgressHUD.setBackgroundColor(UIColor.lightGrayColor())
+                    SVProgressHUD.showWithStatus(jokeArray[random], maskType: SVProgressHUDMaskType.Black)
+                    SVProgressHUD.setSuccessImage(UIImage(named: "Completed"))
+                    let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+                    let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+                    dispatch_async(backgroundQueue, {
+                        
+                        var isOpening : Bool!
+                        if schObj.type == "Opening" {
+                            isOpening = true
+                        } else {
+                            isOpening = false
+                        }
+                        GlobalFunctions().updateWeekData(schObj.weekObj, openingWeek: isOpening, joke: jokeArray[random])
+                    })
                     AddNewScheduleObjects.scheduledObject = nil
                     AddNewScheduleObjects.isOpening = nil
                     self.dismissViewControllerAnimated(true, completion: nil)
@@ -770,27 +790,27 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
     }
     
-//    @IBAction func updateFields(seg : UIStoryboardSegue) {
-//        
-//        
-//        if seg.identifier == "updateFromAddEdit" {
-//            let fromVC = seg.sourceViewController as! AddEditCustomerTableViewController
-//            
-//            customerNameTextField.text = fromVC.firstNameTextField.text!.capitalizedString + " " + fromVC.lastNameTextField.text!.capitalizedString
-//            addressLabel.text = fromVC.addressLabel.text
-//            addressLabel.textColor = UIColor.blackColor()
-//            phoneNumberTextField.text = fromVC.phoneNumberTextField.text
-//        } else {
-//            let fromVC = seg.sourceViewController as! CustomerLookupTableViewController
-//            
-//            var selectedCx = fromVC.globalSelectedCx
-//            
-//            customerNameTextField.text = selectedCx.firstName!.capitalizedString + " " + selectedCx.lastName!.capitalizedString
-//            addressLabel.text = "\(selectedCx.addressStreet) \n \(selectedCx.addressCity), \(selectedCx.addressState) \(selectedCx.ZIP)"
-//            phoneNumberTextField.text = selectedCx.phoneNumber
-//            self.accountNumber = selectedCx.accountNumber
-//        }
-//    }
+    //    @IBAction func updateFields(seg : UIStoryboardSegue) {
+    //
+    //
+    //        if seg.identifier == "updateFromAddEdit" {
+    //            let fromVC = seg.sourceViewController as! AddEditCustomerTableViewController
+    //
+    //            customerNameTextField.text = fromVC.firstNameTextField.text!.capitalizedString + " " + fromVC.lastNameTextField.text!.capitalizedString
+    //            addressLabel.text = fromVC.addressLabel.text
+    //            addressLabel.textColor = UIColor.blackColor()
+    //            phoneNumberTextField.text = fromVC.phoneNumberTextField.text
+    //        } else {
+    //            let fromVC = seg.sourceViewController as! CustomerLookupTableViewController
+    //
+    //            var selectedCx = fromVC.globalSelectedCx
+    //
+    //            customerNameTextField.text = selectedCx.firstName!.capitalizedString + " " + selectedCx.lastName!.capitalizedString
+    //            addressLabel.text = "\(selectedCx.addressStreet) \n \(selectedCx.addressCity), \(selectedCx.addressState) \(selectedCx.ZIP)"
+    //            phoneNumberTextField.text = selectedCx.phoneNumber
+    //            self.accountNumber = selectedCx.accountNumber
+    //        }
+    //    }
     
     override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         customerNameTextField.resignFirstResponder()

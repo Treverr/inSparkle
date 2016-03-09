@@ -10,6 +10,7 @@ import Foundation
 import Parse
 import AVFoundation
 import CoreImage
+import SVProgressHUD
 
 class DataManager: NSObject {
     
@@ -19,6 +20,37 @@ class DataManager: NSObject {
     
     static var lastUsedTypeSegment : Int!
       
+}
+
+class JokeDictionary : NSObject {
+    
+    static var jokesDict : [String : String] = [
+        
+        "What detergent do swimmers use to wash their wet suit?" : "Tide!",
+        
+        "What kind of stroke can you use on toast?" : "BUTTER-fly!",
+        
+        "What kind of exercises are best for a swimmer?" : "Pool-Ups!",
+        
+        "How do people swimming in the ocean say 'HI' to each other?" : "They Wave!",
+        
+        "What stroke do sheep enjoy doing?" : "The baaaackstroke!",
+        
+        "Why won't they allow elephants in public swimming pools?" : "Because they might let down their trunks.",
+        
+        "How do you know if your swimming pool needs cleaning?" : "Kids still pee in your pool, but they refuse to get in it first.",
+        
+        "Did you know: Titanic was the first ocean liner to have a swimming pool and a gym." : "All done!",
+        
+        "Did you know: Elephants are capable of swimming twenty miles a day. They use their trunks as natural snorkles." : "Sorry about that wait!",
+        
+        "Did you know: Niagara Falls has enough water to fill up all the swimming pools in the United States in less than three days!" : "That's alota waaata.",
+        
+        "65% of people in the U.S. don’t know how to swim" : "Those poor people. 😞",
+        
+        "Did you know: Florida is the only state with legislation on who can teach swimming. Life guards and swimming instructors must, by law, be certified." : "Yikes"
+        
+    ]
 }
 
 class TimeClock : NSObject {
@@ -283,6 +315,53 @@ class GlobalFunctions {
                 }
             }
         })
+    }
+    
+    func updateWeekData(currentSelectedWeek : WeekList, openingWeek : Bool, joke : String) {
+        
+        var weeks = [WeekList]()
+        let weekQuery = WeekList.query()
+        var weekCount = 0
+        let now = NSDate()
+        let sevenDaysAgo = now.dateByAddingTimeInterval(-7*24*60*60)
+        weekQuery?.whereKey("isOpenWeek", equalTo: openingWeek)
+        weekQuery?.whereKey("weekStart", greaterThan: sevenDaysAgo)
+        weekQuery?.countObjectsInBackgroundWithBlock({ (counted : Int32, error : NSError?) in
+            if error == nil {
+                weekQuery?.findObjectsInBackgroundWithBlock({ (results : [PFObject]?, error : NSError?) in
+                    if error == nil {
+                        weeks = results as! [WeekList]
+                        weekCount = Int(counted)
+                        if weekCount - weeks.count == 0 {
+                            let schQuery = ScheduleObject.query()
+                            print(weeks)
+                            var onNumber = 0
+                            for theWeek in weeks {
+                                onNumber = onNumber + 1
+                                print(theWeek)
+                                schQuery?.whereKey("weekObj", equalTo: theWeek)
+                                var error = NSErrorPointer()
+                                var numberSch = schQuery?.countObjects(error)
+                                theWeek.numApptsSch = Int(numberSch!)
+                                var remain : Int = (theWeek.maxAppts - Int(numberSch!))
+                                if theWeek == currentSelectedWeek {
+                                    remain = remain - 1
+                                }
+                                theWeek.apptsRemain = remain
+                                theWeek.saveInBackground()
+                            }
+                            SVProgressHUD.dismiss()
+                            SVProgressHUD.showSuccessWithStatus(JokeDictionary.jokesDict[joke], maskType: .Black)
+                        }
+                    }
+                })
+            }
+        })
+    }
+    
+    func RandomInt(min min: Int, max: Int) -> Int {
+        if max < min { return min }
+        return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
     }
     
     func qsort(input: [String]) -> [String] {

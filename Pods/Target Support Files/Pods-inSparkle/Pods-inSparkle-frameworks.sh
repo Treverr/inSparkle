@@ -95,9 +95,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-inSparkle/MZFormSheetPresentationController.framework"
   install_framework "Pods-inSparkle/PhoneNumberKit.framework"
   install_framework "Pods-inSparkle/RSBarcodes_Swift.framework"
+  install_framework "Pods-inSparkle/SVProgressHUD.framework"
   install_framework "Pods-inSparkle/SimpleAlert.framework"
   install_framework "Pods-inSparkle/SwiftGifOrigin.framework"
   install_framework "Pods-inSparkle/SwiftMoment.framework"
+  install_framework "Pods-inSparkle/SwiftSpinner.framework"
   install_framework "Pods-inSparkle/UIView_HierarchicalDrawing.framework"
   install_framework "Pods-inSparkle/iCarousel.framework"
 fi
@@ -113,9 +115,11 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-inSparkle/MZFormSheetPresentationController.framework"
   install_framework "Pods-inSparkle/PhoneNumberKit.framework"
   install_framework "Pods-inSparkle/RSBarcodes_Swift.framework"
+  install_framework "Pods-inSparkle/SVProgressHUD.framework"
   install_framework "Pods-inSparkle/SimpleAlert.framework"
   install_framework "Pods-inSparkle/SwiftGifOrigin.framework"
   install_framework "Pods-inSparkle/SwiftMoment.framework"
+  install_framework "Pods-inSparkle/SwiftSpinner.framework"
   install_framework "Pods-inSparkle/UIView_HierarchicalDrawing.framework"
   install_framework "Pods-inSparkle/iCarousel.framework"
 fi

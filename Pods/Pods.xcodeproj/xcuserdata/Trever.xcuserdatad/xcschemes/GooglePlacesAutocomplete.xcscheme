@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1C769915FCD35100B73C7F5B'
+               BlueprintIdentifier = '17F54B7BEF6E6075A093560D'
                BlueprintName = 'GooglePlacesAutocomplete'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'GooglePlacesAutocomplete.framework'>

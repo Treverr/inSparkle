@@ -85,6 +85,14 @@
 		C99D3E631BF5BD3700D30F96 /* inSparkleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E621BF5BD3700D30F96 /* inSparkleUITests.swift */; };
 		C99D3E711BF5C04200D30F96 /* SOITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E701BF5C04200D30F96 /* SOITableViewCell.swift */; };
 		C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */; };
+		C9A01EA51C8FAA5A002D75AA /* DocumentPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A01EA41C8FAA5A002D75AA /* DocumentPickerViewController.swift */; };
+		C9A01EA81C8FAA5A002D75AA /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A01EA61C8FAA5A002D75AA /* MainInterface.storyboard */; };
+		C9A01EB31C8FAA5A002D75AA /* FileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A01EB21C8FAA5A002D75AA /* FileProvider.swift */; };
+		C9A01EB71C8FAA5A002D75AA /* DocumentLockerFileProvider.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9A01EAE1C8FAA5A002D75AA /* DocumentLockerFileProvider.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C9A01EBA1C8FAA5A002D75AA /* DocumentLocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9A01EA01C8FAA5A002D75AA /* DocumentLocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C9A01EC31C8FBF83002D75AA /* PDF Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A01EC21C8FBF83002D75AA /* PDF Icon.png */; };
+		C9A01EC61C8FC3D1002D75AA /* PDFLocker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A01EC51C8FC3D1002D75AA /* PDFLocker.storyboard */; };
+		C9A01EC81C8FC434002D75AA /* PDFLockerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A01EC71C8FC434002D75AA /* PDFLockerTableViewController.swift */; };
 		C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */; };
 		C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A781221BF944740013D388 /* TabBarViewController.swift */; };
 		C9AB005E1C469FC900595F58 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AB005D1C469FC900595F58 /* PushNotifications.swift */; };
@@ -163,7 +171,36 @@
 			remoteGlobalIDString = C99D3E3E1BF5BD3700D30F96;
 			remoteInfo = inSparkle;
 		};
+		C9A01EB51C8FAA5A002D75AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C99D3E371BF5BD3700D30F96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9A01EAD1C8FAA5A002D75AA;
+			remoteInfo = DocumentLockerFileProvider;
+		};
+		C9A01EB81C8FAA5A002D75AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C99D3E371BF5BD3700D30F96 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C9A01E9F1C8FAA5A002D75AA;
+			remoteInfo = DocumentLocker;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C9A01EC11C8FAA5A002D75AA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C9A01EB71C8FAA5A002D75AA /* DocumentLockerFileProvider.appex in Embed App Extensions */,
+				C9A01EBA1C8FAA5A002D75AA /* DocumentLocker.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		411847EFD392F5F727796B8A /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,6 +291,18 @@
 		C99D3E641BF5BD3700D30F96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C99D3E701BF5C04200D30F96 /* SOITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOITableViewCell.swift; sourceTree = "<group>"; };
 		C99D3E721BF5C29500D30F96 /* SOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOITableViewController.swift; sourceTree = "<group>"; };
+		C9A01EA01C8FAA5A002D75AA /* DocumentLocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DocumentLocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A01EA31C8FAA5A002D75AA /* DocumentLocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DocumentLocker.entitlements; sourceTree = "<group>"; };
+		C9A01EA41C8FAA5A002D75AA /* DocumentPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerViewController.swift; sourceTree = "<group>"; };
+		C9A01EA71C8FAA5A002D75AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C9A01EA91C8FAA5A002D75AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9A01EAE1C8FAA5A002D75AA /* DocumentLockerFileProvider.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DocumentLockerFileProvider.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A01EB11C8FAA5A002D75AA /* DocumentLockerFileProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DocumentLockerFileProvider.entitlements; sourceTree = "<group>"; };
+		C9A01EB21C8FAA5A002D75AA /* FileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProvider.swift; sourceTree = "<group>"; };
+		C9A01EB41C8FAA5A002D75AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9A01EC21C8FBF83002D75AA /* PDF Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "PDF Icon.png"; path = "../PDF Icon.png"; sourceTree = "<group>"; };
+		C9A01EC51C8FC3D1002D75AA /* PDFLocker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PDFLocker.storyboard; sourceTree = "<group>"; };
+		C9A01EC71C8FC434002D75AA /* PDFLockerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFLockerTableViewController.swift; sourceTree = "<group>"; };
 		C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewToScheduleTableViewController.swift; sourceTree = "<group>"; };
 		C9A781221BF944740013D388 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C9AB005D1C469FC900595F58 /* PushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
@@ -360,6 +409,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C9A01E9D1C8FAA5A002D75AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A01EAB1C8FAA5A002D75AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -437,13 +500,14 @@
 			name = "Generate PDF";
 			sourceTree = "<group>";
 		};
-		C9585F231C16511A008AB918 /* Resource */ = {
+		C9585F231C16511A008AB918 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9A01EC21C8FBF83002D75AA /* PDF Icon.png */,
 				C9585F241C165179008AB918 /* ScannerBeep.wav */,
 				C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */,
 			);
-			name = Resource;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		C9585F321C17588D008AB918 /* Admin */ = {
@@ -461,7 +525,7 @@
 		C9585F331C1758A7008AB918 /* Reports */ = {
 			isa = PBXGroup;
 			children = (
-				C9585F341C175AE8008AB918 /* Report */,
+				C9585F341C175AE8008AB918 /* Time Card */,
 				C9FE5BE81C1FC5BF00293836 /* POC */,
 				C9585F301C175887008AB918 /* ReportsTableViewController.swift */,
 				C90340CD1C722C9F0028F865 /* Chemical Checkout */,
@@ -469,14 +533,14 @@
 			name = Reports;
 			sourceTree = "<group>";
 		};
-		C9585F341C175AE8008AB918 /* Report */ = {
+		C9585F341C175AE8008AB918 /* Time Card */ = {
 			isa = PBXGroup;
 			children = (
 				C9585F2A1C174C0F008AB918 /* TimeClockReport.storyboard */,
 				C9585F261C169491008AB918 /* RunTimeReportTableViewController.swift */,
 				C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */,
 			);
-			name = Report;
+			name = "Time Card";
 			sourceTree = "<group>";
 		};
 		C96EF7FC1C14BFD800C4D2C1 /* TimeClock */ = {
@@ -575,6 +639,8 @@
 				C99D3E411BF5BD3700D30F96 /* inSparkle */,
 				C99D3E561BF5BD3700D30F96 /* inSparkleTests */,
 				C99D3E611BF5BD3700D30F96 /* inSparkleUITests */,
+				C9A01EA11C8FAA5A002D75AA /* DocumentLocker */,
+				C9A01EAF1C8FAA5A002D75AA /* DocumentLockerFileProvider */,
 				C99D3E401BF5BD3700D30F96 /* Products */,
 				48389877081E5AAA4D42626A /* Pods */,
 				90475D90352FAA03D0A61B3B /* Frameworks */,
@@ -587,6 +653,8 @@
 				C99D3E3F1BF5BD3700D30F96 /* inSparkle.app */,
 				C99D3E531BF5BD3700D30F96 /* inSparkleTests.xctest */,
 				C99D3E5E1BF5BD3700D30F96 /* inSparkleUITests.xctest */,
+				C9A01EA01C8FAA5A002D75AA /* DocumentLocker.appex */,
+				C9A01EAE1C8FAA5A002D75AA /* DocumentLockerFileProvider.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -594,13 +662,14 @@
 		C99D3E411BF5BD3700D30F96 /* inSparkle */ = {
 			isa = PBXGroup;
 			children = (
+				C9A01EC41C8FC3B5002D75AA /* PDF Locker */,
 				C950085F1C61C05400F5351C /* Generate PDF */,
 				C90915641C183D8600FC7E54 /* inSparkle.entitlements */,
 				C94C1CC01C3CB98900F568B9 /* Customer Lookup */,
 				C9709C1A1C72D12F000ED6EA /* Work Orders */,
 				C9585F321C17588D008AB918 /* Admin */,
 				C972FF711C19F9F100D34EB2 /* Messages */,
-				C9585F231C16511A008AB918 /* Resource */,
+				C9585F231C16511A008AB918 /* Resources */,
 				C96EF7FF1C14CE1C00C4D2C1 /* Chemical Check */,
 				C96EF7FC1C14BFD800C4D2C1 /* TimeClock */,
 				C9CC66A51C0D0E800000EDE6 /* More */,
@@ -636,6 +705,52 @@
 				C99D3E641BF5BD3700D30F96 /* Info.plist */,
 			);
 			path = inSparkleUITests;
+			sourceTree = "<group>";
+		};
+		C9A01EA11C8FAA5A002D75AA /* DocumentLocker */ = {
+			isa = PBXGroup;
+			children = (
+				C9A01EA41C8FAA5A002D75AA /* DocumentPickerViewController.swift */,
+				C9A01EA61C8FAA5A002D75AA /* MainInterface.storyboard */,
+				C9A01EA91C8FAA5A002D75AA /* Info.plist */,
+				C9A01EA21C8FAA5A002D75AA /* Supporting Files */,
+			);
+			path = DocumentLocker;
+			sourceTree = "<group>";
+		};
+		C9A01EA21C8FAA5A002D75AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9A01EA31C8FAA5A002D75AA /* DocumentLocker.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9A01EAF1C8FAA5A002D75AA /* DocumentLockerFileProvider */ = {
+			isa = PBXGroup;
+			children = (
+				C9A01EB21C8FAA5A002D75AA /* FileProvider.swift */,
+				C9A01EB41C8FAA5A002D75AA /* Info.plist */,
+				C9A01EB01C8FAA5A002D75AA /* Supporting Files */,
+			);
+			path = DocumentLockerFileProvider;
+			sourceTree = "<group>";
+		};
+		C9A01EB01C8FAA5A002D75AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9A01EB11C8FAA5A002D75AA /* DocumentLockerFileProvider.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C9A01EC41C8FC3B5002D75AA /* PDF Locker */ = {
+			isa = PBXGroup;
+			children = (
+				C9A01EC51C8FC3D1002D75AA /* PDFLocker.storyboard */,
+				C9A01EC71C8FC434002D75AA /* PDFLockerTableViewController.swift */,
+			);
+			name = "PDF Locker";
 			sourceTree = "<group>";
 		};
 		C9A37B741BFE49C200F9A55A /* Third Party */ = {
@@ -773,10 +888,13 @@
 				C9B5B44E1BF6772000650FC4 /* ShellScript */,
 				F17120345EF620486FA54E9B /* Embed Pods Frameworks */,
 				723CE4C0C1B4199F03ECCE41 /* Copy Pods Resources */,
+				C9A01EC11C8FAA5A002D75AA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C9A01EB61C8FAA5A002D75AA /* PBXTargetDependency */,
+				C9A01EB91C8FAA5A002D75AA /* PBXTargetDependency */,
 			);
 			name = inSparkle;
 			productName = inSparkle;
@@ -819,13 +937,47 @@
 			productReference = C99D3E5E1BF5BD3700D30F96 /* inSparkleUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		C9A01E9F1C8FAA5A002D75AA /* DocumentLocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9A01EC01C8FAA5A002D75AA /* Build configuration list for PBXNativeTarget "DocumentLocker" */;
+			buildPhases = (
+				C9A01E9C1C8FAA5A002D75AA /* Sources */,
+				C9A01E9D1C8FAA5A002D75AA /* Frameworks */,
+				C9A01E9E1C8FAA5A002D75AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DocumentLocker;
+			productName = DocumentLocker;
+			productReference = C9A01EA01C8FAA5A002D75AA /* DocumentLocker.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C9A01EAD1C8FAA5A002D75AA /* DocumentLockerFileProvider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9A01EBF1C8FAA5A002D75AA /* Build configuration list for PBXNativeTarget "DocumentLockerFileProvider" */;
+			buildPhases = (
+				C9A01EAA1C8FAA5A002D75AA /* Sources */,
+				C9A01EAB1C8FAA5A002D75AA /* Frameworks */,
+				C9A01EAC1C8FAA5A002D75AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DocumentLockerFileProvider;
+			productName = DocumentLockerFileProvider;
+			productReference = C9A01EAE1C8FAA5A002D75AA /* DocumentLockerFileProvider.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C99D3E371BF5BD3700D30F96 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Sparkle Pools";
 				TargetAttributes = {
@@ -858,6 +1010,14 @@
 						CreatedOnToolsVersion = 7.1;
 						TestTargetID = C99D3E3E1BF5BD3700D30F96;
 					};
+					C9A01E9F1C8FAA5A002D75AA = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 62765ZZ5LE;
+					};
+					C9A01EAD1C8FAA5A002D75AA = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 62765ZZ5LE;
+					};
 				};
 			};
 			buildConfigurationList = C99D3E3A1BF5BD3700D30F96 /* Build configuration list for PBXProject "inSparkle" */;
@@ -876,6 +1036,8 @@
 				C99D3E3E1BF5BD3700D30F96 /* inSparkle */,
 				C99D3E521BF5BD3700D30F96 /* inSparkleTests */,
 				C99D3E5D1BF5BD3700D30F96 /* inSparkleUITests */,
+				C9A01E9F1C8FAA5A002D75AA /* DocumentLocker */,
+				C9A01EAD1C8FAA5A002D75AA /* DocumentLockerFileProvider */,
 			);
 		};
 /* End PBXProject section */
@@ -892,9 +1054,11 @@
 				C9709C1C1C72D144000ED6EA /* WorkOrderMain.storyboard in Resources */,
 				C99D3E4A1BF5BD3700D30F96 /* Assets.xcassets in Resources */,
 				C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */,
+				C9A01EC31C8FBF83002D75AA /* PDF Icon.png in Resources */,
 				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
 				C96EF8011C14CE3100C4D2C1 /* ChemCheck.storyboard in Resources */,
 				C9DC84641C6251A300C41B6A /* OpeningPDFTemplate.storyboard in Resources */,
+				C9A01EC61C8FC3D1002D75AA /* PDFLocker.storyboard in Resources */,
 				C9F7A9B41C70149E001A6555 /* UserPIN.storyboard in Resources */,
 				C972FF781C1A1B1700D34EB2 /* SOI.storyboard in Resources */,
 				C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */,
@@ -923,6 +1087,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C99D3E5C1BF5BD3700D30F96 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A01E9E1C8FAA5A002D75AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A01EA81C8FAA5A002D75AA /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A01EAC1C8FAA5A002D75AA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1068,6 +1247,7 @@
 				C91BB3701C2A705F00132946 /* MessagesMainTableViewCell.swift in Sources */,
 				C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */,
 				C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */,
+				C9A01EC81C8FC434002D75AA /* PDFLockerTableViewController.swift in Sources */,
 				C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */,
 				C961638A1BF6EC9E00EB5D44 /* BarcodeScanner.swift in Sources */,
 				C9585F311C175887008AB918 /* ReportsTableViewController.swift in Sources */,
@@ -1106,6 +1286,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C9A01E9C1C8FAA5A002D75AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A01EA51C8FAA5A002D75AA /* DocumentPickerViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9A01EAA1C8FAA5A002D75AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9A01EB31C8FAA5A002D75AA /* FileProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1118,6 +1314,16 @@
 			isa = PBXTargetDependency;
 			target = C99D3E3E1BF5BD3700D30F96 /* inSparkle */;
 			targetProxy = C99D3E5F1BF5BD3700D30F96 /* PBXContainerItemProxy */;
+		};
+		C9A01EB61C8FAA5A002D75AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9A01EAD1C8FAA5A002D75AA /* DocumentLockerFileProvider */;
+			targetProxy = C9A01EB51C8FAA5A002D75AA /* PBXContainerItemProxy */;
+		};
+		C9A01EB91C8FAA5A002D75AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C9A01E9F1C8FAA5A002D75AA /* DocumentLocker */;
+			targetProxy = C9A01EB81C8FAA5A002D75AA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1144,6 +1350,14 @@
 				C99D3E4C1BF5BD3700D30F96 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C9A01EA61C8FAA5A002D75AA /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9A01EA71C8FAA5A002D75AA /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1337,6 +1551,70 @@
 			};
 			name = Release;
 		};
+		C9A01EBB1C8FAA5A002D75AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = DocumentLocker/DocumentLocker.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = DocumentLocker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mysparklepools.inSparklePools.DocumentLocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C9A01EBC1C8FAA5A002D75AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = DocumentLocker/DocumentLocker.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = DocumentLocker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mysparklepools.inSparklePools.DocumentLocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		C9A01EBD1C8FAA5A002D75AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = DocumentLockerFileProvider/DocumentLockerFileProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = DocumentLockerFileProvider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mysparklepools.inSparklePools.DocumentLockerFileProvider;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		C9A01EBE1C8FAA5A002D75AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = DocumentLockerFileProvider/DocumentLockerFileProvider.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = DocumentLockerFileProvider/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mysparklepools.inSparklePools.DocumentLockerFileProvider;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1372,6 +1650,24 @@
 			buildConfigurations = (
 				C99D3E6E1BF5BD3700D30F96 /* Debug */,
 				C99D3E6F1BF5BD3700D30F96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9A01EBF1C8FAA5A002D75AA /* Build configuration list for PBXNativeTarget "DocumentLockerFileProvider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A01EBD1C8FAA5A002D75AA /* Debug */,
+				C9A01EBE1C8FAA5A002D75AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9A01EC01C8FAA5A002D75AA /* Build configuration list for PBXNativeTarget "DocumentLocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9A01EBB1C8FAA5A002D75AA /* Debug */,
+				C9A01EBC1C8FAA5A002D75AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

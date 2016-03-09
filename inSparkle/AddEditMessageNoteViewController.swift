@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class AddEditMessageNoteViewController: UIViewController {
     
@@ -44,6 +45,7 @@ class AddEditMessageNoteViewController: UIViewController {
                 newNote.pointerMessage = linkingMessage!
             }
             newNote.note = noteTextView.text
+            newNote.createdBy = PFUser.currentUser()?.objectForKey("employee") as! Employee
             newNote.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
                 if (success) {
                     self.dismissViewControllerAnimated(true, completion: nil)

@@ -1,15 +1,16 @@
  //
-//  RunTimeReportAllTableViewController.swift
-//  inSparkle
-//
-//  Created by Trever on 12/7/15.
-//  Copyright © 2015 Sparkle Pools. All rights reserved.
-//
-
-import UIKit
-import Parse
-
-class RunTimeReportTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UIActionSheetDelegate, UIDocumentInteractionControllerDelegate  {
+ //  RunTimeReportAllTableViewController.swift
+ //  inSparkle
+ //
+ //  Created by Trever on 12/7/15.
+ //  Copyright © 2015 Sparkle Pools. All rights reserved.
+ //
+ 
+ import UIKit
+ import Parse
+ import SwiftSpinner
+ 
+ class RunTimeReportTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UIActionSheetDelegate, UIDocumentInteractionControllerDelegate  {
     
     @IBOutlet var startDateLabel: UILabel!
     @IBOutlet var endDateLabel: UILabel!
@@ -84,19 +85,14 @@ class RunTimeReportTableViewController: UITableViewController, UIPopoverPresenta
         self.endDateLabel.text = TimeClockReportAllEmployee.selectedEndDate
     }
     
+    func swiftActive() {
+        SwiftSpinner.show("Generating Report...", animated: false)
+    }
+    
     @IBAction func runReportButton(sender: AnyObject) {
         
-        let overlay : UIView = UIView(frame: CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height))
-        overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
-        self.view.addSubview(overlay)
-        
-        let activityMonitor = UIActivityIndicatorView(activityIndicatorStyle: .White)
-        activityMonitor.alpha = 1.0
-        activityMonitor.center = self.view.center
-        activityMonitor.hidesWhenStopped = true
-        self.view.addSubview(activityMonitor)
-        activityMonitor.startAnimating()
-        
+        performSelectorOnMainThread(Selector("swiftActive"), withObject: nil, waitUntilDone: true)
+
         let startDateString = startDateLabel.text
         let endDateString = endDateLabel.text
         
@@ -143,6 +139,8 @@ class RunTimeReportTableViewController: UITableViewController, UIPopoverPresenta
     func getTimeCardForEachEmployee(employee : Employee, startDate : NSDate, endDate : NSDate) {
         if !detail {
             csvPunches = "Employee,StandardHours,OvertimeHours,VacationHours,TotalTime\n"
+            csvPunches = csvPunches + "Marti Ennis,Salary,0,0,0\n"
+            csvPunches = csvPunches + "Tom Sedletzeck,Salary,0,0,0\n"
         }
         var employeeName : String?
         var complete : Bool = false
@@ -220,8 +218,9 @@ class RunTimeReportTableViewController: UITableViewController, UIPopoverPresenta
                     print(self.expectedPunches)
                     print(self.returnedPunches)
                     print(self.expectedPunches - self.returnedPunches)
-            
+                    
                     if self.expectedPunches - self.returnedPunches == 0 {
+                        SwiftSpinner.show("Done!", animated: false)
                         print(self.csvPunches)
                         self.shareTime()
                     }
@@ -262,6 +261,7 @@ class RunTimeReportTableViewController: UITableViewController, UIPopoverPresenta
         docController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: writePath))
         docController!.delegate = self
         docController!.presentPreviewAnimated(true)
+        SwiftSpinner.hide()
     }
     
     func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
@@ -279,4 +279,4 @@ class RunTimeReportTableViewController: UITableViewController, UIPopoverPresenta
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-}
+ }

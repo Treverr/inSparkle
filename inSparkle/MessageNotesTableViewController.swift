@@ -47,6 +47,19 @@ class MessageNotesTableViewController: UITableViewController {
         let noteObject = messageNotes[indexPath.row] 
         let note = noteObject.note
         let time = noteObject.createdAt!
+        if noteObject.createdBy != nil {
+            let enteredBy = noteObject.createdBy!
+            noteObject.createdBy?.fetchInBackgroundWithBlock({ (employee : PFObject?, error : NSError?) in
+                if error == nil {
+                    let emp = employee as! Employee
+                    cell.enteredBy.text = "Entered By: " + emp.firstName.capitalizedString
+                }
+            })
+            
+        } else {
+            cell.enteredBy.text! = ""
+        }
+        
         print(messageNotes[indexPath.row])
         
         let noteTimeDateFormatter = NSDateFormatter()

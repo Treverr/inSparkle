@@ -60,6 +60,8 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         if workOrderObject != nil {
             displayExistingWorkOrder()
             self.navigationItem.title = "Edit Work Order"
+        } else  {
+            workOrderDatePickerChanged()
         }
         
         if parts != nil {
@@ -67,8 +69,6 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                 
             }
         }
-        
-        workOrderDatePickerChanged()
         
         wordOrderDatePicker.hidden = true
         tripOneArrivePicker.hidden = true

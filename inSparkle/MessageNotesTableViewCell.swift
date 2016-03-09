@@ -12,6 +12,7 @@ class MessageNotesTableViewCell: UITableViewCell {
     
     @IBOutlet var title: UILabel!
     @IBOutlet var notes: UITextView!
+    @IBOutlet var enteredBy: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

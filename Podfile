@@ -19,6 +19,8 @@ pod "MIBadgeButton-Swift"
 pod 'FXImageView'
 pod 'DropDown'
 pod 'MobihelpSDK'
+pod 'SVProgressHUD'
+pod 'SwiftSpinner'
 
 end
 

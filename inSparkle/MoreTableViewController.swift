@@ -19,9 +19,10 @@ class MoreTableViewController: UITableViewController {
         if (PFUser.currentUser()?.valueForKey("isAdmin") as! Bool) == false {
             self.navigationItem.rightBarButtonItem = nil
         }
-    
     }
     
+    override func viewDidAppear(animated: Bool) {
+    }
     
     @IBAction func logoutAction(sender: AnyObject) {
         
@@ -31,8 +32,6 @@ class MoreTableViewController: UITableViewController {
             let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
             self.presentViewController(viewController, animated: true, completion: nil)
         }
-        
-        
     }
     
     func setupNavigationbar()  {
