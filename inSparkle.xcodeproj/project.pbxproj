@@ -662,7 +662,6 @@
 		C99D3E411BF5BD3700D30F96 /* inSparkle */ = {
 			isa = PBXGroup;
 			children = (
-				C9A01EC41C8FC3B5002D75AA /* PDF Locker */,
 				C950085F1C61C05400F5351C /* Generate PDF */,
 				C90915641C183D8600FC7E54 /* inSparkle.entitlements */,
 				C94C1CC01C3CB98900F568B9 /* Customer Lookup */,
@@ -825,6 +824,7 @@
 		C9CC66A51C0D0E800000EDE6 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				C9A01EC41C8FC3B5002D75AA /* PDF Locker */,
 				C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */,
 			);
 			name = More;

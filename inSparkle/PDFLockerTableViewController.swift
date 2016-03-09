@@ -11,24 +11,75 @@ import UIKit
 class PDFLockerTableViewController: UITableViewController {
     
     var filePaths : [NSURL]!
+    var shouldJumpToPDFWithPath : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = "PDF Locker"
         self.tableView.allowsSelectionDuringEditing = false
-
+        
+        if shouldJumpToPDFWithPath != nil {
+            jumpToPDFFile(self.shouldJumpToPDFWithPath!)
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         getFiles()
     }
     
+    enum FileSaveError {
+        case Error17
+    }
+    
+    func renameFileLongPress(longPress: UIGestureRecognizer) {
+        print(longPress.state)
+        if longPress.state == .Began {
+            var pressPoint : CGPoint = longPress.locationInView(self.tableView)
+            var indexPath : NSIndexPath = self.tableView.indexPathForRowAtPoint(pressPoint)!
+            
+            var renameTextField : UITextField!
+            var renameAlert = UIAlertController(title: "Rename File", message: nil, preferredStyle: .Alert)
+            renameAlert.addTextFieldWithConfigurationHandler({ (textField) in
+                renameTextField = textField
+            })
+            let saveButton = UIAlertAction(title: "Save", style: .Default, handler: { (action) in
+                let newFileName = renameTextField.text!
+                let selectedFile = String(self.filePaths[indexPath.row]).componentsSeparatedByString("file://")[1]
+                let selectedFileName = selectedFile.componentsSeparatedByString("/").last
+                let filePath = selectedFile.componentsSeparatedByString(selectedFileName!)[0]
+                let newFilePath = filePath.stringByAppendingString(newFileName.capitalizedString + ".pdf")
+                do {
+                    try NSFileManager.defaultManager().moveItemAtPath(selectedFile, toPath: newFilePath)
+                } catch let error as NSError {
+                    switch error.code {
+                    case 516:
+                        let fileExistAlert = UIAlertController(title: "Error", message: "The file name you specified already exists. Unable to rename", preferredStyle: .Alert)
+                        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                        fileExistAlert.addAction(okayButton)
+                        self.presentViewController(fileExistAlert, animated: true, completion: nil)
+                    default :
+                        break
+                    }
+                }
+                self.getFiles()
+                self.tableView.reloadData()
+               
+            })
+            let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            renameAlert.addAction(cancelButton)
+            renameAlert.addAction(saveButton)
+            self.presentViewController(renameAlert, animated: true, completion: nil)
+        }
+    }
+    
+    
     func getFiles() {
         let fileManager = NSFileManager.defaultManager()
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory = paths[0]
-        let inboxPath = documentsDirectory.stringByAppendingString("/Inbox")
+        let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
         
         do {
             self.filePaths = try fileManager.contentsOfDirectoryAtURL(NSURL(string: inboxPath)!, includingPropertiesForKeys: nil, options: .SkipsSubdirectoryDescendants)
@@ -47,6 +98,8 @@ class PDFLockerTableViewController: UITableViewController {
         let fileNameWithoutPDF = fileName?.componentsSeparatedByString(".pdf")[0].capitalizedString
         var attribs : NSDictionary?
         var createdAt : NSDate?
+        
+        let renameLongPress : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("renameFileLongPress:"))
         
         do {
             try attribs = NSFileManager.defaultManager().attributesOfItemAtPath(documentName)
@@ -68,6 +121,7 @@ class PDFLockerTableViewController: UITableViewController {
         }
         
         cell.accessoryType = .DisclosureIndicator
+        cell.addGestureRecognizer(renameLongPress)
         
         return cell
     }
@@ -76,7 +130,7 @@ class PDFLockerTableViewController: UITableViewController {
         if self.filePaths == nil {
             return 0
         } else {
-           return self.filePaths.count
+            return self.filePaths.count
         }
     }
     
@@ -123,6 +177,8 @@ class PDFLockerTableViewController: UITableViewController {
         docController = UIDocumentInteractionController(URL: docURL)
         docController.delegate = self
         docController.presentPreviewAnimated(true)
+        
+        self.shouldJumpToPDFWithPath = nil
         
     }
     

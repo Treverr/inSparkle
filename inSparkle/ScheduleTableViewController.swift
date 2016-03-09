@@ -11,6 +11,8 @@ import Parse
 
 class ScheduleTableViewController: UITableViewController {
     
+    @IBOutlet var searchBar: UISearchBar!
+    
     var scheduleArray : NSMutableArray = []
     var filterOption : String!
     
@@ -35,6 +37,8 @@ class ScheduleTableViewController: UITableViewController {
         self.refreshControl!.backgroundColor = Colors.sparkleGreen
         self.refreshControl!.tintColor = UIColor.whiteColor()
         self.refreshControl!.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
+        
+        searchBar.delegate = self
         
     }
     
@@ -216,5 +220,48 @@ class ScheduleTableViewController: UITableViewController {
         let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
         alert.addAction(okayButton)
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+}
+
+extension ScheduleTableViewController : UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        self.scheduleArray.removeAllObjects()
+        self.scheduleQuery()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if !searchBar.text!.isEmpty {
+            scheduleArray.removeAllObjects()
+            let query : PFQuery = PFQuery(className: "Schedule")
+            query.whereKey("isActive", equalTo: true)
+            query.whereKey("type", equalTo: filterOption)
+            query.orderByAscending("weekStart")
+            query.whereKey("customerName", containsString: searchBar.text!)
+            query.findObjectsInBackgroundWithBlock { (scheduleObjects :[PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    self.scheduleArray.removeAllObjects()
+                    for object in scheduleObjects! {
+                        self.scheduleArray.addObject(object)
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+            if (self.refreshControl!.refreshing) {
+                self.refreshControl?.endRefreshing()
+            }
+        }
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        if searchBar.text!.isEmpty {
+            self.scheduleArray.removeAllObjects()
+            self.scheduleQuery()
+        }
     }
 }

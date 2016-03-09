@@ -79,18 +79,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        let fileManager = NSFileManager.defaultManager()
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0]
+        let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
+        if NSFileManager.defaultManager().fileExistsAtPath(documentsDirectory.stringByAppendingString("/PDFLocker")) {
+            let fileName = String(url).componentsSeparatedByString("/").last
+            var origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
+            let newPath = origPath! + "/PDFLocker/" + fileName!
+            do {
+                try NSFileManager.defaultManager().copyItemAtURL(url, toURL: NSURL(fileURLWithPath: newPath))
+            } catch {
+                print(error)
+            }
+            
+        } else {
+            
+            do {
+                try NSFileManager.defaultManager().createDirectoryAtPath(inboxPath, withIntermediateDirectories: false, attributes: nil)
+            } catch {
+               
+            }
+            
+            let fileName = String(url).componentsSeparatedByString("/").last
+            var origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
+            let newPath = origPath! + "/PDFLocker/" + fileName!
+            do {
+                try NSFileManager.defaultManager().copyItemAtURL(url, toURL: NSURL(fileURLWithPath: newPath))
+            } catch {
+                print(error)
+            }
+        }
+        
+
+        
         let rootView = self.window!.rootViewController as! TabBarViewController
         rootView.selectedIndex = 4
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let navVC = storyBoard.instantiateViewControllerWithIdentifier("moreNav") as! UINavigationController
+        let navVC: UINavigationController =  rootView.viewControllers![4] as! UINavigationController
         storyBoard.instantiateViewControllerWithIdentifier("moreView") as! MoreTableViewController
-        let vc = navVC.visibleViewController as! MoreTableViewController
-
-        
-        let pdfLockerSB = UIStoryboard(name: "PDFLocker", bundle: nil)
-        let pdfvc = pdfLockerSB.instantiateViewControllerWithIdentifier("pdfLockerTable") as! PDFLockerTableViewController
-        
-        rootView.selectedViewController?.performSegueWithIdentifier("pushToPDFLocker", sender: nil)
+        print(navVC.topViewController?.description)
+        if navVC.topViewController!.description.containsString("inSparkle.MoreTableViewController") {
+            let vc = navVC.topViewController as! MoreTableViewController
+            
+            
+            let pdfLockerSB = UIStoryboard(name: "PDFLocker", bundle: nil)
+            let pdfvc = pdfLockerSB.instantiateViewControllerWithIdentifier("pdfLockerTable") as! PDFLockerTableViewController
+            
+            vc.navigationController?.pushViewController(pdfvc, animated: true)
+            
+        }
         
         return true
     }

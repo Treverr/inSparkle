@@ -29,6 +29,8 @@ public class ScheduleTableViewCell: UITableViewCell {
         
         if isConfirmed == false {
             confirmed.hidden = true
+        } else {
+            confirmed.hidden = false
         }
         
     }
