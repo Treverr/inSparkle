@@ -27,12 +27,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CustomerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRS-3f-b1b">
-                                            <rect key="frame" x="8" y="11" width="120" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WeekScheduled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mk-jt-lao">
                                             <rect key="frame" x="467" y="11" width="125" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -42,18 +36,25 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="HuK-Uk-Edy">
                                             <rect key="frame" x="580" y="0.0" width="20" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="X5V-2v-XKE"/>
-                                                <constraint firstAttribute="width" constant="20" id="qwn-8z-HSN"/>
+                                                <constraint firstAttribute="width" constant="20" id="e4v-2z-Ckn"/>
                                             </constraints>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CustomerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRS-3f-b1b">
+                                            <rect key="frame" x="8" y="11" width="120" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="HuK-Uk-Edy" secondAttribute="trailing" constant="-8" id="HNC-a4-MLZ"/>
-                                        <constraint firstItem="HuK-Uk-Edy" firstAttribute="top" secondItem="D9s-HF-4ex" secondAttribute="topMargin" constant="-8" id="Nhj-SP-doX"/>
-                                        <constraint firstItem="1mk-jt-lao" firstAttribute="trailing" secondItem="D9s-HF-4ex" secondAttribute="trailingMargin" id="XlC-1B-Llh"/>
-                                        <constraint firstItem="nRS-3f-b1b" firstAttribute="baseline" secondItem="1mk-jt-lao" secondAttribute="baseline" id="Y1X-1p-1sj"/>
-                                        <constraint firstItem="nRS-3f-b1b" firstAttribute="leading" secondItem="D9s-HF-4ex" secondAttribute="leadingMargin" id="pGm-sG-OYD"/>
-                                        <constraint firstItem="nRS-3f-b1b" firstAttribute="centerY" secondItem="D9s-HF-4ex" secondAttribute="centerY" id="tCW-oi-6E4"/>
+                                        <constraint firstItem="nRS-3f-b1b" firstAttribute="leading" secondItem="D9s-HF-4ex" secondAttribute="leadingMargin" id="0n0-vi-Mcw"/>
+                                        <constraint firstItem="nRS-3f-b1b" firstAttribute="leading" secondItem="D9s-HF-4ex" secondAttribute="leadingMargin" id="BRw-rR-YJY"/>
+                                        <constraint firstAttribute="trailing" secondItem="HuK-Uk-Edy" secondAttribute="trailing" id="Utg-xG-hsn"/>
+                                        <constraint firstItem="nRS-3f-b1b" firstAttribute="centerY" secondItem="D9s-HF-4ex" secondAttribute="centerY" id="Xkv-p1-kTb"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="HuK-Uk-Edy" secondAttribute="bottom" constant="15" id="ZbW-0X-Ouv"/>
+                                        <constraint firstItem="nRS-3f-b1b" firstAttribute="baseline" secondItem="1mk-jt-lao" secondAttribute="baseline" id="bPy-Wp-DN1"/>
+                                        <constraint firstItem="1mk-jt-lao" firstAttribute="trailing" secondItem="D9s-HF-4ex" secondAttribute="trailingMargin" id="uz2-tm-jmc"/>
+                                        <constraint firstItem="HuK-Uk-Edy" firstAttribute="top" secondItem="D9s-HF-4ex" secondAttribute="top" id="vBC-5T-Fgh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
