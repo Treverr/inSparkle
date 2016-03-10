@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10112" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6N2-2s-cfO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10115" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6N2-2s-cfO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10084"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -482,13 +482,16 @@
                         <outlet property="lastName" destination="x26-4w-o6n" id="pp1-pZ-Q6m"/>
                         <outlet property="messagesEnabledLabel" destination="N6l-Ee-3Y4" id="Id6-3a-qXq"/>
                         <outlet property="messagesEnabledSwitch" destination="f0s-Bn-9JM" id="mlI-WJ-5ZX"/>
+                        <outlet property="roleCell" destination="hc7-s1-SnC" id="NLM-ac-nVg"/>
                         <outlet property="roleLabel" destination="Ju2-z9-PLs" id="vzg-oW-Lg2"/>
                         <outlet property="userLoginSwitch" destination="meX-RD-Sw9" id="Pds-DZ-Ngi"/>
                         <outlet property="userNameTextField" destination="PXq-DB-Idu" id="b2P-mG-RX2"/>
                         <outlet property="usernameLabel" destination="yKP-p1-nLf" id="OSl-7k-4Pw"/>
+                        <segue destination="nei-bA-AhN" kind="unwind" identifier="returnToManageEmp" unwindAction="returnToManageEmpSelection:" id="pNg-If-8nK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZGA-sx-5w2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nei-bA-AhN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5769" y="-427"/>
         </scene>

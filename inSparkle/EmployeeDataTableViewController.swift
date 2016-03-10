@@ -136,13 +136,13 @@ class EmployeeDataTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 0 && indexPath.row == 2 {
-            roleDropDown.width = self.view.frame.width
             print(roleDropDown.show())
             roleDropDown.show()
         }
     }
     
     var roleDropDownArray = [String]()
+    @IBOutlet var roleCell: UITableViewCell!
     
     func setupRoleDropDown() {
         var roles : [String] {
@@ -153,10 +153,11 @@ class EmployeeDataTableViewController: UITableViewController {
         
         roleDropDown.dataSource = roles
         roleDropDown.direction = .Any
-        roleDropDown.anchorView = self.roleLabel
+        roleDropDown.anchorView = self.roleCell
         roleDropDown.bottomOffset = CGPoint(x: 0, y: roleDropDown.anchorView!.bounds.height)
         roleDropDown.topOffset = CGPoint(x: 0, y: -roleDropDown.anchorView!.bounds.height)
         roleDropDown.dismissMode = .Automatic
+        
         roleDropDown.selectionAction = { [unowned self] (index, item) in
             self.roleLabel.text = item
             self.roleLabel.textColor = UIColor.blackColor()
@@ -206,11 +207,7 @@ class EmployeeDataTableViewController: UITableViewController {
             self.presentViewController(disableAlert, animated: true, completion: nil)
         }
         
-        if disableEnableEmployee.titleLabel?.text == "Enable Employee" {
-            
-        }
-        
-        if disableEnableEmployee.titleLabel?.text == "Save" {
+        if disableEnableEmployee.titleLabel?.text == "Save" || disableEnableEmployee.titleLabel?.text == "Enable Employee" {
             if firstName.text!.isEmpty || lastName.text!.isEmpty {
                 var missingFields : String!
                 if firstName.text!.isEmpty {
@@ -248,6 +245,10 @@ class EmployeeDataTableViewController: UITableViewController {
                             } catch {
                                 
                             }
+                            if !self.userLoginSwitch.on {
+                                self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
+                            }
+                            
                             if self.userLoginSwitch.on {
                                 CloudCode.CreateNewUser(self.userNameTextField.text!, password: pinText.text!, emailAddy: self.emailAddressTextField.text!, adminStatus: self.adminSwitch.on, empID: self.employeeObject.objectId!, completion: { (isComplete, objectID) in
                                     if isComplete {
@@ -268,6 +269,7 @@ class EmployeeDataTableViewController: UITableViewController {
                                         })
                                         successAlert.addAction(okayButton)
                                         self.presentViewController(successAlert, animated: true, completion: nil)
+                                        self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
                                     }
                                 })
                             }
