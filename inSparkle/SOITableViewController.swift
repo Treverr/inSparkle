@@ -16,10 +16,15 @@ protocol sendObjectDelegate
 
 class SOITableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
+    @IBOutlet var searchBar: UISearchBar!
     var objects : NSMutableArray = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.setContentOffset(CGPointMake(0, searchBar.frame.size.height), animated: false)
+        
+        searchBar.delegate = self
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.backgroundColor = Colors.sparkleGreen
@@ -87,9 +92,9 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         var objectsToDelete = [NSIndexPath]()
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             if tableView.indexPathsForSelectedRows != nil {
-            objectsToDelete = tableView.indexPathsForSelectedRows!
-            self.objects.removeObjectAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths(objectsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
+                objectsToDelete = tableView.indexPathsForSelectedRows!
+                self.objects.removeObjectAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths(objectsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
                 deleteParseObject()
             } else {
                 objectsToDelete.append(indexPath)
@@ -136,7 +141,7 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         self.objects.removeAllObjects()
         getParseItems()
         self.tableView.reloadData()
-
+        
     }
     
     func RefreshSOI(notification : NSNotification) {
@@ -211,5 +216,56 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.None
     }
+    
+    
+}
+
+extension SOITableViewController : UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+        self.objects.removeAllObjects()
+        self.getParseItems()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if !searchBar.text!.isEmpty {
+            self.objects.removeAllObjects()
+            let query = PFQuery(className: "SOI")
+            query.whereKey("isActive", equalTo: true)
+            query.whereKey("customerName", containsString: searchBar.text!)
+            query.orderByDescending("createdAt")
+            query.findObjectsInBackgroundWithBlock { (foundObjects: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    var foundObjectsCount = foundObjects!.count
+                    for object in foundObjects! {
+                        self.objects.addObject(object)
+                        UIView.transitionWithView(self.tableView, duration: 0.35, options: .TransitionCrossDissolve, animations: { () -> Void in
+                            self.tableView.reloadData()
+                            }, completion: nil)
+                    }
+                    if (foundObjectsCount - self.objects.count) == 0 {
+                        if (self.refreshControl!.refreshing) {
+                            self.refreshControl?.endRefreshing()
+                        }
+                    }
+                } else {
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        if searchBar.text!.isEmpty {
+            self.objects.removeAllObjects()
+            self.getParseItems()
+        }
+    }
+
     
 }

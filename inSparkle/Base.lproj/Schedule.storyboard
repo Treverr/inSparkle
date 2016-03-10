@@ -36,7 +36,8 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Confirmed" translatesAutoresizingMaskIntoConstraints="NO" id="HuK-Uk-Edy">
                                             <rect key="frame" x="580" y="0.0" width="20" height="20"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="20" id="e4v-2z-Ckn"/>
+                                                <constraint firstAttribute="height" constant="20" id="joX-DI-vnV"/>
+                                                <constraint firstAttribute="width" constant="20" id="skw-lh-wT0"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CustomerName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRS-3f-b1b">
@@ -48,13 +49,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="nRS-3f-b1b" firstAttribute="leading" secondItem="D9s-HF-4ex" secondAttribute="leadingMargin" id="0n0-vi-Mcw"/>
+                                        <constraint firstItem="HuK-Uk-Edy" firstAttribute="top" secondItem="D9s-HF-4ex" secondAttribute="topMargin" constant="-8" id="51P-EZ-nA7"/>
                                         <constraint firstItem="nRS-3f-b1b" firstAttribute="leading" secondItem="D9s-HF-4ex" secondAttribute="leadingMargin" id="BRw-rR-YJY"/>
-                                        <constraint firstAttribute="trailing" secondItem="HuK-Uk-Edy" secondAttribute="trailing" id="Utg-xG-hsn"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="HuK-Uk-Edy" secondAttribute="trailing" constant="-8" id="UvS-FW-4Hn"/>
                                         <constraint firstItem="nRS-3f-b1b" firstAttribute="centerY" secondItem="D9s-HF-4ex" secondAttribute="centerY" id="Xkv-p1-kTb"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="HuK-Uk-Edy" secondAttribute="bottom" constant="15" id="ZbW-0X-Ouv"/>
                                         <constraint firstItem="nRS-3f-b1b" firstAttribute="baseline" secondItem="1mk-jt-lao" secondAttribute="baseline" id="bPy-Wp-DN1"/>
                                         <constraint firstItem="1mk-jt-lao" firstAttribute="trailing" secondItem="D9s-HF-4ex" secondAttribute="trailingMargin" id="uz2-tm-jmc"/>
-                                        <constraint firstItem="HuK-Uk-Edy" firstAttribute="top" secondItem="D9s-HF-4ex" secondAttribute="top" id="vBC-5T-Fgh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
