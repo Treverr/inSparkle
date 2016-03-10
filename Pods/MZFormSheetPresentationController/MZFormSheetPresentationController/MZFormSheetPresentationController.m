@@ -301,8 +301,8 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 }
 
 - (void)dismissalTransitionWillBegin {
-    if (self.presentationTransitionWillBeginCompletionHandler) {
-        self.presentationTransitionWillBeginCompletionHandler(self.presentedViewController);
+    if (self.dismissalTransitionWillBeginCompletionHandler) {
+        self.dismissalTransitionWillBeginCompletionHandler(self.presentedViewController);
     }
     [self.presentedViewController.transitionCoordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
         [UIView animateWithDuration:[context transitionDuration] animations:^{
@@ -483,7 +483,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
     CGRect modifiedPresentedViewFrame = CGRectZero;
     
     if (self.frameConfigurationHandler) {
-        modifiedPresentedViewFrame = self.frameConfigurationHandler(self.presentedView,formSheetRect);
+        modifiedPresentedViewFrame = self.frameConfigurationHandler(self.presentedView,formSheetRect,self.isKeyboardVisible);
     } else {
         modifiedPresentedViewFrame = formSheetRect;
     }
