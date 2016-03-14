@@ -50,9 +50,9 @@ class Messages : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "messageFromName") }
     }
     
-    var messageFromAddress : String {
-        get {return objectForKey("messageFromAddress") as! String}
-        set { setObject(newValue, forKey: "messageFromAddress") }
+    var messageFromAddress : String? {
+        get {return objectForKey("messageFromAddress") as? String}
+        set { setObject(newValue!, forKey: "messageFromAddress") }
     }
     
     var messageFromPhone : String {

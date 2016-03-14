@@ -87,7 +87,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     func updateMessageDetails() {
         let name = existingMessage!.messageFromName
-        let address = existingMessage!.messageFromAddress
         let phone = existingMessage!.messageFromPhone
         let altPhone = existingMessage?.altPhone
         let email = existingMessage?.emailAddy
@@ -95,7 +94,11 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         let status = existingMessage?.status
         
         nameTextField.text = name
-        addressTextField.text = address
+        
+        if existingMessage?.messageFromAddress != nil {
+            addressTextField.text! = existingMessage!.messageFromAddress!
+        }
+        
         phoneTextField.text = phone
         
         if altPhone != nil {

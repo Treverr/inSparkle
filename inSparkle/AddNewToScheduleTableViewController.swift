@@ -128,10 +128,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         weekPickerTapGesture.numberOfTapsRequired = 1
         weekPicker.addGestureRecognizer(weekPickerTapGesture)
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -451,6 +447,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             if sender as! NSObject == confirmButton {
                 schObj.confirmedWith = self.confirmedWith.text!.capitalizedString
                 schObj.confirmedDate = NSDate()
+                schObj.confrimed = true
             }
             schObj.customerName = customerName!.capitalizedString
             schObj.customerAddress = addressLabel.text!.stringByReplacingOccurrencesOfString("\n", withString: " ").capitalizedString
@@ -491,6 +488,10 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             if selectClosingDate.text != "Not Set" {
                 schObj.confirmedDate = GlobalFunctions().dateFromShortDateString(selectClosingDate.text!)
                 schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
+            } else {
+                schObj.removeObjectForKey("confirmed")
+                schObj.removeObjectForKey("confrimedBy")
+                schObj.removeObjectForKey("confirmedDate")
             }
             schObj.saveEventually { (success: Bool, error : NSError?) -> Void in
                 if success {
@@ -563,71 +564,71 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     }
     
     
-    var isKeyboardShowing : Bool?
-    var kbHeight: CGFloat?
-    var showUIKeyboard : Bool?
-    var hasKeyboard : Bool?
-    
-    func keyboardWillShow(notification : NSNotification) {
-        
-        var userInfo: [NSObject : AnyObject] = notification.userInfo!
-        let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
-        let keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
-        let height: CGFloat = self.view.frame.size.height
-        if (keyboard.origin.y + keyboard.size.height) > height {
-            self.hasKeyboard = true
-        }
-        let toolbarHeight : CGFloat?
-        
-        if !notesTextView.isFirstResponder() {
-            return
-        } else {
-            
-            if isKeyboardShowing == true {
-                return
-            } else {
-                if let userInfo = notification.userInfo {
-                    if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                        if self.hasKeyboard == true && !notesTextView.isFirstResponder() {
-                            kbHeight = 25
-                        } else {
-                            kbHeight = keyboardSize.height
-                        }
-                        self.animateTextField(true)
-                        isKeyboardShowing = true
-                    }
-                }
-            }
-            
-        }
-    }
-    
-    
-    
-    func keyboardWillHide(notification : NSNotification) {
-        if (isKeyboardShowing != nil) {
-            if isKeyboardShowing! {
-                self.animateTextField(false)
-                isKeyboardShowing = false
-            }
-        }
-    }
-    
-    func animateTextField(up: Bool) {
-        if kbHeight == nil {
-            return
-        } else {
-            if customerNameTextField.isFirstResponder() {
-                
-            } else {
-                let movement = (up ? -kbHeight! : kbHeight!)
-                UIView.animateWithDuration(0.3, animations: {
-                    self.view.frame = CGRectOffset(self.view.frame, 0, movement)
-                })
-            }
-        }
-        
-    }
+//    var isKeyboardShowing : Bool?
+//    var kbHeight: CGFloat?
+//    var showUIKeyboard : Bool?
+//    var hasKeyboard : Bool?
+//    
+//    func keyboardWillShow(notification : NSNotification) {
+//        
+//        var userInfo: [NSObject : AnyObject] = notification.userInfo!
+//        let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
+//        let keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
+//        let height: CGFloat = self.view.frame.size.height
+//        if (keyboard.origin.y + keyboard.size.height) > height {
+//            self.hasKeyboard = true
+//        }
+//        let toolbarHeight : CGFloat?
+//        
+//        if !notesTextView.isFirstResponder() {
+//            return
+//        } else {
+//            
+//            if isKeyboardShowing == true {
+//                return
+//            } else {
+//                if let userInfo = notification.userInfo {
+//                    if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+//                        if self.hasKeyboard == true && !notesTextView.isFirstResponder() {
+//                            kbHeight = 25
+//                        } else {
+//                            kbHeight = keyboardSize.height
+//                        }
+//                        self.animateTextField(true)
+//                        isKeyboardShowing = true
+//                    }
+//                }
+//            }
+//            
+//        }
+//    }
+//    
+//    
+//    
+//    func keyboardWillHide(notification : NSNotification) {
+//        if (isKeyboardShowing != nil) {
+//            if isKeyboardShowing! {
+//                self.animateTextField(false)
+//                isKeyboardShowing = false
+//            }
+//        }
+//    }
+//    
+//    func animateTextField(up: Bool) {
+//        if kbHeight == nil {
+//            return
+//        } else {
+//            if customerNameTextField.isFirstResponder() {
+//                
+//            } else {
+//                let movement = (up ? -kbHeight! : kbHeight!)
+//                UIView.animateWithDuration(0.3, animations: {
+//                    self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+//                })
+//            }
+//        }
+//        
+//    }
     
     func weekPickerMakeAllOthersResign() {
         if !weekPicker.isFirstResponder() {
@@ -670,6 +671,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         if indexPath.section == 0 && indexPath.row == 6 {
             toggleTypePicker()
         }
+        
+        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
         
         
     }
@@ -848,4 +851,18 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     override func viewWillDisappear(animated: Bool) {
         AddNewScheduleObjects.scheduledObject = nil
     }
+    
+//    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+//        
+//        let origin = textView.frame.origin
+//        let point = textView.superview?.convertPoint(origin, toView: self.tableView)
+//        let navBarHeight = self.navigationController?.navigationBar.frame.size.height
+//        var offset = tableView.contentOffset
+//        
+//        offset.y += (point!.y - navBarHeight!)
+//        
+//        tableView.setContentOffset(offset, animated: true)
+//        
+//        return true
+//    }
 }

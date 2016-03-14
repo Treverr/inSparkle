@@ -125,4 +125,9 @@ class ScheduleObject : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "weekObj") }
     }
     
+    var tentativeDate : WeekList {
+        get { return objectForKey("weekObj") as! WeekList }
+        set { setObject(newValue, forKey: "weekObj") }
+    }
+    
 }

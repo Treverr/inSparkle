@@ -463,9 +463,7 @@
 				C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */,
 				C9140FB01C30EBE900F9D624 /* UserModel.swift */,
 				C94367051BF719E10066D155 /* Colors.swift */,
-				C923D5F91C231A9100A32978 /* WeekList.swift */,
 				C9C887EB1C817B2800C7A2F9 /* RoleModel.swift */,
-				C95990E31C10F8DD00F6873E /* ScheduleModel.swift */,
 				C96EF7F51C13F2E700C4D2C1 /* TimeClockPunchObj.swift */,
 				C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */,
 				C96EF7F71C13F37700C4D2C1 /* EmployeeModel.swift */,
@@ -817,6 +815,8 @@
 				C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */,
 				C9A0307C1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift */,
 				C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */,
+				C95990E31C10F8DD00F6873E /* ScheduleModel.swift */,
+				C923D5F91C231A9100A32978 /* WeekList.swift */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";

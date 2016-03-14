@@ -27,6 +27,7 @@ class PDFLockerTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         getFiles()
+        self.tableView.reloadData()
     }
     
     enum FileSaveError {
@@ -213,6 +214,7 @@ extension PDFLockerTableViewController : UIDocumentInteractionControllerDelegate
     func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
         return self.view.frame
     }
+    
     
     func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
         self.dismissViewControllerAnimated(true, completion: nil)

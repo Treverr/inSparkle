@@ -47,14 +47,14 @@ class ScheduleTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("scheduleCell") as! ScheduleTableViewCell
         
-        let object = scheduleArray.objectAtIndex(indexPath.row)
+        let object = scheduleArray.objectAtIndex(indexPath.row) as! ScheduleObject
         
         let customerName = object.valueForKey("customerName") as! String
         let weekStart = object.valueForKey("weekStart") as! NSDate
         let weekEnd = object.valueForKey("weekEnd") as! NSDate
         
         var isConfirmed : Bool?
-        if object.valueForKey("confrimedBy") != nil {
+        if object.confrimed != nil {
             isConfirmed = true
         } else {
             isConfirmed = false
