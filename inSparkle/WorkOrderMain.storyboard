@@ -359,26 +359,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="224"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description of Work:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXG-pU-aX4">
-                                                    <rect key="frame" x="8" y="8" width="157" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="O9M-g8-5ws">
                                                     <rect key="frame" x="8" y="37" width="584" height="179"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description of Work Performed:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXG-pU-aX4">
+                                                    <rect key="frame" x="8" y="8" width="242" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="bXG-pU-aX4" firstAttribute="top" secondItem="OIg-UN-hpU" secondAttribute="topMargin" id="8gC-9A-wcV"/>
-                                                <constraint firstItem="bXG-pU-aX4" firstAttribute="leading" secondItem="O9M-g8-5ws" secondAttribute="leading" id="Cwq-kA-rKv"/>
-                                                <constraint firstItem="O9M-g8-5ws" firstAttribute="top" secondItem="bXG-pU-aX4" secondAttribute="bottom" constant="8" symbolic="YES" id="nSU-OR-rSV"/>
-                                                <constraint firstItem="O9M-g8-5ws" firstAttribute="bottom" secondItem="OIg-UN-hpU" secondAttribute="bottomMargin" id="oBY-xv-A6C"/>
-                                                <constraint firstItem="O9M-g8-5ws" firstAttribute="trailing" secondItem="OIg-UN-hpU" secondAttribute="trailingMargin" id="pgm-Zr-8fU"/>
-                                                <constraint firstItem="bXG-pU-aX4" firstAttribute="leading" secondItem="OIg-UN-hpU" secondAttribute="leadingMargin" id="qsC-A2-S15"/>
+                                                <constraint firstItem="bXG-pU-aX4" firstAttribute="leading" secondItem="O9M-g8-5ws" secondAttribute="leading" id="14A-Im-toS"/>
+                                                <constraint firstItem="O9M-g8-5ws" firstAttribute="trailing" secondItem="OIg-UN-hpU" secondAttribute="trailingMargin" id="40P-ff-bEd"/>
+                                                <constraint firstItem="bXG-pU-aX4" firstAttribute="leading" secondItem="OIg-UN-hpU" secondAttribute="leadingMargin" id="mgl-Zb-Z84"/>
+                                                <constraint firstItem="O9M-g8-5ws" firstAttribute="top" secondItem="bXG-pU-aX4" secondAttribute="bottom" constant="8" symbolic="YES" id="mxd-dR-FYl"/>
+                                                <constraint firstItem="O9M-g8-5ws" firstAttribute="bottom" secondItem="OIg-UN-hpU" secondAttribute="bottomMargin" id="qal-EX-nBu"/>
+                                                <constraint firstItem="bXG-pU-aX4" firstAttribute="top" secondItem="OIg-UN-hpU" secondAttribute="topMargin" id="vpI-K4-N52"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
