@@ -209,6 +209,7 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                 statusCell.imageView?.image = nil
             }
         }
+        
         if workOrderObject?.labor != nil {
             self.labor = workOrderObject!.labor as! [String]
             if labor.count != 0 {

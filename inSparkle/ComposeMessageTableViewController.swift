@@ -65,6 +65,8 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         phoneTextField.delegate = self
         altPhoneTextField.delegate = self
         
+        enableDisableSaveButton(false)
+        
     }
     
     func updateSignedEmployee() {
@@ -83,6 +85,15 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             }
         })
         
+    }
+    
+    func enableDisableSaveButton(enabled : Bool) {
+        saveButton.enabled = enabled
+        if enabled {
+            saveButton.tintColor = UIColor.blueColor()
+        } else {
+            saveButton.tintColor = UIColor.lightGrayColor()
+        }
     }
     
     func updateMessageDetails() {
@@ -247,10 +258,10 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 if error == nil && success == true {
                     let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
                     dispatch_after(delayTime, dispatch_get_main_queue()) {
-//                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
-                    self.performSegueWithIdentifier("unwindToMessages", sender: self)
-                    PushNotifications.messagesPushNotification(self.selectedEmployee!)
-                    MessagesDataObjects.selectedEmp = nil
+                        //                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
+                        self.performSegueWithIdentifier("unwindToMessages", sender: self)
+                        PushNotifications.messagesPushNotification(self.selectedEmployee!)
+                        MessagesDataObjects.selectedEmp = nil
                     }
                 }
                 if error != nil {
@@ -301,7 +312,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 if error == nil && success == true {
                     let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
                     dispatch_after(delayTime, dispatch_get_main_queue()) {
-//                        NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
+                        //                        NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
                         self.performSegueWithIdentifier("unwindToMessages", sender: self)
                         if self.isNewMessage == true {
                             PushNotifications.messagesPushNotification(self.selectedEmployee!)
@@ -384,6 +395,15 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
     }
     
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField == nameTextField || textField == phoneTextField {
+            if !nameTextField.text!.isEmpty && !phoneTextField.text!.isEmpty {
+                enableDisableSaveButton(true)
+            } else {
+                enableDisableSaveButton(false)
+            }
+        }
+    }
     
 }
 
