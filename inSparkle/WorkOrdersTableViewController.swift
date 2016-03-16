@@ -76,7 +76,7 @@ class WorkOrdersTableViewController: UITableViewController {
         self.theWorkOrders.removeAll()
         
         let query = WorkOrders.query()
-        query?.orderByDescending("dateTimeMessage")
+        query?.orderByAscending("date")
         query?.findObjectsInBackgroundWithBlock({ (workOrders : [PFObject]?, error :NSError?) in
             if error == nil {
                 for order in workOrders! {

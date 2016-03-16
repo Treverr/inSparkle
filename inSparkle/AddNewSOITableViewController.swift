@@ -197,6 +197,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
                 }
                 existingObject?.setValue(category!, forKey: "category")
                 existingObject?.setValue(true, forKey: "isActive")
+                existingObject?.setValue(location!, forKey: "location")
                 existingObject?.saveEventually({ (success : Bool, error: NSError?) -> Void in
                     if error == nil {
                         NSNotificationCenter.defaultCenter().postNotificationName("RefreshSOINotification", object: nil)
