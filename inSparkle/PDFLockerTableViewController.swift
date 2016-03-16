@@ -87,13 +87,11 @@ class PDFLockerTableViewController: UITableViewController {
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory = paths[0]
         let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
-        
         do {
             self.filePaths = try fileManager.contentsOfDirectoryAtPath(inboxPath)
         } catch {
             
         }
-        print(self.filePaths)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

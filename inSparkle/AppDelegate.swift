@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         Fabric.with([Crashlytics.self])
         
+        
         registerParseSubclasses()
         
         Parse.setApplicationId("M8DKwA6ifp1JJlHmSjpBL0M66tYq710f9xEnFcrv",
@@ -42,8 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
                 do {
                     try employee!.fetch()
-                    mobihelpIntegration()
-                } catch { }
+                } catch {
+                }
+                Crashlytics.sharedInstance().setUserIdentifier(employee?.firstName)
             }
         } catch {
             print("Error")

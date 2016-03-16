@@ -65,8 +65,11 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         phoneTextField.delegate = self
         altPhoneTextField.delegate = self
         
-        enableDisableSaveButton(false)
-        
+        if !nameTextField.text!.isEmpty && !phoneTextField.text!.isEmpty {
+            enableDisableSaveButton(true)
+        } else {
+            enableDisableSaveButton(false)
+        }
     }
     
     func updateSignedEmployee() {
@@ -90,7 +93,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     func enableDisableSaveButton(enabled : Bool) {
         saveButton.enabled = enabled
         if enabled {
-            saveButton.tintColor = UIColor.blueColor()
+            saveButton.tintColor = UIColor.whiteColor()
         } else {
             saveButton.tintColor = UIColor.lightGrayColor()
         }
