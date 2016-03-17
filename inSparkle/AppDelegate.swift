@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         Fabric.with([Crashlytics.self])
         
-        
         registerParseSubclasses()
         
         Parse.setApplicationId("M8DKwA6ifp1JJlHmSjpBL0M66tYq710f9xEnFcrv",
@@ -45,7 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     try employee!.fetch()
                 } catch {
                 }
+                
                 Crashlytics.sharedInstance().setUserIdentifier(employee?.firstName)
+                Crashlytics.sharedInstance().setUserEmail(PFUser.currentUser()?.email)
+                
             }
         } catch {
             print("Error")
@@ -173,19 +175,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
     }
     
+    var nextFire : NSDate!
+    
     func applicationWillResignActive(application: UIApplication) {
-        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" {
-            logOutTimer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: Selector(AppDelegate().logOut()), userInfo: nil, repeats: false)
-        }
+        
+//        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" {
+//            logOutTimer = NSTimer.scheduledTimerWithTimeInterval(100.0, target: self, selector: Selector(self.logOut()), userInfo: nil, repeats: false)
+//        let timer = self.logOutTimer!
+//        
+//        nextFire = timer.fireDate
+//        logOutTimer?.invalidate()
+//        }
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-    
-    func applicationWillEnterForeground(application: UIApplication) {
-        logOutTimer?.invalidate()
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
@@ -195,6 +200,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             currentInstallation.saveEventually()
         }
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        
     }
     
     func applicationWillTerminate(application: UIApplication) {
@@ -237,12 +243,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         PFUser.logOut()
         
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
-            let currentView = self.window?.rootViewController
-            currentView!.presentViewController(viewController, animated: true, completion: nil)
+            let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+            let currentView = self.window?.currentViewController()
+            currentView?.presentViewController(viewController, animated: true, completion: nil)
         }
     }
-    
 }
 
 

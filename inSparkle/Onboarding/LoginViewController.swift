@@ -143,8 +143,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                 } else {
                     let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
-                    banner.dismissesOnTap = false
-                    banner.show(duration: 10.0)
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 5.0)
                 }
             })
         }
