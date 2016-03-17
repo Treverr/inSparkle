@@ -510,6 +510,7 @@
 		C9585F321C17588D008AB918 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				C972FF711C19F9F100D34EB2 /* Messages */,
 				C9F0FF941C189B66005EEE28 /* Time Card Management */,
 				C9585F331C1758A7008AB918 /* Reports */,
 				C9585F2E1C175505008AB918 /* Admin.storyboard */,
@@ -664,7 +665,6 @@
 				C94C1CC01C3CB98900F568B9 /* Customer Lookup */,
 				C9709C1A1C72D12F000ED6EA /* Work Orders */,
 				C9585F321C17588D008AB918 /* Admin */,
-				C972FF711C19F9F100D34EB2 /* Messages */,
 				C9585F231C16511A008AB918 /* Resources */,
 				C96EF7FF1C14CE1C00C4D2C1 /* Chemical Check */,
 				C96EF7FC1C14BFD800C4D2C1 /* TimeClock */,

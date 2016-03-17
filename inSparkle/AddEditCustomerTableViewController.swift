@@ -37,9 +37,12 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         }
         
         phoneNumberTextField.delegate = self
-        
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatedAddressLabel", name: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
+        
+        enableSaveButton(false)
 
     }
     
@@ -60,6 +63,15 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         
     }
     
+    func enableSaveButton(enabled : Bool) {
+        saveUpdateButton.enabled = enabled
+        if enabled {
+            saveUpdateButton.tintColor = UIColor.blueColor()
+        } else {
+            saveUpdateButton.tintColor = UIColor.lightGrayColor()
+        }
+    }
+    
     var updatedAddress = false
     
     func updatedAddressLabel() {
@@ -67,6 +79,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         addressLabel.text = GoogleAddress.address
         addressLabel.textColor = UIColor.blackColor()
         GoogleAddress.address = nil
+        enableSaveButton(true)
     }
     
     @IBAction func saveUpdate(sender: AnyObject) {
@@ -188,7 +201,9 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         return true
     }
     
-    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        enableSaveButton(true)
+    }
     
 }
 

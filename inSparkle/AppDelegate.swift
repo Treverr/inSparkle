@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             do {
                 try NSFileManager.defaultManager().createDirectoryAtPath(inboxPath, withIntermediateDirectories: false, attributes: nil)
             } catch {
-               
+                
             }
             
             var fileName = String(url).componentsSeparatedByString("/").last
@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
         
-
+        
         
         let rootView = self.window!.rootViewController as! TabBarViewController
         rootView.selectedIndex = 4
@@ -174,7 +174,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func applicationWillResignActive(application: UIApplication) {
-        //        logOutTimer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: "logOut", userInfo: nil, repeats: false)
+        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" {
+            logOutTimer = NSTimer.scheduledTimerWithTimeInterval(30.0, target: self, selector: Selector(AppDelegate().logOut()), userInfo: nil, repeats: false)
+        }
     }
     
     func applicationDidEnterBackground(application: UIApplication) {

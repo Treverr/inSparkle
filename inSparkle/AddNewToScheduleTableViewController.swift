@@ -645,8 +645,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     let typePickerIndexPath : NSIndexPath = NSIndexPath(forItem: 7, inSection: 0)
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+    
         
         if theWeekPickerHidden == false {
             weekPicker.hidden = true
@@ -671,10 +670,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         if indexPath.section == 0 && indexPath.row == 6 {
             toggleTypePicker()
         }
-        
-        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
-        
-        
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -852,17 +847,5 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         AddNewScheduleObjects.scheduledObject = nil
     }
     
-//    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-//        
-//        let origin = textView.frame.origin
-//        let point = textView.superview?.convertPoint(origin, toView: self.tableView)
-//        let navBarHeight = self.navigationController?.navigationBar.frame.size.height
-//        var offset = tableView.contentOffset
-//        
-//        offset.y += (point!.y - navBarHeight!)
-//        
-//        tableView.setContentOffset(offset, animated: true)
-//        
-//        return true
-//    }
+    
 }
