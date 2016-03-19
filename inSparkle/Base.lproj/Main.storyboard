@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10115" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r2q-3L-E31">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10115" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r2q-3L-E31">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10084"/>
@@ -242,6 +242,7 @@
                     <connections>
                         <outlet property="adminButton" destination="nuL-W7-2rW" id="SGM-Rg-E51"/>
                         <outlet property="logoutCell" destination="APW-gX-2mQ" id="Xo7-E8-gaA"/>
+                        <outlet property="profileLabel" destination="LeM-YN-c5K" id="Brw-Kz-ezN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Aw-ja-Sug" userLabel="First Responder" sceneMemberID="firstResponder"/>

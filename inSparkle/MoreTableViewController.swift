@@ -12,6 +12,7 @@ class MoreTableViewController: UITableViewController {
 
     @IBOutlet weak var logoutCell: UITableViewCell!
     @IBOutlet var adminButton: UIBarButtonItem!
+    @IBOutlet var profileLabel: UILabel!
     
     override func viewDidLoad() {
         setupNavigationbar()
@@ -22,6 +23,7 @@ class MoreTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
+        setUserName()
     }
     
     @IBAction func logoutAction(sender: AnyObject) {
@@ -44,6 +46,19 @@ class MoreTableViewController: UITableViewController {
     
     @IBAction func supportAction(sender: AnyObject) {
         Mobihelp.sharedInstance().presentSupport(self)
+    }
+    
+    func setUserName() {
+        if PFUser.currentUser() != nil {
+            let user = PFUser.currentUser()?.objectForKey("employee")
+            user?.fetchIfNeededInBackgroundWithBlock({ (employee : PFObject?, error : NSError?) in
+                if error == nil {
+                    let empl = employee as! Employee
+                    let name = empl.firstName + " " + empl.lastName
+                    self.profileLabel.text = name
+                }
+            })
+        }
     }
 
 }

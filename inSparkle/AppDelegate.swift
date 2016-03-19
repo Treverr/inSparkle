@@ -13,6 +13,7 @@ import Fabric
 import Crashlytics
 import CoreLocation
 import IQKeyboardManagerSwift
+import BRYXBanner
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -193,6 +194,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
     
+    func applicationWillEnterForeground(application: UIApplication) {
+        if PFUser.currentUser() != nil {
+            var employee = PFUser.currentUser()?.objectForKey("employee")
+            employee?.fetchIfNeededInBackgroundWithBlock({ (emp : PFObject?, error : NSError?) in
+                if error == nil {
+                    var theEmployee = emp as! Employee
+                    let name = theEmployee.firstName
+                    
+                    let banner = Banner(title: "Welcome Back, \(name)!", subtitle: nil, image: nil, backgroundColor: Colors.sparkleBlue, didTapBlock: nil)
+                    banner.dismissesOnTap = true
+                    banner.dismissesOnSwipe = true
+                    banner.show(duration: 1.25)
+                }
+            })
+            
+        }
+    }
+    
     func applicationDidBecomeActive(application: UIApplication) {
         let currentInstallation = PFInstallation.currentInstallation()
         if currentInstallation.badge != 0 {
@@ -200,7 +219,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             currentInstallation.saveEventually()
         }
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
-        
     }
     
     func applicationWillTerminate(application: UIApplication) {

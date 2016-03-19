@@ -153,6 +153,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func closeLogin() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.dismissViewControllerAnimated(true, completion: nil)
+            
         })
     }
 
