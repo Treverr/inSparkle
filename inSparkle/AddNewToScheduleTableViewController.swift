@@ -377,6 +377,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             tableView.beginUpdates()
             tableView.endUpdates()
         }
+        
         return true
     }
     
@@ -389,6 +390,17 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             tableView.beginUpdates()
             tableView.endUpdates()
         }
+        
+        if textView == notesTextView {
+            let indexPath = NSIndexPath(forRow: 12, inSection: 0)
+            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+        }
+        
+        if textView == locationEssentialItems {
+            let indexPath = NSIndexPath(forRow: 9, inSection: 0)
+            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+        }
+        
     }
     
     var confirmedWith : UITextField!
