@@ -510,7 +510,6 @@
 		C9585F321C17588D008AB918 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
-				C972FF711C19F9F100D34EB2 /* Messages */,
 				C9F0FF941C189B66005EEE28 /* Time Card Management */,
 				C9585F331C1758A7008AB918 /* Reports */,
 				C9585F2E1C175505008AB918 /* Admin.storyboard */,
@@ -660,6 +659,7 @@
 		C99D3E411BF5BD3700D30F96 /* inSparkle */ = {
 			isa = PBXGroup;
 			children = (
+				C972FF711C19F9F100D34EB2 /* Messages */,
 				C950085F1C61C05400F5351C /* Generate PDF */,
 				C90915641C183D8600FC7E54 /* inSparkle.entitlements */,
 				C94C1CC01C3CB98900F568B9 /* Customer Lookup */,

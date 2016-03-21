@@ -20,6 +20,8 @@ class AddEditMessageNoteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.origHeight = self.view.frame.size.height
+        
         print("Is New Note: \(isNewNote)")
         existingNote?.fetchIfNeededInBackground()
         print(linkingMessage)
@@ -28,14 +30,31 @@ class AddEditMessageNoteViewController: UIViewController {
         if existingNote != nil {
             noteTextView.text = existingNote?.note
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(self.keyboardDidHide()), name: UIKeyboardWillHideNotification, object: nil)
 
 
     }
     
-    func keyboardWillShow() {
-        if deviceType == "iPhone" {
-            
-        }
+    var origHeight : CGFloat!
+    
+    func keyboardWillShow(notification : NSNotification) {
+        let userInfo = notification.userInfo!
+        let keyboardFrameScreenValue = userInfo[UIKeyboardFrameEndUserInfoKey]
+        let keyboardFrameScreen = keyboardFrameScreenValue!.CGRectValue()
+        let keyboardFrame = self.view.convertRect(keyboardFrameScreen, fromView: nil)
+        let keyboardSize = keyboardFrame.size
+        
+        
+        let covered = self.view.heightCoveredByKeyboardOfSize(keyboardSize)
+        self.view.frame.size.height = ((self.view.frame.size.height) - covered)
+        self.view.autoresizesSubviews = true
+    }
+    
+    func keyboardDidHide() {
+        self.view.frame.size.height = origHeight
+        self.view.autoresizesSubviews = true
     }
     
     @IBAction func saveAction(sender: AnyObject) {
@@ -90,6 +109,6 @@ extension UIView {
         let keyboardTop = windowBounds!.size.height - keyboardSize.height
         let viewBottom = frameInWindow.origin.y + frameInWindow.size.height
         
-        return max(0, viewBottom - keyboardTop)
+        return max(0, viewBottom - keyboardTop) + 5
     }
 }
