@@ -18,6 +18,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var locationPicker: UIPickerView!
+    @IBOutlet var orderNumber: UITextField!
     
     @IBOutlet weak var barcodeTextField: UITextField!
     
@@ -54,6 +55,9 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
             categoryLabel.text = existingObject!.valueForKey("category") as! String
             if (existingObject!.valueForKey("serial")) != nil {
                 barcodeTextField.text = existingObject!.valueForKey("serial") as! String
+            }
+            if existingObject?.valueForKey("orderNumber") != nil {
+                orderNumber.text = existingObject?.valueForKey("orderNumber") as! String
             }
             tableView.scrollEnabled = true
         } else {
@@ -198,6 +202,11 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
                 existingObject?.setValue(category!, forKey: "category")
                 existingObject?.setValue(true, forKey: "isActive")
                 existingObject?.setValue(location!, forKey: "location")
+                if !orderNumber.text!.isEmpty {
+                    existingObject?.setValue(orderNumber.text!, forKey: "orderNumber")
+                } else {
+                    existingObject?.removeObjectForKey("orderNumber")
+                }
                 existingObject?.saveEventually({ (success : Bool, error: NSError?) -> Void in
                     if error == nil {
                         NSNotificationCenter.defaultCenter().postNotificationName("RefreshSOINotification", object: nil)
@@ -217,6 +226,9 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
                 }
                 soiObject["category"] = category
                 soiObject["isActive"] = true
+                if !orderNumber.text!.isEmpty {
+                    soiObject["orderNumber"] = orderNumber.text!
+                }
                 soiObject["enteredBy"] = PFUser.currentUser()
                 soiObject.saveEventually({ (success : Bool, error: NSError?) -> Void in
                     if error == nil {

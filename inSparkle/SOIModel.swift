@@ -50,4 +50,9 @@ class SOIObject: PFObject {
         set { setObject(newValue, forKey: "objectId") }
     }
     
+    var orderNumber : String? {
+        get { return objectForKey("orderNumber") as? String }
+        set { setObject(newValue!, forKey: "orderNumber") }
+    }
+    
 }

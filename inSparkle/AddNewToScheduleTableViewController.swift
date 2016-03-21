@@ -37,6 +37,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnSchedule", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         var isOpening : Bool?
         
@@ -576,71 +578,70 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     }
     
     
-//    var isKeyboardShowing : Bool?
-//    var kbHeight: CGFloat?
-//    var showUIKeyboard : Bool?
-//    var hasKeyboard : Bool?
-//    
-//    func keyboardWillShow(notification : NSNotification) {
-//        
-//        var userInfo: [NSObject : AnyObject] = notification.userInfo!
-//        let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
-//        let keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
-//        let height: CGFloat = self.view.frame.size.height
-//        if (keyboard.origin.y + keyboard.size.height) > height {
-//            self.hasKeyboard = true
-//        }
-//        let toolbarHeight : CGFloat?
-//        
-//        if !notesTextView.isFirstResponder() {
-//            return
-//        } else {
-//            
-//            if isKeyboardShowing == true {
-//                return
-//            } else {
-//                if let userInfo = notification.userInfo {
-//                    if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-//                        if self.hasKeyboard == true && !notesTextView.isFirstResponder() {
-//                            kbHeight = 25
-//                        } else {
-//                            kbHeight = keyboardSize.height
-//                        }
-//                        self.animateTextField(true)
-//                        isKeyboardShowing = true
-//                    }
-//                }
-//            }
-//            
-//        }
-//    }
-//    
-//    
-//    
-//    func keyboardWillHide(notification : NSNotification) {
-//        if (isKeyboardShowing != nil) {
-//            if isKeyboardShowing! {
-//                self.animateTextField(false)
-//                isKeyboardShowing = false
-//            }
-//        }
-//    }
-//    
-//    func animateTextField(up: Bool) {
-//        if kbHeight == nil {
-//            return
-//        } else {
-//            if customerNameTextField.isFirstResponder() {
-//                
-//            } else {
-//                let movement = (up ? -kbHeight! : kbHeight!)
-//                UIView.animateWithDuration(0.3, animations: {
-//                    self.view.frame = CGRectOffset(self.view.frame, 0, movement)
-//                })
-//            }
-//        }
-//        
-//    }
+    var isKeyboardShowing : Bool?
+    var kbHeight: CGFloat?
+    var showUIKeyboard : Bool?
+    var hasKeyboard : Bool?
+    
+    func keyboardWillShow(notification : NSNotification) {
+        
+        var userInfo: [NSObject : AnyObject] = notification.userInfo!
+        let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
+        let keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
+        let height: CGFloat = self.view.frame.size.height
+        if (keyboard.origin.y + keyboard.size.height) > height {
+            self.hasKeyboard = true
+        }
+        
+        let toolbarHeight : CGFloat?
+        
+        if !notesTextView.isFirstResponder() {
+            return
+        } else {
+            
+            if isKeyboardShowing == true {
+                return
+            } else {
+                if let userInfo = notification.userInfo {
+                    if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                        if self.hasKeyboard == true && !notesTextView.isFirstResponder() {
+                            kbHeight = 25
+                        } else {
+                            kbHeight = keyboardSize.height - 75
+                        }
+                        self.animateTextField(true)
+                        isKeyboardShowing = true
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    func keyboardWillHide(notification : NSNotification) {
+        if (isKeyboardShowing != nil) {
+            if isKeyboardShowing! {
+                self.animateTextField(false)
+                isKeyboardShowing = false
+            }
+        }
+    }
+    
+    func animateTextField(up: Bool) {
+        if kbHeight == nil {
+            return
+        } else {
+            if customerNameTextField.isFirstResponder() {
+                
+            } else {
+                let movement = (up ? -kbHeight! : kbHeight!)
+                UIView.animateWithDuration(0.3, animations: {
+                  self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+                })
+            }
+        }
+    }
     
     func weekPickerMakeAllOthersResign() {
         if !weekPicker.isFirstResponder() {

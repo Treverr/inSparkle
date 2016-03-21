@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10115" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xjp-rv-Gyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10115" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Xjp-rv-Gyx">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10084"/>
@@ -466,6 +466,35 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="S4X-gw-9cf">
+                                        <rect key="frame" x="0.0" y="860" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S4X-gw-9cf" id="WKS-LC-AuN">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUG-AS-b2u">
+                                                    <rect key="frame" x="8" y="11" width="111" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="order number" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33B-Py-iLA">
+                                                    <rect key="frame" x="127" y="8" width="465" height="27"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="33B-Py-iLA" firstAttribute="bottom" secondItem="WKS-LC-AuN" secondAttribute="bottomMargin" id="Aih-4s-YmJ"/>
+                                                <constraint firstItem="33B-Py-iLA" firstAttribute="leading" secondItem="WUG-AS-b2u" secondAttribute="trailing" constant="8" symbolic="YES" id="BQe-CB-eGn"/>
+                                                <constraint firstItem="WUG-AS-b2u" firstAttribute="centerY" secondItem="33B-Py-iLA" secondAttribute="centerY" id="GNR-4V-GHb"/>
+                                                <constraint firstItem="WUG-AS-b2u" firstAttribute="leading" secondItem="WKS-LC-AuN" secondAttribute="leadingMargin" id="YwN-F1-hl7"/>
+                                                <constraint firstItem="33B-Py-iLA" firstAttribute="trailing" secondItem="WKS-LC-AuN" secondAttribute="trailingMargin" id="ffi-GO-Y7w"/>
+                                                <constraint firstItem="33B-Py-iLA" firstAttribute="top" secondItem="WKS-LC-AuN" secondAttribute="topMargin" id="tya-k4-avu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -497,6 +526,7 @@
                         <outlet property="datePicker" destination="YiC-If-kuH" id="tib-YO-n2Y"/>
                         <outlet property="locationLabel" destination="94t-zv-76a" id="G9i-UG-mWP"/>
                         <outlet property="locationPicker" destination="wT4-u0-eee" id="E3X-De-24D"/>
+                        <outlet property="orderNumber" destination="33B-Py-iLA" id="RQN-O5-9se"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxa-fO-Vcj" userLabel="First Responder" sceneMemberID="firstResponder"/>
