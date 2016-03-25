@@ -589,7 +589,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
         let keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
         let height: CGFloat = self.view.frame.size.height
-        if (keyboard.origin.y + keyboard.size.height) > height {
+        if ((keyboard.origin.y + keyboard.size.height) > height) {
             self.hasKeyboard = true
         }
         
@@ -604,7 +604,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             } else {
                 if let userInfo = notification.userInfo {
                     if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                        if self.hasKeyboard == true && !notesTextView.isFirstResponder() {
+                        if self.hasKeyboard == true && notesTextView.isFirstResponder() {
                             kbHeight = 25
                         } else {
                             kbHeight = keyboardSize.height - 75
