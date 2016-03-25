@@ -121,18 +121,35 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         checkField()
     }
     
+    var timeOutTimer : NSTimer!
+    
     func checkField() {
         if timeClockTextField.text?.characters.count == 8 {
             authenticateEmployee()
         }
+        
+        if timeOutTimer == nil {
+            timeOutTimer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: Selector("deleteButton:"), userInfo: nil, repeats: false)
+        }
+        
     }
     
     @IBAction func deleteButton(sender: AnyObject) {
         timeClockTextField.text = ""
         pinString = ""
+        
+        if timeOutTimer != nil {
+            timeOutTimer.invalidate()
+            timeOutTimer = nil
+        }
+        
     }
     
     func authenticateEmployee() {
+        if timeOutTimer != nil {
+            timeOutTimer.invalidate()
+            timeOutTimer = nil
+        }
         var tcpo = TimeClockPunchObj()
         let empQuery = PFQuery(className: Employee.parseClassName())
         let pinToCheck = pinString
