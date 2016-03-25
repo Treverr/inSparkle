@@ -77,8 +77,9 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         let customerName = object.valueForKey("customerName") as! String
         let date = object.valueForKey("date") as? NSDate
         let location = object.valueForKey("location") as! String
+        let item = object.valueForKey("category") as! String
         
-        cell.soiCell(customerName, date: date, location: location)
+        cell.soiCell(customerName, date: date, location: location, item: item)
         
         return cell
         

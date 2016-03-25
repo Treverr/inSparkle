@@ -16,6 +16,7 @@ class DetailPopViewController: UITableViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var employeeName: UILabel!
+    @IBOutlet var categoryLabel: UILabel!
     
     var passedObject : PFObject?
     

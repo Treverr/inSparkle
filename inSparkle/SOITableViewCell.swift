@@ -13,8 +13,9 @@ public class SOITableViewCell: UITableViewCell {
     @IBOutlet weak var customerNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel?
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet var itemLabel: UILabel!
     
-    public func soiCell(customerName : String, date : NSDate?, location : String) {
+    public func soiCell(customerName : String, date : NSDate?, location : String, item : String) {
         
         customerNameLabel.text = customerName
         
@@ -28,7 +29,7 @@ public class SOITableViewCell: UITableViewCell {
         }
         
         locationLabel.text = location
-        
+        itemLabel.text = item
     }
     
 }
