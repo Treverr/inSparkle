@@ -28,7 +28,14 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
     var barcodeReturned : String?
     
     var locationsArray : [String] = []
-    var categories = ["Liners", "Hearth", "Pool Kits", "Electric Covers", "Winter Covers", "Pumps/Motors", "Misc"]
+    var categories = ["Liners",
+                      "Hearth",
+                      "Pool Kits",
+                      "Electric Covers",
+                      "Winter Covers",
+                      "Pumps/Motors",
+                      "Heaters",
+                      "Misc"]
     
     var datePickerHidden = true
     var locationPickerHidden = true
@@ -278,6 +285,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         
         if indexPath.section == 0 && indexPath.row == 3 {
             toggleDatepicker()
+            datePickerChanged()
             
         }
         
