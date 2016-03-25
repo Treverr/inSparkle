@@ -47,8 +47,10 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
     for (UIGestureRecognizer *gestureRecognizer in [self.containerView.gestureRecognizers copy]) {
         [self.containerView removeGestureRecognizer:gestureRecognizer];
     }
-    
+#if !TARGET_OS_TV
     [self removeKeyboardNotifications];
+#endif
+    
     [self.dimmingView removeGestureRecognizer:self.backgroundTapGestureRecognizer];
     self.backgroundTapGestureRecognizer = nil;
 }
@@ -149,6 +151,11 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
     }
 }
 
+- (void)setDidTapOnBackgroundViewCompletionHandler:(MZFormSheetPresentationControllerTapHandler)didTapOnBackgroundViewCompletionHandler {
+    _didTapOnBackgroundViewCompletionHandler = didTapOnBackgroundViewCompletionHandler;
+    [self addBackgroundTapGestureRecognizer];
+}
+
 #pragma mark - Init
 
 - (instancetype)initWithPresentedViewController:(UIViewController *)presentedViewController presentingViewController:(UIViewController *)presentingViewController {
@@ -156,7 +163,10 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
         
         [[[self class] appearance] applyInvocationTo:self];
         
+#if !TARGET_OS_TV
         [self addKeyboardNotifications];
+#endif
+        
     }
     return self;
 }
@@ -194,7 +204,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 }
 
 - (CGFloat)yCoordinateBelowStatusBar {
-#if TARGET_OS_TV
+#if TARGET_OS_TV || !NS_EXTENSION_UNAVAILABLE_IOS
     return 0;
 #else
     return [UIApplication sharedApplication].statusBarFrame.size.height;
@@ -202,7 +212,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 }
 
 - (CGFloat)topInset {
-#if TARGET_OS_TV
+#if TARGET_OS_TV || !NS_EXTENSION_UNAVAILABLE_IOS
     return self.landscapeTopInset;
 #else
     if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
@@ -270,11 +280,11 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
     }
     
     [self setupBackgroundBlurView];
-
+    
     self.dimmingView.frame = self.containerView.bounds;
     self.dimmingView.alpha = 0.0;
     [self.containerView addSubview:self.dimmingView];
-
+    
     // this is some kind of bug :<, if we will delete this line, then inside custom animator
     // we need to set finalFrameForViewController to targetView
     [self presentedView].frame = [self frameOfPresentedViewInContainerView];
@@ -314,7 +324,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 }
 
 - (void)dismissalTransitionDidEnd:(BOOL)completed {
-
+    
     if (completed) {
         [self.dimmingView removeFromSuperview];
     }
@@ -379,7 +389,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 
 #pragma mark - UIKeyboard Notifications
 
-- (void)addKeyboardNotifications {
+- (void)addKeyboardNotifications __TVOS_PROHIBITED {
     [self removeKeyboardNotifications];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -393,7 +403,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
                                                object:nil];
 }
 
-- (void)removeKeyboardNotifications {
+- (void)removeKeyboardNotifications __TVOS_PROHIBITED {
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillShowNotification
                                                   object:nil];
@@ -403,7 +413,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
                                                   object:nil];
 }
 
-- (void)willShowKeyboardNotification:(NSNotification *)notification {
+- (void)willShowKeyboardNotification:(NSNotification *)notification __TVOS_PROHIBITED {
     CGRect screenRect = [[notification userInfo][UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
     screenRect.size.height = [UIScreen mainScreen].bounds.size.height - screenRect.size.height;
@@ -425,7 +435,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
                      } completion:nil];
 }
 
-- (void)willHideKeyboardNotification:(NSNotification *)notification {
+- (void)willHideKeyboardNotification:(NSNotification *)notification __TVOS_PROHIBITED {
     self.keyboardVisible = NO;
     self.screenFrameWhenKeyboardVisible = nil;
     

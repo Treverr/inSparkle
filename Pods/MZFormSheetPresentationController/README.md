@@ -46,6 +46,15 @@ As a major version change, the API introduced in 2.0 is not backward compatible 
 
 MZFormSheetPresentationController requires either iOS 8.x and above.
 
+## Installation
+###[Carthage](https://github.com/Carthage/Carthage)
+
+Add the following line to your `Cartfile`.
+
+```github "m1entus/MZFormSheetPresentationController" "master"```
+
+Then run `carthage update --no-use-binaries` or just `carthage update`. For details of the installation and usage of Carthage, visit [it's project page](https://github.com/Carthage/Carthage).
+
 ## How To Use
 
 There are two example projects, one is for Objective-C second is for Swift.
@@ -179,18 +188,20 @@ MZFormSheetPresentationViewController has predefined couple transitions.
 
 Objective-C
 ``` objective-c
-typedef NS_ENUM(NSInteger, MZFormSheetTransitionStyle) {
-   MZFormSheetTransitionStyleSlideFromTop = 0,
-   MZFormSheetTransitionStyleSlideFromBottom,
-   MZFormSheetTransitionStyleSlideFromLeft,
-   MZFormSheetTransitionStyleSlideFromRight,
-   MZFormSheetTransitionStyleSlideAndBounceFromLeft,
-   MZFormSheetTransitionStyleSlideAndBounceFromRight,
-   MZFormSheetTransitionStyleFade,
-   MZFormSheetTransitionStyleBounce,
-   MZFormSheetTransitionStyleDropDown,
-   MZFormSheetTransitionStyleCustom,
-   MZFormSheetTransitionStyleNone,
+typedef NS_ENUM(NSInteger, MZFormSheetPresentationTransitionStyle) {
+ MZFormSheetPresentationTransitionStyleSlideFromTop = 0,
+ MZFormSheetPresentationTransitionStyleSlideFromBottom,
+ MZFormSheetPresentationTransitionStyleSlideFromLeft,
+ MZFormSheetPresentationTransitionStyleSlideFromRight,
+ MZFormSheetPresentationTransitionStyleSlideAndBounceFromTop,
+ MZFormSheetPresentationTransitionStyleSlideAndBounceFromBottom,
+ MZFormSheetPresentationTransitionStyleSlideAndBounceFromLeft,
+ MZFormSheetPresentationTransitionStyleSlideAndBounceFromRight,
+ MZFormSheetPresentationTransitionStyleFade,
+ MZFormSheetPresentationTransitionStyleBounce,
+ MZFormSheetPresentationTransitionStyleDropDown,
+ MZFormSheetPresentationTransitionStyleCustom,
+ MZFormSheetPresentationTransitionStyleNone,
 };
 ```
 
@@ -198,7 +209,7 @@ If you want to use them you will have to just assign `contentViewControllerTrans
 
 Objective-C
 ``` objective-c
-formSheetController.contentViewControllerTransitionStyle = MZFormSheetTransitionStyleFade;
+formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleFade;
 ```
 
 You can also create your own transition by implementing `MZFormSheetPresentationViewControllerTransitionProtocol` protocol and register your transition class as a custom style.

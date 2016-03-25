@@ -12,7 +12,8 @@ import CoreTelephony
 public class PhoneNumberKit: NSObject {
     
     let metadata = Metadata.sharedInstance
-    
+    let regex = RegularExpressions.sharedInstance
+
     // MARK: Multiple Parsing
     
     /**
@@ -64,6 +65,37 @@ public class PhoneNumberKit: NSObject {
         let country = metadata.fetchMainCountryMetadataForCode(code)
         return country?.codeID
     }
+
+    /**
+    Get the region code for the given phone number
+    - Parameter number: The phone number
+    - Returns: Region code, eg "US", or nil if the region cannot be determined
+    */
+    public func regionCodeForNumber(number: PhoneNumber) -> String? {
+        let countryCode = number.countryCode
+        let regions = metadata.items.filter { $0.countryCode == countryCode }
+        if regions.count == 1 {
+            return regions[0].codeID
+        }
+
+        return getRegionCodeForNumber(number, fromRegionList: regions)
+    }
+
+    private func getRegionCodeForNumber(number: PhoneNumber, fromRegionList regions: [MetadataTerritory]) -> String? {
+        let nationalNumber = String(number.nationalNumber)
+        let parser = PhoneNumberParser()
+        for region in regions {
+            if let leadingDigits = region.leadingDigits {
+                if regex.matchesAtStart(leadingDigits, string: nationalNumber) {
+                    return region.codeID
+                }
+            }
+            if parser.checkNumberType(nationalNumber, metadata: region, considerPossible: false) != .Unknown {
+                return region.codeID
+            }
+        }
+        return nil
+    }
     
     /**
     Get an international country code for an ISO 639 compliant region code
@@ -91,7 +123,7 @@ public class PhoneNumberKit: NSObject {
                 return countryCode.uppercaseString
             }
         }
-        return defaultCountry
+        return PhoneNumberConstants.defaultCountry
     }
 
 }

@@ -23,7 +23,7 @@ public class PhoneNumberTextField: UITextField, UITextFieldDelegate {
     
     let nonNumericSet: NSCharacterSet = {
         var mutableSet = NSCharacterSet.decimalDigitCharacterSet().invertedSet.mutableCopy() as! NSMutableCharacterSet
-        mutableSet.removeCharactersInString(plusChars)
+        mutableSet.removeCharactersInString(PhoneNumberConstants.plusChars)
         return mutableSet
     }()
     
@@ -34,7 +34,20 @@ public class PhoneNumberTextField: UITextField, UITextFieldDelegate {
             return _delegate
         }
         set {
-            self._delegate = delegate
+            self._delegate = newValue
+        }
+    }
+    
+    //MARK: Status
+
+    public var currentRegion: String {
+        get {
+            return partialFormatter.currentRegion
+        }
+    }
+    public var isValidNumber: Bool {
+        get {
+            return partialFormatter.isValidNumber
         }
     }
     
@@ -92,14 +105,14 @@ public class PhoneNumberTextField: UITextField, UITextFieldDelegate {
         let textAsNSString = text as NSString
         let cursorEnd = offsetFromPosition(beginningOfDocument, toPosition: selectedTextRange.end)
         // Look for the next valid number after the cursor, when found return a CursorPosition struct
-        for var i = cursorEnd; i < textAsNSString.length; i++  {
+        for i in cursorEnd ..< textAsNSString.length  {
             let cursorRange = NSMakeRange(i, 1)
             let candidateNumberAfterCursor: NSString = textAsNSString.substringWithRange(cursorRange)
             if (candidateNumberAfterCursor.rangeOfCharacterFromSet(nonNumericSet).location == NSNotFound) {
-                for var j = cursorRange.location; j < textAsNSString.length; j++  {
+                for j in cursorRange.location ..< textAsNSString.length  {
                     let candidateCharacter = textAsNSString.substringWithRange(NSMakeRange(j, 1))
                     if candidateCharacter == candidateNumberAfterCursor {
-                        repetitionCountFromEnd++
+                        repetitionCountFromEnd += 1
                     }
                 }
                 return CursorPosition(numberAfterCursor: candidateNumberAfterCursor as String, repetitionCountFromEnd: repetitionCountFromEnd)
@@ -115,16 +128,18 @@ public class PhoneNumberTextField: UITextField, UITextFieldDelegate {
         guard let cursorPosition = extractCursorPosition() else {
             return nil
         }
-        for var i = (textAsNSString.length - 1); i >= 0; i--  {
+        
+        for i in (textAsNSString.length - 1).stride(through: 0, by: -1) {
             let candidateRange = NSMakeRange(i, 1)
             let candidateCharacter = textAsNSString.substringWithRange(candidateRange)
             if candidateCharacter == cursorPosition.numberAfterCursor {
-                countFromEnd++
+                countFromEnd += 1
                 if countFromEnd == cursorPosition.repetitionCountFromEnd {
                     return candidateRange
                 }
             }
         }
+
         return nil
     }
     
@@ -132,6 +147,12 @@ public class PhoneNumberTextField: UITextField, UITextFieldDelegate {
         guard let text = text else {
             return false
         }
+
+        // allow delegate to intervene
+        guard _delegate?.textField?(textField, shouldChangeCharactersInRange: range, replacementString: string) ?? true else {
+            return false
+        }
+
         let textAsNSString = text as NSString
         let changedRange = textAsNSString.substringWithRange(range) as NSString
         let modifiedTextField = textAsNSString.stringByReplacingCharactersInRange(range, withString: string)
@@ -148,6 +169,7 @@ public class PhoneNumberTextField: UITextField, UITextFieldDelegate {
             selectedTextRange = selectionRangeForNumberReplacement(textField, formattedText: formattedNationalNumber)
             textField.text = formattedNationalNumber
         }
+        sendActionsForControlEvents(.EditingChanged)
         if let selectedTextRange = selectedTextRange, let selectionRangePosition = textField.positionFromPosition(beginningOfDocument, offset: selectedTextRange.location) {
             let selectionRange = textField.textRangeFromPosition(selectionRangePosition, toPosition: selectionRangePosition)
             textField.selectedTextRange = selectionRange
@@ -159,52 +181,26 @@ public class PhoneNumberTextField: UITextField, UITextFieldDelegate {
     //MARK: UITextfield Delegate
     
     public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        if ((_delegate?.respondsToSelector("textFieldShouldBeginEditing:")) != nil) {
-            return _delegate!.textFieldShouldBeginEditing!(textField)
-        }
-        else {
-            return true
-        }
+        return _delegate?.textFieldShouldBeginEditing?(textField) ?? true
     }
     
     public func textFieldDidBeginEditing(textField: UITextField) {
-        if ((_delegate?.respondsToSelector("textFieldDidBeginEditing:")) != nil) {
-            _delegate!.textFieldDidBeginEditing!(textField)
-        }
+        _delegate?.textFieldDidBeginEditing?(textField)
     }
     
     public func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-        if ((_delegate?.respondsToSelector("textFieldShouldEndEditing:")) != nil) {
-            return _delegate!.textFieldShouldEndEditing!(textField)
-        }
-        else {
-            return true
-        }
+        return _delegate?.textFieldShouldEndEditing?(textField) ?? true
     }
     
     public func textFieldDidEndEditing(textField: UITextField) {
-        if ((_delegate?.respondsToSelector("textFieldDidEndEditing:")) != nil) {
-            _delegate!.textFieldDidEndEditing!(textField)
-        }
+        _delegate?.textFieldDidEndEditing?(textField)
     }
     
     public func textFieldShouldClear(textField: UITextField) -> Bool {
-        if ((_delegate?.respondsToSelector("textFieldShouldClear:")) != nil) {
-            return _delegate!.textFieldShouldClear!(textField)
-        }
-        else {
-            return true
-        }
+        return _delegate?.textFieldShouldClear?(textField) ?? true
     }
     
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if ((_delegate?.respondsToSelector("textFieldShouldReturn:")) != nil) {
-            return _delegate!.textFieldShouldReturn!(textField)
-        }
-        else {
-            return true
-        }
+        return _delegate?.textFieldShouldReturn?(textField) ?? true
     }
-
-
 }
