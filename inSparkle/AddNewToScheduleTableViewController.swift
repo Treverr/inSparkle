@@ -28,6 +28,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet var locationOfEssentialItemsLabel: UILabel!
     @IBOutlet var importantTextView: UITextView!
     @IBOutlet var selectClosingDate: UILabel!
+    @IBOutlet var generatePDFButton: UIBarButtonItem!
     
     var weekList = [PFObject]()
     var typeOfWinterCover = [String]()
@@ -509,33 +510,47 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
             schObj.saveEventually { (success: Bool, error : NSError?) -> Void in
                 if success {
-                    var jokeArray = Array(JokeDictionary.jokesDict.keys)
-                    let random = GlobalFunctions().RandomInt(min: 0, max: jokeArray.count - 1)
-                    
-                    SVProgressHUD.setForegroundColor(UIColor.whiteColor())
-                    SVProgressHUD.setBackgroundColor(UIColor.lightGrayColor())
-                    SVProgressHUD.showWithStatus(jokeArray[random], maskType: SVProgressHUDMaskType.Black)
-                    SVProgressHUD.setSuccessImage(UIImage(named: "Completed"))
-                    let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-                    let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-                    dispatch_async(backgroundQueue, {
+                    if sender as! NSObject == self.generatePDFButton {
+                        let sb = UIStoryboard(name: "OpeningPDFTemplate", bundle: nil)
+                        let vc = sb.instantiateViewControllerWithIdentifier("PoolOpeningTemplate")
+                        POCReportData.POCData = [schObj]
+                        self.presentViewController(vc, animated: true, completion: { 
+                            if let overlayView = self.view.viewWithTag(6969) {
+                                overlayView.removeFromSuperview()
+                            }
+                            if let activityIndicator = self.view.viewWithTag(6868) {
+                                activityIndicator.removeFromSuperview()
+                            }
+                        })
+                    } else {
+                        var jokeArray = Array(JokeDictionary.jokesDict.keys)
+                        let random = GlobalFunctions().RandomInt(min: 0, max: jokeArray.count - 1)
                         
-                        var isOpening : Bool!
-                        if schObj.type == "Opening" {
-                            isOpening = true
-                        } else {
-                            isOpening = false
-                        }
-                        GlobalFunctions().updateWeekData(schObj.weekObj, openingWeek: isOpening, joke: jokeArray[random])
-                    })
-                    AddNewScheduleObjects.scheduledObject = nil
-                    AddNewScheduleObjects.isOpening = nil
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
-                    AddNewScheduleObjects.isOpening = nil
-                    if self.selectClosingDate.text != "Not Set" && sender as! NSObject == self.confirmButton {
-                        NSNotificationCenter.defaultCenter().postNotificationName("NotifyAppointmentConfirmed", object: nil)
+                        SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+                        SVProgressHUD.setBackgroundColor(UIColor.lightGrayColor())
+                        SVProgressHUD.showWithStatus(jokeArray[random], maskType: SVProgressHUDMaskType.Black)
+                        SVProgressHUD.setSuccessImage(UIImage(named: "Completed"))
+                        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+                        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+                        dispatch_async(backgroundQueue, {
+                            
+                            var isOpening : Bool!
+                            if schObj.type == "Opening" {
+                                isOpening = true
+                            } else {
+                                isOpening = false
+                            }
+                            GlobalFunctions().updateWeekData(schObj.weekObj, openingWeek: isOpening, joke: jokeArray[random])
+                        })
+                        AddNewScheduleObjects.scheduledObject = nil
+                        AddNewScheduleObjects.isOpening = nil
+                        self.dismissViewControllerAnimated(true, completion: nil)
                         NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
+                        AddNewScheduleObjects.isOpening = nil
+                        if self.selectClosingDate.text != "Not Set" && sender as! NSObject == self.confirmButton {
+                            NSNotificationCenter.defaultCenter().postNotificationName("NotifyAppointmentConfirmed", object: nil)
+                            NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
+                        }
                     }
                 }
             }
@@ -860,5 +875,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         AddNewScheduleObjects.scheduledObject = nil
     }
     
+    @IBAction func generatePDF(sender: AnyObject) {
+        self.saveButton(sender)
+    }
     
 }

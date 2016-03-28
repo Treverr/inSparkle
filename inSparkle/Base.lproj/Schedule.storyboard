@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10115" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Aja-Hh-rwV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Aja-Hh-rwV">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -654,6 +654,13 @@
                             <outlet property="delegate" destination="wDc-pG-GGI" id="4i9-ok-5A0"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem image="Generate PDF" id="YoI-2K-GzY">
+                            <connections>
+                                <action selector="generatePDF:" destination="wDc-pG-GGI" id="KiB-em-9EE"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Schedule an Opening" id="MgL-4K-A7p">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="n0j-aA-0ED">
                             <connections>
@@ -675,6 +682,7 @@
                         <outlet property="confirmButton" destination="rdY-I0-NuR" id="lrH-Mq-hSr"/>
                         <outlet property="customerNameTextField" destination="gva-5W-BiM" id="deF-35-JEl"/>
                         <outlet property="dateClosingPicker" destination="XEZ-QO-rBT" id="u4X-Be-nrw"/>
+                        <outlet property="generatePDFButton" destination="YoI-2K-GzY" id="3Dk-eS-ynj"/>
                         <outlet property="importantTextView" destination="mCq-f2-Uh6" id="hGq-u6-hw6"/>
                         <outlet property="locationEssentialItems" destination="gZT-Y7-lrj" id="M5H-e1-1YU"/>
                         <outlet property="locationOfEssentialItemsLabel" destination="sa4-rJ-vh5" id="XFj-gL-eH5"/>
@@ -716,13 +724,17 @@
         <!--Navigation Controller-->
         <scene sceneID="6cs-eE-0fr">
             <objects>
-                <navigationController storyboardIdentifier="addEditSche" automaticallyAdjustsScrollViewInsets="NO" id="7ha-3y-dCW" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="addEditSche" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="7ha-3y-dCW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="btC-qA-Ghz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="heS-aj-zuv">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="wDc-pG-GGI" kind="relationship" relationship="rootViewController" id="u3z-pi-UYp"/>
                     </connections>
@@ -836,6 +848,7 @@
     </scenes>
     <resources>
         <image name="Confirmed" width="512" height="512"/>
+        <image name="Generate PDF" width="22" height="22"/>
         <image name="Search" width="100" height="100"/>
         <image name="Swimming" width="25" height="25"/>
         <image name="Swimming Filled" width="25" height="25"/>
