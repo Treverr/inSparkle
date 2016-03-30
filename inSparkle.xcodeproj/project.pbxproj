@@ -31,6 +31,8 @@
 		C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338D831C1E306C00DC09BE /* CloudCode.swift */; };
 		C940778B1C7BF6C200E74817 /* PartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940778A1C7BF6C200E74817 /* PartsTableViewCell.swift */; };
 		C94367061BF719E10066D155 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94367051BF719E10066D155 /* Colors.swift */; };
+		C949EBA11CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C949EBA01CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift */; };
+		C949EBA31CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */; };
 		C94C1CBF1C3CB96100F568B9 /* CustomerLookup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94C1CBE1C3CB96100F568B9 /* CustomerLookup.storyboard */; };
 		C95008611C61C08E00F5351C /* GeneratePDF.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C95008601C61C08E00F5351C /* GeneratePDF.storyboard */; };
 		C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95008621C61C11800F5351C /* PDFGenerateViewController.swift */; };
@@ -232,6 +234,8 @@
 		C9338D831C1E306C00DC09BE /* CloudCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCode.swift; sourceTree = "<group>"; };
 		C940778A1C7BF6C200E74817 /* PartsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsTableViewCell.swift; sourceTree = "<group>"; };
 		C94367051BF719E10066D155 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C949EBA01CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkleConnectTableViewController.swift; sourceTree = "<group>"; };
+		C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordTableViewController.swift; sourceTree = "<group>"; };
 		C94C1CBE1C3CB96100F568B9 /* CustomerLookup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerLookup.storyboard; sourceTree = "<group>"; };
 		C95008601C61C08E00F5351C /* GeneratePDF.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GeneratePDF.storyboard; sourceTree = "<group>"; };
 		C95008621C61C11800F5351C /* PDFGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFGenerateViewController.swift; sourceTree = "<group>"; };
@@ -580,6 +584,8 @@
 			isa = PBXGroup;
 			children = (
 				C96F07C21CAB696C009F3436 /* SparkleConnect.storyboard */,
+				C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */,
+				C949EBA01CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift */,
 			);
 			name = SparkleConnect;
 			sourceTree = "<group>";
@@ -1213,6 +1219,7 @@
 				C9C887EA1C8179E300C7A2F9 /* EmployeeDataTableViewController.swift in Sources */,
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C9FB1ED91C6EC5A100663EB7 /* ChemicalData.swift in Sources */,
+				C949EBA11CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift in Sources */,
 				C9709C1E1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
 				C9F7A9B21C6FE771001A6555 /* ChemCartTableViewController.swift in Sources */,
@@ -1245,6 +1252,7 @@
 				C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */,
 				C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */,
 				C928CF9E1C233BF000C83345 /* LocalNotifications.swift in Sources */,
+				C949EBA31CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift in Sources */,
 				C9676DF31C8277FB00309F8B /* SpecialAccessTableViewController.swift in Sources */,
 				C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */,
 				C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */,

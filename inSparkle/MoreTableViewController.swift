@@ -20,6 +20,8 @@ class MoreTableViewController: UITableViewController {
         if (PFUser.currentUser()?.valueForKey("isAdmin") as! Bool) == false {
             self.navigationItem.rightBarButtonItem = nil
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("signBackIn"), name: "SignBackIn", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -58,6 +60,39 @@ class MoreTableViewController: UITableViewController {
                     self.profileLabel.text = name
                 }
             })
+        }
+    }
+    
+    func signBackIn() {
+        PFSession.getCurrentSessionInBackgroundWithBlock { (session : PFSession?, error : NSError?) in
+            if error != nil {
+                PFUser.logOut()
+                let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+                self.presentViewController(viewController, animated: true, completion: nil)
+            } else {
+                let currentUser : PFUser?
+                
+                currentUser = PFUser.currentUser()
+                let currentSession = PFUser.currentUser()?.sessionToken
+                
+                if (currentUser == nil) {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        
+                        let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+                        self.presentViewController(viewController, animated: true, completion: nil)
+                    })
+                }
+                
+                if (currentUser?.sessionToken == nil) {
+                    PFUser.logOut()
+                    let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+                    self.presentViewController(viewController, animated: true, completion: nil)
+                }
+                
+                if currentUser != nil && currentSession != nil {
+                }
+                
+            }
         }
     }
 

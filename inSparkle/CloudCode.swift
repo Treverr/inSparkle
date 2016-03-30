@@ -128,6 +128,20 @@ class CloudCode {
             })
         }
     }
+    
+    class func ChangeUserPassword(username : String, newPassword : String, completion: (isComplete : Bool) -> Void) {
+        let params = [
+            "username" : username,
+            "newPassword" : newPassword
+        ]
+        
+        PFCloud.callFunctionInBackground("changeUserPassword", withParameters: params) {
+            (result: AnyObject?, error: NSError?) -> Void in
+            if (error == nil) {
+                completion(isComplete: true)
+            }
+        }
+    }
 }
 
 

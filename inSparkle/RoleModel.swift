@@ -11,6 +11,7 @@ import Parse
 
 class Role: PFObject, PFSubclassing {
     
+    
     static func parseClassName() -> String {
         return "Roles"
     }
