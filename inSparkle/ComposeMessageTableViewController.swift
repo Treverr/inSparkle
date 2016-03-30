@@ -34,6 +34,8 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     override func viewWillAppear(animated: Bool) {
         
+        messageTextView.delegate = self
+        
         if isNewMessage {
             let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
             print(employeeData)
@@ -70,7 +72,85 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         } else {
             enableDisableSaveButton(false)
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
     }
+    
+    var isKeyboardShowing : Bool?
+    var kbHeight: CGFloat?
+    var showUIKeyboard : Bool?
+    var hasKeyboard : Bool?
+    var adjustedForMessages : Bool?
+    
+    func keyboardWillShow(notification : NSNotification) {
+        
+        var userInfo: [NSObject : AnyObject] = notification.userInfo!
+        let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
+        let keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
+        let height: CGFloat = self.view.frame.size.height
+        if ((keyboard.origin.y + keyboard.size.height) > height) {
+            self.hasKeyboard = true
+        }
+        
+        let toolbarHeight : CGFloat?
+        
+        if !messageTextView.isFirstResponder() {
+            return
+        } else {
+            
+            if isKeyboardShowing == true {
+                return
+            } else {
+                if let userInfo = notification.userInfo {
+                    if let keyboardSize = (userInfo [UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+                        if self.hasKeyboard == true && messageTextView.isFirstResponder() {
+                            kbHeight = 25
+                        } else {
+                            kbHeight = keyboardSize.height - 150
+                        }
+                        self.animateTextField(true)
+                        isKeyboardShowing = true
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    func keyboardWillHide(notification : NSNotification) {
+        if (isKeyboardShowing != nil) {
+            if isKeyboardShowing! {
+                self.animateTextField(false)
+                self.adjustedForMessages = false
+                isKeyboardShowing = false
+            }
+        }
+    }
+    
+    func animateTextField(up: Bool) {
+        if kbHeight == nil {
+            return
+        } else {
+            if nameTextField.isFirstResponder() || addressTextField.isFirstResponder() || phoneTextField.isFirstResponder() || altPhoneTextField.isFirstResponder() || emailAddress.isFirstResponder() {
+                self.adjustedForMessages = false
+            } else {
+                let movement = (up ? -kbHeight! : kbHeight!)
+                if up {
+                    self.adjustedForMessages = true
+                } else {
+                    self.adjustedForMessages = false
+                }
+                UIView.animateWithDuration(0.3, animations: {
+                    self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+                })
+                let messageNSIndexPath = NSIndexPath(forRow: 6, inSection: 1)
+                self.tableView.scrollToRowAtIndexPath(messageNSIndexPath, atScrollPosition: .Middle, animated: true)
+            }
+        }
+    }
+
     
     func updateSignedEmployee() {
         var signed : PFUser?
@@ -89,6 +169,8 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         })
         
     }
+    
+    
     
     func enableDisableSaveButton(enabled : Bool) {
         saveButton.enabled = enabled
@@ -404,6 +486,18 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 enableDisableSaveButton(true)
             } else {
                 enableDisableSaveButton(false)
+            }
+        }
+    }
+    
+}
+
+extension ComposeMessageTableViewController : UITextViewDelegate {
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView == messageTextView {
+            if self.adjustedForMessages == false {
+                self.animateTextField(true)
             }
         }
     }

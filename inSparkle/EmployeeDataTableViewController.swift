@@ -461,6 +461,25 @@ extension EmployeeDataTableViewController : UITextFieldDelegate {
                     })
                 } else {
                     self.userObject.email = emailAddressTextField.text
+                    CloudCode.CreateNewUser(self.userNameTextField.text!, password: "sparkle1", emailAddy: self.emailAddressTextField.text!, adminStatus: adminSwitch.on, empID: self.employeeObject.objectId!, completion: { (isComplete, objectID) in
+                        if isComplete {
+                            let userCreated = UIAlertController(title: "User Created", message: "The user has been created, the temporary password has been set to 'sparkle1' (without quotes) to update the password have the employee use the forgot password option on the log-in screen", preferredStyle: .Alert)
+                            let okay = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                            userCreated.addAction(okay)
+                            self.presentViewController(userCreated, animated: true, completion: nil)
+                            
+                            let userQuery = PFUser.query()
+                            userQuery?.whereKey("employee", equalTo: self.employeeObject)
+                            userQuery?.getFirstObjectInBackgroundWithBlock({ (user : PFObject?, error : NSError?) in
+                                if error == nil {
+                                    self.userObject = user as! PFUser
+                                    
+                                    self.employeeObject.userPoint = self.userObject
+                                    self.employeeObject.saveInBackground()
+                                }
+                            })
+                        }
+                    })
                 }
                 
             }

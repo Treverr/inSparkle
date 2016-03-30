@@ -632,8 +632,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
     }
     
-    
-    
     func keyboardWillHide(notification : NSNotification) {
         if (isKeyboardShowing != nil) {
             if isKeyboardShowing! {
