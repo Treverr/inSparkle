@@ -49,6 +49,21 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            let cell = self.tableView.cellForRowAtIndexPath(indexPath)
+            let selectedDate = cell?.textLabel?.text!.componentsSeparatedByString(" ")[1]
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
+            
+            let sb = UIStoryboard(name: "SparkleConnect", bundle: nil)
+            let vc = sb.instantiateViewControllerWithIdentifier("dateDetail") as! DateDetailTableViewController
+            vc.selectedDate = dateFormatter.dateFromString(selectedDate!)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     func setDayLabel() {
         
         for day in weekLabels {

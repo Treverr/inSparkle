@@ -142,6 +142,7 @@
 		C9E2A2B91C235D8400DBA851 /* ToSparkle.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */; };
 		C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */; };
 		C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */; };
+		C9F0C26B1CACE5540037736D /* DateDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0C26A1CACE5540037736D /* DateDetailTableViewController.swift */; };
 		C9F0FF931C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */; };
 		C9F0FF961C18A646005EEE28 /* TimeCardManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F0FF951C18A646005EEE28 /* TimeCardManagement.storyboard */; };
 		C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */; };
@@ -358,6 +359,7 @@
 		C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToSparkle.gpx; sourceTree = "<group>"; };
 		C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Onboarding.storyboard; path = Onboarding/Onboarding.storyboard; sourceTree = "<group>"; };
 		C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Onboarding/LoginViewController.swift; sourceTree = "<group>"; };
+		C9F0C26A1CACE5540037736D /* DateDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDetailTableViewController.swift; sourceTree = "<group>"; };
 		C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCardManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
 		C9F0FF951C18A646005EEE28 /* TimeCardManagement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeCardManagement.storyboard; sourceTree = "<group>"; };
 		C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimePunchesTableViewController.swift; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				C96F07C21CAB696C009F3436 /* SparkleConnect.storyboard */,
+				C9F0C26A1CACE5540037736D /* DateDetailTableViewController.swift */,
 				C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */,
 				C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */,
 				C949EBA01CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift */,
@@ -1274,6 +1277,7 @@
 				C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */,
 				C911BA3A1C7B935E00AC8364 /* WorkOrderPartsTableViewController.swift in Sources */,
 				C940778B1C7BF6C200E74817 /* PartsTableViewCell.swift in Sources */,
+				C9F0C26B1CACE5540037736D /* DateDetailTableViewController.swift in Sources */,
 				C9676DF11C8274DB00309F8B /* Special Access Model.swift in Sources */,
 				C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */,
 				C91BB3701C2A705F00132946 /* MessagesMainTableViewCell.swift in Sources */,
