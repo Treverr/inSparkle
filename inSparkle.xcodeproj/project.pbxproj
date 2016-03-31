@@ -146,6 +146,7 @@
 		C9F0FF961C18A646005EEE28 /* TimeCardManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F0FF951C18A646005EEE28 /* TimeCardManagement.storyboard */; };
 		C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */; };
 		C9F0FF9A1C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */; };
+		C9F1A47F1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */; };
 		C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F431171BFEB13500AC3CD8 /* Global.swift */; };
 		C9F7A9B01C6FD994001A6555 /* MIBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9AF1C6FD994001A6555 /* MIBadgeButton.swift */; };
 		C9F7A9B21C6FE771001A6555 /* ChemCartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9B11C6FE771001A6555 /* ChemCartTableViewController.swift */; };
@@ -361,6 +362,7 @@
 		C9F0FF951C18A646005EEE28 /* TimeCardManagement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeCardManagement.storyboard; sourceTree = "<group>"; };
 		C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimePunchesTableViewController.swift; sourceTree = "<group>"; };
 		C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditEmployeeSelectionTableViewController.swift; sourceTree = "<group>"; };
+		C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTimecardWeekSelectionTableViewController.swift; sourceTree = "<group>"; };
 		C9F431171BFEB13500AC3CD8 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		C9F7A9AF1C6FD994001A6555 /* MIBadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIBadgeButton.swift; sourceTree = "<group>"; };
 		C9F7A9B11C6FE771001A6555 /* ChemCartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemCartTableViewController.swift; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 			isa = PBXGroup;
 			children = (
 				C96F07C21CAB696C009F3436 /* SparkleConnect.storyboard */,
+				C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */,
 				C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */,
 				C949EBA01CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift */,
 			);
@@ -1257,6 +1260,7 @@
 				C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */,
 				C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */,
 				C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */,
+				C9F1A47F1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift in Sources */,
 				C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */,
 				C958A8411C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift in Sources */,
 				C9FAE77D1C584B2E005630FC /* MessageNotesTableViewController.swift in Sources */,
