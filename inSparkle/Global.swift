@@ -107,6 +107,8 @@ class EmployeeData: NSObject {
     
     static var theEmployee : Employee!
     
+    static var universalEmployee : Employee!
+    
 }
 
 class GoogleAddress: NSObject {

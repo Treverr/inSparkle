@@ -46,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 } catch {
                 }
                 
+                EmployeeData.universalEmployee = employee
                 Crashlytics.sharedInstance().setUserIdentifier(employee?.firstName)
                 Crashlytics.sharedInstance().setUserEmail(PFUser.currentUser()?.email)
                 

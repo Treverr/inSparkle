@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class MyTimecardWeekSelectionTableViewController: UITableViewController {
     
@@ -18,7 +19,18 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
     @IBOutlet weak var saturdayLabel: UILabel!
     @IBOutlet weak var sundayLabel: UILabel!
     
+    @IBOutlet var mondayTotal: UILabel!
+    @IBOutlet var tuesdayTotal: UILabel!
+    @IBOutlet var wednesdayTotal: UILabel!
+    @IBOutlet var thursdayTotal: UILabel!
+    @IBOutlet var fridayTotal: UILabel!
+    @IBOutlet var saturdayTotal: UILabel!
+    @IBOutlet var sundayTotal: UILabel!
+    
+    @IBOutlet var totalHoursLabel: UILabel!
+    
     var weekLabels : [UILabel] = []
+    var listOfDates : [NSDate] = []
     
     
     override func viewDidLoad() {
@@ -40,40 +52,93 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
     func setDayLabel() {
         
         for day in weekLabels {
-        
+            switch day.text! {
+            case "Monday":
+                mondayLabel.text! = firstDayOfWeekFromDate(day.text!, daysToAdd: 0)
+            case "Tuesday":
+                tuesdayLabel.text! = firstDayOfWeekFromDate(day.text!, daysToAdd: 1)
+            case "Wednesday":
+                wednesdayLabel.text! = firstDayOfWeekFromDate(day.text!, daysToAdd: 2)
+            case "Thursday":
+                thursdayLabel.text! = firstDayOfWeekFromDate(day.text!, daysToAdd: 3)
+            case "Friday":
+                fridayLabel.text! = firstDayOfWeekFromDate(day.text!, daysToAdd: 4)
+            case "Saturday":
+                saturdayLabel.text! = firstDayOfWeekFromDate(day.text!, daysToAdd: 5)
+            case "Sunday":
+                sundayLabel.text! = firstDayOfWeekFromDate(day.text!, daysToAdd: 6)
+                print("Sunday")
+            default:
+                break
+            }
         }
         
+        for day in weekLabels {
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
+            let dateToLookFor = dateFormatter.dateFromString(day.text!.componentsSeparatedByString(" ")[1])
+            calculateTotals(dateToLookFor!, day: day.text!.componentsSeparatedByString(" ")[0])
+        }
     }
     
-    func getDateForLabel(labelDate : Int, day : String) -> String {
+    func firstDayOfWeekFromDate(day : String, daysToAdd: Int) -> String {
+        let calendar = NSCalendar.currentCalendar()
+        calendar.firstWeekday = 2
+        let date = NSDate()
+        let comps = calendar.components([.YearForWeekOfYear, .WeekOfYear], fromDate: date)
+        let startOfWeek = calendar.dateFromComponents(comps)
+        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
         
         let currentCalendar = NSCalendar.currentCalendar()
-        let date = currentCalendar.dateByAddingUnit([.Day], value: labelDate, toDate: NSDate(), options: [])
-        let stringDate = dateFormatter.stringFromDate(date!)
+        let dateToString = currentCalendar.dateByAddingUnit([.Day], value: daysToAdd, toDate: startOfWeek!, options: [])
+        let stringDate = dateFormatter.stringFromDate(dateToString!)
         
         return day + " " + stringDate
     }
     
+    var totalOverall : Double = 0.00
     
-    func getDayOfWeek()->Int? {
-        let todayDate = NSDate()
-        let myCalendar = NSCalendar(calendarIdentifier: NSGregorianCalendar)
-        let myComponents = myCalendar?.components(.Weekday, fromDate: todayDate)
-        let weekDay = myComponents?.weekday
-        return weekDay
+    func calculateTotals(date : NSDate, day : String) {
+        
+        let employee = EmployeeData.universalEmployee
+        let query = TimePunchCalcObject.query()
+        let cal = NSCalendar.currentCalendar()
+        let endOfDay = cal.dateBySettingHour(23, minute: 59, second: 59, ofDate: date, options: [])
+        
+        query?.whereKey("employee", equalTo: employee)
+        query?.whereKey("timePunchedIn", greaterThan: date)
+        query?.whereKey("timePunchedOut", lessThan: endOfDay!)
+        query?.findObjectsInBackgroundWithBlock({ (timeCalcs : [PFObject]?, error : NSError?) in
+            if error == nil {
+                var totalForDate : Double = 0.00
+                for calc in timeCalcs! {
+                    let theCalc = calc as! TimePunchCalcObject
+                    totalForDate = totalForDate + theCalc.totalTime
+                    self.totalOverall = self.totalOverall + totalForDate
+                }
+                switch day {
+                case "Monday":
+                    self.mondayTotal.text = String(totalForDate)
+                case "Tuesday":
+                    self.tuesdayTotal.text = String(totalForDate)
+                case "Wednesday":
+                    self.wednesdayTotal.text = String(totalForDate)
+                case "Thursday":
+                    self.thursdayTotal.text = String(totalForDate)
+                case "Friday":
+                    self.fridayTotal.text = String(totalForDate)
+                case "Saturday":
+                    self.saturdayTotal.text = String(totalForDate)
+                case "Sunday":
+                    self.sundayTotal.text = String(totalForDate)
+                    self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
+                default:
+                    break
+                }
+            }
+        })
     }
-    
-    func firstDayOfWeekFromDate() {
-        let calendar = NSCalendar.currentCalendar()
-        calendar.firstWeekday = 2
-        let date = NSDate()
-        let currentDateComponents = calendar.components([.YearForWeekOfYear, .WeekOfYear ], fromDate: date)
-        let startOfWeek = calendar.dateFromComponents(currentDateComponents)
-        var startDate : NSDate?
-        calendar.rangeOfUnit(.WeekOfYear, startDate: &startOfWeek, interval: nil, forDate: date)
-    }
-    
 }
