@@ -78,6 +78,7 @@
 		C97757091C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97757081C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift */; };
 		C97D3D3A1C815D55006B9E90 /* Manage Emps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */; };
 		C97D3D3C1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */; };
+		C980015E1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */; };
 		C9856A011C7D648D00E6C87F /* LaborPartsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9856A001C7D648D00E6C87F /* LaborPartsTableViewController.swift */; };
 		C9856A031C7D664800E6C87F /* LaborPartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9856A021C7D664800E6C87F /* LaborPartsTableViewCell.swift */; };
 		C9856A051C7E8B1E00E6C87F /* Work Order Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9856A041C7E8B1E00E6C87F /* Work Order Assets.xcassets */; };
@@ -286,6 +287,7 @@
 		C97757081C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderStatusTableViewController.swift; sourceTree = "<group>"; };
 		C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Manage Emps.storyboard"; sourceTree = "<group>"; };
 		C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
+		C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDatesTableViewController.swift; sourceTree = "<group>"; };
 		C9856A001C7D648D00E6C87F /* LaborPartsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaborPartsTableViewController.swift; sourceTree = "<group>"; };
 		C9856A021C7D664800E6C87F /* LaborPartsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaborPartsTableViewCell.swift; sourceTree = "<group>"; };
 		C9856A041C7E8B1E00E6C87F /* Work Order Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Work Order Assets.xcassets"; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 			children = (
 				C96F07C21CAB696C009F3436 /* SparkleConnect.storyboard */,
 				C95DD1691CAE032400B505DE /* TimeAwayRequestTableViewController.swift */,
+				C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */,
 				C9F0C26A1CACE5540037736D /* DateDetailTableViewController.swift */,
 				C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */,
 				C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */,
@@ -1278,6 +1281,7 @@
 				C9C039EC1C6D60530064FDBA /* ChemicalCheckoutViewController.swift in Sources */,
 				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,
 				C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */,
+				C980015E1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift in Sources */,
 				C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */,
 				C911BA3A1C7B935E00AC8364 /* WorkOrderPartsTableViewController.swift in Sources */,
 				C940778B1C7BF6C200E74817 /* PartsTableViewCell.swift in Sources */,

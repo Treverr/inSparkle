@@ -11,10 +11,10 @@ import CalendarView
 import SwiftMoment
 
 class TimeAwayRequestTableViewController: UITableViewController {
+    
+    @IBOutlet var selectedDate : UIView!
 
     @IBOutlet var calendarView: CalendarView!
-    
-    var selectedDates : [Moment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,22 +22,8 @@ class TimeAwayRequestTableViewController: UITableViewController {
         calendarView.delegate = self
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var returnInt = 0
-        
-        if section == 0 {
-            returnInt = 2
-        }
-        if section == 1 {
-            returnInt = 1
-        }
-        
-        if section == 2 {
-            print(selectedDates.count)
-           returnInt = selectedDates.count
-        }
-        
-        return returnInt
+    override func preferredContentSizeDidChangeForChildContentContainer(container: UIContentContainer) {
+        self.selectedDate.frame.size.height = 100
     }
     
 }
@@ -45,12 +31,10 @@ class TimeAwayRequestTableViewController: UITableViewController {
 extension TimeAwayRequestTableViewController : CalendarViewDelegate {
     
     func calendarDidSelectDate(date: Moment) {
-        selectedDates.append(date)
-        print(selectedDates)
-        let section = NSIndexSet(index: 2)
-        self.tableView.beginUpdates()
-        self.tableView.reloadSections(section, withRowAnimation: .Automatic)
-        self.tableView.endUpdates()
+        let vc = SelectedDatesTableViewController()
+        let theDate = date.date
+        vc.selectedDates.append(theDate)
+
     }
     
     func calendarDidPageToDate(date: Moment) {
