@@ -51,6 +51,7 @@
 		C958A8411C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C958A8401C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift */; };
 		C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95990E31C10F8DD00F6873E /* ScheduleModel.swift */; };
 		C95AAF421C59A34C009EE697 /* MessageNotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95AAF411C59A34C009EE697 /* MessageNotesModel.swift */; };
+		C95DD16A1CAE032400B505DE /* TimeAwayRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DD1691CAE032400B505DE /* TimeAwayRequestTableViewController.swift */; };
 		C961638A1BF6EC9E00EB5D44 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */; };
 		C9676DF11C8274DB00309F8B /* Special Access Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9676DF01C8274DB00309F8B /* Special Access Model.swift */; };
 		C9676DF31C8277FB00309F8B /* SpecialAccessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9676DF21C8277FB00309F8B /* SpecialAccessTableViewController.swift */; };
@@ -256,6 +257,7 @@
 		C958A8401C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditCustomerTableViewController.swift; sourceTree = "<group>"; };
 		C95990E31C10F8DD00F6873E /* ScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		C95AAF411C59A34C009EE697 /* MessageNotesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNotesModel.swift; sourceTree = "<group>"; };
+		C95DD1691CAE032400B505DE /* TimeAwayRequestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAwayRequestTableViewController.swift; sourceTree = "<group>"; };
 		C96163891BF6EC9E00EB5D44 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		C9676DF01C8274DB00309F8B /* Special Access Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Special Access Model.swift"; sourceTree = "<group>"; };
 		C9676DF21C8277FB00309F8B /* SpecialAccessTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialAccessTableViewController.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 			isa = PBXGroup;
 			children = (
 				C96F07C21CAB696C009F3436 /* SparkleConnect.storyboard */,
+				C95DD1691CAE032400B505DE /* TimeAwayRequestTableViewController.swift */,
 				C9F0C26A1CACE5540037736D /* DateDetailTableViewController.swift */,
 				C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */,
 				C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */,
@@ -1265,6 +1268,7 @@
 				C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */,
 				C9F1A47F1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift in Sources */,
 				C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */,
+				C95DD16A1CAE032400B505DE /* TimeAwayRequestTableViewController.swift in Sources */,
 				C958A8411C1CD41A00532BE7 /* AddEditCustomerTableViewController.swift in Sources */,
 				C9FAE77D1C584B2E005630FC /* MessageNotesTableViewController.swift in Sources */,
 				C9FE5BE41C1F880600293836 /* ConfirmCalViewController.swift in Sources */,
