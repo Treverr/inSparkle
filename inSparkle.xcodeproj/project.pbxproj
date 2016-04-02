@@ -25,6 +25,7 @@
 		C91B6B301C5FD313006C761D /* AddEditMessageNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B6B2F1C5FD313006C761D /* AddEditMessageNoteViewController.swift */; };
 		C91BB3701C2A705F00132946 /* MessagesMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BB36F1C2A705F00132946 /* MessagesMainTableViewCell.swift */; };
 		C91BB3721C2A72B900132946 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */; };
+		C9220DB61CAF76B600CCF10E /* TimeAwayRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9220DB51CAF76B600CCF10E /* TimeAwayRequestModel.swift */; };
 		C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923D5F91C231A9100A32978 /* WeekList.swift */; };
 		C928CF9E1C233BF000C83345 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928CF9D1C233BF000C83345 /* LocalNotifications.swift */; };
 		C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */; };
@@ -232,6 +233,7 @@
 		C91B6B2F1C5FD313006C761D /* AddEditMessageNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditMessageNoteViewController.swift; sourceTree = "<group>"; };
 		C91BB36F1C2A705F00132946 /* MessagesMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesMainTableViewCell.swift; sourceTree = "<group>"; };
 		C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
+		C9220DB51CAF76B600CCF10E /* TimeAwayRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAwayRequestModel.swift; sourceTree = "<group>"; };
 		C923D5F91C231A9100A32978 /* WeekList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekList.swift; sourceTree = "<group>"; };
 		C928CF9D1C233BF000C83345 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePunchCalcObject.swift; sourceTree = "<group>"; };
@@ -471,6 +473,33 @@
 			name = "Chemical Checkout";
 			sourceTree = "<group>";
 		};
+		C9220DB21CAF72C700CCF10E /* Time Away */ = {
+			isa = PBXGroup;
+			children = (
+				C95DD1691CAE032400B505DE /* TimeAwayRequestTableViewController.swift */,
+				C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */,
+				C9220DB51CAF76B600CCF10E /* TimeAwayRequestModel.swift */,
+			);
+			name = "Time Away";
+			sourceTree = "<group>";
+		};
+		C9220DB31CAF72D800CCF10E /* myTime */ = {
+			isa = PBXGroup;
+			children = (
+				C9F0C26A1CACE5540037736D /* DateDetailTableViewController.swift */,
+				C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */,
+			);
+			name = myTime;
+			sourceTree = "<group>";
+		};
+		C9220DB41CAF72E100CCF10E /* Update Password */ = {
+			isa = PBXGroup;
+			children = (
+				C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */,
+			);
+			name = "Update Password";
+			sourceTree = "<group>";
+		};
 		C94367041BF719D50066D155 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,11 +621,9 @@
 			isa = PBXGroup;
 			children = (
 				C96F07C21CAB696C009F3436 /* SparkleConnect.storyboard */,
-				C95DD1691CAE032400B505DE /* TimeAwayRequestTableViewController.swift */,
-				C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */,
-				C9F0C26A1CACE5540037736D /* DateDetailTableViewController.swift */,
-				C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */,
-				C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */,
+				C9220DB21CAF72C700CCF10E /* Time Away */,
+				C9220DB31CAF72D800CCF10E /* myTime */,
+				C9220DB41CAF72E100CCF10E /* Update Password */,
 				C949EBA01CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift */,
 			);
 			name = SparkleConnect;
@@ -1308,6 +1335,7 @@
 				C9585F271C169491008AB918 /* RunTimeReportTableViewController.swift in Sources */,
 				C9C8E1C11C32141800191C17 /* MessageModel.swift in Sources */,
 				C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */,
+				C9220DB61CAF76B600CCF10E /* TimeAwayRequestModel.swift in Sources */,
 				C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */,
 				C9F7A9B61C701614001A6555 /* UserPINViewController.swift in Sources */,
 				C91120881C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift in Sources */,

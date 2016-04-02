@@ -197,9 +197,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1m-t0-BZO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2096" y="609"/>
+            <point key="canvasLocation" x="2096" y="558"/>
         </scene>
-        <!--Time Away Request Table View Controller-->
+        <!--Title-->
         <scene sceneID="qO1-au-jJu">
             <objects>
                 <tableViewController id="9M3-eg-VfO" customClass="TimeAwayRequestTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
@@ -208,7 +208,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <containerView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="dbQ-4f-7y1">
-                            <rect key="frame" x="0.0" y="571" width="600" height="325"/>
+                            <rect key="frame" x="0.0" y="596" width="600" height="325"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <connections>
                                 <segue destination="EwO-XA-LTV" kind="embed" id="xmE-Qf-6gV"/>
@@ -267,7 +267,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Select date(s) of time away request:" id="Mwf-82-Zy4">
+                            <tableViewSection headerTitle="Select date(s) of time away request:" footerTitle=" Selected Dates:" id="Mwf-82-Zy4">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="calCell" rowHeight="300" id="yUh-ib-3wg">
                                         <rect key="frame" x="0.0" y="253" width="600" height="300"/>
@@ -309,11 +309,26 @@
                             <outlet property="delegate" destination="9M3-eg-VfO" id="Xtr-yr-dMZ"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="eJ9-ct-LYS"/>
+                        <barButtonItem title="Submit" id="jg2-YR-4DV">
+                            <connections>
+                                <action selector="submitTimeAway:" destination="9M3-eg-VfO" id="dog-Te-kfl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Llb-Co-sN9"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="vlP-Sy-my0"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1200"/>
                     <connections>
                         <outlet property="calendarView" destination="rko-s7-Sed" id="2mg-fS-oG5"/>
+                        <outlet property="monthLabel" destination="fL0-7q-fPb" id="QD0-Fl-XEg"/>
                         <outlet property="selectedDate" destination="dbQ-4f-7y1" id="obb-xz-0oC"/>
+                        <outlet property="submitButton" destination="jg2-YR-4DV" id="k6n-mv-ibF"/>
+                        <outlet property="unpaidCell" destination="cXO-80-TLc" id="51Y-Me-eh6"/>
+                        <outlet property="vacationCell" destination="4nc-aw-gkS" id="8nI-QU-tCS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c05-vY-uk4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -735,23 +750,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gaZ-B1-kqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="588" y="410"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="12B-Uv-fWr">
-            <objects>
-                <viewController id="U6w-06-WKM" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="JKj-O1-S4f"/>
-                        <viewControllerLayoutGuide type="bottom" id="RQv-P4-GPf"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Nm1-gD-YFq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xe0-AA-HdF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
     </scenes>
     <resources>

@@ -33,4 +33,8 @@ class SelectedDatesTableViewController: UITableViewController {
         return cell
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        SelectedDatesTimeAway.selectedDates = []
+    }
+    
 }

@@ -156,6 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         MessageNotes.registerSubclass()
         SpecialAccessObj.registerSubclass()
         Role.registerSubclass()
+        TimeAwayRequest.registerSubclass()
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
