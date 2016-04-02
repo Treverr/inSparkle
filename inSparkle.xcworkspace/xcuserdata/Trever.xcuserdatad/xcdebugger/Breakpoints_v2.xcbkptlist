@@ -90,28 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "inSparkle/TimeAwayRequestTableViewController.swift"
-            timestampString = "481179713.407778"
+            timestampString = "481237830.943404"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "TimeAwayRequestTableViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "inSparkle/TimeAwayRequestTableViewController.swift"
-            timestampString = "481179713.407778"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "calendarDidSelectDate(_:)"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "preferredContentSizeDidChangeForChildContentContainer(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +106,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "inSparkle/TimeAwayRequestTableViewController.swift"
-            timestampString = "481179713.407778"
+            timestampString = "481239129.461276"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "preferredContentSizeDidChangeForChildContentContainer(_:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "updateSize()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/TimeAwayRequestTableViewController.swift"
+            timestampString = "481239129.776328"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "updateSize()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -11,20 +11,15 @@ import SwiftMoment
 
 class SelectedDatesTableViewController: UITableViewController {
     
-    var selectedDates : [NSDate]! = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(5 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-        
-            self.preferredContentSize.height = CGFloat( self.selectedDates.count * 44 )
-        }
+        self.preferredContentSize.height = CGFloat( SelectedDatesTimeAway.selectedDates.count * 44 )
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return selectedDates.count
+        print(SelectedDatesTimeAway.selectedDates.count)
+        return SelectedDatesTimeAway.selectedDates.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -33,9 +28,14 @@ class SelectedDatesTableViewController: UITableViewController {
         dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
         
-        cell.textLabel?.text! = dateFormatter.stringFromDate(selectedDates[indexPath.row])
+        cell.textLabel?.text! = dateFormatter.stringFromDate(SelectedDatesTimeAway.selectedDates[indexPath.row])
         
         return cell
     }
-
+    
+    func reloadTable() {
+        self.preferredContentSize.height = CGFloat( SelectedDatesTimeAway.selectedDates.count * 44 )
+        self.tableView.reloadData()
+    }
+    
 }

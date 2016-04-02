@@ -192,6 +192,12 @@ class ChecmicalCheckoutData : NSObject {
     
 }
 
+class SelectedDatesTimeAway : NSObject {
+    
+    static var selectedDates : [NSDate]! = []
+    
+}
+
 class Barcode {
     
     class func fromString(string : String) -> UIImage? {

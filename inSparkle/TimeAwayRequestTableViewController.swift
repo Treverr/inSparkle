@@ -20,10 +20,18 @@ class TimeAwayRequestTableViewController: UITableViewController {
         super.viewDidLoad()
         
         calendarView.delegate = self
+        
+        self.selectedDate.frame.size.height = CGFloat(SelectedDatesTimeAway.selectedDates.count * 44)
     }
     
     override func preferredContentSizeDidChangeForChildContentContainer(container: UIContentContainer) {
-        self.selectedDate.frame.size.height = 100
+        self.selectedDate.frame.size.height = CGFloat(SelectedDatesTimeAway.selectedDates.count * 44)
+        print(CGFloat(SelectedDatesTimeAway.selectedDates.count * 44))
+    }
+    
+    func updateSize() {
+        self.selectedDate.frame.size.height = CGFloat(SelectedDatesTimeAway.selectedDates.count * 44)
+        self.tableView.contentSize.height = CGFloat(self.tableView.contentSize.height + (CGFloat(SelectedDatesTimeAway.selectedDates.count) * 44))
     }
     
 }
@@ -31,10 +39,11 @@ class TimeAwayRequestTableViewController: UITableViewController {
 extension TimeAwayRequestTableViewController : CalendarViewDelegate {
     
     func calendarDidSelectDate(date: Moment) {
-        let vc = SelectedDatesTableViewController()
         let theDate = date.date
-        vc.selectedDates.append(theDate)
-
+        SelectedDatesTimeAway.selectedDates.append(theDate)
+        print(SelectedDatesTimeAway.selectedDates.count)
+        SelectedDatesTableViewController().reloadTable()
+        self.updateSize()
     }
     
     func calendarDidPageToDate(date: Moment) {
