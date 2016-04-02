@@ -33,9 +33,4 @@ class SelectedDatesTableViewController: UITableViewController {
         return cell
     }
     
-    func reloadTable() {
-        self.preferredContentSize.height = CGFloat( SelectedDatesTimeAway.selectedDates.count * 44 )
-        self.tableView.reloadData()
-    }
-    
 }

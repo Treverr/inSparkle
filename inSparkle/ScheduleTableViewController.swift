@@ -73,6 +73,7 @@ class ScheduleTableViewController: UITableViewController {
         let query : PFQuery = PFQuery(className: "Schedule")
         query.whereKey("isActive", equalTo: true)
         query.whereKey("type", equalTo: filterOption)
+        query.limit = 1000
         query.orderByAscending("weekStart")
         query.findObjectsInBackgroundWithBlock { (scheduleObjects :[PFObject]?, error: NSError?) -> Void in
             if error == nil {
