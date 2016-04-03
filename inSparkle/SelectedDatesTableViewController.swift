@@ -41,6 +41,7 @@ class SelectedDatesTableViewController: UITableViewController {
             cell.hoursTextField.text = String(8)
             cell.hoursTextField.tag = (indexPath.row - 1)
             cell.hoursTextField.userInteractionEnabled = false
+            cell.hoursTextField.delegate = self
             
             return cell
         }
@@ -63,9 +64,27 @@ class SelectedDatesTableViewController: UITableViewController {
             return 44
         }
     }
-    
+
     override func viewWillDisappear(animated: Bool) {
         SelectedDatesTimeAway.selectedDates = []
+    }
+    
+}
+
+extension SelectedDatesTableViewController : UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        var total : Double = 0
+        var cells = self.tableView.visibleCells
+        cells.removeFirst()
+        
+        for cell in cells {
+            let theCell = cell as! SelectedDatesTableViewCell
+            total = total + Double(theCell.hoursTextField.text!)!
+        }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("UpdateTotalNumberOfHours", object: total)
+        
     }
     
 }

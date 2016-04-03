@@ -14,6 +14,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
     
     var originalHeight : CGFloat!
     var totalHours : Double = 0.0
+    @IBOutlet weak var totalHoursButton: UIBarButtonItem!
     
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var submitButton: UIBarButtonItem!
@@ -24,6 +25,8 @@ class TimeAwayRequestTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTotalNumberOfHours", name: "UpdateTotalNumberOfHours", object: nil)
         
         submitButton.enabled = false
         submitButton.tintColor = UIColor.lightGrayColor()
@@ -45,7 +48,8 @@ class TimeAwayRequestTableViewController: UITableViewController {
         self.tableView.layoutIfNeeded()
     }
     
-    @IBAction func submitTimeAway(sender: AnyObject) {
+    func updateTotalNumberOfHours() {
+        self.totalHours = 0.0
         let tbc = self.childViewControllers[0] as! UITableViewController
         var cells = tbc.tableView.visibleCells
         cells.removeFirst()
@@ -55,31 +59,54 @@ class TimeAwayRequestTableViewController: UITableViewController {
             totalHours = totalHours + Double(theCell.hoursTextField.text!)!
         }
         
-        let timeAway = TimeAwayRequest()
-        timeAway.datesRequested = SelectedDatesTimeAway.selectedDates
-        timeAway.requestDate = NSDate()
+        self.totalHoursButton.title = "Total Hours: " + String(totalHours)
         
-        if unpaidCell.accessoryType == .Checkmark {
-            timeAway.type = "Unpaid"
-        }
-        if vacationCell.accessoryType == .Checkmark {
-            timeAway.type = "Vacation"
-        }
+    }
+    
+    @IBAction func submitTimeAway(sender: AnyObject) {
         
-        timeAway.status = "Pending"
-        timeAway.hours = Double(self.totalHours)
         
-        timeAway.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in
-            if success {
-                let alert = UIAlertController(title: "Submitted", message: "Your Time Away Requset has been submitted. Please check with your manager for any questions. You will be notified via email if the request is approved or returned.", preferredStyle: .Alert)
-                let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
-                    self.performSegueWithIdentifier("exitToSparkleConnect", sender: nil)
-                })
-                alert.addAction(okayButton)
-                self.presentViewController(alert, animated: true, completion: nil)
+        if unpaidCell.accessoryType != .Checkmark && vacationCell.accessoryType != .Checkmark {
+            let error = UIAlertController(title: "Error", message: "Please select a type of time away.", preferredStyle: .Alert)
+            let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            error.addAction(okayButton)
+            self.presentViewController(error, animated: true, completion: nil)
+        } else {
+            totalHours = 0.0
+            let tbc = self.childViewControllers[0] as! UITableViewController
+            var cells = tbc.tableView.visibleCells
+            cells.removeFirst()
+            
+            for cell in cells {
+                let theCell = cell as! SelectedDatesTableViewCell
+                totalHours = totalHours + Double(theCell.hoursTextField.text!)!
+            }
+            
+            let timeAway = TimeAwayRequest()
+            timeAway.datesRequested = SelectedDatesTimeAway.selectedDates
+            timeAway.requestDate = NSDate()
+            
+            if unpaidCell.accessoryType == .Checkmark {
+                timeAway.type = "Unpaid"
+            }
+            if vacationCell.accessoryType == .Checkmark {
+                timeAway.type = "Vacation"
+            }
+            
+            timeAway.status = "Pending"
+            timeAway.hours = Double(self.totalHours)
+            
+            timeAway.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in
+                if success {
+                    let alert = UIAlertController(title: "Submitted", message: "Your Time Away Requset has been submitted. Please check with your manager for any questions. You will be notified via email if the request is approved or returned.", preferredStyle: .Alert)
+                    let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
+                        self.performSegueWithIdentifier("exitToSparkleConnect", sender: nil)
+                    })
+                    alert.addAction(okayButton)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
             }
         }
-        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -127,6 +154,8 @@ extension TimeAwayRequestTableViewController : CalendarViewDelegate {
                 let indexPath = NSIndexPath(forRow: SelectedDatesTimeAway.selectedDates.count, inSection: 0)
                 tbc.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
                 tbc.tableView.endUpdates()
+                
+                self.updateTotalNumberOfHours()
                 
                 self.submitButton.enabled = true
                 self.submitButton.tintColor = Colors.defaultTintColor

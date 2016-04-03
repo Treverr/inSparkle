@@ -89,13 +89,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/TimeAwayRequestTableViewController.swift"
-            timestampString = "481349662.251235"
+            filePath = "inSparkle/SelectedDatesTableViewController.swift"
+            timestampString = "481355187.648763"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "submitTimeAway(_:)"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "textFieldDidEndEditing(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/TimeAwayRequestTableViewController.swift"
+            timestampString = "481354954.860155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "updateTotalNumberOfHours()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
