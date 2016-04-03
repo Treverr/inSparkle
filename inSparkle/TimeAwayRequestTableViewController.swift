@@ -13,6 +13,8 @@ import SwiftMoment
 class TimeAwayRequestTableViewController: UITableViewController {
     
     var originalHeight : CGFloat!
+    var totalHours : Double = 0.0
+    
     @IBOutlet var monthLabel: UILabel!
     @IBOutlet var submitButton: UIBarButtonItem!
     @IBOutlet var selectedDate : UIView!
@@ -32,35 +34,30 @@ class TimeAwayRequestTableViewController: UITableViewController {
         
         calendarView.delegate = self
         
-        self.selectedDate.frame.size.height = CGFloat(SelectedDatesTimeAway.selectedDates.count * 44)
+        self.selectedDate.frame.size.height = CGFloat((SelectedDatesTimeAway.selectedDates.count * 44) + 26)
         
         self.navigationController?.toolbarHidden = false
     }
     
     override func preferredContentSizeDidChangeForChildContentContainer(container: UIContentContainer) {
-        self.selectedDate.frame.size.height = CGFloat(SelectedDatesTimeAway.selectedDates.count * 44)
+        self.selectedDate.frame.size.height = CGFloat((SelectedDatesTimeAway.selectedDates.count * 44) + 26)
         self.tableView.contentSize.height = (self.originalHeight + 198) + self.selectedDate.frame.size.height
         self.tableView.layoutIfNeeded()
     }
     
     @IBAction func submitTimeAway(sender: AnyObject) {
+        let tbc = self.childViewControllers[0] as! UITableViewController
+        var cells = tbc.tableView.visibleCells
+        cells.removeFirst()
+        
+        for cell in cells {
+            let theCell = cell as! SelectedDatesTableViewCell
+            totalHours = totalHours + Double(theCell.hoursTextField.text!)!
+        }
+        
         let timeAway = TimeAwayRequest()
         timeAway.datesRequested = SelectedDatesTimeAway.selectedDates
         timeAway.requestDate = NSDate()
-        
-        if EmployeeData.universalEmployee.objectForKey("fullTime") != nil {
-            switch EmployeeData.universalEmployee.objectForKey("fullTime") as! Bool {
-            case true:
-                timeAway.hours = 8.0 * Double(SelectedDatesTimeAway.selectedDates.count)
-            case false:
-                timeAway.hours = 4.0 * Double(SelectedDatesTimeAway.selectedDates.count)
-            default:
-                break
-            }
-        } else {
-            timeAway.hours = 0
-        }
-        
         
         if unpaidCell.accessoryType == .Checkmark {
             timeAway.type = "Unpaid"
@@ -70,12 +67,13 @@ class TimeAwayRequestTableViewController: UITableViewController {
         }
         
         timeAway.status = "Pending"
+        timeAway.hours = Double(self.totalHours)
         
         timeAway.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in
             if success {
                 let alert = UIAlertController(title: "Submitted", message: "Your Time Away Requset has been submitted. Please check with your manager for any questions. You will be notified via email if the request is approved or returned.", preferredStyle: .Alert)
                 let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
-                    self.performSegueWithIdentifier("exitToTimeAway", sender: nil)
+                    self.performSegueWithIdentifier("exitToSparkleConnect", sender: nil)
                 })
                 alert.addAction(okayButton)
                 self.presentViewController(alert, animated: true, completion: nil)
@@ -118,15 +116,22 @@ extension TimeAwayRequestTableViewController : CalendarViewDelegate {
     
     func calendarDidSelectDate(date: Moment) {
         let theDate = date.date
-        SelectedDatesTimeAway.selectedDates.append(theDate)
-        print(SelectedDatesTimeAway.selectedDates.count)
-        let tbc = self.childViewControllers[0] as! UITableViewController
-        tbc.preferredContentSize.height = CGFloat ( SelectedDatesTimeAway.selectedDates.count * 44 )
-        print(tbc.preferredContentSize.height)
-        tbc.tableView.reloadData()
-        
-        self.submitButton.enabled = true
-        self.submitButton.tintColor = Colors.defaultTintColor
+        if theDate.timeIntervalSinceDate(NSDate()) > 0 {
+            if !SelectedDatesTimeAway.selectedDates.contains(theDate) {
+                SelectedDatesTimeAway.selectedDates.append(theDate)
+                print(SelectedDatesTimeAway.selectedDates.count)
+                let tbc = self.childViewControllers[0] as! UITableViewController
+                tbc.preferredContentSize.height = CGFloat ( SelectedDatesTimeAway.selectedDates.count * 44 )
+                print(tbc.preferredContentSize.height)
+                tbc.tableView.beginUpdates()
+                let indexPath = NSIndexPath(forRow: SelectedDatesTimeAway.selectedDates.count, inSection: 0)
+                tbc.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                tbc.tableView.endUpdates()
+                
+                self.submitButton.enabled = true
+                self.submitButton.tintColor = Colors.defaultTintColor
+            }
+        }
     }
     
     func calendarDidPageToDate(date: Moment) {

@@ -35,6 +35,7 @@
 		C949EBA11CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C949EBA01CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift */; };
 		C949EBA31CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */; };
 		C94C1CBF1C3CB96100F568B9 /* CustomerLookup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94C1CBE1C3CB96100F568B9 /* CustomerLookup.storyboard */; };
+		C94C77241CB0C89800EB3CED /* SelectedDatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C77231CB0C89800EB3CED /* SelectedDatesTableViewCell.swift */; };
 		C95008611C61C08E00F5351C /* GeneratePDF.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C95008601C61C08E00F5351C /* GeneratePDF.storyboard */; };
 		C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95008621C61C11800F5351C /* PDFGenerateViewController.swift */; };
 		C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */; };
@@ -243,6 +244,7 @@
 		C949EBA01CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SparkleConnectTableViewController.swift; sourceTree = "<group>"; };
 		C949EBA21CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdatePasswordTableViewController.swift; sourceTree = "<group>"; };
 		C94C1CBE1C3CB96100F568B9 /* CustomerLookup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CustomerLookup.storyboard; sourceTree = "<group>"; };
+		C94C77231CB0C89800EB3CED /* SelectedDatesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDatesTableViewCell.swift; sourceTree = "<group>"; };
 		C95008601C61C08E00F5351C /* GeneratePDF.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GeneratePDF.storyboard; sourceTree = "<group>"; };
 		C95008621C61C11800F5351C /* PDFGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFGenerateViewController.swift; sourceTree = "<group>"; };
 		C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = Onboarding/ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 			isa = PBXGroup;
 			children = (
 				C95DD1691CAE032400B505DE /* TimeAwayRequestTableViewController.swift */,
+				C94C77231CB0C89800EB3CED /* SelectedDatesTableViewCell.swift */,
 				C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */,
 				C9220DB51CAF76B600CCF10E /* TimeAwayRequestModel.swift */,
 			);
@@ -1316,6 +1319,7 @@
 				C9676DF11C8274DB00309F8B /* Special Access Model.swift in Sources */,
 				C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */,
 				C91BB3701C2A705F00132946 /* MessagesMainTableViewCell.swift in Sources */,
+				C94C77241CB0C89800EB3CED /* SelectedDatesTableViewCell.swift in Sources */,
 				C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */,
 				C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */,
 				C9A01EC81C8FC434002D75AA /* PDFLockerTableViewController.swift in Sources */,

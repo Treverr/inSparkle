@@ -56,4 +56,8 @@ class SparkleConnectTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
+    
+    @IBAction func exitTimeAway(segue : UIStoryboardSegue) {
+        
+    }
 }
