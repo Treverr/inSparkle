@@ -96,6 +96,19 @@ class TimeAwayDetialViewController: UIViewController {
         self.empVaca.hoursPending = (self.empVaca.hoursPending - self.request.hours)
         self.empVaca.hoursLeft = (self.empVaca.hoursLeft + self.request.hours)
         self.empVaca.saveInBackground()
+        
+        var empEmail : String?
+        
+        let user = self.employee.userPoint
+        do {
+            try user?.fetch()
+            empEmail = user?.email!
+            CloudCode.SendReturnTimeAway(empEmail!, date1: self.datesArray.first!, date2: self.datesArray.last!, type: self.request.type!)
+        } catch {
+            
+        }
+
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

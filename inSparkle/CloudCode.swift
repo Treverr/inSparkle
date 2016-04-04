@@ -151,7 +151,7 @@ class CloudCode {
         
         
         let params = [
-            "toEmail" : email,
+            "email" : email,
             "date1" : fromDate,
             "date2" : toDate
         ]
@@ -161,6 +161,27 @@ class CloudCode {
         } catch {
             
         }
+    }
+    
+    class func SendReturnTimeAway(email : String, date1: NSDate, date2 : NSDate, type: String) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        let fromDate = dateFormatter.stringFromDate(date1)
+        let toDate = dateFormatter.stringFromDate(date2)
+        
+        let params = [
+            "email" : email,
+            "date1" : fromDate,
+            "date2" : toDate,
+            "type" : type
+        ]
+        
+        do {
+            try PFCloud.callFunction("VacationReturned", withParameters: params)
+        } catch {
+            
+        }
+        
     }
 }
 
