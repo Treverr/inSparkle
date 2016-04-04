@@ -141,6 +141,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     self.closeLogin()
                     
+                    do {
+                        try PFUser.currentUser()?.fetch()
+                        print(PFUser.currentUser())
+                        if PFUser.currentUser() != nil {
+                            let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
+                            do {
+                                try employee!.fetch()
+                            } catch {
+                            }
+                            
+                            EmployeeData.universalEmployee = employee
+                            
+                        }
+                    } catch {
+                        print("Error")
+                    }
+                    
                 } else {
                     let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
                     banner.dismissesOnTap = true

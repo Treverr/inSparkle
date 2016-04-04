@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pdb-5y-vV0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pdb-5y-vV0">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Admin-->
@@ -64,8 +64,32 @@
                                             <segue destination="DUD-KG-QTa" kind="show" id="HId-yy-ifU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="EJz-6Q-L74" imageView="GDB-49-ZiH" style="IBUITableViewCellStyleDefault" id="V83-nq-2Rd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="cqb-yL-oHE" imageView="jFx-go-MUH" style="IBUITableViewCellStyleDefault" id="O7V-CY-7Ty">
                                         <rect key="frame" x="0.0" y="195" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O7V-CY-7Ty" id="KLB-M7-d1t">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Time Away Requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cqb-yL-oHE">
+                                                    <rect key="frame" x="64" y="0.0" width="501" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="TimeAwayAdmin" id="jFx-go-MUH">
+                                                    <rect key="frame" x="15" y="4" width="34" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Aib-Jr-3Zz" kind="show" id="YDo-V2-g6T"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="EJz-6Q-L74" imageView="GDB-49-ZiH" style="IBUITableViewCellStyleDefault" id="V83-nq-2Rd">
+                                        <rect key="frame" x="0.0" y="239" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V83-nq-2Rd" id="bAI-1Z-TRe">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -202,7 +226,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bN3-sW-wzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2720" y="385"/>
+            <point key="canvasLocation" x="3015" y="411"/>
         </scene>
         <!--Time Card Manage Employee List Table View Controller-->
         <scene sceneID="76q-Q2-Q7A">
@@ -303,6 +327,14 @@
             </objects>
             <point key="canvasLocation" x="2478" y="-49"/>
         </scene>
+        <!--TimeAwayAdmin-->
+        <scene sceneID="VX8-lH-iwC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TimeAwayAdmin" id="Aib-Jr-3Zz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jXb-dW-SjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2483.5" y="560"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Chemical Checkout Report" width="34" height="34"/>
@@ -310,6 +342,7 @@
         <image name="Manage Users" width="34" height="34"/>
         <image name="POCReport" width="34" height="34"/>
         <image name="Report" width="30" height="40"/>
+        <image name="TimeAwayAdmin" width="34" height="34"/>
         <image name="TimeCard" width="34" height="34"/>
     </resources>
 </document>

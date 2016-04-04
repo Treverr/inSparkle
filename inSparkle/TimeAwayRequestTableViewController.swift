@@ -14,6 +14,8 @@ class TimeAwayRequestTableViewController: UITableViewController {
     
     var originalHeight : CGFloat!
     var totalHours : Double = 0.0
+    var vacationTime = VacationTime()
+    
     @IBOutlet weak var totalHoursButton: UIBarButtonItem!
     
     @IBOutlet var monthLabel: UILabel!
@@ -22,6 +24,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
     @IBOutlet var calendarView: CalendarView!
     @IBOutlet var vacationCell: UITableViewCell!
     @IBOutlet var unpaidCell: UITableViewCell!
+    @IBOutlet var vacationHours: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,16 @@ class TimeAwayRequestTableViewController: UITableViewController {
         self.selectedDate.frame.size.height = CGFloat((SelectedDatesTimeAway.selectedDates.count * 44) + 26)
         
         self.navigationController?.toolbarHidden = false
+        
+        let vtQuery = VacationTime.query()
+        vtQuery?.whereKey("employee", equalTo: EmployeeData.universalEmployee)
+        do {
+            vacationTime = try vtQuery?.getFirstObject() as! VacationTime
+            
+            vacationHours.text = String(vacationTime.hoursLeft + vacationTime.hoursPending) + " hours"
+            
+        } catch { }
+
     }
     
     override func preferredContentSizeDidChangeForChildContentContainer(container: UIContentContainer) {
@@ -91,6 +104,11 @@ class TimeAwayRequestTableViewController: UITableViewController {
             }
             if vacationCell.accessoryType == .Checkmark {
                 timeAway.type = "Vacation"
+                
+                print(vacationTime)
+                vacationTime.hoursPending = vacationTime.hoursPending + self.totalHours
+                vacationTime.hoursLeft = vacationTime.issuedHours - vacationTime.hoursPending
+                vacationTime.saveInBackground()
             }
             
             timeAway.status = "Pending"

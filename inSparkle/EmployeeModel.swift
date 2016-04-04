@@ -19,11 +19,6 @@ class Employee: PFObject, PFSubclassing {
         return "Employees"
     }
     
-    var objectID : String {
-        get {return objectForKey("objectId") as! String}
-        set { setObject(newValue, forKey: "objectId") }
-    }
-    
     var pinNumber : String? {
         get {return objectForKey("pinNumber") as? String}
         set { setObject(newValue!, forKey: "pinNumber") }

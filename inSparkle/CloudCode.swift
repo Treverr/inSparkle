@@ -142,32 +142,27 @@ class CloudCode {
             }
         }
     }
+    
+    class func SendVacationApprovedEmail(email : String, date1 : NSDate, date2 : NSDate) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        let fromDate = dateFormatter.stringFromDate(date1)
+        let toDate = dateFormatter.stringFromDate(date2)
+        
+        
+        let params = [
+            "toEmail" : email,
+            "date1" : fromDate,
+            "date2" : toDate
+        ]
+        
+        do {
+            try PFCloud.callFunction("VacationApproved", withParameters: params)
+        } catch {
+            
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

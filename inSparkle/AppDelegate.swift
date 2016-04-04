@@ -157,6 +157,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         SpecialAccessObj.registerSubclass()
         Role.registerSubclass()
         TimeAwayRequest.registerSubclass()
+        VacationTime.registerSubclass()
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
