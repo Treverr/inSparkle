@@ -45,4 +45,9 @@ class TimeAwayRequest : PFObject, PFSubclassing {
         set { setObject(newValue!, forKey: "datesRequested") }
     }
     
+    var employee : Employee {
+        get { return objectForKey("employee") as! Employee }
+        set { setObject(newValue, forKey: "employee") }
+    }
+    
 }

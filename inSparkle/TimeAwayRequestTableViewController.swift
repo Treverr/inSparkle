@@ -96,6 +96,8 @@ class TimeAwayRequestTableViewController: UITableViewController {
             timeAway.status = "Pending"
             timeAway.hours = Double(self.totalHours)
             
+            timeAway.employee = EmployeeData.universalEmployee
+            
             timeAway.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in
                 if success {
                     let alert = UIAlertController(title: "Submitted", message: "Your Time Away Requset has been submitted. Please check with your manager for any questions. You will be notified via email if the request is approved or returned.", preferredStyle: .Alert)
