@@ -27,6 +27,9 @@ class TimeAwayDetialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        listOfDates.textContainerInset = UIEdgeInsetsZero
+        listOfDates.textContainer.lineFragmentPadding = 0
+        
         self.navigationItem.title = "Pending " + request.type + " Request"
         
         let dateFormatter = NSDateFormatter()
