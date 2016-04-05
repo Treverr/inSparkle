@@ -75,6 +75,9 @@ extension SelectedDatesTableViewController : UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         var total : Double = 0
+        let rounded = round(Double(textField.text!)! * 2) / 2
+        textField.text = String(rounded)
+        
         var cells = self.tableView.visibleCells
         cells.removeFirst()
         
