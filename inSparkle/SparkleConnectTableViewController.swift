@@ -24,26 +24,42 @@ class SparkleConnectTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        let user = PFUser.currentUser()?.objectForKey("employee") as! Employee
-        var emply : Employee?
-        var theRole : Role?
-        user.fetchInBackgroundWithBlock { (employee : PFObject?, error : NSError?) in
-            if error == nil {
-                emply = employee as! Employee
-                self.employeeNameLabel.text = emply!.firstName + " " + emply!.lastName
+        if EmployeeData.universalEmployee != nil {
+            let user = EmployeeData.universalEmployee as! Employee
+            let emply = EmployeeData.universalEmployee
+            self.employeeNameLabel.text = emply!.firstName + " " + emply!.lastName
+            var theRole : Role?
+            let roleType = user.objectForKey("roleType") as! Role
+            
+            roleType.fetchInBackgroundWithBlock({ (role : PFObject?, error : NSError?) in
+                if error == nil {
+                    theRole = role as! Role
+                    self.roleLabel.text = theRole?.roleName
+                }
+            })
+
+        } else {
+            let user = PFUser.currentUser()?.objectForKey("employee") as! Employee
+            var emply : Employee?
+            var theRole : Role?
+            user.fetchInBackgroundWithBlock { (employee : PFObject?, error : NSError?) in
+                if error == nil {
+                    emply = employee as! Employee
+                    self.employeeNameLabel.text = emply!.firstName + " " + emply!.lastName
+                }
             }
+            
+            print(user)
+            
+            let roleType = user.objectForKey("roleType") as! Role
+            
+            roleType.fetchInBackgroundWithBlock({ (role : PFObject?, error : NSError?) in
+                if error == nil {
+                    theRole = role as! Role
+                    self.roleLabel.text = theRole?.roleName
+                }
+            })
         }
-        
-        print(user)
-        
-        let roleType = user.objectForKey("roleType") as! Role
-        
-        roleType.fetchInBackgroundWithBlock({ (role : PFObject?, error : NSError?) in
-            if error == nil {
-                theRole = role as! Role
-                self.roleLabel.text = theRole?.roleName
-            }
-        })
     }
     
     @IBAction func closeAction(sender: AnyObject) {

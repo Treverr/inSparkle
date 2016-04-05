@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Main Time Away Table View Controller-->
         <scene sceneID="G0O-H7-TIU">
             <objects>
-                <tableViewController id="zyg-tm-3ZS" sceneMemberID="viewController">
+                <tableViewController id="zyg-tm-3ZS" customClass="MainTimeAwayTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="Y3T-TD-pb1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -150,8 +150,12 @@
                             <outlet property="delegate" destination="LYa-Cn-zvs" id="PX5-x8-y09"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="U9Z-mv-Kx3" kind="unwind" identifier="returnToMainTimeAway" unwindAction="returnToMainTimeAway:" id="haz-TI-OvY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LjP-aC-KEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="U9Z-mv-Kx3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1364" y="435"/>
         </scene>

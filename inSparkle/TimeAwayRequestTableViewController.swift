@@ -9,6 +9,7 @@
 import UIKit
 import CalendarView
 import SwiftMoment
+import Parse
 
 class TimeAwayRequestTableViewController: UITableViewController {
     
@@ -88,11 +89,16 @@ class TimeAwayRequestTableViewController: UITableViewController {
             totalHours = 0.0
             let tbc = self.childViewControllers[0] as! UITableViewController
             var cells = tbc.tableView.visibleCells
+            var timeCardVacation : [String : String] = [:]
             cells.removeFirst()
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "M/d/yy"
             
             for cell in cells {
                 let theCell = cell as! SelectedDatesTableViewCell
                 totalHours = totalHours + Double(theCell.hoursTextField.text!)!
+                timeCardVacation[theCell.dateLabel.text!] = theCell.hoursTextField.text!
             }
             
             let timeAway = TimeAwayRequest()
@@ -109,11 +115,12 @@ class TimeAwayRequestTableViewController: UITableViewController {
                 vacationTime.hoursPending = vacationTime.hoursPending + self.totalHours
                 vacationTime.hoursLeft = vacationTime.issuedHours - vacationTime.hoursPending
                 vacationTime.saveInBackground()
+                
             }
             
             timeAway.status = "Pending"
             timeAway.hours = Double(self.totalHours)
-            
+            timeAway.timeCardDictionary = timeCardVacation
             timeAway.employee = EmployeeData.universalEmployee
             
             timeAway.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in

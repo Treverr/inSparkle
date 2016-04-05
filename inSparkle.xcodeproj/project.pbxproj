@@ -40,7 +40,6 @@
 		C94C77281CB1FF3F00EB3CED /* TimeAwayAdmin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94C77271CB1FF3F00EB3CED /* TimeAwayAdmin.storyboard */; };
 		C94C772B1CB201F100EB3CED /* TimeAwayAdminEmployeeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C772A1CB201F100EB3CED /* TimeAwayAdminEmployeeTableViewController.swift */; };
 		C94C772D1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C772C1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift */; };
-		C94C772F1CB2124800EB3CED /* TimeAwayDetialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C772E1CB2124800EB3CED /* TimeAwayDetialViewController.swift */; };
 		C95008611C61C08E00F5351C /* GeneratePDF.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C95008601C61C08E00F5351C /* GeneratePDF.storyboard */; };
 		C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95008621C61C11800F5351C /* PDFGenerateViewController.swift */; };
 		C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */; };
@@ -147,6 +146,8 @@
 		C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */; };
 		C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */; };
 		C9D2104E1CB34F68003102D9 /* TimeAwayDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2104D1CB34F68003102D9 /* TimeAwayDetailTableViewController.swift */; };
+		C9D210501CB373A2003102D9 /* MainTimeAwayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2104F1CB373A2003102D9 /* MainTimeAwayTableViewController.swift */; };
+		C9D210521CB39111003102D9 /* VacationTimePunchesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D210511CB39111003102D9 /* VacationTimePunchesModel.swift */; };
 		C9DB9E781C8290A30097E97F /* ManageEmployeeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DB9E771C8290A30097E97F /* ManageEmployeeSelectionViewController.swift */; };
 		C9DC84641C6251A300C41B6A /* OpeningPDFTemplate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9DC84631C6251A300C41B6A /* OpeningPDFTemplate.storyboard */; };
 		C9E2A2B91C235D8400DBA851 /* ToSparkle.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */; };
@@ -255,7 +256,6 @@
 		C94C77271CB1FF3F00EB3CED /* TimeAwayAdmin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeAwayAdmin.storyboard; sourceTree = "<group>"; };
 		C94C772A1CB201F100EB3CED /* TimeAwayAdminEmployeeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAwayAdminEmployeeTableViewController.swift; sourceTree = "<group>"; };
 		C94C772C1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeTimeAwayRequestsTableViewController.swift; sourceTree = "<group>"; };
-		C94C772E1CB2124800EB3CED /* TimeAwayDetialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAwayDetialViewController.swift; sourceTree = "<group>"; };
 		C95008601C61C08E00F5351C /* GeneratePDF.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GeneratePDF.storyboard; sourceTree = "<group>"; };
 		C95008621C61C11800F5351C /* PDFGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFGenerateViewController.swift; sourceTree = "<group>"; };
 		C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = Onboarding/ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -374,6 +374,8 @@
 		C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewCell.swift; sourceTree = "<group>"; };
 		C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerData.swift; sourceTree = "<group>"; };
 		C9D2104D1CB34F68003102D9 /* TimeAwayDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAwayDetailTableViewController.swift; sourceTree = "<group>"; };
+		C9D2104F1CB373A2003102D9 /* MainTimeAwayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTimeAwayTableViewController.swift; sourceTree = "<group>"; };
+		C9D210511CB39111003102D9 /* VacationTimePunchesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VacationTimePunchesModel.swift; sourceTree = "<group>"; };
 		C9DB9E771C8290A30097E97F /* ManageEmployeeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEmployeeSelectionViewController.swift; sourceTree = "<group>"; };
 		C9DC84631C6251A300C41B6A /* OpeningPDFTemplate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OpeningPDFTemplate.storyboard; sourceTree = "<group>"; };
 		C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToSparkle.gpx; sourceTree = "<group>"; };
@@ -554,8 +556,9 @@
 		C94C77291CB1FF4400EB3CED /* TimeAway */ = {
 			isa = PBXGroup;
 			children = (
+				C9D210511CB39111003102D9 /* VacationTimePunchesModel.swift */,
 				C94C77271CB1FF3F00EB3CED /* TimeAwayAdmin.storyboard */,
-				C94C772E1CB2124800EB3CED /* TimeAwayDetialViewController.swift */,
+				C9D2104F1CB373A2003102D9 /* MainTimeAwayTableViewController.swift */,
 				C9D2104D1CB34F68003102D9 /* TimeAwayDetailTableViewController.swift */,
 				C94C772C1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift */,
 				C94C772A1CB201F100EB3CED /* TimeAwayAdminEmployeeTableViewController.swift */,
@@ -1278,7 +1281,6 @@
 				C9585F221C164013008AB918 /* ConfirmPunchOutViewController.swift in Sources */,
 				C9BA20101C59B6B400F8E44B /* FromBottomCustomSegue.swift in Sources */,
 				C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */,
-				C94C772F1CB2124800EB3CED /* TimeAwayDetialViewController.swift in Sources */,
 				C974FAD91C20B84D004D69E4 /* POCCalPickerViewController.swift in Sources */,
 				C9856A011C7D648D00E6C87F /* LaborPartsTableViewController.swift in Sources */,
 				C9FE5BE51C1F880600293836 /* ConfirmingAppointmentTableViewController.swift in Sources */,
@@ -1353,11 +1355,13 @@
 				C94C77261CB1FB0A00EB3CED /* VacationTime.swift in Sources */,
 				C94C77241CB0C89800EB3CED /* SelectedDatesTableViewCell.swift in Sources */,
 				C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */,
+				C9D210501CB373A2003102D9 /* MainTimeAwayTableViewController.swift in Sources */,
 				C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */,
 				C9A01EC81C8FC434002D75AA /* PDFLockerTableViewController.swift in Sources */,
 				C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */,
 				C961638A1BF6EC9E00EB5D44 /* BarcodeScanner.swift in Sources */,
 				C9585F311C175887008AB918 /* ReportsTableViewController.swift in Sources */,
+				C9D210521CB39111003102D9 /* VacationTimePunchesModel.swift in Sources */,
 				C97757091C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift in Sources */,
 				C9585F201C163FF1008AB918 /* ConfirmPunchInViewController.swift in Sources */,
 				C95AAF421C59A34C009EE697 /* MessageNotesModel.swift in Sources */,

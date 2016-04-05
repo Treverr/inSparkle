@@ -48,14 +48,18 @@ class SelectedDatesTableViewController: UITableViewController {
     }
     
     func notFullDay(sender : UISwitch) {
-    
         let tag = sender.tag
         let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag + 1, inSection: 0)) as! SelectedDatesTableViewCell
         
-        cell.hoursTextField.userInteractionEnabled = true
-        cell.hoursTextField.text = nil
-        cell.hoursTextField.becomeFirstResponder()
-        
+        if sender.on {
+            cell.hoursTextField.userInteractionEnabled = false
+            cell.hoursTextField.text = String(8)
+            cell.hoursTextField.resignFirstResponder()
+        } else {
+            cell.hoursTextField.userInteractionEnabled = true
+            cell.hoursTextField.text = nil
+            cell.hoursTextField.becomeFirstResponder()
+        }
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.row == 0 {
@@ -75,19 +79,21 @@ extension SelectedDatesTableViewController : UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         var total : Double = 0
-        let rounded = round(Double(textField.text!)! * 2) / 2
-        textField.text = String(rounded)
-        
-        var cells = self.tableView.visibleCells
-        cells.removeFirst()
-        
-        for cell in cells {
-            let theCell = cell as! SelectedDatesTableViewCell
-            total = total + Double(theCell.hoursTextField.text!)!
+        if !textField.text!.isEmpty {
+            let rounded = round(Double(textField.text!)! * 2) / 2
+            textField.text = String(rounded)
+            
+            var cells = self.tableView.visibleCells
+            cells.removeFirst()
+            
+            for cell in cells {
+                let theCell = cell as! SelectedDatesTableViewCell
+                total = total + Double(theCell.hoursTextField.text!)!
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName("UpdateTotalNumberOfHours", object: total)
+        } else {
+            textField.text = String(8)
         }
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("UpdateTotalNumberOfHours", object: total)
-        
     }
     
 }

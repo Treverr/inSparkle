@@ -82,7 +82,21 @@ class TimeAwayDetailTableViewController: UITableViewController {
                 self.empVaca.hoursPending = (self.empVaca.hoursPending - self.request.hours)
                 self.empVaca.hoursLeft = (self.empVaca.issuedHours - self.empVaca.hoursPending)
                 self.empVaca.saveInBackground()
+                
+                let allDates = self.request.timeCardDictionary.allKeys as! [String]
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "M/d/yy"
+                
+                for date in allDates {
+                    let vacaTime = VacationTimePunch()
+                    vacaTime.employee = self.employee
+                    vacaTime.vacationDate = dateFormatter.dateFromString(date)
+                    vacaTime.vacationHours = (self.request.timeCardDictionary[date] as! NSString).doubleValue
+                    vacaTime.saveInBackground()
+                }
+                
             }
+            
             if self.request.type == "Unpaid" {
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateStyle = .ShortStyle
@@ -103,11 +117,14 @@ class TimeAwayDetailTableViewController: UITableViewController {
                 }
                 CloudCode.SendUnpaidTimeAwayApprovedEmail(empEmail!, dates: dates!)
             }
+            
         } catch {
             
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true) { 
+            NSNotificationCenter.defaultCenter().postNotificationName("returnToMainTimeAway", object: nil)
+        }
     }
     
     @IBAction func declineAction(sender: AnyObject) {
@@ -133,7 +150,9 @@ class TimeAwayDetailTableViewController: UITableViewController {
         }
         
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true) {
+            NSNotificationCenter.defaultCenter().postNotificationName("returnToMainTimeAway", object: nil)
+        }
     }
 
  }

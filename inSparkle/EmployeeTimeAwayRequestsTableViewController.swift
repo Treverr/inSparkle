@@ -19,7 +19,15 @@ class EmployeeTimeAwayRequestsTableViewController: UITableViewController {
         
         getEmployeePending()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("returnToMainTimeAway"), name: "returnToMainTimeAway", object: nil)
+        
     }
+    
+    func returnToMainTimeAway() {
+        self.requests.removeAll()
+        self.getEmployeePending()
+    }
+    
     func getEmployeePending() {
         let timeAwayQuery = TimeAwayRequest.query()
         timeAwayQuery?.whereKey("employee", equalTo: self.employee)
@@ -28,6 +36,9 @@ class EmployeeTimeAwayRequestsTableViewController: UITableViewController {
             if error == nil {
                 self.requests = req as! [TimeAwayRequest]
                 self.tableView.reloadData()
+                if self.requests.count == 0 {
+                    self.performSegueWithIdentifier("returnToMainTimeAway", sender: nil)
+                }
             }
         })
     }

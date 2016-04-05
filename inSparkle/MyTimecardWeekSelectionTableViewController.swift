@@ -134,25 +134,59 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
                     totalForDate = totalForDate + theCalc.totalTime
                     self.totalOverall = self.totalOverall + totalForDate
                 }
-                switch day {
-                case "Monday":
-                    self.mondayTotal.text = String(totalForDate)
-                case "Tuesday":
-                    self.tuesdayTotal.text = String(totalForDate)
-                case "Wednesday":
-                    self.wednesdayTotal.text = String(totalForDate)
-                case "Thursday":
-                    self.thursdayTotal.text = String(totalForDate)
-                case "Friday":
-                    self.fridayTotal.text = String(totalForDate)
-                case "Saturday":
-                    self.saturdayTotal.text = String(totalForDate)
-                case "Sunday":
-                    self.sundayTotal.text = String(totalForDate)
-                    self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
-                default:
-                    break
-                }
+                let vacaQuery = VacationTimePunch.query()
+                vacaQuery?.whereKey("employee", equalTo: employee)
+                vacaQuery?.whereKey("vacationDate", greaterThanOrEqualTo: date)
+                vacaQuery?.whereKey("vacationDate", lessThan: endOfDay!)
+                do {
+                    let vaca = try vacaQuery?.findObjects()
+                    
+                    if vaca?.count > 0 {
+                        let vacationObj = vaca?.first as! VacationTimePunch
+                        totalForDate = vacationObj.vacationHours
+                        self.totalOverall = self.totalOverall + vacationObj.vacationHours
+                        switch day {
+                        case "Monday":
+                            self.mondayTotal.text = String(totalForDate)
+                        case "Tuesday":
+                            self.tuesdayTotal.text = String(totalForDate)
+                        case "Wednesday":
+                            self.wednesdayTotal.text = String(totalForDate)
+                        case "Thursday":
+                            self.thursdayTotal.text = String(totalForDate)
+                        case "Friday":
+                            self.fridayTotal.text = String(totalForDate)
+                        case "Saturday":
+                            self.saturdayTotal.text = String(totalForDate)
+                        case "Sunday":
+                            self.sundayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
+                        default:
+                            break
+                        }
+                    } else {
+                        switch day {
+                        case "Monday":
+                            self.mondayTotal.text = String(totalForDate)
+                        case "Tuesday":
+                            self.tuesdayTotal.text = String(totalForDate)
+                        case "Wednesday":
+                            self.wednesdayTotal.text = String(totalForDate)
+                        case "Thursday":
+                            self.thursdayTotal.text = String(totalForDate)
+                        case "Friday":
+                            self.fridayTotal.text = String(totalForDate)
+                        case "Saturday":
+                            self.saturdayTotal.text = String(totalForDate)
+                        case "Sunday":
+                            self.sundayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
+                        default:
+                            break
+                        }
+                    }
+                } catch { }
+                
             }
         })
     }

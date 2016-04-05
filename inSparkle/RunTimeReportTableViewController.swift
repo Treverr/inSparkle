@@ -86,7 +86,9 @@
     }
     
     func swiftActive() {
-        SwiftSpinner.show("Generating Report...", animated: false)
+        dispatch_async(dispatch_get_main_queue()) {
+            SwiftSpinner.show("Generating Report...", animated: false)
+        }
     }
     
     @IBAction func runReportButton(sender: AnyObject) {
@@ -154,6 +156,7 @@
             if error == nil {
                 
                 var totalForEmp : Double! = 0
+                var vacationHours : Double = 0.0
                 
                 for punch in punches! {
                     let thePunch = punch as! TimePunchCalcObject
@@ -179,16 +182,37 @@
                     self.returnedPunches = self.returnedPunches + 1
                 }
                 
-                if (self.expectedPunches == 0) && (self.returnedPunches == 0) {
-                    
-                    let alert = UIAlertController(title: "Error", message: "The report retuned 0 punches, please check your criteria and try again.", preferredStyle: .Alert)
-                    let okButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) -> Void in
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    })
-                    alert.addAction(okButton)
-                    self.presentViewController(alert, animated: true, completion: nil)
-                    
-                }
+                let vacaQuery = VacationTimePunch.query()
+                vacaQuery?.whereKey("employee", equalTo: employee)
+                vacaQuery?.whereKey("vacationDate", greaterThanOrEqualTo: startDate)
+                vacaQuery?.whereKey("vacationDate", lessThanOrEqualTo: endDate)
+                do {
+                    let vacaObjs = try vacaQuery?.findObjects()
+                    if vacaObjs?.count > 0 {
+                        self.expectedPunches = self.expectedPunches + vacaObjs!.count
+                        for vObj in vacaObjs! {
+                            let obj = vObj as! VacationTimePunch
+                            vacationHours = vacationHours + obj.vacationHours
+                            self.returnedPunches = self.returnedPunches + 1
+                        }
+                        totalForEmp = totalForEmp + vacationHours
+                        
+                        if employeeName == nil {
+                            employeeName = "\(employee.firstName) \(employee.lastName)"
+                        }
+                    }
+                } catch { }
+
+//                if (self.expectedPunches == 0) && (self.returnedPunches == 0) {
+//                    
+//                    let alert = UIAlertController(title: "Error", message: "The report retuned 0 punches, please check your criteria and try again.", preferredStyle: .Alert)
+//                    let okButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) -> Void in
+//                        self.dismissViewControllerAnimated(true, completion: nil)
+//                    })
+//                    alert.addAction(okButton)
+//                    self.presentViewController(alert, animated: true, completion: nil)
+//                    
+//                }
                 
                 if totalForEmp != 0 {
                     if (self.detail) {
@@ -204,14 +228,14 @@
                         overtimeHours = Double(round(1000*(totalForEmp - 40))/1000)
                         totalHours = totalForEmp
                     } else {
-                        standardHours = totalForEmp
+                        standardHours = totalForEmp - vacationHours
                         totalHours = totalForEmp
                         overtimeHours = 0
                     }
                     
                     
                     if (!self.detail) {
-                        self.csvPunches = self.csvPunches + "\(employeeName!),\(standardHours),\(overtimeHours),0,\(totalForEmp)\n"
+                        self.csvPunches = self.csvPunches + "\(employeeName!),\(standardHours),\(overtimeHours),\(vacationHours),\(totalForEmp)\n"
                     }
                     
                     

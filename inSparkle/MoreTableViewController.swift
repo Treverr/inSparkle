@@ -22,9 +22,7 @@ class MoreTableViewController: UITableViewController {
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("signBackIn"), name: "SignBackIn", object: nil)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
+        
         setUserName()
     }
     
@@ -51,15 +49,10 @@ class MoreTableViewController: UITableViewController {
     }
     
     func setUserName() {
-        if PFUser.currentUser() != nil {
-            let user = PFUser.currentUser()?.objectForKey("employee")
-            user?.fetchIfNeededInBackgroundWithBlock({ (employee : PFObject?, error : NSError?) in
-                if error == nil {
-                    let empl = employee as! Employee
-                    let name = empl.firstName + " " + empl.lastName
-                    self.profileLabel.text = name
-                }
-            })
+        if EmployeeData.universalEmployee != nil {
+            let empl = EmployeeData.universalEmployee as! Employee
+            let name = empl.firstName + " " + empl.lastName
+            self.profileLabel.text = name
         }
     }
     

@@ -50,4 +50,9 @@ class TimeAwayRequest : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "employee") }
     }
     
+    var timeCardDictionary : NSDictionary {
+        get { return objectForKey("datesDict") as! NSDictionary }
+        set { setObject(newValue, forKey: "datesDict") }
+    }
+    
 }
