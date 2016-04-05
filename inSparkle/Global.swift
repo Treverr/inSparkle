@@ -34,8 +34,6 @@ class JokeDictionary : NSObject {
         
         "How do people swimming in the ocean say 'HI' to each other?" : "They Wave!",
         
-        "What stroke do sheep enjoy doing?" : "The baaaackstroke!",
-        
         "Why won't they allow elephants in public swimming pools?" : "Because they might let down their trunks.",
         
         "How do you know if your swimming pool needs cleaning?" : "Kids still pee in your pool, but they refuse to get in it first.",

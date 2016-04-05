@@ -409,20 +409,27 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     var confirmedWith : UITextField!
     
     @IBAction func confirmButton(sender : AnyObject) {
-        let alert = UIAlertController(title: "Confirmed with?", message: "Please enter the name of the peson you spoke to when confirming", preferredStyle: .Alert)
-        let confirmButton = UIAlertAction(title: "Confirm", style: .Default) { (action) -> Void in
-            print(self.confirmedWith.text!)
-            self.saveButton(sender)
+        if selectClosingDate.text == "Not Set" {
+            let error = UIAlertController(title: "Select Date", message: "Please set a date before attempting to confirm a POC", preferredStyle: .Alert)
+            let okay = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            error.addAction(okay)
+            self.presentViewController(error, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Confirmed with?", message: "Please enter the name of the peson you spoke to when confirming", preferredStyle: .Alert)
+            let confirmButton = UIAlertAction(title: "Confirm", style: .Default) { (action) -> Void in
+                print(self.confirmedWith.text!)
+                self.saveButton(sender)
+            }
+            let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+                textField.placeholder = "name"
+                textField.keyboardType = .Default
+                self.confirmedWith = textField
+            }
+            alert.addAction(confirmButton)
+            alert.addAction(cancelButton)
+            self.presentViewController(alert, animated: true, completion: nil)
         }
-        let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
-            textField.placeholder = "name"
-            textField.keyboardType = .Default
-            self.confirmedWith = textField
-        }
-        alert.addAction(confirmButton)
-        alert.addAction(cancelButton)
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func saveButton(sender: AnyObject) {

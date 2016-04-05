@@ -50,8 +50,18 @@ class ScheduleTableViewController: UITableViewController {
         let object = scheduleArray.objectAtIndex(indexPath.row) as! ScheduleObject
         
         let customerName = object.valueForKey("customerName") as! String
-        let weekStart = object.valueForKey("weekStart") as! NSDate
-        let weekEnd = object.valueForKey("weekEnd") as! NSDate
+        var weekStart : NSDate! = nil
+        var weekEnd : NSDate! = nil
+        
+        if object.confirmedDate != nil {
+            weekStart = object.confirmedDate!
+            weekEnd = object.confirmedDate!
+        } else {
+            weekStart = object.valueForKey("weekStart") as! NSDate
+            weekEnd = object.valueForKey("weekEnd") as! NSDate
+        }
+        
+        
         
         var isConfirmed : Bool?
         if object.confrimed != nil {

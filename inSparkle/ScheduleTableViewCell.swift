@@ -22,11 +22,18 @@ public class ScheduleTableViewCell: UITableViewCell {
         formatter.dateStyle = .ShortStyle
         formatter.timeStyle = .NoStyle
         
-        let weekStartString = formatter.stringFromDate(weekStart)
-        let weekEndString = formatter.stringFromDate(weekEnd)
+        var weekStartString : String! = nil
+        var weekEndString : String! = nil
         
-        weekScheduleLabel.text = weekStartString + " - " + weekEndString
-        
+        if weekStart == weekEnd {
+            weekStartString = formatter.stringFromDate(weekStart)
+            weekScheduleLabel.text = weekStartString
+        } else {
+            weekStartString = formatter.stringFromDate(weekStart)
+            weekEndString = formatter.stringFromDate(weekEnd)
+            weekScheduleLabel.text = weekStartString + " - " + weekEndString
+        }
+ 
         if isConfirmed == false {
             confirmed.hidden = true
         } else {
