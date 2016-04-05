@@ -146,6 +146,7 @@
 		C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */; };
 		C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */; };
 		C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */; };
+		C9D2104E1CB34F68003102D9 /* TimeAwayDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D2104D1CB34F68003102D9 /* TimeAwayDetailTableViewController.swift */; };
 		C9DB9E781C8290A30097E97F /* ManageEmployeeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DB9E771C8290A30097E97F /* ManageEmployeeSelectionViewController.swift */; };
 		C9DC84641C6251A300C41B6A /* OpeningPDFTemplate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9DC84631C6251A300C41B6A /* OpeningPDFTemplate.storyboard */; };
 		C9E2A2B91C235D8400DBA851 /* ToSparkle.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */; };
@@ -372,6 +373,7 @@
 		C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewController.swift; sourceTree = "<group>"; };
 		C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewCell.swift; sourceTree = "<group>"; };
 		C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerData.swift; sourceTree = "<group>"; };
+		C9D2104D1CB34F68003102D9 /* TimeAwayDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAwayDetailTableViewController.swift; sourceTree = "<group>"; };
 		C9DB9E771C8290A30097E97F /* ManageEmployeeSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEmployeeSelectionViewController.swift; sourceTree = "<group>"; };
 		C9DC84631C6251A300C41B6A /* OpeningPDFTemplate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OpeningPDFTemplate.storyboard; sourceTree = "<group>"; };
 		C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToSparkle.gpx; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 			children = (
 				C94C77271CB1FF3F00EB3CED /* TimeAwayAdmin.storyboard */,
 				C94C772E1CB2124800EB3CED /* TimeAwayDetialViewController.swift */,
+				C9D2104D1CB34F68003102D9 /* TimeAwayDetailTableViewController.swift */,
 				C94C772C1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift */,
 				C94C772A1CB201F100EB3CED /* TimeAwayAdminEmployeeTableViewController.swift */,
 			);
@@ -1308,6 +1311,7 @@
 				C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */,
 				C91BB3721C2A72B900132946 /* MessagesTableViewController.swift in Sources */,
 				C9709C221C72D3C9000ED6EA /* WorkOrderModel.swift in Sources */,
+				C9D2104E1CB34F68003102D9 /* TimeAwayDetailTableViewController.swift in Sources */,
 				C99C7D971CA8E2D300EF8776 /* PayrollSummaryPDFGenerateViewController.swift in Sources */,
 				C97D3D3C1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift in Sources */,
 				C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */,

@@ -64,7 +64,7 @@ class EmployeeTimeAwayRequestsTableViewController: UITableViewController {
         if segue.identifier == "detail" {
             let row = self.tableView.indexPathForSelectedRow?.row
             let vc = segue.destinationViewController as! UINavigationController
-            let reqVC = vc.viewControllers.first as! TimeAwayDetialViewController
+            let reqVC = vc.viewControllers.first as! TimeAwayDetailTableViewController
             reqVC.request = self.requests[row!]
             reqVC.employee = self.employee
         }

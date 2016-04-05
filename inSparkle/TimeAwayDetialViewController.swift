@@ -81,11 +81,14 @@ class TimeAwayDetialViewController: UIViewController {
             
         }
         
+        if self.request.type == "Vacation" {
+            self.empVaca.issuedHours = (self.empVaca.issuedHours - self.request.hours)
+            self.empVaca.hoursPending = (self.empVaca.hoursPending - self.request.hours)
+            self.empVaca.hoursLeft = (self.empVaca.issuedHours - self.empVaca.hoursPending)
+            self.empVaca.saveInBackground()
+            
+        }
         
-        self.empVaca.issuedHours = (self.empVaca.issuedHours - self.request.hours)
-        self.empVaca.hoursPending = (self.empVaca.hoursPending - self.request.hours)
-        self.empVaca.hoursLeft = (self.empVaca.issuedHours - self.empVaca.hoursPending)
-        self.empVaca.saveInBackground()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -96,9 +99,12 @@ class TimeAwayDetialViewController: UIViewController {
                 
             }
         }
-        self.empVaca.hoursPending = (self.empVaca.hoursPending - self.request.hours)
-        self.empVaca.hoursLeft = (self.empVaca.hoursLeft + self.request.hours)
-        self.empVaca.saveInBackground()
+        
+        if self.request.type == "Vacation" {
+            self.empVaca.hoursPending = (self.empVaca.hoursPending - self.request.hours)
+            self.empVaca.hoursLeft = (self.empVaca.hoursLeft + self.request.hours)
+            self.empVaca.saveInBackground()
+        }
         
         var empEmail : String?
         

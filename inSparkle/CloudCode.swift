@@ -183,6 +183,21 @@ class CloudCode {
         }
         
     }
+    
+    class func SendUnpaidTimeAwayApprovedEmail(email : String, dates : String) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        
+        let params = [
+            "email" : email,
+            "dates" : dates,
+            "type" : "Unpaid Time Away"
+        ]
+        
+        do {
+            try PFCloud.callFunction("UnpaidTimeAwayApproved", withParameters: params)
+        } catch { }
+    }
 }
 
 
