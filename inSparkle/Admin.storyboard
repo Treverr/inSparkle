@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pdb-5y-vV0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pdb-5y-vV0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection id="QmH-MN-Ipp">
+                            <tableViewSection id="UVl-S8-0gr">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qNH-20-oK1" imageView="DEh-go-FJC" rowHeight="48" style="IBUITableViewCellStyleDefault" id="BKF-Ua-CqZ">
                                         <rect key="frame" x="0.0" y="99" width="600" height="48"/>
@@ -283,7 +283,7 @@
                 <viewControllerPlaceholder storyboardName="TimeClockReport" id="6qK-Fk-eSw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTO-Wq-PuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3249.5" y="83"/>
+            <point key="canvasLocation" x="3569.5" y="114"/>
         </scene>
         <!--POCReport-->
         <scene sceneID="0iS-Im-LMy">
@@ -291,7 +291,7 @@
                 <viewControllerPlaceholder storyboardName="POCReport" id="ze4-mh-ANN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efJ-PS-hqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3249" y="411"/>
+            <point key="canvasLocation" x="3551" y="411"/>
         </scene>
         <!--ChemicalCheckoutReport-->
         <scene sceneID="f9W-RQ-EpN">
@@ -299,7 +299,7 @@
                 <viewControllerPlaceholder storyboardName="ChemicalCheckoutReport" id="R74-aC-As3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5M-ei-P1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3221.5" y="612"/>
+            <point key="canvasLocation" x="3594.5" y="611"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Bb3-KV-LvY">
@@ -333,7 +333,7 @@
                 <viewControllerPlaceholder storyboardName="TimeAwayAdmin" id="Aib-Jr-3Zz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXb-dW-SjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2483.5" y="560"/>
+            <point key="canvasLocation" x="2520" y="467"/>
         </scene>
     </scenes>
     <resources>

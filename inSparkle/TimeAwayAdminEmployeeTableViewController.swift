@@ -17,7 +17,7 @@ class TimeAwayAdminEmployeeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Pending Time Away Requets Employees"
+        self.navigationItem.title = "Pending Time Away Requests"
         getEmployeesWithTimeAwayRequest()
     }
     

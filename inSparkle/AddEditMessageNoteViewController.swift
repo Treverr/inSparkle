@@ -15,6 +15,7 @@ class AddEditMessageNoteViewController: UIViewController {
     var isNewNote = true
     var existingNote : MessageNotes?
     @IBOutlet var noteTextView: UITextView!
+    @IBOutlet var saveButton: UIBarButtonItem!
     let deviceType = UIDevice.currentDevice().model
 
     override func viewDidLoad() {
@@ -58,6 +59,8 @@ class AddEditMessageNoteViewController: UIViewController {
     }
     
     @IBAction func saveAction(sender: AnyObject) {
+        saveButton.enabled = false
+        saveButton.tintColor = UIColor.grayColor()
         if isNewNote {
             let newNote = MessageNotes()
             if linkingMessage != nil {

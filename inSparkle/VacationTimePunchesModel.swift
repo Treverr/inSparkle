@@ -30,4 +30,9 @@ class VacationTimePunch : PFObject, PFSubclassing {
         set { setObject(newValue, forKey: "employee") }
     }
     
+    var relationTimeAwayRequest : TimeAwayRequest! {
+        get { return objectForKey("relationTimeAwayRequest") as! TimeAwayRequest }
+        set { setObject(newValue, forKey: "relationTimeAwayRequest") }
+    }
+    
 }

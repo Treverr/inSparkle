@@ -23,6 +23,10 @@ class SparkleConnectTableViewController: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         if EmployeeData.universalEmployee != nil {
             let user = EmployeeData.universalEmployee as! Employee

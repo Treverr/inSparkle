@@ -28,6 +28,8 @@ class TimeAwayDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationbar()
+        
         requestedDates.textContainerInset = UIEdgeInsetsMake(-15, -4, 0, 0)
         
         self.navigationItem.title = "Pending " + self.request.type + " Request"
@@ -61,6 +63,9 @@ class TimeAwayDetailTableViewController: UITableViewController {
             }
         })
     }
+    @IBAction func closeButton(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     @IBAction func approveAction(sender: AnyObject) {
         self.request.status = "Approved"
@@ -92,6 +97,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
                     vacaTime.employee = self.employee
                     vacaTime.vacationDate = dateFormatter.dateFromString(date)
                     vacaTime.vacationHours = (self.request.timeCardDictionary[date] as! NSString).doubleValue
+                    vacaTime.relationTimeAwayRequest = self.request
                     vacaTime.saveInBackground()
                 }
                 
@@ -153,6 +159,13 @@ class TimeAwayDetailTableViewController: UITableViewController {
         self.dismissViewControllerAnimated(true) {
             NSNotificationCenter.defaultCenter().postNotificationName("returnToMainTimeAway", object: nil)
         }
+    }
+    
+    func setupNavigationbar()  {
+        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
 
  }

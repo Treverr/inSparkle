@@ -663,6 +663,7 @@
                     <size key="freeformSize" width="400" height="500"/>
                     <connections>
                         <outlet property="noteTextView" destination="SU4-bO-jG3" id="wrm-vf-Oqb"/>
+                        <outlet property="saveButton" destination="Icc-rH-KT2" id="eDS-0M-LWD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h2s-AM-5uJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

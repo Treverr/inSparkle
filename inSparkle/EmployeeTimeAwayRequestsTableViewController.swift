@@ -19,6 +19,8 @@ class EmployeeTimeAwayRequestsTableViewController: UITableViewController {
         
         getEmployeePending()
         
+        self.navigationItem.title = "Pending Time Away Requests"
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("returnToMainTimeAway"), name: "returnToMainTimeAway", object: nil)
         
     }
