@@ -110,6 +110,11 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
         query?.findObjectsInBackgroundWithBlock({ (objects : [PFObject]?, error : NSError?) -> Void in
             if objects?.count > 0 {
                 for obj in objects! {
+                    let timeCalcQuery = TimePunchCalcObject.query()
+                    timeCalcQuery?.whereKey("objectId", equalTo: self.theTimeObject.objectId!)
+                    timeCalcQuery?.findObjectsInBackgroundWithBlock({ (calcs : [PFObject]?, error : NSError?) in
+                        PFObject.deleteAllInBackground(calcs)
+                    })
                     obj.deleteInBackground()
                 }
             }
@@ -319,7 +324,13 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
                                     newPunch.punchOutIn = "out"
                                     newPunch.timePunched = self.updatedOut!
                                     newPunch.relatedTimeCalc = newCalc
-                                    newPunch.saveInBackground()
+                                    newPunch.relatedPunch = self.theTimeObject as! TimeClockPunchObj
+                                    newPunch.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+                                        if success {
+                                            updateTimeObject.relatedPunch = newPunch
+                                            updateTimeObject.saveInBackground()
+                                        }
+                                    })
                                 }
                                 if updateTimeObject.punchOutIn == "out" {
                                     let newPunch = TimeClockPunchObj()
@@ -327,10 +338,20 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
                                     newPunch.punchOutIn = "in"
                                     newPunch.timePunched = self.updatedIn!
                                     newPunch.relatedTimeCalc = newCalc
-                                    newPunch.saveInBackground()
+                                    newPunch.relatedPunch = self.theTimeObject as! TimeClockPunchObj
+                                    newPunch.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+                                        if success {
+                                            updateTimeObject.relatedPunch = newPunch
+                                            updateTimeObject.saveInBackground()
+                                        }
+                                    })
                                 }
                                 updateTimeObject.relatedTimeCalc = newCalc
+                                print(updateTimeObject)
                                 updateTimeObject.saveInBackground()
+                                self.dismissViewControllerAnimated(true, completion: { 
+                                    NSNotificationCenter.defaultCenter().postNotificationName("NotifyEditTableViewToRefresh", object: nil)
+                                })
                             }
                         })
                         
