@@ -198,7 +198,75 @@ class CloudCode {
             try PFCloud.callFunction("UnpaidTimeAwayApproved", withParameters: params)
         } catch { }
     }
+    
+    class func SendNotificationOfNewTimeAwayRequest(requestFor : String, type : String, date1 : NSDate, date2 : NSDate, totalHours : Double) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        
+        let pDate1 = dateFormatter.stringFromDate(date1)
+        let pDate2 = dateFormatter.stringFromDate(date2)
+        
+        let params = [
+            "requestFor" : requestFor,
+            "type" : type,
+            "date1" : pDate1,
+            "date2" : pDate2,
+            "totalHours" : String(totalHours)
+        ]
+        
+        do {
+            try PFCloud.callFunction("SendNewTimeAwayEmail", withParameters: params)
+        } catch {
+            
+        }
+        
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
