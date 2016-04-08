@@ -511,7 +511,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                 schObj.confirmedDate = GlobalFunctions().dateFromShortDateString(selectClosingDate.text!)
                 schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
             } else {
-                schObj.removeObjectForKey("confirmed")
+                schObj.confrimed = false
                 schObj.removeObjectForKey("confrimedBy")
                 schObj.removeObjectForKey("confirmedDate")
             }

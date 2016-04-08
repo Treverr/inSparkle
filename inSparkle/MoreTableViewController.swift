@@ -56,6 +56,10 @@ class MoreTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     func signBackIn() {
         PFSession.getCurrentSessionInBackgroundWithBlock { (session : PFSession?, error : NSError?) in
             if error != nil {

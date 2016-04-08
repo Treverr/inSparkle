@@ -37,7 +37,7 @@ class TimeAwayHistoryDetailTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,6 +50,8 @@ class TimeAwayHistoryDetailTableViewController: UITableViewController {
         case 1:
             let dates = self.request.timeCardDictionary.allKeys as! [NSDate]
             numberToReturn = dates.count
+        case 2:
+            return 1
         default:
             break
         }
@@ -72,7 +74,8 @@ class TimeAwayHistoryDetailTableViewController: UITableViewController {
         
         if indexPath.section == 1 {
             cell = self.tableView.dequeueReusableCellWithIdentifier("dateCell") as UITableViewCell!
-            let dates = self.request.timeCardDictionary.allKeys
+            var dates = self.request.timeCardDictionary.allKeys as! [String]
+            dates.sortInPlace()
             let currentDate = dates[indexPath.row] as! String
             let dict = self.request.timeCardDictionary as! [String : String]
             let dateFormatter = NSDateFormatter()
@@ -82,14 +85,21 @@ class TimeAwayHistoryDetailTableViewController: UITableViewController {
             cell.detailTextLabel?.text = dict[currentDate]! + " hours"
         }
         
+        if indexPath.section == 2 {
+            cell = self.tableView.dequeueReusableCellWithIdentifier("totalCell") as UITableViewCell!
+            cell.textLabel?.text = "Total Hours: " + String(self.request.hours)
+        }
+        
         return cell!
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Status:"
-        } else {
+        } else if section == 1 {
             return "Dates in Request:"
+        } else {
+            return ""
         }
     }
 

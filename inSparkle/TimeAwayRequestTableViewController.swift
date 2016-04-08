@@ -102,6 +102,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
             }
             
             let timeAway = TimeAwayRequest()
+            SelectedDatesTimeAway.selectedDates.sortInPlace()
             timeAway.datesRequested = SelectedDatesTimeAway.selectedDates
             timeAway.requestDate = NSDate()
             
@@ -222,3 +223,13 @@ extension TimeAwayRequestTableViewController : CalendarViewDelegate {
     }
     
 }
+
+public func <(a: NSDate, b: NSDate) -> Bool {
+    return a.compare(b) == .OrderedAscending
+}
+
+public func ==(a: NSDate, b: NSDate) -> Bool {
+    return a.compare(b) == .OrderedSame
+}
+
+extension NSDate : Comparable {}

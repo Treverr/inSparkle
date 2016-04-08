@@ -88,7 +88,8 @@ class TimeAwayDetailTableViewController: UITableViewController {
                 self.empVaca.hoursLeft = (self.empVaca.issuedHours - self.empVaca.hoursPending)
                 self.empVaca.saveInBackground()
                 
-                let allDates = self.request.timeCardDictionary.allKeys as! [String]
+                var allDates = self.request.timeCardDictionary.allKeys as! [String]
+                allDates.sortInPlace()
                 let dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "M/d/yy"
                 
@@ -110,6 +111,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
                 
                 var dates : String? = nil
                 self.datesArray = self.request.datesRequested as! [NSDate]
+                self.datesArray.sortInPlace()
                 var onDate : Int = 0
                 
                 for date in datesArray {
