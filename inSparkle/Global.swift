@@ -448,9 +448,11 @@ extension NSDate {
     }
 }
 
-//func setupNavigationbar()  {
-//    self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-//    self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-//    navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-//    self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-//}
+extension UINavigationController {
+    func setupNavigationbar(vc : UINavigationController)  {
+        vc.navigationBar.barTintColor = Colors.sparkleBlue
+        vc.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        vc.navigationBar.barStyle = UIBarStyle.Black
+    }
+}

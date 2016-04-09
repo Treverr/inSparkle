@@ -18,7 +18,7 @@ class POCCustomerFilterTableViewController: UITableViewController {
         
         self.navigationItem.title = "POC Report"
         
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
 
     }
     
@@ -27,13 +27,7 @@ class POCCustomerFilterTableViewController: UITableViewController {
             POCReportFilters.filter.append("allCustomers")
         }
     }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-    }
+
     @IBAction func closeAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true) { 
             POCReportFilters.filter.removeAll()

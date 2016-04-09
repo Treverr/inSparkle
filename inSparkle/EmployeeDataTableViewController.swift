@@ -378,10 +378,12 @@ class EmployeeDataTableViewController: UITableViewController {
             if sender.on {
                 let provAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .Alert)
                 self.presentViewController(provAlert, animated: true, completion: nil)
-                CloudCode.UpdateUserAdminStatus(self.userObject.username!, adminStatus: true, alert: provAlert, completion: { (complete) in
-                    if complete == true {
-                        self.updateForAdminStatusChange(true)
-                    }
+                CloudCode.UpdateUserSpecialAccess(self.userObject.objectId!, specialAccesses: [], completion: { (isComplete) in
+                    CloudCode.UpdateUserAdminStatus(self.userObject.username!, adminStatus: true, alert: provAlert, completion: { (complete) in
+                        if complete == true {
+                            self.updateForAdminStatusChange(true)
+                        }
+                    })
                 })
             } else {
                 let provAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .Alert)

@@ -248,7 +248,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tva-5S-EAu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mcq-AR-59r" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="timeCardReportNav" automaticallyAdjustsScrollViewInsets="NO" id="mcq-AR-59r" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="btM-m9-VMK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

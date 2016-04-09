@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xuU-ka-5S9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xuU-ka-5S9">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Employee Selection Chem Checkout Table View Controller-->
@@ -65,7 +65,7 @@
         <!--Navigation Controller-->
         <scene sceneID="CHA-nL-A99">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xuU-ka-5S9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="chemCheckoutNav" automaticallyAdjustsScrollViewInsets="NO" id="xuU-ka-5S9" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Coz-8O-7Xv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

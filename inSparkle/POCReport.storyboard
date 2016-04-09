@@ -372,7 +372,7 @@
         <!--Navigation Controller-->
         <scene sceneID="P8N-iC-Mfr">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i64-wT-vqI" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="pocReportNav" automaticallyAdjustsScrollViewInsets="NO" id="i64-wT-vqI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GcO-8z-8ho">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

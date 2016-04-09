@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15E27e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Laq-sd-Tbz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Laq-sd-Tbz">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -52,13 +52,7 @@
                             <outlet property="delegate" destination="5Ga-cc-JTK" id="oir-e0-u4y"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="EmployeeName" id="7sq-3s-ryk">
-                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" style="plain" id="TxZ-NR-iG9">
-                            <connections>
-                                <action selector="backButton:" destination="5Ga-cc-JTK" id="SJg-di-ICb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="EmployeeName" id="7sq-3s-ryk"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LGc-sB-WFR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,7 +278,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tja-LB-wda">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Laq-sd-Tbz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="timeCardManageNav" automaticallyAdjustsScrollViewInsets="NO" id="Laq-sd-Tbz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="m7E-BU-6xH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -292,12 +286,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="5Ga-cc-JTK" kind="relationship" relationship="rootViewController" id="GSe-DT-FJA"/>
+                        <segue destination="urf-vo-dZP" kind="relationship" relationship="rootViewController" id="79R-M2-e9q"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejV-p7-WfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="272" y="398"/>
+            <point key="canvasLocation" x="-395" y="393"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bsA-KI-PHD">
@@ -334,6 +328,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vEo-49-y2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3395" y="485"/>
+        </scene>
+        <!--Time Card Manage Employee List Table View Controller-->
+        <scene sceneID="nTk-RK-qKM">
+            <objects>
+                <tableViewController id="urf-vo-dZP" customClass="TimeCardManageEmployeeListTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="YkZ-er-j9Q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="employeeCell" textLabel="zLW-eh-VDW" style="IBUITableViewCellStyleDefault" id="VTg-J9-IPM">
+                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VTg-J9-IPM" id="tXF-g5-9nW">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="EmployeeName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zLW-eh-VDW">
+                                            <rect key="frame" x="15" y="0.0" width="550" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="5Ga-cc-JTK" kind="show" id="SaZ-az-chz"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="urf-vo-dZP" id="K13-mY-O0I"/>
+                            <outlet property="delegate" destination="urf-vo-dZP" id="dU8-cT-1Pq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="g09-YU-iUa">
+                        <barButtonItem key="leftBarButtonItem" title="&lt; Back" style="plain" id="TxZ-NR-iG9">
+                            <connections>
+                                <action selector="backButton:" destination="urf-vo-dZP" id="Iwf-qW-VLA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ij-Gh-zt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328" y="393"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -9,7 +9,7 @@
         <!--Manage Employee Selection View Controller-->
         <scene sceneID="1he-i3-3pV">
             <objects>
-                <viewController id="DuB-eR-VRT" customClass="ManageEmployeeSelectionViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="manageEmps" id="DuB-eR-VRT" customClass="ManageEmployeeSelectionViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Tla-Q0-t4k"/>
                         <viewControllerLayoutGuide type="bottom" id="Wqf-fr-qkI"/>
@@ -564,7 +564,7 @@
         <!--Navigation Controller-->
         <scene sceneID="7h8-4d-16E">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6N2-2s-cfO" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="manageEmpsNav" automaticallyAdjustsScrollViewInsets="NO" id="6N2-2s-cfO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zGD-0L-dOM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

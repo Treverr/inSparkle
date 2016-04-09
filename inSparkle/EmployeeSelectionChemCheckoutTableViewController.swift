@@ -24,6 +24,8 @@ class EmployeeSelectionChemCheckoutTableViewController: UITableViewController {
         
         getServiceEmployees()
         
+        self.navigationController?.setupNavigationbar(self.navigationController!)
+        
     }
 
     override func didReceiveMemoryWarning() {

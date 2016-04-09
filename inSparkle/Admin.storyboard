@@ -61,7 +61,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="DUD-KG-QTa" kind="show" id="HId-yy-ifU"/>
+                                            <segue destination="ybr-7Y-LQA" kind="show" id="dun-1z-Ulw"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="cqb-yL-oHE" imageView="jFx-go-MUH" style="IBUITableViewCellStyleDefault" id="O7V-CY-7Ty">
@@ -228,55 +228,6 @@
             </objects>
             <point key="canvasLocation" x="3015" y="411"/>
         </scene>
-        <!--Time Card Manage Employee List Table View Controller-->
-        <scene sceneID="76q-Q2-Q7A">
-            <objects>
-                <tableViewController id="DUD-KG-QTa" customClass="TimeCardManageEmployeeListTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="t4v-cb-Woc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="employeeCell" textLabel="5UV-fH-sZw" style="IBUITableViewCellStyleDefault" id="6HZ-SO-POk">
-                                <rect key="frame" x="0.0" y="114" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6HZ-SO-POk" id="aMn-FS-poG">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="EmployeeName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5UV-fH-sZw">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="lww-Ua-yfd" kind="show" id="9bc-Kz-XUI"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="DUD-KG-QTa" id="Udf-tl-SZS"/>
-                            <outlet property="delegate" destination="DUD-KG-QTa" id="UEj-IV-DXc"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yWa-sA-Skg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2720" y="1168"/>
-        </scene>
-        <!--TimeCardManagement-->
-        <scene sceneID="HKT-62-YbC">
-            <objects>
-                <viewControllerPlaceholder storyboardName="TimeCardManagement" id="lww-Ua-yfd" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wB2-Nu-8k5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3308.5" y="1168"/>
-        </scene>
         <!--TimeClockReport-->
         <scene sceneID="aEg-Io-508">
             <objects>
@@ -334,6 +285,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXb-dW-SjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2520" y="467"/>
+        </scene>
+        <!--TimeCardManagement-->
+        <scene sceneID="Elr-03-42t">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TimeCardManagement" id="ybr-7Y-LQA" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0uN-Vz-SvN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2442.5" y="635"/>
         </scene>
     </scenes>
     <resources>
