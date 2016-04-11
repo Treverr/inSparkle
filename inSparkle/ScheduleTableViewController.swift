@@ -65,7 +65,11 @@ class ScheduleTableViewController: UITableViewController {
         
         var isConfirmed : Bool?
         if object.confrimed != nil {
-            isConfirmed = true
+            if object.confrimed! {
+                isConfirmed = true
+            } else {
+                isConfirmed = false
+            }
         } else {
             isConfirmed = false
         }

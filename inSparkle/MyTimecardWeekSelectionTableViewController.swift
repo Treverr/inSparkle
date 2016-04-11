@@ -148,16 +148,22 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
                         switch day {
                         case "Monday":
                             self.mondayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Tuesday":
                             self.tuesdayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Wednesday":
                             self.wednesdayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Thursday":
                             self.thursdayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Friday":
                             self.fridayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Saturday":
                             self.saturdayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Sunday":
                             self.sundayTotal.text = String(totalForDate)
                             self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
@@ -168,16 +174,22 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
                         switch day {
                         case "Monday":
                             self.mondayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Tuesday":
                             self.tuesdayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Wednesday":
                             self.wednesdayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Thursday":
                             self.thursdayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Friday":
                             self.fridayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Saturday":
                             self.saturdayTotal.text = String(totalForDate)
+                            self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
                         case "Sunday":
                             self.sundayTotal.text = String(totalForDate)
                             self.totalHoursLabel.text = "Total Hours: " + String(self.totalOverall)
@@ -186,7 +198,6 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
                         }
                     }
                 } catch { }
-                
             }
         })
     }

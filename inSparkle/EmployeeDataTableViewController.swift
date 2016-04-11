@@ -62,6 +62,7 @@ class EmployeeDataTableViewController: UITableViewController {
                     }
                 })
             }
+            print(employeeObject)
             if employeeObject.userPoint != nil {
                 let userID = employeeObject.userPoint!.objectId!
                 let query = PFUser.query()
@@ -178,6 +179,10 @@ class EmployeeDataTableViewController: UITableViewController {
                     if error == nil {
                         if userFound?.count == 1 {
                             userID = userFound?.first?.objectId
+                            CloudCode.DeleteUser(userID, completion: { (complete) in
+                                if complete {
+                                }
+                            })
                         }
                     }
                 })
@@ -187,19 +192,9 @@ class EmployeeDataTableViewController: UITableViewController {
                 self.employeeObject.removeObjectForKey("roleType")
                 self.employeeObject.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
                     if success {
-                        if userID != nil {
-                            CloudCode.DeleteUser(userID, completion: { (complete) in
-                                if complete {
-                                    self.dismissViewControllerAnimated(true, completion: nil)
-                                    disableAlert.dismissViewControllerAnimated(true, completion: {
-                                    })
-                                }
-                            })
-                        }
-                        
+                            self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
                     }
                 })
-                
             })
             let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             disableAlert.addAction(cancelButton)
@@ -231,6 +226,11 @@ class EmployeeDataTableViewController: UITableViewController {
                 let doneButton = UIAlertAction(title: "Done", style: .Default, handler: { (action) in
                     self.verifyPIN(pinText.text!, completion: { (pass) in
                         if pass {
+                            if self.employeeObject.objectId == nil {
+                                let name = self.firstName.text! + " " + self.lastName.text!
+                                let email = self.emailAddressTextField.text!
+                                CloudCode.SendWelcomeEmail(name, toEmail: email, emailAddress: email)
+                            }
                             self.employeeObject.firstName = self.firstName.text!.capitalizedString
                             self.employeeObject.lastName = self.lastName.text!.capitalizedString
                             self.employeeObject.messages = self.messagesEnabledSwitch.on
@@ -257,19 +257,15 @@ class EmployeeDataTableViewController: UITableViewController {
                                             user = try PFUser.query()!.getObjectWithId(objectID) as! PFUser
                                             self.employeeObject.userPoint = user
                                             self.employeeObject.saveInBackground()
-                                            self.employeeObject = nil
                                         } catch {
                                             
                                         }
                                         let successAlert = UIAlertController(title: "Created", message: "The user has been created, the password is the PIN number for the employee. The employee can reset this by tapping 'Forgot Password' on the main log-in screen", preferredStyle: .Alert)
                                         let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
-                                            successAlert.dismissViewControllerAnimated(true, completion: {
-                                                self.performSegueWithIdentifier("returnToManageEmpSelect", sender: self)
-                                            })
+                                            self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
                                         })
                                         successAlert.addAction(okayButton)
                                         self.presentViewController(successAlert, animated: true, completion: nil)
-                                        self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
                                     }
                                 })
                             }
@@ -461,7 +457,8 @@ extension EmployeeDataTableViewController : UITextFieldDelegate {
                             saving.dismissViewControllerAnimated(true, completion: nil)
                         }
                     })
-                } else {
+                } else if self.employeeObject.objectId != nil {
+                    print(self.employeeObject.objectId)
                     self.userObject.email = emailAddressTextField.text
                     CloudCode.CreateNewUser(self.userNameTextField.text!, password: "sparkle1", emailAddy: self.emailAddressTextField.text!, adminStatus: adminSwitch.on, empID: self.employeeObject.objectId!, completion: { (isComplete, objectID) in
                         if isComplete {
@@ -478,12 +475,13 @@ extension EmployeeDataTableViewController : UITextFieldDelegate {
                                     
                                     self.employeeObject.userPoint = self.userObject
                                     self.employeeObject.saveInBackground()
+                                    self.dismissViewControllerAnimated(true, completion: nil)
                                 }
                             })
                         }
                     })
+                } else {
                 }
-                
             }
         }
         

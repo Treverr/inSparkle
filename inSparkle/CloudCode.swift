@@ -221,32 +221,23 @@ class CloudCode {
         }
         
     }
+    
+    class func SendWelcomeEmail(name : String, toEmail : String, emailAddress : String) {
+        
+        let params = [
+            "toEmail" : toEmail,
+            "name" : name,
+            "emailAddy" : emailAddress
+        ]
+        
+        do {
+            try PFCloud.callFunction("SendWelcomeEmail", withParameters: params)
+        } catch {
+            
+        }
+        
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
