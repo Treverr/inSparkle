@@ -237,6 +237,28 @@ class CloudCode {
         }
         
     }
+    
+    class func TimeAwayCancelEmail(employeeName : String, type : String, date1 : NSDate, date2 : NSDate, totalHours: Double) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd-MMM-yyyy"
+        
+        let dateOne = dateFormatter.stringFromDate(date1)
+        let dateTwo = dateFormatter.stringFromDate(date2)
+        
+        let params = [
+            "employeeName" : employeeName,
+            "type" : type,
+            "date1" : dateOne,
+            "date2" : dateTwo,
+            "totalHours" : String(totalHours)
+            ]
+        
+        do {
+            try PFCloud.callFunction("TimeAwayCancelEmail", withParameters: params)
+        } catch { }
+    }
+    
+    
 }
 
 
