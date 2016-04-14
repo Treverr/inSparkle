@@ -21,14 +21,7 @@ class ManageEmployeeSelectionViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationItem.title = "Manage Employees"
-        setupNavigationbar()
-    }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.navigationController?.setupNavigationbar(self.navigationController!)
     }
     
     @IBAction func returnToManageEmpSelection(segue : UIStoryboardSegue) {

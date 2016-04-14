@@ -26,11 +26,9 @@ class MessagesTableViewController: UITableViewController {
         
         searchBar.delegate = self
         
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
-        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("refresh"), name: "RefreshMessagesTableViewController", object: nil)
-        
-        let refreshTimer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "refresh", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: #selector(MessagesTableViewController.refresh), userInfo: nil, repeats: true)
     }
     
     
@@ -46,7 +44,7 @@ class MessagesTableViewController: UITableViewController {
             let name = theMesages[indexPath.row].messageFromName
             let date = theMesages[indexPath.row].dateEntered
             let status = theMesages[indexPath.row].status
-            var statusTime = theMesages[indexPath.row].statusTime
+            let statusTime = theMesages[indexPath.row].statusTime
             var unread : Bool!
             if status == "Unread" {
                 unread = true
@@ -104,18 +102,10 @@ class MessagesTableViewController: UITableViewController {
         getEmpMessagesFromParse()
     }
     
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-    }
-    
     func getEmpMessagesFromParse() {
         if PFUser.currentUser()?.objectForKey("employee") != nil {
             let emp = PFUser.currentUser()?.objectForKey("employee") as! Employee
             emp.fetchInBackground()
-            if emp.messages {
                 let selectedSeg = inboxSentSegControl.selectedSegmentIndex
                 let query = Messages.query()
                 let employeeObj = PFUser.currentUser()?.objectForKey("employee") as! Employee
@@ -140,8 +130,36 @@ class MessagesTableViewController: UITableViewController {
                         }
                     }
                 })
-            }
         }
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        
+        print(self.tableView.backgroundView)
+        
+        if sentFilter {
+            self.searchBar.hidden = false
+            self.tableView.backgroundView = nil
+            self.tableView.separatorStyle = .SingleLine
+            return 1
+        } else {
+            if EmployeeData.universalEmployee.messages  {
+                return 1
+            } else {
+                self.searchBar.hidden = true
+                let messageLabel : UILabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+                messageLabel.text = "Access Denied" + "\n\nYou do not have access to view messages."
+                messageLabel.textColor = UIColor.blackColor()
+                messageLabel.numberOfLines = 0
+                messageLabel.textAlignment = .Center
+                messageLabel.sizeToFit()
+                
+                self.tableView.backgroundView = messageLabel
+                self.tableView.separatorStyle = .None
+            }
+            return 0
+        }
+        
     }
     
     

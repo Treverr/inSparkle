@@ -27,7 +27,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
@@ -480,13 +480,6 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
     
     @IBAction func cancelButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
     override func viewDidDisappear(animated: Bool) {

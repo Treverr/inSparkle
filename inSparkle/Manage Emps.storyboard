@@ -411,7 +411,7 @@
                             <tableViewSection footerTitle="Use Access Manager to provide special privileges to an employee such as reports, time card management, etc." id="Vtm-A7-VLu">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="AAO-su-oPG" style="IBUITableViewCellStyleDefault" id="hqg-WH-QfA">
-                                        <rect key="frame" x="0.0" y="544" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="540" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hqg-WH-QfA" id="aVO-OE-QnB">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -436,7 +436,7 @@
                                 <string key="footerTitle">Disabling an employee will not remove any associated transactions. The employee can be re-activated at any time. This employee PIN will be removed from the system and will need to select a new one if re-activated.  Any payroll related acitivites will still be calculated with the next report.</string>
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="J7J-aq-uYK">
-                                        <rect key="frame" x="0.0" y="649" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="643" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J7J-aq-uYK" id="CUQ-dE-wSn">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>

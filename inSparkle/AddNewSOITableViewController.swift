@@ -71,7 +71,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
             tableView.scrollEnabled = false
         }
         
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         
         if (DataManager.isEditingSOIbject!) {
@@ -390,13 +390,6 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         
         datePickerChanged()
         
-    }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {

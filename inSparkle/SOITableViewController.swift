@@ -32,7 +32,7 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         self.refreshControl!.addTarget(self, action: Selector("refreshInvoked"), forControlEvents: .ValueChanged)
         
         
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "RefreshSOI:", name: "RefreshSOINotification", object: nil)
         
@@ -151,13 +151,6 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         self.tableView.reloadData()
         
         
-    }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
     func checkSessionToken() -> Bool {

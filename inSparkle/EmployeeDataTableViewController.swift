@@ -44,6 +44,8 @@ class EmployeeDataTableViewController: UITableViewController {
         userNameTextField.delegate = self
         emailAddressTextField.delegate = self
         
+        getRoles()
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -143,14 +145,18 @@ class EmployeeDataTableViewController: UITableViewController {
     }
     
     var roleDropDownArray = [String]()
+    
     @IBOutlet var roleCell: UITableViewCell!
     
     func setupRoleDropDown() {
+        
         var roles : [String] {
             get {
                 return Array(self.roleDict.keys)
             }
         }
+        
+        print(roles)
         
         roleDropDown.dataSource = roles
         roleDropDown.direction = .Any
@@ -163,8 +169,10 @@ class EmployeeDataTableViewController: UITableViewController {
             self.roleLabel.text = item
             self.roleLabel.textColor = UIColor.blackColor()
             self.selectedRole = self.roleDict[item]
-        }
-        
+            print(self.selectedRole)
+            self.employeeObject.roleType = self.selectedRole
+            self.employeeObject.saveInBackground()
+    }
     }
 
     

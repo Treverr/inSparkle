@@ -28,7 +28,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         requestedDates.textContainerInset = UIEdgeInsetsMake(-15, -4, 0, 0)
         
@@ -161,13 +161,6 @@ class TimeAwayDetailTableViewController: UITableViewController {
         self.dismissViewControllerAnimated(true) {
             NSNotificationCenter.defaultCenter().postNotificationName("returnToMainTimeAway", object: nil)
         }
-    }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
 
  }

@@ -18,7 +18,7 @@ class BarcodeScanner: RSCodeReaderViewController {
         audioPlayer = setupAudioPlayerWithFile("ScannerBeep", type: "wav")
         audioPlayer.prepareToPlay()
         
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         self.focusMarkLayer.strokeColor = UIColor.redColor().CGColor
         self.cornersLayer.strokeColor = UIColor.yellowColor().CGColor
@@ -48,13 +48,6 @@ class BarcodeScanner: RSCodeReaderViewController {
     
     @IBAction func cancelAction(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
     @IBAction func toggleFlash() {

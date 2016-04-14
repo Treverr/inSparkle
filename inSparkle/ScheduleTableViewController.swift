@@ -29,7 +29,7 @@ class ScheduleTableViewController: UITableViewController {
         
         setFilterType()
         scheduleQuery()
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         self.navigationItem.leftBarButtonItem = editButtonItem()
         self.tableView.allowsMultipleSelectionDuringEditing = true
@@ -48,34 +48,39 @@ class ScheduleTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("scheduleCell") as! ScheduleTableViewCell
         
-        let object = scheduleArray.objectAtIndex(indexPath.row) as! ScheduleObject
-        
-        let customerName = object.valueForKey("customerName") as! String
-        var weekStart : NSDate! = nil
-        var weekEnd : NSDate! = nil
-        
-        if object.confirmedDate != nil {
-            weekStart = object.confirmedDate!
-            weekEnd = object.confirmedDate!
-        } else {
-            weekStart = object.valueForKey("weekStart") as! NSDate
-            weekEnd = object.valueForKey("weekEnd") as! NSDate
-        }
-        
-        
-        
-        var isConfirmed : Bool?
-        if object.confrimed != nil {
-            if object.confrimed! {
-                isConfirmed = true
+        if scheduleArray.count > 0 && scheduleArray.count > indexPath.row {
+            let object = scheduleArray.objectAtIndex(indexPath.row) as! ScheduleObject
+            
+            let customerName = object.valueForKey("customerName") as! String
+            var weekStart : NSDate! = nil
+            var weekEnd : NSDate! = nil
+            
+            if object.confirmedDate != nil {
+                weekStart = object.confirmedDate!
+                weekEnd = object.confirmedDate!
+            } else {
+                weekStart = object.valueForKey("weekStart") as! NSDate
+                weekEnd = object.valueForKey("weekEnd") as! NSDate
+            }
+            
+            
+            
+            var isConfirmed : Bool?
+            if object.confrimed != nil {
+                if object.confrimed! {
+                    isConfirmed = true
+                } else {
+                    isConfirmed = false
+                }
             } else {
                 isConfirmed = false
             }
+            
+            cell.scheduleCell(customerName, weekStart: weekStart, weekEnd: weekEnd, isConfirmed: isConfirmed! )
+
         } else {
-            isConfirmed = false
+            self.refresh()
         }
-        
-        cell.scheduleCell(customerName, weekStart: weekStart, weekEnd: weekEnd, isConfirmed: isConfirmed! )
         
         return cell
     }
@@ -159,13 +164,6 @@ class ScheduleTableViewController: UITableViewController {
                self.refresh()
             }
         }
-    }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
     @IBAction func openCloseSegControl(sender: AnyObject) {
@@ -297,14 +295,16 @@ extension ScheduleTableViewController : UISearchBarDelegate {
             query.whereKey("isActive", equalTo: true)
             query.whereKey("type", equalTo: filterOption)
             query.orderByAscending("weekStart")
-            query.whereKey("customerName", containsString: searchBar.text!)
+            query.whereKey("customerName", containsString: searchBar.text!.capitalizedString)
             query.findObjectsInBackgroundWithBlock { (scheduleObjects :[PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     self.scheduleArray.removeAllObjects()
                     for object in scheduleObjects! {
                         self.scheduleArray.addObject(object)
-                        self.tableView.reloadData()
                     }
+                    let range = NSMakeRange(0, self.tableView.numberOfSections)
+                    let sections = NSIndexSet(indexesInRange: range)
+                    self.tableView.reloadSections(sections, withRowAnimation: .Automatic)
                 }
             }
             if (self.refreshControl!.refreshing) {

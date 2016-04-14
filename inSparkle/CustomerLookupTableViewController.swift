@@ -25,7 +25,7 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
         
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
     }
     
@@ -125,15 +125,6 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return customerDataArray.count + 1
     }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-    }
-    
-    
     @IBAction func editCustomer(sender: UIButton) {
         let cell = CustomerLookupTableViewCell()
         let editTag = sender.tag

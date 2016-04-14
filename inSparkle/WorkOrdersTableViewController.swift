@@ -22,7 +22,7 @@ class WorkOrdersTableViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         searchBar.delegate = self
     }
@@ -86,13 +86,6 @@ class WorkOrdersTableViewController: UITableViewController {
             }
         })
         
-    }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

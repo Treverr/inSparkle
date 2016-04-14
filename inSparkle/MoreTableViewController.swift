@@ -17,7 +17,7 @@ class MoreTableViewController: UITableViewController {
     var specialAccess : [String]! = []
     
     override func viewDidLoad() {
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         self.specialAccess = PFUser.currentUser()?.objectForKey("specialAccess") as! [String]
         
@@ -159,13 +159,6 @@ class MoreTableViewController: UITableViewController {
             let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
             self.presentViewController(viewController, animated: true, completion: nil)
         }
-    }
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
     }
     
     

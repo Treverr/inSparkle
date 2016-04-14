@@ -16,7 +16,7 @@ class ManageEmployeeListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         self.navigationItem.title = "Select Employee"
         
@@ -83,11 +83,4 @@ class ManageEmployeeListTableViewController: UITableViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-    }
 }

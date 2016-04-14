@@ -113,7 +113,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         setTypes()
-        setupNavigationbar()
+        self.navigationController?.setupNavigationbar(self.navigationController!)
         
         weekPicker.delegate = self
         weekPicker.dataSource = self
@@ -334,15 +334,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.selectionStyle = .None
     }
-    
-    
-    func setupNavigationbar()  {
-        self.navigationController?.navigationBar.barTintColor = Colors.sparkleBlue
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-    }
-    
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == customerNameTextField {
             customerNameTextField.resignFirstResponder()
