@@ -15,6 +15,7 @@ class ScheduleTableViewController: UITableViewController {
     
     var scheduleArray : NSMutableArray = []
     var filterOption : String!
+    var objectsToDelete : [ScheduleObject] = []
     
     @IBOutlet weak var openCloseSegControl: UISegmentedControl!
     
@@ -105,21 +106,59 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let scheduledObject = self.scheduleArray[indexPath.row] as! ScheduleObject
-        AddNewScheduleObjects.scheduledObject = scheduledObject
-        switch openCloseSegControl.selectedSegmentIndex {
-        case 0:
-            AddNewScheduleObjects.isOpening = true
-        case 1:
-            AddNewScheduleObjects.isOpening = false
-        default:
-            break
+        if !self.tableView.editing {
+            let scheduledObject = self.scheduleArray[indexPath.row] as! ScheduleObject
+            AddNewScheduleObjects.scheduledObject = scheduledObject
+            switch openCloseSegControl.selectedSegmentIndex {
+            case 0:
+                AddNewScheduleObjects.isOpening = true
+            case 1:
+                AddNewScheduleObjects.isOpening = false
+            default:
+                break
+            }
+            let sb = UIStoryboard(name: "Schedule", bundle: nil)
+            let vc = sb.instantiateViewControllerWithIdentifier("addEditSche")
+            self.presentViewController(vc, animated: true, completion: nil)
+        } else if self.tableView.editing == true {
+            let theObject = scheduleArray[indexPath.row] as! ScheduleObject
+            objectsToDelete.append(theObject)
         }
-        let sb = UIStoryboard(name: "Schedule", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("addEditSche")
-        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView.editing == true {
+            let theObject = scheduleArray[indexPath.row] as! ScheduleObject
+            let objIndex = self.objectsToDelete.indexOf(theObject)
+            self.objectsToDelete.removeAtIndex(objIndex!)
+        }
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
         
+        if editing {
+            let deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(ScheduleTableViewController.deletePOCs))
+            self.navigationItem.rightBarButtonItem = deleteButton
+        } else {
+            let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(ScheduleTableViewController.segToAdd(_:)))
+            self.navigationItem.rightBarButtonItem = addButton
+        }
+        
+    }
+    
+    func deletePOCs() {
+        let indexPaths = self.tableView.indexPathsForSelectedRows
+        print(indexPaths)
+        for obj in objectsToDelete {
+            obj.isActive = false
+        }
+        PFObject.saveAllInBackground(self.objectsToDelete) { (success : Bool, error : NSError?) in
+            if success {
+                self.objectsToDelete.removeAll()
+               self.refresh()
+            }
+        }
     }
     
     func setupNavigationbar()  {
@@ -164,7 +203,7 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+        if editingStyle == .Delete && self.objectsToDelete.count == 0 {
             var reason : UITextField?
             let alert = UIAlertController(title: "Reason for Cancelation", message: "Please enter a reason for cancelation", preferredStyle: .Alert)
             let confirmCancel = UIAlertAction(title: "Confirm Cancel", style: .Destructive, handler: { (action) -> Void in
@@ -197,7 +236,6 @@ class ScheduleTableViewController: UITableViewController {
             alert.addAction(confirmCancel)
             alert.addAction(cancelButton)
             self.presentViewController(alert, animated: true, completion: nil)
-           
         }
     }
     
