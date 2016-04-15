@@ -32,6 +32,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     var weekList = [PFObject]()
     var typeOfWinterCover = [String]()
     var phoneNumber : String! = nil
+    var weeksNeedsSet = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         notesTextView.delegate = self
         
         if AddNewScheduleObjects.scheduledObject != nil {
+            weeksNeedsSet = false
             let object = AddNewScheduleObjects.scheduledObject!
             customerNameTextField.text = object.customerName.capitalizedString
             addressLabel.text = object.customerAddress.capitalizedString
@@ -212,14 +214,17 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         if pickerView == weekPicker {
             if weekList.count > 0 && weekPicker.selectedRowInComponent(0) == 0 {
                 if AddNewScheduleObjects.scheduledObject == nil {
-                    let weekStart  = weekList[0].valueForKey("weekStart") as! NSDate
-                    weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekStart)
-                    weekStartingLabel.textColor = UIColor.blackColor()
-                    let weekEnd = weekList[0].valueForKey("weekEnd") as! NSDate
-                    weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekEnd)
-                    weekEndingLabel.textColor = UIColor.blackColor()
-                    let theweeeeek = weekList[0]
-                    self.selectedWeekObj = theweeeeek as! WeekList
+                    if weeksNeedsSet {
+                        let weekStart  = weekList[0].valueForKey("weekStart") as! NSDate
+                        weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekStart)
+                        weekStartingLabel.textColor = UIColor.blackColor()
+                        let weekEnd = weekList[0].valueForKey("weekEnd") as! NSDate
+                        weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekEnd)
+                        weekEndingLabel.textColor = UIColor.blackColor()
+                        weeksNeedsSet = false
+                        let theweeeeek = weekList[0]
+                        self.selectedWeekObj = theweeeeek as! WeekList
+                    }
                 } else {
                     let theSchedule = AddNewScheduleObjects.scheduledObject
                     weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyle(theSchedule!.weekStart)
