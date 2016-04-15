@@ -152,6 +152,7 @@ class MessagesTableViewController: UITableViewController {
                 messageLabel.textColor = UIColor.blackColor()
                 messageLabel.numberOfLines = 0
                 messageLabel.textAlignment = .Center
+                messageLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
                 messageLabel.sizeToFit()
                 
                 self.tableView.backgroundView = messageLabel

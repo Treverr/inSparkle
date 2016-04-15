@@ -522,25 +522,15 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                             }
                         })
                     } else {
-                        var jokeArray = Array(JokeDictionary.jokesDict.keys)
-                        let random = GlobalFunctions().RandomInt(min: 0, max: jokeArray.count - 1)
+                        var isOpening : Bool!
+                        if schObj.type == "Opening" {
+                            isOpening = true
+                        } else {
+                            isOpening = false
+                        }
                         
-                        SVProgressHUD.setForegroundColor(UIColor.whiteColor())
-                        SVProgressHUD.setBackgroundColor(UIColor.lightGrayColor())
-                        SVProgressHUD.showWithStatus(jokeArray[random], maskType: SVProgressHUDMaskType.Black)
-                        SVProgressHUD.setSuccessImage(UIImage(named: "Completed"))
-                        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-                        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-                        dispatch_async(backgroundQueue, {
-                            
-                            var isOpening : Bool!
-                            if schObj.type == "Opening" {
-                                isOpening = true
-                            } else {
-                                isOpening = false
-                            }
-                            GlobalFunctions().updateWeekData(schObj.weekObj, openingWeek: isOpening, joke: jokeArray[random])
-                        })
+                        GlobalFunctions().updateWeeksAppts()
+                        
                         AddNewScheduleObjects.scheduledObject = nil
                         AddNewScheduleObjects.isOpening = nil
                         self.dismissViewControllerAnimated(true, completion: nil)

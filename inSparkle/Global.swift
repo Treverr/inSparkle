@@ -323,46 +323,29 @@ class GlobalFunctions {
         })
     }
     
-    func updateWeekData(currentSelectedWeek : WeekList, openingWeek : Bool, joke : String) {
-        
-        var weeks = [WeekList]()
-        let weekQuery = WeekList.query()
-        var weekCount = 0
+    func updateWeeksAppts() {
         let now = NSDate()
         let sevenDaysAgo = now.dateByAddingTimeInterval(-7*24*60*60)
-        weekQuery?.whereKey("isOpenWeek", equalTo: openingWeek)
-        weekQuery?.whereKey("weekStart", greaterThan: sevenDaysAgo)
-        weekQuery?.countObjectsInBackgroundWithBlock({ (counted : Int32, error : NSError?) in
+        
+        let weekQuery = WeekList.query()
+        weekQuery?.whereKey("weekEnd", greaterThanOrEqualTo: sevenDaysAgo)
+        weekQuery?.findObjectsInBackgroundWithBlock({ (allWeeks : [PFObject]?, error : NSError?) in
             if error == nil {
-                weekQuery?.findObjectsInBackgroundWithBlock({ (results : [PFObject]?, error : NSError?) in
-                    if error == nil {
-                        weeks = results as! [WeekList]
-                        weekCount = Int(counted)
-                        if weekCount - weeks.count == 0 {
-                            let schQuery = ScheduleObject.query()
-                            print(weeks)
-                            var onNumber = 0
-                            for theWeek in weeks {
-                                onNumber = onNumber + 1
-                                print(theWeek)
-                                schQuery?.whereKey("weekObj", equalTo: theWeek)
-                                var error = NSErrorPointer()
-                                var numberSch = schQuery?.countObjects(error)
-                                theWeek.numApptsSch = Int(numberSch!)
-                                var remain : Int = (theWeek.maxAppts - Int(numberSch!))
-                                if theWeek == currentSelectedWeek {
-                                    remain = remain - 1
-                                }
-                                theWeek.apptsRemain = remain
-                                theWeek.saveInBackground()
-                            }
-                            SVProgressHUD.dismiss()
-                            SVProgressHUD.showSuccessWithStatus(JokeDictionary.jokesDict[joke], maskType: .Black)
+                let listOfWeeks = allWeeks as! [WeekList]
+                for week in listOfWeeks {
+                    let scheduleQuery = ScheduleObject.query()
+                    scheduleQuery!.whereKey("weekObj", equalTo: week)
+                    scheduleQuery?.findObjectsInBackgroundWithBlock({ (foundWeeks : [PFObject]?, error : NSError?) in
+                        if error == nil {
+                            let numberSch = foundWeeks!.count
+                            week.apptsRemain = (week.maxAppts - numberSch)
+                            week.saveInBackground()
                         }
-                    }
-                })
+                    })
+                }
             }
         })
+        
     }
     
     func RandomInt(min min: Int, max: Int) -> Int {
