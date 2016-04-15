@@ -10,7 +10,6 @@ import Foundation
 import Parse
 import AVFoundation
 import CoreImage
-import SVProgressHUD
 
 class DataManager: NSObject {
     

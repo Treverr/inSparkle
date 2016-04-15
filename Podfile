@@ -12,15 +12,14 @@ pod "CalendarView"
 pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_places_autocomplete'
 pod 'PhoneNumberKit'
 pod 'MZFormSheetPresentationController'
-pod 'IQKeyboardManagerSwift'
 pod "UIView+HierarchicalDrawing"
 pod "iCarousel"
 pod "MIBadgeButton-Swift"
 pod 'FXImageView'
 pod 'DropDown'
 pod 'MobihelpSDK'
-pod 'SVProgressHUD'
 pod 'SwiftSpinner'
+pod 'IQKeyboardManagerSwift'
 
 end
 

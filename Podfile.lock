@@ -17,7 +17,6 @@ PODS:
   - PhoneNumberKit (0.7)
   - RSBarcodes_Swift (0.1.9)
   - SimpleAlert (1.3.1)
-  - SVProgressHUD (2.0.3)
   - SwiftGifOrigin (1.5.3)
   - SwiftMoment (0.4)
   - SwiftSpinner (0.9.5)
@@ -37,7 +36,6 @@ DEPENDENCIES:
   - PhoneNumberKit
   - RSBarcodes_Swift (~> 0.1.4)
   - SimpleAlert
-  - SVProgressHUD
   - SwiftGifOrigin
   - SwiftSpinner
   - UIView+HierarchicalDrawing
@@ -66,7 +64,6 @@ SPEC CHECKSUMS:
   PhoneNumberKit: 0c726536585867d4877f496fa57473c6449f45a9
   RSBarcodes_Swift: 3c37a05faa0c8742739e1b47eec2f0d3d786330f
   SimpleAlert: 05215ee656e1da1428998e76a76bb153a16c7a21
-  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftGifOrigin: 893ebcceabe215a00b607328b5322b4e228347e5
   SwiftMoment: e751c44be03a183fa6c949426d9473d26a66ef29
   SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce

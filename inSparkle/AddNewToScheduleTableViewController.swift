@@ -9,7 +9,6 @@
 import UIKit
 import Parse
 import PhoneNumberKit
-import SVProgressHUD
 
 class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITextViewDelegate {
     
