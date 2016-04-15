@@ -10,7 +10,7 @@ pod 'BRYXBanner'
 pod "SwiftGifOrigin"
 pod "CalendarView"
 pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_places_autocomplete'
-pod 'PhoneNumberKit', '~> 0.1'
+pod 'PhoneNumberKit'
 pod 'MZFormSheetPresentationController'
 pod 'IQKeyboardManagerSwift'
 pod "UIView+HierarchicalDrawing"

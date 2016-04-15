@@ -23,7 +23,8 @@ class PhoneNumberParser {
     - Returns: Normalized phone number string.
     */
     func normalizePhoneNumber(number: String) -> String {
-        return regex.stringByReplacingOccurrences(number, map: PhoneNumberPatterns.allNormalizationMappings, removeNonMatches: true)
+        let normalizationMappings = PhoneNumberPatterns.allNormalizationMappings
+        return regex.stringByReplacingOccurrences(number, map: normalizationMappings)
     }
 
     // MARK: Extractions
@@ -112,61 +113,70 @@ class PhoneNumberParser {
     
     /**
     Check number type (e.g +33 612-345-678 to .Mobile).
-    - Parameter nationalNumber: National number string.
-    - Parameter countryCode:  International country code (e.g 44 for the UK).
-    - Returns: Country code is UInt64.
+    - Parameter phoneNumber: The number to check
+    - Returns: The type of the number
     */
-    func checkNumberType(nationalNumber: String, countryCode: UInt64, considerPossible: Bool = true) -> PhoneNumberType {
-        guard let metadata = self.metadata.metadataPerCode[countryCode] else {
+    func checkNumberType(phoneNumber: PhoneNumber) -> PhoneNumberType {
+        guard let region = PhoneNumberKit().regionCodeForNumber(phoneNumber) else {
             return .Unknown
         }
+        guard let metadata = metadata.fetchMetadataForCountry(region) else {
+            return .Unknown
+        }
+        if phoneNumber.leadingZero {
+            let type = checkNumberType("0" + String(phoneNumber.nationalNumber), metadata: metadata)
+            if type != .Unknown {
+                return type
+            }
+        }
+        let nationalNumber = String(phoneNumber.nationalNumber)
         return checkNumberType(nationalNumber, metadata: metadata)
     }
 
-    func checkNumberType(nationalNumber: String, metadata: MetadataTerritory, considerPossible: Bool = true) -> PhoneNumberType {
+    func checkNumberType(nationalNumber: String, metadata: MetadataTerritory) -> PhoneNumberType {
         guard let generalNumberDesc = metadata.generalDesc else {
             return .Unknown
         }
-        if (regex.hasValue(generalNumberDesc.nationalNumberPattern) == false || isNumberMatchingDesc(nationalNumber, numberDesc: generalNumberDesc, considerPossible: considerPossible) == false) {
+        if (regex.hasValue(generalNumberDesc.nationalNumberPattern) == false || isNumberMatchingDesc(nationalNumber, numberDesc: generalNumberDesc) == false) {
             return .Unknown
         }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.fixedLine, considerPossible: considerPossible)) {
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.pager)) {
+            return .Pager
+        }
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.premiumRate)) {
+            return .PremiumRate
+        }
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.tollFree)) {
+            return .TollFree
+        }
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.sharedCost)) {
+            return .SharedCost
+        }
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.voip)) {
+            return .VOIP
+        }
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.personalNumber)) {
+            return .PersonalNumber
+        }
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.uan)) {
+            return .UAN
+        }
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.voicemail)) {
+            return .Voicemail
+        }
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.fixedLine)) {
             if metadata.fixedLine?.nationalNumberPattern == metadata.mobile?.nationalNumberPattern {
                 return .FixedOrMobile
             }
-            else if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.mobile, considerPossible: considerPossible)) {
+            else if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.mobile)) {
                 return .FixedOrMobile
             }
             else {
                 return .FixedLine
             }
         }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.mobile, considerPossible: considerPossible)) {
+        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.mobile)) {
             return .Mobile
-        }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.premiumRate, considerPossible: considerPossible)) {
-            return .PremiumRate
-        }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.tollFree, considerPossible: considerPossible)) {
-            return .TollFree
-        }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.sharedCost, considerPossible: considerPossible)) {
-            return .SharedCost
-        }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.voip, considerPossible: considerPossible)) {
-            return .VOIP
-        }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.personalNumber, considerPossible: considerPossible)) {
-            return .PersonalNumber
-        }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.pager, considerPossible: considerPossible)) {
-            return .Pager
-        }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.uan, considerPossible: considerPossible)) {
-            return .UAN
-        }
-        if (isNumberMatchingDesc(nationalNumber, numberDesc: metadata.voicemail, considerPossible: considerPossible)) {
-            return .Voicemail
         }
         return .Unknown
     }
@@ -175,20 +185,10 @@ class PhoneNumberParser {
      Checks if number matches description.
      - Parameter nationalNumber: National number string.
      - Parameter numberDesc:  MetadataPhoneNumberDesc of a given phone number type.
-     - Parameter considerPossible: Whether the metadata's possible number pattern should be considered.
      - Returns: True or false.
      */
-    func isNumberMatchingDesc(nationalNumber: String, numberDesc: MetadataPhoneNumberDesc?, considerPossible: Bool = true) -> Bool {
-        guard let numberDesc = numberDesc else {
-            return false
-        }
-        if !considerPossible || regex.hasValue(numberDesc.possibleNumberPattern) == false || numberDesc.possibleNumberPattern == "NA" {
-            return regex.matchesEntirely(numberDesc.nationalNumberPattern, string: nationalNumber)
-        }
-        if regex.hasValue(numberDesc.nationalNumberPattern) == false || numberDesc.nationalNumberPattern == "NA" {
-            return regex.matchesEntirely(numberDesc.possibleNumberPattern, string: nationalNumber)
-        }
-        return regex.matchesEntirely(numberDesc.possibleNumberPattern, string: nationalNumber) || regex.matchesEntirely(numberDesc.nationalNumberPattern, string: nationalNumber)
+    func isNumberMatchingDesc(nationalNumber: String, numberDesc: MetadataPhoneNumberDesc?) -> Bool {
+        return regex.matchesEntirely(numberDesc?.nationalNumberPattern, string: nationalNumber)
     }
     
     /**
@@ -212,7 +212,7 @@ class PhoneNumberParser {
                 if let firstMatch = matchedGroups.first {
                     let digitMatched = remainString.substringWithRange(firstMatch.range) as NSString
                     if digitMatched.length > 0 {
-                        let normalizedGroup =  regex.stringByReplacingOccurrences(digitMatched as String, map: PhoneNumberPatterns.allNormalizationMappings, removeNonMatches: true)
+                        let normalizedGroup =  regex.stringByReplacingOccurrences(digitMatched as String, map: PhoneNumberPatterns.allNormalizationMappings)
                         if normalizedGroup == "0" {
                             return false
                         }

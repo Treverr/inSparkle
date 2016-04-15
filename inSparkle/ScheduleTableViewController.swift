@@ -269,7 +269,7 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     func displayConfirmed() {
-        let alert = UIAlertController(title: "Confirmed", message: "The POC has been confriemd", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Confirmed", message: "The POC has been confirmed", preferredStyle: .Alert)
         let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
         alert.addAction(okayButton)
         self.presentViewController(alert, animated: true, completion: nil)

@@ -293,36 +293,6 @@ class GlobalFunctions {
         return audioPlayer!
     }
     
-    func updateWeeks() {
-        var weeks = [WeekList]()
-        let weekQuery = WeekList.query()
-        let error = NSErrorPointer()
-        let weekCount = weekQuery?.countObjects(error)
-        weekQuery?.findObjectsInBackgroundWithBlock({ (results:[PFObject]?, error : NSError?) -> Void in
-            if error == nil {
-                for result in results! {
-                    weeks.append(result as! WeekList)
-                }
-                if weekCount! - weeks.count == 0 {
-                    let schQuery = ScheduleObject.query()
-                    for theweek in weeks {
-                        print(theweek)
-                        schQuery?.whereKey("weekObj", equalTo: theweek)
-                        var anotherError = NSErrorPointer()
-                        let returned = schQuery?.countObjects(anotherError)
-                        theweek.numApptsSch = returned!
-                        var remain = (theweek.maxAppts - returned!)
-                        if returned != 0 {
-                            remain = remain - 1
-                        }
-                        theweek.apptsRemain = remain
-                        theweek.saveInBackground()
-                    }
-                }
-            }
-        })
-    }
-    
     func updateWeeksAppts() {
         let now = NSDate()
         let sevenDaysAgo = now.dateByAddingTimeInterval(-7*24*60*60)
@@ -339,6 +309,7 @@ class GlobalFunctions {
                         if error == nil {
                             let numberSch = foundWeeks!.count
                             week.apptsRemain = (week.maxAppts - numberSch)
+                            week.numApptsSch = numberSch
                             week.saveInBackground()
                         }
                     })
