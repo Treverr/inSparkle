@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "inSparkle/ScheduleTableViewController.swift"
-            timestampString = "482355135.019167"
+            timestampString = "482468146.209637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "searchBarSearchButtonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "inSparkle/ScheduleTableViewController.swift"
-            timestampString = "482355182.223712"
+            timestampString = "482468146.209637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "searchBarSearchButtonClicked(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -112,6 +112,38 @@
             startingLineNumber = "842"
             endingLineNumber = "842"
             landmarkName = "dateForDatePicker()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/ScheduleTableViewController.swift"
+            timestampString = "482467903.365198"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "setDate()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/ScheduleTableViewController.swift"
+            timestampString = "482467901.721778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "setDate()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -15,7 +15,7 @@ class ScheduleTableViewController: UITableViewController {
     
     var scheduleArray : NSMutableArray = []
     var filterOption : String!
-    var objectsToDelete : [ScheduleObject] = []
+    var objectsToEdit : [ScheduleObject] = []
     
     @IBOutlet weak var openCloseSegControl: UISegmentedControl!
     
@@ -77,7 +77,7 @@ class ScheduleTableViewController: UITableViewController {
             }
             
             cell.scheduleCell(customerName, weekStart: weekStart, weekEnd: weekEnd, isConfirmed: isConfirmed! )
-
+            
         } else {
             self.refresh()
         }
@@ -127,15 +127,15 @@ class ScheduleTableViewController: UITableViewController {
             self.presentViewController(vc, animated: true, completion: nil)
         } else if self.tableView.editing == true {
             let theObject = scheduleArray[indexPath.row] as! ScheduleObject
-            objectsToDelete.append(theObject)
+            objectsToEdit.append(theObject)
         }
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         if tableView.editing == true {
             let theObject = scheduleArray[indexPath.row] as! ScheduleObject
-            let objIndex = self.objectsToDelete.indexOf(theObject)
-            self.objectsToDelete.removeAtIndex(objIndex!)
+            let objIndex = self.objectsToEdit.indexOf(theObject)
+            self.objectsToEdit.removeAtIndex(objIndex!)
         }
     }
     
@@ -143,8 +143,8 @@ class ScheduleTableViewController: UITableViewController {
         super.setEditing(editing, animated: animated)
         
         if editing {
-            let deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(ScheduleTableViewController.deletePOCs))
-            self.navigationItem.rightBarButtonItem = deleteButton
+            let actionButton = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(ScheduleTableViewController.actionSelection))
+            self.navigationItem.rightBarButtonItem = actionButton
         } else {
             let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(ScheduleTableViewController.segToAdd(_:)))
             self.navigationItem.rightBarButtonItem = addButton
@@ -152,16 +152,71 @@ class ScheduleTableViewController: UITableViewController {
         
     }
     
+    func actionSelection() {
+        let actionSheet = UIAlertController(title: "Select Action", message: nil, preferredStyle: .Alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .Destructive) { (action) in
+            self.deletePOCs()
+        }
+        let setDateAction = UIAlertAction(title: "Set Date", style: .Default) { (action) in
+            self.setDate()
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+            
+        }
+        actionSheet.addAction(setDateAction)
+        actionSheet.addAction(deleteAction)
+        actionSheet.addAction(cancelButton)
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    }
+    
+    func setDate() {
+        let indexPaths = self.tableView.indexPathsForVisibleRows
+        
+        var dateTextField : UITextField!
+        let dateAlert = UIAlertController(title: "Select Date", message: nil, preferredStyle: .Alert)
+        dateAlert.addTextFieldWithConfigurationHandler { (textField) in
+            textField.placeholder = "mm/dd/yy"
+            dateTextField = textField
+        }
+        let setDates = UIAlertAction(title: "Save", style: .Default) { (action) in
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "M/d/yy"
+            
+            for obj in self.objectsToEdit {
+                let date : NSDate? = dateFormatter.dateFromString(dateTextField.text!)
+                if date != nil {
+                    obj.confirmedDate! = dateFormatter.dateFromString(dateTextField.text!)!
+                    PFObject.saveAllInBackground(self.objectsToEdit, block: { (success : Bool, error : NSError?) in
+                        if success {
+                            self.objectsToEdit.removeAll()
+                            self.refresh()
+                        }
+                    })
+                } else {
+                    let errorAlert = UIAlertController(title: "Check Date", message: "Unable to set date with the entered date, check your date is in the correct format and try again.", preferredStyle: .Alert)
+                    let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                    errorAlert.addAction(okayButton)
+                    self.presentViewController(errorAlert, animated: true, completion: nil)
+                }
+            }
+        }
+        let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+        dateAlert.addAction(setDates)
+        dateAlert.addAction(cancelButton)
+        self.presentViewController(dateAlert, animated: true, completion: nil)
+    }
+    
     func deletePOCs() {
         let indexPaths = self.tableView.indexPathsForSelectedRows
         print(indexPaths)
-        for obj in objectsToDelete {
+        for obj in objectsToEdit {
             obj.isActive = false
         }
-        PFObject.saveAllInBackground(self.objectsToDelete) { (success : Bool, error : NSError?) in
+        PFObject.saveAllInBackground(self.objectsToEdit) { (success : Bool, error : NSError?) in
             if success {
-                self.objectsToDelete.removeAll()
-               self.refresh()
+                self.objectsToEdit.removeAll()
+                self.refresh()
             }
         }
     }
@@ -201,7 +256,7 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete && self.objectsToDelete.count == 0 {
+        if editingStyle == .Delete && self.objectsToEdit.count == 0 {
             var reason : UITextField?
             let alert = UIAlertController(title: "Reason for Cancelation", message: "Please enter a reason for cancelation", preferredStyle: .Alert)
             let confirmCancel = UIAlertAction(title: "Confirm Cancel", style: .Destructive, handler: { (action) -> Void in
@@ -223,7 +278,7 @@ class ScheduleTableViewController: UITableViewController {
                 CloudCode.AlertOfCancelation(deletingObject.customerName, address: deletingObject.customerAddress.capitalizedString, phone: deletingObject.customerPhone, reason: reason!.text!, cancelBy: PFUser.currentUser()!.username!.capitalizedString, theDates: weekRange, theType: deletingObject.type)
                 self.scheduleArray.removeObjectAtIndex(indexPath.row)
                 tableView.reloadData()
-
+                
             })
             let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             alert.addTextFieldWithConfigurationHandler({ (textField) -> Void in
@@ -249,7 +304,7 @@ class ScheduleTableViewController: UITableViewController {
     }
     @IBAction func segToAdd(sender: AnyObject) {
         
-       let alert = UIAlertController(title: "Type?", message: "Is this an opening or closing?", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Type?", message: "Is this an opening or closing?", preferredStyle: .Alert)
         let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
         
         let openingButton = UIAlertAction(title: "Opening", style: .Default) { (action) -> Void in
@@ -262,7 +317,7 @@ class ScheduleTableViewController: UITableViewController {
             let VC = storyboard.instantiateViewControllerWithIdentifier("addEditSche")
             self.presentViewController(VC, animated: true, completion: nil)
         }
-
+        
         alert.addAction(openingButton)
         alert.addAction(closingButton)
         self.presentViewController(alert, animated: true, completion: nil)
