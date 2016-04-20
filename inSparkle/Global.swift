@@ -352,6 +352,22 @@ class GlobalFunctions {
         return emailTest.evaluateWithObject(testStr)
     }
     
+    func callNumber(phoneNumber : String) {
+        var stringArray = phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+        var unformattedPhoneNumber = stringArray.joinWithSeparator("")
+        if var phoneCallURL : NSURL = NSURL(string: "tel://\(unformattedPhoneNumber)") {
+            let application : UIApplication = UIApplication.sharedApplication()
+            if (application.canOpenURL(phoneCallURL)) {
+                application.openURL(phoneCallURL)
+            } else {
+                phoneCallURL = NSURL(string: "facetime://\(unformattedPhoneNumber)")!
+                if (application.canOpenURL(phoneCallURL)) {
+                    application.openURL(phoneCallURL)
+                }
+            }
+        }
+    }
+    
 }
 
 extension NSDate {

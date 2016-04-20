@@ -171,8 +171,6 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     func setDate() {
-        let indexPaths = self.tableView.indexPathsForVisibleRows
-        
         var dateTextField : UITextField!
         let dateAlert = UIAlertController(title: "Select Date", message: nil, preferredStyle: .Alert)
         dateAlert.addTextFieldWithConfigurationHandler { (textField) in
@@ -186,7 +184,7 @@ class ScheduleTableViewController: UITableViewController {
             for obj in self.objectsToEdit {
                 let date : NSDate? = dateFormatter.dateFromString(dateTextField.text!)
                 if date != nil {
-                    obj.confirmedDate! = dateFormatter.dateFromString(dateTextField.text!)!
+                    obj.confirmedDate = date!
                     PFObject.saveAllInBackground(self.objectsToEdit, block: { (success : Bool, error : NSError?) in
                         if success {
                             self.objectsToEdit.removeAll()
@@ -202,8 +200,8 @@ class ScheduleTableViewController: UITableViewController {
             }
         }
         let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
-        dateAlert.addAction(setDates)
         dateAlert.addAction(cancelButton)
+        dateAlert.addAction(setDates)
         self.presentViewController(dateAlert, animated: true, completion: nil)
     }
     

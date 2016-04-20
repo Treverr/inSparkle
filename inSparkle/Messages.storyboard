@@ -299,18 +299,31 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="phone" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8vA-Ze-y4x" customClass="PhoneNumberTextField">
-                                                    <rect key="frame" x="84" y="7" width="508" height="30"/>
+                                                    <rect key="frame" x="84" y="7" width="457" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOl-Yp-OOY">
+                                                    <rect key="frame" x="549" y="0.0" width="43" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="43" id="Vzi-hF-YC7"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="PhoneCall"/>
+                                                    <connections>
+                                                        <action selector="phoneCallButtonAction:" destination="mq5-Ux-vy9" eventType="touchUpInside" id="8u0-LD-bA6"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="8vA-Ze-y4x" firstAttribute="top" secondItem="WSF-Tx-Y5Z" secondAttribute="topMargin" constant="-1" id="79J-MZ-cGS"/>
-                                                <constraint firstItem="TK1-CI-m9s" firstAttribute="leading" secondItem="WSF-Tx-Y5Z" secondAttribute="leadingMargin" id="FV2-mt-aUX"/>
-                                                <constraint firstItem="8vA-Ze-y4x" firstAttribute="trailing" secondItem="WSF-Tx-Y5Z" secondAttribute="trailingMargin" id="MBo-a1-OTE"/>
-                                                <constraint firstItem="8vA-Ze-y4x" firstAttribute="leading" secondItem="TK1-CI-m9s" secondAttribute="trailing" constant="27" id="RfG-xS-LlL"/>
-                                                <constraint firstItem="8vA-Ze-y4x" firstAttribute="centerY" secondItem="WSF-Tx-Y5Z" secondAttribute="centerY" id="VFT-Uy-gUG"/>
-                                                <constraint firstItem="TK1-CI-m9s" firstAttribute="top" secondItem="WSF-Tx-Y5Z" secondAttribute="topMargin" id="nD8-wG-Dtr"/>
+                                                <constraint firstItem="VOl-Yp-OOY" firstAttribute="leading" secondItem="8vA-Ze-y4x" secondAttribute="trailing" constant="8" symbolic="YES" id="93F-ON-vqr"/>
+                                                <constraint firstItem="TK1-CI-m9s" firstAttribute="leading" secondItem="WSF-Tx-Y5Z" secondAttribute="leadingMargin" id="DOv-B3-JIY"/>
+                                                <constraint firstItem="8vA-Ze-y4x" firstAttribute="top" secondItem="WSF-Tx-Y5Z" secondAttribute="topMargin" constant="-1" id="Ewv-sh-bn2"/>
+                                                <constraint firstItem="TK1-CI-m9s" firstAttribute="top" secondItem="WSF-Tx-Y5Z" secondAttribute="topMargin" id="GGt-bO-qAq"/>
+                                                <constraint firstItem="8vA-Ze-y4x" firstAttribute="centerY" secondItem="VOl-Yp-OOY" secondAttribute="centerY" id="Olj-ue-Y8t"/>
+                                                <constraint firstItem="VOl-Yp-OOY" firstAttribute="trailing" secondItem="WSF-Tx-Y5Z" secondAttribute="trailingMargin" id="XDF-2V-PaO"/>
+                                                <constraint firstItem="8vA-Ze-y4x" firstAttribute="leading" secondItem="TK1-CI-m9s" secondAttribute="trailing" constant="27" id="Zg8-Ao-Gj1"/>
+                                                <constraint firstAttribute="bottom" secondItem="VOl-Yp-OOY" secondAttribute="bottom" id="cZl-hc-twE"/>
+                                                <constraint firstItem="VOl-Yp-OOY" firstAttribute="top" secondItem="WSF-Tx-Y5Z" secondAttribute="top" id="m59-fM-y0K"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -328,18 +341,31 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="alt phone (optional)" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oZ4-Yw-zR6">
-                                                    <rect key="frame" x="139" y="7" width="453" height="30"/>
+                                                    <rect key="frame" x="139" y="7" width="402" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4UN-zt-dB9">
+                                                    <rect key="frame" x="549" y="0.0" width="43" height="43"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="43" id="J4t-f7-6Fy"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="PhoneCall"/>
+                                                    <connections>
+                                                        <action selector="altPhoneCallButtonAction:" destination="mq5-Ux-vy9" eventType="touchUpInside" id="txD-j3-mS1"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lTg-8Z-8we" firstAttribute="centerY" secondItem="oZ4-Yw-zR6" secondAttribute="centerY" id="4f9-gA-bqU"/>
-                                                <constraint firstItem="oZ4-Yw-zR6" firstAttribute="leading" secondItem="lTg-8Z-8we" secondAttribute="trailing" constant="8" symbolic="YES" id="58V-hB-941"/>
-                                                <constraint firstItem="oZ4-Yw-zR6" firstAttribute="trailing" secondItem="onF-uw-Ek6" secondAttribute="trailingMargin" id="5mn-Zc-0W6"/>
-                                                <constraint firstItem="lTg-8Z-8we" firstAttribute="leading" secondItem="onF-uw-Ek6" secondAttribute="leadingMargin" id="6vV-1e-Hg8"/>
-                                                <constraint firstItem="lTg-8Z-8we" firstAttribute="centerY" secondItem="onF-uw-Ek6" secondAttribute="centerY" id="Rqm-eK-7mg"/>
-                                                <constraint firstItem="oZ4-Yw-zR6" firstAttribute="top" secondItem="onF-uw-Ek6" secondAttribute="topMargin" constant="-1" id="kS1-Jd-bUM"/>
+                                                <constraint firstItem="lTg-8Z-8we" firstAttribute="centerY" secondItem="oZ4-Yw-zR6" secondAttribute="centerY" id="LQz-4P-eWc"/>
+                                                <constraint firstItem="4UN-zt-dB9" firstAttribute="leading" secondItem="oZ4-Yw-zR6" secondAttribute="trailing" constant="8" symbolic="YES" id="P8d-QY-WMD"/>
+                                                <constraint firstItem="oZ4-Yw-zR6" firstAttribute="top" secondItem="onF-uw-Ek6" secondAttribute="topMargin" constant="-1" id="V3b-UR-nho"/>
+                                                <constraint firstItem="oZ4-Yw-zR6" firstAttribute="centerY" secondItem="4UN-zt-dB9" secondAttribute="centerY" id="dRs-rf-7gh"/>
+                                                <constraint firstItem="oZ4-Yw-zR6" firstAttribute="leading" secondItem="lTg-8Z-8we" secondAttribute="trailing" constant="8" symbolic="YES" id="f1Z-8O-lyA"/>
+                                                <constraint firstAttribute="bottom" secondItem="4UN-zt-dB9" secondAttribute="bottom" id="oId-Lw-fiJ"/>
+                                                <constraint firstItem="lTg-8Z-8we" firstAttribute="leading" secondItem="onF-uw-Ek6" secondAttribute="leadingMargin" id="s4z-0p-1aU"/>
+                                                <constraint firstItem="4UN-zt-dB9" firstAttribute="top" secondItem="onF-uw-Ek6" secondAttribute="top" id="vgU-Uk-xZi"/>
+                                                <constraint firstItem="4UN-zt-dB9" firstAttribute="trailing" secondItem="onF-uw-Ek6" secondAttribute="trailingMargin" id="xSQ-Hs-R49"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -464,11 +490,13 @@
                         <outlet property="addImage" destination="GxH-vw-qeu" id="ZsU-8f-b5f"/>
                         <outlet property="addRecipCell" destination="LtI-tm-AYJ" id="me5-dD-e2C"/>
                         <outlet property="addressTextField" destination="7Uv-8t-jq2" id="0BA-gB-xIh"/>
+                        <outlet property="altPhoneCallButton" destination="4UN-zt-dB9" id="hfb-89-nFK"/>
                         <outlet property="altPhoneTextField" destination="oZ4-Yw-zR6" id="U3m-lO-wHA"/>
                         <outlet property="dateTimeOfMessage" destination="9Hb-Ys-KLm" id="tn9-AC-DRB"/>
                         <outlet property="emailAddress" destination="1qq-Cj-A7e" id="iIi-Y1-hkM"/>
                         <outlet property="messageTextView" destination="hv5-J5-1kE" id="daO-eV-H4e"/>
                         <outlet property="nameTextField" destination="hSN-rk-E42" id="0LX-gq-GPk"/>
+                        <outlet property="phoneCallButton" destination="VOl-Yp-OOY" id="KBg-6u-U1W"/>
                         <outlet property="phoneTextField" destination="8vA-Ze-y4x" id="xdJ-XX-tfO"/>
                         <outlet property="recipientLabel" destination="Xkf-qt-dlw" id="vQQ-xP-gIl"/>
                         <outlet property="saveButton" destination="VYK-U4-V8n" id="lG3-ZI-UTV"/>
@@ -898,6 +926,7 @@
         <image name="Messages Unfilled" width="25" height="25"/>
         <image name="No Answer:No Voicemail" width="44" height="44"/>
         <image name="Other" width="44" height="44"/>
+        <image name="PhoneCall" width="36" height="36"/>
         <image name="Plus Filled" width="21" height="21"/>
         <image name="Responded" width="44" height="44"/>
         <image name="Search" width="100" height="100"/>

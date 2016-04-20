@@ -225,10 +225,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                         let theweeeeek = weekList[0]
                         self.selectedWeekObj = theweeeeek as! WeekList
                     }
-                } else {
-                    let theSchedule = AddNewScheduleObjects.scheduledObject
-                    weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyle(theSchedule!.weekStart)
-                    weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyle(theSchedule!.weekEnd)
                 }
                 
                 if dateWeekRange.count == 0 {

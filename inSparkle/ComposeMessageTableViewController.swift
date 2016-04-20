@@ -28,13 +28,14 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     @IBOutlet weak var addImage: UIImageView!
     @IBOutlet var emailAddress: UITextField!
     @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var phoneCallButton: UIButton!
+    @IBOutlet var altPhoneCallButton: UIButton!
     
     var selectedEmployee : Employee?
     var formatter = NSDateFormatter()
     
     override func viewWillAppear(animated: Bool) {
         
-        messageTextView.delegate = self
         
         if isNewMessage {
             let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
@@ -274,9 +275,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             dateTimeOfMessage.text! = formatter.stringFromDate(existingMessage!.dateTimeMessage)
         }
         
-        
-        self.tabBarController?.tabBar.hidden = true
-        
         if isNewMessage == false {
             getRecip()
             updateMessageDetails()
@@ -490,6 +488,46 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         }
     }
     
+    @IBAction func phoneCallButtonAction(sender: AnyObject) {
+        var phoneNumber : String! = String(phoneTextField.text!)
+        do {
+            let phone = try PhoneNumber(rawNumber: phoneNumber)
+            phoneNumber = phone.toNational()
+            
+            let confirmCall = UIAlertController(title: phoneNumber, message: nil, preferredStyle: .Alert)
+            let callButton = UIAlertAction(title: "Call", style: .Default, handler: { (action) in
+                GlobalFunctions().callNumber(phoneNumber)
+            })
+            let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            confirmCall.addAction(cancelButton)
+            confirmCall.addAction(callButton)
+            self.presentViewController(confirmCall, animated: true, completion: nil)
+            
+        } catch {
+        
+        }
+    }
+    
+    @IBAction func altPhoneCallButtonAction(sender: AnyObject) {
+        var phoneNumber : String! = String(altPhoneTextField.text!)
+        do {
+            let phone = try PhoneNumber(rawNumber: phoneNumber)
+            phoneNumber = phone.toNational()
+            
+            let confirmCall = UIAlertController(title: phoneNumber, message: nil, preferredStyle: .Alert)
+            let callButton = UIAlertAction(title: "Call", style: .Default, handler: { (action) in
+                GlobalFunctions().callNumber(phoneNumber)
+            })
+            let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            confirmCall.addAction(cancelButton)
+            confirmCall.addAction(callButton)
+            self.presentViewController(confirmCall, animated: true, completion: nil)
+            
+        } catch {
+            
+        }
+
+    }
 }
 
 extension ComposeMessageTableViewController : UITextViewDelegate {
