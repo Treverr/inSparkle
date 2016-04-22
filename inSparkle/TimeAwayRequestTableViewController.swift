@@ -17,6 +17,8 @@ class TimeAwayRequestTableViewController: UITableViewController {
     var totalHours : Double = 0.0
     var vacationTime = VacationTime()
     
+    var employeeVacationHours : Double!
+    
     @IBOutlet weak var totalHoursButton: UIBarButtonItem!
     
     @IBOutlet var monthLabel: UILabel!
@@ -52,6 +54,8 @@ class TimeAwayRequestTableViewController: UITableViewController {
             
             vacationHours.text = String(vacationTime.hoursLeft + vacationTime.hoursPending) + " hours"
             
+            employeeVacationHours = vacationTime.hoursLeft
+            
         } catch { }
 
     }
@@ -79,12 +83,12 @@ class TimeAwayRequestTableViewController: UITableViewController {
     
     @IBAction func submitTimeAway(sender: AnyObject) {
         
-        
         if unpaidCell.accessoryType != .Checkmark && vacationCell.accessoryType != .Checkmark {
             let error = UIAlertController(title: "Error", message: "Please select a type of time away.", preferredStyle: .Alert)
             let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
             error.addAction(okayButton)
             self.presentViewController(error, animated: true, completion: nil)
+            
         } else {
             totalHours = 0.0
             let tbc = self.childViewControllers[0] as! UITableViewController
@@ -124,20 +128,28 @@ class TimeAwayRequestTableViewController: UITableViewController {
             timeAway.timeCardDictionary = timeCardVacation
             timeAway.employee = EmployeeData.universalEmployee
             
-            timeAway.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in
-                if success {
-                    let name = EmployeeData.universalEmployee.firstName + " " + EmployeeData.universalEmployee.lastName
-                    var timeAwayType = timeAway.type
-                    if timeAwayType == "Unpaid" {
-                        timeAwayType = "Unpaid Time Away"
+            if self.totalHours > employeeVacationHours {
+                let notEnoughTime = UIAlertController(title: "Insufficent Vacation Time", message: "You do not have enough vacation time, if you have pending vacation requests please cancel, reduce your request amount, or select 'Unpaid' for this request.", preferredStyle: .Alert)
+                let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                notEnoughTime.addAction(okayButton)
+                self.presentViewController(notEnoughTime, animated: true, completion: nil)
+                
+            } else {
+                timeAway.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in
+                    if success {
+                        let name = EmployeeData.universalEmployee.firstName + " " + EmployeeData.universalEmployee.lastName
+                        var timeAwayType = timeAway.type
+                        if timeAwayType == "Unpaid" {
+                            timeAwayType = "Unpaid Time Away"
+                        }
+                        CloudCode.SendNotificationOfNewTimeAwayRequest(name, type: timeAwayType, date1: SelectedDatesTimeAway.selectedDates.first!, date2: SelectedDatesTimeAway.selectedDates.last!, totalHours: timeAway.hours)
+                        let alert = UIAlertController(title: "Submitted", message: "Your Time Away Requset has been submitted. Please check with your manager for any questions. You will be notified via email if the request is approved or returned.", preferredStyle: .Alert)
+                        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
+                            self.performSegueWithIdentifier("exitToSparkleConnect", sender: nil)
+                        })
+                        alert.addAction(okayButton)
+                        self.presentViewController(alert, animated: true, completion: nil)
                     }
-                    CloudCode.SendNotificationOfNewTimeAwayRequest(name, type: timeAwayType, date1: SelectedDatesTimeAway.selectedDates.first!, date2: SelectedDatesTimeAway.selectedDates.last!, totalHours: timeAway.hours)
-                    let alert = UIAlertController(title: "Submitted", message: "Your Time Away Requset has been submitted. Please check with your manager for any questions. You will be notified via email if the request is approved or returned.", preferredStyle: .Alert)
-                    let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
-                        self.performSegueWithIdentifier("exitToSparkleConnect", sender: nil)
-                    })
-                    alert.addAction(okayButton)
-                    self.presentViewController(alert, animated: true, completion: nil)
                 }
             }
         }
