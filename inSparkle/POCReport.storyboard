@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -65,6 +66,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="ZTb-na-wJi" kind="show" id="wwe-KE-IDO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -157,6 +161,98 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4mf-8D-OfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1997" y="154"/>
+        </scene>
+        <!--ReactivePOC Table View Controller-->
+        <scene sceneID="XtL-DS-VGk">
+            <objects>
+                <tableViewController id="ZTb-na-wJi" customClass="ReactivePOCTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="123" sectionHeaderHeight="18" sectionFooterHeight="18" id="Aq3-DI-jXA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reactivateCell" rowHeight="123" id="Edm-ZP-1Ij" customClass="ReActivePOCTableViewCell" customModule="inSparkle" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="114" width="600" height="123"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Edm-ZP-1Ij" id="5GT-GG-nTf">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week Of:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXe-60-d6b">
+                                            <rect key="frame" x="8" y="37" width="63" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="63" id="3KA-rv-Mdc"/>
+                                                <constraint firstAttribute="height" constant="21" id="nf5-gh-Y0r"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt;Week Start&gt;&gt; - &lt;&lt;Week End&gt;&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tbc-Qn-bWs">
+                                            <rect key="frame" x="79" y="37" width="513" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel Reason:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwY-uR-es0">
+                                            <rect key="frame" x="8" y="83" width="119" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="SRq-5x-EDH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1X6-ie-vRd">
+                                            <rect key="frame" x="135" y="83" width="457" height="31"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMr-YB-DKA">
+                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1X6-ie-vRd" firstAttribute="leading" secondItem="fwY-uR-es0" secondAttribute="trailing" constant="8" symbolic="YES" id="1Ih-Lu-Fwk"/>
+                                        <constraint firstItem="EXe-60-d6b" firstAttribute="baseline" secondItem="Tbc-Qn-bWs" secondAttribute="baseline" id="DBs-L1-aGo"/>
+                                        <constraint firstItem="EXe-60-d6b" firstAttribute="top" secondItem="KMr-YB-DKA" secondAttribute="bottom" constant="8" symbolic="YES" id="Six-lB-t3e"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="fwY-uR-es0" secondAttribute="bottom" constant="10" id="Vbc-oU-uIf"/>
+                                        <constraint firstItem="1X6-ie-vRd" firstAttribute="bottom" secondItem="5GT-GG-nTf" secondAttribute="bottomMargin" id="Ww9-0A-JEs"/>
+                                        <constraint firstItem="KMr-YB-DKA" firstAttribute="leading" secondItem="5GT-GG-nTf" secondAttribute="leadingMargin" id="XCG-ET-fLU"/>
+                                        <constraint firstItem="KMr-YB-DKA" firstAttribute="leading" secondItem="EXe-60-d6b" secondAttribute="leading" id="XDA-Ia-0K2"/>
+                                        <constraint firstItem="EXe-60-d6b" firstAttribute="leading" secondItem="fwY-uR-es0" secondAttribute="leading" id="dPZ-90-k0x"/>
+                                        <constraint firstItem="Tbc-Qn-bWs" firstAttribute="leading" secondItem="EXe-60-d6b" secondAttribute="trailing" constant="8" symbolic="YES" id="fDS-pd-0Mj"/>
+                                        <constraint firstItem="KMr-YB-DKA" firstAttribute="trailing" secondItem="Tbc-Qn-bWs" secondAttribute="trailing" id="fRU-CC-q9z"/>
+                                        <constraint firstItem="KMr-YB-DKA" firstAttribute="top" secondItem="5GT-GG-nTf" secondAttribute="topMargin" id="jxa-H4-Z5R"/>
+                                        <constraint firstItem="EXe-60-d6b" firstAttribute="firstBaseline" secondItem="Tbc-Qn-bWs" secondAttribute="firstBaseline" id="mXr-am-wky"/>
+                                        <constraint firstItem="fwY-uR-es0" firstAttribute="top" secondItem="1X6-ie-vRd" secondAttribute="top" id="qiO-nx-LFy"/>
+                                        <constraint firstItem="KMr-YB-DKA" firstAttribute="trailing" secondItem="5GT-GG-nTf" secondAttribute="trailingMargin" id="v3e-Dr-SwV"/>
+                                        <constraint firstItem="fwY-uR-es0" firstAttribute="top" secondItem="EXe-60-d6b" secondAttribute="bottom" constant="25" id="z9x-d0-P4u"/>
+                                        <constraint firstItem="Tbc-Qn-bWs" firstAttribute="trailing" secondItem="1X6-ie-vRd" secondAttribute="trailing" id="zD9-Z1-6yZ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cancelReasonTextView" destination="1X6-ie-vRd" id="M50-1O-06H"/>
+                                    <outlet property="customerName" destination="KMr-YB-DKA" id="y92-te-rWH"/>
+                                    <outlet property="weekStartEnd" destination="Tbc-Qn-bWs" id="txq-Cf-Gb5"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="ZTb-na-wJi" id="jff-SB-gtL"/>
+                            <outlet property="delegate" destination="ZTb-na-wJi" id="QGh-jQ-TXo"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tKI-ub-sGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1997" y="857"/>
         </scene>
         <!--Active Inactive All Filter Table View Controller-->
         <scene sceneID="JyV-2E-0u0">

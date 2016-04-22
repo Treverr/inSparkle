@@ -15,6 +15,9 @@
 		C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90340CB1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard */; };
 		C90340CF1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */; };
 		C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */; };
+		C9097DE11CCABDF900297696 /* LogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9097DE01CCABDF900297696 /* LogModel.swift */; };
+		C9097DE31CCADD8B00297696 /* ReActivePOCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9097DE21CCADD8B00297696 /* ReActivePOCTableViewCell.swift */; };
+		C9097DE51CCADF2800297696 /* ReactivePOCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9097DE41CCADF2800297696 /* ReactivePOCTableViewController.swift */; };
 		C91120861C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */; };
 		C91120881C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */; };
 		C911BA381C7B637000AC8364 /* AddEditWorkOrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C911BA371C7B637000AC8364 /* AddEditWorkOrderTableViewController.swift */; };
@@ -236,6 +239,9 @@
 		C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSelectionChemCheckoutTableViewController.swift; sourceTree = "<group>"; };
 		C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolOpeningPDFViewController.swift; sourceTree = "<group>"; };
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
+		C9097DE01CCABDF900297696 /* LogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogModel.swift; sourceTree = "<group>"; };
+		C9097DE21CCADD8B00297696 /* ReActivePOCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReActivePOCTableViewCell.swift; sourceTree = "<group>"; };
+		C9097DE41CCADF2800297696 /* ReactivePOCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactivePOCTableViewController.swift; sourceTree = "<group>"; };
 		C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkOrderPDFTemplate.storyboard; sourceTree = "<group>"; };
 		C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderPDFTemplateViewController.swift; sourceTree = "<group>"; };
 		C911BA371C7B637000AC8364 /* AddEditWorkOrderTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditWorkOrderTableViewController.swift; sourceTree = "<group>"; };
@@ -553,6 +559,7 @@
 				C9338D831C1E306C00DC09BE /* CloudCode.swift */,
 				C928CF9D1C233BF000C83345 /* LocalNotifications.swift */,
 				C9BA200F1C59B6B400F8E44B /* FromBottomCustomSegue.swift */,
+				C9097DE01CCABDF900297696 /* LogModel.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -974,6 +981,8 @@
 			isa = PBXGroup;
 			children = (
 				C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */,
+				C9097DE41CCADF2800297696 /* ReactivePOCTableViewController.swift */,
+				C9097DE21CCADD8B00297696 /* ReActivePOCTableViewCell.swift */,
 				C974FAD81C20B84D004D69E4 /* POCCalPickerViewController.swift */,
 				C974FAD61C205845004D69E4 /* POCRunReportFinalTableViewController.swift */,
 				C9C8E1DE1C1FCE9A0056D789 /* POCOpenCloseTableViewController.swift */,
@@ -1349,6 +1358,7 @@
 				C9676DF31C8277FB00309F8B /* SpecialAccessTableViewController.swift in Sources */,
 				C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */,
 				C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */,
+				C9097DE51CCADF2800297696 /* ReactivePOCTableViewController.swift in Sources */,
 				C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */,
 				C9F1A47F1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift in Sources */,
 				C9A0307D1C0FED4E00C6DBCC /* AddNewToScheduleTableViewController.swift in Sources */,
@@ -1395,8 +1405,10 @@
 				C9585F271C169491008AB918 /* RunTimeReportTableViewController.swift in Sources */,
 				C9C8E1C11C32141800191C17 /* MessageModel.swift in Sources */,
 				C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */,
+				C9097DE11CCABDF900297696 /* LogModel.swift in Sources */,
 				C9220DB61CAF76B600CCF10E /* TimeAwayRequestModel.swift in Sources */,
 				C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */,
+				C9097DE31CCADD8B00297696 /* ReActivePOCTableViewCell.swift in Sources */,
 				C9F7A9B61C701614001A6555 /* UserPINViewController.swift in Sources */,
 				C91120881C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift in Sources */,
 			);

@@ -17,7 +17,7 @@ public class SOITableViewCell: UITableViewCell {
     
     public func soiCell(customerName : String, date : NSDate?, location : String, item : String) {
         
-        customerNameLabel.text = customerName
+        customerNameLabel.text = customerName.capitalizedString
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
