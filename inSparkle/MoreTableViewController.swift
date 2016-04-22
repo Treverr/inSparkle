@@ -56,7 +56,7 @@ class MoreTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 5
+            return 6
         } else {
             return specialAccess.count
         }
@@ -83,6 +83,8 @@ class MoreTableViewController: UITableViewController {
             case 3:
                 cell = self.tableView.dequeueReusableCellWithIdentifier("sparkleConnect")!
             case 4:
+                cell = self.tableView.dequeueReusableCellWithIdentifier("customerLookup")!
+            case 5:
                 cell = self.tableView.dequeueReusableCellWithIdentifier("logoutCell")!
             default:
                 break
@@ -94,7 +96,6 @@ class MoreTableViewController: UITableViewController {
                 cell.textLabel?.text = specialAccess[indexPath.row]
                 cell.accessoryType = .DisclosureIndicator
 
-                
                 switch specialAccess[indexPath.row] {
                 case "Manage Users and Employees":
                     cell.imageView?.image = UIImage(named: "Manage Users")
@@ -118,12 +119,17 @@ class MoreTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if indexPath.section == 0 && indexPath.row == 4 {
+        let cell = self.tableView.cellForRowAtIndexPath(indexPath)
+        
+        if cell?.reuseIdentifier == "customerLookup" {
+            CustomerLookupObjects.fromVC = "More"
+        }
+        
+        if cell?.reuseIdentifier == "logoutCell" {
             self.logoutAction(self)
         }
         
         if indexPath.section == 1 {
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath)
             switch cell!.textLabel!.text! {
             case "Manage Users and Employees":
                 let sb = UIStoryboard(name: "Manage Emps", bundle: nil)
@@ -175,8 +181,6 @@ class MoreTableViewController: UITableViewController {
             self.profileLabel.text = name
         }
     }
-    
-    
     
     func signBackIn() {
         PFSession.getCurrentSessionInBackgroundWithBlock { (session : PFSession?, error : NSError?) in

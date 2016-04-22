@@ -501,7 +501,18 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             schObj.notes = theNotes.text!
             if selectClosingDate.text != "Not Set" {
                 schObj.confirmedDate = GlobalFunctions().dateFromShortDateString(selectClosingDate.text!)
-                schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
+                if PFUser.currentUser()?.username != nil {
+                    schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
+                } else {
+                    do {
+                        try PFUser.currentUser()?.fetch()
+                        
+                        schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
+                    } catch {
+                        self.displayError("Error", message: "There was an error saving with the user infromation, please try again.")
+                    }
+                }
+                
             } else {
                 schObj.confrimed = false
                 schObj.removeObjectForKey("confrimedBy")
@@ -549,13 +560,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBAction func cancelButton(sender: AnyObject) {
         AddNewScheduleObjects.scheduledObject = nil
         self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func displayError(title: String, message : String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okButton = UIAlertAction(title: "Oops", style: .Default, handler: nil)
-        alert.addAction(okButton)
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func segmentControl(selected : Int) -> String {

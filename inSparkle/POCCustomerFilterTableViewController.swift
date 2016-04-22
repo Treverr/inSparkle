@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class POCCustomerFilterTableViewController: UITableViewController {
+class POCAdminTableViewController: UITableViewController {
     
     var filters = POCReportFilters.filter
 

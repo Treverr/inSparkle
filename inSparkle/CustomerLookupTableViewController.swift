@@ -164,6 +164,9 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
                 NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnAddEditWorkOrder", object: nil)
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
+            if fromVC == "More" {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
     }
     

@@ -425,3 +425,14 @@ extension UINavigationController {
         vc.navigationBar.barStyle = UIBarStyle.Black
     }
 }
+
+extension UIViewController {
+    
+    func displayError(title: String, message : String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let okButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+        alert.addAction(okButton)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
+}

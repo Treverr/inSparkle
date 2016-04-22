@@ -62,7 +62,7 @@
                 <viewControllerPlaceholder storyboardName="ChemCheck" id="BEx-44-FaO" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WyH-bL-wpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="875.5" y="1063"/>
+            <point key="canvasLocation" x="853.5" y="1162"/>
         </scene>
         <!--TimeClock-->
         <scene sceneID="Gbt-VK-335">
@@ -72,7 +72,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HUk-Y4-Zh3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941" y="1143"/>
+            <point key="canvasLocation" x="849" y="1094"/>
         </scene>
         <!--Admin-->
         <scene sceneID="azb-dJ-6zy">
@@ -80,7 +80,7 @@
                 <viewControllerPlaceholder storyboardName="Admin" id="nrI-7n-Vtw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PhE-M1-rBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941.5" y="1236"/>
+            <point key="canvasLocation" x="836.5" y="959"/>
         </scene>
         <!--PDFLocker-->
         <scene sceneID="KG7-lQ-5kc">
@@ -88,7 +88,7 @@
                 <viewControllerPlaceholder storyboardName="PDFLocker" id="vhB-RX-bN8" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxd-Sg-laV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="918.5" y="1340"/>
+            <point key="canvasLocation" x="849.5" y="1239"/>
         </scene>
         <!--SparkleConnect-->
         <scene sceneID="kHe-mp-S1u">
@@ -96,7 +96,15 @@
                 <viewControllerPlaceholder storyboardName="SparkleConnect" id="iML-1L-0mI" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjD-Hb-ElJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="905.5" y="1459"/>
+            <point key="canvasLocation" x="865.5" y="1312"/>
+        </scene>
+        <!--CustomerLookup-->
+        <scene sceneID="nep-gC-Bt7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CustomerLookup" id="ITY-n1-LaY" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rLw-D5-MRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="869" y="1380"/>
         </scene>
         <!--More-->
         <scene sceneID="78d-uS-uK7">
@@ -203,8 +211,32 @@
                                     <segue destination="iML-1L-0mI" kind="presentation" modalPresentationStyle="formSheet" id="CbX-hb-CPz"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logoutCell" textLabel="fqY-Pb-FMK" style="IBUITableViewCellStyleDefault" id="APW-gX-2mQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="customerLookup" textLabel="HG5-K1-6bI" imageView="zra-Qk-ZZ8" style="IBUITableViewCellStyleDefault" id="bWJ-Yb-HZv">
                                 <rect key="frame" x="0.0" y="290" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWJ-Yb-HZv" id="02f-sN-7SB">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Customer Lookup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HG5-K1-6bI">
+                                            <rect key="frame" x="64" y="0.0" width="501" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Customer Search" id="zra-Qk-ZZ8">
+                                            <rect key="frame" x="15" y="4" width="34" height="34"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="ITY-n1-LaY" kind="show" id="4lx-oD-XI9"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logoutCell" textLabel="fqY-Pb-FMK" style="IBUITableViewCellStyleDefault" id="APW-gX-2mQ">
+                                <rect key="frame" x="0.0" y="334" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="APW-gX-2mQ" id="Bcw-1l-PHQ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -221,7 +253,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="saCell" textLabel="x32-iE-nik" style="IBUITableViewCellStyleDefault" id="LMu-Bv-Jhh">
-                                <rect key="frame" x="0.0" y="334" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="378" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LMu-Bv-Jhh" id="jOZ-vv-RgQ">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -349,10 +381,38 @@
             </objects>
             <point key="canvasLocation" x="1913" y="-538"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="9oH-Gc-Yka">
+            <objects>
+                <tableViewController id="1CC-vr-QmV" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="N7q-AA-vFX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="q3N-is-QTd">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q3N-is-QTd" id="sg8-pR-BtZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1CC-vr-QmV" id="60c-Uq-Gam"/>
+                            <outlet property="delegate" destination="1CC-vr-QmV" id="SC2-Dh-1nT"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FCK-BX-ceI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="Administrator" width="22" height="22"/>
         <image name="Chemical Checkout Report" width="34" height="34"/>
+        <image name="Customer Search" width="34" height="34"/>
         <image name="Flash On" width="22" height="22"/>
         <image name="Messages Filled" width="25" height="25"/>
         <image name="Messages Unfilled" width="25" height="25"/>

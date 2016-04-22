@@ -6,19 +6,19 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Customer Filter Table View Controller-->
+        <!--Admin Table View Controller-->
         <scene sceneID="Cg6-QJ-I1n">
             <objects>
-                <tableViewController id="yrJ-rY-Bz0" customClass="POCCustomerFilterTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="yrJ-rY-Bz0" customClass="POCAdminTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="uPZ-8M-ecC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection id="ynO-9I-8GM">
+                            <tableViewSection headerTitle="Reports" id="ynO-9I-8GM">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="57R-Vw-vZr" imageView="sEG-C5-JbG" style="IBUITableViewCellStyleDefault" id="T1F-jq-GHr">
-                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T1F-jq-GHr" id="Q2a-gm-aaF">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -40,6 +40,31 @@
                                         <connections>
                                             <segue destination="NZH-EJ-MBP" kind="show" identifier="allCustomers" id="DIw-n7-Spm"/>
                                         </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="View" id="PAJ-V7-7FO">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="aFY-qf-Mgz" imageView="uPT-wj-O9f" style="IBUITableViewCellStyleDefault" id="1w3-Jx-Vls">
+                                        <rect key="frame" x="0.0" y="209" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1w3-Jx-Vls" id="w5r-Sj-BaU">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Cancelled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aFY-qf-Mgz">
+                                                    <rect key="frame" x="64" y="0.0" width="501" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Cancelled POC" id="uPT-wj-O9f">
+                                                    <rect key="frame" x="15" y="4" width="34" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -131,7 +156,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4mf-8D-OfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1999" y="444"/>
+            <point key="canvasLocation" x="1997" y="154"/>
         </scene>
         <!--Active Inactive All Filter Table View Controller-->
         <scene sceneID="JyV-2E-0u0">
@@ -413,6 +438,7 @@
         <image name="Active State" width="34" height="34"/>
         <image name="All Customers" width="34" height="34"/>
         <image name="All States" width="34" height="34"/>
+        <image name="Cancelled POC" width="34" height="34"/>
         <image name="Inactive State" width="34" height="34"/>
         <image name="Pool Closed" width="34" height="34"/>
         <image name="Pool Open" width="34" height="34"/>
