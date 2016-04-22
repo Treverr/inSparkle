@@ -143,20 +143,22 @@ class MessagesTableViewController: UITableViewController {
             self.tableView.separatorStyle = .SingleLine
             return 1
         } else {
-            if EmployeeData.universalEmployee.messages  {
-                return 1
-            } else {
-                self.searchBar.hidden = true
-                let messageLabel : UILabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-                messageLabel.text = "Access Denied" + "\n\nYou do not have access to view messages."
-                messageLabel.textColor = UIColor.blackColor()
-                messageLabel.numberOfLines = 0
-                messageLabel.textAlignment = .Center
-                messageLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
-                messageLabel.sizeToFit()
-                
-                self.tableView.backgroundView = messageLabel
-                self.tableView.separatorStyle = .None
+            if PFUser.currentUser() != nil && EmployeeData.universalEmployee != nil {
+                if EmployeeData.universalEmployee.messages {
+                    return 1
+                } else {
+                    self.searchBar.hidden = true
+                    let messageLabel : UILabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+                    messageLabel.text = "Access Denied" + "\n\nYou do not have access to view messages."
+                    messageLabel.textColor = UIColor.blackColor()
+                    messageLabel.numberOfLines = 0
+                    messageLabel.textAlignment = .Center
+                    messageLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
+                    messageLabel.sizeToFit()
+                    
+                    self.tableView.backgroundView = messageLabel
+                    self.tableView.separatorStyle = .None
+                }
             }
             return 0
         }

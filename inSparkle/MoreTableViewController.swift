@@ -93,6 +93,8 @@ class MoreTableViewController: UITableViewController {
                 cell = self.tableView.dequeueReusableCellWithIdentifier("saCell")!
                 cell.textLabel?.text = specialAccess[indexPath.row]
                 cell.accessoryType = .DisclosureIndicator
+
+                
                 switch specialAccess[indexPath.row] {
                 case "Manage Users and Employees":
                     cell.imageView?.image = UIImage(named: "Manage Users")
