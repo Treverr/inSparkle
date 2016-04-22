@@ -780,7 +780,7 @@
 				C9CC66A41C0D0E6D0000EDE6 /* Schedule */,
 				C9CC66A31C0D0E500000EDE6 /* SOI */,
 				C9A37B741BFE49C200F9A55A /* Third Party */,
-				C9E511F11BFABC8D0030AA98 /* Onboarding */,
+				C9E511F11BFABC8D0030AA98 /* Log-In */,
 				C94367041BF719D50066D155 /* Utilities */,
 				C9C1929B1BF64E0C00862F52 /* Frameworks */,
 				C99D3E421BF5BD3700D30F96 /* AppDelegate.swift */,
@@ -939,7 +939,7 @@
 			name = More;
 			sourceTree = "<group>";
 		};
-		C9E511F11BFABC8D0030AA98 /* Onboarding */ = {
+		C9E511F11BFABC8D0030AA98 /* Log-In */ = {
 			isa = PBXGroup;
 			children = (
 				C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */,
@@ -947,7 +947,7 @@
 				C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */,
 				C9E511F61BFAC4D60030AA98 /* Assets */,
 			);
-			name = Onboarding;
+			name = "Log-In";
 			sourceTree = "<group>";
 		};
 		C9E511F61BFAC4D60030AA98 /* Assets */ = {

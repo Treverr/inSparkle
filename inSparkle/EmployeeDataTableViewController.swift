@@ -187,8 +187,9 @@ class EmployeeDataTableViewController: UITableViewController {
                     if error == nil {
                         if userFound?.count == 1 {
                             userID = userFound?.first?.objectId
-                            CloudCode.DeleteUser(userID, completion: { (complete) in
+                            CloudCode.DisableEnableUser(userID, enabled: false, completion: { (complete) in
                                 if complete {
+                                    
                                 }
                             })
                         }
@@ -196,8 +197,6 @@ class EmployeeDataTableViewController: UITableViewController {
                 })
                 self.employeeObject?.removeObjectForKey("pinNumber")
                 self.employeeObject?.active = false
-                self.employeeObject.removeObjectForKey("userPointer")
-                self.employeeObject.removeObjectForKey("roleType")
                 self.employeeObject.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
                     if success {
                             self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
@@ -258,24 +257,37 @@ class EmployeeDataTableViewController: UITableViewController {
                             }
                             
                             if self.userLoginSwitch.on {
-                                CloudCode.CreateNewUser(self.userNameTextField.text!, password: pinText.text!, emailAddy: self.emailAddressTextField.text!, adminStatus: self.adminSwitch.on, empID: self.employeeObject.objectId!, completion: { (isComplete, objectID) in
-                                    if isComplete {
-                                        let user : PFUser!
-                                        do {
-                                            user = try PFUser.query()!.getObjectWithId(objectID) as! PFUser
-                                            self.employeeObject.userPoint = user
-                                            self.employeeObject.saveInBackground()
-                                        } catch {
-                                            
+                                if self.employeeObject.userPoint == nil {
+                                    CloudCode.CreateNewUser(self.userNameTextField.text!, password: pinText.text!, emailAddy: self.emailAddressTextField.text!, adminStatus: self.adminSwitch.on, empID: self.employeeObject.objectId!, completion: { (isComplete, objectID) in
+                                        if isComplete {
+                                            let user : PFUser!
+                                            do {
+                                                user = try PFUser.query()!.getObjectWithId(objectID) as! PFUser
+                                                self.employeeObject.userPoint = user
+                                                self.employeeObject.saveInBackground()
+                                            } catch {
+                                                
+                                            }
+                                            let successAlert = UIAlertController(title: "Created", message: "The user has been created, the password is the PIN number for the employee. The employee can reset this by tapping 'Forgot Password' on the main log-in screen", preferredStyle: .Alert)
+                                            let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
+                                                self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
+                                            })
+                                            successAlert.addAction(okayButton)
+                                            self.presentViewController(successAlert, animated: true, completion: nil)
                                         }
-                                        let successAlert = UIAlertController(title: "Created", message: "The user has been created, the password is the PIN number for the employee. The employee can reset this by tapping 'Forgot Password' on the main log-in screen", preferredStyle: .Alert)
-                                        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
-                                            self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
-                                        })
-                                        successAlert.addAction(okayButton)
-                                        self.presentViewController(successAlert, animated: true, completion: nil)
-                                    }
-                                })
+                                    })
+                                } else {
+                                    CloudCode.DisableEnableUser(self.employeeObject.userPoint!.objectId!, enabled: true, completion: { (complete) in
+                                        if complete {
+                                            let enabledUser = UIAlertController(title: "Enabled", message: "The user has been restored, if the employee does not remember the password they can reset it on the log-in screen", preferredStyle: .Alert)
+                                            let okay = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
+                                                self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
+                                            })
+                                            enabledUser.addAction(okay)
+                                            self.presentViewController(enabledUser, animated: true, completion: nil)
+                                        }
+                                    })
+                                }
                             }
                         } else {
                             let errorAlert = UIAlertController(title: "PIN", message: "PIN number is in use, please pick a different one", preferredStyle: .Alert)

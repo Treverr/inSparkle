@@ -50,9 +50,9 @@ class CloudCode {
     
     class func UpdateUserAdminStatus(username : String, adminStatus : Bool, alert : UIAlertController, completion : (complete : Bool) -> Void) {
         let parameters = [
-        "username" : username,
-        "adminStatus" : adminStatus,
-        ]
+            "username" : username,
+            "adminStatus" : adminStatus,
+            ]
         
         do {
             try PFCloud.callFunctionInBackground("modifyAdminStatus", withParameters: parameters as [NSObject : AnyObject], block: { (response : AnyObject?, error : NSError?) in
@@ -66,9 +66,9 @@ class CloudCode {
     
     class func UpdateUserInfo(username : String, email : String, objectId : String, completion : (isComplete : Bool) -> Void) {
         let params = [
-        "username" : username,
-        "emailAddy" : email,
-        "objId" : objectId
+            "username" : username,
+            "emailAddy" : email,
+            "objId" : objectId
         ]
         
         do {
@@ -84,7 +84,7 @@ class CloudCode {
         let params = [
             "objId" : objId,
             "specAccess" : specialAccesses,
-        ]
+            ]
         
         do {
             try PFCloud.callFunctionInBackground("UpdateUserSpecialAccess", withParameters: params, block: { (response : AnyObject?, error : NSError?) in
@@ -104,7 +104,8 @@ class CloudCode {
             "emailAddy" : emailAddy,
             "adminStatus" : adminStatus,
             "empID" : empID,
-        ]
+            "enabled" : true
+            ]
         
         do {
             PFCloud.callFunctionInBackground("CreateNewUser", withParameters: params as [NSObject : AnyObject], block: { (response : AnyObject?, error : NSError?) in
@@ -115,15 +116,16 @@ class CloudCode {
         }
     }
     
-    class func DeleteUser(userObjID : String, completion : (complete : Bool) -> Void) {
-       let params = [
-        "objId" : userObjID
+    class func DisableEnableUser (userObjID : String, enabled : Bool, completion : (complete : Bool) -> Void) {
+        let params = [
+            "objId" : userObjID,
+            "enabled" : enabled
         ]
         
         do {
-            PFCloud.callFunctionInBackground("DeleteUser", withParameters: params, block: { (response : AnyObject?, error : NSError?) in
+            PFCloud.callFunctionInBackground("UpdateUserStatus", withParameters: params as [NSObject : AnyObject], block: { (response : AnyObject?, error : NSError?) in
                 if error == nil {
-                   completion(complete: true)
+                    completion(complete: true)
                 }
             })
         }
@@ -251,7 +253,7 @@ class CloudCode {
             "date1" : dateOne,
             "date2" : dateTwo,
             "totalHours" : String(totalHours)
-            ]
+        ]
         
         do {
             try PFCloud.callFunction("TimeAwayCancelEmail", withParameters: params)

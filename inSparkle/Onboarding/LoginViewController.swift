@@ -137,26 +137,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             PFUser.logInWithUsernameInBackground(username!, password: password!, block: { (user, error) -> Void in
                 spinner.stopAnimating()
                 
+                
                 if ((user) != nil) {
                     
-                    self.closeLogin()
-                    
-                    do {
-                        try PFUser.currentUser()?.fetch()
-                        print(PFUser.currentUser())
-                        if PFUser.currentUser() != nil {
-                            let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
-                            do {
-                                try employee!.fetch()
-                            } catch {
+                    if (user!.objectForKey("isActive") as! Bool == true ) {
+                        self.closeLogin()
+                        
+                        do {
+                            try PFUser.currentUser()?.fetch()
+                            print(PFUser.currentUser())
+                            if PFUser.currentUser() != nil {
+                                let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
+                                do {
+                                    try employee!.fetch()
+                                } catch {
+                                }
+                                
+                                EmployeeData.universalEmployee = employee
+                                
                             }
-                            
-                            EmployeeData.universalEmployee = employee
-                            
+                        } catch {
+                            print("Error")
                         }
-                    } catch {
-                        print("Error")
+                    } else {
+                        PFUser.logOut()
+                        self.passwordField.text = nil
+                        let notActive = Banner(title: "Your account has been disabled, please see your manager.", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+                        notActive.dismissesOnTap = true
+                        notActive.show(duration: 5.0)
                     }
+                    
+                    
                     
                 } else {
                     let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
