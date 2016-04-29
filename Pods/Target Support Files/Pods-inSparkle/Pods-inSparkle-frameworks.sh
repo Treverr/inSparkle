@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-inSparkle/BRYXBanner.framework"
+  install_framework "Pods-inSparkle/Bolts.framework"
   install_framework "Pods-inSparkle/CalendarView.framework"
   install_framework "Pods-inSparkle/DropDown.framework"
   install_framework "Pods-inSparkle/FXImageView.framework"
@@ -93,6 +94,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-inSparkle/MIBadgeButton_Swift.framework"
   install_framework "Pods-inSparkle/MZAppearance.framework"
   install_framework "Pods-inSparkle/MZFormSheetPresentationController.framework"
+  install_framework "Pods-inSparkle/Parse.framework"
   install_framework "Pods-inSparkle/PhoneNumberKit.framework"
   install_framework "Pods-inSparkle/RSBarcodes_Swift.framework"
   install_framework "Pods-inSparkle/SimpleAlert.framework"
@@ -104,6 +106,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-inSparkle/BRYXBanner.framework"
+  install_framework "Pods-inSparkle/Bolts.framework"
   install_framework "Pods-inSparkle/CalendarView.framework"
   install_framework "Pods-inSparkle/DropDown.framework"
   install_framework "Pods-inSparkle/FXImageView.framework"
@@ -112,6 +115,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-inSparkle/MIBadgeButton_Swift.framework"
   install_framework "Pods-inSparkle/MZAppearance.framework"
   install_framework "Pods-inSparkle/MZFormSheetPresentationController.framework"
+  install_framework "Pods-inSparkle/Parse.framework"
   install_framework "Pods-inSparkle/PhoneNumberKit.framework"
   install_framework "Pods-inSparkle/RSBarcodes_Swift.framework"
   install_framework "Pods-inSparkle/SimpleAlert.framework"

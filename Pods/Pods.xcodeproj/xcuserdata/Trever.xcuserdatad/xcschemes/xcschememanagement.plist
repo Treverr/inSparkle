@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CalendarView-CalendarView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -55,6 +60,11 @@
 			<false/>
 		</dict>
 		<key>MZFormSheetPresentationController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -117,12 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3634ABA74A6F41DB3C7516A583373EE8</key>
+		<key>2C8AA1BAF35413BDB954A1DF93576ED1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3D82F66934621BA916760721C2494FDF</key>
+		<key>3634ABA74A6F41DB3C7516A583373EE8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,12 +142,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>424743B5C87EB3EA93B1FDB39D4A0B1C</key>
+		<key>5632AE51791C2475C51CEDA5A88F50BF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5632AE51791C2475C51CEDA5A88F50BF</key>
+		<key>5C738A0F1CE1734D5F27F20B70CD4DBA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,7 +162,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>76B68C5CECE7A65E9C15D768CFABC5D7</key>
+		<key>767AB3AC13BE89C6BFDA39C9B3B65D2A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A24F8ABBD56594306C9352C75B2411A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -172,6 +187,21 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AFB12F98D5D92725A0F25F1EABBCBD14</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B272B33F162D6E5C3510BA50ECF2684B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B9649BD6BFE42A411D5A8D478D09859F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BA235DB506141ED71CBF9393C507EF9F</key>
 		<dict>
 			<key>primary</key>
@@ -182,17 +212,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4837A59E739A9356E275808A1D99B4C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D805370D006AA5E7A1C0CBCE42A2FF64</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E24327617725A76462D1E416FB8058B3</key>
+		<key>E0923BFAEEB568A96F147A58DA1FC197</key>
 		<dict>
 			<key>primary</key>
 			<true/>

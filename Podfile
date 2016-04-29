@@ -20,6 +20,7 @@ pod 'DropDown'
 pod 'MobihelpSDK'
 pod 'SwiftSpinner'
 pod 'IQKeyboardManagerSwift'
+pod 'Parse'
 
 end
 
