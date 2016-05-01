@@ -9,7 +9,7 @@
 import Foundation
 import Parse
 
-class SOIObject: PFObject {
+class SOIObject: PFObject, PFSubclassing {
     
     class func parseClassName() -> String! {
         return "SOI"
@@ -17,7 +17,7 @@ class SOIObject: PFObject {
     
     var customerName : String {
         get { return objectForKey("customerName") as! String }
-        set { setObject(newValue, forKey: "customerName") }
+        set { setObject(newValue.capitalizedString, forKey: "customerName") }
     }
     
     var date : NSDate? {

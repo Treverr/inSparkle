@@ -47,6 +47,19 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         
     }
     
+    func capCustomerName() {
+        
+        let query = SOIObject.query()
+        query?.findObjectsInBackgroundWithBlock({ (objects : [PFObject]?, error : NSError?) in
+            for obj in objects! {
+                let soi = obj as! SOIObject
+                soi.customerName = soi.customerName.capitalizedString
+            }
+            PFObject.saveAllInBackground(objects)
+        })
+        
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return objects.count
     }
@@ -231,7 +244,7 @@ extension SOITableViewController : UISearchBarDelegate {
             self.objects.removeAllObjects()
             let query = PFQuery(className: "SOI")
             query.whereKey("isActive", equalTo: true)
-            query.whereKey("customerName", containsString: searchBar.text!)
+            query.whereKey("customerName", containsString: searchBar.text!.capitalizedString)
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock { (foundObjects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {

@@ -130,10 +130,10 @@ extension WorkOrdersTableViewController : UISearchBarDelegate {
     
     func searchForFilter(searchText : String) {
         let searchCustomerName = WorkOrders.query()
-        searchCustomerName?.whereKey("customerName", containsString: searchText)
+        searchCustomerName?.whereKey("customerName", containsString: searchText.capitalizedString)
         
         let searchCustomerAddy = WorkOrders.query()
-        searchCustomerAddy?.whereKey("customerAddress", containsString: searchText)
+        searchCustomerAddy?.whereKey("customerAddress", containsString: searchText.capitalizedString)
         
         let searchQuery = PFQuery.orQueryWithSubqueries([searchCustomerName!, searchCustomerAddy!])
         searchQuery.findObjectsInBackgroundWithBlock { (foundForSearch : [PFObject]?, error : NSError?) in
