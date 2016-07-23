@@ -461,9 +461,12 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         })
     }
     
+    let calendar = NSCalendar.currentCalendar()
+    
     @IBAction func datePromisedPickerAction(sender: AnyObject) {
-        tripOneArrivePicker.minimumDate = wordOrderDatePicker.date
-        tripTwoArrivePicker.minimumDate = wordOrderDatePicker.date
+        let minDate = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: wordOrderDatePicker.date, options: NSCalendarOptions())
+        tripOneArrivePicker.minimumDate = minDate
+        tripTwoArrivePicker.minimumDate = minDate
         dateLabel.textColor = UIColor.blackColor()
         workOrderDatePickerChanged()
     }
@@ -581,10 +584,81 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     }
     
     @IBAction func generatePDF(sender: AnyObject) {
-        let sb = UIStoryboard(name: "WorkOrderPDFTemplate", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("workOrderPDF") as! WorkOrderPDFTemplateViewController
-        vc.workOrderObject = self.workOrderObject
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.saveWithoutSeg()
+    }
+    
+    func saveWithoutSeg() {
+        if customerNameTextField.text!.isEmpty || customerAddressTextField.text!.isEmpty || customerPhoneTextField.text!.isEmpty {
+            let alert = UIAlertController(title: "Missing Customer Data", message: "There seems to be required data missing from the customer infromation, please check and try again.", preferredStyle: .Alert)
+            let okButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            alert.addAction(okButton)
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            if workOrderObject == nil {
+                workOrderObject = WorkOrders()
+            }
+            workOrderObject?.customerName = customerNameTextField.text
+            workOrderObject?.customerAddress = customerAddressTextField.text
+            workOrderObject?.customerPhone = customerPhoneTextField.text
+            if customerAltPhoneTextField.text!.isEmpty == false {
+                workOrderObject?.customerAltPhone = customerAltPhoneTextField.text
+            }
+            workOrderObject?.date = GlobalFunctions().dateFromShortDateString(dateLabel.text!)
+            if techLabel.text != "name" {
+                workOrderObject?.technician = techLabel.text
+            }
+            if wtbpTextView.text.isEmpty == false {
+                workOrderObject?.workToBePerformed = wtbpTextView.text
+            }
+            if descOfWork.text.isEmpty == false {
+                workOrderObject?.descOfWork = descOfWork.text
+            }
+            if reccomendationTextView.text.isEmpty == false {
+                workOrderObject?.reccomendation = reccomendationTextView.text
+            }
+            if unitMake.text?.isEmpty == false {
+                workOrderObject?.unitMake = unitMake.text
+            }
+            if unitModel.text?.isEmpty == false {
+                workOrderObject?.unitModel = unitModel.text
+            }
+            if unitSerial.text?.isEmpty == false {
+                workOrderObject?.unitSerial = unitSerial.text
+            }
+            if self.parts != nil {
+                if self.parts.count == 0 {
+                    workOrderObject?.parts = []
+                } else {
+                    workOrderObject?.parts = self.parts
+                }
+            }
+            if self.labor != nil {
+                if self.labor.count == 0 {
+                    workOrderObject?.labor? = []
+                } else {
+                    workOrderObject?.labor = self.labor
+                }
+            }
+            if tripOneDateTimeArriveLabel.text != "date & time" {
+                workOrderObject?.tripOneArrive = GlobalFunctions().dateFromShortDateShortTime(tripOneDateTimeArriveLabel.text!)
+            }
+            if tripOneDateTimeDepartLabel.text != "date & time" {
+                workOrderObject?.tripOneDepart = GlobalFunctions().dateFromShortDateShortTime(tripOneDateTimeDepartLabel.text!)
+            }
+            if tripTwoDateTimeArriveLabel.text != "date & time" {
+                workOrderObject?.tripTwoArrive = GlobalFunctions().dateFromShortDateShortTime(tripTwoDateTimeArriveLabel.text!)
+            }
+            if tripTwoDateTimeDepartLabel.text != "date & time" {
+                workOrderObject?.tripTwoDepart = GlobalFunctions().dateFromShortDateShortTime(tripTwoDateTimeDepartLabel.text!)
+            }
+            workOrderObject?.status = statusLabel.text
+            workOrderObject?.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+                let sb = UIStoryboard(name: "WorkOrderPDFTemplate", bundle: nil)
+                let vc = sb.instantiateViewControllerWithIdentifier("workOrderPDF") as! WorkOrderPDFTemplateViewController
+                vc.workOrderObject = self.workOrderObject
+                self.presentViewController(vc, animated: true, completion: nil)
+            })
+        }
     }
     
     

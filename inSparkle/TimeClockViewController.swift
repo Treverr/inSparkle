@@ -8,8 +8,8 @@
 
 import UIKit
 import Parse
-import BRYXBanner
 import AVFoundation
+import BRYXBanner
 
 class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
 

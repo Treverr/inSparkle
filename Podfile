@@ -6,7 +6,6 @@ use_frameworks!
 
 pod 'RSBarcodes_Swift', '~> 0.1.4'
 pod "SimpleAlert"
-pod 'BRYXBanner'
 pod "SwiftGifOrigin"
 pod "CalendarView"
 pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_places_autocomplete'
@@ -21,14 +20,7 @@ pod 'MobihelpSDK'
 pod 'SwiftSpinner'
 pod 'IQKeyboardManagerSwift'
 pod 'Parse'
-
-end
-
-target 'inSparkleTests' do
-
-end
-
-target 'inSparkleUITests' do
+pod 'BRYXBanner'
 
 end
 

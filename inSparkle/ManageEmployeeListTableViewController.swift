@@ -56,15 +56,17 @@ class ManageEmployeeListTableViewController: UITableViewController {
         
         let employeeName = employeeList[row].firstName + " " + employeeList[row].lastName
         
+        print(employeeList[row].active)
+        
         if employeeList[row].active {
             cell.textLabel?.text = employeeName
+            cell.textLabel?.font = UIFont.systemFontOfSize(UIFont.systemFontSize())
+            cell.textLabel?.textColor = UIColor.blackColor()
         } else {
             cell.textLabel?.text = employeeName
             cell.textLabel?.font = UIFont.italicSystemFontOfSize(UIFont.systemFontSize())
             cell.textLabel?.textColor = UIColor.lightGrayColor()
         }
-        
-        
         
         return cell
     }
