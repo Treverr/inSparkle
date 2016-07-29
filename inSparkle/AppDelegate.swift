@@ -14,6 +14,7 @@ import Crashlytics
 import CoreLocation
 import IQKeyboardManagerSwift
 import BRYXBanner
+import SystemConfiguration.CaptiveNetwork
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -26,12 +27,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        if getSSID() == "Sparkle Pools" {
+            print(getSSID())
+            let configuration = ParseClientConfiguration {
+                $0.applicationId = "inSparkle"
+                $0.clientKey = ""
+                $0.server = "http://10.0.1.9:1337/parse"
+            }
+            Parse.initializeWithConfiguration(configuration)
+        } else {
+            print(getSSID())
+            let configuration = ParseClientConfiguration {
+                $0.applicationId = "inSparkle"
+                $0.clientKey = ""
+                $0.server = "http://insparklepools.com:1337/parse"
+            }
+            Parse.initializeWithConfiguration(configuration)
+        }
+        
+        
+        
         Fabric.with([Crashlytics.self])
         
         registerParseSubclasses()
-        
-        Parse.setApplicationId("M8DKwA6ifp1JJlHmSjpBL0M66tYq710f9xEnFcrv",
-                               clientKey: "cy4fwRWmKVdFw8LSCCjYIflbH2yP6qCjWQnoAMzH")
         
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -272,7 +290,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             currentView?.presentViewController(viewController, animated: true, completion: nil)
         }
     }
+    
+    func getSSID() -> String {
+        
+        var currentSSID = ""
+        
+        if let interfaces:CFArray! = CNCopySupportedInterfaces() {
+            for i in 0..<CFArrayGetCount(interfaces){
+                let interfaceName: UnsafePointer<Void> = CFArrayGetValueAtIndex(interfaces, i)
+                let rec = unsafeBitCast(interfaceName, AnyObject.self)
+                let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)")
+                if unsafeInterfaceData != nil {
+                    let interfaceData = unsafeInterfaceData! as Dictionary!
+                    currentSSID = interfaceData["SSID"] as! String
+                }
+            }
+        }
+        return currentSSID
+    }
 }
+
+
 
 
 

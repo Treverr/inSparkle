@@ -154,7 +154,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/SOITableViewController.swift"
-                  timestampString = "490937651.311222"
+                  timestampString = "491493409.903456"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "53"
@@ -169,7 +169,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/SOITableViewController.swift"
-                  timestampString = "490937651.31131"
+                  timestampString = "491493409.903544"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "54"
@@ -224,6 +224,38 @@
             startingLineNumber = "54"
             endingLineNumber = "54"
             landmarkName = "capCustomerName()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/AppDelegate.swift"
+            timestampString = "491493399.011792"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/AppDelegate.swift"
+            timestampString = "491493399.964412"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
