@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8B08B0331B34C53B6E25F431'
+               BlueprintIdentifier = '41638D9B170F774D9F650F63B192526A'
                BlueprintName = 'CalendarView-CalendarView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'CalendarView.bundle'>

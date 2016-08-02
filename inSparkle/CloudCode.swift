@@ -14,38 +14,47 @@ class CloudCode {
     class func AddUpdateCustomerRecord(accountNumber : String?, name : String, address : String, phoneNumber : String) {
         if accountNumber != nil {
             
-            do {
-                try PFCloud.callFunction("AddUpdateCustomerRecord", withParameters: [
-                    "accountNumber" : accountNumber!,
-                    "name1" : name,
-                    "FullAddress" : address,
-                    "cxPhoneNumber" : phoneNumber
-                    ])
-            } catch { }
+            PFCloud.callFunctionInBackground("AddUpdateCustomerRecord", withParameters: [
+                "accountNumber" : accountNumber!,
+                "name1" : name,
+                "FullAddress" : address,
+                "cxPhoneNumber" : phoneNumber
+                ], block: { (result, error) in
+                    if error == nil {
+                        print("Success")
+                    }
+            })
         } else {
-            do {
-                try PFCloud.callFunction("AddUpdateCustomerRecord", withParameters: [
-                    "name1" : name,
-                    "FullAddress" : address,
-                    "cxPhoneNumber" : phoneNumber
-                    ])
-            } catch { }
+            
+            PFCloud.callFunctionInBackground("AddUpdateCustomerRecord", withParameters: [
+                "name1" : name,
+                "FullAddress" : address,
+                "cxPhoneNumber" : phoneNumber
+                ], block: { (result, error) in
+                    if error == nil {
+                        print("Success")
+                    }
+            })
         }
     }
     
     class func AlertOfCancelation(name : String, address : String, phone : String, reason : String, cancelBy : String, theDates : String, theType : String) {
-        do {
-            try PFCloud.callFunction("AlertOfCancelation", withParameters: [
-                "cxname" : name,
-                "FullAddress" : address,
-                "cxPhoneNumber" : phone,
-                "cancelationReason" : reason,
-                "whoCancel" : cancelBy,
-                "theDates" : theDates,
-                "theType" : theType,
-                ])
-        } catch { }
         
+        let params = [
+            "cxname" : name,
+            "FullAddress" : address,
+            "cxPhoneNumber" : phone,
+            "cancelationReason" : reason,
+            "whoCancel" : cancelBy,
+            "theDates" : theDates,
+            "theType" : theType,
+            ]
+        
+        PFCloud.callFunctionInBackground("AlertOfCancelation", withParameters: params) { (result, error) in
+            if error == nil {
+                
+            }
+        }
     }
     
     class func UpdateUserAdminStatus(username : String, adminStatus : Bool, alert : UIAlertController, completion : (complete : Bool) -> Void) {
@@ -158,10 +167,10 @@ class CloudCode {
             "date2" : toDate
         ]
         
-        do {
-            try PFCloud.callFunction("VacationApproved", withParameters: params)
-        } catch {
-            
+        PFCloud.callFunctionInBackground("VacationApproved", withParameters: params) { (result, error) in
+            if error == nil {
+                
+            }
         }
     }
     
@@ -178,12 +187,11 @@ class CloudCode {
             "type" : type
         ]
         
-        do {
-            try PFCloud.callFunction("VacationReturned", withParameters: params)
-        } catch {
-            
+        PFCloud.callFunctionInBackground("VacationReturned", withParameters: params) { (result, error) in
+            if error == nil {
+                print(error)
+            }
         }
-        
     }
     
     class func SendUnpaidTimeAwayApprovedEmail(email : String, dates : String) {
@@ -196,9 +204,11 @@ class CloudCode {
             "type" : "Unpaid Time Away"
         ]
         
-        do {
-            try PFCloud.callFunction("UnpaidTimeAwayApproved", withParameters: params)
-        } catch { }
+        PFCloud.callFunctionInBackground("UnpaidTimeAwayApproved", withParameters: params) { (result, error) in
+            if error == nil {
+                
+            }
+        }
     }
     
     class func SendNotificationOfNewTimeAwayRequest(requestFor : String, type : String, date1 : NSDate, date2 : NSDate, totalHours : Double) {
@@ -216,12 +226,11 @@ class CloudCode {
             "totalHours" : String(totalHours)
         ]
         
-        do {
-            try PFCloud.callFunction("SendNewTimeAwayEmail", withParameters: params)
-        } catch {
-            
+        PFCloud.callFunctionInBackground("SendNewTimeAwayEmail", withParameters: params) { (result, error) in
+            if error == nil {
+                
+            }
         }
-        
     }
     
     class func SendWelcomeEmail(name : String, toEmail : String, emailAddress : String) {
@@ -232,12 +241,11 @@ class CloudCode {
             "emailAddy" : emailAddress
         ]
         
-        do {
-            try PFCloud.callFunction("SendWelcomeEmail", withParameters: params)
-        } catch {
-            
+        PFCloud.callFunctionInBackground("SendWelcomeEmail", withParameters: params) { (result, error) in
+            if error == nil {
+                
+            }
         }
-        
     }
     
     class func TimeAwayCancelEmail(employeeName : String, type : String, date1 : NSDate, date2 : NSDate, totalHours: Double) {
@@ -255,12 +263,12 @@ class CloudCode {
             "totalHours" : String(totalHours)
         ]
         
-        do {
-            try PFCloud.callFunction("TimeAwayCancelEmail", withParameters: params)
-        } catch { }
+        PFCloud.callFunctionInBackground("TimeAwayCancelEmail", withParameters: params) { (result, error) in
+            if error == nil {
+                
+            }
+        }
     }
-    
-    
 }
 
 

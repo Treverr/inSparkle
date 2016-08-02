@@ -8,12 +8,16 @@
 
 import UIKit
 import Parse
+import NVActivityIndicatorView
 
-class WorkOrdersTableViewController: UITableViewController {
+class WorkOrdersTableViewController: UITableViewController, NVActivityIndicatorViewable {
     
+    var loadingUI : NVActivityIndicatorView!
+    var loadingBackground = UIView()
     var theWorkOrders = [WorkOrders]()
     var filtered = [WorkOrders]()
     var searchActive = false
+    let loadSize = CGSize(width: 50, height: 50)
     
     @IBOutlet var searchBar : UISearchBar!
     
@@ -32,6 +36,21 @@ class WorkOrdersTableViewController: UITableViewController {
         if searchActive {
             searchForFilter(searchBar.text!)
         } else {
+            let x = (self.view.frame.size.width / 2)
+            let y = (self.view.frame.size.height / 2)
+            self.loadingUI = NVActivityIndicatorView(frame: CGRectMake(x, y, 100, 100))
+            self.loadingUI.center = CGPointMake(view.frame.size.width  / 2,
+                                           view.frame.size.height / 2)
+            self.loadingBackground.backgroundColor = UIColor.lightGrayColor()
+            self.loadingBackground.frame = CGRectMake(0, 0, 150, 150)
+            self.loadingBackground.center = (self.navigationController?.view.center)!
+            self.loadingBackground.layer.cornerRadius = 5
+            self.loadingBackground.layer.opacity = 0.5
+            self.navigationController?.view.addSubview(loadingBackground)
+            self.navigationController?.view.addSubview(loadingUI)
+            self.loadingUI.type = .BallRotateChase
+            self.loadingUI.color = UIColor.whiteColor()
+            self.loadingUI.startAnimation()
             getWorkOrders()
         }
     }
@@ -73,17 +92,15 @@ class WorkOrdersTableViewController: UITableViewController {
     }
     
     func getWorkOrders() {
-        self.theWorkOrders.removeAll()
-        
         let query = WorkOrders.query()
         query?.orderByDescending("date")
         query?.limit = 1000
         query?.findObjectsInBackgroundWithBlock({ (workOrders : [PFObject]?, error :NSError?) in
             if error == nil {
-                for order in workOrders! {
-                    self.theWorkOrders.append(order as! WorkOrders)
-                }
+                self.theWorkOrders = workOrders as! [WorkOrders]
                 self.tableView.reloadData()
+                self.loadingUI.stopAnimation()
+                self.loadingBackground.removeFromSuperview()
             }
         })
         

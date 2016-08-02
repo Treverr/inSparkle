@@ -21,6 +21,7 @@ pod 'SwiftSpinner'
 pod 'IQKeyboardManagerSwift'
 pod 'Parse'
 pod 'BRYXBanner'
+pod 'NVActivityIndicatorView'
 
 end
 

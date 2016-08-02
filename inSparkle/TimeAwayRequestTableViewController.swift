@@ -128,7 +128,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
             timeAway.timeCardDictionary = timeCardVacation
             timeAway.employee = EmployeeData.universalEmployee
             
-            if self.totalHours > employeeVacationHours {
+            if self.totalHours > employeeVacationHours && timeAway.type == "Vacation" {
                 let notEnoughTime = UIAlertController(title: "Insufficent Vacation Time", message: "You do not have enough vacation time, if you have pending vacation requests please cancel, reduce your request amount, or select 'Unpaid' for this request.", preferredStyle: .Alert)
                 let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
                 notEnoughTime.addAction(okayButton)

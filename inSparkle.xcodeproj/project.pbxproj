@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7152D5A8CCD5E65BA2403309 /* Pods_inSparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 411847EFD392F5F727796B8A /* Pods_inSparkle.framework */; };
+		A1E5EC61ACB2271D50D7CDA2 /* Pods_inSparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578343C5A28B70E501E29E5D /* Pods_inSparkle.framework */; };
 		C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */; };
 		C90340C61C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90340C51C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard */; };
 		C90340C81C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340C71C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift */; };
@@ -170,8 +170,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		411847EFD392F5F727796B8A /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		780D3CC7ECBD99D4953539B4 /* Pods-inSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.release.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.release.xcconfig"; sourceTree = "<group>"; };
+		578343C5A28B70E501E29E5D /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC4344A3ECAD5C96FD76DADB /* Pods-inSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.release.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.release.xcconfig"; sourceTree = "<group>"; };
 		C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPopViewController.swift; sourceTree = "<group>"; };
 		C90340C51C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChemicalCheckoutReportPDFTemplate.storyboard; sourceTree = "<group>"; };
 		C90340C71C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemCheckoutPDFReportTemplateViewController.swift; sourceTree = "<group>"; };
@@ -347,7 +347,7 @@
 		C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCalViewController.swift; sourceTree = "<group>"; };
 		C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmingAppointmentTableViewController.swift; sourceTree = "<group>"; };
 		C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = POCReport.storyboard; sourceTree = "<group>"; };
-		DFB671CF34700E590D95A655 /* Pods-inSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.debug.xcconfig"; sourceTree = "<group>"; };
+		E4C8DE9D128EAE6A12A87974 /* Pods-inSparkle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,30 +368,30 @@
 				C9C1928C1BF64DD100862F52 /* CoreGraphics.framework in Frameworks */,
 				C9C1928A1BF64DC900862F52 /* CFNetwork.framework in Frameworks */,
 				C9C192881BF64DBF00862F52 /* AudioToolbox.framework in Frameworks */,
-				7152D5A8CCD5E65BA2403309 /* Pods_inSparkle.framework in Frameworks */,
+				A1E5EC61ACB2271D50D7CDA2 /* Pods_inSparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		48389877081E5AAA4D42626A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DFB671CF34700E590D95A655 /* Pods-inSparkle.debug.xcconfig */,
-				780D3CC7ECBD99D4953539B4 /* Pods-inSparkle.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		90475D90352FAA03D0A61B3B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				C9FA4D581D19B1FA00EF15FA /* Bolts.framework */,
 				C96F79AA1BFC41AB00C13615 /* LocalAuthentication.framework */,
-				411847EFD392F5F727796B8A /* Pods_inSparkle.framework */,
+				578343C5A28B70E501E29E5D /* Pods_inSparkle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9567A752FDCDE531152834FD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E4C8DE9D128EAE6A12A87974 /* Pods-inSparkle.debug.xcconfig */,
+				AC4344A3ECAD5C96FD76DADB /* Pods-inSparkle.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		C90340CD1C722C9F0028F865 /* Chemical Checkout */ = {
@@ -652,8 +652,8 @@
 				C9A01EA11C8FAA5A002D75AA /* DocumentLocker */,
 				C9A01EAF1C8FAA5A002D75AA /* DocumentLockerFileProvider */,
 				C99D3E401BF5BD3700D30F96 /* Products */,
-				48389877081E5AAA4D42626A /* Pods */,
 				90475D90352FAA03D0A61B3B /* Frameworks */,
+				9567A752FDCDE531152834FD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -878,13 +878,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C99D3E671BF5BD3700D30F96 /* Build configuration list for PBXNativeTarget "inSparkle" */;
 			buildPhases = (
-				C639748D7D5C9E35F575B2AF /* Check Pods Manifest.lock */,
+				9FAC085E4CB586E76A7D2A03 /* [CP] Check Pods Manifest.lock */,
 				C99D3E3B1BF5BD3700D30F96 /* Sources */,
 				C99D3E3C1BF5BD3700D30F96 /* Frameworks */,
 				C99D3E3D1BF5BD3700D30F96 /* Resources */,
 				C9B5B44E1BF6772000650FC4 /* ShellScript */,
-				F17120345EF620486FA54E9B /* Embed Pods Frameworks */,
-				723CE4C0C1B4199F03ECCE41 /* Copy Pods Resources */,
+				7F54611C1AB18F7DE26427DD /* [CP] Embed Pods Frameworks */,
+				46530A22AE3E8DF27EE67F53 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -993,14 +993,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		723CE4C0C1B4199F03ECCE41 /* Copy Pods Resources */ = {
+		46530A22AE3E8DF27EE67F53 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1008,14 +1008,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C639748D7D5C9E35F575B2AF /* Check Pods Manifest.lock */ = {
+		7F54611C1AB18F7DE26427DD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9FAC085E4CB586E76A7D2A03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1035,21 +1050,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run bb9f228438400e05eeff9a4184baa75a30a9ea74 0c50bda97b33f1d934fba0ec283f8cb080b86c68a78653bd6087cd3e97b07f21";
-		};
-		F17120345EF620486FA54E9B /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1295,7 +1295,7 @@
 		};
 		C99D3E681BF5BD3700D30F96 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFB671CF34700E590D95A655 /* Pods-inSparkle.debug.xcconfig */;
+			baseConfigurationReference = E4C8DE9D128EAE6A12A87974 /* Pods-inSparkle.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1324,7 +1324,7 @@
 		};
 		C99D3E691BF5BD3700D30F96 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 780D3CC7ECBD99D4953539B4 /* Pods-inSparkle.release.xcconfig */;
+			baseConfigurationReference = AC4344A3ECAD5C96FD76DADB /* Pods-inSparkle.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
