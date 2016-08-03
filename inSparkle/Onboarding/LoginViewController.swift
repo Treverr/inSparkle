@@ -11,11 +11,15 @@ import AVKit
 import AVFoundation
 import Parse
 import BRYXBanner
+import NVActivityIndicatorView
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var kbHeight: CGFloat?
     var showUIKeyboard : Bool?
+    
+    var loadingUI : NVActivityIndicatorView!
+    var loadingBackground = UIView()
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -121,6 +125,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    func sparkleConnectAnimation() {
+        
+        let x = (self.view.frame.size.width / 2)
+        let y = (self.view.frame.size.height / 2)
+        
+        self.loadingBackground.backgroundColor = UIColor.blackColor()
+        self.loadingBackground.frame = CGRectMake(0, 0, 300, 125)
+        self.loadingBackground.center = self.view.center
+        self.loadingBackground.layer.cornerRadius = 5
+        self.loadingBackground.layer.opacity = 0.75
+        
+        self.loadingUI = NVActivityIndicatorView(frame: CGRectMake(x, y, 100, 50))
+        self.loadingUI.center = self.loadingBackground.center
+        
+        var label = UILabel()
+        label.frame = loadingBackground.frame
+        label.center = CGPointMake(self.loadingBackground.center.x, self.loadingBackground.center.y + 35)
+        label.text = "Connecting to SparkleConnect...."
+        label.textColor = UIColor.whiteColor()
+        label.textAlignment = .Center
+        
+        self.view.addSubview(loadingBackground)
+        self.view.addSubview(loadingUI)
+        self.view.addSubview(label)
+        
+        loadingUI.type = .BallBeat
+        loadingUI.color = UIColor.whiteColor()
+        loadingUI.startAnimation()
+        
+    }
+    
     @IBAction func loginAction(sender : AnyObject) {
         var username = self.usernameField.text?.lowercaseString
         var password = self.passwordField.text
@@ -133,6 +168,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             NSUserDefaults.standardUserDefaults().setValue(username!, forKey: "lastUsername")
             var spinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
             spinner.startAnimating()
+            
+            sparkleConnectAnimation()
+            
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
             
             PFUser.logInWithUsernameInBackground(username!, password: password!, block: { (user, error) -> Void in
                 spinner.stopAnimating()
@@ -175,6 +215,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     banner.show(duration: 5.0)
                 }
             })
+        }
         }
     }
     
