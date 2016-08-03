@@ -196,6 +196,14 @@ class SelectedDatesTimeAway : NSObject {
     
 }
 
+class PFConfigs : NSObject {
+    
+    static var config : PFConfig!
+    
+    static var globalMessage : String!
+    
+}
+
 class Barcode {
     
     class func fromString(string : String) -> UIImage? {

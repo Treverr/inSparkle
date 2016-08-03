@@ -20,6 +20,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var loadingUI : NVActivityIndicatorView!
     var loadingBackground = UIView()
+    var label = UILabel()
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -138,8 +139,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.loadingUI = NVActivityIndicatorView(frame: CGRectMake(x, y, 100, 50))
         self.loadingUI.center = self.loadingBackground.center
-        
-        var label = UILabel()
+
         label.frame = loadingBackground.frame
         label.center = CGPointMake(self.loadingBackground.center.x, self.loadingBackground.center.y + 35)
         label.text = "Connecting to SparkleConnect...."
@@ -205,6 +205,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         let notActive = Banner(title: "Your account has been disabled, please see your manager.", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
                         notActive.dismissesOnTap = true
                         notActive.show(duration: 5.0)
+                        
+                        self.loadingUI.stopAnimation()
+                        self.loadingBackground.removeFromSuperview()
+                        self.label.removeFromSuperview()
+                        
                     }
                     
                     
@@ -213,6 +218,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
                     banner.dismissesOnTap = true
                     banner.show(duration: 5.0)
+                    
+                    self.loadingUI.stopAnimation()
+                    self.loadingBackground.removeFromSuperview()
+                    self.label.removeFromSuperview()
                 }
             })
         }
@@ -221,6 +230,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func closeLogin() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.loadingUI.stopAnimation()
+            self.loadingBackground.removeFromSuperview()
+            self.label.removeFromSuperview()
+            
             self.dismissViewControllerAnimated(true, completion: nil)
             
         })

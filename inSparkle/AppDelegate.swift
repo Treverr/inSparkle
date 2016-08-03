@@ -70,7 +70,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 
             }
         } catch {
-            print("Error")
+            let errorAlert = UIAlertController(title: "Error", message: "There was an error retrieving your user information, please try again. If the issue continues please contact IS&T", preferredStyle: .Alert)
+            let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
+                PFUser.logOut()
+            })
+            errorAlert.addAction(okayButton)
+            self.window?.rootViewController?.presentViewController(errorAlert, animated: true, completion: nil)
         }
         
         let notificationSettings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil)
@@ -85,15 +90,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         IQKeyboardManager.sharedManager().enable = true
         
-        do {
-            let config = try PFConfig.getConfig()
-            let globalMsg = config["globalMessage"] as? String
-            print(globalMsg!)
-        } catch {
+        return true
+    }
+    
+    func displayGlobalMessages() {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let globalMessageDisplayed = defaults.boolForKey("globalMessageDisplayed")
+        
+        
+        if PFConfigs.config["globalMessage"] != nil {
+            
+            if globalMessageDisplayed {
+                
+                if defaults.valueForKey("globalMessage") as! String != PFConfigs.config["globalMessage"] as! String {
+                    defaults.setBool(false, forKey: "globalMessageDisplayed")
+                    displayGlobalMessages()
+                }
+                
+            } else {
+                let message = PFConfigs.config["globalMessage"]! as! String
+                
+                let globalMessage = UIAlertController(title: "Global Message", message: message, preferredStyle: .Alert)
+                let okay = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                globalMessage.addAction(okay)
+                self.window?.rootViewController?.presentViewController(globalMessage, animated: true, completion: {
+                    defaults.setBool(true, forKey: "globalMessageDisplayed")
+                    defaults.setValue(message, forKey: "globalMessage")
+                })
+            }
             
         }
         
-        return true
+        
+        
     }
     
     func mobihelpIntegration(){
@@ -212,13 +242,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func applicationWillResignActive(application: UIApplication) {
         
-//        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" {
-//            logOutTimer = NSTimer.scheduledTimerWithTimeInterval(100.0, target: self, selector: Selector(self.logOut()), userInfo: nil, repeats: false)
-//        let timer = self.logOutTimer!
-//        
-//        nextFire = timer.fireDate
-//        logOutTimer?.invalidate()
-//        }
+        //        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" {
+        //            logOutTimer = NSTimer.scheduledTimerWithTimeInterval(100.0, target: self, selector: Selector(self.logOut()), userInfo: nil, repeats: false)
+        //        let timer = self.logOutTimer!
+        //
+        //        nextFire = timer.fireDate
+        //        logOutTimer?.invalidate()
+        //        }
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
@@ -245,6 +275,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
+        
+        do {
+            PFConfigs.config = try PFConfig.getConfig()
+        } catch {
+            
+        }
+        
+        displayGlobalMessages()
+        
         let currentInstallation = PFInstallation.currentInstallation()
         if currentInstallation.badge != 0 {
             currentInstallation.badge = 0
