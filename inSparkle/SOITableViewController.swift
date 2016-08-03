@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import NVActivityIndicatorView
 
 protocol sendObjectDelegate
 {
@@ -18,6 +19,9 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
     
     @IBOutlet var searchBar: UISearchBar!
     var objects : NSMutableArray = []
+    
+    var loadingUI : NVActivityIndicatorView!
+    var loadingBackground = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,6 +125,11 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
     }
     
     func getParseItems() {
+        
+        let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
+        loadingUI = returnUI
+        loadingBackground = returnBG
+        
         let query = PFQuery(className: "SOI")
         query.whereKey("isActive", equalTo: true)
         query.orderByDescending("createdAt")
@@ -133,9 +142,13 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
                         self.tableView.reloadData()
                         }, completion: nil)
                 }
+                self.loadingBackground.removeFromSuperview()
+                self.loadingUI.stopAnimation()
                 if (foundObjectsCount - self.objects.count) == 0 {
                     if (self.refreshControl!.refreshing) {
                         self.refreshControl?.endRefreshing()
+                        self.loadingBackground.removeFromSuperview()
+                        self.loadingUI.stopAnimation()
                     }
                 }
             } else {

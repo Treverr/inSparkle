@@ -369,6 +369,30 @@ class GlobalFunctions {
         }
     }
     
+    func loadingAnimation(loadingUI : NVActivityIndicatorView?, loadingBG : UIView, view : UIView, navController : UINavigationController) -> (NVActivityIndicatorView, UIView) {
+        var loadUI = loadingUI
+        var loadBG = loadingBG
+        let x = (view.frame.size.width / 2)
+        let y = (view.frame.size.height / 2)
+        loadUI = NVActivityIndicatorView(frame: CGRectMake(x, y, 100, 100))
+        loadUI!.center = CGPointMake(view.frame.size.width  / 2,
+                                    view.frame.size.height / 2)
+        
+        loadBG.backgroundColor = UIColor.lightGrayColor()
+        loadBG.frame = CGRectMake(0, 0, 150, 150)
+        loadBG.center = navController.view.center
+        loadBG.layer.cornerRadius = 5
+        loadBG.layer.opacity = 0.5
+        navController.view.addSubview(loadBG)
+        navController.view.addSubview(loadUI!)
+        
+        loadUI!.type = .BallRotateChase
+        loadUI!.color = UIColor.whiteColor()
+        loadUI!.startAnimation()
+        
+        return (loadUI!, loadBG)
+    }
+    
 }
 
 extension NSDate {

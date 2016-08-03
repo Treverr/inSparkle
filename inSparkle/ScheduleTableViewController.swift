@@ -94,21 +94,10 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     func scheduleQuery() {
-        let x = (self.view.frame.size.width / 2)
-        let y = (self.view.frame.size.height / 2)
-        self.loadingUI = NVActivityIndicatorView(frame: CGRectMake(x, y, 100, 100))
-        self.loadingUI.center = CGPointMake(view.frame.size.width  / 2,
-                                            view.frame.size.height / 2)
-        self.loadingBackground.backgroundColor = UIColor.lightGrayColor()
-        self.loadingBackground.frame = CGRectMake(0, 0, 150, 150)
-        self.loadingBackground.center = (self.navigationController?.view.center)!
-        self.loadingBackground.layer.cornerRadius = 5
-        self.loadingBackground.layer.opacity = 0.5
-        self.navigationController?.view.addSubview(loadingBackground)
-        self.navigationController?.view.addSubview(loadingUI)
-        self.loadingUI.type = .BallRotateChase
-        self.loadingUI.color = UIColor.whiteColor()
-        self.loadingUI.startAnimation()
+        
+        let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
+        loadingUI = returnUI
+        loadingBackground = returnBG
         
         let query : PFQuery = PFQuery(className: "Schedule")
         query.whereKey("isActive", equalTo: true)

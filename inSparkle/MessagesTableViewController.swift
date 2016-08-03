@@ -8,10 +8,14 @@
 
 import UIKit
 import Parse
+import NVActivityIndicatorView
 
 class MessagesTableViewController: UITableViewController {
     
     @IBOutlet var searchBar: UISearchBar!
+    
+    var loadingUI : NVActivityIndicatorView!
+    var loadingBackground = UIView()
     
     var theMesages = [Messages]()
     var deepLink = false
@@ -103,6 +107,11 @@ class MessagesTableViewController: UITableViewController {
     }
     
     func getEmpMessagesFromParse() {
+        
+        let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
+        loadingUI = returnUI
+        loadingBackground = returnBG
+        
         if PFUser.currentUser()?.objectForKey("employee") != nil {
             let emp = PFUser.currentUser()?.objectForKey("employee") as! Employee
             emp.fetchInBackground()
@@ -128,6 +137,8 @@ class MessagesTableViewController: UITableViewController {
                             self.theMesages.append(msg as! Messages)
                             self.tableView.reloadData()
                         }
+                        self.loadingUI.stopAnimation()
+                        self.loadingBackground.removeFromSuperview()
                     }
                 })
         }
