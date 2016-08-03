@@ -85,6 +85,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         IQKeyboardManager.sharedManager().enable = true
         
+        do {
+            let config = try PFConfig.getConfig()
+            let globalMsg = config["globalMessage"] as? String
+            print(globalMsg!)
+        } catch {
+            
+        }
+        
         return true
     }
     
