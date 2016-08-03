@@ -10,6 +10,7 @@ import Foundation
 import Parse
 import AVFoundation
 import CoreImage
+import NVActivityIndicatorView
 
 class DataManager: NSObject {
     
