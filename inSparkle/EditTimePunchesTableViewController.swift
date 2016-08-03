@@ -8,11 +8,15 @@
 
 import UIKit
 import Parse
+import NVActivityIndicatorView
 
 class EditTimePunchesTableViewController: UITableViewController {
     
     var punchArray = [PFObject]()
     var theEmployee : Employee!
+    
+    var loadingUI : NVActivityIndicatorView!
+    var loadingBackground = UIView()
     
     var cellCount : Int = 0
     
@@ -30,6 +34,12 @@ class EditTimePunchesTableViewController: UITableViewController {
     }
     
     func getEmployeeExisitngPunches(emp : Employee) {
+        let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.tableView, navController: self.navigationController!)
+        loadingUI = returnUI
+        loadingUI.frame = CGRectMake(loadingBackground.frame.width, loadingBackground.frame.height, 100, 100)
+        loadingUI.center = loadingBackground.center
+        loadingBackground = returnBG
+        
         let query = TimeClockPunchObj.query()
         query?.whereKey("employee", equalTo: emp)
         query?.orderByDescending("timePunched")
@@ -55,6 +65,8 @@ class EditTimePunchesTableViewController: UITableViewController {
                         }
                     }
                     self.tableView.reloadData()
+                    self.loadingUI.stopAnimation()
+                    self.loadingBackground.removeFromSuperview()
                     print(self.punchArray.count)
                 }
             }

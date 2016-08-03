@@ -372,8 +372,9 @@ class GlobalFunctions {
     func loadingAnimation(loadingUI : NVActivityIndicatorView?, loadingBG : UIView, view : UIView, navController : UINavigationController) -> (NVActivityIndicatorView, UIView) {
         var loadUI = loadingUI
         var loadBG = loadingBG
-        let x = (view.frame.size.width / 2)
-        let y = (view.frame.size.height / 2)
+        let x = (navController.view.frame.size.width / 2)
+        let y = (navController.view.frame.size.height / 2)
+        
         loadUI = NVActivityIndicatorView(frame: CGRectMake(x, y, 100, 100))
         loadUI!.center = CGPointMake(view.frame.size.width  / 2,
                                     view.frame.size.height / 2)
