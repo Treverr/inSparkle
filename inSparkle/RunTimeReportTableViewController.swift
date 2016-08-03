@@ -9,11 +9,15 @@
  import UIKit
  import Parse
  import SwiftSpinner
+ import NVActivityIndicatorView
  
  class RunTimeReportTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UIActionSheetDelegate, UIDocumentInteractionControllerDelegate  {
     
     @IBOutlet var startDateLabel: UILabel!
     @IBOutlet var endDateLabel: UILabel!
+    
+    var loadingUI : NVActivityIndicatorView!
+    var loadingBackground = UIView()
     
     var detail : Bool = true
     
@@ -86,9 +90,13 @@
     }
     
     func swiftActive() {
-        dispatch_async(dispatch_get_main_queue()) {
-            SwiftSpinner.show("Generating Report...", animated: false)
-        }
+        
+        let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
+        loadingUI = returnUI
+        
+        loadingBackground.frame = self.view.frame
+        loadingBackground.backgroundColor = UIColor.blackColor()
+        
     }
     
     @IBAction func runReportButton(sender: AnyObject) {

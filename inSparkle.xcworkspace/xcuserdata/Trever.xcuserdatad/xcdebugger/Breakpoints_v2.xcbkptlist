@@ -154,11 +154,11 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/SOITableViewController.swift"
-                  timestampString = "491885129.940632"
+                  timestampString = "491886679.049146"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
                   offsetFromSymbolStart = "80">
                </Location>
                <Location
@@ -169,11 +169,11 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/SOITableViewController.swift"
-                  timestampString = "491885129.940727"
+                  timestampString = "491886679.04926"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
                   offsetFromSymbolStart = "28">
                </Location>
             </Locations>
@@ -330,7 +330,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/CloudCode.swift"
-                  timestampString = "491885129.94496"
+                  timestampString = "491886679.054239"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "190"
@@ -345,7 +345,7 @@
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/CloudCode.swift"
-                  timestampString = "491885129.945069"
+                  timestampString = "491886679.054341"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "191"
@@ -417,6 +417,54 @@
             endingLineNumber = "383"
             landmarkName = "loadingAnimation(_:loadingBG:view:navController:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "inSparkle/CalendarDatePickerViewController.swift"
+            timestampString = "491886523.46496"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "calendarDidSelectDate(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "inSparkle.CalendarDatePickerViewController.calendarDidSelectDate (SwiftMoment.Moment) -&gt; ()"
+                  moduleName = "inSparkle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/CalendarDatePickerViewController.swift"
+                  timestampString = "491886679.056409"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "protocol witness for CalendarView.CalendarViewDelegate.calendarDidSelectDate (SwiftMoment.Moment) -&gt; () in conformance inSparkle.CalendarDatePickerViewController : CalendarView.CalendarViewDelegate in inSparkle"
+                  moduleName = "inSparkle"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/CalendarDatePickerViewController.swift"
+                  timestampString = "491886679.056503"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
