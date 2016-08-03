@@ -8,7 +8,6 @@
  
  import UIKit
  import Parse
- import SwiftSpinner
  import NVActivityIndicatorView
  
  class RunTimeReportTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UIActionSheetDelegate, UIDocumentInteractionControllerDelegate  {
@@ -252,7 +251,6 @@
                     print(self.expectedPunches - self.returnedPunches)
                     
                     if self.expectedPunches - self.returnedPunches == 0 {
-                        SwiftSpinner.show("Done!", animated: false)
                         print(self.csvPunches)
                         self.shareTime()
                     }
@@ -293,7 +291,7 @@
         docController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: writePath))
         docController!.delegate = self
         docController!.presentPreviewAnimated(true)
-        SwiftSpinner.hide()
+        self.loadingUI.stopAnimation()
     }
     
     func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
