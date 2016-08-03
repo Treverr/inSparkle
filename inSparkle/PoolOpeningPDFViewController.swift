@@ -1,6 +1,6 @@
 //
 //  PoolOpeningPDFViewController.swift
-//  
+//
 //
 //  Created by Trever on 2/3/16.
 //
@@ -31,7 +31,7 @@ class PoolOpeningPDFViewController: UIViewController {
     var pagesLeft : Int = 0
     var data = [ScheduleObject]()
     var firsRun : Bool = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +45,10 @@ class PoolOpeningPDFViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        createPdfFromView(theView, saveToDocumentsWithFileName: "POC")
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.createPdfFromView(self.theView, saveToDocumentsWithFileName: "POC")
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

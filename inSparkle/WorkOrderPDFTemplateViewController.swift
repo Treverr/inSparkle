@@ -127,7 +127,7 @@ class WorkOrderPDFTemplateViewController: UIViewController {
             if workOrderObject.tripTwoDepart != nil {
                 tripTwoDepartLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoDepart!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
             } else {
-                 tripTwoDepartLabel.text = ""
+                tripTwoDepartLabel.text = ""
             }
             if workOrderObject.unitMake != nil {
                 unitMakeLabel.text = workOrderObject.unitMake
@@ -145,12 +145,15 @@ class WorkOrderPDFTemplateViewController: UIViewController {
                 unitSerialLabel.text = ""
             }
         }
-
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         if timeToDismiss == false {
-            generatePDF()
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+                self.generatePDF()
+            }
         } else {
             self.dismissViewControllerAnimated(true, completion: nil)
         }
@@ -228,13 +231,13 @@ extension WorkOrderPDFTemplateViewController : UITableViewDelegate, UITableViewD
         
         if tableView == partsTableView {
             if workOrderObject.parts != nil {
-
+                
                 var keyList : [String] {
                     get {
                         return Array(partCounts.keys)
                     }
                 }
-
+                
                 let cell = tableView.dequeueReusableCellWithIdentifier("partCell") as! PDFPartTableViewCell
                 
                 let partTitle = keyList[indexPath.row]
