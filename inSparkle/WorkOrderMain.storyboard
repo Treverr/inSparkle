@@ -1197,8 +1197,50 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="fn1-dQ-xGz" imageView="dVT-JM-OLM" style="IBUITableViewCellStyleDefault" id="Yqf-sv-e26">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ZBu-dX-bBH" imageView="zp4-Yo-7AJ" style="IBUITableViewCellStyleDefault" id="7wX-bP-60o">
                                         <rect key="frame" x="0.0" y="314" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7wX-bP-60o" id="PBt-IN-QB8">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Do not Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZBu-dX-bBH">
+                                                    <rect key="frame" x="73" y="0.0" width="512" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="WO Do not Bill" id="zp4-Yo-7AJ">
+                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="lM0-0Q-Db1" imageView="R9Z-Qx-Ofk" style="IBUITableViewCellStyleDefault" id="exx-Gs-hno">
+                                        <rect key="frame" x="0.0" y="358" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="exx-Gs-hno" id="c86-8Y-v58">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ready To Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lM0-0Q-Db1">
+                                                    <rect key="frame" x="73" y="0.0" width="512" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="WO Ready to Bill" id="R9Z-Qx-Ofk">
+                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="fn1-dQ-xGz" imageView="dVT-JM-OLM" style="IBUITableViewCellStyleDefault" id="Yqf-sv-e26">
+                                        <rect key="frame" x="0.0" y="402" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yqf-sv-e26" id="aX4-Gc-HB3">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1283,9 +1325,11 @@
         <image name="WO Assinged" width="36" height="36"/>
         <image name="WO Billed" width="36" height="36"/>
         <image name="WO Completed" width="36" height="36"/>
+        <image name="WO Do not Bill" width="50" height="50"/>
         <image name="WO In Progress" width="36" height="36"/>
         <image name="WO New" width="36" height="36"/>
         <image name="WO On Hold" width="36" height="36"/>
+        <image name="WO Ready to Bill" width="44" height="44"/>
         <image name="WO-Filled" width="25" height="25"/>
         <image name="WO-Unfilled" width="25" height="25"/>
     </resources>

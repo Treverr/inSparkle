@@ -140,6 +140,10 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             statusCell.imageView?.image = UIImage(named: "WO Completed")
         case "Billed":
             statusCell.imageView?.image = UIImage(named: "WO Billed")
+        case "Ready To Bill":
+            statusCell.imageView?.image = UIImage(named: "WO Ready to Bill")
+        case "Do not Bill":
+            statusCell.imageView?.image = UIImage(named: "WO Do not Bill")
         default:
             statusCell.imageView?.image = nil
         }

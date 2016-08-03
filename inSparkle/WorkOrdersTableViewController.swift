@@ -75,6 +75,10 @@ class WorkOrdersTableViewController: UITableViewController, NVActivityIndicatorV
             cell.iconImageView?.image = UIImage(named: "WO Completed")
         case "Billed":
             cell.iconImageView?.image = UIImage(named: "WO Billed")
+        case "Ready To Bill":
+            cell.iconImageView.image = UIImage(named: "WO Ready to Bill")
+        case "Do not Bill":
+            cell.iconImageView.image = UIImage(named: "WO Do not Bill")
         default:
             cell.iconImageView?.image = nil
         }
