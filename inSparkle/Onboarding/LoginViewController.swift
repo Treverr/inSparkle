@@ -40,11 +40,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameField.delegate = self
         passwordField.delegate = self
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-//        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
-    
-
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        //
+        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.presentViewController(vc, animated: true, completion: nil)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -139,10 +139,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.loadingUI = NVActivityIndicatorView(frame: CGRectMake(x, y, 100, 50))
         self.loadingUI.center = self.loadingBackground.center
-
+        
         label.frame = loadingBackground.frame
         label.center = CGPointMake(self.loadingBackground.center.x, self.loadingBackground.center.y + 35)
-        label.text = "Connecting to SparkleConnect...."
+        label.text = "Authenticaing with SparkleConnect...."
         label.textColor = UIColor.whiteColor()
         label.textAlignment = .Center
         
@@ -161,7 +161,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         var password = self.passwordField.text
         
         if username?.characters.count < 1 {
-           // Alert
+            // Alert
         } else if password?.characters.count < 1 {
             // Alert
         } else {
@@ -170,66 +170,63 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             spinner.startAnimating()
             
             sparkleConnectAnimation()
-            
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
-            
+        
             PFUser.logInWithUsernameInBackground(username!, password: password!, block: { (user, error) -> Void in
-                spinner.stopAnimating()
-                
-                
-                if ((user) != nil) {
+                    spinner.stopAnimating()
                     
-                    if (user!.objectForKey("isActive") as! Bool == true ) {
-                        self.closeLogin()
+                    if ((user) != nil) {
                         
-                        do {
-                            try PFUser.currentUser()?.fetch()
-                            print(PFUser.currentUser())
-                            if PFUser.currentUser() != nil {
-                                let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
-                                do {
-                                    try employee!.fetch()
-                                } catch {
+                        if (user!.objectForKey("isActive") as! Bool == true ) {
+                            
+                            self.closeLogin()
+                            
+                            do {
+                                try PFUser.currentUser()?.fetch()
+                                print(PFUser.currentUser())
+                                if PFUser.currentUser() != nil {
+                                    let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
+                                    do {
+                                        try employee!.fetch()
+                                    } catch {
+                                    }
+                                    
+                                    EmployeeData.universalEmployee = employee
+                                    
                                 }
-                                
-                                EmployeeData.universalEmployee = employee
-                                
+                            } catch {
+                                print("Error")
                             }
-                        } catch {
-                            print("Error")
+                        } else {
+                            PFUser.logOut()
+                            self.passwordField.text = nil
+                            let notActive = Banner(title: "Your account has been disabled, please see your manager.", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+                            notActive.dismissesOnTap = true
+                            notActive.show(duration: 5.0)
+                            
+                            self.loadingUI.stopAnimation()
+                            self.loadingBackground.removeFromSuperview()
+                            self.label.removeFromSuperview()
+                            
                         }
+                        
+                        
+                        
                     } else {
-                        PFUser.logOut()
-                        self.passwordField.text = nil
-                        let notActive = Banner(title: "Your account has been disabled, please see your manager.", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
-                        notActive.dismissesOnTap = true
-                        notActive.show(duration: 5.0)
+                        let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+                        banner.dismissesOnTap = true
+                        banner.show(duration: 5.0)
                         
                         self.loadingUI.stopAnimation()
                         self.loadingBackground.removeFromSuperview()
                         self.label.removeFromSuperview()
-                        
                     }
-                    
-                    
-                    
-                } else {
-                    let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
-                    banner.dismissesOnTap = true
-                    banner.show(duration: 5.0)
-                    
-                    self.loadingUI.stopAnimation()
-                    self.loadingBackground.removeFromSuperview()
-                    self.label.removeFromSuperview()
-                }
             })
-        }
         }
     }
     
     func closeLogin() {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.label.text = "Loading user information..."
             self.loadingUI.stopAnimation()
             self.loadingBackground.removeFromSuperview()
             self.label.removeFromSuperview()
@@ -238,5 +235,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         })
     }
-
+    
 }

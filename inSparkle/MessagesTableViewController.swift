@@ -17,6 +17,8 @@ class MessagesTableViewController: UITableViewController {
     var loadingUI : NVActivityIndicatorView!
     var loadingBackground = UIView()
     
+    var msgTblViewController : UIViewController?
+    
     var theMesages = [Messages]()
     var deepLink = false
     var sentFilter : Bool = false
@@ -33,6 +35,9 @@ class MessagesTableViewController: UITableViewController {
         self.navigationController?.setupNavigationbar(self.navigationController!)
         
         NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: #selector(MessagesTableViewController.refresh), userInfo: nil, repeats: true)
+        
+        msgTblViewController = self.navigationController?.viewControllers.last
+        
     }
     
     
@@ -104,14 +109,17 @@ class MessagesTableViewController: UITableViewController {
         self.theMesages.removeAll()
         self.tableView.reloadData()
         getEmpMessagesFromParse()
+        print(self.navigationController?.viewControllers.last)
     }
     
     func getEmpMessagesFromParse() {
         
-        let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
-        loadingUI = returnUI
-        loadingBackground = returnBG
-        
+        if self.navigationController?.viewControllers.last! == msgTblViewController! {
+            let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
+            loadingUI = returnUI
+            loadingBackground = returnBG
+        }
+
         if PFUser.currentUser()?.objectForKey("employee") != nil {
             let emp = PFUser.currentUser()?.objectForKey("employee") as! Employee
             emp.fetchInBackground()
@@ -138,6 +146,7 @@ class MessagesTableViewController: UITableViewController {
                             self.tableView.reloadData()
                         }
                         self.loadingUI.stopAnimation()
+                        self.loadingUI.removeFromSuperview()
                         self.loadingBackground.removeFromSuperview()
                     }
                 })
