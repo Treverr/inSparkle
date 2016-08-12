@@ -236,4 +236,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
+    func loginWithQR() {
+        let qrCode = "2vigcitsl6"
+        let session = PFSession()
+    }
+    
 }
