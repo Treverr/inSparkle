@@ -15,9 +15,13 @@ import NVActivityIndicatorView
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
+    var qrUsername : String?
+    var qrPassword : String?
+    
     var kbHeight: CGFloat?
     var showUIKeyboard : Bool?
     
+    @IBOutlet weak var loginButton: UIButton!
     var loadingUI : NVActivityIndicatorView!
     var loadingBackground = UIView()
     var label = UILabel()
@@ -29,13 +33,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var isKeyboardShowing : Bool?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         if NSUserDefaults.standardUserDefaults().objectForKey("lastUsername") != nil {
             let lastUser = NSUserDefaults.standardUserDefaults().valueForKey("lastUsername") as! String
             usernameField.text = lastUser.lowercaseString
         }
         
-        super.viewDidLoad()
         
         usernameField.delegate = self
         passwordField.delegate = self
@@ -48,11 +52,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+    }
+    
     override func viewDidAppear(animated: Bool) {
         if UIDevice.currentDevice().name == "Time Clock" {
             let sb = UIStoryboard(name: "TimeClock", bundle: nil)
             let vc = sb.instantiateViewControllerWithIdentifier("punch")
             self.presentViewController(vc, animated: true, completion: nil)
+        }
+        
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            if QRLogInData.username != nil && QRLogInData.password != nil {
+                self.usernameField.text = QRLogInData.username
+                self.passwordField.text = QRLogInData.password
+                QRLogInData.username = nil
+                QRLogInData.password = nil
+                self.loginAction(self)
+            }
         }
     }
     
@@ -142,7 +161,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         label.frame = loadingBackground.frame
         label.center = CGPointMake(self.loadingBackground.center.x, self.loadingBackground.center.y + 35)
-        label.text = "Authenticaing with SparkleConnect...."
+        label.text = "Authenticating with SparkleConnect...."
         label.textColor = UIColor.whiteColor()
         label.textAlignment = .Center
         
@@ -170,56 +189,57 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             spinner.startAnimating()
             
             sparkleConnectAnimation()
-        
+            
             PFUser.logInWithUsernameInBackground(username!, password: password!, block: { (user, error) -> Void in
-                    spinner.stopAnimating()
+                spinner.stopAnimating()
+                
+                if ((user) != nil) {
                     
-                    if ((user) != nil) {
+                    if (user!.objectForKey("isActive") as! Bool == true ) {
                         
-                        if (user!.objectForKey("isActive") as! Bool == true ) {
-                            
-                            self.closeLogin()
-                            
-                            do {
-                                try PFUser.currentUser()?.fetch()
-                                print(PFUser.currentUser())
-                                if PFUser.currentUser() != nil {
-                                    let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
-                                    do {
-                                        try employee!.fetch()
-                                    } catch {
-                                    }
-                                    
-                                    EmployeeData.universalEmployee = employee
+                        self.closeLogin()
+                        
+                        do {
+                            try PFUser.currentUser()?.fetch()
+                            print(PFUser.currentUser())
+                            if PFUser.currentUser() != nil {
+                                let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
+                                do {
+                                    try employee!.fetch()
+                                } catch {
                                     
                                 }
-                            } catch {
-                                print("Error")
+                                
+                                EmployeeData.universalEmployee = employee
+                                
                             }
-                        } else {
-                            PFUser.logOut()
-                            self.passwordField.text = nil
-                            let notActive = Banner(title: "Your account has been disabled, please see your manager.", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
-                            notActive.dismissesOnTap = true
-                            notActive.show(duration: 5.0)
-                            
-                            self.loadingUI.stopAnimation()
-                            self.loadingBackground.removeFromSuperview()
-                            self.label.removeFromSuperview()
-                            
+                        } catch {
+                            print("Error")
                         }
-                        
-                        
-                        
                     } else {
-                        let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
-                        banner.dismissesOnTap = true
-                        banner.show(duration: 5.0)
+                        PFUser.logOut()
+                        self.passwordField.text = nil
+                        let notActive = Banner(title: "Your account has been disabled, please see your manager.", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+                        notActive.dismissesOnTap = true
+                        notActive.show(duration: 5.0)
                         
                         self.loadingUI.stopAnimation()
                         self.loadingBackground.removeFromSuperview()
                         self.label.removeFromSuperview()
+                        
                     }
+                    
+                    
+                    
+                } else {
+                    let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+                    banner.dismissesOnTap = true
+                    banner.show(duration: 5.0)
+                    
+                    self.loadingUI.stopAnimation()
+                    self.loadingBackground.removeFromSuperview()
+                    self.label.removeFromSuperview()
+                }
             })
         }
     }
@@ -236,9 +256,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    func loginWithQR() {
-        let qrCode = "2vigcitsl6"
-        let session = PFSession()
+    @IBAction func qrButton(sender: AnyObject) {
+        
+        let storyBoard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let scanVC = storyBoard.instantiateViewControllerWithIdentifier("QRCodeScanner")
+        
+        self.presentViewController(scanVC, animated: true, completion: nil)
+        
     }
-    
 }

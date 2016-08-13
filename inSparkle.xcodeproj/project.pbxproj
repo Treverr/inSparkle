@@ -85,6 +85,7 @@
 		C974FAD71C205845004D69E4 /* POCRunReportFinalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974FAD61C205845004D69E4 /* POCRunReportFinalTableViewController.swift */; };
 		C974FAD91C20B84D004D69E4 /* POCCalPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974FAD81C20B84D004D69E4 /* POCCalPickerViewController.swift */; };
 		C97757091C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97757081C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift */; };
+		C97C9C7A1D5F8781006F47D0 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97C9C791D5F8781006F47D0 /* QRCodeScanner.swift */; };
 		C97D3D3A1C815D55006B9E90 /* Manage Emps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */; };
 		C97D3D3C1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */; };
 		C980015E1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */; };
@@ -253,6 +254,7 @@
 		C974FAD61C205845004D69E4 /* POCRunReportFinalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCRunReportFinalTableViewController.swift; sourceTree = "<group>"; };
 		C974FAD81C20B84D004D69E4 /* POCCalPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCCalPickerViewController.swift; sourceTree = "<group>"; };
 		C97757081C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderStatusTableViewController.swift; sourceTree = "<group>"; };
+		C97C9C791D5F8781006F47D0 /* QRCodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Manage Emps.storyboard"; sourceTree = "<group>"; };
 		C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
 		C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDatesTableViewController.swift; sourceTree = "<group>"; };
@@ -832,6 +834,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */,
+				C97C9C791D5F8781006F47D0 /* QRCodeScanner.swift */,
 				C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */,
 				C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */,
 				C9E511F61BFAC4D60030AA98 /* Assets */,
@@ -1132,6 +1135,7 @@
 				C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */,
 				C9AB005E1C469FC900595F58 /* PushNotifications.swift in Sources */,
 				C9C039EC1C6D60530064FDBA /* ChemicalCheckoutViewController.swift in Sources */,
+				C97C9C7A1D5F8781006F47D0 /* QRCodeScanner.swift in Sources */,
 				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,
 				C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */,
 				C980015E1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift in Sources */,

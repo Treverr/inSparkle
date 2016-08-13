@@ -216,6 +216,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         VacationTime.registerSubclass()
         VacationTimePunch.registerSubclass()
         SOIObject.registerSubclass()
+        SessionModel.registerSubclass()
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -227,11 +228,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             print(PFUser.currentUser())
             print(employee)
             
-            do {
-                try employee!.fetchIfNeeded()
-            } catch { }
-            
-            installation.setObject(employee!, forKey: "employee")
+            if employee != nil {
+                do {
+                    try employee!.fetchIfNeeded()
+                } catch {
+                    print(error)
+                }
+                
+                installation.setObject(employee!, forKey: "employee")
+            }
         }
         installation.setDeviceTokenFromData(deviceToken)
         installation.saveInBackground()

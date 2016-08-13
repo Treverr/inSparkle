@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lk3-es-8Y3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16A270f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Lk3-es-8Y3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -28,7 +28,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dZD-YD-H5z">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dZD-YD-H5z">
                                         <rect key="frame" x="25" y="161" width="239" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="PCO-Mh-sTm"/>
@@ -65,6 +65,15 @@
                                             <segue destination="VbJ-3d-4oW" kind="presentation" id="fK9-ls-NW3"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYN-s4-on2">
+                                        <rect key="frame" x="234" y="161" width="30" height="30"/>
+                                        <state key="normal" image="QR Code">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="qrButton:" destination="Lk3-es-8Y3" eventType="touchUpInside" id="vDy-hR-Ba1"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -73,7 +82,7 @@
                                     <constraint firstAttribute="width" constant="289" id="u6L-yW-MoS"/>
                                 </constraints>
                             </view>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyz-wW-YR7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyz-wW-YR7">
                                 <rect key="frame" x="531" y="536" width="49" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="49" id="BeL-5k-aXY"/>
@@ -84,7 +93,7 @@
                                     <segue destination="xXA-rr-Q1U" kind="show" id="hJL-Hz-zIu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXc-9Q-BF4">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXc-9Q-BF4">
                                 <rect key="frame" x="20" y="536" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="a2s-aW-Px1"/>
@@ -107,6 +116,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="o6w-Dy-9vM" id="Nwb-fK-l3h"/>
                         <outlet property="passwordField" destination="h2p-Br-V3k" id="ZLC-ik-o4w"/>
                         <outlet property="usernameField" destination="dZD-YD-H5z" id="hkp-AJ-oQg"/>
                     </connections>
@@ -216,9 +226,59 @@
             </objects>
             <point key="canvasLocation" x="1239" y="509"/>
         </scene>
+        <!--BarcodeScanner-->
+        <scene sceneID="4TK-Ze-HDd">
+            <objects>
+                <viewController title="BarcodeScanner" id="ILN-ep-6Jp" customClass="QRCodeScanner" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="35N-qI-qwG"/>
+                        <viewControllerLayoutGuide type="bottom" id="MBW-iI-LVt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1zF-BX-Noi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ug0-Sc-Sfc">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BZJ-AV-Uwm">
+                            <connections>
+                                <action selector="cancelAction:" destination="ILN-ep-6Jp" id="ghV-g5-7LP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="Flash On" id="T9x-PX-q9Y">
+                            <connections>
+                                <action selector="toggleFlash" destination="ILN-ep-6Jp" id="b20-dv-AHi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="blC-zJ-EFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2772" y="7"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6oF-7a-iGh">
+            <objects>
+                <navigationController storyboardIdentifier="QRCodeScanner" automaticallyAdjustsScrollViewInsets="NO" id="yZ7-Gl-J3r" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wam-bG-aPN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ILN-ep-6Jp" kind="relationship" relationship="rootViewController" id="FSJ-RW-NhL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OLR-Sj-0dY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1960" y="7"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Close Filled" width="100" height="100"/>
+        <image name="Flash On" width="22" height="22"/>
+        <image name="QR Code" width="200" height="200"/>
         <image name="Test Tube" width="100" height="100"/>
         <image name="TimeIcon" width="512" height="512"/>
     </resources>

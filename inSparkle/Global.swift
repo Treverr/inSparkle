@@ -204,6 +204,14 @@ class PFConfigs : NSObject {
     
 }
 
+class QRLogInData : NSObject {
+    
+    static var username : String!
+    
+    static var password : String!
+    
+}
+
 class Barcode {
     
     class func fromString(string : String) -> UIImage? {
@@ -402,6 +410,23 @@ class GlobalFunctions {
         return (loadUI!, loadBG)
     }
     
+    
+    func generateToken() -> String {
+        var token : NSMutableString = NSMutableString(capacity: 32)
+        token = "r:"
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyz0123456789"
+        
+        for (var i=0; i < 32; i++) {
+            var length = UInt32(letters.length)
+            var rand = arc4random_uniform(length)
+            token.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        return token as String
+        
+    }
+    
 }
 
 extension NSDate {
@@ -437,6 +462,18 @@ extension NSDate {
         return ""
     }
 }
+
+extension NSDate {
+    convenience
+    init(dateString:String) {
+        let dateStringFormatter = NSDateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd"
+        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        let d = dateStringFormatter.dateFromString(dateString)!
+        self.init(timeInterval:0, sinceDate:d)
+    }
+}
+
 
 extension NSDate {
     var startOfDay: NSDate {
