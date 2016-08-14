@@ -62,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 do {
                     try employee!.fetch()
                 } catch {
+                    
                 }
                 
                 EmployeeData.universalEmployee = employee
@@ -99,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let globalMessageDisplayed = defaults.boolForKey("globalMessageDisplayed")
         
         
-        if PFConfigs.config["globalMessage"] != nil {
+        if PFConfigs.config != nil {
             
             if globalMessageDisplayed {
                 
@@ -119,11 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     defaults.setValue(message, forKey: "globalMessage")
                 })
             }
-            
         }
-        
-        
-        
     }
     
     func mobihelpIntegration(){
@@ -243,17 +240,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
     }
     
-    var nextFire : NSDate!
-    
     func applicationWillResignActive(application: UIApplication) {
         
-        //        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" {
-        //            logOutTimer = NSTimer.scheduledTimerWithTimeInterval(100.0, target: self, selector: Selector(self.logOut()), userInfo: nil, repeats: false)
-        //        let timer = self.logOutTimer!
-        //
-        //        nextFire = timer.fireDate
-        //        logOutTimer?.invalidate()
-        //        }
+        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" {
+            self.logOut()
+        }
+        
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
