@@ -47,10 +47,14 @@ class MoreTableViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if (PFUser.currentUser()?.valueForKey("isAdmin") as! Bool) == true {
-            return 1
+        if PFUser.currentUser() != nil {
+            if (PFUser.currentUser()?.valueForKey("isAdmin") as! Bool) == true {
+                return 1
+            } else {
+                return 2
+            }
         } else {
-            return 2
+            return 1
         }
     }
     
