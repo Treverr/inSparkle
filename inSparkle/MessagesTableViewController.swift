@@ -40,7 +40,9 @@ class MessagesTableViewController: UITableViewController {
         
     }
     
-    
+    override func viewWillDisappear(animated: Bool) {
+        print("test")
+    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows

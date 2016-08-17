@@ -241,9 +241,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func applicationWillResignActive(application: UIApplication) {
+        print(UIDevice.currentDevice().name)
         
-        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" {
-            self.logOut()
+        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" || UIDevice.currentDevice().name == "iPhone Simulator"{
+            if PFUser.currentUser() != nil {
+                self.logOut()
+            }
         }
         
     }
