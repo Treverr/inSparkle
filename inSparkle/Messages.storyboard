@@ -96,6 +96,7 @@
                             <segments>
                                 <segment title="Inbox"/>
                                 <segment title="Sent"/>
+                                <segment title="To Tom"/>
                             </segments>
                             <connections>
                                 <action selector="inboxSentSegmentedControl:" destination="Bru-Ab-Fbf" eventType="valueChanged" id="g8j-kt-TDc"/>
@@ -804,7 +805,7 @@
                                                     <rect key="frame" x="73" y="0.0" width="512" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Voicemail Full" id="bQk-yQ-fVY">

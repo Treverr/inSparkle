@@ -23,6 +23,8 @@ class MessagesTableViewController: UITableViewController {
     var deepLink = false
     var sentFilter : Bool = false
     
+    var tom = Employee()
+    
     @IBOutlet var inboxSentSegControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -38,10 +40,6 @@ class MessagesTableViewController: UITableViewController {
         
         msgTblViewController = self.navigationController?.viewControllers.last
         
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        print("test")
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,7 +71,6 @@ class MessagesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
         PFSession.getCurrentSessionInBackgroundWithBlock { (session : PFSession?, error : NSError?) in
             if error != nil {
                 PFUser.logOut()
@@ -115,7 +112,6 @@ class MessagesTableViewController: UITableViewController {
     }
     
     func getEmpMessagesFromParse() {
-        
         if self.navigationController?.viewControllers.last! == msgTblViewController! {
             let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
             loadingUI = returnUI
@@ -123,6 +119,13 @@ class MessagesTableViewController: UITableViewController {
         }
 
         if PFUser.currentUser()?.objectForKey("employee") != nil {
+            
+            do {
+                try tom = Employee.query()?.getObjectWithId("hNxAOyqKVy") as! Employee
+            } catch {
+                // TODO: Handle Error
+            }
+            
             let emp = PFUser.currentUser()?.objectForKey("employee") as! Employee
             emp.fetchInBackground()
                 let selectedSeg = inboxSentSegControl.selectedSegmentIndex
@@ -137,6 +140,9 @@ class MessagesTableViewController: UITableViewController {
                     query?.orderByDescending("dateTimeMessage")
                 case 1:
                     query?.whereKey("signed", equalTo: currentUser!)
+                    query?.orderByDescending("dateTimeMessage")
+                case 2:
+                    query?.whereKey("recipient", equalTo: tom)
                     query?.orderByDescending("dateTimeMessage")
                 default: break
                 }
