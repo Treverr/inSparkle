@@ -36,8 +36,6 @@ class MessagesTableViewController: UITableViewController {
         
         self.navigationController?.setupNavigationbar(self.navigationController!)
         
-        NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: #selector(MessagesTableViewController.refresh), userInfo: nil, repeats: true)
-        
         msgTblViewController = self.navigationController?.viewControllers.last
         
     }
@@ -60,7 +58,6 @@ class MessagesTableViewController: UITableViewController {
             } else {
                 unread = false
             }
-            //            let unread = theMesages[indexPath.row].unread
             
             cell.configureCell(name, date: date, messageStatus: status, statusTime: statusTime, unread: unread)
             print(theMesages)
