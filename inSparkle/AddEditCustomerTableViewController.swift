@@ -146,20 +146,23 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         self.customer?.phoneNumber = phoneNumberTextField.text!
         self.customer?.currentBalance = 0
         self.customer?.customerOpened = NSDate()
-        self.customer?.saveInBackground()
-        
-        
-        CustomerLookupObjects.slectedCustomer = self.customer!
-        
-        if CustomerLookupObjects.fromVC == "AddSchedule" {
-            NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnSchedule", object: nil)
-        }
-        if CustomerLookupObjects.fromVC == "NewMessage" {
-            NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnNewMessage", object: nil)
-        }
-        
-        self.dismissViewControllerAnimated(true, completion: nil)
-        CustomerLookupObjects.fromVC = nil
+        self.customer?.saveInBackgroundWithBlock({ (saved : Bool, error : NSError?) in
+            if error == nil {
+                CustomerLookupObjects.slectedCustomer = self.customer!
+                
+                if CustomerLookupObjects.fromVC == "AddSchedule" {
+                    NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnSchedule", object: nil)
+                }
+                if CustomerLookupObjects.fromVC == "NewMessage" {
+                    NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnNewMessage", object: nil)
+                }
+                
+                self.dismissViewControllerAnimated(true, completion: nil)
+                CustomerLookupObjects.fromVC = nil
+            } else {
+                print(error)
+            }
+        })
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
