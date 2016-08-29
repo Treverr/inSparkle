@@ -26,6 +26,9 @@ class PoolOpeningPDFViewController: UIViewController {
     @IBOutlet var notes : UILabel!
     @IBOutlet var accountNumber : UILabel!
     @IBOutlet var accountNumberBarcode : UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var weekTitle: UILabel!
+    @IBOutlet weak var dateTitle: UILabel!
     
     var pageCount : Int = 0
     var pagesLeft : Int = 0
@@ -101,6 +104,14 @@ class PoolOpeningPDFViewController: UIViewController {
                     takeTrash.text = "Yes"
                 } else {
                     takeTrash.text = "No"
+                }
+                
+                if num.type == "Closing" {
+                    
+                    let titleString: NSMutableAttributedString =  NSMutableAttributedString(string: "Pool Closing")
+                    titleString.addAttribute(NSUnderlineStyleAttributeName, value: 1, range: NSMakeRange(0, titleString.length))
+                    titleLabel.text = String(titleString)
+                    
                 }
                 notes.text = num.notes!
                 accountNumber.text! = num.accountNumber!

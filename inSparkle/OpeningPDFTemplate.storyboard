@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E64a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j6z-SK-2Mf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j6z-SK-2Mf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -517,6 +517,7 @@
                         <outlet property="bringChemicals" destination="uc4-iL-gyd" id="UbC-aG-KFG"/>
                         <outlet property="confirmedWith" destination="CT0-JS-CAR" id="nV9-Ce-iML"/>
                         <outlet property="customerName" destination="n4W-oN-NFh" id="cVo-4G-Ujz"/>
+                        <outlet property="dateTitle" destination="gKZ-1S-ZtD" id="LgA-fI-dk6"/>
                         <outlet property="itemLocation" destination="mbS-7C-ewJ" id="Ppl-H2-Ffh"/>
                         <outlet property="notes" destination="yZh-mO-PKw" id="WPf-uL-MGK"/>
                         <outlet property="openingDate" destination="jZ7-qL-7PV" id="Yap-dz-EbM"/>
@@ -524,7 +525,9 @@
                         <outlet property="phoneNumber" destination="KiY-1k-boo" id="CbI-Xt-jnc"/>
                         <outlet property="takeTrash" destination="Wu2-8p-HlM" id="V2l-M4-DWI"/>
                         <outlet property="theView" destination="qXr-Ui-LZl" id="iar-GK-byg"/>
+                        <outlet property="titleLabel" destination="VAe-ZP-mbn" id="V43-1Q-l9N"/>
                         <outlet property="typeOfWinterCover" destination="ask-di-ot7" id="4Wd-Ak-jkL"/>
+                        <outlet property="weekTitle" destination="0yW-nS-5g3" id="9Vq-9a-bUF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FjS-lY-z0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
