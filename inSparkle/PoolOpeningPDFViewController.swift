@@ -108,9 +108,9 @@ class PoolOpeningPDFViewController: UIViewController {
                 
                 if num.type == "Closing" {
                     
-                    let titleString: NSMutableAttributedString =  NSMutableAttributedString(string: "Pool Closing")
-                    titleString.addAttribute(NSUnderlineStyleAttributeName, value: 1, range: NSMakeRange(0, titleString.length))
-                    titleLabel.text = String(titleString)
+                    titleLabel.text = "Pool Closing"
+                    weekTitle.text = "Closing Week:"
+                    dateTitle.text = "Closing Date:"
                     
                 }
                 notes.text = num.notes!

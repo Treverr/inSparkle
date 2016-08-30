@@ -426,7 +426,21 @@ class GlobalFunctions {
         return token as String
         
     }
+}
+
+class UnderlinedLabel: UILabel {
     
+    override var text: String! {
+        
+        didSet {
+            let textRange = NSMakeRange(0, text.characters.count)
+            let attributedText = NSMutableAttributedString(string: text)
+            attributedText.addAttribute(NSUnderlineStyleAttributeName , value:NSUnderlineStyle.StyleSingle.rawValue, range: textRange)
+            
+            
+            self.attributedText = attributedText
+        }
+    }
 }
 
 extension NSDate {
