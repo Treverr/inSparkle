@@ -15,6 +15,7 @@ import CoreLocation
 import IQKeyboardManagerSwift
 import BRYXBanner
 import SystemConfiguration.CaptiveNetwork
+import DropDown
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -90,6 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         PFInstallation.currentInstallation().saveEventually()
         
         IQKeyboardManager.sharedManager().enable = true
+        
+        DropDown.startListeningToKeyboard()
         
         return true
     }

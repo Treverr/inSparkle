@@ -23,7 +23,7 @@ class WorkOrderPartsTableViewController: UITableViewController {
         
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resize"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(WorkOrderPartsTableViewController.resize), name: UIKeyboardWillHideNotification, object: nil)
         
         self.tableView.contentInset = UIEdgeInsets(top: 22, left: 0, bottom: 0, right: 0)
         

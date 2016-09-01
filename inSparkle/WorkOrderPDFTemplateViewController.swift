@@ -100,35 +100,19 @@ class WorkOrderPDFTemplateViewController: UIViewController {
             } else {
                 dowTextView.text = ""
             }
-            if workOrderObject.reccomendation != nil {
-                recTextView.text = workOrderObject.reccomendation
-            } else {
-                recTextView.text = ""
-            }
-            if workOrderObject.tripOneArrive != nil {
-                tripOneDateLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripOneArrive!, dateStyle: .ShortStyle, timeStyle: .NoStyle)
-                tripOneTimeArriveLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripOneArrive!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
-            } else {
-                tripOneDateLabel.text = ""
-                tripOneTimeArriveLabel.text = ""
-            }
-            if workOrderObject.tripOneDepart != nil {
-                tripOneTimeDepartLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripOneDepart!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
-            } else {
-                tripOneTimeDepartLabel.text = ""
-            }
-            if workOrderObject.tripTwoArrive != nil {
-                tripTwoDateLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoArrive!, dateStyle: .ShortStyle, timeStyle: .NoStyle)
-                tripTwoTimeArriveLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoArrive!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
-            } else {
-                tripTwoDateLabel.text = ""
-                tripTwoTimeArriveLabel.text = ""
-            }
-            if workOrderObject.tripTwoDepart != nil {
-                tripTwoDepartLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.tripTwoDepart!, dateStyle: .NoStyle, timeStyle: .ShortStyle)
-            } else {
-                tripTwoDepartLabel.text = ""
-            }
+            
+            recTextView.text = ""
+            
+            tripOneDateLabel.text = ""
+            tripOneTimeArriveLabel.text = ""
+            
+            tripOneTimeDepartLabel.text = ""
+            
+            tripTwoDateLabel.text = ""
+            tripTwoTimeArriveLabel.text = ""
+            
+            tripTwoDepartLabel.text = ""
+            
             if workOrderObject.unitMake != nil {
                 unitMakeLabel.text = workOrderObject.unitMake
             } else {

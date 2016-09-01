@@ -518,13 +518,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                 schObj.removeObjectForKey("confrimedBy")
                 schObj.removeObjectForKey("confirmedDate")
             }
-            schObj.saveEventually { (success: Bool, error : NSError?) -> Void in
+            schObj.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
                 if success {
                     if sender as! NSObject == self.generatePDFButton {
                         let sb = UIStoryboard(name: "OpeningPDFTemplate", bundle: nil)
                         let vc = sb.instantiateViewControllerWithIdentifier("PoolOpeningTemplate")
                         POCReportData.POCData = [schObj]
-                        self.presentViewController(vc, animated: true, completion: { 
+                        self.presentViewController(vc, animated: true, completion: {
                             if let overlayView = self.view.viewWithTag(6969) {
                                 overlayView.removeFromSuperview()
                             }
@@ -553,7 +553,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                         }
                     }
                 }
-            }
+            })
         }
     }
     

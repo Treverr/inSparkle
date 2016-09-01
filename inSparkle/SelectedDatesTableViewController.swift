@@ -37,7 +37,7 @@ class SelectedDatesTableViewController: UITableViewController {
             cell.dateLabel.text = dateFormatter.stringFromDate(SelectedDatesTimeAway.selectedDates[(indexPath.row - 1)])
             cell.fullDaySwitch.setOn(true, animated: false)
             cell.fullDaySwitch.tag = (indexPath.row - 1)
-            cell.fullDaySwitch.addTarget(self, action: "notFullDay:", forControlEvents: .ValueChanged)
+            cell.fullDaySwitch.addTarget(self, action: #selector(SelectedDatesTableViewController.notFullDay(_:)), forControlEvents: .ValueChanged)
             cell.hoursTextField.text = String(8)
             cell.hoursTextField.tag = (indexPath.row - 1)
             cell.hoursTextField.userInteractionEnabled = false
@@ -48,7 +48,7 @@ class SelectedDatesTableViewController: UITableViewController {
     }
     
     func notFullDay(sender : UISwitch) {
-        let tag = sender.tag
+        _ = sender.tag
         let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag + 1, inSection: 0)) as! SelectedDatesTableViewCell
         
         if sender.on {

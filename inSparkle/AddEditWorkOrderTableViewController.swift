@@ -24,12 +24,7 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     @IBOutlet var unitSerial: UITextField!
     @IBOutlet var managePartsLabel: UILabel!
     @IBOutlet var manageLaborLabel: UILabel!
-    @IBOutlet var tripOneDateTimeArriveLabel: UILabel!
-    @IBOutlet var tripOneDateTimeDepartLabel: UILabel!
-    @IBOutlet var tripTwoDateTimeArriveLabel: UILabel!
-    @IBOutlet var tripTwoDateTimeDepartLabel: UILabel!
     @IBOutlet var techLabel: UILabel!
-    @IBOutlet var reccomendationTextView: UITextView!
     @IBOutlet var techCell: UITableViewCell!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var statusCell: UITableViewCell!
@@ -45,10 +40,6 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     let dropDownTech = DropDown()
     
     @IBOutlet var wordOrderDatePicker: UIDatePicker!
-    @IBOutlet var tripOneArrivePicker: UIDatePicker!
-    @IBOutlet var tripOneDepartPicker: UIDatePicker!
-    @IBOutlet var tripTwoArrivePicker: UIDatePicker!
-    @IBOutlet var tripTwoDepartPicker: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,15 +62,11 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         }
         
         wordOrderDatePicker.hidden = true
-        tripOneArrivePicker.hidden = true
-        tripOneDepartPicker.hidden = true
-        tripTwoArrivePicker.hidden = true
-        tripTwoDepartPicker.hidden = true
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("UpdateCustomerFields"), name: "UpdateFieldsOnAddEditWorkOrder", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("UpdatePartsArray:"), name: "UpdatePartsArray", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("UpdateLaborArray:"), name: "UpdateLaborArray", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateStatusLabel:"), name: "updateStatusLabel", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdateCustomerFields), name: "UpdateFieldsOnAddEditWorkOrder", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdatePartsArray(_:)), name: "UpdatePartsArray", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdateLaborArray(_:)), name: "UpdateLaborArray", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.updateStatusLabel(_:)), name: "updateStatusLabel", object: nil)
         
         setUpDropDownTech()
         
@@ -102,7 +89,7 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                     }
                 }
                 print(techList)
-                var sorted = GlobalFunctions().qsort(techList)
+                let sorted = GlobalFunctions().qsort(techList)
                 print(techList)
                 self.techDataSource = sorted
                 self.dropDownTech.dataSource = self.techDataSource
@@ -170,14 +157,25 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             techLabel.text = workOrderObject!.technician!
             techLabel.textColor = UIColor.blackColor()
         }
+        
+        if workOrderObject?.technicianPointer != nil {
+            workOrderObject?.technicianPointer?.fetchInBackgroundWithBlock({ (employee : PFObject?, error : NSError?) in
+                if error == nil {
+                    let emp = employee as! Employee
+                    self.techLabel.text! = emp.firstName + " " + emp.lastName
+                    self.techLabel.textColor = UIColor.blackColor()
+                } else {
+                    self.techLabel.text = "Error Retrieving Assigned Tech"
+                    self.techLabel.textColor = UIColor.redColor()
+                }
+            })
+        }
+        
         if workOrderObject?.workToBePerformed != nil {
             wtbpTextView.text = workOrderObject!.workToBePerformed
         }
         if workOrderObject?.descOfWork != nil {
             descOfWork.text = workOrderObject!.descOfWork
-        }
-        if workOrderObject?.reccomendation != nil {
-            reccomendationTextView.text = workOrderObject!.reccomendation
         }
         if workOrderObject?.unitMake != nil {
             unitMake.text = workOrderObject!.unitMake
@@ -219,22 +217,6 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             if labor.count != 0 {
                 manageLaborLabel.text = "Manage Labor (\(self.labor.count))"
             }
-        }
-        if workOrderObject?.tripOneArrive != nil {
-            tripOneDateTimeArriveLabel.textColor = UIColor.blackColor()
-            tripOneDateTimeArriveLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripOneArrive!)
-        }
-        if workOrderObject?.tripOneDepart != nil {
-            tripOneDateTimeDepartLabel.textColor = UIColor.blackColor()
-            tripOneDateTimeDepartLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripOneDepart!)
-        }
-        if workOrderObject?.tripTwoArrive != nil {
-            tripTwoDateTimeArriveLabel.textColor = UIColor.blackColor()
-            tripTwoDateTimeArriveLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripTwoArrive!)
-        }
-        if workOrderObject?.tripTwoDepart != nil {
-            tripTwoDateTimeDepartLabel.textColor = UIColor.blackColor()
-            tripTwoDateTimeDepartLabel.text = GlobalFunctions().stringFromDateShortTimeShortDate(workOrderObject!.tripTwoDepart!)
         }
     }
     
@@ -295,45 +277,12 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         
     }
     
-    func tripOneArrivePickerChanged() {
-        tripOneDateTimeArriveLabel.text = NSDateFormatter.localizedStringFromDate(tripOneArrivePicker.date, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
-        
-    }
-    
-    func tripOneDepartPickerChanged() {
-        tripOneDateTimeDepartLabel.text = NSDateFormatter.localizedStringFromDate(tripOneDepartPicker.date, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
-    }
-    
-    func tripTwoArrivePickerChanged() {
-        tripTwoDateTimeArriveLabel.text = NSDateFormatter.localizedStringFromDate(tripTwoArrivePicker.date, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
-    }
-    
-    func tripTwoDepartPickerChanged(){
-        tripTwoDateTimeDepartLabel.text = NSDateFormatter.localizedStringFromDate(tripTwoDepartPicker.date, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
-    }
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if cell?.reuseIdentifier == "datePromised" {
             toggleDatePromisedPicker()
-        }
-        
-        if cell?.reuseIdentifier == "tripOneArrive" {
-            toggleTripOneArrivePicker()
-        }
-        
-        if cell?.reuseIdentifier == "tripOneDepart" {
-            toggleTripOneDepartPicker()
-        }
-        
-        if cell?.reuseIdentifier == "tripTwoArrive" {
-            toggleTripTwoArrivePicker()
-        }
-        
-        if cell?.reuseIdentifier == "tripTwoDepart" {
-            toggleTripTwoDepartPicker()
         }
         
         if cell?.reuseIdentifier == "techCell" {
@@ -350,28 +299,8 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let datePromisedIndex = NSIndexPath(forRow: 1, inSection: 1)
-        let tripOneArriveIndex = NSIndexPath(forRow: 1, inSection: 5)
-        let tripOneDepartIndex = NSIndexPath(forRow: 3, inSection: 5)
-        let tripTwoArriveIndex = NSIndexPath(forRow: 1, inSection: 6)
-        let tripTwoDepartIndex = NSIndexPath(forRow: 3, inSection: 6)
         
         if datePromisedPickerHidden && (indexPath == datePromisedIndex){
-            return 0
-        }
-        
-        if tripOneDapartPickerHidden && (indexPath == tripOneDepartIndex) {
-            return 0
-        }
-        
-        if tripTwoArrivePickerHidden && (indexPath == tripTwoArriveIndex) {
-            return 0
-        }
-        
-        if tripTwoDepartPickerHidden && (indexPath == tripTwoDepartIndex) {
-            return 0
-        }
-        
-        if tripOneArrivePickerHidden && (indexPath == tripOneArriveIndex) {
             return 0
         } else {
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
@@ -389,62 +318,6 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         
         tableView.beginUpdates()
         tableView.endUpdates()
-    }
-    
-    func toggleTripOneArrivePicker() {
-        tripOneArrivePickerHidden = !tripOneArrivePickerHidden
-        
-        if tripOneArrivePicker.hidden {
-            tripOneArrivePicker.hidden = false
-        } else {
-            tripOneArrivePicker.hidden = true
-        }
-        
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        
-    }
-    
-    func toggleTripOneDepartPicker() {
-        tripOneDapartPickerHidden = !tripOneDapartPickerHidden
-        
-        if tripOneDepartPicker.hidden {
-            tripOneDepartPicker.hidden = false
-        } else {
-            tripOneDepartPicker.hidden = true
-        }
-        
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        
-    }
-    
-    func toggleTripTwoArrivePicker() {
-        tripTwoArrivePickerHidden = !tripTwoArrivePickerHidden
-        
-        if tripTwoArrivePicker.hidden {
-            tripTwoArrivePicker.hidden = false
-        } else {
-            tripTwoArrivePicker.hidden = true
-        }
-        
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        tableViewScrollToBottom(true)
-    }
-    
-    func toggleTripTwoDepartPicker() {
-        tripTwoDepartPickerHidden = !tripTwoDepartPickerHidden
-        
-        if tripTwoDepartPicker.hidden {
-            tripTwoDepartPicker.hidden = false
-        } else {
-            tripTwoDepartPicker.hidden = true
-        }
-        
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        tableViewScrollToBottom(true)
     }
     
     func tableViewScrollToBottom(animated: Bool) {
@@ -468,33 +341,9 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     let calendar = NSCalendar.currentCalendar()
     
     @IBAction func datePromisedPickerAction(sender: AnyObject) {
-        let minDate = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: wordOrderDatePicker.date, options: NSCalendarOptions())
-        tripOneArrivePicker.minimumDate = minDate
-        tripTwoArrivePicker.minimumDate = minDate
+        _ = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: wordOrderDatePicker.date, options: NSCalendarOptions())
         dateLabel.textColor = UIColor.blackColor()
         workOrderDatePickerChanged()
-    }
-    
-    @IBAction func tripOneArrivePickerAction(sender: AnyObject) {
-        tripOneDepartPicker.minimumDate = tripOneArrivePicker.date
-        tripOneDateTimeArriveLabel.textColor = UIColor.blackColor()
-        tripOneArrivePickerChanged()
-    }
-    
-    @IBAction func tripOneDepatPickerAction(sender : AnyObject) {
-        tripOneDateTimeDepartLabel.textColor = UIColor.blackColor()
-        tripOneDepartPickerChanged()
-    }
-    
-    @IBAction func tripTwoArrivePickerAction(sender: AnyObject) {
-        tripTwoDepartPicker.minimumDate = tripTwoArrivePicker.date
-        tripTwoDateTimeArriveLabel.textColor = UIColor.blackColor()
-        tripTwoArrivePickerChanged()
-    }
-    
-    @IBAction func tripTwoDepartPickerAction(sender: AnyObject) {
-        tripTwoDateTimeDepartLabel.textColor = UIColor.blackColor()
-        tripTwoDepartPickerChanged()
     }
     
     @IBAction func saveAction(sender: AnyObject) {
@@ -515,16 +364,13 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             }
             workOrderObject?.date = GlobalFunctions().dateFromShortDateString(dateLabel.text!)
             if techLabel.text != "name" {
-                workOrderObject?.technician = techLabel.text
+                workOrderObject?.technicianPointer = self.selectedTech!
             }
             if wtbpTextView.text.isEmpty == false {
                 workOrderObject?.workToBePerformed = wtbpTextView.text
             }
             if descOfWork.text.isEmpty == false {
                 workOrderObject?.descOfWork = descOfWork.text
-            }
-            if reccomendationTextView.text.isEmpty == false {
-                workOrderObject?.reccomendation = reccomendationTextView.text
             }
             if unitMake.text?.isEmpty == false {
                 workOrderObject?.unitMake = unitMake.text
@@ -548,18 +394,6 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                 } else {
                     workOrderObject?.labor = self.labor
                 }
-            }
-            if tripOneDateTimeArriveLabel.text != "date & time" {
-                workOrderObject?.tripOneArrive = GlobalFunctions().dateFromShortDateShortTime(tripOneDateTimeArriveLabel.text!)
-            }
-            if tripOneDateTimeDepartLabel.text != "date & time" {
-                workOrderObject?.tripOneDepart = GlobalFunctions().dateFromShortDateShortTime(tripOneDateTimeDepartLabel.text!)
-            }
-            if tripTwoDateTimeArriveLabel.text != "date & time" {
-                workOrderObject?.tripTwoArrive = GlobalFunctions().dateFromShortDateShortTime(tripTwoDateTimeArriveLabel.text!)
-            }
-            if tripTwoDateTimeDepartLabel.text != "date & time" {
-                workOrderObject?.tripTwoDepart = GlobalFunctions().dateFromShortDateShortTime(tripTwoDateTimeDepartLabel.text!)
             }
             workOrderObject?.status = statusLabel.text
             print(workOrderObject)
@@ -609,16 +443,13 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             }
             workOrderObject?.date = GlobalFunctions().dateFromShortDateString(dateLabel.text!)
             if techLabel.text != "name" {
-                workOrderObject?.technician = techLabel.text
+                workOrderObject?.technicianPointer = self.selectedTech
             }
             if wtbpTextView.text.isEmpty == false {
                 workOrderObject?.workToBePerformed = wtbpTextView.text
             }
             if descOfWork.text.isEmpty == false {
                 workOrderObject?.descOfWork = descOfWork.text
-            }
-            if reccomendationTextView.text.isEmpty == false {
-                workOrderObject?.reccomendation = reccomendationTextView.text
             }
             if unitMake.text?.isEmpty == false {
                 workOrderObject?.unitMake = unitMake.text
@@ -642,18 +473,6 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                 } else {
                     workOrderObject?.labor = self.labor
                 }
-            }
-            if tripOneDateTimeArriveLabel.text != "date & time" {
-                workOrderObject?.tripOneArrive = GlobalFunctions().dateFromShortDateShortTime(tripOneDateTimeArriveLabel.text!)
-            }
-            if tripOneDateTimeDepartLabel.text != "date & time" {
-                workOrderObject?.tripOneDepart = GlobalFunctions().dateFromShortDateShortTime(tripOneDateTimeDepartLabel.text!)
-            }
-            if tripTwoDateTimeArriveLabel.text != "date & time" {
-                workOrderObject?.tripTwoArrive = GlobalFunctions().dateFromShortDateShortTime(tripTwoDateTimeArriveLabel.text!)
-            }
-            if tripTwoDateTimeDepartLabel.text != "date & time" {
-                workOrderObject?.tripTwoDepart = GlobalFunctions().dateFromShortDateShortTime(tripTwoDateTimeDepartLabel.text!)
             }
             workOrderObject?.status = statusLabel.text
             workOrderObject?.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in

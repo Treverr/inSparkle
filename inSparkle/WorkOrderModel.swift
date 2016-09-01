@@ -59,6 +59,11 @@ class WorkOrders : PFObject, PFSubclassing {
         set { setObject(newValue!, forKey: "technician") }
     }
     
+    var technicianPointer : Employee? {
+        get {return objectForKey("technicianPointer") as? Employee}
+        set { setObject(newValue!, forKey: "technicianPointer") }
+    }
+    
     var workToBePerformed : String? {
         get {return objectForKey("workToBePerformed") as? String}
         set { setObject(newValue!, forKey: "workToBePerformed") }
@@ -67,31 +72,6 @@ class WorkOrders : PFObject, PFSubclassing {
     var descOfWork : String? {
         get {return objectForKey("descOfWork") as? String}
         set { setObject(newValue!, forKey: "descOfWork") }
-    }
-    
-    var reccomendation : String? {
-        get {return objectForKey("reccomendation") as? String}
-        set { setObject(newValue!, forKey: "reccomendation") }
-    }
-    
-    var tripOneArrive : NSDate? {
-        get {return objectForKey("tripOneArrive") as? NSDate}
-        set { setObject(newValue!, forKey: "tripOneArrive") }
-    }
-    
-    var tripOneDepart : NSDate? {
-        get {return objectForKey("tripOneDepart") as? NSDate}
-        set { setObject(newValue!, forKey: "tripOneDepart") }
-    }
-    
-    var tripTwoArrive : NSDate? {
-        get {return objectForKey("tripTwoArrive") as? NSDate}
-        set { setObject(newValue!, forKey: "tripTwoArrive") }
-    }
-    
-    var tripTwoDepart : NSDate? {
-        get {return objectForKey("tripTwoDepart") as? NSDate}
-        set { setObject(newValue!, forKey: "tripTwoDepart") }
     }
     
     var unitMake : String? {

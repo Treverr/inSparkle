@@ -370,8 +370,8 @@ class GlobalFunctions {
     }
     
     func callNumber(phoneNumber : String) {
-        var stringArray = phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
-        var unformattedPhoneNumber = stringArray.joinWithSeparator("")
+        let stringArray = phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
+        let unformattedPhoneNumber = stringArray.joinWithSeparator("")
         if var phoneCallURL : NSURL = NSURL(string: "tel://\(unformattedPhoneNumber)") {
             let application : UIApplication = UIApplication.sharedApplication()
             if (application.canOpenURL(phoneCallURL)) {
@@ -417,9 +417,9 @@ class GlobalFunctions {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyz0123456789"
         
-        for (var i=0; i < 32; i++) {
-            var length = UInt32(letters.length)
-            var rand = arc4random_uniform(length)
+        for (var i=0; i < 32; i += 1) {
+            let length = UInt32(letters.length)
+            let rand = arc4random_uniform(length)
             token.appendFormat("%C", letters.characterAtIndex(Int(rand)))
         }
         

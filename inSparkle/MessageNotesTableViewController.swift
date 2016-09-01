@@ -24,7 +24,7 @@ class MessageNotesTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 100.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh", name: "RefreshMessageNotesTableView", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessageNotesTableViewController.refresh), name: "RefreshMessageNotesTableView", object: nil)
         
     }
     
@@ -48,7 +48,7 @@ class MessageNotesTableViewController: UITableViewController {
         let note = noteObject.note
         let time = noteObject.createdAt!
         if noteObject.createdBy != nil {
-            let enteredBy = noteObject.createdBy!
+            _ = noteObject.createdBy!
             noteObject.createdBy?.fetchInBackgroundWithBlock({ (employee : PFObject?, error : NSError?) in
                 if error == nil {
                     let emp = employee as! Employee
@@ -76,20 +76,20 @@ class MessageNotesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if cell.respondsToSelector("setSeparatorInset:") {
+        if cell.respondsToSelector(Selector("setSeparatorInset:")) {
             cell.separatorInset = UIEdgeInsetsZero
         }
         
-        if cell.respondsToSelector("setLayoutMargins:") {
+        if cell.respondsToSelector(Selector("setLayoutMargins:")) {
             cell.layoutMargins = UIEdgeInsetsZero
         }
     }
     
     override func viewDidLayoutSubviews() {
-        if self.tableView.respondsToSelector("setSeparatorInset:") {
+        if self.tableView.respondsToSelector(Selector("setSeparatorInset:")) {
             self.tableView.separatorInset = UIEdgeInsetsZero
         }
-        if self.tableView.respondsToSelector("setLayoutMargins:") {
+        if self.tableView.respondsToSelector(Selector("setLayoutMargins:")) {
             self.tableView.layoutMargins = UIEdgeInsetsZero
         }
     }
@@ -115,8 +115,6 @@ class MessageNotesTableViewController: UITableViewController {
         
     }
     
-    
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedNote = messageNotes[indexPath.row]
         
@@ -134,7 +132,7 @@ class MessageNotesTableViewController: UITableViewController {
     }
     
     func tableViewExtraCells() {
-        var tblView = UIView(frame: CGRectZero)
+        let tblView = UIView(frame: CGRectZero)
         tableView.tableFooterView = tblView
         tableView.tableFooterView?.hidden = true
         tableView.backgroundColor = UIColor.whiteColor()
