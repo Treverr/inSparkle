@@ -1205,14 +1205,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Do not Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZBu-dX-bBH">
-                                                    <rect key="frame" x="73" y="0.0" width="512" height="43"/>
+                                                    <rect key="frame" x="66" y="0.0" width="519" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="WO Do not Bill" id="zp4-Yo-7AJ">
-                                                    <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                                    <rect key="frame" x="15" y="3" width="36" height="36"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -1325,7 +1325,7 @@
         <image name="WO Assinged" width="36" height="36"/>
         <image name="WO Billed" width="36" height="36"/>
         <image name="WO Completed" width="36" height="36"/>
-        <image name="WO Do not Bill" width="50" height="50"/>
+        <image name="WO Do not Bill" width="36" height="36"/>
         <image name="WO In Progress" width="36" height="36"/>
         <image name="WO New" width="36" height="36"/>
         <image name="WO On Hold" width="36" height="36"/>
