@@ -241,6 +241,13 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                 }
             }
         }
+        
+        if segue.identifier == "viewTrips" {
+            let dest = segue.destinationViewController.childViewControllers.first as! TripsTableViewController
+            if workOrderObject?.mobileTechObject != nil {
+                dest.mtObjs = workOrderObject!.mobileTechObject
+            }
+        }
     }
     
     func UpdatePartsArray(notification : NSNotification) {
@@ -292,10 +299,6 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     }
     
     var datePromisedPickerHidden = true
-    var tripOneArrivePickerHidden = true
-    var tripOneDapartPickerHidden = true
-    var tripTwoArrivePickerHidden = true
-    var tripTwoDepartPickerHidden = true
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let datePromisedIndex = NSIndexPath(forRow: 1, inSection: 1)
@@ -364,7 +367,9 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             }
             workOrderObject?.date = GlobalFunctions().dateFromShortDateString(dateLabel.text!)
             if techLabel.text != "name" {
-                workOrderObject?.technicianPointer = self.selectedTech!
+                if self.selectedTech != nil {
+                    workOrderObject?.technicianPointer = self.selectedTech!
+                }
             }
             if wtbpTextView.text.isEmpty == false {
                 workOrderObject?.workToBePerformed = wtbpTextView.text
@@ -443,7 +448,9 @@ class AddEditWorkOrderTableViewController: UITableViewController {
             }
             workOrderObject?.date = GlobalFunctions().dateFromShortDateString(dateLabel.text!)
             if techLabel.text != "name" {
-                workOrderObject?.technicianPointer = self.selectedTech
+                if selectedTech != nil {
+                    workOrderObject?.technicianPointer = self.selectedTech
+                }
             }
             if wtbpTextView.text.isEmpty == false {
                 workOrderObject?.workToBePerformed = wtbpTextView.text

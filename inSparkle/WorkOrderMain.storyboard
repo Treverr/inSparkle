@@ -532,7 +532,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5xA-SJ-e8y">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="View Trips" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5xA-SJ-e8y">
                                                     <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -541,6 +541,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="jmR-d0-sTN" kind="presentation" identifier="viewTrips" modalPresentationStyle="formSheet" id="CC5-t2-Zjm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -636,21 +639,37 @@
             </objects>
             <point key="canvasLocation" x="1933" y="468"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Trips Table View Controller-->
         <scene sceneID="29W-96-goR">
             <objects>
-                <tableViewController id="8cg-9m-hwO" sceneMemberID="viewController">
+                <tableViewController id="8cg-9m-hwO" customClass="TripsTableViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ybv-5E-Ixe">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="P4V-94-Yaf">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tripCell" textLabel="ejp-GZ-jQY" detailTextLabel="BTt-JA-rHc" style="IBUITableViewCellStyleValue1" id="P4V-94-Yaf" customClass="TripsTableViewCell">
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P4V-94-Yaf" id="ks9-GZ-grd">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Trip Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ejp-GZ-jQY">
+                                            <rect key="frame" x="15" y="12" width="69" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Time" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BTt-JA-rHc">
+                                            <rect key="frame" x="549" y="12" width="36" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -659,7 +678,20 @@
                             <outlet property="delegate" destination="8cg-9m-hwO" id="ybD-9M-Fja"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="iVZ-dB-3Xf"/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="KFP-EN-6NK"/>
+                        <barButtonItem title="Total Time Spent: 0 hours" id="eNa-0L-1CW"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="iVZ-dB-3Xf">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="bdU-OB-9wo">
+                            <connections>
+                                <action selector="closeButton:" destination="8cg-9m-hwO" id="RJG-Qs-CBh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="totalTimeItem" destination="eNa-0L-1CW" id="hGQ-w6-fdV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExH-uQ-Dx9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1116,13 +1148,18 @@
         <!--Navigation Controller-->
         <scene sceneID="Bs7-fa-Hwj">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jmR-d0-sTN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="jmR-d0-sTN" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XM9-vE-TKL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="AXf-U2-Mab">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="8cg-9m-hwO" kind="relationship" relationship="rootViewController" id="LJZ-mL-FVu"/>
                     </connections>

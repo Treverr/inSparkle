@@ -14,6 +14,8 @@
 		C90340CA1C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340C91C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift */; };
 		C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90340CB1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard */; };
 		C90340CF1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */; };
+		C9062D591D78827E002D0D0F /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9062D581D78827E002D0D0F /* TripsTableViewController.swift */; };
+		C9062D5B1D7884DA002D0D0F /* TripsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9062D5A1D7884DA002D0D0F /* TripsTableViewCell.swift */; };
 		C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */; };
 		C9097DE11CCABDF900297696 /* LogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9097DE01CCABDF900297696 /* LogModel.swift */; };
 		C9097DE31CCADD8B00297696 /* ReActivePOCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9097DE21CCADD8B00297696 /* ReActivePOCTableViewCell.swift */; };
@@ -180,6 +182,8 @@
 		C90340C91C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemicalCheckoutTableViewCell.swift; sourceTree = "<group>"; };
 		C90340CB1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChemicalCheckoutReport.storyboard; sourceTree = "<group>"; };
 		C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSelectionChemCheckoutTableViewController.swift; sourceTree = "<group>"; };
+		C9062D581D78827E002D0D0F /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
+		C9062D5A1D7884DA002D0D0F /* TripsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewCell.swift; sourceTree = "<group>"; };
 		C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolOpeningPDFViewController.swift; sourceTree = "<group>"; };
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
 		C9097DE01CCABDF900297696 /* LogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogModel.swift; sourceTree = "<group>"; };
@@ -598,8 +602,10 @@
 		C9709C1A1C72D12F000ED6EA /* Work Orders */ = {
 			isa = PBXGroup;
 			children = (
+				C9062D5A1D7884DA002D0D0F /* TripsTableViewCell.swift */,
 				C9856A041C7E8B1E00E6C87F /* Work Order Assets.xcassets */,
 				C9709C1B1C72D144000ED6EA /* WorkOrderMain.storyboard */,
+				C9062D581D78827E002D0D0F /* TripsTableViewController.swift */,
 				C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */,
 				C9B993DE1C7FAAAB00702851 /* PDFPartTableViewCell.swift */,
 				C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */,
@@ -1064,6 +1070,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9062D591D78827E002D0D0F /* TripsTableViewController.swift in Sources */,
 				C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */,
 				C90340CA1C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift in Sources */,
 				C9856A031C7D664800E6C87F /* LaborPartsTableViewCell.swift in Sources */,
@@ -1087,6 +1094,7 @@
 				C949EBA11CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift in Sources */,
 				C9709C1E1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
+				C9062D5B1D7884DA002D0D0F /* TripsTableViewCell.swift in Sources */,
 				C9F7A9B21C6FE771001A6555 /* ChemCartTableViewController.swift in Sources */,
 				C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */,
 				C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */,
