@@ -151,6 +151,7 @@
 		C9E2A2B91C235D8400DBA851 /* ToSparkle.gpx in Resources */ = {isa = PBXBuildFile; fileRef = C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */; };
 		C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */; };
 		C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */; };
+		C9E9D89A1D828AB900773B69 /* WorkServiceOrderTimeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E9D8991D828AB900773B69 /* WorkServiceOrderTimeLog.swift */; };
 		C9F0C26B1CACE5540037736D /* DateDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0C26A1CACE5540037736D /* DateDetailTableViewController.swift */; };
 		C9F0FF931C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */; };
 		C9F0FF961C18A646005EEE28 /* TimeCardManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F0FF951C18A646005EEE28 /* TimeCardManagement.storyboard */; };
@@ -335,6 +336,7 @@
 		C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ToSparkle.gpx; sourceTree = "<group>"; };
 		C9E511F21BFABCF20030AA98 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Onboarding.storyboard; path = Onboarding/Onboarding.storyboard; sourceTree = "<group>"; };
 		C9E511F41BFAC15E0030AA98 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Onboarding/LoginViewController.swift; sourceTree = "<group>"; };
+		C9E9D8991D828AB900773B69 /* WorkServiceOrderTimeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkServiceOrderTimeLog.swift; sourceTree = "<group>"; };
 		C9F0C26A1CACE5540037736D /* DateDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDetailTableViewController.swift; sourceTree = "<group>"; };
 		C9F0FF921C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeCardManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
 		C9F0FF951C18A646005EEE28 /* TimeCardManagement.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeCardManagement.storyboard; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				C9856A041C7E8B1E00E6C87F /* Work Order Assets.xcassets */,
 				C9709C1B1C72D144000ED6EA /* WorkOrderMain.storyboard */,
 				C9062D581D78827E002D0D0F /* TripsTableViewController.swift */,
+				C9E9D8991D828AB900773B69 /* WorkServiceOrderTimeLog.swift */,
 				C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */,
 				C9B993DE1C7FAAAB00702851 /* PDFPartTableViewCell.swift */,
 				C91120871C74050D004002A3 /* WorkOrderPDFTemplateViewController.swift */,
@@ -1083,6 +1086,7 @@
 				C9856A011C7D648D00E6C87F /* LaborPartsTableViewController.swift in Sources */,
 				C9FE5BE51C1F880600293836 /* ConfirmingAppointmentTableViewController.swift in Sources */,
 				C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */,
+				C9E9D89A1D828AB900773B69 /* WorkServiceOrderTimeLog.swift in Sources */,
 				C91B6B301C5FD313006C761D /* AddEditMessageNoteViewController.swift in Sources */,
 				C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */,
 				C911BA381C7B637000AC8364 /* AddEditWorkOrderTableViewController.swift in Sources */,

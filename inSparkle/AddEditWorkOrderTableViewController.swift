@@ -244,8 +244,8 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         
         if segue.identifier == "viewTrips" {
             let dest = segue.destinationViewController.childViewControllers.first as! TripsTableViewController
-            if workOrderObject?.mobileTechObject != nil {
-                dest.mtObjs = workOrderObject!.mobileTechObject
+            if workOrderObject != nil {
+                dest.workOrder = self.workOrderObject
             }
         }
     }

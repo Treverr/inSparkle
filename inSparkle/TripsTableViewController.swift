@@ -11,8 +11,8 @@ import Parse
 
 class TripsTableViewController: UITableViewController {
     
-    var mtObjs : [PFObject]!
-    var trips = [[NSDate : NSDate]]()
+    var workOrder : WorkOrders!
+    var trips = [WorkServiceOrderTimeLog]()
     var totalTime : NSTimeInterval = 0
     var totalHours : Double = 0.0
     var totalMin : Double = 0.0
@@ -22,28 +22,20 @@ class TripsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let dateFormatter = NSDateFormatter()
-//        var date1 = "01-09-2016 9:00"
-//        var date2 = "01-09-2016 10:00"
-//        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
-//        var newDate1 = dateFormatter.dateFromString(date1)
-//        var newDate2 = dateFormatter.dateFromString(date2)
-//        
-//        let dateArray : [NSDate : NSDate] = [newDate1! : newDate2!]
-//        self.trips.append(dateArray)
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         
-        if mtObjs != nil {
-            for mt in mtObjs {
-                mt.fetchInBackgroundWithBlock({ (mtObject : PFObject?, error : NSError?) in
-                    if error == nil {
-                        let index = self.mtObjs.indexOf(mt)
-                        self.mtObjs[index!] = mtObject!
-                        let trips = mtObject!.objectForKey("trips") as! [[NSDate : NSDate]]
-                        self.trips.appendContentsOf(trips)
-                    }
-                })
+        let timeQuery = WorkServiceOrderTimeLog.query()
+        timeQuery?.whereKey("relatedWorkOrder", equalTo: self.workOrder)
+        timeQuery?.findObjectsInBackgroundWithBlock({ (results : [PFObject]?, error : NSError?) in
+            if error == nil {
+                self.trips = results as! [WorkServiceOrderTimeLog]
+                let sections = NSIndexSet(index: 0)
+                self.tableView.reloadSections(sections, withRowAnimation: .Bottom)
             }
-        }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,27 +54,45 @@ class TripsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("tripCell")! as UITableViewCell
         let trip = self.trips[indexPath.row]
         
-        let trips = trip.first
+        let start = trip.arrive
+        let end = trip.departed
+        if start != nil && end != nil {
+            var diff = end?.timeIntervalSinceDate(start!)
+            totalTime = totalTime + diff!
+            print(diff)
+            let hours = (diff! / 60) / 60
+            self.totalHours = self.totalHours + hours
+            let min : Double!
+            if hours >= 1 {
+                min = ((hours * 60) * 60) - diff!
+            } else {
+                min = diff! / 60
+            }
+            self.totalMin = self.totalMin + min
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = .ShortStyle
+            dateFormatter.timeStyle = .MediumStyle
+            
+            let startString = dateFormatter.stringFromDate(start!)
+            let endString = dateFormatter.stringFromDate(end!)
+            
+            cell.textLabel!.text = startString + " - " + endString
+            cell.detailTextLabel!.text = String(Int(hours)) + "h " + String(Int(min)) + "m"
+        } else if end == nil {
+            let start = trip.arrive
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = .ShortStyle
+            dateFormatter.timeStyle = .ShortStyle
+            
+            let startString = dateFormatter.stringFromDate(start!)
+            
+            cell.textLabel?.text = startString + " - " + "No Departure Logged"
+            cell.detailTextLabel?.text = nil
+        }
+    
         
-        let start = trips!.0
-        let end = trips!.1
-        let diff = end.timeIntervalSinceDate(start)
-        totalTime = totalTime + diff
-        print(diff)
-        let hours = (diff / 60) / 60
-        self.totalHours = self.totalHours + hours
-        let min = (hours * 60) * 60 - diff
-        self.totalMin = self.totalMin + min
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
-        dateFormatter.timeStyle = .ShortStyle
-        
-        let startString = dateFormatter.stringFromDate(start)
-        let endString = dateFormatter.stringFromDate(end)
-        
-        cell.textLabel!.text = startString + " - " + endString
-        cell.detailTextLabel!.text = String(Int(hours)) + "h " + String(Int(min)) + "m"
+
         totalTimeItem.title = String("Total Time: \(Int(self.totalHours))h \(Int(self.totalMin))m")
         
         return cell

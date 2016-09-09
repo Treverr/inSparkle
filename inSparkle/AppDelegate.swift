@@ -217,6 +217,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         VacationTimePunch.registerSubclass()
         SOIObject.registerSubclass()
         SessionModel.registerSubclass()
+        WorkServiceOrderTimeLog.registerSubclass()
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
