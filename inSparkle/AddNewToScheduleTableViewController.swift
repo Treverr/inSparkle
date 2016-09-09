@@ -168,7 +168,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
         let query = PFQuery(className: "ScheduleWeekList")
         query.whereKey("weekEnd", greaterThan: NSDate())
-        query.whereKey("apptsRemain", greaterThan: 0)
+        //        query.whereKey("apptsRemain", greaterThan: 0)
         query.whereKey("isOpenWeek", equalTo: isOpeningWeek)
         query.addAscendingOrder("weekStart")
         query.findObjectsInBackgroundWithBlock { (weeks:[PFObject]?, error: NSError?) -> Void in
@@ -334,7 +334,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         cell.selectionStyle = .None
     }
-
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == customerNameTextField {
             customerNameTextField.resignFirstResponder()
@@ -424,136 +424,159 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
     }
     
+    func weekManagerOverride(sender : AnyObject?) {
+        
+        let weekAlert = UIAlertController(title: "Overflow", message: "The week selected has 0 availabe slots, would you like to override this?", preferredStyle: .Alert)
+        let yesButton = UIAlertAction(title: "Yes", style: .Default, handler: { (action) in
+            self.performSave(sender)
+        })
+        let noButton = UIAlertAction(title: "No", style: .Default, handler: { (action) in
+            return
+        })
+        
+        weekAlert.addAction(noButton)
+        weekAlert.addAction(yesButton)
+        self.presentViewController(weekAlert, animated: true, completion: nil)
+
+    }
+    
+    func performSave(sender : AnyObject?) {
+        let customerName = customerNameTextField.text?.capitalizedString
+        let weekStartingString = weekStartingLabel.text
+        let weekEndingString = weekEndingLabel.text
+        let coverType = typeOfWinterCoverLabel.text
+        let locationOfEss = locationEssentialItems.text!
+        let bringCloseChem = bringChem
+        let takeTheTrash = takeTrash
+        let theNotes = notesTextView
+        
+        var weekStartDate : NSDate?
+        var weekEndDate : NSDate?
+        
+        if weekStartingString != nil {
+            weekStartDate = GlobalFunctions().dateFromShortDateString(weekStartingString!)
+        }
+        
+        if weekEndingString != nil {
+            weekEndDate = GlobalFunctions().dateFromShortDateString(weekEndingString!)
+        }
+        
+        var schObj : ScheduleObject!
+        
+        if AddNewScheduleObjects.scheduledObject == nil {
+            schObj = ScheduleObject()
+        } else {
+            schObj = AddNewScheduleObjects.scheduledObject
+        }
+        
+        ScheduleObject.registerSubclass()
+        if sender as! NSObject == confirmButton {
+            schObj.confirmedWith = self.confirmedWith.text!.capitalizedString
+            schObj.confirmedDate = NSDate()
+            schObj.confrimed = true
+        }
+        schObj.customerName = customerName!.capitalizedString
+        schObj.customerAddress = addressLabel.text!.stringByReplacingOccurrencesOfString("\n", withString: " ").capitalizedString
+        schObj.customerPhone = phoneNumberTextField.text!
+        schObj.weekStart = weekStartDate!
+        schObj.weekEnd = weekEndDate!
+        if self.selectedWeekObj != nil {
+            schObj.weekObj = self.selectedWeekObj!
+        }
+        schObj.isActive = true
+        if self.accountNumber != nil || schObj.accountNumber != nil {
+            if schObj.accountNumber != nil {
+                schObj.accountNumber = schObj.accountNumber
+            }
+            if self.accountNumber != nil {
+                schObj.accountNumber = self.accountNumber
+            }
+        } else {
+            schObj.accountNumber = ""
+        }
+        if AddNewScheduleObjects.isOpening != nil {
+            if AddNewScheduleObjects.isOpening == true {
+                schObj.type = "Opening"
+            } else {
+                schObj.type = "Closing"
+            }
+        }
+        schObj.coverType = coverType!
+        if AddNewScheduleObjects.isOpening != nil {
+            if AddNewScheduleObjects.isOpening == false {
+                schObj.aquaDoor = aquadoor
+            }
+        }
+        schObj.locEssentials = locationOfEss
+        schObj.bringChem = bringCloseChem
+        schObj.takeTrash = takeTheTrash
+        schObj.notes = theNotes.text!
+        if selectClosingDate.text != "Not Set" {
+            schObj.confirmedDate = GlobalFunctions().dateFromShortDateString(selectClosingDate.text!)
+            if PFUser.currentUser()?.username != nil {
+                schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
+            } else {
+                do {
+                    try PFUser.currentUser()?.fetch()
+                    
+                    schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
+                } catch {
+                    self.displayError("Error", message: "There was an error saving with the user infromation, please try again.")
+                }
+            }
+            
+        } else {
+            schObj.confrimed = false
+            schObj.removeObjectForKey("confrimedBy")
+            schObj.removeObjectForKey("confirmedDate")
+        }
+        schObj.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+            if success {
+                if sender as! NSObject == self.generatePDFButton {
+                    let sb = UIStoryboard(name: "OpeningPDFTemplate", bundle: nil)
+                    let vc = sb.instantiateViewControllerWithIdentifier("PoolOpeningTemplate")
+                    POCReportData.POCData = [schObj]
+                    self.presentViewController(vc, animated: true, completion: {
+                        if let overlayView = self.view.viewWithTag(6969) {
+                            overlayView.removeFromSuperview()
+                        }
+                        if let activityIndicator = self.view.viewWithTag(6868) {
+                            activityIndicator.removeFromSuperview()
+                        }
+                    })
+                } else {
+                    var isOpening : Bool!
+                    if schObj.type == "Opening" {
+                        isOpening = true
+                    } else {
+                        isOpening = false
+                    }
+                    
+                    GlobalFunctions().updateWeeksAppts()
+                    
+                    AddNewScheduleObjects.scheduledObject = nil
+                    AddNewScheduleObjects.isOpening = nil
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
+                    AddNewScheduleObjects.isOpening = nil
+                    if self.selectClosingDate.text != "Not Set" && sender as! NSObject == self.confirmButton {
+                        NSNotificationCenter.defaultCenter().postNotificationName("NotifyAppointmentConfirmed", object: nil)
+                        NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
+                    }
+                }
+            }
+        })
+    }
+    
     @IBAction func saveButton(sender: AnyObject) {
         if customerNameTextField.text!.isEmpty || addressLabel.text!.isEmpty || phoneNumberTextField.text!.isEmpty || typeOfWinterCoverLabel.text!.isEmpty ||  locationEssentialItems.text.isEmpty {
             displayError("Missing Field", message: "There is a field missing, check your entries and try again")
         } else {
-            
-            let customerName = customerNameTextField.text?.capitalizedString
-            let weekStartingString = weekStartingLabel.text
-            let weekEndingString = weekEndingLabel.text
-            let coverType = typeOfWinterCoverLabel.text
-            let locationOfEss = locationEssentialItems.text!
-            let bringCloseChem = bringChem
-            let takeTheTrash = takeTrash
-            let theNotes = notesTextView
-            
-            var weekStartDate : NSDate?
-            var weekEndDate : NSDate?
-            
-            if weekStartingString != nil {
-                weekStartDate = GlobalFunctions().dateFromShortDateString(weekStartingString!)
-            }
-            
-            if weekEndingString != nil {
-                weekEndDate = GlobalFunctions().dateFromShortDateString(weekEndingString!)
-            }
-            
-            var schObj : ScheduleObject!
-            
-            if AddNewScheduleObjects.scheduledObject == nil {
-                schObj = ScheduleObject()
+            if selectedWeekObj?.apptsRemain == 0 {
+                self.weekManagerOverride(sender)
             } else {
-                schObj = AddNewScheduleObjects.scheduledObject
+                self.performSave(sender)
             }
-            
-            ScheduleObject.registerSubclass()
-            if sender as! NSObject == confirmButton {
-                schObj.confirmedWith = self.confirmedWith.text!.capitalizedString
-                schObj.confirmedDate = NSDate()
-                schObj.confrimed = true
-            }
-            schObj.customerName = customerName!.capitalizedString
-            schObj.customerAddress = addressLabel.text!.stringByReplacingOccurrencesOfString("\n", withString: " ").capitalizedString
-            schObj.customerPhone = phoneNumberTextField.text!
-            schObj.weekStart = weekStartDate!
-            schObj.weekEnd = weekEndDate!
-            if self.selectedWeekObj != nil {
-                schObj.weekObj = self.selectedWeekObj!
-            }
-            schObj.isActive = true
-            if self.accountNumber != nil || schObj.accountNumber != nil {
-                if schObj.accountNumber != nil {
-                    schObj.accountNumber = schObj.accountNumber
-                }
-                if self.accountNumber != nil {
-                    schObj.accountNumber = self.accountNumber
-                }
-            } else {
-                schObj.accountNumber = ""
-            }
-            if AddNewScheduleObjects.isOpening != nil {
-                if AddNewScheduleObjects.isOpening == true {
-                    schObj.type = "Opening"
-                } else {
-                    schObj.type = "Closing"
-                }
-            }
-            schObj.coverType = coverType!
-            if AddNewScheduleObjects.isOpening != nil {
-                if AddNewScheduleObjects.isOpening == false {
-                    schObj.aquaDoor = aquadoor
-                }
-            }
-            schObj.locEssentials = locationOfEss
-            schObj.bringChem = bringCloseChem
-            schObj.takeTrash = takeTheTrash
-            schObj.notes = theNotes.text!
-            if selectClosingDate.text != "Not Set" {
-                schObj.confirmedDate = GlobalFunctions().dateFromShortDateString(selectClosingDate.text!)
-                if PFUser.currentUser()?.username != nil {
-                    schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
-                } else {
-                    do {
-                        try PFUser.currentUser()?.fetch()
-                        
-                        schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
-                    } catch {
-                        self.displayError("Error", message: "There was an error saving with the user infromation, please try again.")
-                    }
-                }
-                
-            } else {
-                schObj.confrimed = false
-                schObj.removeObjectForKey("confrimedBy")
-                schObj.removeObjectForKey("confirmedDate")
-            }
-            schObj.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
-                if success {
-                    if sender as! NSObject == self.generatePDFButton {
-                        let sb = UIStoryboard(name: "OpeningPDFTemplate", bundle: nil)
-                        let vc = sb.instantiateViewControllerWithIdentifier("PoolOpeningTemplate")
-                        POCReportData.POCData = [schObj]
-                        self.presentViewController(vc, animated: true, completion: {
-                            if let overlayView = self.view.viewWithTag(6969) {
-                                overlayView.removeFromSuperview()
-                            }
-                            if let activityIndicator = self.view.viewWithTag(6868) {
-                                activityIndicator.removeFromSuperview()
-                            }
-                        })
-                    } else {
-                        var isOpening : Bool!
-                        if schObj.type == "Opening" {
-                            isOpening = true
-                        } else {
-                            isOpening = false
-                        }
-                        
-                        GlobalFunctions().updateWeeksAppts()
-                        
-                        AddNewScheduleObjects.scheduledObject = nil
-                        AddNewScheduleObjects.isOpening = nil
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
-                        AddNewScheduleObjects.isOpening = nil
-                        if self.selectClosingDate.text != "Not Set" && sender as! NSObject == self.confirmButton {
-                            NSNotificationCenter.defaultCenter().postNotificationName("NotifyAppointmentConfirmed", object: nil)
-                            NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
-                        }
-                    }
-                }
-            })
         }
     }
     
@@ -643,7 +666,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             } else {
                 let movement = (up ? -kbHeight! : kbHeight!)
                 UIView.animateWithDuration(0.3, animations: {
-                  self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+                    self.view.frame = CGRectOffset(self.view.frame, 0, movement)
                 })
             }
         }
@@ -664,7 +687,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     let typePickerIndexPath : NSIndexPath = NSIndexPath(forItem: 7, inSection: 0)
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
+        
         
         if theWeekPickerHidden == false {
             weekPicker.hidden = true
