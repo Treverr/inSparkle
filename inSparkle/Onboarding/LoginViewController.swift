@@ -21,6 +21,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var kbHeight: CGFloat?
     var showUIKeyboard : Bool?
     
+    var hasKeyboard = false
+    
     @IBOutlet weak var loginButton: UIButton!
     var loadingUI : NVActivityIndicatorView!
     var loadingBackground = UIView()
@@ -28,6 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     
     var isKeyboardShowing : Bool?
@@ -40,13 +43,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             usernameField.text = lastUser.lowercaseString
         }
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         usernameField.delegate = self
         passwordField.delegate = self
-        
-        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        //
-        //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         
         
         // Do any additional setup after loading the view.
@@ -84,52 +85,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return UIStatusBarStyle.LightContent
     }
     
-    func keyboardWillShow(notification : NSNotification) {
-        
-        if isKeyboardShowing == true {
-            return
-        } else {
-            if let userInfo = notification.userInfo {
-                if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                    kbHeight = keyboardSize.height
-                    self.animateTextField(true)
-                    isKeyboardShowing = true
-                }
-            }
-        }
-        
-    }
-    
-    override func canBecomeFirstResponder() -> Bool {
-        return true
-    }
-    
-    func keyboardWillHide(notification : NSNotification) {
-        self.animateTextField(false)
-        isKeyboardShowing = false
-    }
-    
-    func animateTextField(up: Bool) {
-        if kbHeight == nil {
-            return
-        } else {
-            let movement = (up ? -kbHeight! + 150 : kbHeight! - 150)
-            UIView.animateWithDuration(0.3, animations: {
-                self.view.frame = CGRectOffset(self.view.frame, 0, movement)
-            })
-        }
-        
-    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         if textField == usernameField {
-            usernameField.resignFirstResponder()
             passwordField.becomeFirstResponder()
-        }
-        
-        if textField == passwordField {
-            textField.resignFirstResponder()
         }
         
         if  !usernameField.text!.isEmpty && !passwordField.text!.isEmpty {
@@ -264,4 +223,49 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.presentViewController(scanVC, animated: true, completion: nil)
         
     }
+    
+    var isShowing : Bool = false
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if usernameField.isFirstResponder() {
+            
+        }
+        
+        self.isShowing = true
+        
+        let info = notification.userInfo
+        let keyboardFrame = info![UIKeyboardFrameEndUserInfoKey]?.CGRectValue()
+        let keyboard = self.view.convertRect(keyboardFrame!, fromView: self.view.window)
+        let height = self.view.frame.size.height
+        let toolbarHeight = height - keyboard.origin.y
+        
+        if ((keyboard.origin.y + keyboard.size.height) > height) {
+            self.hasKeyboard = true
+        }
+        
+        if hasKeyboard {
+            let contentInset = UIEdgeInsetsMake(0, 0, toolbarHeight, 0)
+            scrollView.contentInset = contentInset
+            scrollView.scrollIndicatorInsets = contentInset
+            self.performSelector(#selector(LoginViewController.scrollToPasswordRect), withObject: nil, afterDelay: 0.1)
+        } else {
+            let contentInset = UIEdgeInsetsMake(0, 0, keyboard.height, 0)
+            scrollView.contentInset = contentInset
+            scrollView.scrollIndicatorInsets = contentInset
+            self.performSelector(#selector(LoginViewController.scrollToPasswordRect), withObject: nil, afterDelay: 0.1)
+        }
+    }
+    
+    func scrollToPasswordRect() {
+        self.scrollView.scrollRectToVisible(self.passwordField.frame, animated: true)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        self.isShowing = false
+        let contentinset = UIEdgeInsetsZero
+        scrollView.contentInset = contentinset
+        scrollView.scrollIndicatorInsets = contentinset
+    }
+    
 }

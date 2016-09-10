@@ -91,6 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         PFInstallation.currentInstallation().saveEventually()
         
         IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses.append(LoginViewController.self)
+        IQKeyboardManager.sharedManager().disabledToolbarClasses.append(LoginViewController.self)
         
         DropDown.startListeningToKeyboard()
         

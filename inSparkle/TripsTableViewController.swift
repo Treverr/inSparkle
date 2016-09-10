@@ -101,4 +101,6 @@ class TripsTableViewController: UITableViewController {
     @IBAction func closeButton(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
 }
