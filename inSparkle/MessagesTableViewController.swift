@@ -201,7 +201,7 @@ class MessagesTableViewController: UITableViewController {
             
             let dest = segue.destinationViewController as! ComposeMessageTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-            let selectMessage = theMesages[indexPath!.row] as! Messages
+            let selectMessage = theMesages[indexPath!.row] 
             dest.isNewMessage = false
             if inboxSentSegControl.selectedSegmentIndex == 1 {
                 dest.isSent = true

@@ -135,8 +135,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func loginAction(sender : AnyObject) {
-        var username = self.usernameField.text?.lowercaseString
-        var password = self.passwordField.text
+        let username = self.usernameField.text?.lowercaseString
+        let password = self.passwordField.text
         
         if username?.characters.count < 1 {
             // Alert
@@ -144,7 +144,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // Alert
         } else {
             NSUserDefaults.standardUserDefaults().setValue(username!, forKey: "lastUsername")
-            var spinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
+            let spinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
             spinner.startAnimating()
             
             sparkleConnectAnimation()

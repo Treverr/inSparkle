@@ -140,7 +140,7 @@ public class GooglePlacesAutocomplete: UINavigationController {
     self.init(rootViewController: gpaViewController)
     self.gpaViewController = gpaViewController
 
-    closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "close")
+    closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: #selector(GooglePlacesAutocomplete.close))
     closeButton.style = UIBarButtonItemStyle.Done
 
     gpaViewController.navigationItem.leftBarButtonItem = closeButton
@@ -188,8 +188,8 @@ public class GooglePlacesAutocompleteContainer: UIViewController {
   override public func viewDidLoad() {
     super.viewDidLoad()
 
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWasShown:", name: UIKeyboardDidShowNotification, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GooglePlacesAutocompleteContainer.keyboardWasShown(_:)), name: UIKeyboardDidShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GooglePlacesAutocompleteContainer.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
 
     searchBar.becomeFirstResponder()
     tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")

@@ -63,8 +63,8 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
         
         inTimeLabel.userInteractionEnabled = true
         outTimeLabel.userInteractionEnabled = true
-        let updatePunchFromIn : Selector = "updatePunchFromIn"
-        let updatePunchFromOut : Selector = "updatePunchFromOut"
+        let updatePunchFromIn : Selector = #selector(EditExistingTimePunchTableViewController.updatePunchFromIn)
+        let updatePunchFromOut : Selector = #selector(EditExistingTimePunchTableViewController.updatePunchFromOut)
         let tapGesture = UITapGestureRecognizer(target: self, action: updatePunchFromIn)
         tapGesture.numberOfTapsRequired = 1
         let tapGesture1 = UITapGestureRecognizer(target: self, action: updatePunchFromOut)
@@ -74,7 +74,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
         
         self.tableView.allowsSelection = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateDateLabel", name: "NotifyDateLabelToUpdate", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditExistingTimePunchTableViewController.updateDateLabel), name: "NotifyDateLabelToUpdate", object: nil)
         
     }
     

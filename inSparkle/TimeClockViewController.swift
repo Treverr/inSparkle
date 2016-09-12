@@ -40,7 +40,7 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         currentTime.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .NoStyle, timeStyle: .ShortStyle)
         currentDate.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .FullStyle, timeStyle: .NoStyle)
         
-        self.timeTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "tick", userInfo: nil, repeats: true)
+        self.timeTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(TimeClockViewController.tick), userInfo: nil, repeats: true)
         
         timeClockTextField.delegate = self
         
@@ -129,7 +129,7 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         }
         
         if timeOutTimer == nil {
-            timeOutTimer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: Selector("deleteButton:"), userInfo: nil, repeats: false)
+            timeOutTimer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: #selector(TimeClockViewController.deleteButton(_:)), userInfo: nil, repeats: false)
         }
         
     }
@@ -150,7 +150,7 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
             timeOutTimer.invalidate()
             timeOutTimer = nil
         }
-        var tcpo = TimeClockPunchObj()
+        let tcpo = TimeClockPunchObj()
         let empQuery = PFQuery(className: Employee.parseClassName())
         let pinToCheck = pinString
         empQuery.whereKey("pinNumber", equalTo: pinToCheck!)
@@ -272,7 +272,7 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
-            self.calculateTime(theEmployee as! Employee, thePunch: tcpo)
+            self.calculateTime(theEmployee , thePunch: tcpo)
         }
         
     }

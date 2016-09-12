@@ -145,7 +145,7 @@ class WorkOrderPDFTemplateViewController: UIViewController {
     }
     
     func generatePDF() {
-        var pdfData = NSMutableData()
+        let pdfData = NSMutableData()
         let bounds = CGRectMake(0, 0, 612, 792)
         
         UIGraphicsBeginPDFContextToData(pdfData, bounds, nil)

@@ -32,7 +32,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTotalNumberOfHours", name: "UpdateTotalNumberOfHours", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TimeAwayRequestTableViewController.updateTotalNumberOfHours), name: "UpdateTotalNumberOfHours", object: nil)
         
         submitButton.enabled = false
         submitButton.tintColor = UIColor.lightGrayColor()

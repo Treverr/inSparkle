@@ -57,7 +57,7 @@ class ChemCheckoutPDFReportTemplateViewController: UIViewController {
     
     func getData() {
     
-        var theEmployee = theEmployees![onEmployee]
+        let theEmployee = theEmployees![onEmployee]
         let query = CheckoutModel.query()
         let todayStart = NSDate().startOfDay
         let todayEnd = NSDate().endOfDay!
@@ -157,7 +157,7 @@ extension ChemCheckoutPDFReportTemplateViewController : UITableViewDelegate, UIT
                 return Array(self.counts.keys)
             }
         }
-        let itemName = keys[indexPath.row] as! String
+        let itemName = keys[indexPath.row] 
         let theEmp = theEmployees![onEmployee]
         
         cell.chemicalName.text = itemName

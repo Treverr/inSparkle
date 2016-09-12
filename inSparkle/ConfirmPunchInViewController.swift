@@ -19,7 +19,7 @@ class ConfirmPunchInViewController: UIViewController {
         super.viewDidLoad()
         
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "dismissView", userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ConfirmPunchInViewController.dismissView), userInfo: nil, repeats: false)
         
         employeeName.text! = TimeClock.employeeName
         

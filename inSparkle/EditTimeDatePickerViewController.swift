@@ -17,7 +17,7 @@ class EditTimeDatePickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        datePicker.addTarget(self, action: "datePickerChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        datePicker.addTarget(self, action: #selector(EditTimeDatePickerViewController.datePickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         datePicker.date = passedDate
 

@@ -37,11 +37,11 @@ class PDFLockerTableViewController: UITableViewController {
     func renameFileLongPress(longPress: UIGestureRecognizer) {
         print(longPress.state)
         if longPress.state == .Began {
-            var pressPoint : CGPoint = longPress.locationInView(self.tableView)
-            var indexPath : NSIndexPath = self.tableView.indexPathForRowAtPoint(pressPoint)!
+            let pressPoint : CGPoint = longPress.locationInView(self.tableView)
+            let indexPath : NSIndexPath = self.tableView.indexPathForRowAtPoint(pressPoint)!
             
             var renameTextField : UITextField!
-            var renameAlert = UIAlertController(title: "Rename File", message: nil, preferredStyle: .Alert)
+            let renameAlert = UIAlertController(title: "Rename File", message: nil, preferredStyle: .Alert)
             renameAlert.addTextFieldWithConfigurationHandler({ (textField) in
                 renameTextField = textField
             })
@@ -110,7 +110,7 @@ class PDFLockerTableViewController: UITableViewController {
         var attribs : NSDictionary?
         var createdAt : NSDate?
         
-        let renameLongPress : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: Selector("renameFileLongPress:"))
+        let renameLongPress : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(PDFLockerTableViewController.renameFileLongPress(_:)))
         
         do {
             try attribs = NSFileManager.defaultManager().attributesOfItemAtPath(stringPath)

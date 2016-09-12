@@ -24,8 +24,8 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStartDateLabel", name: "NotifyPOCUpdateStartLabel", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateEndDateLabel", name: "NotifyPOCUpdateEndLabel", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(POCRunReportFinalTableViewController.updateStartDateLabel), name: "NotifyPOCUpdateStartLabel", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(POCRunReportFinalTableViewController.updateEndDateLabel), name: "NotifyPOCUpdateEndLabel", object: nil)
 
     }
 
@@ -246,7 +246,7 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
     }
     
     func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
-        var viewController: UIViewController = UIViewController()
+        let viewController: UIViewController = UIViewController()
         self.presentViewController(viewController, animated: true, completion: nil)
         return viewController
     }

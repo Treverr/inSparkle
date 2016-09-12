@@ -21,7 +21,7 @@ class MoreTableViewController: UITableViewController {
         
         self.specialAccess = PFUser.currentUser()?.objectForKey("specialAccess") as! [String]
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("signBackIn"), name: "SignBackIn", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MoreTableViewController.signBackIn), name: "SignBackIn", object: nil)
         
     }
     
@@ -168,7 +168,7 @@ class MoreTableViewController: UITableViewController {
         PFUser.logOut()
         
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login") as! UIViewController
+            let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login") 
             self.presentViewController(viewController, animated: true, completion: nil)
         }
     }
@@ -180,7 +180,7 @@ class MoreTableViewController: UITableViewController {
     
     func setUserName() {
         if EmployeeData.universalEmployee != nil {
-            let empl = EmployeeData.universalEmployee as! Employee
+            let empl = EmployeeData.universalEmployee as Employee
             let name = empl.firstName + " " + empl.lastName
             self.profileLabel.text = name
         }

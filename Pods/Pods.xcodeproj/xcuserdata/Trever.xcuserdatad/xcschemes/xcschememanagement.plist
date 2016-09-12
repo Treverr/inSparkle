@@ -89,11 +89,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SimpleAlert.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SwiftGifOrigin.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -122,12 +117,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1470E3351B6A94D405F70360DF0BF7AF</key>
+		<key>08CA85D569E46BE353E01E0C852D7306</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>1520003FEBEC114D6C84F832AFEDB994</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1AF9EB38614AEC4BE939D17F665BF88F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,6 +152,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4552EFD9E8BBD5C0368618803052F838</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5632AE51791C2475C51CEDA5A88F50BF</key>
 		<dict>
 			<key>primary</key>
@@ -172,17 +177,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>77387BEFFBE0A28242470F20FF2CD7F6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>8698C4558AE758AD92477EC134E714F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A4581EB257A4D0654EABA907D32E523</key>
+		<key>8C164178778B08DDEBA5C9F821CFFEBF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,17 +202,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B230D7B669F4899DECD922BDD0764982</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B272B33F162D6E5C3510BA50ECF2684B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B574855307F4208B1A4CF3CDB6306C6A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -222,7 +212,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CFA16CBE587E3363B2B541F3E1C71C95</key>
+		<key>C88F19F233E9330D1D3B3E32DAC1B531</key>
 		<dict>
 			<key>primary</key>
 			<true/>

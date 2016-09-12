@@ -57,7 +57,7 @@ class TripsTableViewController: UITableViewController {
         let start = trip.arrive
         let end = trip.departed
         if start != nil && end != nil {
-            var diff = end?.timeIntervalSinceDate(start!)
+            let diff = end?.timeIntervalSinceDate(start!)
             totalTime = totalTime + diff!
             print(diff)
             let hours = (diff! / 60) / 60

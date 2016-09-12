@@ -29,18 +29,18 @@ class ResetPasswordViewController: UIViewController {
     }
     
     @IBAction func resetPassword(sender: AnyObject) {
-        var email = self.emailField.text
+        let email = self.emailField.text
         
         if email == "" {
             let alert = UIAlertController(title: "Enter Something", message: "Please enter your email address on file." , preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
-            var finalEmail = email?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            let finalEmail = email?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             
             PFUser.requestPasswordResetForEmailInBackground(finalEmail!)
             
-            var alert = UIAlertController (title: "Password Reset", message: "An email containing information on how to reset your password has been sent to " + finalEmail! + ".", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController (title: "Password Reset", message: "An email containing information on how to reset your password has been sent to " + finalEmail! + ".", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         }

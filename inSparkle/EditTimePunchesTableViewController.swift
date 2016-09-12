@@ -23,7 +23,7 @@ class EditTimePunchesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: "NotifyEditTableViewToRefresh", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditTimePunchesTableViewController.refreshTable), name: "NotifyEditTableViewToRefresh", object: nil)
         
         theEmployee = AddEditEmpTimeCard.employeeEditingObject
         
@@ -76,7 +76,7 @@ class EditTimePunchesTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("punchCell")
         var theText = ""
-        var thePunchForCell = punchArray[indexPath.row]
+        let thePunchForCell = punchArray[indexPath.row]
         let formatter = NSDateFormatter()
         formatter.dateStyle = .ShortStyle
         formatter.timeStyle = .ShortStyle

@@ -20,7 +20,7 @@ class ConfirmPunchOutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "dismissView", userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ConfirmPunchOutViewController.dismissView), userInfo: nil, repeats: false)
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .NoStyle

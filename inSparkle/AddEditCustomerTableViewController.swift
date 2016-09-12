@@ -40,7 +40,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updatedAddressLabel", name: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditCustomerTableViewController.updatedAddressLabel), name: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
         
         enableSaveButton(false)
 

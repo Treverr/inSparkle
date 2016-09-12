@@ -103,7 +103,7 @@ public class CalendarView: UIView {
       NSNotificationCenter.defaultCenter().removeObserver(self)
       contentView.removeObservers()
     } else {
-      NSNotificationCenter.defaultCenter().addObserver(self, selector: "dateSelected:", name: CalendarSelectedDayNotification, object: nil)
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CalendarView.dateSelected(_:)), name: CalendarSelectedDayNotification, object: nil)
     }
   }
 

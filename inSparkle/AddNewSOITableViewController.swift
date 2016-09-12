@@ -93,7 +93,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         categoryPicker.dataSource = self
         categoryPicker.delegate = self
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "setTheBarcode:", name: "barcodeNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddNewSOITableViewController.setTheBarcode(_:)), name: "barcodeNotification", object: nil)
         
         // Set all the textfield delegates
         customerNameTextField.delegate = self
@@ -404,7 +404,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
     }
     
     func getLocationsFromParse() {
-        let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
         let filePath = documents.stringByAppendingString("/locationList.plist")
         
         let savedLocationArray : [String]?
@@ -420,7 +420,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         let locationQuery = PFQuery(className: "locationList")
         locationQuery.findObjectsInBackgroundWithBlock { (locations: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                var locationCount = locations!.count
+                let locationCount = locations!.count
                 var possibleLocationsArray : [String] = []
                 for location in locations! {
                     

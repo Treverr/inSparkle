@@ -387,7 +387,7 @@ class GlobalFunctions {
     
     func loadingAnimation(loadingUI : NVActivityIndicatorView?, loadingBG : UIView, view : UIView, navController : UINavigationController) -> (NVActivityIndicatorView, UIView) {
         var loadUI = loadingUI
-        var loadBG = loadingBG
+        let loadBG = loadingBG
         let x = (navController.view.frame.size.width / 2)
         let y = (navController.view.frame.size.height / 2)
         
@@ -410,22 +410,6 @@ class GlobalFunctions {
         return (loadUI!, loadBG)
     }
     
-    
-    func generateToken() -> String {
-        var token : NSMutableString = NSMutableString(capacity: 32)
-        token = "r:"
-        
-        let letters : NSString = "abcdefghijklmnopqrstuvwxyz0123456789"
-        
-        for (var i=0; i < 32; i += 1) {
-            let length = UInt32(letters.length)
-            let rand = arc4random_uniform(length)
-            token.appendFormat("%C", letters.characterAtIndex(Int(rand)))
-        }
-        
-        return token as String
-        
-    }
 }
 
 class UnderlinedLabel: UILabel {

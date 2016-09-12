@@ -33,12 +33,12 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.backgroundColor = Colors.sparkleGreen
         self.refreshControl!.tintColor = UIColor.whiteColor()
-        self.refreshControl!.addTarget(self, action: Selector("refreshInvoked"), forControlEvents: .ValueChanged)
+        self.refreshControl!.addTarget(self, action: #selector(SOITableViewController.refreshInvoked), forControlEvents: .ValueChanged)
         
         
         self.navigationController?.setupNavigationbar(self.navigationController!)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "RefreshSOI:", name: "RefreshSOINotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SOITableViewController.RefreshSOI(_:)), name: "RefreshSOINotification", object: nil)
         
         self.tableView.allowsMultipleSelectionDuringEditing = true
         
@@ -72,10 +72,10 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         if (editing) {
-            let deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "deleteParseObject")
+            let deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(SOITableViewController.deleteParseObject))
             self.navigationItem.leftBarButtonItem = deleteButton
         } else {
-            let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "segToAdd")
+            let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(SOITableViewController.segToAdd))
             self.navigationItem.leftBarButtonItem = addButton
         }
     }
@@ -135,7 +135,7 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { (foundObjects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                var foundObjectsCount = foundObjects!.count
+                let foundObjectsCount = foundObjects!.count
                 for object in foundObjects! {
                     self.objects.addObject(object)
                     UIView.transitionWithView(self.tableView, duration: 0.35, options: .TransitionCrossDissolve, animations: { () -> Void in
@@ -261,7 +261,7 @@ extension SOITableViewController : UISearchBarDelegate {
             query.orderByDescending("createdAt")
             query.findObjectsInBackgroundWithBlock { (foundObjects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
-                    var foundObjectsCount = foundObjects!.count
+                    let foundObjectsCount = foundObjects!.count
                     for object in foundObjects! {
                         self.objects.addObject(object)
                         UIView.transitionWithView(self.tableView, duration: 0.35, options: .TransitionCrossDissolve, animations: { () -> Void in

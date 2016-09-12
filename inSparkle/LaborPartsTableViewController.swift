@@ -22,7 +22,7 @@ class LaborPartsTableViewController : UITableViewController {
         
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resize"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LaborPartsTableViewController.resize), name: UIKeyboardWillHideNotification, object: nil)
         
         self.tableView.contentInset = UIEdgeInsets(top: 22, left: 0, bottom: 0, right: 0)
         
@@ -106,7 +106,7 @@ extension LaborPartsTableViewController : UITextFieldDelegate {
         
         let row = textField.tag
         let part = labor[row]
-        var current = counts[part]
+        let current = counts[part]
         counts[part] = Int(textField.text!)
         var difference = counts[part]! - current!
         while difference > 0 {

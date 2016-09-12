@@ -21,7 +21,7 @@ class EmployeeTimeAwayRequestsTableViewController: UITableViewController {
         
         self.navigationItem.title = "Pending Time Away Requests"
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("returnToMainTimeAway"), name: "returnToMainTimeAway", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EmployeeTimeAwayRequestsTableViewController.returnToMainTimeAway), name: "returnToMainTimeAway", object: nil)
         
     }
     
@@ -50,7 +50,7 @@ class EmployeeTimeAwayRequestsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("dateCell")! as! UITableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("dateCell")! 
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .ShortStyle

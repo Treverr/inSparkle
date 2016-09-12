@@ -16,10 +16,10 @@ class ConfirmingAppointmentTableViewController: UITableViewController, UIPopover
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateDateLabel:", name: "NotifyConfirmScreenUpdateLabel", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ConfirmingAppointmentTableViewController.updateDateLabel(_:)), name: "NotifyConfirmScreenUpdateLabel", object: nil)
         
         dateLbel.userInteractionEnabled = true
-        let dateLabelTapGest = UITapGestureRecognizer(target: self, action: "displayPopover")
+        let dateLabelTapGest = UITapGestureRecognizer(target: self, action: #selector(ConfirmingAppointmentTableViewController.displayPopover))
         dateLabelTapGest.numberOfTapsRequired = 1
         dateLbel.addGestureRecognizer(dateLabelTapGest)
         

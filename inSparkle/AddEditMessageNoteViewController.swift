@@ -32,7 +32,7 @@ class AddEditMessageNoteViewController: UIViewController {
             noteTextView.text = existingNote?.note
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditMessageNoteViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(self.keyboardDidHide()), name: UIKeyboardWillHideNotification, object: nil)
 
 

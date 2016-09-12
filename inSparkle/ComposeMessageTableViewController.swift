@@ -59,11 +59,11 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnNewMessage", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateAddressLabel"), name: "UpdateComposeMessageLabel", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageTableViewController.updateFields), name: "UpdateFieldsOnNewMessage", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageTableViewController.updateAddressLabel), name: "UpdateComposeMessageLabel", object: nil)
         
         addressTextField.userInteractionEnabled = true
-        addressTextField.addTarget(self, action: Selector("googlePlacesAPI"), forControlEvents: UIControlEvents.EditingDidBegin)
+        addressTextField.addTarget(self, action: #selector(ComposeMessageTableViewController.googlePlacesAPI), forControlEvents: UIControlEvents.EditingDidBegin)
         
         phoneTextField.delegate = self
         altPhoneTextField.delegate = self
@@ -74,8 +74,8 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             enableDisableSaveButton(false)
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageTableViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageTableViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     var isKeyboardShowing : Bool?

@@ -40,10 +40,10 @@ class DayView: UIView {
 
   init() {
     super.init(frame: CGRectZero)
-    let tap = UITapGestureRecognizer(target: self, action: "select")
+    let tap = UITapGestureRecognizer(target: self, action: #selector(DayView.select as (DayView) -> () -> ()))
     addGestureRecognizer(tap)
     NSNotificationCenter.defaultCenter().addObserver(self,
-      selector: "onSelected:",
+      selector: #selector(DayView.onSelected(_:)),
       name: CalendarSelectedDayNotification,
       object: nil)
   }
@@ -63,7 +63,7 @@ class DayView: UIView {
   }
 
   func onSelected(notification: NSNotification) {
-    if let date = date, nsDate = notification.object as? NSDate {
+    if let date = date, let nsDate = notification.object as? NSDate {
       let mo = moment(nsDate)
       if mo.month != date.month || mo.day != date.day {
         selected = false

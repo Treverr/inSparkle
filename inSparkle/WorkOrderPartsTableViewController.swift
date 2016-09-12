@@ -114,7 +114,7 @@ extension WorkOrderPartsTableViewController : UITextFieldDelegate {
         
         let row = textField.tag
         let part = parts[row]
-        var current = counts[part]
+        let current = counts[part]
         counts[part] = Int(textField.text!)
         var difference = counts[part]! - current!
         while difference > 0 {

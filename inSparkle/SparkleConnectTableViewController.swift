@@ -29,7 +29,7 @@ class SparkleConnectTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         if EmployeeData.universalEmployee != nil {
-            let user = EmployeeData.universalEmployee as! Employee
+            let user = EmployeeData.universalEmployee as Employee
             let emply = EmployeeData.universalEmployee
             self.employeeNameLabel.text = emply!.firstName + " " + emply!.lastName
             var theRole : Role?

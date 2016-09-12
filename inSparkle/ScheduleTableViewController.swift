@@ -29,7 +29,7 @@ class ScheduleTableViewController: UITableViewController {
         
         self.tableView.setContentOffset(CGPointMake(0, searchBar.frame.size.height), animated: false)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refresh", name: "NotifyScheduleTableToRefresh", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScheduleTableViewController.refresh), name: "NotifyScheduleTableToRefresh", object: nil)
         
         setFilterType()
         scheduleQuery()
@@ -38,12 +38,12 @@ class ScheduleTableViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = editButtonItem()
         self.tableView.allowsMultipleSelectionDuringEditing = true
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayConfirmed", name: "NotifyAppointmentConfirmed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ScheduleTableViewController.displayConfirmed), name: "NotifyAppointmentConfirmed", object: nil)
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.backgroundColor = Colors.sparkleGreen
         self.refreshControl!.tintColor = UIColor.whiteColor()
-        self.refreshControl!.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
+        self.refreshControl!.addTarget(self, action: #selector(ScheduleTableViewController.refresh), forControlEvents: .ValueChanged)
         
         searchBar.delegate = self
         

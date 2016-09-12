@@ -76,7 +76,7 @@ class TimeAwayHistoryDetailTableViewController: UITableViewController {
             cell = self.tableView.dequeueReusableCellWithIdentifier("dateCell") as UITableViewCell!
             var dates = self.request.timeCardDictionary.allKeys as! [String]
             dates.sortInPlace()
-            let currentDate = dates[indexPath.row] as! String
+            let currentDate = dates[indexPath.row] 
             let dict = self.request.timeCardDictionary as! [String : String]
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "M/d/yy"
@@ -106,7 +106,7 @@ class TimeAwayHistoryDetailTableViewController: UITableViewController {
     @IBAction func cancelRequest(sender: AnyObject) {
         let confirmAlert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to cancel this request? You will need to re-submit", preferredStyle: .Alert)
         let yes = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
-            var originalStatus = self.request.status
+            let originalStatus = self.request.status
             self.request.status = "Cancelled"
             self.request.saveInBackground()
             let indexPath = NSIndexPath(forRow: 0, inSection: 0)

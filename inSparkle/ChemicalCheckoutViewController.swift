@@ -23,7 +23,7 @@ class ChemicalCheckoutViewController: UIViewController, iCarouselDelegate, iCaro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("clearCart"), name: "ClearChemCart", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ChemicalCheckoutViewController.clearCart), name: "ClearChemCart", object: nil)
         
         switch flowListSegmentControl.selectedSegmentIndex {
         case 0:

@@ -28,8 +28,8 @@
         self.startDateLabel.text = "select"
         self.endDateLabel.text = "select"
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateStartDateLabel", name: "updateStart", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateEndDateLabel", name: "updateEnd", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RunTimeReportTableViewController.updateStartDateLabel), name: "updateStart", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RunTimeReportTableViewController.updateEndDateLabel), name: "updateEnd", object: nil)
         
     }
     
@@ -100,7 +100,7 @@
     
     @IBAction func runReportButton(sender: AnyObject) {
         
-        performSelectorOnMainThread(Selector("swiftActive"), withObject: nil, waitUntilDone: true)
+        performSelectorOnMainThread(#selector(RunTimeReportTableViewController.swiftActive), withObject: nil, waitUntilDone: true)
 
         let startDateString = startDateLabel.text
         let endDateString = endDateLabel.text
@@ -279,7 +279,7 @@
     
     func saveCSV(whatToSave : NSMutableString) {
         let x = self.view.center
-        let docs = NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true)[0] as! String
+        let docs = NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true)[0] 
         let writePath = docs.stringByAppendingString("TimeCardReport.csv")
         do {
             try whatToSave.writeToFile(writePath, atomically: true, encoding: NSUTF8StringEncoding)
@@ -299,7 +299,7 @@
     }
     
     func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
-        var viewController: UIViewController = UIViewController()
+        let viewController: UIViewController = UIViewController()
         self.presentViewController(viewController, animated: true, completion: nil)
         return viewController
     }

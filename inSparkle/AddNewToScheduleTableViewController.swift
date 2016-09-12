@@ -37,9 +37,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFields", name: "UpdateFieldsOnSchedule", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddNewToScheduleTableViewController.updateFields), name: "UpdateFieldsOnSchedule", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddNewToScheduleTableViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddNewToScheduleTableViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
         
         var isOpening : Bool?
         
@@ -127,7 +127,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         typeOfWinterCoverPicker.dataSource = self
         
         weekPicker.userInteractionEnabled = true
-        let weekPickerMakeAllOthersResign : Selector = "weekPickerMakeAllOthersResign"
+        let weekPickerMakeAllOthersResign : Selector = #selector(AddNewToScheduleTableViewController.weekPickerMakeAllOthersResign)
         let weekPickerTapGesture = UITapGestureRecognizer(target: self, action: weekPickerMakeAllOthersResign)
         weekPickerTapGesture.numberOfTapsRequired = 1
         weekPicker.addGestureRecognizer(weekPickerTapGesture)
@@ -816,7 +816,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     func updateFields() {
         
-        var selectedCx = CustomerLookupObjects.slectedCustomer
+        let selectedCx = CustomerLookupObjects.slectedCustomer
         customerNameTextField.text = selectedCx!.firstName!.capitalizedString + " " + selectedCx!.lastName!.capitalizedString
         addressLabel.text = "\(selectedCx!.addressStreet.capitalizedString) \n \(selectedCx!.addressCity.capitalizedString), \(selectedCx!.addressState.uppercaseString) \(selectedCx!.ZIP)"
         phoneNumberTextField.text = selectedCx?.phoneNumber

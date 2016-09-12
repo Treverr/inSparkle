@@ -158,7 +158,7 @@ public class Banner: UIView {
     }
     
     private func forceUpdates() {
-        guard let superview = superview, showingConstraint = showingConstraint, hiddenConstraint = hiddenConstraint else { return }
+        guard let superview = superview, let showingConstraint = showingConstraint, let hiddenConstraint = hiddenConstraint else { return }
         switch bannerState {
         case .Hidden:
             superview.removeConstraint(showingConstraint)
@@ -191,8 +191,8 @@ public class Banner: UIView {
     }
     
     private func addGestureRecognizers() {
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: "didTap:"))
-        let swipe = UISwipeGestureRecognizer(target: self, action: "didSwipe:")
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(Banner.didTap(_:))))
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(Banner.didSwipe(_:)))
         swipe.direction = .Up
         addGestureRecognizer(swipe)
     }

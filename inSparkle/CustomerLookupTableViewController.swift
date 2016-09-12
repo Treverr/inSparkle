@@ -50,13 +50,13 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         tableView.reloadData()
         var queries = [PFQuery]()
         let cust = CustomerData()
-        var firstNameQuery = PFQuery(className: CustomerData.parseClassName())
+        let firstNameQuery = PFQuery(className: CustomerData.parseClassName())
         
         
         firstNameQuery.whereKey("firstName", containsString: searchBar.text?.uppercaseString)
         queries.append(firstNameQuery)
         
-        var lastNameQuery = PFQuery(className: CustomerData.parseClassName())
+        let lastNameQuery = PFQuery(className: CustomerData.parseClassName())
         
         lastNameQuery.whereKey("lastName", containsString: searchBar.text?.uppercaseString)
         queries.append(lastNameQuery)
@@ -72,7 +72,7 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         queries.append(splitNameQuery1)
         queries.append(splitNameQuery2)
         
-        var query = PFQuery.orQueryWithSubqueries(queries)
+        let query = PFQuery.orQueryWithSubqueries(queries)
         query.orderByAscending("lastName")
         query.findObjectsInBackgroundWithBlock { (customers : [PFObject]?, error : NSError?) -> Void in
             if error == nil {
@@ -104,7 +104,7 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
             
             cell = tableView.dequeueReusableCellWithIdentifier("customerCell") as! CustomerLookupTableViewCell
             print(indexPath.row)
-            let customer = customerDataArray[indexPath.row - 1] as! CustomerData
+            let customer = customerDataArray[indexPath.row - 1] 
             
             cell.customerName.text = customer.firstName!.capitalizedString + " " + customer.lastName!.capitalizedString
             cell.addressStreet.text = customer.addressStreet.capitalizedString

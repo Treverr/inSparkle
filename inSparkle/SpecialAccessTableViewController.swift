@@ -42,7 +42,7 @@ class SpecialAccessTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("saCell")! as UITableViewCell
         
-        let accessName = specAccess[indexPath.row].accessName as! String
+        let accessName = specAccess[indexPath.row].accessName 
         
         cell.textLabel?.text = accessName
         if employeeSpecialAccess.indexOf(specAccess[indexPath.row].accessName) != nil {

@@ -73,7 +73,7 @@ class ManageEmployeeListTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let row = self.tableView.indexPathForSelectedRow?.row
-        let selected = employeeList[row!] as! Employee
+        let selected = employeeList[row!] 
         
         self.selectedEmployee = selected
         

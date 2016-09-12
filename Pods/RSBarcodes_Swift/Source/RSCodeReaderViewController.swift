@@ -203,7 +203,7 @@ public class RSCodeReaderViewController: UIViewController, AVCaptureMetadataOutp
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        var availDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo) as! [AVCaptureDevice]
+        let availDevices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo) as! [AVCaptureDevice]
 
         for theDevice : AVCaptureDevice in availDevices {
             if theDevice.position == .Front {

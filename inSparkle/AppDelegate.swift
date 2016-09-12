@@ -129,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func mobihelpIntegration(){
-        var config : MobihelpConfig = MobihelpConfig(domain: "insparkle.freshdesk.com", withAppKey: "insparkle-2-eeccef6dda3ed4ae678466b2b0c5847e", andAppSecret: "51525287e07b865f00b5dfef42c3f2fe45a760a4")
+        let config : MobihelpConfig = MobihelpConfig(domain: "insparkle.freshdesk.com", withAppKey: "insparkle-2-eeccef6dda3ed4ae678466b2b0c5847e", andAppSecret: "51525287e07b865f00b5dfef42c3f2fe45a760a4")
         config.feedbackType = FEEDBACK_TYPE.NAME_AND_EMAIL_REQUIRED
         config.enableAutoReply = true // Enable Auto Reply.
         config.setThemeName("SparkleTheme")
@@ -150,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if NSFileManager.defaultManager().fileExistsAtPath(documentsDirectory.stringByAppendingString("/PDFLocker")) {
             var fileName = String(url).componentsSeparatedByString("/").last
             fileName = fileName?.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-            var origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
+            let origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
             var originalFilePath = String(url).componentsSeparatedByString(("file://")).last!
             originalFilePath = originalFilePath.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             let newPath = origPath! + "/PDFLocker/" + fileName!
@@ -170,7 +170,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
             var fileName = String(url).componentsSeparatedByString("/").last
             fileName = fileName?.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-            var origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
+            let origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
             var originalFilePath = String(url).componentsSeparatedByString(("file://")).last!
             originalFilePath = originalFilePath.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
             let newPath = origPath! + "/PDFLocker/" + fileName!
@@ -264,10 +264,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func applicationWillEnterForeground(application: UIApplication) {
         if PFUser.currentUser() != nil {
-            var employee = PFUser.currentUser()?.objectForKey("employee")
+            let employee = PFUser.currentUser()?.objectForKey("employee")
             employee?.fetchIfNeededInBackgroundWithBlock({ (emp : PFObject?, error : NSError?) in
                 if error == nil {
-                    var theEmployee = emp as! Employee
+                    let theEmployee = emp as! Employee
                     let name = theEmployee.firstName
                     
                     let banner = Banner(title: "Welcome Back, \(name)!", subtitle: nil, image: nil, backgroundColor: Colors.sparkleBlue, didTapBlock: nil)
@@ -328,7 +328,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func handleDeepLinkForMessages(messageID : String) {
         
         if self.window!.rootViewController as? UITabBarController != nil {
-            var tabBarController = self.window?.rootViewController as! UITabBarController
+            let tabBarController = self.window?.rootViewController as! UITabBarController
             tabBarController.selectedIndex = 2
         }
         
