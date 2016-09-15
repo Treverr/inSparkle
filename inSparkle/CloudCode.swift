@@ -8,33 +8,40 @@
 
 import Foundation
 import Parse
+import Alamofire
 
 class CloudCode {
     
     class func AddUpdateCustomerRecord(accountNumber : String?, name : String, address : String, phoneNumber : String) {
+        
+        let mgKey = "key-c2853cd746036f9c43ae5ba6bdbc8e7a"
+        let mgDomain = "mysparklepools.com"
+        
         if accountNumber != nil {
             
-            PFCloud.callFunctionInBackground("AddUpdateCustomerRecord", withParameters: [
-                "accountNumber" : accountNumber!,
-                "name1" : name,
-                "FullAddress" : address,
-                "cxPhoneNumber" : phoneNumber
-                ], block: { (result, error) in
-                    if error == nil {
-                        print("Success")
-                    }
-            })
+            var body = "The following customer needs added or updated: \n\n Customer Account Number: \(accountNumber!)\n Customer Name: \(name)\n Customer Address: \(address)\n Customer Phone Number: \(phoneNumber)\n\n Thank you,\n\n The inSparkle App Team\n\n\n\n*** This is an automatically generated email, please do not reply ***"
+            
+            let parameters = [
+                "to" : "robert@mysparklepools.com",
+                "from" : "inSparkle App Team <inSparkleApp@mysparklepools.com>",
+                "subject" : "Customer Update / Addition",
+                "text" : body
+            ]
+            
+            Email().send(parameters)
+            
         } else {
             
-            PFCloud.callFunctionInBackground("AddUpdateCustomerRecord", withParameters: [
-                "name1" : name,
-                "FullAddress" : address,
-                "cxPhoneNumber" : phoneNumber
-                ], block: { (result, error) in
-                    if error == nil {
-                        print("Success")
-                    }
-            })
+            var body = "The following customer needs added or updated: \n\n Customer Account Number:\n Customer Name: \(name)\n Customer Address: \(address)\n Customer Phone Number: \(phoneNumber)\n\n Thank you,\n\n The inSparkle App Team\n\n\n\n*** This is an automatically generated email, please do not reply ***"
+            
+            let parameters = [
+                "to" : "robert@mysparklepools.com",
+                "from" : "inSparkle App Team <inSparkleApp@mysparklepools.com>",
+                "subject" : "Customer Update / Addition",
+                "text" : body
+            ]
+            
+            Email().send(parameters)
         }
     }
     

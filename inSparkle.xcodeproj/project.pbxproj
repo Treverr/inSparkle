@@ -33,6 +33,7 @@
 		C9220DB61CAF76B600CCF10E /* TimeAwayRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9220DB51CAF76B600CCF10E /* TimeAwayRequestModel.swift */; };
 		C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923D5F91C231A9100A32978 /* WeekList.swift */; };
 		C928CF9E1C233BF000C83345 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928CF9D1C233BF000C83345 /* LocalNotifications.swift */; };
+		C929E7F21D8A37F1004EE7A7 /* SendEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929E7F11D8A37F1004EE7A7 /* SendEmail.swift */; };
 		C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */; };
 		C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338D831C1E306C00DC09BE /* CloudCode.swift */; };
 		C940778B1C7BF6C200E74817 /* PartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940778A1C7BF6C200E74817 /* PartsTableViewCell.swift */; };
@@ -203,6 +204,7 @@
 		C9220DB51CAF76B600CCF10E /* TimeAwayRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAwayRequestModel.swift; sourceTree = "<group>"; };
 		C923D5F91C231A9100A32978 /* WeekList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekList.swift; sourceTree = "<group>"; };
 		C928CF9D1C233BF000C83345 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		C929E7F11D8A37F1004EE7A7 /* SendEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendEmail.swift; sourceTree = "<group>"; };
 		C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePunchCalcObject.swift; sourceTree = "<group>"; };
 		C9338D831C1E306C00DC09BE /* CloudCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCode.swift; sourceTree = "<group>"; };
 		C940778A1C7BF6C200E74817 /* PartsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsTableViewCell.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 		C94367041BF719D50066D155 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C929E7F11D8A37F1004EE7A7 /* SendEmail.swift */,
 				C9F7A9B31C70149E001A6555 /* UserPIN.storyboard */,
 				C9F7A9B51C701614001A6555 /* UserPINViewController.swift */,
 				C9E2A2B81C235D8400DBA851 /* ToSparkle.gpx */,
@@ -1146,6 +1149,7 @@
 				C9FE5BE41C1F880600293836 /* ConfirmCalViewController.swift in Sources */,
 				C9FAE77B1C57FD39005630FC /* MessageStatusTableViewController.swift in Sources */,
 				C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */,
+				C929E7F21D8A37F1004EE7A7 /* SendEmail.swift in Sources */,
 				C9AB005E1C469FC900595F58 /* PushNotifications.swift in Sources */,
 				C9C039EC1C6D60530064FDBA /* ChemicalCheckoutViewController.swift in Sources */,
 				C97C9C7A1D5F8781006F47D0 /* QRCodeScanner.swift in Sources */,
