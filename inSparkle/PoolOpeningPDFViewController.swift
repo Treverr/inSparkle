@@ -115,7 +115,9 @@ class PoolOpeningPDFViewController: UIViewController {
                 }
                 notes.text = num.notes!
                 accountNumber.text! = num.accountNumber!
-                accountNumberBarcode.image = Barcode.fromString(num.accountNumber!)!
+                if !accountNumber.text!.isEmpty {
+                    accountNumberBarcode.image = Barcode.fromString(num.accountNumber!)!
+                }
                 
                 UIGraphicsBeginPDFPage()
                 

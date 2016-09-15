@@ -109,11 +109,11 @@ class MessagesTableViewController: UITableViewController {
     }
     
     func getEmpMessagesFromParse() {
-        if self.navigationController?.viewControllers.last! == msgTblViewController! {
-            let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
-            loadingUI = returnUI
-            loadingBackground = returnBG
-        }
+//        if self.navigationController?.viewControllers.last! == msgTblViewController! {
+//            let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
+//            loadingUI = returnUI
+//            loadingBackground = returnBG
+//        }
 
         if PFUser.currentUser()?.objectForKey("employee") != nil {
             
@@ -150,9 +150,9 @@ class MessagesTableViewController: UITableViewController {
                             self.theMesages.append(msg as! Messages)
                             self.tableView.reloadData()
                         }
-                        self.loadingUI.stopAnimation()
-                        self.loadingUI.removeFromSuperview()
-                        self.loadingBackground.removeFromSuperview()
+//                        self.loadingUI.stopAnimation()
+//                        self.loadingUI.removeFromSuperview()
+//                        self.loadingBackground.removeFromSuperview()
                     }
                 })
         }
@@ -262,6 +262,10 @@ extension MessagesTableViewController : UISearchBarDelegate {
                         query?.orderByDescending("dateTimeMessage")
                     case 1:
                         query?.whereKey("signed", equalTo: currentUser!)
+                        query?.whereKey("messageFromName", containsString: searchBar.text!)
+                        query?.orderByDescending("dateTimeMessage")
+                    case 2:
+                        query?.whereKey("recipient", equalTo: tom)
                         query?.whereKey("messageFromName", containsString: searchBar.text!)
                         query?.orderByDescending("dateTimeMessage")
                     default: break
