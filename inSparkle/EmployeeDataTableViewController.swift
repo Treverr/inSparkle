@@ -236,7 +236,7 @@ class EmployeeDataTableViewController: UITableViewController {
                             if self.employeeObject.objectId == nil {
                                 let name = self.firstName.text! + " " + self.lastName.text!
                                 let email = self.emailAddressTextField.text!
-                                CloudCode.SendWelcomeEmail(name, toEmail: email, emailAddress: email)
+//                                CloudCode.SendWelcomeEmail(name, toEmail: email, emailAddress: email)
                             }
                             self.employeeObject.firstName = self.firstName.text!.capitalizedString
                             self.employeeObject.lastName = self.lastName.text!.capitalizedString

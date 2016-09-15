@@ -142,7 +142,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
                         if timeAwayType == "Unpaid" {
                             timeAwayType = "Unpaid Time Away"
                         }
-                        CloudCode.SendNotificationOfNewTimeAwayRequest(name, type: timeAwayType, date1: SelectedDatesTimeAway.selectedDates.first!, date2: SelectedDatesTimeAway.selectedDates.last!, totalHours: timeAway.hours)
+//                        CloudCode.SendNotificationOfNewTimeAwayRequest(name, type: timeAwayType, date1: SelectedDatesTimeAway.selectedDates.first!, date2: SelectedDatesTimeAway.selectedDates.last!, totalHours: timeAway.hours)
                         let alert = UIAlertController(title: "Submitted", message: "Your Time Away Requset has been submitted. Please check with your manager for any questions. You will be notified via email if the request is approved or returned.", preferredStyle: .Alert)
                         let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
                             self.performSegueWithIdentifier("exitToSparkleConnect", sender: nil)

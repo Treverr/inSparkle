@@ -123,7 +123,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
                         onDate = onDate + 1
                     }
                 }
-                CloudCode.SendUnpaidTimeAwayApprovedEmail(empEmail!, dates: dates!)
+//                CloudCode.SendUnpaidTimeAwayApprovedEmail(empEmail!, dates: dates!)
             }
             
         } catch {
@@ -152,7 +152,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
         do {
             try user?.fetch()
             empEmail = user?.email!
-            CloudCode.SendReturnTimeAway(empEmail!, date1: self.datesArray.first!, date2: self.datesArray.last!, type: self.request.type!)
+//            CloudCode.SendReturnTimeAway(empEmail!, date1: self.datesArray.first!, date2: self.datesArray.last!, type: self.request.type!)
         } catch {
             
         }

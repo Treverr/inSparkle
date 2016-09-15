@@ -149,7 +149,7 @@ class TimeAwayHistoryDetailTableViewController: UITableViewController {
                             dates.sortInPlace()
                             let firstDate : NSDate = dates.first!
                             let lastDate : NSDate = dates.last!
-                            CloudCode.TimeAwayCancelEmail(name, type: self.request.type, date1: firstDate, date2: lastDate, totalHours: self.request.hours)
+//                            CloudCode.TimeAwayCancelEmail(name, type: self.request.type, date1: firstDate, date2: lastDate, totalHours: self.request.hours)
                         }
                         obj.saveInBackground()
                     }
