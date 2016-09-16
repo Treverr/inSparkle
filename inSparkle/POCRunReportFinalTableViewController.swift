@@ -178,17 +178,11 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                     }
                     
                     self.csvPOC = self.csvPOC + "\n\(accountNumber),\(custName),\(weekSch),\(custAddress),\(custPhone),\(dateConfirmed!),\(confirmedWith),\(typeOfWC),\(itemLoc),\(takeChem),\(takeTrash),\(notes!),\(confirmedBy!)"
-                    print(self.csvPOC)
                     self.returnedPOC = self.returnedPOC + 1
                 }
                 
                 if self.expectedReturn == 0 {
                     // TODO: Alert
-                }
-                
-                if self.expectedReturn - self.returnedPOC == 0 {
-                    self.csvPOC = self.csvPOC + "\n,,,,,,,,,,,,"
-                    self.shareTime()
                 }
                 
             }
