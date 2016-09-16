@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import DropDown
 
-class AddEditWorkOrderTableViewController: UITableViewController {
+class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet var customerNameTextField: UITextField!
     @IBOutlet var customerAddressTextField: UITextField!
@@ -36,8 +36,6 @@ class AddEditWorkOrderTableViewController: UITableViewController {
     var selectedTech : Employee?
     
     var workOrderObject : WorkOrders?
-    
-    let dropDownTech = DropDown()
     
     @IBOutlet var wordOrderDatePicker: UIDatePicker!
     
@@ -67,9 +65,16 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdatePartsArray(_:)), name: "UpdatePartsArray", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdateLaborArray(_:)), name: "UpdateLaborArray", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.updateStatusLabel(_:)), name: "updateStatusLabel", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.updateTechLabel(_:)), name: "updateTechLabel", object: nil)
         
-        setUpDropDownTech()
         
+    }
+    
+    func updateTechLabel(notification : NSNotification) {
+        let tech = notification.object as! String
+        self.techLabel.text = tech
+        self.selectedTech = self.techDict[tech]
+        print(self.selectedTech)
     }
     
     func getTechs() {
@@ -92,23 +97,8 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                 let sorted = GlobalFunctions().qsort(techList)
                 print(techList)
                 self.techDataSource = sorted
-                self.dropDownTech.dataSource = self.techDataSource
             }
         })
-    }
-    
-    func setUpDropDownTech() {
-        dropDownTech.anchorView = techCell
-        dropDownTech.direction = .Any
-        dropDownTech.bottomOffset = CGPoint(x: 0, y: dropDownTech.anchorView!.bounds.height)
-        dropDownTech.topOffset = CGPoint(x: 0, y: -dropDownTech.anchorView!.bounds.height)
-        dropDownTech.dismissMode = .Automatic
-        dropDownTech.selectionAction = { [unowned self] (index, item) in
-            self.techLabel.text = item
-            self.techLabel.textColor = UIColor.blackColor()
-            self.selectedTech = self.techDict[item]
-            print(self.selectedTech!)
-        }
     }
     
     func updateStatusLabel(notification : NSNotification) {
@@ -248,6 +238,14 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                 dest.workOrder = self.workOrderObject
             }
         }
+        
+        if segue.identifier == "techList" {
+            let dest = segue.destinationViewController as! TechListTableViewController
+            dest.techs = self.techDataSource
+            dest.modalPresentationStyle = .Popover
+            dest.popoverPresentationController!.delegate = self
+            
+        }
     }
     
     func UpdatePartsArray(notification : NSNotification) {
@@ -290,10 +288,6 @@ class AddEditWorkOrderTableViewController: UITableViewController {
         
         if cell?.reuseIdentifier == "datePromised" {
             toggleDatePromisedPicker()
-        }
-        
-        if cell?.reuseIdentifier == "techCell" {
-            dropDownTech.show()
         }
         
     }
@@ -489,6 +483,10 @@ class AddEditWorkOrderTableViewController: UITableViewController {
                 self.presentViewController(vc, animated: true, completion: nil)
             })
         }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
     
     

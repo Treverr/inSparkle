@@ -35,6 +35,7 @@
 		C928CF9E1C233BF000C83345 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928CF9D1C233BF000C83345 /* LocalNotifications.swift */; };
 		C929E7F21D8A37F1004EE7A7 /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = C929E7F11D8A37F1004EE7A7 /* Email.swift */; };
 		C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */; };
+		C92E81871D8B8E3300ED2D13 /* TechListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E81861D8B8E3300ED2D13 /* TechListTableViewController.swift */; };
 		C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338D831C1E306C00DC09BE /* CloudCode.swift */; };
 		C93AEF161D8A544600F9D44D /* VacationApprovedHTML.html in Resources */ = {isa = PBXBuildFile; fileRef = C93AEF151D8A544600F9D44D /* VacationApprovedHTML.html */; };
 		C940778B1C7BF6C200E74817 /* PartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940778A1C7BF6C200E74817 /* PartsTableViewCell.swift */; };
@@ -207,6 +208,7 @@
 		C928CF9D1C233BF000C83345 /* LocalNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		C929E7F11D8A37F1004EE7A7 /* Email.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePunchCalcObject.swift; sourceTree = "<group>"; };
+		C92E81861D8B8E3300ED2D13 /* TechListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechListTableViewController.swift; sourceTree = "<group>"; };
 		C9338D831C1E306C00DC09BE /* CloudCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCode.swift; sourceTree = "<group>"; };
 		C93AEF151D8A544600F9D44D /* VacationApprovedHTML.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = VacationApprovedHTML.html; sourceTree = "<group>"; };
 		C940778A1C7BF6C200E74817 /* PartsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsTableViewCell.swift; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				C9062D5A1D7884DA002D0D0F /* TripsTableViewCell.swift */,
 				C9856A041C7E8B1E00E6C87F /* Work Order Assets.xcassets */,
 				C9709C1B1C72D144000ED6EA /* WorkOrderMain.storyboard */,
+				C92E81861D8B8E3300ED2D13 /* TechListTableViewController.swift */,
 				C9062D581D78827E002D0D0F /* TripsTableViewController.swift */,
 				C9E9D8991D828AB900773B69 /* WorkServiceOrderTimeLog.swift */,
 				C91120851C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard */,
@@ -1192,6 +1195,7 @@
 				C9585F271C169491008AB918 /* RunTimeReportTableViewController.swift in Sources */,
 				C9C8E1C11C32141800191C17 /* MessageModel.swift in Sources */,
 				C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */,
+				C92E81871D8B8E3300ED2D13 /* TechListTableViewController.swift in Sources */,
 				C9097DE11CCABDF900297696 /* LogModel.swift in Sources */,
 				C9220DB61CAF76B600CCF10E /* TimeAwayRequestModel.swift in Sources */,
 				C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */,
