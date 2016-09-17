@@ -22,6 +22,7 @@ pod 'Parse'
 pod 'BRYXBanner'
 pod 'NVActivityIndicatorView'
 pod 'Alamofire', '~> 3.5.0'
+pod 'ParseLiveQuery'
 
 end
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseLiveQuery
 import NVActivityIndicatorView
 
 class MessagesTableViewController: UITableViewController {
@@ -25,6 +26,11 @@ class MessagesTableViewController: UITableViewController {
     
     var tom = Employee()
     
+    var liveSubscription : Subscription<Messages>!
+    var currentSubscribed : PFQuery!
+    
+    var addButton : UIBarButtonItem!
+    
     @IBOutlet var inboxSentSegControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -38,7 +44,12 @@ class MessagesTableViewController: UITableViewController {
         
         msgTblViewController = self.navigationController?.viewControllers.last
         
+        self.addButton = self.navigationItem.rightBarButtonItem
+        self.navigationItem.rightBarButtonItem = nil
+        
     }
+    
+    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -60,7 +71,6 @@ class MessagesTableViewController: UITableViewController {
             }
             
             cell.configureCell(name, date: date, messageStatus: status, statusTime: statusTime, unread: unread)
-            print(theMesages)
         }
         
         return cell
@@ -68,6 +78,9 @@ class MessagesTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        self.navigationItem.rightBarButtonItem = nil
+        
         PFSession.getCurrentSessionInBackgroundWithBlock { (session : PFSession?, error : NSError?) in
             if error != nil {
                 PFUser.logOut()
@@ -102,6 +115,7 @@ class MessagesTableViewController: UITableViewController {
     }
     
     func refresh() {
+        self.navigationItem.rightBarButtonItem = nil
         self.theMesages.removeAll()
         self.tableView.reloadData()
         getEmpMessagesFromParse()
@@ -109,12 +123,7 @@ class MessagesTableViewController: UITableViewController {
     }
     
     func getEmpMessagesFromParse() {
-//        if self.navigationController?.viewControllers.last! == msgTblViewController! {
-//            let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.view, navController: self.navigationController!)
-//            loadingUI = returnUI
-//            loadingBackground = returnBG
-//        }
-
+        
         if PFUser.currentUser()?.objectForKey("employee") != nil {
             
             do {
@@ -125,37 +134,90 @@ class MessagesTableViewController: UITableViewController {
             
             let emp = PFUser.currentUser()?.objectForKey("employee") as! Employee
             emp.fetchInBackground()
-                let selectedSeg = inboxSentSegControl.selectedSegmentIndex
-                let query = Messages.query()
-                let employeeObj = PFUser.currentUser()?.objectForKey("employee") as! Employee
-                let currentUser = PFUser.currentUser()
-                employeeObj.fetchIfNeededInBackground()
-                
-                switch selectedSeg {
-                case 0:
-                    query?.whereKey("recipient", equalTo: employeeObj)
-                    query?.orderByDescending("dateTimeMessage")
-                case 1:
-                    query?.whereKey("signed", equalTo: currentUser!)
-                    query?.orderByDescending("dateTimeMessage")
-                case 2:
-                    query?.whereKey("recipient", equalTo: tom)
-                    query?.orderByDescending("dateTimeMessage")
-                default: break
-                }
-                
-                query?.findObjectsInBackgroundWithBlock({ (messages : [PFObject]?, error: NSError?) -> Void in
-                    if error == nil {
-                        for msg in messages! {
-                            self.theMesages.append(msg as! Messages)
-                            self.tableView.reloadData()
-                        }
-//                        self.loadingUI.stopAnimation()
-//                        self.loadingUI.removeFromSuperview()
-//                        self.loadingBackground.removeFromSuperview()
+            let selectedSeg = inboxSentSegControl.selectedSegmentIndex
+            let query = Messages.query()
+            let employeeObj = PFUser.currentUser()?.objectForKey("employee") as! Employee
+            let currentUser = PFUser.currentUser()
+            employeeObj.fetchIfNeededInBackground()
+            
+            switch selectedSeg {
+            case 0:
+                query?.whereKey("recipient", equalTo: employeeObj)
+                query?.orderByDescending("dateTimeMessage")
+                query?.includeKey("recipient")
+                query?.includeKey("signed")
+            case 1:
+                query?.whereKey("signed", equalTo: currentUser!)
+                query?.orderByDescending("dateTimeMessage")
+                query?.includeKey("recipient")
+                query?.includeKey("signed")
+            case 2:
+                query?.whereKey("recipient", equalTo: tom)
+                query?.orderByDescending("dateTimeMessage")
+                query?.includeKey("recipient")
+                query?.includeKey("signed")
+            default: break
+            }
+            
+            query?.findObjectsInBackgroundWithBlock({ (messages : [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    for msg in messages! {
+                        self.theMesages.append(msg as! Messages)
+                        self.tableView.reloadData()
                     }
-                })
+//                    self.subscribeToUpdates(query!)
+                    self.navigationItem.rightBarButtonItem = self.addButton
+                }
+            })
         }
+    }
+    
+    func subscribeToUpdates(query : PFQuery) {
+        if currentSubscribed != nil {
+            Client().unsubscribe(self.currentSubscribed)
+        }
+        self.currentSubscribed = query
+        self.liveSubscription = query
+            .subscribe()
+            .handle(Event.Created) {_, item in
+                self.handleCreatedEvent(item)
+            }
+            .handle(Event.Updated) {_, item in
+                self.handleUpdatedEvent(item)
+            }
+            .handle(Event.Deleted) {_, item in
+                self.handleDeletedEvent(item)
+        }
+        self.currentSubscribed = query
+        
+    }
+    
+    func handleCreatedEvent(item : Messages) {
+        self.theMesages.insert(item, atIndex: 0)
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! MessagesMainTableViewCell
+        let name = theMesages[indexPath.row].messageFromName
+        let date = theMesages[indexPath.row].dateEntered
+        let status = theMesages[indexPath.row].status
+        let statusTime = theMesages[indexPath.row].statusTime
+        var unread : Bool!
+        if status == "Unread" {
+            unread = true
+        } else {
+            unread = false
+        }
+        
+        cell.configureCell(name, date: date, messageStatus: status, statusTime: statusTime, unread: unread)
+        
+        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+    
+    func handleUpdatedEvent(item : Messages) {
+        
+    }
+    
+    func handleDeletedEvent(item : Messages) {
+        
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -201,7 +263,7 @@ class MessagesTableViewController: UITableViewController {
             
             let dest = segue.destinationViewController as! ComposeMessageTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-            let selectMessage = theMesages[indexPath!.row] 
+            let selectMessage = theMesages[indexPath!.row]
             dest.isNewMessage = false
             if inboxSentSegControl.selectedSegmentIndex == 1 {
                 dest.isSent = true

@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Bolts-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -79,6 +84,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ParseLiveQuery.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>PhoneNumberKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -90,6 +100,11 @@
 			<false/>
 		</dict>
 		<key>RSBarcodes_Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SocketRocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -122,12 +137,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1520003FEBEC114D6C84F832AFEDB994</key>
+		<key>07289F5FE975C4B249066644344B188D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>159ECD3F0694C99AF416CF11FD9F1512</key>
+		<key>1520003FEBEC114D6C84F832AFEDB994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,7 +167,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>527D3706ACD1E88E34B96860B2DB4F91</key>
+		<key>4961AAEC559B00CFEAEDAA07ACF1A9D5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5480E024C3E679A606716DCFC6577E78</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -162,12 +182,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>59639F0543F0EC5DFB9700D1D4D72EDC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>67D807208F62081EBD013D6EDE715B9B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6DC91587B32A54545FC74D22684BDD69</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6DE07670D38FD884A24F3CC3D1411551</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>739D4EE101A3D8E2260A02FC81E6B91E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,7 +217,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>805645FACBE103D907954D248E8B9DA1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8698C4558AE758AD92477EC134E714F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8BAA0742E25D8338BD994ACFB93665FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -212,22 +257,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D8278D9CB6FE9DFAFEB8CEC1347C2CEB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E2B9403895AA4BF7CA3EB85ECB46507F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>E45C60E65DC7B25E659C0A735F907FC7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E8146DF3544B2D720838DA83C1556629</key>
 		<dict>
 			<key>primary</key>
 			<true/>
