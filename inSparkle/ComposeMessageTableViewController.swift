@@ -25,7 +25,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     @IBOutlet var messageTextView: UITextView!
     @IBOutlet var signedLabel: UILabel!
     @IBOutlet weak var recipientLabel: UILabel!
-    @IBOutlet weak var addImage: UIImageView!
     @IBOutlet var emailAddress: UITextField!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var phoneCallButton: UIButton!
@@ -212,7 +211,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     }
     
     func getRecip() {
-        self.addImage.hidden = true
         let recip = existingMessage?.recipient
         recip?.fetchInBackgroundWithBlock({ (recipient : PFObject?, error : NSError?) in
             if error == nil {
@@ -414,7 +412,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     @IBAction func returnFromEmployeeSelection(segue : UIStoryboardSegue) {
         let recipName = selectedEmployee!.firstName + " " + selectedEmployee!.lastName
         recipientLabel.text = "To: " + recipName
-        addImage.hidden = true
         
         recipientLabel.bounds = addRecipCell.frame
         recipientLabel.textAlignment = .Center
