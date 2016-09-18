@@ -33,8 +33,14 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     var selectedEmployee : Employee?
     var formatter = NSDateFormatter()
     
+    var QuckActionsVC : QuickActionsMasterViewController!
+    
     override func viewWillAppear(animated: Bool) {
         
+        if StaticViews.masterView != nil {
+                    self.QuckActionsVC = StaticViews.masterView.childViewControllers.first?.childViewControllers.first as! QuickActionsMasterViewController
+        }
+
         
         if isNewMessage {
             let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
@@ -43,6 +49,19 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 if error == nil {
                     self.signedLabel.text = "Signed: " + employeeData.firstName + " " + employeeData.lastName
                 }
+            }
+            if self.selectedEmployee != nil {
+                let recipName = selectedEmployee!.firstName + " " + selectedEmployee!.lastName
+                recipientLabel.text = "To: " + recipName
+                
+                recipientLabel.bounds = addRecipCell.frame
+                recipientLabel.textAlignment = .Center
+                
+                self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close",
+                                                                               style: .Plain,
+                                                                               target: self,
+                                                                               action: #selector(ComposeMessageTableViewController.close)
+                )
             }
         } else {
             if MessagesDataObjects.selectedEmp != nil {
@@ -150,7 +169,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             }
         }
     }
-
+    
     
     func updateSignedEmployee() {
         var signed : PFUser?
@@ -218,7 +237,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 
                 self.recipientLabel.text = "To: " + theRecip.firstName + " " + theRecip.lastName
                 MessagesDataObjects.selectedEmp = theRecip
-                print(self.selectedEmployee)
                 
             }
         })
@@ -285,6 +303,10 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     override func viewWillDisappear(animated: Bool) {
         
         self.tabBarController?.tabBar.hidden = false
+        if StaticViews.masterView != nil {
+                    self.QuckActionsVC.shouldShowHideMaster(true)
+        }
+
         
     }
     
@@ -501,7 +523,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             self.presentViewController(confirmCall, animated: true, completion: nil)
             
         } catch {
-        
+            
         }
     }
     
@@ -523,7 +545,11 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         } catch {
             
         }
-
+        
+    }
+    
+    func close() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

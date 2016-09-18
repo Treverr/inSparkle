@@ -212,6 +212,20 @@ class QRLogInData : NSObject {
     
 }
 
+class StaticViews : NSObject {
+    
+    static var masterView : UIViewController!
+    
+    static var messageTableView : UITableViewController!
+    
+}
+
+class StaticEmployees : NSObject {
+    
+    static var Tom : Employee!
+    
+}
+
 class Barcode {
     
     class func fromString(string : String) -> UIImage? {
@@ -408,6 +422,15 @@ class GlobalFunctions {
         loadUI!.startAnimation()
         
         return (loadUI!, loadBG)
+    }
+    
+    func delay(delay:Double, closure:()->()) {
+        dispatch_after(
+            dispatch_time(
+                DISPATCH_TIME_NOW,
+                Int64(delay * Double(NSEC_PER_SEC))
+            ),
+            dispatch_get_main_queue(), closure)
     }
     
 }

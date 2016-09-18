@@ -25,8 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     let locationManager = CLLocationManager()
     
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let tabBar = sb.instantiateViewControllerWithIdentifier("mainTabBar") as! TabBarViewController
+            
+            self.window?.rootViewController = tabBar
+        }
         
         if getSSID() == "Sparkle Pools" {
             print(getSSID())

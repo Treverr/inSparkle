@@ -24,17 +24,19 @@ class MessagesTableViewController: UITableViewController {
     var deepLink = false
     var sentFilter : Bool = false
     
-    var tom = Employee()
-    
     var liveSubscription : Subscription<Messages>!
     var currentSubscribed : PFQuery!
     
     var addButton : UIBarButtonItem!
     
+    var QuckActionsVC : QuickActionsMasterViewController!
+    
     @IBOutlet var inboxSentSegControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        StaticViews.messageTableView = self
         
         self.tableView.setContentOffset(CGPointMake(0, searchBar.frame.size.height), animated: false)
         
@@ -46,6 +48,10 @@ class MessagesTableViewController: UITableViewController {
         
         self.addButton = self.navigationItem.rightBarButtonItem
         self.navigationItem.rightBarButtonItem = nil
+        
+        if StaticViews.masterView != nil {
+            self.QuckActionsVC = StaticViews.masterView.childViewControllers.first?.childViewControllers.first as! QuickActionsMasterViewController
+        }
         
     }
     
@@ -127,7 +133,7 @@ class MessagesTableViewController: UITableViewController {
         if PFUser.currentUser()?.objectForKey("employee") != nil {
             
             do {
-                try tom = Employee.query()?.getObjectWithId("hNxAOyqKVy") as! Employee
+                try StaticEmployees.Tom = Employee.query()?.getObjectWithId("hNxAOyqKVy") as! Employee
             } catch {
                 // TODO: Handle Error
             }
@@ -152,7 +158,7 @@ class MessagesTableViewController: UITableViewController {
                 query?.includeKey("recipient")
                 query?.includeKey("signed")
             case 2:
-                query?.whereKey("recipient", equalTo: tom)
+                query?.whereKey("recipient", equalTo: StaticEmployees.Tom)
                 query?.orderByDescending("dateTimeMessage")
                 query?.includeKey("recipient")
                 query?.includeKey("signed")
@@ -165,7 +171,7 @@ class MessagesTableViewController: UITableViewController {
                         self.theMesages.append(msg as! Messages)
                         self.tableView.reloadData()
                     }
-//                    self.subscribeToUpdates(query!)
+                    //                    self.subscribeToUpdates(query!)
                     self.navigationItem.rightBarButtonItem = self.addButton
                 }
             })
@@ -259,8 +265,12 @@ class MessagesTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
+        if StaticViews.masterView != nil {
+            self.QuckActionsVC.shouldShowHideMaster(false)
+        }
+        
+        
         if segue.identifier == "ViewEditMessage" {
-            
             let dest = segue.destinationViewController as! ComposeMessageTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow
             let selectMessage = theMesages[indexPath!.row]
@@ -327,7 +337,7 @@ extension MessagesTableViewController : UISearchBarDelegate {
                         query?.whereKey("messageFromName", containsString: searchBar.text!)
                         query?.orderByDescending("dateTimeMessage")
                     case 2:
-                        query?.whereKey("recipient", equalTo: tom)
+                        query?.whereKey("recipient", equalTo: StaticEmployees.Tom)
                         query?.whereKey("messageFromName", containsString: searchBar.text!)
                         query?.orderByDescending("dateTimeMessage")
                     default: break
