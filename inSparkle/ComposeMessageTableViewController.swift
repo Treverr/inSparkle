@@ -40,7 +40,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         if StaticViews.masterView != nil {
                     self.QuckActionsVC = StaticViews.masterView.childViewControllers.first?.childViewControllers.first as! QuickActionsMasterViewController
         }
-
         
         if isNewMessage {
             let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
@@ -56,13 +55,13 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 
                 recipientLabel.bounds = addRecipCell.frame
                 recipientLabel.textAlignment = .Center
-                
-                self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close",
-                                                                               style: .Plain,
-                                                                               target: self,
-                                                                               action: #selector(ComposeMessageTableViewController.close)
-                )
+    
             }
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close",
+                                                                    style: .Plain,
+                                                                    target: self,
+                                                                    action: #selector(ComposeMessageTableViewController.close)
+            )
         } else {
             if MessagesDataObjects.selectedEmp != nil {
                 selectedEmployee = MessagesDataObjects.selectedEmp

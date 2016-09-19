@@ -132,6 +132,7 @@
 		C9C8473D1D8E0AE2001D892B /* QuickActionsMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8473C1D8E0AE2001D892B /* QuickActionsMasterViewController.swift */; };
 		C9C8473F1D8E32A3001D892B /* MasterSplitViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C8473E1D8E32A3001D892B /* MasterSplitViewController.storyboard */; };
 		C9C847411D8E3736001D892B /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C847401D8E3736001D892B /* SplitViewController.swift */; };
+		C9C847441D8F4111001D892B /* ComposeMessageNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C847431D8F4111001D892B /* ComposeMessageNavigationController.swift */; };
 		C9C887EA1C8179E300C7A2F9 /* EmployeeDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C887E91C8179E300C7A2F9 /* EmployeeDataTableViewController.swift */; };
 		C9C887EC1C817B2800C7A2F9 /* RoleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C887EB1C817B2800C7A2F9 /* RoleModel.swift */; };
 		C9C8E1C11C32141800191C17 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1C01C32141800191C17 /* MessageModel.swift */; };
@@ -323,6 +324,7 @@
 		C9C8473C1D8E0AE2001D892B /* QuickActionsMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickActionsMasterViewController.swift; sourceTree = "<group>"; };
 		C9C8473E1D8E32A3001D892B /* MasterSplitViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MasterSplitViewController.storyboard; sourceTree = "<group>"; };
 		C9C847401D8E3736001D892B /* SplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		C9C847431D8F4111001D892B /* ComposeMessageNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageNavigationController.swift; sourceTree = "<group>"; };
 		C9C887E91C8179E300C7A2F9 /* EmployeeDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeDataTableViewController.swift; sourceTree = "<group>"; };
 		C9C887EB1C817B2800C7A2F9 /* RoleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleModel.swift; sourceTree = "<group>"; };
 		C9C8E1C01C32141800191C17 /* MessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 				C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */,
 				C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */,
 				C9140FB21C30F4E000F9D624 /* ComposeMessageTableViewController.swift */,
+				C9C847431D8F4111001D892B /* ComposeMessageNavigationController.swift */,
 				C9C8E1C01C32141800191C17 /* MessageModel.swift */,
 				C91BB3711C2A72B900132946 /* MessagesTableViewController.swift */,
 				C91BB36F1C2A705F00132946 /* MessagesMainTableViewCell.swift */,
@@ -1110,6 +1113,7 @@
 				C9B993E11C7FB19B00702851 /* PDFLaborTableViewCell.swift in Sources */,
 				C9F0FF931C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift in Sources */,
 				C9585F221C164013008AB918 /* ConfirmPunchOutViewController.swift in Sources */,
+				C9C847441D8F4111001D892B /* ComposeMessageNavigationController.swift in Sources */,
 				C9BA20101C59B6B400F8E44B /* FromBottomCustomSegue.swift in Sources */,
 				C91AC6421BFD85BA00E09B22 /* SOIModel.swift in Sources */,
 				C974FAD91C20B84D004D69E4 /* POCCalPickerViewController.swift in Sources */,

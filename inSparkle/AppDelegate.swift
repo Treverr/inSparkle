@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        Fabric.with([Crashlytics.self])
+        
         if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
             
             let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -52,10 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
             Parse.initializeWithConfiguration(configuration)
         }
-        
-        
-        
-        Fabric.with([Crashlytics.self])
         
         registerParseSubclasses()
         

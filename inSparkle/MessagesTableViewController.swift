@@ -265,11 +265,6 @@ class MessagesTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if StaticViews.masterView != nil {
-            self.QuckActionsVC.shouldShowHideMaster(false)
-        }
-        
-        
         if segue.identifier == "ViewEditMessage" {
             let dest = segue.destinationViewController as! ComposeMessageTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow

@@ -1,20 +1,20 @@
 //
-//  SpliViewController.swift
+//  ComposeMessageNavigationController.swift
 //  inSparkle
 //
-//  Created by Trever on 9/17/16.
+//  Created by Trever on 9/18/16.
 //  Copyright © 2016 Sparkle Pools. All rights reserved.
 //
 
 import UIKit
 
-class SplitViewController: UISplitViewController {
+class ComposeMessageNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        StaticViews.masterView = self
-        
+        self.setupNavigationbar(self)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,8 +22,8 @@ class SplitViewController: UISplitViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    func close() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }

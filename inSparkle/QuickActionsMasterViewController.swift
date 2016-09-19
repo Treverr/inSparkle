@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class QuickActionsMasterViewController: UIViewController {
     
@@ -18,7 +19,7 @@ class QuickActionsMasterViewController: UIViewController {
     
     // New Message
     @IBOutlet weak var newMessageView: UIView!
-    @IBOutlet weak var newMessageButton: UIButton!
+    @IBOutlet weak var newMessageButton: UILabel!
     
     // Next Available:
     //Opening
@@ -43,6 +44,11 @@ class QuickActionsMasterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.getOpenWorkOrders()
+        self.getNumPOCThisWeek()
+        self.getNextAvailOpening()
+        self.getNextAvailClosing()
+        
         self.tintColor = self.view.tintColor
         
         newMessageToTomView.layer.cornerRadius = 5
@@ -57,6 +63,10 @@ class QuickActionsMasterViewController: UIViewController {
         let newMessageToTom = UITapGestureRecognizer(target: self, action: #selector(QuickActionsMasterViewController.newMessageToTom))
         newMessageToTom.numberOfTapsRequired = 1
         newMessageToTomView.addGestureRecognizer(newMessageToTom)
+        
+        let newMessageGesture = UITapGestureRecognizer(target: self, action: #selector(self.newMessageAction))
+        newMessageGesture.numberOfTapsRequired = 1
+        newMessageView.addGestureRecognizer(newMessageGesture)
         
     }
     
@@ -89,8 +99,21 @@ class QuickActionsMasterViewController: UIViewController {
         }
     }
     
-    @IBAction func newMessageAction(sender: AnyObject) {
-
+    func newMessageAction() {
+        selectedAction(self.newMessageView, label: self.newMessageButton)
+        
+        let sb = UIStoryboard(name: "Messages", bundle: nil)
+        let nav = UINavigationController()
+        let composeView = sb.instantiateViewControllerWithIdentifier("composeMessage") as! ComposeMessageTableViewController
+        nav.viewControllers = [composeView]
+        let tabBar = UIApplication.sharedApplication().keyWindow?.rootViewController?.childViewControllers.last as! UITabBarController
+        let selected = tabBar.selectedIndex
+        let vc = tabBar.childViewControllers[selected] as! UINavigationController
+        nav.modalPresentationStyle = .FormSheet
+        nav.setupNavigationbar(nav)
+        nav.navigationItem
+        
+        vc.childViewControllers.first?.presentViewController(nav, animated: true, completion: nil)
     }
     
     func newMessageToTom() {
@@ -114,5 +137,103 @@ class QuickActionsMasterViewController: UIViewController {
         
         vc.childViewControllers.first?.presentViewController(nav, animated: true, completion: nil)
         
+    }
+    
+    func getOpenWorkOrders() {
+        let statuses = ["New", "In Progress", "On Hold", "Assigned", "Ready To Bill"]
+        let query = WorkOrders.query()!
+        query.whereKey("status", containedIn: statuses)
+        query.countObjectsInBackgroundWithBlock { (number : Int32, error : NSError?) in
+            if error == nil {
+                self.openWorkOrdersNumber.text = String(number)
+            }
+        }
+
+    }
+    
+    func getNumPOCThisWeek() {
+        let calendar = NSCalendar.currentCalendar()
+        calendar.firstWeekday = 2
+        calendar.timeZone = NSTimeZone(abbreviation: "UTC")!
+        var startOfWeek : NSDate?
+        calendar.rangeOfUnit(.WeekOfYear, startDate: &startOfWeek, interval: nil, forDate: NSDate())
+        
+//        let weekObj : WeekList!
+        let query = WeekList.query()!
+        query.whereKey("weekStart", equalTo: startOfWeek!)
+        do {
+            let weekObj = try query.getFirstObject() as! WeekList
+            print(weekObj)
+            
+            let weekNumber = ScheduleObject.query()!
+            weekNumber.whereKey("weekObj", equalTo: weekObj)
+            weekNumber.countObjectsInBackgroundWithBlock({ (counted : Int32, error : NSError?) in
+                self.thisWeekPOCNumber.text = String(counted)
+            })
+        } catch {
+           print(error)
+        }
+    }
+    
+    func getNextAvailOpening() {
+        let query = WeekList.query()!
+        query.whereKey("weekEnd", greaterThanOrEqualTo: NSDate())
+        query.whereKey("apptsRemain", greaterThan: 0)
+        query.whereKey("isOpenWeek", equalTo: true)
+        query.getFirstObjectInBackgroundWithBlock { (firstWeek : PFObject?, error : NSError?) in
+            if error == nil {
+                if firstWeek != nil {
+                    let week = firstWeek as! WeekList
+                    
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateStyle = .MediumStyle
+                    dateFormatter.timeStyle = .NoStyle
+                    
+                    var startWeek = dateFormatter.stringFromDate(week.weekStart)
+                    let endRange = startWeek.endIndex
+                    let startRange = startWeek.endIndex.advancedBy(-6)
+                    
+                    startWeek.removeRange(startRange..<endRange)
+                    
+                    var endWeek = dateFormatter.stringFromDate(week.weekEnd)
+                    endWeek.removeRange(startRange..<endRange)
+                    
+                    self.nextAvailOpeningWeeksLabel.text = startWeek + " - " + endWeek
+                }
+            } else {
+                self.nextAvailOpeningWeeksLabel.text = "N/A"
+            }
+        }
+    }
+    
+    func getNextAvailClosing() {
+        let query = WeekList.query()!
+        query.whereKey("weekEnd", greaterThanOrEqualTo: NSDate())
+        query.whereKey("apptsRemain", greaterThan: 0)
+        query.whereKey("isOpenWeek", equalTo: false)
+        query.getFirstObjectInBackgroundWithBlock { (firstWeek : PFObject?, error : NSError?) in
+            if error == nil {
+                if firstWeek != nil {
+                    let week = firstWeek as! WeekList
+                    
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateStyle = .MediumStyle
+                    dateFormatter.timeStyle = .NoStyle
+                    
+                    var startWeek = dateFormatter.stringFromDate(week.weekStart)
+                    let endRange = startWeek.endIndex
+                    let startRange = startWeek.endIndex.advancedBy(-6)
+                    
+                    startWeek.removeRange(startRange..<endRange)
+                    
+                    var endWeek = dateFormatter.stringFromDate(week.weekEnd)
+                    endWeek.removeRange(startRange..<endRange)
+                    
+                    self.nextAvailClosingWeeksLabel.text = startWeek + " - " + endWeek
+                }
+            } else {
+                self.nextAvailOpeningWeeksLabel.text = "N/A"
+            }
+        }
     }
 }
