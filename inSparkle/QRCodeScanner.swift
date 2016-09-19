@@ -10,108 +10,123 @@ import UIKit
 import RSBarcodes_Swift
 import AVFoundation
 
-class QRCodeScanner: RSCodeReaderViewController {
+class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    
+    var captureSession: AVCaptureSession!
+    var previewLayer: AVCaptureVideoPreviewLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        audioPlayer = setupAudioPlayerWithFile("ScannerBeep", type: "wav")
-        audioPlayer.prepareToPlay()
-        
-        self.navigationController?.setupNavigationbar(self.navigationController!)
-        
-        self.focusMarkLayer.strokeColor = UIColor.redColor().CGColor
-        self.cornersLayer.strokeColor = UIColor.yellowColor().CGColor
-        
-        self.tapHandler = { point in
-            
-            print(point)
-            
-        }
-        
-        
-        self.barcodesHandler = { barcodes in
-            let barcode = barcodes[0]
-            print("Barcode found: type=" + barcode.type + " value=" + barcode.stringValue)
-            
-            let barcodeToPass = barcode.stringValue
-            self.playAlert()
-            
-            var run = true
-            
-            dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                self.dismissViewControllerAnimated(true, completion: {
-                    if run {
-                        run = false
-                        let userPass = barcodeToPass.componentsSeparatedByString(" ")
-                        let user = userPass[0]
-                        let pass = userPass[1]
-                        QRLogInData.username = user
-                        QRLogInData.password = pass
-                    }
-                })
-            }
-        }
-        
-        
-    }
-    
-    @IBAction func cancelAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @IBAction func toggleFlash() {
-        let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        if (device.hasTorch) {
-            do {
-                try device.lockForConfiguration()
-                if (device.torchMode == AVCaptureTorchMode.On) {
-                    device.torchMode = AVCaptureTorchMode.Off
+        if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .NotDetermined {
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted : Bool) in
+                if granted {
+                    
                 } else {
-                    try device.setTorchModeOnWithLevel(1.0)
+                    return
                 }
-                device.unlockForConfiguration()
-            } catch {
-                print(error)
+            })
+        }
+        
+        view.backgroundColor = UIColor.blackColor()
+        captureSession = AVCaptureSession()
+        
+        var videoCaptureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        let videoInput : AVCaptureDeviceInput
+        
+        if videoCaptureDevice.position == .Back {
+            let devices = AVCaptureDevice.devices()
+            for device in devices {
+                if device.position == .Front {
+                    let frontCamera = device as! AVCaptureDevice
+                    videoCaptureDevice = frontCamera
+                }
             }
-        } else {
-            let alert = UIAlertView()
-            alert.title = "No Flash"
-            alert.message = "It doesn't look like your device has an LED flash"
-            alert.addButtonWithTitle("Okay")
-            alert.show()
         }
-    }
-    
-    func checkForTorch() {
-        let theDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        if (theDevice.hasTorch) {
-            
-        } else {
-            
-        }
-    }
-    
-    var audioPlayer : AVAudioPlayer = AVAudioPlayer()
-    
-    func playAlert() {
-        
-        audioPlayer.play()
-        
-    }
-    
-    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
-        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
-        let url = NSURL.fileURLWithPath(path!)
-        var audioPlayer:AVAudioPlayer?
         
         do {
-            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+            videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
         } catch {
-            print("NO AUDIO PLAYER")
+            return
         }
         
-        return audioPlayer!
+        if (captureSession.canAddInput(videoInput)) {
+            captureSession.addInput(videoInput)
+        } else {
+            failed()
+            return
+        }
+        
+        let metadataOutput = AVCaptureMetadataOutput()
+        
+        if (captureSession.canAddOutput(metadataOutput)) {
+            captureSession.addOutput(metadataOutput)
+            
+            metadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+            metadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+        } else {
+            failed()
+            return
+        }
+
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        previewLayer.frame = view.layer.bounds
+        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        view.layer.addSublayer(previewLayer)
+        
+        captureSession.startRunning()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        print("Memory Warning")
+    }
+    
+    func failed() {
+        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .Alert)
+        let okayAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        ac.addAction(okayAction)
+        self.presentViewController(ac, animated: true, completion: nil)
+        captureSession = nil
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (captureSession?.running == false) {
+            captureSession.startRunning()
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (captureSession?.running == true) {
+            captureSession.stopRunning()
+        }
+    }
+    
+    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+        if let metadataObject = metadataObjects.first {
+            let readableObject = metadataObject as! AVMetadataMachineReadableCodeObject
+            
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+            found(readableObject.stringValue)
+        }
+    }
+    
+    func found(code : String) {
+        self.dismissViewControllerAnimated(true) { 
+            let userPass = code.componentsSeparatedByString(" ")
+            let user = userPass[0]
+            let pass = userPass[1]
+            QRLogInData.username = user
+            QRLogInData.password = pass
+        }
+    }
+    @IBAction func cancelAction(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
 }

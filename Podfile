@@ -4,7 +4,7 @@
 target 'inSparkle' do
 use_frameworks!
 
-pod 'RSBarcodes_Swift', '~> 0.1.4'
+pod 'RSBarcodes_Swift', '~> 0.1.9'
 pod "SwiftGifOrigin"
 pod "CalendarView"
 pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_places_autocomplete'

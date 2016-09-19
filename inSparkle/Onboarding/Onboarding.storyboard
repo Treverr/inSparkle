@@ -17,7 +17,7 @@
                         <viewControllerLayoutGuide type="bottom" id="uZq-aA-bKb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YNW-H3-Jrh">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o6w-Dy-9vM">
@@ -179,7 +179,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Y7b-I4-80E"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rcq-Ve-7ZN">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBT-65-rgz">
@@ -260,14 +260,14 @@
                         <viewControllerLayoutGuide type="bottom" id="MBW-iI-LVt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1zF-BX-Noi">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="ug0-Sc-Sfc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BZJ-AV-Uwm">
                             <connections>
-                                <action selector="cancelAction:" destination="ILN-ep-6Jp" id="ghV-g5-7LP"/>
+                                <action selector="cancelAction:" destination="ILN-ep-6Jp" id="vhm-L3-jen"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Flash On" id="T9x-PX-q9Y">
