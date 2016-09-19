@@ -212,6 +212,7 @@ class QuickActionsMasterViewController: UIViewController {
                     let dateFormatter = NSDateFormatter()
                     dateFormatter.dateStyle = .MediumStyle
                     dateFormatter.timeStyle = .NoStyle
+                    dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
                     
                     var startWeek = dateFormatter.stringFromDate(week.weekStart)
                     let endRange = startWeek.endIndex
@@ -243,6 +244,7 @@ class QuickActionsMasterViewController: UIViewController {
                     let dateFormatter = NSDateFormatter()
                     dateFormatter.dateStyle = .MediumStyle
                     dateFormatter.timeStyle = .NoStyle
+                    dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
                     
                     var startWeek = dateFormatter.stringFromDate(week.weekStart)
                     let endRange = startWeek.endIndex
