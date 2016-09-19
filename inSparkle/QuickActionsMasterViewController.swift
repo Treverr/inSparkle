@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseLiveQuery
 
 class QuickActionsMasterViewController: UIViewController {
     
@@ -82,7 +83,7 @@ class QuickActionsMasterViewController: UIViewController {
                 self.isShowingMaster = false
             })
         } else {
-            UIView.animateWithDuration(0.25, animations: { 
+            UIView.animateWithDuration(0.25, animations: {
                 self.splitViewController?.preferredDisplayMode = .Automatic
                 self.isShowingMaster = true
             })
@@ -123,7 +124,7 @@ class QuickActionsMasterViewController: UIViewController {
         let nav = UINavigationController()
         let composeView = sb.instantiateViewControllerWithIdentifier("composeMessage") as! ComposeMessageTableViewController
         nav.viewControllers = [composeView]
-
+        
         composeView.selectedEmployee = StaticEmployees.Tom
         MessagesDataObjects.selectedEmp = StaticEmployees.Tom
         composeView.isNewMessage = true
@@ -140,6 +141,8 @@ class QuickActionsMasterViewController: UIViewController {
         
     }
     
+    var openWorkOrdersLive : Subscription<WorkOrders>!
+    
     func getOpenWorkOrders() {
         let statuses = ["New", "In Progress", "On Hold", "Assigned", "Ready To Bill"]
         let query = WorkOrders.query()!
@@ -147,10 +150,30 @@ class QuickActionsMasterViewController: UIViewController {
         query.countObjectsInBackgroundWithBlock { (number : Int32, error : NSError?) in
             if error == nil {
                 self.openWorkOrdersNumber.text = String(number)
+                
+                if self.openWorkOrdersLive == nil {
+                    self.openWorkOrdersLive = query
+                        .subscribe()
+                        .handle(Event.Created) {_, item in
+                            self.getOpenWorkOrders()
+                        }
+                        .handle(Event.Updated) {_, item in
+                            self.getOpenWorkOrders()
+                        }
+                        .handle(Event.Deleted) {_, item in
+                            self.getOpenWorkOrders()
+                        }
+                        .handle(Event.Entered) {_, item in
+                            self.getOpenWorkOrders()
+                        }
+                        .handle(Event.Left) {_, item in
+                            self.getOpenWorkOrders()
+                    }
+                }
             }
         }
-
     }
+    
     
     func getNumPOCThisWeek() {
         let calendar = NSCalendar.currentCalendar()
@@ -159,7 +182,7 @@ class QuickActionsMasterViewController: UIViewController {
         var startOfWeek : NSDate?
         calendar.rangeOfUnit(.WeekOfYear, startDate: &startOfWeek, interval: nil, forDate: NSDate())
         
-//        let weekObj : WeekList!
+        //        let weekObj : WeekList!
         let query = WeekList.query()!
         query.whereKey("weekStart", equalTo: startOfWeek!)
         do {
@@ -172,7 +195,7 @@ class QuickActionsMasterViewController: UIViewController {
                 self.thisWeekPOCNumber.text = String(counted)
             })
         } catch {
-           print(error)
+            print(error)
         }
     }
     
