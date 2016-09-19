@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A319" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pxf-Ea-f3j">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Pxf-Ea-f3j">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="customer name" id="ojT-S2-TaX">
-                            <rect key="frame" x="0.0" y="64" width="1024" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="1673" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
@@ -77,7 +77,7 @@
                                     <outlet property="dateLabel" destination="Lm6-hP-jiq" id="Q53-AD-eco"/>
                                     <outlet property="statusOfMessageLabel" destination="bJZ-Rr-q1y" id="FDq-Ca-q6j"/>
                                     <outlet property="unreadIndicator" destination="Isq-dF-iFo" id="BY9-oI-cmR"/>
-                                    <segue destination="mq5-Ux-vy9" kind="show" id="kcD-j3-N3c"/>
+                                    <segue destination="mq5-Ux-vy9" kind="show" identifier="ViewEditMessage" id="kcD-j3-N3c"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -948,6 +948,6 @@
         <image name="Wrong Number" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pSO-5T-tkN"/>
+        <segue reference="kcD-j3-N3c"/>
     </inferredMetricsTieBreakers>
 </document>

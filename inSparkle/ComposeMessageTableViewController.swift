@@ -49,6 +49,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                     self.signedLabel.text = "Signed: " + employeeData.firstName + " " + employeeData.lastName
                 }
             }
+            
             if self.selectedEmployee != nil {
                 let recipName = selectedEmployee!.firstName + " " + selectedEmployee!.lastName
                 recipientLabel.text = "To: " + recipName
@@ -57,6 +58,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 recipientLabel.textAlignment = .Center
     
             }
+            
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close",
                                                                     style: .Plain,
                                                                     target: self,

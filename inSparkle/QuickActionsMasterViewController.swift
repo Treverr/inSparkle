@@ -125,6 +125,7 @@ class QuickActionsMasterViewController: UIViewController {
         nav.viewControllers = [composeView]
 
         composeView.selectedEmployee = StaticEmployees.Tom
+        MessagesDataObjects.selectedEmp = StaticEmployees.Tom
         composeView.isNewMessage = true
         
         let tabBar = UIApplication.sharedApplication().keyWindow?.rootViewController?.childViewControllers.last as! UITabBarController
