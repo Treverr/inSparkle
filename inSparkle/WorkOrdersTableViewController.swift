@@ -121,6 +121,7 @@ extension WorkOrdersTableViewController : UISearchBarDelegate {
         searchActive = true
         if !(searchBar.text?.isEmpty)! {
             searchForFilter(searchBar.text!)
+            searchBar.resignFirstResponder()
         }
     }
     
