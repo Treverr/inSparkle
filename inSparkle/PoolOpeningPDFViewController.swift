@@ -39,12 +39,9 @@ class PoolOpeningPDFViewController: UIViewController {
         super.viewDidLoad()
         
         notes.numberOfLines = 0
-        notes.sizeToFit()
         
         self.data = POCReportData.POCData
-        
-        
-        
+   
     }
     
     override func viewDidAppear(animated: Bool) {
