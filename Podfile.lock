@@ -40,7 +40,7 @@ DEPENDENCIES:
   - FXImageView
   - GooglePlacesAutocomplete (from `https://github.com/watsonbox/ios_google_places_autocomplete`)
   - iCarousel
-  - IQKeyboardManagerSwift
+  - IQKeyboardManagerSwift (= 4.0.5)
   - MIBadgeButton-Swift
   - MobihelpSDK
   - MZFormSheetPresentationController
@@ -88,6 +88,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
   UIView+HierarchicalDrawing: 9cb086a2c0cde4fa8a3d17c58227abdd92e29ece
 
-PODFILE CHECKSUM: 993c888be812896c491758f07c9330e0c190a191
+PODFILE CHECKSUM: b7213e8f8cf504ca644d735332ce73d61edf3e28
 
 COCOAPODS: 1.0.1
