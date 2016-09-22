@@ -19,7 +19,10 @@ class MoreTableViewController: UITableViewController {
     override func viewDidLoad() {
         self.navigationController?.setupNavigationbar(self.navigationController!)
         
-        self.specialAccess = PFUser.currentUser()?.objectForKey("specialAccess") as! [String]
+        if PFUser.currentUser()?.objectForKey("specialAccess") != nil {
+            self.specialAccess = PFUser.currentUser()?.objectForKey("specialAccess") as! [String]
+        }
+        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MoreTableViewController.signBackIn), name: "SignBackIn", object: nil)
         
@@ -33,7 +36,9 @@ class MoreTableViewController: UITableViewController {
         do {
             try PFUser.currentUser()?.fetch()
             
-            self.specialAccess = PFUser.currentUser()?.objectForKey("specialAccess") as! [String]
+            if PFUser.currentUser()?.objectForKey("specialAccess") != nil {
+                self.specialAccess = PFUser.currentUser()?.objectForKey("specialAccess") as! [String]
+            }
         } catch { }
         
         if (PFUser.currentUser()?.valueForKey("isAdmin") as! Bool) == false {

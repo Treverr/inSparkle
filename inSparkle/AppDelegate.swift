@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         IQKeyboardManager.sharedManager().disabledToolbarClasses.append(LoginViewController.self)
         
         DropDown.startListeningToKeyboard()
-        
+
         return true
     }
     
@@ -293,7 +293,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
         }
         
-        displayGlobalMessages()
+//        displayGlobalMessages()
         
         let currentInstallation = PFInstallation.currentInstallation()
         if currentInstallation.badge != 0 {

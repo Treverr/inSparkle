@@ -68,10 +68,27 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             failed()
             return
         }
+        
+
 
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        
+        let orientation: UIDeviceOrientation = UIDevice.currentDevice().orientation
+        print(orientation)
+        
+        switch (orientation) {
+        case .Portrait:
+            previewLayer?.connection.videoOrientation = .Portrait
+        case .LandscapeRight:
+            previewLayer?.connection.videoOrientation = .LandscapeLeft
+        case .LandscapeLeft:
+            previewLayer?.connection.videoOrientation = .LandscapeRight
+        default:
+            previewLayer?.connection.videoOrientation = .Portrait
+        }
+        
         view.layer.addSublayer(previewLayer)
         
         captureSession.startRunning()
