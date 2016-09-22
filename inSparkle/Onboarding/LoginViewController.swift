@@ -138,6 +138,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let username = self.usernameField.text?.lowercaseString
         let password = self.passwordField.text
         
+        if usernameField.isFirstResponder() {
+            usernameField.resignFirstResponder()
+        }
+        
+        if passwordField.isFirstResponder() {
+            passwordField.resignFirstResponder()
+        }
+        
         if username?.characters.count < 1 {
             // Alert
         } else if password?.characters.count < 1 {
