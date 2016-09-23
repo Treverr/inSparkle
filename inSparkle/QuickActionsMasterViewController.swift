@@ -45,6 +45,18 @@ class QuickActionsMasterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSTimer.scheduledTimerWithTimeInterval(60, repeats: true) { (timer) in
+            self.getNumPOCThisWeek()
+        }
+        
+        NSTimer.scheduledTimerWithTimeInterval(60, repeats: true) { (timer) in
+            self.getNextAvailOpening()
+        }
+        
+        NSTimer.scheduledTimerWithTimeInterval(60, repeats: true) { (timer) in
+            self.getNextAvailClosing()
+        }
+        
         self.getOpenWorkOrders()
         self.getNumPOCThisWeek()
         self.getNextAvailOpening()
@@ -193,22 +205,22 @@ class QuickActionsMasterViewController: UIViewController {
             weekNumber.whereKey("weekObj", equalTo: weekObj)
             weekNumber.countObjectsInBackgroundWithBlock({ (counted : Int32, error : NSError?) in
                 self.thisWeekPOCNumber.text = String(counted)
-                weekNumber.subscribe()
-                    .handle(Event.Created) {_, item in
-                        self.getNumPOCThisWeek()
-                    }
-                    .handle(Event.Updated) {_, item in
-                        self.getNumPOCThisWeek()
-                    }
-                    .handle(Event.Deleted) {_, item in
-                        self.getNumPOCThisWeek()
-                    }
-                    .handle(Event.Entered) {_, item in
-                        self.getNumPOCThisWeek()
-                    }
-                    .handle(Event.Left) {_, item in
-                        self.getNumPOCThisWeek()
-                }
+//                weekNumber.subscribe()
+//                    .handle(Event.Created) {_, item in
+//                        self.getNumPOCThisWeek()
+//                    }
+//                    .handle(Event.Updated) {_, item in
+//                        self.getNumPOCThisWeek()
+//                    }
+//                    .handle(Event.Deleted) {_, item in
+//                        self.getNumPOCThisWeek()
+//                    }
+//                    .handle(Event.Entered) {_, item in
+//                        self.getNumPOCThisWeek()
+//                    }
+//                    .handle(Event.Left) {_, item in
+//                        self.getNumPOCThisWeek()
+//                }
             })
         } catch {
             print(error)
@@ -241,22 +253,22 @@ class QuickActionsMasterViewController: UIViewController {
                     
                     self.nextAvailOpeningWeeksLabel.text = startWeek + " - " + endWeek
                     
-                    query.subscribe()
-                        .handle(Event.Created) {_, item in
-                            self.getNextAvailOpening()
-                        }
-                        .handle(Event.Updated) {_, item in
-                            self.getNextAvailOpening()
-                        }
-                        .handle(Event.Deleted) {_, item in
-                            self.getNextAvailOpening()
-                        }
-                        .handle(Event.Entered) {_, item in
-                            self.getNextAvailOpening()
-                        }
-                        .handle(Event.Left) {_, item in
-                            self.getNextAvailOpening()
-                    }
+                    //                    query.subscribe()
+                    //                        .handle(Event.Created) {_, item in
+                    //                            self.getNextAvailOpening()
+                    //                        }
+                    //                        .handle(Event.Updated) {_, item in
+                    //                            self.getNextAvailOpening()
+                    //                        }
+                    //                        .handle(Event.Deleted) {_, item in
+                    //                            self.getNextAvailOpening()
+                    //                        }
+                    //                        .handle(Event.Entered) {_, item in
+                    //                            self.getNextAvailOpening()
+                    //                        }
+                    //                        .handle(Event.Left) {_, item in
+                    //                            self.getNextAvailOpening()
+                    //                    }
                 }
             } else {
                 self.nextAvailOpeningWeeksLabel.text = "N/A"
@@ -290,22 +302,22 @@ class QuickActionsMasterViewController: UIViewController {
                     
                     self.nextAvailClosingWeeksLabel.text = startWeek + " - " + endWeek
                     
-                    query.subscribe()
-                        .handle(Event.Created) {_, item in
-                            self.getNextAvailClosing()
-                        }
-                        .handle(Event.Updated) {_, item in
-                            self.getNextAvailClosing()
-                        }
-                        .handle(Event.Deleted) {_, item in
-                            self.getNextAvailClosing()
-                        }
-                        .handle(Event.Entered) {_, item in
-                            self.getNextAvailClosing()
-                        }
-                        .handle(Event.Left) {_, item in
-                            self.getNextAvailClosing()
-                    }
+                    //                    query.subscribe()
+                    //                        .handle(Event.Created) {_, item in
+                    //                            self.getNextAvailClosing()
+                    //                        }
+                    //                        .handle(Event.Updated) {_, item in
+                    //                            self.getNextAvailClosing()
+                    //                        }
+                    //                        .handle(Event.Deleted) {_, item in
+                    //                            self.getNextAvailClosing()
+                    //                        }
+                    //                        .handle(Event.Entered) {_, item in
+                    //                            self.getNextAvailClosing()
+                    //                        }
+                    //                        .handle(Event.Left) {_, item in
+                    //                            self.getNextAvailClosing()
+                    //                    }
                 }
             } else {
                 self.nextAvailOpeningWeeksLabel.text = "N/A"

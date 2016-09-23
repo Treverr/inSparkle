@@ -11,7 +11,7 @@ import Parse
 
 class SOIObject: PFObject, PFSubclassing {
     
-    class func parseClassName() -> String! {
+    class func parseClassName() -> String {
         return "SOI"
     }
     

@@ -49,6 +49,7 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
         if workOrderObject != nil {
             displayExistingWorkOrder()
             self.navigationItem.title = "Edit Work Order"
+            getMTNotes()
         } else  {
             workOrderDatePickerChanged()
         }
@@ -68,6 +69,26 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.updateTechLabel(_:)), name: "updateTechLabel", object: nil)
         
         
+    }
+    
+    func getMTNotes() {
+        self.descOfWork.userInteractionEnabled = false
+        let query = PFQuery(className: "MobileTechServiceObjectNotes")
+        query.whereKey("relatedWorkOder", equalTo: self.workOrderObject!)
+        query.findObjectsInBackgroundWithBlock { (notes : [PFObject]?, error : NSError?) in
+            if error == nil {
+                for note in notes! {
+                    if note == notes?.last {
+                        self.descOfWork.text! += note.objectForKey("noteContent") as! String
+                    } else {
+                        self.descOfWork.text! += note.objectForKey("noteContent") as! String
+                        self.descOfWork.text! += "\n\n"
+                    }
+                    
+                    
+                }
+            }
+        }
     }
     
     func updateTechLabel(notification : NSNotification) {

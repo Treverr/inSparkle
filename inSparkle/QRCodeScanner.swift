@@ -35,13 +35,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         let videoInput : AVCaptureDeviceInput
         
         if videoCaptureDevice.position == .Back {
-            let devices = AVCaptureDevice.devices()
-            for device in devices {
-                if device.position == .Front {
-                    let frontCamera = device as! AVCaptureDevice
-                    videoCaptureDevice = frontCamera
-                }
-            }
+        let frontCamera = AVCaptureDeviceDiscoverySession(deviceTypes: [AVCaptureDeviceTypeBuiltInWideAngleCamera], mediaType: AVMediaTypeVideo, position: .Front).devices.first!
+            videoCaptureDevice = frontCamera
         }
         
         do {

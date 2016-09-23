@@ -16,6 +16,7 @@ import IQKeyboardManagerSwift
 import BRYXBanner
 import SystemConfiguration.CaptiveNetwork
 import DropDown
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -85,11 +86,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             self.window?.rootViewController?.presentViewController(errorAlert, animated: true, completion: nil)
         }
         
-        let notificationSettings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-        
-        let settings = UIUserNotificationSettings(forTypes: [UIUserNotificationType.Alert, UIUserNotificationType.Sound, UIUserNotificationType.Badge], categories: nil)
-        application.registerUserNotificationSettings(settings)
+        let center = UNUserNotificationCenter.currentNotificationCenter()
+        center.requestAuthorizationWithOptions([.Alert, .Badge, .Sound]) { (granted : Bool, error : NSError?) in
+
+        }
         application.registerForRemoteNotifications()
         
         print(PFInstallation.currentInstallation().deviceToken)

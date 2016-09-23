@@ -449,10 +449,10 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
     }
     
     func displaySaveError() {
-        let alert = UIAlertView()
-        alert.message = "Check the fields, it looks like at least one is missing."
-        alert.addButtonWithTitle("Okay")
-        alert.show()
+        let alert = UIAlertController(title: nil, message: "Check the fields, it looks like at least one is missing.", preferredStyle: .Alert)
+        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+        alert.addAction(okayButton)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func checkForLocationFile(filePath : String) -> Bool {

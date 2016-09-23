@@ -523,7 +523,7 @@ extension EmployeeDataTableViewController : UITextFieldDelegate {
     }
     
     @IBAction func returnFromAM(segue : UIStoryboardSegue) {
-        self.userObject.refreshInBackgroundWithBlock { (user : PFObject?, error : NSError?) in
+        self.userObject.fetchInBackgroundWithBlock { (user : PFObject?, error : NSError?) in
             if error == nil {
                 self.userObject = user as! PFUser
             }
