@@ -72,7 +72,6 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
     }
     
     func getMTNotes() {
-        self.descOfWork.userInteractionEnabled = false
         let query = PFQuery(className: "MobileTechServiceObjectNotes")
         query.whereKey("relatedWorkOder", equalTo: self.workOrderObject!)
         query.findObjectsInBackgroundWithBlock { (notes : [PFObject]?, error : NSError?) in

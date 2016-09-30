@@ -89,10 +89,6 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         captureSession.startRunning()
     }
     
-    override func didReceiveMemoryWarning() {
-        print("Memory Warning")
-    }
-    
     func failed() {
         let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .Alert)
         let okayAction = UIAlertAction(title: "OK", style: .Default) { (action) in

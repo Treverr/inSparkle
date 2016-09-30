@@ -28,6 +28,7 @@ class MessagesTableViewController: UITableViewController {
     var currentSubscribed : PFQuery!
     
     var addButton : UIBarButtonItem!
+    var refreshButton : UIBarButtonItem!
     
     var QuckActionsVC : QuickActionsMasterViewController!
     
@@ -46,7 +47,8 @@ class MessagesTableViewController: UITableViewController {
         
         msgTblViewController = self.navigationController?.viewControllers.last
         
-        self.addButton = self.navigationItem.rightBarButtonItem
+        self.addButton = self.navigationItem.rightBarButtonItems?.last
+        self.refreshButton = self.navigationItem.rightBarButtonItems?.first
         self.navigationItem.rightBarButtonItem = nil
         
         if StaticViews.masterView != nil {
@@ -85,7 +87,7 @@ class MessagesTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         
-        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.rightBarButtonItems = nil
         
         PFSession.getCurrentSessionInBackgroundWithBlock { (session : PFSession?, error : NSError?) in
             if error != nil {
@@ -121,7 +123,7 @@ class MessagesTableViewController: UITableViewController {
     }
     
     func refresh() {
-        self.navigationItem.rightBarButtonItem = nil
+        self.navigationItem.rightBarButtonItems = nil
         self.theMesages.removeAll()
         self.tableView.reloadData()
         getEmpMessagesFromParse()
@@ -172,7 +174,7 @@ class MessagesTableViewController: UITableViewController {
                         self.tableView.reloadData()
                     }
                     //                    self.subscribeToUpdates(query!)
-                    self.navigationItem.rightBarButtonItem = self.addButton
+                    self.navigationItem.rightBarButtonItems = [self.refreshButton, self.addButton]
                 }
             })
         }
@@ -261,6 +263,10 @@ class MessagesTableViewController: UITableViewController {
     
     @IBAction func unwindToMessageList(segue : UIStoryboardSegue) {
         
+    }
+    
+    @IBAction func manualRefresh(sender: AnyObject) {
+        self.refresh()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -172,9 +172,9 @@ class EmployeeDataTableViewController: UITableViewController {
             print(self.selectedRole)
             self.employeeObject.roleType = self.selectedRole
             self.employeeObject.saveInBackground()
+        }
     }
-    }
-
+    
     
     @IBAction func disableEnableEmployeeAction(sender: AnyObject) {
         if disableEnableEmployee.titleLabel?.text == "Disable Employee" {
@@ -199,7 +199,7 @@ class EmployeeDataTableViewController: UITableViewController {
                 self.employeeObject?.active = false
                 self.employeeObject.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
                     if success {
-                            self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
+                        self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
                     }
                 })
             })
@@ -222,7 +222,7 @@ class EmployeeDataTableViewController: UITableViewController {
                         missingFields = "First Name & Last Name"
                     }
                 }
-                let errorAlert = UIAlertController(title: "Check Fields", message: missingFields + " Are missing information. Please check and try again.", preferredStyle: .Alert)
+                //                let errorAlert = UIAlertController(title: "Check Fields", message: missingFields + " Are missing information. Please check and try again.", preferredStyle: .Alert)
             } else {
                 var pinText : UITextField!
                 let pinAlert = UIAlertController(title: "PIN Selection", message: "Select a 4-digit PIN", preferredStyle: .Alert)
@@ -234,9 +234,9 @@ class EmployeeDataTableViewController: UITableViewController {
                     self.verifyPIN(pinText.text!, completion: { (pass) in
                         if pass {
                             if self.employeeObject.objectId == nil {
-                                let name = self.firstName.text! + " " + self.lastName.text!
-                                let email = self.emailAddressTextField.text!
-//                                CloudCode.SendWelcomeEmail(name, toEmail: email, emailAddress: email)
+                                //                                let name = self.firstName.text! + " " + self.lastName.text!
+                                //                                let email = self.emailAddressTextField.text!
+                                //                                CloudCode.SendWelcomeEmail(name, toEmail: email, emailAddress: email)
                             }
                             self.employeeObject.firstName = self.firstName.text!.capitalizedString
                             self.employeeObject.lastName = self.lastName.text!.capitalizedString
@@ -531,33 +531,3 @@ extension EmployeeDataTableViewController : UITextFieldDelegate {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

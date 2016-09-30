@@ -148,16 +148,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        let fileManager = NSFileManager.defaultManager()
         let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let documentsDirectory = paths[0]
         let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
         if NSFileManager.defaultManager().fileExistsAtPath(documentsDirectory.stringByAppendingString("/PDFLocker")) {
             var fileName = String(url).componentsSeparatedByString("/").last
-            fileName = fileName?.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+            fileName = fileName?.stringByRemovingPercentEncoding
             let origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
             var originalFilePath = String(url).componentsSeparatedByString(("file://")).last!
-            originalFilePath = originalFilePath.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            originalFilePath = originalFilePath.stringByRemovingPercentEncoding!
             let newPath = origPath! + "/PDFLocker/" + fileName!
             do {
                 try NSFileManager.defaultManager().copyItemAtPath(originalFilePath, toPath: newPath)
@@ -174,10 +173,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
             
             var fileName = String(url).componentsSeparatedByString("/").last
-            fileName = fileName?.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+            fileName = fileName?.stringByRemovingPercentEncoding
             let origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
             var originalFilePath = String(url).componentsSeparatedByString(("file://")).last!
-            originalFilePath = originalFilePath.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+            originalFilePath = originalFilePath.stringByRemovingPercentEncoding!
             let newPath = origPath! + "/PDFLocker/" + fileName!
             do {
                 try NSFileManager.defaultManager().copyItemAtPath(originalFilePath, toPath: newPath)
