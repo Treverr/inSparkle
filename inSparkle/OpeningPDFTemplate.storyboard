@@ -570,6 +570,9 @@
                         <outlet property="openingDate" destination="jZ7-qL-7PV" id="Yap-dz-EbM"/>
                         <outlet property="openingWeek" destination="dDw-OD-Jai" id="NHH-YB-4gn"/>
                         <outlet property="phoneNumber" destination="KiY-1k-boo" id="CbI-Xt-jnc"/>
+                        <outlet property="requirement1" destination="VqN-ww-dZj" id="YYf-CO-AaV"/>
+                        <outlet property="requirement2" destination="ZtF-LW-0O3" id="Bf8-ao-R95"/>
+                        <outlet property="requirement3" destination="yfs-tG-Beb" id="2Iy-Mh-AUo"/>
                         <outlet property="takeTrash" destination="Wu2-8p-HlM" id="V2l-M4-DWI"/>
                         <outlet property="theView" destination="qXr-Ui-LZl" id="iar-GK-byg"/>
                         <outlet property="titleLabel" destination="VAe-ZP-mbn" id="V43-1Q-l9N"/>

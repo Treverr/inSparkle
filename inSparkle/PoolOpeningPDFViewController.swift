@@ -29,6 +29,9 @@ class PoolOpeningPDFViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var weekTitle: UILabel!
     @IBOutlet weak var dateTitle: UILabel!
+    @IBOutlet weak var requirement1: UILabel!
+    @IBOutlet weak var requirement2: UILabel!
+    @IBOutlet weak var requirement3: UILabel!
     
     var pageCount : Int = 0
     var pagesLeft : Int = 0
@@ -108,6 +111,10 @@ class PoolOpeningPDFViewController: UIViewController {
                     titleLabel.text = "Pool Closing"
                     weekTitle.text = "Closing Week:"
                     dateTitle.text = "Closing Date:"
+                    
+                    requirement1.text = "• Water level lowered to 1-inch below skimmer (do not lower water for electric covers)"
+                    requirement2.text = "• Plugs, winter cover, and winter accessories by pool for service crews"
+                    requirement3.text = "• Pool cleaned out to customer's satisfaction"
                     
                 }
                 notes.text = num.notes!
