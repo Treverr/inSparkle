@@ -298,7 +298,9 @@ class QuickActionsMasterViewController: UIViewController {
                     startWeek.removeRange(startRange..<endRange)
                     
                     var endWeek = dateFormatter.stringFromDate(week.weekEnd)
-                    endWeek.removeRange(startRange..<endRange)
+                    let endWeekStartRange = endWeek.endIndex.advancedBy(-6)
+                    let endWeekEndRanges = endWeek.endIndex
+                    endWeek.removeRange(endWeekStartRange..<endWeekEndRanges)
                     
                     self.nextAvailClosingWeeksLabel.text = startWeek + " - " + endWeek
                     
