@@ -26,9 +26,11 @@ class TripsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        let object = self.workOrder as! PFObject
         let timeQuery = WorkServiceOrderTimeLog.query()
-        timeQuery?.whereKey("relatedWorkOrder", equalTo: self.workOrder)
+        print(object.objectId!)
+        timeQuery?.whereKey("relatedWorkOrderObjectID", equalTo: object.objectId!)
+        timeQuery?.orderByAscending("timeStamp")
         timeQuery?.findObjectsInBackgroundWithBlock({ (results : [PFObject]?, error : NSError?) in
             if error == nil {
                 self.trips = results as! [WorkServiceOrderTimeLog]
@@ -47,52 +49,68 @@ class TripsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.trips.count
+        print(Double(self.trips.count) / 2, self.trips.count)
+        let roundNumber = round(Double(self.trips.count) / 2)
+        print(roundNumber)
+        return Int(roundNumber)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("tripCell")! as UITableViewCell
-        let trip = self.trips[indexPath.row]
+        let currentRow = self.trips[indexPath.row]
         
-        let start = trip.arrive
-        let end = trip.departed
-        if start != nil && end != nil {
-            let diff = end?.timeIntervalSinceDate(start!)
-            totalTime = totalTime + diff!
-            print(diff)
-            let hours = (diff! / 60) / 60
-            self.totalHours = self.totalHours + hours
-            let min : Double!
-            if hours >= 1 {
-                min = ((hours * 60) * 60) - diff!
-            } else {
-                min = diff! / 60
-            }
-            self.totalMin = self.totalMin + min
-            
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .ShortStyle
-            dateFormatter.timeStyle = .MediumStyle
-            
-            let startString = dateFormatter.stringFromDate(start!)
-            let endString = dateFormatter.stringFromDate(end!)
-            
-            cell.textLabel!.text = startString + " - " + endString
-            cell.detailTextLabel!.text = String(Int(hours)) + "h " + String(Int(min)) + "m"
-        } else if end == nil {
-            let start = trip.arrive
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .ShortStyle
-            dateFormatter.timeStyle = .ShortStyle
-            
-            let startString = dateFormatter.stringFromDate(start!)
-            
-            cell.textLabel?.text = startString + " - " + "No Departure Logged"
-            cell.detailTextLabel?.text = nil
-        }
-    
-        
+        if indexPath.row % 2 == 0 {
+            if currentRow.enter == true {
+                
+                if indexPath.row + 1 <= self.trips.count {
+                    
+                    if self.trips[indexPath.row + 1].enter == false {
+                        let diff = (self.trips[indexPath.row + 1].timeStamp).timeIntervalSinceDate(currentRow.timeStamp)
+                        totalTime += diff
+                        let hours = (diff / 60) / 60
+                        self.totalHours += hours
+                        let min : Double!
+                        if hours >= 1 {
+                            min = ((hours * 60) * 60) - diff
+                        } else {
+                            min = diff / 60
+                        }
+                        self.totalMin += min
+                        
+                        let dateFormatter = NSDateFormatter()
+                        dateFormatter.dateStyle = .ShortStyle
+                        dateFormatter.timeStyle = .MediumStyle
+                        
+                        let start = currentRow.timeStamp
+                        let end = self.trips[indexPath.row + 1].timeStamp
+                        
+                        let startString = dateFormatter.stringFromDate(start)
+                        let endString = dateFormatter.stringFromDate(end)
+                        
+                        cell.textLabel!.text = startString + " - " + endString
+                        cell.detailTextLabel!.text = String(Int(hours)) + "h " + String(Int(min)) + "m"
 
+                    }
+                } else {
+                    let start = currentRow.timeStamp
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateStyle = .ShortStyle
+                    dateFormatter.timeStyle = .MediumStyle
+                    
+                    cell.textLabel?.text = dateFormatter.stringFromDate(start) + " - " + "No Time Out Recorded"
+                    cell.detailTextLabel?.text = "N/A"
+                }
+            } else {
+                let end = currentRow.timeStamp
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateStyle = .ShortStyle
+                dateFormatter.timeStyle = .MediumStyle
+                
+               cell.textLabel?.text = "No Time In Recorded" + " - " + dateFormatter.stringFromDate(end)
+                cell.detailTextLabel?.text = "N/A"
+            }
+        }
+        
         totalTimeItem.title = String("Total Time: \(Int(self.totalHours))h \(Int(self.totalMin))m")
         
         return cell

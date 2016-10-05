@@ -184,9 +184,9 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
         if workOrderObject?.workToBePerformed != nil {
             wtbpTextView.text = workOrderObject!.workToBePerformed
         }
-        if workOrderObject?.descOfWork != nil {
-            descOfWork.text = workOrderObject!.descOfWork
-        }
+//        if workOrderObject?.descOfWork != nil {
+//            descOfWork.text = workOrderObject!.descOfWork
+//        }
         if workOrderObject?.unitMake != nil {
             unitMake.text = workOrderObject!.unitMake
         }
@@ -468,9 +468,6 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
             }
             if wtbpTextView.text.isEmpty == false {
                 workOrderObject?.workToBePerformed = wtbpTextView.text
-            }
-            if descOfWork.text.isEmpty == false {
-                workOrderObject?.descOfWork = descOfWork.text
             }
             if unitMake.text?.isEmpty == false {
                 workOrderObject?.unitMake = unitMake.text

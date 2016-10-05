@@ -15,19 +15,9 @@ class WorkServiceOrderTimeLog : PFObject, PFSubclassing {
         return "WorkServiceOrderTimeLog"
     }
     
-    var arrive : NSDate? {
-        get {return objectForKey("arrive") as? NSDate}
-        set { setObject(newValue!, forKey: "arrive") }
-    }
-    
-    var departed : NSDate? {
-        get {return objectForKey("departed") as? NSDate}
-        set { setObject(newValue!, forKey: "departed") }
-    }
-    
-    var relatedWorkOrder : WorkOrders! {
-        get {return objectForKey("relatedWorkOrder") as! WorkOrders}
-        set { setObject(newValue, forKey: "relatedWorkOrder") }
+    var relatedWorkOrderObjectID : String! {
+        get {return objectForKey("relatedWorkOrderObjectID") as! String}
+        set { setObject(newValue, forKey: "relatedWorkOrderObjectID") }
     }
     
     var userLoggedIn : PFUser {
@@ -39,5 +29,16 @@ class WorkServiceOrderTimeLog : PFObject, PFSubclassing {
         get {return objectForKey("device") as! String}
         set { setObject(newValue, forKey: "device") }
     }
+    
+    var enter : Bool {
+        get {return objectForKey("enter") as! Bool}
+        set { setObject(newValue, forKey: "enter") }
+    }
+    
+    var timeStamp : NSDate {
+        get {return objectForKey("timeStamp") as! NSDate}
+        set { setObject(newValue, forKey: "timeStamp") }
+    }
+
 
 }
