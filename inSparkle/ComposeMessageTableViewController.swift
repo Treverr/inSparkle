@@ -338,6 +338,19 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         saveButton.enabled = false
         
         if (isNewMessage) {
+            
+            if self.recipientLabel.text == "Add Recipient" {
+                let recipAlert = UIAlertController(title: "Add a Recipient", message: "Please select a recipient to send the message to", preferredStyle: .Alert)
+                let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                recipAlert.addAction(okayButton)
+                self.presentViewController(recipAlert, animated: true, completion: nil)
+                
+                saveButton.tintColor = UIColor.whiteColor()
+                saveButton.enabled = true
+                
+                return
+            }
+            
             let messObj = Messages()
             messObj.dateTimeMessage = NSDate()
             messObj.recipient = selectedEmployee!
