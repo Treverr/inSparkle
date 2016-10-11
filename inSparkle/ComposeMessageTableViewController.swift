@@ -86,6 +86,11 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
         phoneTextField.delegate = self
         altPhoneTextField.delegate = self
+        messageTextView.delegate = self
+        nameTextField.delegate = self
+        addressTextField.delegate = self
+        emailAddress.delegate = self
+        messageTextView.delegate = self
         
         if !nameTextField.text!.isEmpty && !phoneTextField.text!.isEmpty {
             enableDisableSaveButton(true)
@@ -97,78 +102,40 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageTableViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
-    var isKeyboardShowing : Bool?
-    var kbHeight: CGFloat?
-    var showUIKeyboard : Bool?
-    var hasKeyboard : Bool?
-    var adjustedForMessages : Bool?
+    var activeField : UIView!
     
     func keyboardWillShow(notification : NSNotification) {
+        let info = notification.userInfo!
+        let kbSize : CGSize = info[UIKeyboardFrameEndUserInfoKey]!.CGRectValue().size
         
-        var userInfo: [NSObject : AnyObject] = notification.userInfo!
-        let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
-        let keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
-        let height: CGFloat = self.view.frame.size.height
-        if ((keyboard.origin.y + keyboard.size.height) > height) {
-            self.hasKeyboard = true
-        }
+        let contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height - 200, 0)
+        self.tableView.contentInset = contentInsets
+        self.tableView.scrollIndicatorInsets = contentInsets
         
-        let toolbarHeight : CGFloat?
+        var aRect = self.view.frame
+        aRect.size.height -= kbSize.height
         
-        if !messageTextView.isFirstResponder() {
-            return
-        } else {
-            
-            if isKeyboardShowing == true {
-                return
-            } else {
-                if let userInfo = notification.userInfo {
-                    if let keyboardSize = (userInfo [UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
-                        if self.hasKeyboard == true && messageTextView.isFirstResponder() {
-                            kbHeight = 25
-                        } else {
-                            kbHeight = keyboardSize.height - 150
-                        }
-                        self.animateTextField(true)
-                        isKeyboardShowing = true
-                    }
-                }
+        let textViews = [nameTextField, addressTextField, altPhoneTextField, messageTextView]
+
+        for textView in textViews {
+            if textView.isFirstResponder() {
+                activeField = textView
             }
         }
+        
+        if (!CGRectContainsPoint(aRect, activeField.frame.origin)) {
+            self.tableView.scrollRectToVisible(activeField.frame, animated: true)
+        }
+        
     }
     
     
     
     func keyboardWillHide(notification : NSNotification) {
-        if (isKeyboardShowing != nil) {
-            if isKeyboardShowing! {
-                self.animateTextField(false)
-                self.adjustedForMessages = false
-                isKeyboardShowing = false
-            }
-        }
-    }
-    
-    func animateTextField(up: Bool) {
-        if kbHeight == nil {
-            return
-        } else {
-            if nameTextField.isFirstResponder() || addressTextField.isFirstResponder() || phoneTextField.isFirstResponder() || altPhoneTextField.isFirstResponder() || emailAddress.isFirstResponder() {
-                self.adjustedForMessages = false
-            } else {
-                let movement = (up ? -kbHeight! : kbHeight!)
-                if up {
-                    self.adjustedForMessages = true
-                } else {
-                    self.adjustedForMessages = false
-                }
-                UIView.animateWithDuration(0.3, animations: {
-                    self.view.frame = CGRectOffset(self.view.frame, 0, movement)
-                })
-                let messageNSIndexPath = NSIndexPath(forRow: 6, inSection: 1)
-                self.tableView.scrollToRowAtIndexPath(messageNSIndexPath, atScrollPosition: .Middle, animated: true)
-            }
-        }
+        let contentInsets = UIEdgeInsetsZero
+        self.tableView.contentInset = contentInsets
+        self.tableView.scrollIndicatorInsets = contentInsets
+        
     }
     
     
@@ -568,14 +535,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
 }
 
 extension ComposeMessageTableViewController : UITextViewDelegate {
-    
-    func textViewDidBeginEditing(textView: UITextView) {
-        if textView == messageTextView {
-            if self.adjustedForMessages == false {
-                self.animateTextField(true)
-            }
-        }
-    }
+
     
 }
 

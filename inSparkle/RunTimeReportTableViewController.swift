@@ -148,8 +148,9 @@
     func getTimeCardForEachEmployee(employee : Employee, startDate : NSDate, endDate : NSDate) {
         if !detail {
             csvPunches = "Employee,StandardHours,OvertimeHours,VacationHours,TotalTime\n"
-            csvPunches = csvPunches + "Marti Ennis,Salary,-,-,-\n"
-            csvPunches = csvPunches + "Tom Sedletzeck,Salary,-,-,-\n"
+            csvPunches += "Marti Ennis,Salary,-,-,-\n"
+            csvPunches += "Tom Sedletzeck,Salary,-,-,-\n"
+            csvPunches += "Robert Casad,Salary,-,-,-\n"
         }
         var employeeName : String?
         var complete : Bool = false
