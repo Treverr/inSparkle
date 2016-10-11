@@ -108,7 +108,14 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         let info = notification.userInfo!
         let kbSize : CGSize = info[UIKeyboardFrameEndUserInfoKey]!.CGRectValue().size
         
-        let contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height - 200, 0)
+        var contentInsets : UIEdgeInsets!
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height - 200, 0)
+        } else {
+            contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height - 50, 0)
+        }
+        
         self.tableView.contentInset = contentInsets
         self.tableView.scrollIndicatorInsets = contentInsets
         
@@ -116,17 +123,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         aRect.size.height -= kbSize.height
         
         let textViews = [nameTextField, addressTextField, altPhoneTextField, messageTextView]
-
-        for textView in textViews {
-            if textView.isFirstResponder() {
-                activeField = textView
-            }
-        }
-        
-        if (!CGRectContainsPoint(aRect, activeField.frame.origin)) {
-            self.tableView.scrollRectToVisible(activeField.frame, animated: true)
-        }
-        
     }
     
     
