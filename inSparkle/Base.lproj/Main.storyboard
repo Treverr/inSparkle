@@ -144,9 +144,6 @@
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="yhP-wp-MmP" kind="presentation" id="x1d-yl-rMn"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="chemCheckout" textLabel="hOl-Qi-zdA" imageView="pCw-E7-htN" style="IBUITableViewCellStyleDefault" id="84P-6u-bLs">
                                 <rect key="frame" x="0.0" y="164" width="703" height="44"/>
@@ -421,7 +418,6 @@
         <!--Split View Controller-->
         <scene sceneID="0Q8-nW-6OI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rs7-9l-Ng8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <splitViewController id="yXE-xk-7qh" customClass="SplitViewController" customModule="inSparkle" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="wdo-8s-7Bd"/>
                     <connections>
@@ -429,6 +425,7 @@
                         <segue destination="D9b-7a-ZfZ" kind="relationship" relationship="masterViewController" id="Hbw-2z-gUm"/>
                     </connections>
                 </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rs7-9l-Ng8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1133" y="-249"/>
         </scene>

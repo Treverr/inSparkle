@@ -121,8 +121,6 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
         var aRect = self.view.frame
         aRect.size.height -= kbSize.height
-        
-        let textViews = [nameTextField, addressTextField, altPhoneTextField, messageTextView]
     }
     
     

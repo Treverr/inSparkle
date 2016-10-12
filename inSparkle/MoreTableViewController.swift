@@ -130,6 +130,19 @@ class MoreTableViewController: UITableViewController {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let cell = self.tableView.cellForRowAtIndexPath(indexPath)
         
+        if cell?.reuseIdentifier == "timeClock" {
+            if let appURL = NSURL(string: "mysparklepoolstime://") {
+                if UIApplication.sharedApplication().canOpenURL(appURL) {
+                    UIApplication.sharedApplication().openURL(appURL)
+                } else {
+                    let alert = UIAlertController(title: "TIME is not installed on your device", message: "\nContact IS&T to have TIME pushed to your device or clock out on the Time Clock", preferredStyle: .Alert)
+                    let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                    alert.addAction(okayButton)
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+            }
+        }
+        
         if cell?.reuseIdentifier == "customerLookup" {
             CustomerLookupObjects.fromVC = "More"
         }
