@@ -90,6 +90,9 @@ class WorkOrderPDFTemplateViewController: UIViewController {
             } else {
                 techLabel.text = ""
             }
+            if workOrderObject.technicianPointer != nil {
+                techLabel.text = workOrderObject.technicianPointer!.firstName + " " + workOrderObject.technicianPointer!.lastName
+            }
             if workOrderObject.workToBePerformed != nil {
                 wtbpTextView.text = workOrderObject.workToBePerformed
             } else  {
