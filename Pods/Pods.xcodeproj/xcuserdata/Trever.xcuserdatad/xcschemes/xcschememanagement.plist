@@ -79,6 +79,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PDFGenerator.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -157,6 +162,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>32F7B59D95C395E0676CB0B3641D320F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3634ABA74A6F41DB3C7516A583373EE8</key>
 		<dict>
 			<key>primary</key>
@@ -167,12 +177,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4961AAEC559B00CFEAEDAA07ACF1A9D5</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5480E024C3E679A606716DCFC6577E78</key>
+		<key>45B9E1F3924EF3D429B76262C87F1B61</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,7 +187,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>59639F0543F0EC5DFB9700D1D4D72EDC</key>
+		<key>678B83F9F372302771E2C2629D28141C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,11 +207,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>739D4EE101A3D8E2260A02FC81E6B91E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>75AEEEFD7E431013E8E60009251D5797</key>
 		<dict>
 			<key>primary</key>
@@ -217,12 +217,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>805645FACBE103D907954D248E8B9DA1</key>
+		<key>8698C4558AE758AD92477EC134E714F7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8698C4558AE758AD92477EC134E714F7</key>
+		<key>8AA9BAC28EF65AB99B885816838A6D4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -258,6 +258,16 @@
 			<true/>
 		</dict>
 		<key>E45C60E65DC7B25E659C0A735F907FC7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ECCE6379B65D181822926ECBDDCC3099</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F926DEB100A8330346CDB2E7A4FD34B9</key>
 		<dict>
 			<key>primary</key>
 			<true/>

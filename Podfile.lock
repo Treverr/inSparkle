@@ -24,6 +24,7 @@ PODS:
     - Bolts-Swift
     - Parse
     - SocketRocket
+  - PDFGenerator (1.4.3)
   - PhoneNumberKit (0.7)
   - RSBarcodes_Swift (0.1.9)
   - SocketRocket (0.5.1)
@@ -47,6 +48,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - Parse
   - ParseLiveQuery
+  - PDFGenerator (from `https://github.com/sgr-ksmt/PDFGenerator.git`, branch `swift-2.3`)
   - PhoneNumberKit
   - RSBarcodes_Swift (~> 0.1.9)
   - SwiftGifOrigin
@@ -56,11 +58,17 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   GooglePlacesAutocomplete:
     :git: https://github.com/watsonbox/ios_google_places_autocomplete
+  PDFGenerator:
+    :branch: swift-2.3
+    :git: https://github.com/sgr-ksmt/PDFGenerator.git
 
 CHECKOUT OPTIONS:
   GooglePlacesAutocomplete:
     :commit: 3b24a37eca923c5d92253122f26a2cd41f10ec5a
     :git: https://github.com/watsonbox/ios_google_places_autocomplete
+  PDFGenerator:
+    :commit: 0329566d82b24d3672f4400f73755332ab269858
+    :git: https://github.com/sgr-ksmt/PDFGenerator.git
 
 SPEC CHECKSUMS:
   Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
@@ -80,6 +88,7 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   ParseLiveQuery: d0eb2528cdc5e3e2f836741b0a6db828c7e41307
+  PDFGenerator: 8e28213b0b36e41f667b474e24ab7c84c8cee303
   PhoneNumberKit: 0c726536585867d4877f496fa57473c6449f45a9
   RSBarcodes_Swift: 3c37a05faa0c8742739e1b47eec2f0d3d786330f
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
@@ -88,6 +97,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
   UIView+HierarchicalDrawing: 9cb086a2c0cde4fa8a3d17c58227abdd92e29ece
 
-PODFILE CHECKSUM: b7213e8f8cf504ca644d735332ce73d61edf3e28
+PODFILE CHECKSUM: 199d93eca0b0f2fc420cb2cb217474700f789cd7
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.0.rc.2

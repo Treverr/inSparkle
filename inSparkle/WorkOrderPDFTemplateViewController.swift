@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import UIView_HierarchicalDrawing
 
 class WorkOrderPDFTemplateViewController: UIViewController {
     
@@ -158,158 +157,158 @@ class WorkOrderPDFTemplateViewController: UIViewController {
         guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
         
         CGContextSetInterpolationQuality(pdfContext, .High)
-        pdfView.drawHierarchy()
+        pdfView.drawViewHierarchyInRect(self.pdfView.bounds, afterScreenUpdates: true)
+        
         
         UIGraphicsEndPDFContext()
         
-        if let docDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first {
-            let documentFileName = docDir + "/" + "WorkOrder.pdf"
-            print(documentFileName)
-            pdfData.writeToFile(documentFileName, atomically: true)
+        let tmp = NSTemporaryDirectory().stringByAppendingString("WorkOrder.pdf")
+        pdfData.writeToFile(tmp, atomically: true)
+        
+        
+        let info : UIPrintInfo = UIPrintInfo(dictionary: nil)
+        info.orientation = UIPrintInfoOrientation.Portrait
+        info.outputType = UIPrintInfoOutputType.Grayscale
+        info.jobName = "Work Order"
+        
+        let printer = UIPrinter(URL: NSURL(string: "ipp://Trevers-Server.local.:10631/printers/HP_Color_LaserJet_CM2320fxi_MFP__0F3E5C_")!)
+        
+        printer.contactPrinter { (available) in
+            if available {
+                
+                let printInteraction = UIPrintInteractionController.sharedPrintController()
+                
+                printInteraction.printingItem = pdfData
+                printInteraction.printInfo = info
+                
+                printInteraction.printToPrinter(printer, completionHandler: { (printerController, completed, error) in
+                    if completed {
+                        let alert = UIAlertController(title: "Printed!", message: nil, preferredStyle: .Alert)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        let delay = 1.0 * Double(NSEC_PER_SEC)
+                        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                        dispatch_after(time, dispatch_get_main_queue(), {
+                            alert.dismissViewControllerAnimated(true, completion: { 
+                                self.dismissViewControllerAnimated(false, completion: nil)
+                            })
+                        })
+                    }
+                })
+                
+            }
+        }
+    }
+}
+
+    extension WorkOrderPDFTemplateViewController : UITableViewDelegate, UITableViewDataSource {
+        
+        
+        
+        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            var theReturn : Int!
+            if tableView == partsTableView {
+                theReturn = partCounts.count
+            }
             
-            if self.isViewLoaded() {
-                let docURL = NSURL.fileURLWithPath(documentFileName)
-                print(docURL)
-                var docController : UIDocumentInteractionController!
-                docController = UIDocumentInteractionController(URL: docURL)
-                docController.delegate = self
-                docController.presentPreviewAnimated(true)
-            } else {
-                while self.isViewLoaded() == false {
-                    if self.isViewLoaded() {
-                        let docURL = NSURL.fileURLWithPath(documentFileName)
-                        print(docURL)
-                        var docController : UIDocumentInteractionController!
-                        docController = UIDocumentInteractionController(URL: docURL)
-                        docController.delegate = self
-                        docController.presentPreviewAnimated(true)
-                    } else {
-                        print("Not")
-                    }
+            if tableView == laborTableView {
+                if workOrderObject.labor != nil {
+                    theReturn = workOrderObject.labor!.count
+                } else {
+                    theReturn = 0
                 }
             }
-        }
-    }
-}
-
-extension WorkOrderPDFTemplateViewController : UITableViewDelegate, UITableViewDataSource {
-    
-    
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var theReturn : Int!
-        if tableView == partsTableView {
-            theReturn = partCounts.count
+            
+            return theReturn
         }
         
-        if tableView == laborTableView {
-            if workOrderObject.labor != nil {
-                theReturn = workOrderObject.labor!.count
-            } else {
-                theReturn = 0
-            }
-        }
-        
-        return theReturn
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var returnCell : UITableViewCell!
-        
-        if tableView == partsTableView {
-            if workOrderObject.parts != nil {
-                
-                var keyList : [String] {
-                    get {
-                        return Array(partCounts.keys)
+        func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+            var returnCell : UITableViewCell!
+            
+            if tableView == partsTableView {
+                if workOrderObject.parts != nil {
+                    
+                    var keyList : [String] {
+                        get {
+                            return Array(partCounts.keys)
+                        }
                     }
+                    
+                    let cell = tableView.dequeueReusableCellWithIdentifier("partCell") as! PDFPartTableViewCell
+                    
+                    let partTitle = keyList[indexPath.row]
+                    
+                    cell.qty.text = String(partCounts[partTitle]!)
+                    cell.part.text = partTitle
+                    cell.layoutMargins = UIEdgeInsetsZero
+                    
+                    returnCell = cell
                 }
-                
-                let cell = tableView.dequeueReusableCellWithIdentifier("partCell") as! PDFPartTableViewCell
-                
-                let partTitle = keyList[indexPath.row]
-                
-                cell.qty.text = String(partCounts[partTitle]!)
-                cell.part.text = partTitle
-                cell.layoutMargins = UIEdgeInsetsZero
-                
-                returnCell = cell
             }
-        }
-        
-        if tableView == laborTableView {
-            if workOrderObject.parts != nil {
-                
-                var keyList : [String] {
-                    get {
-                        return Array(laborCounts.keys)
+            
+            if tableView == laborTableView {
+                if workOrderObject.parts != nil {
+                    
+                    var keyList : [String] {
+                        get {
+                            return Array(laborCounts.keys)
+                        }
                     }
+                    print(self.partCounts)
+                    
+                    let cell = tableView.dequeueReusableCellWithIdentifier("laborCell") as! PDFLaborTableViewCell
+                    
+                    let partTitle = keyList[indexPath.row]
+                    
+                    cell.qty.text = String(laborCounts[partTitle]!)
+                    cell.part.text = partTitle
+                    cell.layoutMargins = UIEdgeInsetsZero
+                    
+                    returnCell = cell
                 }
-                print(self.partCounts)
-                
-                let cell = tableView.dequeueReusableCellWithIdentifier("laborCell") as! PDFLaborTableViewCell
-                
-                let partTitle = keyList[indexPath.row]
-                
-                cell.qty.text = String(laborCounts[partTitle]!)
-                cell.part.text = partTitle
-                cell.layoutMargins = UIEdgeInsetsZero
-                
-                returnCell = cell
             }
+            
+            return returnCell
+        }
+    }
+    
+    
+    extension WorkOrderPDFTemplateViewController : UIDocumentInteractionControllerDelegate {
+        
+        func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
+            return self.view.frame
         }
         
-        return returnCell
+        func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
+            timeToDismiss = true
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+            let viewController: UIViewController = UIViewController()
+            self.presentViewController(viewController, animated: true, completion: nil)
+            return viewController
+        }
+        
     }
+    
+    extension UIImage {
+        convenience init(view: UIView) {
+            UIGraphicsBeginImageContext(view.frame.size)
+            view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            self.init(CGImage: image!.CGImage!)
+        }
+    }
+    
+    extension UIView {
+        func toImage() -> UIImage {
+            UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.mainScreen().scale)
+            
+            drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+            
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return image!
+        }
 }
-
-
-extension WorkOrderPDFTemplateViewController : UIDocumentInteractionControllerDelegate {
-    
-    func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
-        return self.view.frame
-    }
-    
-    func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
-        timeToDismiss = true
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
-        let viewController: UIViewController = UIViewController()
-        self.presentViewController(viewController, animated: true, completion: nil)
-        return viewController
-    }
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

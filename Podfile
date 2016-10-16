@@ -1,6 +1,8 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '6.0'
 
+project 'inSparkle.xcodeproj'
+
 target 'inSparkle' do
 use_frameworks!
 
@@ -23,7 +25,6 @@ pod 'BRYXBanner'
 pod 'NVActivityIndicatorView'
 pod 'Alamofire', '~> 3.5.0'
 pod 'ParseLiveQuery'
+pod 'PDFGenerator', :git => 'https://github.com/sgr-ksmt/PDFGenerator.git', :branch => 'swift-2.3'
 
 end
-
-∫∫
