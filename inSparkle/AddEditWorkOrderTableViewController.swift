@@ -497,7 +497,8 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
                 let sb = UIStoryboard(name: "WorkOrderPDFTemplate", bundle: nil)
                 let vc = sb.instantiateViewControllerWithIdentifier("workOrderPDF") as! WorkOrderPDFTemplateViewController
                 vc.workOrderObject = self.workOrderObject
-                self.presentViewController(vc, animated: true, completion: nil)
+                let theView = vc.view
+                
             })
         }
     }
