@@ -15,6 +15,7 @@ class MoreTableViewController: UITableViewController {
     @IBOutlet var profileLabel: UILabel!
     
     var specialAccess : [String]! = []
+    var printerSelectionRect : CGRect!
     
     override func viewDidLoad() {
         self.navigationController?.setupNavigationbar(self.navigationController!)
@@ -86,13 +87,14 @@ class MoreTableViewController: UITableViewController {
             case 0:
                 cell = self.tableView.dequeueReusableCellWithIdentifier("timeClock")!
             case 1:
-                cell = self.tableView.dequeueReusableCellWithIdentifier("chemCheckout")!
-            case 2:
                 cell = self.tableView.dequeueReusableCellWithIdentifier("pdfLocker")!
-            case 3:
+            case 2:
                 cell = self.tableView.dequeueReusableCellWithIdentifier("sparkleConnect")!
-            case 4:
+            case 3:
                 cell = self.tableView.dequeueReusableCellWithIdentifier("customerLookup")!
+            case 4:
+                cell = self.tableView.dequeueReusableCellWithIdentifier("printerSelection")!
+                self.printerSelectionRect = cell.frame
             case 5:
                 cell = self.tableView.dequeueReusableCellWithIdentifier("logoutCell")!
             default:
@@ -155,6 +157,10 @@ class MoreTableViewController: UITableViewController {
             self.logoutAction(self)
         }
         
+        if cell?.reuseIdentifier == "printerSelection" {
+            selectPrinter()
+        }
+        
         if indexPath.section == 1 {
             switch cell!.textLabel!.text! {
             case "Manage Users and Employees":
@@ -181,6 +187,23 @@ class MoreTableViewController: UITableViewController {
                 break
             }
             
+        }
+        
+    }
+    
+    func selectPrinter() {
+        var printer : UIPrinter! = nil
+        
+        if NSUserDefaults.standardUserDefaults().objectForKey("printer") != nil {
+            printer = UIPrinter(URL: NSUserDefaults.standardUserDefaults().URLForKey("printer")!)
+        }
+        
+        let printerPicker = UIPrinterPickerController(initiallySelectedPrinter: printer)
+        printerPicker.presentFromRect(self.printerSelectionRect, inView: self.view, animated: true) { (picker, selected, error) in
+            if selected {
+                NSUserDefaults.standardUserDefaults().setURL(printerPicker.selectedPrinter?.URL, forKey: "printer")
+                picker.dismissAnimated(true)
+            }
         }
         
     }
