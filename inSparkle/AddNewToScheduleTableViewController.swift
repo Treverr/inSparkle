@@ -467,6 +467,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             schObj = ScheduleObject()
         } else {
             schObj = AddNewScheduleObjects.scheduledObject
+            print(AddNewScheduleObjects.scheduledObject?.objectId)
         }
         
         ScheduleObject.registerSubclass()
@@ -883,10 +884,6 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             dateClosingPicker.reloadAllComponents()
             
         }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        AddNewScheduleObjects.scheduledObject = nil
     }
     
     @IBAction func generatePDF(sender: AnyObject) {

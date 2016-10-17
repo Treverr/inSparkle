@@ -55,11 +55,6 @@ class ScheduleObject : PFObject, PFSubclassing {
         set { setObject(newValue!, forKey: "cancelReason") }
     }
     
-    var objectID : String {
-        get { return objectForKey("objectId") as! String }
-        set { setObject(newValue, forKey: "objectId") }
-    }
-    
     var type : String {
         get { return objectForKey("type") as! String }
         set { setObject(newValue, forKey: "type") }
