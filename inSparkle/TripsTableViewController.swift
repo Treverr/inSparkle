@@ -59,7 +59,8 @@ class TripsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("tripCell")! as UITableViewCell
         let currentRow = self.trips[indexPath.row]
         
-        if indexPath.row % 2 == 0 {
+        print(indexPath.row)
+            
             if currentRow.enter == true {
                 
                 if indexPath.row + 1 <= self.trips.count {
@@ -83,6 +84,7 @@ class TripsTableViewController: UITableViewController {
                         
                         let start = currentRow.timeStamp
                         let end = self.trips[indexPath.row + 1].timeStamp
+                        self.trips.removeAtIndex(indexPath.row + 1)
                         
                         let startString = dateFormatter.stringFromDate(start)
                         let endString = dateFormatter.stringFromDate(end)
@@ -109,7 +111,6 @@ class TripsTableViewController: UITableViewController {
                cell.textLabel?.text = "No Time In Recorded" + " - " + dateFormatter.stringFromDate(end)
                 cell.detailTextLabel?.text = "N/A"
             }
-        }
         
         totalTimeItem.title = String("Total Time: \(Int(self.totalHours))h \(Int(self.totalMin))m")
         

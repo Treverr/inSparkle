@@ -160,39 +160,7 @@ class WorkOrderPDFTemplateViewController: UIViewController {
         info.outputType = UIPrintInfoOutputType.Grayscale
         info.jobName = "Work Order"
         
-        if NSUserDefaults.standardUserDefaults().URLForKey("printer") != nil {
-            let printer = UIPrinter(URL: NSUserDefaults.standardUserDefaults().URLForKey("printer")!)
-            printer.contactPrinter { (available) in
-                if available {
-                    
-                    let printInteraction = UIPrintInteractionController.sharedPrintController()
-                    
-                    printInteraction.printingItem = pdfData
-                    printInteraction.printInfo = info
-                    
-                    printInteraction.printToPrinter(printer, completionHandler: { (printerController, completed, error) in
-                        if completed {
-                            let alert = UIAlertController(title: "Printed!", message: nil, preferredStyle: .Alert)
-                            self.presentViewController(alert, animated: true, completion: nil)
-                            let delay = 1.0 * Double(NSEC_PER_SEC)
-                            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                            dispatch_after(time, dispatch_get_main_queue(), {
-                                alert.dismissViewControllerAnimated(true, completion: {
-                                    self.dismissViewControllerAnimated(false, completion: nil)
-                                })
-                            })
-                        }
-                    })
-                    
-                }
-            }
-        } else {
-            self.dismissViewControllerAnimated(false, completion: nil)
-            let alert = UIAlertController(title: "Select Printer", message: "\nPlease select a printer in the More section and then try your print again", preferredStyle: .Alert)
-            let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
-            alert.addAction(okayButton)
-            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-        }
+        GlobalFunctions().printToPrinter(pdfData, printInfo: info, view: self)
     }
 }
 

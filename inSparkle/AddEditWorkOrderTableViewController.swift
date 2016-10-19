@@ -83,8 +83,6 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
                         self.descOfWork.text! += note.objectForKey("noteContent") as! String
                         self.descOfWork.text! += "\n\n"
                     }
-                    
-                    
                 }
             }
         }
@@ -507,10 +505,6 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
         return UIModalPresentationStyle.None
     }
     
-    
-}
-
-extension AddEditWorkOrderTableViewController : UITextViewDelegate {
     
 }
 

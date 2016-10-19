@@ -121,6 +121,11 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
         var aRect = self.view.frame
         aRect.size.height -= kbSize.height
+        
+        if messageTextView.isFirstResponder() {
+            let indexToScrollTo = NSIndexPath(forRow: 7, inSection: 1)
+            self.tableView.scrollToRowAtIndexPath(indexToScrollTo, atScrollPosition: .Bottom, animated: true)
+        }
     }
     
     
@@ -529,6 +534,12 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
 }
 
 extension ComposeMessageTableViewController : UITextViewDelegate {
+    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        
+        
+        return true
+    }
 
     
 }
