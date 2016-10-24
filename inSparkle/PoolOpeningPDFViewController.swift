@@ -44,18 +44,12 @@ class PoolOpeningPDFViewController: UIViewController {
         notes.numberOfLines = 0
         
         self.data = POCReportData.POCData
-   
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.createPdfFromView(self.theView, saveToDocumentsWithFileName: "POC")
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.data = POCReportData.POCData
+   
     }
     
     func createPdfFromView(aView: UIView, saveToDocumentsWithFileName fileName: String) {
@@ -138,17 +132,24 @@ class PoolOpeningPDFViewController: UIViewController {
                 
                 UIGraphicsEndPDFContext()
                 
-                if let documentDirectories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first {
-                    let documentsFileName = documentDirectories + "/" + fileName + ".pdf"
-                    debugPrint(documentsFileName)
-                    pdfData.writeToFile(documentsFileName, atomically: true)
-                    
-                    let docURL = NSURL.fileURLWithPath(documentsFileName)
-                    var docController : UIDocumentInteractionController!
-                    docController = UIDocumentInteractionController(URL: docURL)
-                    docController.delegate = self
-                    docController.presentPreviewAnimated(true)
-                }
+                let info : UIPrintInfo = UIPrintInfo(dictionary: nil)
+                info.orientation = UIPrintInfoOrientation.Portrait
+                info.outputType = UIPrintInfoOutputType.Grayscale
+                info.jobName = customerName.text! + " PoC"
+                
+                GlobalFunctions().printToPrinter(pdfData, printInfo: info, view: self)
+                
+//                if let documentDirectories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first {
+//                    let documentsFileName = documentDirectories + "/" + fileName + ".pdf"
+//                    debugPrint(documentsFileName)
+//                    pdfData.writeToFile(documentsFileName, atomically: true)
+//                    
+//                    let docURL = NSURL.fileURLWithPath(documentsFileName)
+//                    var docController : UIDocumentInteractionController!
+//                    docController = UIDocumentInteractionController(URL: docURL)
+//                    docController.delegate = self
+//                    docController.presentPreviewAnimated(true)
+//                }
             }
         }
     }

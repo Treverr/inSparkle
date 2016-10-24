@@ -51,6 +51,5 @@ class Email {
                 print(response)
                 print(error)
         }
-        
     }
 }

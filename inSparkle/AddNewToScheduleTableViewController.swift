@@ -437,7 +437,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         weekAlert.addAction(noButton)
         weekAlert.addAction(yesButton)
         self.presentViewController(weekAlert, animated: true, completion: nil)
-
+        
     }
     
     func performSave(sender : AnyObject?) {
@@ -537,14 +537,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                     let sb = UIStoryboard(name: "OpeningPDFTemplate", bundle: nil)
                     let vc = sb.instantiateViewControllerWithIdentifier("PoolOpeningTemplate")
                     POCReportData.POCData = [schObj]
-                    self.presentViewController(vc, animated: true, completion: {
-                        if let overlayView = self.view.viewWithTag(6969) {
-                            overlayView.removeFromSuperview()
-                        }
-                        if let activityIndicator = self.view.viewWithTag(6868) {
-                            activityIndicator.removeFromSuperview()
-                        }
-                    })
+                    let view = vc.view
+                    if let overlayView = self.view.viewWithTag(6969) {
+                        overlayView.removeFromSuperview()
+                    }
+                    if let activityIndicator = self.view.viewWithTag(6868) {
+                        activityIndicator.removeFromSuperview()
+                    }
                 } else {
                     var isOpening : Bool!
                     if schObj.type == "Opening" {
