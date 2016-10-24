@@ -11,6 +11,7 @@ import Parse
 import AVFoundation
 import CoreImage
 import NVActivityIndicatorView
+import NetworkExtension
 
 class DataManager: NSObject {
     
@@ -434,30 +435,46 @@ class GlobalFunctions {
     }
     
     func printToPrinter(item : AnyObject, printInfo : UIPrintInfo, view : UIViewController) {
+        
+        func completePrint(printer : UIPrinter) {
+            let printInteraction = UIPrintInteractionController.sharedPrintController()
+            
+            printInteraction.printingItem = item
+            printInteraction.printInfo = printInfo
+            
+            printInteraction.printToPrinter(printer, completionHandler: { (printerController, completed, error) in
+                if completed {
+                    let alert = UIAlertController(title: "Printed!", message: nil, preferredStyle: .Alert)
+                    UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                    let delay = 1.0 * Double(NSEC_PER_SEC)
+                    let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                    dispatch_after(time, dispatch_get_main_queue(), {
+                        alert.dismissViewControllerAnimated(true, completion: {
+                            view.dismissViewControllerAnimated(false, completion: nil)
+                        })
+                    })
+                }
+            })
+        }
+        
         if NSUserDefaults.standardUserDefaults().URLForKey("printer") != nil {
             let printer = UIPrinter(URL: NSUserDefaults.standardUserDefaults().URLForKey("printer")!)
             printer.contactPrinter { (available) in
                 if available {
-                    
-                    let printInteraction = UIPrintInteractionController.sharedPrintController()
-                    
-                    printInteraction.printingItem = item
-                    printInteraction.printInfo = printInfo
-                    
-                    printInteraction.printToPrinter(printer, completionHandler: { (printerController, completed, error) in
-                        if completed {
-                            let alert = UIAlertController(title: "Printed!", message: nil, preferredStyle: .Alert)
-                            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-                            let delay = 1.0 * Double(NSEC_PER_SEC)
-                            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                            dispatch_after(time, dispatch_get_main_queue(), {
-                                alert.dismissViewControllerAnimated(true, completion: {
-                                    view.dismissViewControllerAnimated(false, completion: nil)
-                                })
-                            })
-                        }
+                    completePrint(printer)
+                } else {
+                    let alert = UIAlertController(title: "Printer Unavailable", message: "\(printer.displayName) is unavailable, would you like to print to the office printer via VPN?", preferredStyle: .Alert)
+                    let yesThisTimeOnly = UIAlertAction(title: "Yes, This Time Only", style: .Default, handler: { (action) in
+                        self.establishVPNConnection()
                     })
-                    
+                    let yesSetSelected = UIAlertAction(title: "Yes, Set as Selected", style: .Default, handler: { (action) in
+                        
+                    })
+                    let no = UIAlertAction(title: "No", style: .Default, handler: nil)
+                    alert.addAction(yesThisTimeOnly)
+                    alert.addAction(yesSetSelected)
+                    alert.addAction(no)
+                    UIApplication.sharedApplication().keyWindow?.rootViewController?.presentedViewController?.presentViewController(alert, animated: true, completion: nil)
                 }
             }
         } else {
@@ -467,6 +484,39 @@ class GlobalFunctions {
             alert.addAction(okayButton)
             UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    func establishVPNConnection() {
+        
+        let manager = NEVPNManager()
+        manager.loadFromPreferencesWithCompletionHandler { (error : NSError?) in
+            if error == nil {
+                
+                let vpn = NEVPNProtocolIPSec()
+                vpn.username = "Sparkle Pools"
+                vpn.passwordReference = KeychainWrapper().myObjectForKey("VPNPassword") as? NSData
+                vpn.serverAddress = "http://insparklepools.com"
+                vpn.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
+                vpn.sharedSecretReference = KeychainWrapper().myObjectForKey("VPNSharedSecret") as? NSData
+                vpn.localIdentifier = UIDevice.currentDevice().name
+                vpn.remoteIdentifier = "insparklepools.com"
+                vpn.useExtendedAuthentication = true
+                vpn.disconnectOnSleep = false
+                
+                manager.protocolConfiguration = vpn
+                let onDemandRules = NEOnDemandRule()
+                onDemandRules.DNSServerAddressMatch = ["10.0.1.50"]
+                manager.onDemandEnabled = true
+                manager.localizedDescription = "Sparkle Pools, Inc."
+                do {
+                    try manager.connection.startVPNTunnel()
+                } catch {
+                    print(error)
+                }
+                
+            }
+        }
+        
     }
     
 }
