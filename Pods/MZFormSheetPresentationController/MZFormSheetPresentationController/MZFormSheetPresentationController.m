@@ -1,6 +1,6 @@
 //
-//  MZFormSheetPresentationViewControllerAnimator.m
-//  MZFormSheetPresentationViewControllerAnimator
+//  MZFormSheetPresentationViewController.m
+//  MZFormSheetPresentationViewController
 //
 //  Created by Michał Zaborowski on 24.02.2015.
 //  Copyright (c) 2015 Michał Zaborowski. All rights reserved.
@@ -28,6 +28,7 @@
 #import "MZBlurEffectAdapter.h"
 #import "MZMethodSwizzler.h"
 #import "MZFormSheetPresentationContentSizing.h"
+#import "MZFormSheetPresentationViewController.h"
 
 CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 
@@ -204,7 +205,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 }
 
 - (CGFloat)yCoordinateBelowStatusBar {
-#if TARGET_OS_TV || !NS_EXTENSION_UNAVAILABLE_IOS
+#if TARGET_OS_TV || MZ_APP_EXTENSIONS
     return 0;
 #else
     return [UIApplication sharedApplication].statusBarFrame.size.height;
@@ -212,7 +213,7 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 }
 
 - (CGFloat)topInset {
-#if TARGET_OS_TV || !NS_EXTENSION_UNAVAILABLE_IOS
+#if TARGET_OS_TV || MZ_APP_EXTENSIONS
     return self.landscapeTopInset;
 #else
     if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
@@ -454,8 +455,19 @@ CGFloat const MZFormSheetPresentationControllerDefaultAboveKeyboardMargin = 20;
 #pragma mark - Frame Configuration
 
 - (CGRect)formSheetViewControllerFrame {
+    MZFormSheetPresentationViewController *presentationViewController = (MZFormSheetPresentationViewController *)self.presentedViewController;
+    
     CGRect formSheetRect = self.presentedView.frame;
-    formSheetRect.size = self.internalContentViewSize;
+    CGSize contentViewSize = self.internalContentViewSize;
+    UIView *contentView = presentationViewController.contentViewController.view;
+    
+    if (CGSizeEqualToSize(contentViewSize, UILayoutFittingCompressedSize)) {
+        formSheetRect.size = [contentView systemLayoutSizeFittingSize: contentViewSize];
+    } else if (CGSizeEqualToSize(contentViewSize, UILayoutFittingExpandedSize)) {
+        formSheetRect.size = [contentView systemLayoutSizeFittingSize: self.containerView.bounds.size];
+    } else {
+        formSheetRect.size = contentViewSize;
+    }
     
     if (self.shouldCenterHorizontally) {
         formSheetRect.origin.x = CGRectGetMidX(self.containerView.bounds) - formSheetRect.size.width/2;

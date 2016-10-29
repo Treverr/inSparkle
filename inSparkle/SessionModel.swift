@@ -12,32 +12,32 @@ import Parse
 class SessionModel : PFSession {
     
     var token: String? {
-        get { return objectForKey("sessionToken") as? String }
+        get { return object(forKey: "sessionToken") as? String }
         set { setObject(newValue!, forKey: "sessionToken") }
     }
     
-    var expires : NSDate? {
-        get { return objectForKey("expiresAt") as? NSDate }
+    var expires : Date? {
+        get { return object(forKey: "expiresAt") as? Date }
         set { setObject(newValue!, forKey: "expiresAt") }
     }
     
     var user : PFUser? {
-        get { return objectForKey("user") as? PFUser }
+        get { return object(forKey: "user") as? PFUser }
         set { setObject(newValue!, forKey: "user") }
     }
     
     var createdWith : NSObject? {
-        get { return objectForKey("user") as? NSObject }
+        get { return object(forKey: "user") as? NSObject }
         set { setObject(newValue!, forKey: "user") }
     }
     
     var installID : String? {
-        get { return objectForKey("installationId") as? String }
+        get { return object(forKey: "installationId") as? String }
         set { setObject(newValue!, forKey: "installationId") }
     }
     
     var restricted : Bool {
-        get { return objectForKey("restricted") as! Bool }
+        get { return object(forKey: "restricted") as! Bool }
         set { setObject(false, forKey: "restricted") }
     }
 }

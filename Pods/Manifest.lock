@@ -1,102 +1,91 @@
 PODS:
-  - Alamofire (3.5.0)
-  - Bolts-Swift (1.2.0)
-  - Bolts/Tasks (1.7.0)
-  - BRYXBanner (0.5.2):
-    - BRYXBanner/Core (= 0.5.2)
-  - BRYXBanner/Core (0.5.2)
-  - CalendarView (1.1.2):
-    - SwiftMoment (~> 0.1)
-  - DropDown (0.1.5)
-  - FXImageView (1.3.5)
+  - Alamofire (4.0.1)
+  - Bolts-Swift (1.3.0)
+  - Bolts/Tasks (1.8.4)
+  - BRYXBanner (0.7.1)
+  - CalendarView (1.1.1):
+    - SwiftMoment (~> 0.6)
+  - DropDown (2)
   - GooglePlacesAutocomplete (0.3.0)
-  - iCarousel (1.8.2)
-  - IQKeyboardManagerSwift (4.0.5)
-  - MIBadgeButton-Swift (0.3)
-  - MobihelpSDK (1.6.6)
+  - iCarousel (1.8.3)
+  - IQKeyboardManagerSwift (4.0.7)
+  - MIBadgeButton-Swift (0.4)
   - MZAppearance (1.1.6)
-  - MZFormSheetPresentationController (2.3.2):
+  - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
-  - NVActivityIndicatorView (2.9)
-  - Parse (1.13.0):
-    - Bolts/Tasks (~> 1.6)
-  - ParseLiveQuery (1.0.1):
-    - Bolts-Swift
-    - Parse
-    - SocketRocket
-  - PDFGenerator (1.4.3)
-  - PhoneNumberKit (0.7)
-  - RSBarcodes_Swift (0.1.9)
+  - NVActivityIndicatorView (3.0)
+  - Parse (1.14.2):
+    - Bolts/Tasks (~> 1.8)
+  - ParseLiveQuery (1.1.0):
+    - Bolts-Swift (~> 1.3)
+    - Parse (~> 1.14.2)
+    - SocketRocket (~> 0.5)
+  - PDFGenerator (2.0.1)
+  - PhoneNumberKit (1.0.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 1.0.1)
+    - PhoneNumberKit/UIKit (= 1.0.1)
+  - PhoneNumberKit/PhoneNumberKitCore (1.0.1)
+  - PhoneNumberKit/UIKit (1.0.1):
+    - PhoneNumberKit/PhoneNumberKitCore
+  - RSBarcodes_Swift (3.0.1)
   - SocketRocket (0.5.1)
-  - SwiftGifOrigin (1.5.3)
-  - SwiftMoment (0.4)
-  - SwiftSpinner (0.9.5)
+  - SwiftMoment (0.7)
+  - SwiftSpinner (1.0.2)
   - UIView+HierarchicalDrawing (0.1.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.5.0)
+  - Alamofire
   - BRYXBanner
-  - CalendarView
+  - CalendarView (from `https://github.com/mikeandike/CalendarView.git`)
   - DropDown
-  - FXImageView
-  - GooglePlacesAutocomplete (from `https://github.com/watsonbox/ios_google_places_autocomplete`)
+  - GooglePlacesAutocomplete
   - iCarousel
-  - IQKeyboardManagerSwift (= 4.0.5)
+  - IQKeyboardManagerSwift
   - MIBadgeButton-Swift
-  - MobihelpSDK
   - MZFormSheetPresentationController
   - NVActivityIndicatorView
   - Parse
   - ParseLiveQuery
-  - PDFGenerator (from `https://github.com/sgr-ksmt/PDFGenerator.git`, branch `swift-2.3`)
+  - PDFGenerator
   - PhoneNumberKit
-  - RSBarcodes_Swift (~> 0.1.9)
-  - SwiftGifOrigin
+  - RSBarcodes_Swift
+  - SwiftMoment
   - SwiftSpinner
   - UIView+HierarchicalDrawing
 
 EXTERNAL SOURCES:
-  GooglePlacesAutocomplete:
-    :git: https://github.com/watsonbox/ios_google_places_autocomplete
-  PDFGenerator:
-    :branch: swift-2.3
-    :git: https://github.com/sgr-ksmt/PDFGenerator.git
+  CalendarView:
+    :git: https://github.com/mikeandike/CalendarView.git
 
 CHECKOUT OPTIONS:
-  GooglePlacesAutocomplete:
-    :commit: 3b24a37eca923c5d92253122f26a2cd41f10ec5a
-    :git: https://github.com/watsonbox/ios_google_places_autocomplete
-  PDFGenerator:
-    :commit: 0329566d82b24d3672f4400f73755332ab269858
-    :git: https://github.com/sgr-ksmt/PDFGenerator.git
+  CalendarView:
+    :commit: bfe418eb5bede90e7c4ca774c4bcee1708f869f7
+    :git: https://github.com/mikeandike/CalendarView.git
 
 SPEC CHECKSUMS:
-  Alamofire: b70a7352335f8ea5babd0a923eb7e8eacc67b877
-  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
-  Bolts-Swift: ac4e7d26719ed0f73aa85b9310da1648105fbde3
-  BRYXBanner: 5f0911d52e0a77e088f7ea7ddcdebd02afb7828a
-  CalendarView: 35d51b70586213604edec22a585d105273f6e191
-  DropDown: addffd49f2a014e079ed854adcb3c5473c1ebdf2
-  FXImageView: 7d84722b37f0afea9a64f12fdd4a6c7f9ecc4b16
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Bolts-Swift: fa98d1b59fc1acea9b21a21306dcdca1c85e3737
+  BRYXBanner: 34eabf9c6c009f187948ca78a4f3bba3767d0f04
+  CalendarView: 5db3b54c3226f5a6a50aced4557ae05f8f01aa71
+  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   GooglePlacesAutocomplete: 7694636fce561c9d8ac807b8e490d299a730a633
-  iCarousel: 67c8a43da5a46795b56aadfc96cd36a16f6149b2
-  IQKeyboardManagerSwift: 41fd3a45a2cdb2a0e031af697708a95b865068a1
-  MIBadgeButton-Swift: 3a8ce410e99ca307036040873c6836f0735c0139
-  MobihelpSDK: 12bad27b6aeffe003b75b867ff3c90488384deb4
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
+  IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
+  MIBadgeButton-Swift: b5d07924904c84bcb8e8fe3c3131b8499f28930c
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
-  MZFormSheetPresentationController: bba52eb65feb3b70ae83ed28fd20991802d4adeb
-  NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
-  Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
-  ParseLiveQuery: d0eb2528cdc5e3e2f836741b0a6db828c7e41307
-  PDFGenerator: 8e28213b0b36e41f667b474e24ab7c84c8cee303
-  PhoneNumberKit: 0c726536585867d4877f496fa57473c6449f45a9
-  RSBarcodes_Swift: 3c37a05faa0c8742739e1b47eec2f0d3d786330f
+  MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
+  NVActivityIndicatorView: 81953b5e65093ba79edf4fe7268e002039ca5268
+  Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
+  ParseLiveQuery: 4c0f3f571ba0f358a4e592cd7d4b55c95ab9655e
+  PDFGenerator: 69cf0787767d501a10b6b85492b1f27fd23b00e8
+  PhoneNumberKit: 0b5ea9a5454d201656db766343e9d768f8542496
+  RSBarcodes_Swift: c773a985f0ff3e2592d5458dd7494a71825aa733
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
-  SwiftGifOrigin: 893ebcceabe215a00b607328b5322b4e228347e5
-  SwiftMoment: e751c44be03a183fa6c949426d9473d26a66ef29
-  SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
+  SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
+  SwiftSpinner: 1c80ff6ea1c47e2faa1dfce0fcd5e6b39a47fd51
   UIView+HierarchicalDrawing: 9cb086a2c0cde4fa8a3d17c58227abdd92e29ece
 
-PODFILE CHECKSUM: 199d93eca0b0f2fc420cb2cb217474700f789cd7
+PODFILE CHECKSUM: b49716a29924532b0587cca1e1607142a2a1804a
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.1

@@ -24,8 +24,8 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(POCRunReportFinalTableViewController.updateStartDateLabel), name: "NotifyPOCUpdateStartLabel", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(POCRunReportFinalTableViewController.updateEndDateLabel), name: "NotifyPOCUpdateEndLabel", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(POCRunReportFinalTableViewController.updateStartDateLabel), name: NSNotification.Name(rawValue: "NotifyPOCUpdateStartLabel"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(POCRunReportFinalTableViewController.updateEndDateLabel), name: NSNotification.Name(rawValue: "NotifyPOCUpdateEndLabel"), object: nil)
 
     }
 
@@ -34,35 +34,35 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
-                displayPopoverCalendar(indexPath.row, indexPath: indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 0 {
+            if (indexPath as NSIndexPath).row == 0 {
+                displayPopoverCalendar((indexPath as NSIndexPath).row, indexPath: indexPath)
                 POCRunReport.selectedCell = "startDate"
             }
-            if indexPath.row == 1 {
-                displayPopoverCalendar(indexPath.row, indexPath: indexPath)
+            if (indexPath as NSIndexPath).row == 1 {
+                displayPopoverCalendar((indexPath as NSIndexPath).row, indexPath: indexPath)
                 POCRunReport.selectedCell = "endDate"
             }
         }
     }
     
-    func displayPopoverCalendar(startOrEnd : Int, indexPath : NSIndexPath) {
+    func displayPopoverCalendar(_ startOrEnd : Int, indexPath : IndexPath) {
         let storyboard = UIStoryboard(name: "POCReport", bundle: nil)
         let x = self.view.center
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let vc = storyboard.instantiateViewControllerWithIdentifier("CalPicker")
-        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CalPicker")
+        vc.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover : UIPopoverPresentationController = vc.popoverPresentationController!
         popover.delegate = self
         popover.sourceView = self.view
-        popover.sourceRect = CGRectMake((x.x - 25), x.y, 0, 0)
+        popover.sourceRect = CGRect(x: (x.x - 25), y: x.y, width: 0, height: 0)
         popover.permittedArrowDirections = UIPopoverArrowDirection()
         popover.popoverLayoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
 
-    @IBAction func runReport(sender: AnyObject) {
+    @IBAction func runReport(_ sender: AnyObject) {
         
         theFilter = POCReportFilters.filter
         
@@ -86,12 +86,12 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
             isActiveFilter = false
         }
         
-        let overlay : UIView = UIView(frame: CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height))
+        let overlay : UIView = UIView(frame: CGRect(x: 0,y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         overlay.tag = 6969
         self.view.addSubview(overlay)
         
-        let activityMonitor = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        let activityMonitor = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         activityMonitor.alpha = 1.0
         activityMonitor.center = self.view.center
         activityMonitor.hidesWhenStopped = true
@@ -102,14 +102,14 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         let startDateAsString = startDateLabel.text!
         let endDateASString = endDateLabel.text!
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
         
-        let startDate : NSDate = formatter.dateFromString(startDateAsString)!
-        var endDate : NSDate = formatter.dateFromString(endDateASString)!
+        let startDate : Date = formatter.date(from: startDateAsString)!
+        var endDate : Date = formatter.date(from: endDateASString)!
 
-        let cal : NSCalendar = NSCalendar.currentCalendar()
-        endDate = cal.dateBySettingHour(23, minute: 59, second: 59, ofDate: endDate, options: NSCalendarOptions(rawValue: 0))!
+        let cal : Calendar = Calendar.current
+        endDate = (cal as NSCalendar).date(bySettingHour: 23, minute: 59, second: 59, of: endDate, options: NSCalendar.Options(rawValue: 0))!
         
         getSchedule(startDate, endDate: endDate, isActive: isActiveFilter, customers: customerFilter)
         
@@ -117,10 +117,10 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
     
     var returnedPOC = 0
     var expectedReturn = 0
-    var error = NSErrorPointer()
+    var error: ErrorPointer = nil
     var csvPOC = "Account Number, Customer Name, Week Scheduled, Address, Phone Number, Date Confirmed, Confirmed With, Type of Winter Cover, Item Location, Chemicals, Trash, Notes, Confirmed By"
     
-    func getSchedule(startDate: NSDate, endDate: NSDate, isActive : Bool?, customers : CustomerData?) {
+    func getSchedule(_ startDate: Date, endDate: Date, isActive : Bool?, customers : CustomerData?) {
 
         let query = ScheduleObject.query()
         query?.whereKey("weekStart", greaterThanOrEqualTo: startDate)
@@ -128,13 +128,13 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         query?.whereKey("weekEnd", lessThanOrEqualTo: endDate)
         print(endDate)
         expectedReturn = expectedReturn + (query?.countObjects(error))!
-        query?.findObjectsInBackgroundWithBlock({ (appts : [PFObject]?, error : NSError?) -> Void in
+        query?.findObjectsInBackground(block: { (appts : [PFObject]?, error : Error?) -> Void in
             if error == nil {
                 for appt in appts! {
                     let object = appt as! ScheduleObject
                     let accountNumber = object.accountNumber!
                     let custName = object.customerName
-                    let custAddress = object.customerAddress.stringByReplacingOccurrencesOfString(",", withString: " ").capitalizedString
+                    let custAddress = object.customerAddress.replacingOccurrences(of: ",", with: " ").capitalized
                     print(object.customerAddress)
                     let custPhone = object.customerPhone
                     let weekSch = GlobalFunctions().stringFromDateShortStyle(object.weekStart) + " - " + GlobalFunctions().stringFromDateShortStyle(object.weekEnd)
@@ -165,8 +165,8 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
                     if object.notes == nil {
                         notes = ""
                     } else {
-                        notes = object.notes?.stringByReplacingOccurrencesOfString("\n", withString: " ")
-                        notes = notes?.stringByReplacingOccurrencesOfString(",", withString: "")
+                        notes = object.notes?.replacingOccurrences(of: "\n", with: " ")
+                        notes = notes?.replacingOccurrences(of: ",", with: "")
                         print(notes)
                     }
                     
@@ -189,9 +189,9 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
             
             if error == nil {
                 let sb = UIStoryboard(name: "OpeningPDFTemplate", bundle: nil)
-                let vc = sb.instantiateViewControllerWithIdentifier("PoolOpeningTemplate")
+                let vc = sb.instantiateViewController(withIdentifier: "PoolOpeningTemplate")
                 POCReportData.POCData = appts as! [ScheduleObject]
-                self.presentViewController(vc, animated: true, completion: {
+                self.present(vc, animated: true, completion: {
                     if let overlayView = self.view.viewWithTag(6969) {
                         overlayView.removeFromSuperview()
                     }
@@ -209,49 +209,49 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         let textToShare = NSMutableString()
         textToShare.appendFormat("%@\r", self.csvPOC)
         
-        let data = textToShare.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion:  false)
+        let data = textToShare.data(using: String.Encoding.utf8.rawValue, allowLossyConversion:  false)
         saveCSV(textToShare)
     }
     
     var docController : UIDocumentInteractionController?
     
-    func saveCSV(save : NSMutableString) {
-        let docs = NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true)[0]
-        let writePath = docs.stringByAppendingString("POCReport.csv")
+    func saveCSV(_ save : NSMutableString) {
+        let docs = NSSearchPathForDirectoriesInDomains(.documentationDirectory, .userDomainMask, true)[0]
+        let writePath = docs + "POCReport.csv"
         
         do {
-            try save.writeToFile(writePath, atomically: true, encoding: NSUTF8StringEncoding)
+            try save.write(toFile: writePath, atomically: true, encoding: String.Encoding.utf8.rawValue)
             print("Wrote File")
             print(writePath)
         } catch { }
         
-        docController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: writePath))
+        docController = UIDocumentInteractionController(url: URL(fileURLWithPath: writePath))
         docController!.delegate = self
-        docController?.presentPreviewAnimated(true)
+        docController?.presentPreview(animated: true)
     }
     
-    func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
+    func documentInteractionControllerRectForPreview(_ controller: UIDocumentInteractionController) -> CGRect {
         return self.view.frame
     }
     
-    func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
+        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         let viewController: UIViewController = UIViewController()
-        self.presentViewController(viewController, animated: true, completion: nil)
+        self.present(viewController, animated: true, completion: nil)
         return viewController
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.selectionStyle = .None
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
     }
     
 
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
     let global = GlobalFunctions()

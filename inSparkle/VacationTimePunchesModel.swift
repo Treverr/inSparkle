@@ -15,23 +15,23 @@ class VacationTimePunch : PFObject, PFSubclassing {
         return "VacationTimeObjects"
     }
     
-    var vacationDate : NSDate! {
-        get { return objectForKey("vacationDate") as! NSDate }
+    var vacationDate : Date! {
+        get { return object(forKey: "vacationDate") as! Date }
         set { setObject(newValue, forKey: "vacationDate") }
     }
     
     var vacationHours : Double! {
-        get { return objectForKey("vacationHours") as! Double }
+        get { return object(forKey: "vacationHours") as! Double }
         set { setObject(newValue, forKey: "vacationHours") }
     }
     
     var employee : Employee! {
-        get { return objectForKey("employee") as! Employee }
+        get { return object(forKey: "employee") as! Employee }
         set { setObject(newValue, forKey: "employee") }
     }
     
     var relationTimeAwayRequest : TimeAwayRequest! {
-        get { return objectForKey("relationTimeAwayRequest") as! TimeAwayRequest }
+        get { return object(forKey: "relationTimeAwayRequest") as! TimeAwayRequest }
         set { setObject(newValue, forKey: "relationTimeAwayRequest") }
     }
     

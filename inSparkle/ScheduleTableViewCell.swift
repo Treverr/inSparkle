@@ -8,36 +8,36 @@
 
 import UIKit
 
-public class ScheduleTableViewCell: UITableViewCell {
+open class ScheduleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var customerNameLabel: UILabel!
     @IBOutlet weak var weekScheduleLabel: UILabel!
     @IBOutlet var confirmed: UIImageView!
     
-    public func scheduleCell(customerName : String, weekStart: NSDate, weekEnd : NSDate, isConfirmed : Bool) {
+    open func scheduleCell(_ customerName : String, weekStart: Date, weekEnd : Date, isConfirmed : Bool) {
         
         customerNameLabel.text = customerName
         
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .NoStyle
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
         
         var weekStartString : String! = nil
         var weekEndString : String! = nil
         
-        if weekStart == weekEnd {
-            weekStartString = formatter.stringFromDate(weekStart)
+        if weekStart.equalToDate(dateToCompare: weekEnd as NSDate) {
+            weekStartString = formatter.string(from: weekStart)
             weekScheduleLabel.text = weekStartString
         } else {
-            weekStartString = formatter.stringFromDate(weekStart)
-            weekEndString = formatter.stringFromDate(weekEnd)
+            weekStartString = formatter.string(from: weekStart)
+            weekEndString = formatter.string(from: weekEnd)
             weekScheduleLabel.text = weekStartString + " - " + weekEndString
         }
  
         if isConfirmed == false {
-            confirmed.hidden = true
+            confirmed.isHidden = true
         } else {
-            confirmed.hidden = false
+            confirmed.isHidden = false
         }
         
     }

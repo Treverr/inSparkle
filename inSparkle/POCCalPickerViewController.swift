@@ -38,21 +38,21 @@ class POCCalPickerViewController: UIViewController {
 
 extension POCCalPickerViewController : CalendarViewDelegate {
 
-    func calendarDidSelectDate(date: Moment) {
+    func calendarDidSelectDate(_ date: Moment) {
         self.date = date
         if POCRunReport.selectedCell == "startDate" {
             POCRunReport.selectedDate = date.format("MMMM d, yyyy")
-        self.dismissViewControllerAnimated(true, completion: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName("NotifyPOCUpdateStartLabel", object: nil)
+        self.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "NotifyPOCUpdateStartLabel"), object: nil)
         }
         if POCRunReport.selectedCell == "endDate" {
             POCRunReport.selectedDate = date.format("MMMM d, yyyy")
-            self.dismissViewControllerAnimated(true, completion: nil)
-            NSNotificationCenter.defaultCenter().postNotificationName("NotifyPOCUpdateEndLabel", object: nil)
+            self.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "NotifyPOCUpdateEndLabel"), object: nil)
         }
     }
     
-    func calendarDidPageToDate(date: Moment) {
+    func calendarDidPageToDate(_ date: Moment) {
 
         title = date.format("MMMM yyyy")
     

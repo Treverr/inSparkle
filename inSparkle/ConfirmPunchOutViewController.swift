@@ -10,7 +10,7 @@ import UIKit
 
 class ConfirmPunchOutViewController: UIViewController {
     
-    var timer = NSTimer()
+    var timer = Timer()
     @IBOutlet weak var employeeName: UILabel!
     @IBOutlet weak var timeOfPunch: UILabel!
     @IBOutlet weak var timeIn: UILabel!
@@ -20,21 +20,21 @@ class ConfirmPunchOutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ConfirmPunchOutViewController.dismissView), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(ConfirmPunchOutViewController.dismissView), userInfo: nil, repeats: false)
         
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .NoStyle
-        formatter.timeStyle = .ShortStyle
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
         
         employeeName.text = TimeClock.employeeName
-        timeOfPunch.text = formatter.stringFromDate(TimeClock.timeOfPunch)
+        timeOfPunch.text = formatter.string(from: TimeClock.timeOfPunch as Date)
         
-        let fullDate = NSDateFormatter()
-        fullDate.dateStyle = .ShortStyle
-        fullDate.timeStyle = .ShortStyle
+        let fullDate = DateFormatter()
+        fullDate.dateStyle = .short
+        fullDate.timeStyle = .short
         
-        timeIn.text = fullDate.stringFromDate(TimeClock.timeInObject)
-        timeOut.text = fullDate.stringFromDate(TimeClock.timeOutObject)
+        timeIn.text = fullDate.string(from: TimeClock.timeInObject as Date)
+        timeOut.text = fullDate.string(from: TimeClock.timeOutObject as Date)
         
         hours.text = TimeClock.totalHours
         
@@ -47,6 +47,6 @@ class ConfirmPunchOutViewController: UIViewController {
     
     
     func dismissView() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }

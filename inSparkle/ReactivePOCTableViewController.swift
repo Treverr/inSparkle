@@ -20,7 +20,7 @@ class ReactivePOCTableViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         getInactivePOCs()
     }
 
@@ -31,43 +31,43 @@ class ReactivePOCTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return self.inactivePOCs.count
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let swipeAlert = UIAlertController(title: "Try Swipping from the left", message: "Want to re-activate? Swipe from the right and choose 'Re-Activate'", preferredStyle: .Alert)
-        let okay = UIAlertAction(title: "Okay", style: .Default) { (action) in
-            self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let swipeAlert = UIAlertController(title: "Try Swipping from the left", message: "Want to re-activate? Swipe from the right and choose 'Re-Activate'", preferredStyle: .alert)
+        let okay = UIAlertAction(title: "Okay", style: .default) { (action) in
+            self.tableView.deselectRow(at: indexPath, animated: true)
         }
         swipeAlert.addAction(okay)
-        self.presentViewController(swipeAlert, animated: true, completion: nil)
+        self.present(swipeAlert, animated: true, completion: nil)
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let editAction : UITableViewRowAction = UITableViewRowAction(style: .Normal, title: "Re-Activate") { (action, indexPath : NSIndexPath) in
-            let row = indexPath.row
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction : UITableViewRowAction = UITableViewRowAction(style: .normal, title: "Re-Activate") { (action, indexPath : IndexPath) in
+            let row = (indexPath as NSIndexPath).row
             let item = self.inactivePOCs[row]
             
             item.isActive = true
             item.saveInBackground()
-            self.inactivePOCs.removeAtIndex(row)
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            self.inactivePOCs.remove(at: row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
         
         return [editAction]
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("reactivateCell") as! ReActivePOCTableViewCell
-        let indexRow = indexPath.row
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "reactivateCell") as! ReActivePOCTableViewCell
+        let indexRow = (indexPath as NSIndexPath).row
         
         cell.configureCell(inactivePOCs[indexRow].customerName, weekStart: inactivePOCs[indexRow].weekStart, weekEnd: inactivePOCs[indexRow].weekEnd, cancelReason: inactivePOCs[indexRow].cancelReason)
         
@@ -78,8 +78,8 @@ class ReactivePOCTableViewController: UITableViewController {
     func getInactivePOCs() {
         let query = ScheduleObject.query()
         query?.whereKey("isActive", equalTo: false)
-        query?.orderByAscending("weekStart")
-        query?.findObjectsInBackgroundWithBlock({ (inactivePOCs : [PFObject]?, error : NSError?) in
+        query?.order(byAscending: "weekStart")
+        query?.findObjectsInBackground(block: { (inactivePOCs : [PFObject]?, error : Error?) in
             self.inactivePOCs = inactivePOCs as! [ScheduleObject]
             self.tableView.reloadData()
         })

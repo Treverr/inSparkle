@@ -20,29 +20,29 @@ class MoreTableViewController: UITableViewController {
     override func viewDidLoad() {
         self.navigationController?.setupNavigationbar(self.navigationController!)
         
-        if PFUser.currentUser()?.objectForKey("specialAccess") != nil {
-            self.specialAccess = PFUser.currentUser()?.objectForKey("specialAccess") as! [String]
+        if PFUser.current()?.object(forKey: "specialAccess") != nil {
+            self.specialAccess = PFUser.current()?.object(forKey: "specialAccess") as! [String]
         }
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MoreTableViewController.signBackIn), name: "SignBackIn", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MoreTableViewController.signBackIn), name: NSNotification.Name(rawValue: "SignBackIn"), object: nil)
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         var wasAdmin : Bool!
         var spec : [String] = self.specialAccess
         var origSec = self.tableView.numberOfSections
         
         do {
-            try PFUser.currentUser()?.fetch()
+            try PFUser.current()?.fetch()
             
-            if PFUser.currentUser()?.objectForKey("specialAccess") != nil {
-                self.specialAccess = PFUser.currentUser()?.objectForKey("specialAccess") as! [String]
+            if PFUser.current()?.object(forKey: "specialAccess") != nil {
+                self.specialAccess = PFUser.current()?.object(forKey: "specialAccess") as! [String]
             }
         } catch { }
         
-        if (PFUser.currentUser()?.valueForKey("isAdmin") as! Bool) == false {
+        if (PFUser.current()?.value(forKey: "isAdmin") as! Bool) == false {
             self.navigationItem.rightBarButtonItem = nil
             self.tableView.reloadData()
         } else {
@@ -52,9 +52,9 @@ class MoreTableViewController: UITableViewController {
         
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if PFUser.currentUser() != nil {
-            if (PFUser.currentUser()?.valueForKey("isAdmin") as! Bool) == true {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if PFUser.current() != nil {
+            if (PFUser.current()?.value(forKey: "isAdmin") as! Bool) == true {
                 return 1
             } else {
                 return 2
@@ -64,7 +64,7 @@ class MoreTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 6
         } else {
@@ -72,7 +72,7 @@ class MoreTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 && specialAccess.count > 1 {
             return "Special Access"
         } else {
@@ -80,34 +80,34 @@ class MoreTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
-        if indexPath.section == 0 {
-            switch indexPath.row {
+        if (indexPath as NSIndexPath).section == 0 {
+            switch (indexPath as NSIndexPath).row {
             case 0:
-                cell = self.tableView.dequeueReusableCellWithIdentifier("timeClock")!
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "timeClock")!
             case 1:
-                cell = self.tableView.dequeueReusableCellWithIdentifier("pdfLocker")!
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "pdfLocker")!
             case 2:
-                cell = self.tableView.dequeueReusableCellWithIdentifier("sparkleConnect")!
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "sparkleConnect")!
             case 3:
-                cell = self.tableView.dequeueReusableCellWithIdentifier("customerLookup")!
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "customerLookup")!
             case 4:
-                cell = self.tableView.dequeueReusableCellWithIdentifier("printerSelection")!
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "printerSelection")!
                 self.printerSelectionRect = cell.frame
             case 5:
-                cell = self.tableView.dequeueReusableCellWithIdentifier("logoutCell")!
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "logoutCell")!
             default:
                 break
             }
             
         } else {
-            if indexPath.section == 1 {
-                cell = self.tableView.dequeueReusableCellWithIdentifier("saCell")!
-                cell.textLabel?.text = specialAccess[indexPath.row]
-                cell.accessoryType = .DisclosureIndicator
+            if (indexPath as NSIndexPath).section == 1 {
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "saCell")!
+                cell.textLabel?.text = specialAccess[(indexPath as NSIndexPath).row]
+                cell.accessoryType = .disclosureIndicator
 
-                switch specialAccess[indexPath.row] {
+                switch specialAccess[(indexPath as NSIndexPath).row] {
                 case "Manage Users and Employees":
                     cell.imageView?.image = UIImage(named: "Manage Users")
                 case "Time Card Management":
@@ -128,23 +128,23 @@ class MoreTableViewController: UITableViewController {
     }
     
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let cell = self.tableView.cellForRowAtIndexPath(indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let cell = self.tableView.cellForRow(at: indexPath)
         
         if cell?.reuseIdentifier == "timeClock" {
-            if let appURL = NSURL(string: "mysparklepoolstime://") {
-                if UIApplication.sharedApplication().canOpenURL(appURL) {
+            if let appURL = URL(string: "mysparklepoolstime://") {
+                if UIApplication.shared.canOpenURL(appURL) {
                     if #available(iOS 10.0, *) {
-                        UIApplication.sharedApplication().openURL(appURL, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
                     } else {
                         // Fallback on earlier versions
                     }
                 } else {
-                    let alert = UIAlertController(title: "TIME is not installed on your device", message: "\nContact IS&T to have TIME pushed to your device or clock out on the Time Clock", preferredStyle: .Alert)
-                    let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                    let alert = UIAlertController(title: "TIME is not installed on your device", message: "\nContact IS&T to have TIME pushed to your device or clock out on the Time Clock", preferredStyle: .alert)
+                    let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
                     alert.addAction(okayButton)
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }
@@ -161,28 +161,28 @@ class MoreTableViewController: UITableViewController {
             selectPrinter()
         }
         
-        if indexPath.section == 1 {
+        if (indexPath as NSIndexPath).section == 1 {
             switch cell!.textLabel!.text! {
             case "Manage Users and Employees":
                 let sb = UIStoryboard(name: "Manage Emps", bundle: nil)
-                let vc = sb.instantiateViewControllerWithIdentifier("manageEmpsNav") as! UINavigationController
-                self.presentViewController(vc, animated: true, completion: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "manageEmpsNav") as! UINavigationController
+                self.present(vc, animated: true, completion: nil)
             case "Time Card Management":
                 let sb = UIStoryboard(name: "TimeCardManagement", bundle: nil)
-                let vc = sb.instantiateViewControllerWithIdentifier("timeCardManageNav") as! UINavigationController
-                self.presentViewController(vc, animated: true, completion: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "timeCardManageNav") as! UINavigationController
+                self.present(vc, animated: true, completion: nil)
             case "Chemical Checkout Reports":
                 let sb = UIStoryboard(name: "ChemicalCheckoutReport", bundle: nil)
-                let vc = sb.instantiateViewControllerWithIdentifier("chemCheckoutNav") as! UINavigationController
-                self.presentViewController(vc, animated: true, completion: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "chemCheckoutNav") as! UINavigationController
+                self.present(vc, animated: true, completion: nil)
             case "Pool Opening Closing Reports":
                 let sb = UIStoryboard(name: "POCReport", bundle: nil)
-                let vc = sb.instantiateViewControllerWithIdentifier("pocReportNav") as! UINavigationController
-                self.presentViewController(vc, animated: true, completion: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "pocReportNav") as! UINavigationController
+                self.present(vc, animated: true, completion: nil)
             case "Time Card Reports":
                 let sb = UIStoryboard(name: "TimeClockReport", bundle: nil)
-                let vc = sb.instantiateViewControllerWithIdentifier("timeCardReportNav") as! UINavigationController
-                self.presentViewController(vc, animated: true, completion: nil)
+                let vc = sb.instantiateViewController(withIdentifier: "timeCardReportNav") as! UINavigationController
+                self.present(vc, animated: true, completion: nil)
             default:
                 break
             }
@@ -194,33 +194,33 @@ class MoreTableViewController: UITableViewController {
     func selectPrinter() {
         var printer : UIPrinter! = nil
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("printer") != nil {
-            printer = UIPrinter(URL: NSUserDefaults.standardUserDefaults().URLForKey("printer")!)
+        if UserDefaults.standard.object(forKey: "printer") != nil {
+            printer = UIPrinter(url: UserDefaults.standard.url(forKey: "printer")!)
         }
         
         let printerPicker = UIPrinterPickerController(initiallySelectedPrinter: printer)
-        printerPicker.presentFromRect(self.printerSelectionRect, inView: self.view, animated: true) { (picker, selected, error) in
+        printerPicker.present(from: self.printerSelectionRect, in: self.view, animated: true) { (picker, selected, error) in
             if selected {
-                NSUserDefaults.standardUserDefaults().setURL(printerPicker.selectedPrinter?.URL, forKey: "printer")
-                picker.dismissAnimated(true)
+                UserDefaults.standard.set(printerPicker.selectedPrinter?.url, forKey: "printer")
+                picker.dismiss(animated: true)
             }
         }
         
     }
     
-    @IBAction func logoutAction(sender: AnyObject) {
+    @IBAction func logoutAction(_ sender: AnyObject) {
         
         PFUser.logOut()
         
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login") 
-            self.presentViewController(viewController, animated: true, completion: nil)
+        DispatchQueue.main.async { () -> Void in
+            let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login") 
+            self.present(viewController, animated: true, completion: nil)
         }
     }
     
     
-    @IBAction func supportAction(sender: AnyObject) {
-        Mobihelp.sharedInstance().presentSupport(self)
+    @IBAction func supportAction(_ sender: AnyObject) {
+        
     }
     
     func setUserName() {
@@ -232,29 +232,29 @@ class MoreTableViewController: UITableViewController {
     }
     
     func signBackIn() {
-        PFSession.getCurrentSessionInBackgroundWithBlock { (session : PFSession?, error : NSError?) in
+        PFSession.getCurrentSessionInBackground { (session : PFSession?, error : Error?) in
             if error != nil {
                 PFUser.logOut()
-                let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
-                self.presentViewController(viewController, animated: true, completion: nil)
+                let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                self.present(viewController, animated: true, completion: nil)
             } else {
                 let currentUser : PFUser?
                 
-                currentUser = PFUser.currentUser()
-                let currentSession = PFUser.currentUser()?.sessionToken
+                currentUser = PFUser.current()
+                let currentSession = PFUser.current()?.sessionToken
                 
                 if (currentUser == nil) {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    DispatchQueue.main.async(execute: { () -> Void in
                         
-                        let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
-                        self.presentViewController(viewController, animated: true, completion: nil)
+                        let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                        self.present(viewController, animated: true, completion: nil)
                     })
                 }
                 
                 if (currentUser?.sessionToken == nil) {
                     PFUser.logOut()
-                    let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
-                    self.presentViewController(viewController, animated: true, completion: nil)
+                    let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                    self.present(viewController, animated: true, completion: nil)
                 }
             }
         }

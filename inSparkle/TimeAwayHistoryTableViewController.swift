@@ -21,15 +21,15 @@ class TimeAwayHistoryTableViewController: UITableViewController {
         getOtherHistory()
         
         self.navigationItem.title = "Time Away History"
-        self.navigationController?.toolbarHidden = true
+        self.navigationController?.isToolbarHidden = true
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         var numberOfRows : Int! = nil
         
@@ -43,34 +43,34 @@ class TimeAwayHistoryTableViewController: UITableViewController {
         return numberOfRows
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("statusCell")! as UITableViewCell
-        let dateFormatter = NSDateFormatter()
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "statusCell")! as UITableViewCell
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/d/yy"
         
-        if indexPath.section == 0 {
-            let datesRequested = self.returnedRequsts[indexPath.row].datesRequested as! [NSDate]
-            let fromDate = dateFormatter.stringFromDate(datesRequested.first!)
-            let toDate = dateFormatter.stringFromDate(datesRequested.last!)
+        if (indexPath as NSIndexPath).section == 0 {
+            let datesRequested = self.returnedRequsts[(indexPath as NSIndexPath).row].datesRequested as! [Date]
+            let fromDate = dateFormatter.string(from: datesRequested.first!)
+            let toDate = dateFormatter.string(from: datesRequested.last!)
             
             cell.textLabel?.text = fromDate + " - " + toDate
             cell.detailTextLabel?.text = "Returned"
         }
         
-        if indexPath.section == 1 {
-            let datesRequested = self.history[indexPath.row].datesRequested as! [NSDate]
-            let fromDate = dateFormatter.stringFromDate(datesRequested.first!)
-            let toDate = dateFormatter.stringFromDate(datesRequested.last!)
+        if (indexPath as NSIndexPath).section == 1 {
+            let datesRequested = self.history[(indexPath as NSIndexPath).row].datesRequested as! [Date]
+            let fromDate = dateFormatter.string(from: datesRequested.first!)
+            let toDate = dateFormatter.string(from: datesRequested.last!)
             
             cell.textLabel?.text = fromDate + " - " + toDate
-            cell.detailTextLabel?.text = self.history[indexPath.row].status
+            cell.detailTextLabel?.text = self.history[(indexPath as NSIndexPath).row].status
             
         }
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var returnString : String! = nil
         
         if section == 0 {
@@ -86,12 +86,12 @@ class TimeAwayHistoryTableViewController: UITableViewController {
         let timeAway = TimeAwayRequest.query()
         timeAway?.whereKey("employee", equalTo: EmployeeData.universalEmployee)
         timeAway?.whereKey("status", equalTo: "Declined")
-        timeAway?.findObjectsInBackgroundWithBlock({ (requests : [PFObject]?, error : NSError?) in
+        timeAway?.findObjectsInBackground(block: { (requests : [PFObject]?, error : Error?) in
             if error == nil {
                 self.returnedRequsts = requests as! [TimeAwayRequest]
                 let range = NSMakeRange(0, self.tableView.numberOfSections)
-                let sections = NSIndexSet(indexesInRange: range)
-                self.tableView.reloadSections(sections, withRowAnimation: .Automatic)
+                let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
+                self.tableView.reloadSections(sections, with: .automatic)
             }
         })
     }
@@ -100,24 +100,24 @@ class TimeAwayHistoryTableViewController: UITableViewController {
         let timeAway = TimeAwayRequest.query()
         timeAway?.whereKey("employee", equalTo: EmployeeData.universalEmployee)
         timeAway?.whereKey("status", notEqualTo: "Declined")
-        timeAway?.findObjectsInBackgroundWithBlock({ (requests : [PFObject]?, error : NSError?) in
+        timeAway?.findObjectsInBackground(block: { (requests : [PFObject]?, error : Error?) in
             if error == nil {
                 self.history = requests as! [TimeAwayRequest]
                 let range = NSMakeRange(0, self.tableView.numberOfSections)
-                let sections = NSIndexSet(indexesInRange: range)
-                self.tableView.reloadSections(sections, withRowAnimation: .Automatic)
+                let sections = IndexSet(integersIn: range.toRange() ?? 0..<0)
+                self.tableView.reloadSections(sections, with: .automatic)
             }
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detail" {
             let indexPath = self.tableView.indexPathForSelectedRow
-            let vc = segue.destinationViewController as! TimeAwayHistoryDetailTableViewController
-            if indexPath?.section == 0 {
-                vc.request = self.returnedRequsts[indexPath!.row]
-            } else if indexPath?.section == 1 {
-                vc.request = self.history[indexPath!.row]
+            let vc = segue.destination as! TimeAwayHistoryDetailTableViewController
+            if (indexPath as NSIndexPath?)?.section == 0 {
+                vc.request = self.returnedRequsts[(indexPath! as NSIndexPath).row]
+            } else if (indexPath as NSIndexPath?)?.section == 1 {
+                vc.request = self.history[(indexPath! as NSIndexPath).row]
             }
         }
     }

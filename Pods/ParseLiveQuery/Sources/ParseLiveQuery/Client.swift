@@ -17,20 +17,20 @@ import SocketRocket
  to a live query server, have connections to multiple servers, cleanly handle disconnect and reconnect.
  */
 @objc(PFLiveQueryClient)
-public class Client: NSObject {
-    internal let host: NSURL
-    internal let applicationId: String
-    internal let clientKey: String?
+open class Client: NSObject {
+    let host: URL
+    let applicationId: String
+    let clientKey: String?
 
-    internal var socket: SRWebSocket?
-    internal var disconnected = false
+    var socket: SRWebSocket?
+    var userDisconnected = false
 
     // This allows us to easily plug in another request ID generation scheme, or more easily change the request id type
     // if needed (technically this could be a string).
-    internal let requestIdGenerator: () -> RequestId
-    internal var subscriptions = [SubscriptionRecord]()
+    let requestIdGenerator: () -> RequestId
+    var subscriptions = [SubscriptionRecord]()
 
-    internal let queue = dispatch_queue_create("com.parse.livequery", DISPATCH_QUEUE_SERIAL)
+    let queue = DispatchQueue(label: "com.parse.livequery", attributes: [])
 
     /**
      Creates a Client which automatically attempts to connect to the custom parse-server URL set in Parse.currentConfiguration().
@@ -47,11 +47,11 @@ public class Client: NSObject {
      - parameter clientKey:     The client key to use
      */
     public init(server: String, applicationId: String? = nil, clientKey: String? = nil) {
-        guard let components = NSURLComponents(string: server) else {
+        guard let cmpts = URLComponents(string: server) else {
             fatalError("Server should be a valid URL.")
         }
-        components.scheme = "ws"
-        components.path = "/LQ"
+        var components = cmpts
+        components.scheme = components.scheme == "https" ? "wss" : "ws"
 
         // Simple incrementing generator - can't use ++, that operator is deprecated!
         var currentRequestId = 0
@@ -63,24 +63,25 @@ public class Client: NSObject {
         self.applicationId = applicationId ?? Parse.validatedCurrentConfiguration().applicationId!
         self.clientKey = clientKey ?? Parse.validatedCurrentConfiguration().clientKey
 
-        self.host = components.URL!
+        self.host = components.url!
     }
 }
 
 extension Client {
     // Swift is lame and doesn't allow storage to directly be in extensions.
     // So we create an inner struct to wrap it up.
-    private class Storage {
-        static var onceToken: dispatch_once_t = 0
+    fileprivate class Storage {
+        private static var __once: () = {
+                sharedStorage = Storage()
+            }()
+        static var onceToken: Int = 0
         static var sharedStorage: Storage!
         static var shared: Storage {
-            dispatch_once(&onceToken) {
-                sharedStorage = Storage()
-            }
+            _ = Storage.__once
             return sharedStorage
         }
 
-        let queue: dispatch_queue_t = dispatch_queue_create("com.parse.livequery.client.storage", DISPATCH_QUEUE_SERIAL)
+        let queue: DispatchQueue = DispatchQueue(label: "com.parse.livequery.client.storage", attributes: [])
         var client: Client?
     }
 
@@ -90,7 +91,7 @@ extension Client {
         get {
             let storage = Storage.shared
             var client: Client?
-            dispatch_sync(storage.queue) {
+            storage.queue.sync {
                 client = storage.client
                 if client == nil {
                     let configuration = Parse.validatedCurrentConfiguration()
@@ -106,7 +107,7 @@ extension Client {
         }
         set {
             let storage = Storage.shared
-            dispatch_sync(storage.queue) {
+            storage.queue.sync {
                 storage.client = newValue
             }
         }
@@ -119,15 +120,15 @@ extension Client {
 
      - parameter query:        The query to register for updates.
      - parameter subclassType: The subclass of PFObject to be used as the type of the Subscription.
-                               This parameter can be automatically inferred from context most of the time
+     This parameter can be automatically inferred from context most of the time
 
      - returns: The subscription that has just been registered
      */
-    public func subscribe<T where T: PFObject>(
-        query: PFQuery,
+    public func subscribe<T>(
+        _ query: PFQuery<T>,
         subclassType: T.Type = T.self
-        ) -> Subscription<T> {
-            return subscribe(query, handler: Subscription<T>())
+        ) -> Subscription<T> where T: PFObject {
+        return subscribe(query, handler: Subscription<T>())
     }
 
     /**
@@ -137,27 +138,29 @@ extension Client {
      - parameter handler: A custom subscription handler.
 
      - returns: Your subscription handler, for easy chaining.
-     */
-    public func subscribe<T where T: SubscriptionHandling>(
-        query: PFQuery,
+    */
+    public func subscribe<T>(
+        _ query: PFQuery<T.PFObjectSubclass>,
         handler: T
-        ) -> T {
-            let subscriptionRecord = SubscriptionRecord(
-                query: query,
-                requestId: requestIdGenerator(),
-                handler: handler
-            )
-            subscriptions.append(subscriptionRecord)
-
-            if socket == nil {
-                if !disconnected {
-                    reconnect()
-                }
+        ) -> T where T: SubscriptionHandling {
+        let subscriptionRecord = SubscriptionRecord(
+            query: query,
+            requestId: requestIdGenerator(),
+            handler: handler
+        )
+        subscriptions.append(subscriptionRecord)
+        
+        if socket?.readyState == .OPEN {
+            _ = sendOperationAsync(.subscribe(requestId: subscriptionRecord.requestId, query: query as! PFQuery<PFObject>))
+        } else if socket == nil || socket?.readyState != .CONNECTING {
+            if !userDisconnected {
+                reconnect()
             } else {
-                sendOperationAsync(.Subscribe(requestId: subscriptionRecord.requestId, query: query))
+                debugPrint("Warning: The client was explicitly disconnected! You must explicitly call .reconnect() in order to process your subscriptions.")
             }
-
-            return handler
+        }
+        
+        return handler
     }
 
     /**
@@ -166,7 +169,7 @@ extension Client {
      - parameter query: The query to unsubscribe from.
      */
     @objc(unsubscribeFromQuery:)
-    public func unsubscribe(query: PFQuery) {
+    public func unsubscribe(_ query: PFQuery<PFObject>) {
         unsubscribe { $0.query == query }
     }
 
@@ -176,17 +179,18 @@ extension Client {
      - parameter query:   The query to unsubscribe from.
      - parameter handler: The specific handler to unsubscribe from.
      */
-    public func unsubscribe<T where T: SubscriptionHandling>(query: PFQuery, handler: T) {
+    public func unsubscribe<T>(_ query: PFQuery<T.PFObjectSubclass>, handler: T) where T: SubscriptionHandling {
         unsubscribe { $0.query == query && $0.subscriptionHandler === handler }
     }
 
-    internal func unsubscribe(@noescape matching matcher: SubscriptionRecord -> Bool) {
+    func unsubscribe(matching matcher: @escaping (SubscriptionRecord) -> Bool) {
         subscriptions.filter {
             matcher($0)
-        }.forEach {
-            sendOperationAsync(.Unsubscribe(requestId: $0.requestId))
+            }.forEach {
+                _ = sendOperationAsync(.unsubscribe(requestId: $0.requestId))
         }
     }
+    
 }
 
 extension Client {
@@ -199,13 +203,13 @@ extension Client {
     public func reconnect() {
         socket?.close()
         socket = {
-            let socket = SRWebSocket(URL: host)
+            let socket: SRWebSocket = SRWebSocket(url: host)
             socket.delegate = self
             socket.setDelegateDispatchQueue(queue)
             socket.open()
-
+            userDisconnected = false
             return socket
-            }()
+        }()
     }
 
     /**
@@ -221,6 +225,6 @@ extension Client {
         }
         socket.close()
         self.socket = nil
-        disconnected = true
+        userDisconnected = true
     }
 }

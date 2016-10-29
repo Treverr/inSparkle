@@ -17,7 +17,7 @@ class MainTimeAwayTableViewController: UITableViewController {
 
     }
     
-    @IBAction func returnToMainTimeAway(segue : UIStoryboardSegue) {
+    @IBAction func returnToMainTimeAway(_ segue : UIStoryboardSegue) {
     
     }
 

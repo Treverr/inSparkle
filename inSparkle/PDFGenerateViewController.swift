@@ -13,11 +13,11 @@ class PDFGenerateViewController: UIViewController {
     
     @IBOutlet var theView: UIView!
     
-    @IBAction func generateButton(sender: AnyObject) {
+    @IBAction func generateButton(_ sender: AnyObject) {
         createPdfFromView(theView, saveToDocumentsWithFileName: "Test")
     }
     
-    func createPdfFromView(aView: UIView, saveToDocumentsWithFileName fileName: String) {
+    func createPdfFromView(_ aView: UIView, saveToDocumentsWithFileName fileName: String) {
         
         let pdfData = NSMutableData()
         UIGraphicsBeginPDFContextToData(pdfData, aView.bounds, nil)
@@ -25,13 +25,13 @@ class PDFGenerateViewController: UIViewController {
         
         guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
         
-        aView.layer.renderInContext(pdfContext)
+        aView.layer.render(in: pdfContext)
         UIGraphicsEndPDFContext()
         
-        if let documentDirectories = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first {
+        if let documentDirectories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             let documentsFileName = documentDirectories + "/" + fileName + ".pdf"
             debugPrint(documentsFileName)
-            pdfData.writeToFile(documentsFileName, atomically: true)
+            pdfData.write(toFile: documentsFileName, atomically: true)
         }
     }
      

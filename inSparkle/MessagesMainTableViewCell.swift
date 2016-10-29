@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class MessagesMainTableViewCell: UITableViewCell {
+open class MessagesMainTableViewCell: UITableViewCell {
     
     
     @IBOutlet var unreadIndicator: UIImageView!
@@ -17,30 +17,30 @@ public class MessagesMainTableViewCell: UITableViewCell {
     @IBOutlet var statusOfMessageLabel: UILabel!
     @IBOutlet var statusTimeLabel: UILabel!
     
-    public func configureCell(customerName_ : String, date : NSDate, messageStatus : String, statusTime : NSDate, unread : Bool) {
+    open func configureCell(_ customerName_ : String, date : Date, messageStatus : String, statusTime : Date, unread : Bool) {
         
         if unread == false {
-            unreadIndicator.hidden = true
+            unreadIndicator.isHidden = true
         } else {
-            unreadIndicator.hidden = false
+            unreadIndicator.isHidden = false
         }
         
         customerName.text! = customerName_
         
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .ShortStyle
-        dateLabel.text! = formatter.stringFromDate(date)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        dateLabel.text! = formatter.string(from: date)
         
         if messageStatus == "Unread" {
             statusOfMessageLabel.text! = messageStatus
         } else {
-            let timeFormatter = NSDateFormatter()
-            timeFormatter.dateStyle = .ShortStyle
-            timeFormatter.timeStyle = .ShortStyle
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateStyle = .short
+            timeFormatter.timeStyle = .short
             timeFormatter.doesRelativeDateFormatting = true
             
-            statusOfMessageLabel.text! = messageStatus + " - " + timeFormatter.stringFromDate(statusTime)
+            statusOfMessageLabel.text! = messageStatus + " - " + timeFormatter.string(from: statusTime)
         }
     }
 }

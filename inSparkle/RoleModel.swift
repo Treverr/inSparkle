@@ -17,7 +17,7 @@ class Role: PFObject, PFSubclassing {
     }
     
     var roleName : String! {
-        get { return objectForKey("roleName") as! String }
+        get { return object(forKey: "roleName") as! String }
         set { setObject(newValue, forKey: "roleName") }
     }
     

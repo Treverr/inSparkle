@@ -16,7 +16,7 @@ class AddEditMessageNoteViewController: UIViewController {
     var existingNote : MessageNotes?
     @IBOutlet var noteTextView: UITextView!
     @IBOutlet var saveButton: UIBarButtonItem!
-    let deviceType = UIDevice.currentDevice().model
+    let deviceType = UIDevice.current.model
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,19 +32,19 @@ class AddEditMessageNoteViewController: UIViewController {
             noteTextView.text = existingNote?.note
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditMessageNoteViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector(self.keyboardDidHide()), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddEditMessageNoteViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
 
     }
     
     var origHeight : CGFloat!
     
-    func keyboardWillShow(notification : NSNotification) {
-        let userInfo = notification.userInfo!
+    func keyboardWillShow(_ notification : Notification) {
+        let userInfo = (notification as NSNotification).userInfo!
         let keyboardFrameScreenValue = userInfo[UIKeyboardFrameEndUserInfoKey]
-        let keyboardFrameScreen = keyboardFrameScreenValue!.CGRectValue()
-        let keyboardFrame = self.view.convertRect(keyboardFrameScreen, fromView: nil)
+        let keyboardFrameScreen = (keyboardFrameScreenValue! as AnyObject).cgRectValue
+        let keyboardFrame = self.view.convert(keyboardFrameScreen!, from: nil)
         let keyboardSize = keyboardFrame.size
         
         
@@ -58,53 +58,53 @@ class AddEditMessageNoteViewController: UIViewController {
         self.view.autoresizesSubviews = true
     }
     
-    @IBAction func saveAction(sender: AnyObject) {
-        saveButton.enabled = false
-        saveButton.tintColor = UIColor.grayColor()
+    @IBAction func saveAction(_ sender: AnyObject) {
+        saveButton.isEnabled = false
+        saveButton.tintColor = UIColor.gray
         if isNewNote {
             let newNote = MessageNotes()
             if linkingMessage != nil {
                 newNote.pointerMessage = linkingMessage!
             }
             newNote.note = noteTextView.text
-            newNote.createdBy = PFUser.currentUser()?.objectForKey("employee") as! Employee
-            newNote.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+            newNote.createdBy = PFUser.current()?.object(forKey: "employee") as! Employee
+            newNote.saveInBackground(block: { (success : Bool, error : Error?) in
                 if (success) {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessageNotesTableView", object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "RefreshMessageNotesTableView"), object: nil)
                 }
             })
         } else {
             existingNote?.note = noteTextView.text
-            existingNote?.saveInBackgroundWithBlock({ (updated : Bool, error : NSError?) in
+            existingNote?.saveInBackground(block: { (updated : Bool, error : Error?) in
                 if (updated) {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessageNotesTableView", object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "RefreshMessageNotesTableView"), object: nil)
                 }
             })
         }
     }
     
-    @IBAction func cancelAction(sender: AnyObject) {
-        let alert = UIAlertController(title: "Are you Sure?", message: "Any unsaved changes will be lost, are you sure you want to cancel?", preferredStyle: .Alert)
+    @IBAction func cancelAction(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Are you Sure?", message: "Any unsaved changes will be lost, are you sure you want to cancel?", preferredStyle: .alert)
         
-        let yesButton = UIAlertAction(title: "Yes", style: .Destructive) { (action) in
-            self.dismissViewControllerAnimated(true, completion: nil)
+        let yesButton = UIAlertAction(title: "Yes", style: .destructive) { (action) in
+            self.dismiss(animated: true, completion: nil)
         }
         
-        let noButton = UIAlertAction(title: "No", style: .Default) { (action) in
+        let noButton = UIAlertAction(title: "No", style: .default) { (action) in
             
         }
         
         alert.addAction(yesButton)
         alert.addAction(noButton)
-        self.presentViewController(alert, animated: true , completion: nil)
+        self.present(alert, animated: true , completion: nil)
     }
 }
 
 extension UIView {
-    func heightCoveredByKeyboardOfSize(keyboardSize: CGSize) -> CGFloat {
-        let frameInWindow = convertRect(bounds, toView: nil)
+    func heightCoveredByKeyboardOfSize(_ keyboardSize: CGSize) -> CGFloat {
+        let frameInWindow = convert(bounds, to: nil)
         let windowBounds = window?.bounds
         
         if windowBounds == nil { return 0 }

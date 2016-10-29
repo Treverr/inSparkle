@@ -22,17 +22,17 @@ class MessageStatusTableViewController: UITableViewController {
     
     var selectedStatus : String!
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
         
         selectedStatus = cell?.textLabel?.text!
         print(selectedStatus)
-        self.performSegueWithIdentifier("updateStatusLabel", sender: self)
+        self.performSegue(withIdentifier: "updateStatusLabel", sender: self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "updateStatusLabel" {
-            let dest = segue.destinationViewController as! ComposeMessageTableViewController
+            let dest = segue.destination as! ComposeMessageTableViewController
             dest.statusLabel.text = "Status: " + selectedStatus
             
         }

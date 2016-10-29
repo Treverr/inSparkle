@@ -54,13 +54,13 @@ class JokeDictionary : NSObject {
 
 class TimeClock : NSObject {
     
-    static var timeInObject : NSDate!
+    static var timeInObject : Date!
     
-    static var timeOutObject : NSDate!
+    static var timeOutObject : Date!
     
     static var employeeName : String!
     
-    static var timeOfPunch : NSDate!
+    static var timeOfPunch : Date!
     
     static var totalHours : String!
     
@@ -86,9 +86,9 @@ class AddEditEmpTimeCard: NSObject {
 
 class EditPunch: NSObject {
     
-    static var inTime : NSDate?
+    static var inTime : Date?
     
-    static var outTime : NSDate?
+    static var outTime : Date?
     
     static var hours : Double?
     
@@ -97,7 +97,7 @@ class EditPunch: NSObject {
 
 class EditTimePunchesDatePicker: NSObject {
     
-    static var dateToPass : NSDate!
+    static var dateToPass : Date!
     
     static var sender : UILabel!
 }
@@ -159,9 +159,9 @@ class POCReportFilters : NSObject {
     
     static var filter = [String]()
     
-    static var startDate : NSDate?
+    static var startDate : Date?
     
-    static var endDate : NSDate?
+    static var endDate : Date?
     
 }
 
@@ -193,7 +193,7 @@ class ChecmicalCheckoutData : NSObject {
 
 class SelectedDatesTimeAway : NSObject {
     
-    static var selectedDates : [NSDate]! = []
+    static var selectedDates : [Date]! = []
     
 }
 
@@ -229,16 +229,16 @@ class StaticEmployees : NSObject {
 
 class Barcode {
     
-    class func fromString(string : String) -> UIImage? {
+    class func fromString(_ string : String) -> UIImage? {
         
-        let data = string.dataUsingEncoding(NSASCIIStringEncoding)
+        let data = string.data(using: String.Encoding.ascii)
         
         if let filter = CIFilter(name: "CICode128BarcodeGenerator") {
             filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransformMakeScale(3, 3)
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
             
-            if let output = filter.outputImage?.imageByApplyingTransform(transform) {
-                return UIImage(CIImage: output)
+            if let output = filter.outputImage?.applying(transform) {
+                return UIImage(ciImage: output)
             }
         }
         return nil
@@ -249,74 +249,74 @@ class Barcode {
 
 class GlobalFunctions {
     
-    func stringFromDateFullStyle(theDate : NSDate) -> String {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.FullStyle
-        formatter.timeStyle = NSDateFormatterStyle.NoStyle
-        let dateString = formatter.stringFromDate(theDate)
+    func stringFromDateFullStyle(_ theDate : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.full
+        formatter.timeStyle = DateFormatter.Style.none
+        let dateString = formatter.string(from: theDate)
         
         return dateString
     }
     
-    func stringFromDateShortStyle(theDate : NSDate) -> String {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        formatter.timeStyle = NSDateFormatterStyle.NoStyle
-        let dateString = formatter.stringFromDate(theDate)
+    func stringFromDateShortStyle(_ theDate : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.short
+        formatter.timeStyle = DateFormatter.Style.none
+        let dateString = formatter.string(from: theDate)
         
         return dateString
     }
     
-    func stringFromDateShortStyleNoTimezone(theDate : NSDate) -> String {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.ShortStyle
-        formatter.timeStyle = NSDateFormatterStyle.NoStyle
-        formatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
-        let dateString = formatter.stringFromDate(theDate)
+    func stringFromDateShortStyleNoTimezone(_ theDate : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.short
+        formatter.timeStyle = DateFormatter.Style.none
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        let dateString = formatter.string(from: theDate)
         
         return dateString
     }
     
-    func stringFromDateShortTimeShortDate(theDate : NSDate) -> String {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .ShortStyle
-        let dateString = formatter.stringFromDate(theDate)
+    func stringFromDateShortTimeShortDate(_ theDate : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        let dateString = formatter.string(from: theDate)
         
         return dateString
     }
     
-    func dateFromShortDateString(dateString : String) -> NSDate {
-        let formatter = NSDateFormatter()
+    func dateFromShortDateString(_ dateString : String) -> Date {
+        let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yy"
-        let theReturn = formatter.dateFromString(dateString)
+        let theReturn = formatter.date(from: dateString)
         
         return theReturn!
     }
     
-    func dateFromMediumDateString(dateString : String) -> NSDate {
-        let formatter = NSDateFormatter()
+    func dateFromMediumDateString(_ dateString : String) -> Date {
+        let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
-        let theReturn = formatter.dateFromString(dateString)
+        let theReturn = formatter.date(from: dateString)
         
         return theReturn!
     }
     
-    func dateFromShortDateShortTime(dateString : String) -> NSDate {
-        let formatter = NSDateFormatter()
+    func dateFromShortDateShortTime(_ dateString : String) -> Date {
+        let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yy, h:mm a"
-        let theReturn = formatter.dateFromString(dateString)
+        let theReturn = formatter.date(from: dateString)
         
         return theReturn!
     }
     
-    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
-        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
-        let url = NSURL.fileURLWithPath(path!)
+    func setupAudioPlayerWithFile(_ file:NSString, type:NSString) -> AVAudioPlayer  {
+        let path = Bundle.main.path(forResource: file as String, ofType: type as String)
+        let url = URL(fileURLWithPath: path!)
         var audioPlayer : AVAudioPlayer?
         
         do {
-            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+            try audioPlayer = AVAudioPlayer(contentsOf: url)
         } catch {
             print("NO AUDIO PLAYER")
         }
@@ -325,18 +325,18 @@ class GlobalFunctions {
     }
     
     func updateWeeksAppts() {
-        let now = NSDate()
-        let sevenDaysAgo = now.dateByAddingTimeInterval(-7*24*60*60)
+        let now = Date()
+        let sevenDaysAgo = now.addingTimeInterval(-7*24*60*60)
         
         let weekQuery = WeekList.query()
         weekQuery?.whereKey("weekEnd", greaterThanOrEqualTo: sevenDaysAgo)
-        weekQuery?.findObjectsInBackgroundWithBlock({ (allWeeks : [PFObject]?, error : NSError?) in
+        weekQuery?.findObjectsInBackground(block: { (allWeeks : [PFObject]?, error : Error?) in
             if error == nil {
                 let listOfWeeks = allWeeks as! [WeekList]
                 for week in listOfWeeks {
                     let scheduleQuery = ScheduleObject.query()
                     scheduleQuery!.whereKey("weekObj", equalTo: week)
-                    scheduleQuery?.findObjectsInBackgroundWithBlock({ (foundWeeks : [PFObject]?, error : NSError?) in
+                    scheduleQuery?.findObjectsInBackground(block: { (foundWeeks : [PFObject]?, error : Error?) in
                         if error == nil {
                             let numberSch = foundWeeks!.count
                             week.apptsRemain = (week.maxAppts - numberSch)
@@ -350,49 +350,39 @@ class GlobalFunctions {
         
     }
     
-    func RandomInt(min min: Int, max: Int) -> Int {
+    func RandomInt(min: Int, max: Int) -> Int {
         if max < min { return min }
         return Int(arc4random_uniform(UInt32((max - min) + 1))) + min
     }
     
-    func qsort(input: [String]) -> [String] {
-        if let (pivot, rest) = input.decompose {
-            let lesser = rest.filter { $0 < pivot }
-            let greater = rest.filter { $0 >= pivot }
-            return qsort(lesser) + [pivot] + qsort(greater)
-        } else {
-            return []
-        }
-    }
-    
-    func isMorning(date: NSDate) -> Bool {
-        let date = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let startMorning = calendar.dateBySettingHour(6, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions(rawValue: 0))
-        let endMorning =  calendar.dateBySettingHour(10, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions(rawValue: 0))
-        if startMorning!.compare(date) == .OrderedAscending && endMorning!.compare(date) == .OrderedDescending {
+    func isMorning(_ date: Date) -> Bool {
+        let date = Date()
+        let calendar = Calendar.current
+        let startMorning = (calendar as NSCalendar).date(bySettingHour: 6, minute: 0, second: 0, of: date, options: NSCalendar.Options(rawValue: 0))
+        let endMorning =  (calendar as NSCalendar).date(bySettingHour: 10, minute: 0, second: 0, of: date, options: NSCalendar.Options(rawValue: 0))
+        if startMorning!.compare(date) == .orderedAscending && endMorning!.compare(date) == .orderedDescending {
             return true
         }
         return false
     }
     
-    func isValidEmail(testStr:String) -> Bool {
+    func isValidEmail(_ testStr:String) -> Bool {
         // println("validate calendar: \(testStr)")
         let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(testStr)
+        return emailTest.evaluate(with: testStr)
     }
     
-    func callNumber(phoneNumber : String) {
-        let stringArray = phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
-        let unformattedPhoneNumber = stringArray.joinWithSeparator("")
-        if var phoneCallURL : NSURL = NSURL(string: "tel://\(unformattedPhoneNumber)") {
-            let application : UIApplication = UIApplication.sharedApplication()
+    func callNumber(_ phoneNumber : String) {
+        let stringArray = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted)
+        let unformattedPhoneNumber = stringArray.joined(separator: "")
+        if var phoneCallURL : URL = URL(string: "tel://\(unformattedPhoneNumber)") {
+            let application : UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
                 application.openURL(phoneCallURL)
             } else {
-                phoneCallURL = NSURL(string: "facetime://\(unformattedPhoneNumber)")!
+                phoneCallURL = URL(string: "facetime://\(unformattedPhoneNumber)")!
                 if (application.canOpenURL(phoneCallURL)) {
                     application.openURL(phoneCallURL)
                 }
@@ -400,125 +390,98 @@ class GlobalFunctions {
         }
     }
     
-    func loadingAnimation(loadingUI : NVActivityIndicatorView?, loadingBG : UIView, view : UIView, navController : UINavigationController) -> (NVActivityIndicatorView, UIView) {
+    func loadingAnimation(_ loadingUI : NVActivityIndicatorView?, loadingBG : UIView, view : UIView, navController : UINavigationController) -> (NVActivityIndicatorView, UIView) {
         var loadUI = loadingUI
         let loadBG = loadingBG
         let x = (navController.view.frame.size.width / 2)
         let y = (navController.view.frame.size.height / 2)
         
-        loadUI = NVActivityIndicatorView(frame: CGRectMake(x, y, 100, 100))
-        loadUI!.center = CGPointMake(view.frame.size.width  / 2,
-                                    view.frame.size.height / 2)
+        loadUI = NVActivityIndicatorView(frame: CGRect(x: x, y: y, width: 100, height: 100))
+        loadUI!.center = CGPoint(x: view.frame.size.width  / 2,
+                                    y: view.frame.size.height / 2)
         
-        loadBG.backgroundColor = UIColor.lightGrayColor()
-        loadBG.frame = CGRectMake(0, 0, 150, 150)
+        loadBG.backgroundColor = UIColor.lightGray
+        loadBG.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         loadBG.center = navController.view.center
         loadBG.layer.cornerRadius = 5
         loadBG.layer.opacity = 0.5
         navController.view.addSubview(loadBG)
         navController.view.addSubview(loadUI!)
         
-        loadUI!.type = .BallRotateChase
-        loadUI!.color = UIColor.whiteColor()
-        loadUI!.startAnimation()
+        loadUI!.type = .ballRotateChase
+        loadUI!.color = UIColor.white
+        loadUI!.startAnimating()
         
         return (loadUI!, loadBG)
     }
     
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
+    func delay(_ delay:Double, closure:@escaping ()->()) {
+        DispatchQueue.main.asyncAfter(
+            deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
-    func printToPrinter(item : AnyObject, printInfo : UIPrintInfo, view : UIViewController) {
+    func printToPrinter(_ item : AnyObject, printInfo : UIPrintInfo, view : UIViewController) {
         
-        func completePrint(printer : UIPrinter) {
-            let printInteraction = UIPrintInteractionController.sharedPrintController()
+        func completePrint(_ printer : UIPrinter) {
+            let printInteraction = UIPrintInteractionController.shared
             
             printInteraction.printingItem = item
             printInteraction.printInfo = printInfo
             
-            printInteraction.printToPrinter(printer, completionHandler: { (printerController, completed, error) in
+            printInteraction.print(to: printer, completionHandler: { (printerController, completed, error) in
                 if completed {
-                    let alert = UIAlertController(title: "Printed!", message: nil, preferredStyle: .Alert)
-                    UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title: "Printed!", message: nil, preferredStyle: .alert)
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
                     let delay = 1.0 * Double(NSEC_PER_SEC)
-                    let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                    dispatch_after(time, dispatch_get_main_queue(), {
-                        alert.dismissViewControllerAnimated(true, completion: {
-                            view.dismissViewControllerAnimated(false, completion: nil)
+                    let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
+                    DispatchQueue.main.asyncAfter(deadline: time, execute: {
+                        alert.dismiss(animated: true, completion: {
+                            view.dismiss(animated: false, completion: nil)
                         })
                     })
                 }
             })
         }
         
-        if NSUserDefaults.standardUserDefaults().URLForKey("printer") != nil {
-            let printer = UIPrinter(URL: NSUserDefaults.standardUserDefaults().URLForKey("printer")!)
+        if UserDefaults.standard.url(forKey: "printer") != nil {
+            var printer = UIPrinter(url: UserDefaults.standard.url(forKey: "printer")!)
             printer.contactPrinter { (available) in
                 if available {
                     completePrint(printer)
                 } else {
-                    let alert = UIAlertController(title: "Printer Unavailable", message: "\(printer.displayName) is unavailable, would you like to print to the office printer via VPN?", preferredStyle: .Alert)
-                    let yesThisTimeOnly = UIAlertAction(title: "Yes, This Time Only", style: .Default, handler: { (action) in
-                        self.establishVPNConnection()
+                    let alert = UIAlertController(title: "Printer Unavailable", message: "The printer is unavailable, would you like to print to the office printer via VPN? \nEnable VPN in settings before attemptng to print", preferredStyle: .alert)
+                    let yesThisTimeOnly = UIAlertAction(title: "Yes, This Time Only", style: .default, handler: { (action) in
+                        printer = UIPrinter(url: URL(string: "ipp://10.0.1.50:10631/printers/Office")!)
+                        printer.contactPrinter({ (available) in
+                            if available {
+                                completePrint(printer)
+                            }
+                        })
                     })
-                    let yesSetSelected = UIAlertAction(title: "Yes, Set as Selected", style: .Default, handler: { (action) in
-                        
+                    let yesSetSelected = UIAlertAction(title: "Yes, Set as Selected", style: .default, handler: { (action) in
+                        UserDefaults.standard.set(URL(string: "ipp://10.0.1.50:10631/printers/Office")!, forKey: "printer")
+                        printer = UIPrinter(url: URL(string: "ipp://10.0.1.50:10631/printers/Office")!)
+                        printer.contactPrinter({ (available) in
+                            if available {
+                                completePrint(printer)
+                            }
+                        })
                     })
-                    let no = UIAlertAction(title: "No", style: .Default, handler: nil)
+                    let no = UIAlertAction(title: "No", style: .default, handler: nil)
                     alert.addAction(yesThisTimeOnly)
                     alert.addAction(yesSetSelected)
                     alert.addAction(no)
-                    UIApplication.sharedApplication().keyWindow?.rootViewController?.presentedViewController?.presentViewController(alert, animated: true, completion: nil)
+                    UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(alert, animated: true, completion: nil)
                 }
             }
         } else {
-            view.dismissViewControllerAnimated(false, completion: nil)
-            let alert = UIAlertController(title: "Select Printer", message: "\nPlease select a printer in the More section and then try your print again", preferredStyle: .Alert)
-            let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            view.dismiss(animated: false, completion: nil)
+            let alert = UIAlertController(title: "Select Printer", message: "\nPlease select a printer in the More section and then try your print again", preferredStyle: .alert)
+            let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
             alert.addAction(okayButton)
-            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
-    
-    func establishVPNConnection() {
-        
-        let manager = NEVPNManager()
-        manager.loadFromPreferencesWithCompletionHandler { (error : NSError?) in
-            if error == nil {
-                
-                let vpn = NEVPNProtocolIPSec()
-                vpn.username = "Sparkle Pools"
-                vpn.passwordReference = KeychainWrapper().myObjectForKey("VPNPassword") as? NSData
-                vpn.serverAddress = "http://insparklepools.com"
-                vpn.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
-                vpn.sharedSecretReference = KeychainWrapper().myObjectForKey("VPNSharedSecret") as? NSData
-                vpn.localIdentifier = UIDevice.currentDevice().name
-                vpn.remoteIdentifier = "insparklepools.com"
-                vpn.useExtendedAuthentication = true
-                vpn.disconnectOnSleep = false
-                
-                manager.protocolConfiguration = vpn
-                let onDemandRules = NEOnDemandRule()
-                onDemandRules.DNSServerAddressMatch = ["10.0.1.50"]
-                manager.onDemandEnabled = true
-                manager.localizedDescription = "Sparkle Pools, Inc."
-                do {
-                    try manager.connection.startVPNTunnel()
-                } catch {
-                    print(error)
-                }
-                
-            }
-        }
-        
-    }
-    
 }
 
 class UnderlinedLabel: UILabel {
@@ -528,7 +491,7 @@ class UnderlinedLabel: UILabel {
         didSet {
             let textRange = NSMakeRange(0, text.characters.count)
             let attributedText = NSMutableAttributedString(string: text)
-            attributedText.addAttribute(NSUnderlineStyleAttributeName , value:NSUnderlineStyle.StyleSingle.rawValue, range: textRange)
+            attributedText.addAttribute(NSUnderlineStyleAttributeName , value:NSUnderlineStyle.styleSingle.rawValue, range: textRange)
             
             
             self.attributedText = attributedText
@@ -536,29 +499,29 @@ class UnderlinedLabel: UILabel {
     }
 }
 
-extension NSDate {
-    func yearsFrom(date:NSDate) -> Int{
-        return NSCalendar.currentCalendar().components(.Year, fromDate: date, toDate: self, options: []).year
+extension Date {
+    func yearsFrom(_ date:Date) -> Int{
+        return (Calendar.current as NSCalendar).components(.year, from: date, to: self, options: []).year!
     }
-    func monthsFrom(date:NSDate) -> Int{
-        return NSCalendar.currentCalendar().components(.Month, fromDate: date, toDate: self, options: []).month
+    func monthsFrom(_ date:Date) -> Int{
+        return (Calendar.current as NSCalendar).components(.month, from: date, to: self, options: []).month!
     }
-    func weeksFrom(date:NSDate) -> Int{
-        return NSCalendar.currentCalendar().components(.WeekOfYear, fromDate: date, toDate: self, options: []).weekOfYear
+    func weeksFrom(_ date:Date) -> Int{
+        return (Calendar.current as NSCalendar).components(.weekOfYear, from: date, to: self, options: []).weekOfYear!
     }
-    func daysFrom(date:NSDate) -> Int{
-        return NSCalendar.currentCalendar().components(.Day, fromDate: date, toDate: self, options: []).day
+    func daysFrom(_ date:Date) -> Int{
+        return (Calendar.current as NSCalendar).components(.day, from: date, to: self, options: []).day!
     }
-    func hoursFrom(date:NSDate) -> Int{
-        return NSCalendar.currentCalendar().components(.Hour, fromDate: date, toDate: self, options: []).hour
+    func hoursFrom(_ date:Date) -> Int{
+        return (Calendar.current as NSCalendar).components(.hour, from: date, to: self, options: []).hour!
     }
-    func minutesFrom(date:NSDate) -> Int{
-        return NSCalendar.currentCalendar().components(.Minute, fromDate: date, toDate: self, options: []).minute
+    func minutesFrom(_ date:Date) -> Int{
+        return (Calendar.current as NSCalendar).components(.minute, from: date, to: self, options: []).minute!
     }
-    func secondsFrom(date:NSDate) -> Int{
-        return NSCalendar.currentCalendar().components(.Second, fromDate: date, toDate: self, options: []).second
+    func secondsFrom(_ date:Date) -> Int{
+        return (Calendar.current as NSCalendar).components(.second, from: date, to: self, options: []).second!
     }
-    func offsetFrom(date:NSDate) -> String {
+    func offsetFrom(_ date:Date) -> String {
         if yearsFrom(date)   > 0 { return "\(yearsFrom(date))y"   }
         if monthsFrom(date)  > 0 { return "\(monthsFrom(date))M"  }
         if weeksFrom(date)   > 0 { return "\(weeksFrom(date))w"   }
@@ -570,47 +533,93 @@ extension NSDate {
     }
 }
 
-extension NSDate {
-    convenience
-    init(dateString:String) {
-        let dateStringFormatter = NSDateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd"
-        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        let d = dateStringFormatter.dateFromString(dateString)!
-        self.init(timeInterval:0, sinceDate:d)
+extension Date {
+    func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
+        //Declare Variables
+        var isGreater = false
+        
+        //Compare Values
+        if self.compare(dateToCompare as Date) == ComparisonResult.orderedDescending {
+            isGreater = true
+        }
+        
+        //Return Result
+        return isGreater
+    }
+    
+    func isLessThanDate(dateToCompare: NSDate) -> Bool {
+        //Declare Variables
+        var isLess = false
+        
+        //Compare Values
+        if self.compare(dateToCompare as Date) == ComparisonResult.orderedAscending {
+            isLess = true
+        }
+        
+        //Return Result
+        return isLess
+    }
+    
+    func equalToDate(dateToCompare: NSDate) -> Bool {
+        //Declare Variables
+        var isEqualTo = false
+        
+        //Compare Values
+        if self.compare(dateToCompare as Date) == ComparisonResult.orderedSame {
+            isEqualTo = true
+        }
+        
+        //Return Result
+        return isEqualTo
+    }
+    
+    func addDays(daysToAdd: Int) -> NSDate {
+        let secondsInDays: TimeInterval = Double(daysToAdd) * 60 * 60 * 24
+        let dateWithDaysAdded: NSDate = self.addingTimeInterval(secondsInDays) as NSDate
+        
+        //Return Result
+        return dateWithDaysAdded
+    }
+    
+    func addHours(hoursToAdd: Int) -> NSDate {
+        let secondsInHours: TimeInterval = Double(hoursToAdd) * 60 * 60
+        let dateWithHoursAdded: NSDate = self.addingTimeInterval(secondsInHours) as NSDate
+        
+        //Return Result
+        return dateWithHoursAdded
     }
 }
 
 
-extension NSDate {
-    var startOfDay: NSDate {
-        return NSCalendar.currentCalendar().startOfDayForDate(self)
+extension Date {
+    var startOfDay: Date {
+        return Calendar.current.startOfDay(for: self)
     }
     
-    var endOfDay: NSDate? {
-        let components = NSDateComponents()
+    var endOfDay: Date? {
+        var components = DateComponents()
         components.day = 1
         components.second = -1
-        return NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: startOfDay, options: NSCalendarOptions())
+        return (Calendar.current as NSCalendar).date(byAdding: components, to: startOfDay, options: NSCalendar.Options())
     }
 }
 
 extension UINavigationController {
-    func setupNavigationbar(vc : UINavigationController)  {
+    func setupNavigationbar(_ vc : UINavigationController)  {
         vc.navigationBar.barTintColor = Colors.sparkleBlue
-        vc.navigationBar.tintColor = UIColor.whiteColor()
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        vc.navigationBar.barStyle = UIBarStyle.Black
+        vc.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        vc.navigationBar.barStyle = UIBarStyle.black
     }
 }
 
 extension UIViewController {
     
-    func displayError(title: String, message : String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+    func displayError(_ title: String, message : String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
         alert.addAction(okButton)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

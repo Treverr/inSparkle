@@ -17,7 +17,7 @@ class MessageNotesTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        notes.scrollEnabled = false
+        notes.isScrollEnabled = false
         notes.delegate = self
         
     }
@@ -33,7 +33,7 @@ class MessageNotesTableViewCell: UITableViewCell {
         }
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         if selected {
@@ -46,9 +46,9 @@ class MessageNotesTableViewCell: UITableViewCell {
 }
 
 extension MessageNotesTableViewCell : UITextViewDelegate {
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         let size = textView.bounds.size
-        let newSize = textView.sizeThatFits(CGSize(width: size.width, height: CGFloat.max))
+        let newSize = textView.sizeThatFits(CGSize(width: size.width, height: CGFloat.greatestFiniteMagnitude))
         
         if size.height != newSize.height {
             UIView.setAnimationsEnabled(false)
@@ -56,8 +56,8 @@ extension MessageNotesTableViewCell : UITextViewDelegate {
             tableView?.endUpdates()
             UIView.setAnimationsEnabled(true)
             
-            if let thisIndexPath = tableView?.indexPathForCell(self) {
-                tableView?.scrollToRowAtIndexPath(thisIndexPath, atScrollPosition: .Bottom, animated: false)
+            if let thisIndexPath = tableView?.indexPath(for: self) {
+                tableView?.scrollToRow(at: thisIndexPath, at: .bottom, animated: false)
             }
         }
     }

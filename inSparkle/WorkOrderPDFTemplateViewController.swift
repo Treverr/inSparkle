@@ -55,15 +55,15 @@ class WorkOrderPDFTemplateViewController: UIViewController {
             }
         }
         
-        dateCreatedLabel.text = NSDateFormatter.localizedStringFromDate(workOrderObject.createdAt!, dateStyle: .ShortStyle, timeStyle: .NoStyle)
+        dateCreatedLabel.text = DateFormatter.localizedString(from: workOrderObject.createdAt!, dateStyle: .short, timeStyle: .none)
         
         schedTimeLabel.text = ""
         customerAddressCityLabel.text = ""
         
         laborTableView.delegate = self
-        laborTableView.separatorInset = UIEdgeInsetsZero
+        laborTableView.separatorInset = UIEdgeInsets.zero
         partsTableView.delegate = self
-        partsTableView.separatorInset = UIEdgeInsetsZero
+        partsTableView.separatorInset = UIEdgeInsets.zero
         laborTableView.dataSource = self
         partsTableView.dataSource = self
         partsTableView.reloadData()
@@ -138,7 +138,7 @@ class WorkOrderPDFTemplateViewController: UIViewController {
     
     func generatePDF() {
         let pdfData = NSMutableData()
-        let bounds = CGRectMake(0, 0, 612, 792)
+        let bounds = CGRect(x: 0, y: 0, width: 612, height: 792)
         
         UIGraphicsBeginPDFContextToData(pdfData, bounds, nil)
         
@@ -146,18 +146,18 @@ class WorkOrderPDFTemplateViewController: UIViewController {
         
         guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
         
-        CGContextSetInterpolationQuality(pdfContext, .High)
-        pdfView.drawViewHierarchyInRect(self.pdfView.bounds, afterScreenUpdates: true)
+        pdfContext.interpolationQuality = .high
+        pdfView.drawHierarchy(in: self.pdfView.bounds, afterScreenUpdates: true)
         
         
         UIGraphicsEndPDFContext()
         
-        let tmp = NSTemporaryDirectory().stringByAppendingString("WorkOrder.pdf")
-        pdfData.writeToFile(tmp, atomically: true)
+        let tmp = NSTemporaryDirectory() + "WorkOrder.pdf"
+        pdfData.write(toFile: tmp, atomically: true)
         
         let info : UIPrintInfo = UIPrintInfo(dictionary: nil)
-        info.orientation = UIPrintInfoOrientation.Portrait
-        info.outputType = UIPrintInfoOutputType.Grayscale
+        info.orientation = UIPrintInfoOrientation.portrait
+        info.outputType = UIPrintInfoOutputType.grayscale
         info.jobName = "Work Order"
         
         GlobalFunctions().printToPrinter(pdfData, printInfo: info, view: self)
@@ -168,7 +168,7 @@ class WorkOrderPDFTemplateViewController: UIViewController {
         
         
         
-        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             var theReturn : Int!
             if tableView == partsTableView {
                 theReturn = partCounts.count
@@ -185,7 +185,7 @@ class WorkOrderPDFTemplateViewController: UIViewController {
             return theReturn
         }
         
-        func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             var returnCell : UITableViewCell!
             
             if tableView == partsTableView {
@@ -197,13 +197,13 @@ class WorkOrderPDFTemplateViewController: UIViewController {
                         }
                     }
                     
-                    let cell = tableView.dequeueReusableCellWithIdentifier("partCell") as! PDFPartTableViewCell
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "partCell") as! PDFPartTableViewCell
                     
-                    let partTitle = keyList[indexPath.row]
+                    let partTitle = keyList[(indexPath as NSIndexPath).row]
                     
                     cell.qty.text = String(partCounts[partTitle]!)
                     cell.part.text = partTitle
-                    cell.layoutMargins = UIEdgeInsetsZero
+                    cell.layoutMargins = UIEdgeInsets.zero
                     
                     returnCell = cell
                 }
@@ -219,13 +219,13 @@ class WorkOrderPDFTemplateViewController: UIViewController {
                     }
                     print(self.partCounts)
                     
-                    let cell = tableView.dequeueReusableCellWithIdentifier("laborCell") as! PDFLaborTableViewCell
+                    let cell = tableView.dequeueReusableCell(withIdentifier: "laborCell") as! PDFLaborTableViewCell
                     
-                    let partTitle = keyList[indexPath.row]
+                    let partTitle = keyList[(indexPath as NSIndexPath).row]
                     
                     cell.qty.text = String(laborCounts[partTitle]!)
                     cell.part.text = partTitle
-                    cell.layoutMargins = UIEdgeInsetsZero
+                    cell.layoutMargins = UIEdgeInsets.zero
                     
                     returnCell = cell
                 }
@@ -238,18 +238,18 @@ class WorkOrderPDFTemplateViewController: UIViewController {
     
     extension WorkOrderPDFTemplateViewController : UIDocumentInteractionControllerDelegate {
         
-        func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
+        func documentInteractionControllerRectForPreview(_ controller: UIDocumentInteractionController) -> CGRect {
             return self.view.frame
         }
         
-        func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
+        func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
             timeToDismiss = true
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
         
-        func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+        func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
             let viewController: UIViewController = UIViewController()
-            self.presentViewController(viewController, animated: true, completion: nil)
+            self.present(viewController, animated: true, completion: nil)
             return viewController
         }
         
@@ -258,18 +258,18 @@ class WorkOrderPDFTemplateViewController: UIViewController {
     extension UIImage {
         convenience init(view: UIView) {
             UIGraphicsBeginImageContext(view.frame.size)
-            view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+            view.layer.render(in: UIGraphicsGetCurrentContext()!)
             let image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            self.init(CGImage: image!.CGImage!)
+            self.init(cgImage: image!.cgImage!)
         }
     }
     
     extension UIView {
         func toImage() -> UIImage {
-            UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.mainScreen().scale)
+            UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
             
-            drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+            drawHierarchy(in: self.bounds, afterScreenUpdates: true)
             
             let image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()

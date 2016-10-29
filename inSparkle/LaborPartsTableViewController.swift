@@ -20,53 +20,53 @@ class LaborPartsTableViewController : UITableViewController {
             counts[item] = (counts[item] ?? 0) + 1
         }
         
-        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LaborPartsTableViewController.resize), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LaborPartsTableViewController.resize), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         self.tableView.contentInset = UIEdgeInsets(top: 22, left: 0, bottom: 0, right: 0)
         
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return counts.count + 1
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var keyList : [String] {
             get {
                 return Array(counts.keys)
             }
         }
-        let addCellIndexRow = (tableView.numberOfRowsInSection(0) - 1)
-        if indexPath.section == 0 && indexPath.row == addCellIndexRow {
-            let cell = tableView.dequeueReusableCellWithIdentifier("addCell")
+        let addCellIndexRow = (tableView.numberOfRows(inSection: 0) - 1)
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == addCellIndexRow {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell")
             return cell!
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("laborCell") as! LaborPartsTableViewCell
-            let partTitle = keyList[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "laborCell") as! LaborPartsTableViewCell
+            let partTitle = keyList[(indexPath as NSIndexPath).row]
             
             cell.laborPartTitle.text = partTitle
             cell.qty.text = String(counts[partTitle]!)
             cell.qty.delegate = self
-            cell.qty.tag = indexPath.row
+            cell.qty.tag = (indexPath as NSIndexPath).row
             
             return cell
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let addCellIndexRow = (tableView.numberOfRowsInSection(0) - 1)
-        if indexPath.row == addCellIndexRow {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let addCellIndexRow = (tableView.numberOfRows(inSection: 0) - 1)
+        if (indexPath as NSIndexPath).row == addCellIndexRow {
             var laborTextField : UITextField?
-            let addPart = UIAlertController(title: "Add Labor", message: "Enter the labor.", preferredStyle: .Alert)
-            addPart.addTextFieldWithConfigurationHandler({ (textField : UITextField) in
+            let addPart = UIAlertController(title: "Add Labor", message: "Enter the labor.", preferredStyle: .alert)
+            addPart.addTextField(configurationHandler: { (textField : UITextField) in
                 textField.placeholder = "labor"
                 laborTextField = textField
             })
-            let cancel = UIAlertAction(title: "Cancel", style: .Destructive, handler: nil)
-            let add = UIAlertAction(title: "Add", style: .Default, handler: { (action) in
+            let cancel = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+            let add = UIAlertAction(title: "Add", style: .default, handler: { (action) in
                 self.labor.append(laborTextField!.text!)
                 self.counts.removeAll()
                 for item in self.labor {
@@ -81,28 +81,28 @@ class LaborPartsTableViewController : UITableViewController {
             })
             addPart.addAction(cancel)
             addPart.addAction(add)
-            self.presentViewController(addPart, animated: true, completion: nil)
+            self.present(addPart, animated: true, completion: nil)
         }
     }
     
-    @IBAction func saveLabor(sender : AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName("UpdateLaborArray", object: self.labor)
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func saveLabor(_ sender : AnyObject) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateLaborArray"), object: self.labor)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancel(sender : AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancel(_ sender : AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     func resize() {
-        self.preferredContentSize = self.view.intrinsicContentSize()
+        self.preferredContentSize = self.view.intrinsicContentSize
     }
     
 }
 
 extension LaborPartsTableViewController : UITextFieldDelegate {
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
         let row = textField.tag
         let part = labor[row]
@@ -114,8 +114,8 @@ extension LaborPartsTableViewController : UITextFieldDelegate {
             difference = difference - 1
         }
         while difference < 0 {
-            let indexOf = labor.indexOf(part)
-            labor.removeAtIndex(indexOf!)
+            let indexOf = labor.index(of: part)
+            labor.remove(at: indexOf!)
             difference = difference + 1
         }
         print(labor)

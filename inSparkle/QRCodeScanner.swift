@@ -18,8 +18,8 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .NotDetermined {
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted : Bool) in
+        if AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo) == .notDetermined {
+            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted : Bool) in
                 if granted {
                     
                 } else {
@@ -28,14 +28,14 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             })
         }
         
-        view.backgroundColor = UIColor.blackColor()
+        view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
-        var videoCaptureDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        var videoCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         let videoInput : AVCaptureDeviceInput
         
-        if videoCaptureDevice.position == .Back {
-        let frontCamera = AVCaptureDeviceDiscoverySession(deviceTypes: [AVCaptureDeviceTypeBuiltInWideAngleCamera], mediaType: AVMediaTypeVideo, position: .Front).devices.first!
+        if videoCaptureDevice?.position == .back {
+        let frontCamera = AVCaptureDeviceDiscoverySession(deviceTypes: [AVCaptureDeviceType.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: .front).devices.first!
             videoCaptureDevice = frontCamera
         }
         
@@ -57,7 +57,7 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         if (captureSession.canAddOutput(metadataOutput)) {
             captureSession.addOutput(metadataOutput)
             
-            metadataOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+            metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
         } else {
             failed()
@@ -70,18 +70,18 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         
-        let orientation: UIDeviceOrientation = UIDevice.currentDevice().orientation
+        let orientation: UIDeviceOrientation = UIDevice.current.orientation
         print(orientation)
         
         switch (orientation) {
-        case .Portrait:
-            previewLayer?.connection.videoOrientation = .Portrait
-        case .LandscapeRight:
-            previewLayer?.connection.videoOrientation = .LandscapeLeft
-        case .LandscapeLeft:
-            previewLayer?.connection.videoOrientation = .LandscapeRight
+        case .portrait:
+            previewLayer?.connection.videoOrientation = .portrait
+        case .landscapeRight:
+            previewLayer?.connection.videoOrientation = .landscapeLeft
+        case .landscapeLeft:
+            previewLayer?.connection.videoOrientation = .landscapeRight
         default:
-            previewLayer?.connection.videoOrientation = .Portrait
+            previewLayer?.connection.videoOrientation = .portrait
         }
         
         view.layer.addSublayer(previewLayer)
@@ -90,32 +90,32 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     func failed() {
-        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .Alert)
-        let okayAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-            self.dismissViewControllerAnimated(true, completion: nil)
+        let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
         }
         ac.addAction(okayAction)
-        self.presentViewController(ac, animated: true, completion: nil)
+        self.present(ac, animated: true, completion: nil)
         captureSession = nil
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if (captureSession?.running == false) {
+        if (captureSession?.isRunning == false) {
             captureSession.startRunning()
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if (captureSession?.running == true) {
+        if (captureSession?.isRunning == true) {
             captureSession.stopRunning()
         }
     }
     
-    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         if let metadataObject = metadataObjects.first {
             let readableObject = metadataObject as! AVMetadataMachineReadableCodeObject
             
@@ -124,17 +124,17 @@ class QRCodeScanner: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     
-    func found(code : String) {
-        self.dismissViewControllerAnimated(true) { 
-            let userPass = code.componentsSeparatedByString(" ")
+    func found(_ code : String) {
+        self.dismiss(animated: true) { 
+            let userPass = code.components(separatedBy: " ")
             let user = userPass[0]
             let pass = userPass[1]
             QRLogInData.username = user
             QRLogInData.password = pass
         }
     }
-    @IBAction func cancelAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelAction(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

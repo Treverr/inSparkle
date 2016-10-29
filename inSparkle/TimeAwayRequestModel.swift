@@ -15,43 +15,43 @@ class TimeAwayRequest : PFObject, PFSubclassing {
        return "TimeAwayRequests"
     }
     
-    var requestDate : NSDate! {
-        get { return objectForKey("requestDate") as! NSDate }
+    var requestDate : Date! {
+        get { return object(forKey: "requestDate") as! Date }
         set { setObject(newValue!, forKey: "requestDate") }
     }
     
     var type : String! {
-        get { return objectForKey("type") as! String }
+        get { return object(forKey: "type") as! String }
         set { setObject(newValue!, forKey: "type") }
     }
     
     var hours : Double! {
-        get { return objectForKey("hours") as! Double }
+        get { return object(forKey: "hours") as! Double }
         set { setObject(newValue!, forKey: "hours") }
     }
     
     var formID : String! {
-        get { return objectForKey("objectId") as! String }
+        get { return object(forKey: "objectId") as! String }
         set { setObject(newValue!, forKey: "objectId") }
     }
     
     var status : String! {
-        get { return objectForKey("status") as! String }
+        get { return object(forKey: "status") as! String }
         set { setObject(newValue!, forKey: "status") }
     }
     
     var datesRequested : NSArray! {
-        get { return objectForKey("datesRequested") as! NSArray }
+        get { return object(forKey: "datesRequested") as! NSArray }
         set { setObject(newValue!, forKey: "datesRequested") }
     }
     
     var employee : Employee {
-        get { return objectForKey("employee") as! Employee }
+        get { return object(forKey: "employee") as! Employee }
         set { setObject(newValue, forKey: "employee") }
     }
     
     var timeCardDictionary : NSDictionary {
-        get { return objectForKey("datesDict") as! NSDictionary }
+        get { return object(forKey: "datesDict") as! NSDictionary }
         set { setObject(newValue, forKey: "datesDict") }
     }
     

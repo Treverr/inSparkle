@@ -53,7 +53,31 @@ Add the following line to your `Cartfile`.
 
 ```github "m1entus/MZFormSheetPresentationController" "master"```
 
-Then run `carthage update --no-use-binaries` or just `carthage update`. For details of the installation and usage of Carthage, visit [it's project page](https://github.com/Carthage/Carthage).
+Then run `carthage update --no-use-binaries` or just `carthage update`. 
+
+After building the framework you will need to add it to your project and import it using the Framework header:
+
+```#import <MZFormSheetPresentationController/MZFormSheetPresentationControllerFramework.h>```
+
+For further details on the installation and usage of Carthage, visit [it's project page](https://github.com/Carthage/Carthage).
+
+
+###[CocoaPods](https://github.com/CocoaPods/CocoaPods)
+
+Add the following line to your `Podfile`.
+
+```
+# Uncomment this line to define a global platform for your project
+platform :ios, '8.0'
+# Uncomment this line if you're using Swift
+use_frameworks!
+
+target 'ProjectName' do
+    pod 'MZFormSheetPresentationController'
+end
+```
+
+Then run `pod install --verbose` or just `pod install`. For details of the installation and usage of CocoaPods, visit [it's project page](https://github.com/CocoaPods/CocoaPods).
 
 ## How To Use
 
@@ -65,7 +89,7 @@ Objective-C
 ``` objective-c
 UINavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"formSheetController"];
 MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:navigationController];
-formSheetController.presentationController.contentViewSize = CGSizeMake(250, 250);
+formSheetController.presentationController.contentViewSize = CGSizeMake(250, 250); // or pass in UILayoutFittingCompressedSize to size automatically with auto-layout
 
 [self presentViewController:formSheetController animated:YES completion:nil];
 ```
@@ -74,7 +98,7 @@ Swift
 ```swift
 let navigationController = self.storyboard!.instantiateViewControllerWithIdentifier("formSheetController") as! UINavigationController
 let formSheetController = MZFormSheetPresentationViewController(contentViewController: navigationController)
-formSheetController.presentationController?.contentViewSize = CGSizeMake(250, 250)
+formSheetController.presentationController?.contentViewSize = CGSizeMake(250, 250)  // or pass in UILayoutFittingCompressedSize to size automatically with auto-layout
 
 self.presentViewController(formSheetController, animated: true, completion: nil)
 ```
@@ -340,8 +364,8 @@ Swift
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if let identifier = segue.identifier {
         if identifier == "segue" {
-            let presentationSegue = segue as! MZFormSheetPresentationControllerSegue
-            presentationSegue.formSheetPresentationController.presepresentationController?.shouldApplyBackgroundBlurEffect = true
+            let presentationSegue = segue as! MZFormSheetPresentationViewControllerSegue
+            presentationSegue.formSheetPresentationController.presentationController?.shouldApplyBackgroundBlurEffect = true
             let navigationController = presentationSegue.formSheetPresentationController.contentViewController as! UINavigationController
             let presentedViewController = navigationController.viewControllers.first as! PresentedTableViewController
             presentedViewController.textFieldBecomeFirstResponder = true
@@ -354,6 +378,24 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 ## ARC
 
 MZFormSheetPresentationController uses ARC.
+
+## App Extensions
+
+Some position calculations access [UIApplication sharedApplication] which is not permitted in application extensions. If you want to use MZFormSheetPresentationController in extensions add the MZ_APP_EXTENSIONS=1 preprocessor macro in the corresponding target.
+
+If you use Cocoapods you can use a post install hook to do that:
+```ruby
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == "MZFormSheetPresentationController"
+            target.build_configurations.each do |config|
+                config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+                config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'MZ_APP_EXTENSIONS=1'
+            end
+        end
+    end
+end
+```
 
 ## Contact
 

@@ -60,13 +60,13 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
             }
         }
         
-        wordOrderDatePicker.hidden = true
+        wordOrderDatePicker.isHidden = true
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdateCustomerFields), name: "UpdateFieldsOnAddEditWorkOrder", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdatePartsArray(_:)), name: "UpdatePartsArray", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdateLaborArray(_:)), name: "UpdateLaborArray", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.updateStatusLabel(_:)), name: "updateStatusLabel", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.updateTechLabel(_:)), name: "updateTechLabel", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdateCustomerFields), name: NSNotification.Name(rawValue: "UpdateFieldsOnAddEditWorkOrder"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdatePartsArray(_:)), name: NSNotification.Name(rawValue: "UpdatePartsArray"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.UpdateLaborArray(_:)), name: NSNotification.Name(rawValue: "UpdateLaborArray"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.updateStatusLabel(_:)), name: NSNotification.Name(rawValue: "updateStatusLabel"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddEditWorkOrderTableViewController.updateTechLabel(_:)), name: NSNotification.Name(rawValue: "updateTechLabel"), object: nil)
         
         
     }
@@ -74,13 +74,13 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
     func getMTNotes() {
         let query = PFQuery(className: "MobileTechServiceObjectNotes")
         query.whereKey("relatedWorkOder", equalTo: self.workOrderObject!)
-        query.findObjectsInBackgroundWithBlock { (notes : [PFObject]?, error : NSError?) in
+        query.findObjectsInBackground { (notes : [PFObject]?, error : Error?) in
             if error == nil {
                 for note in notes! {
                     if note == notes?.last {
-                        self.descOfWork.text! += note.objectForKey("noteContent") as! String
+                        self.descOfWork.text! += note.object(forKey: "noteContent") as! String
                     } else {
-                        self.descOfWork.text! += note.objectForKey("noteContent") as! String
+                        self.descOfWork.text! += note.object(forKey: "noteContent") as! String
                         self.descOfWork.text! += "\n\n"
                     }
                 }
@@ -88,7 +88,7 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
         }
     }
     
-    func updateTechLabel(notification : NSNotification) {
+    func updateTechLabel(_ notification : Notification) {
         let tech = notification.object as! String
         self.techLabel.text = tech
         self.selectedTech = self.techDict[tech]
@@ -98,8 +98,8 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
     func getTechs() {
         let techs = Employee.query()
         techs?.whereKey("active", equalTo: true)
-        techs?.orderByAscending("firstName")
-        techs?.findObjectsInBackgroundWithBlock({ (techs : [PFObject]?, error : NSError?) in
+        techs?.order(byAscending: "firstName")
+        techs?.findObjectsInBackground(block: { (techs : [PFObject]?, error : Error?) in
             if error == nil {
                 let theTechs = techs as! [Employee]
                 for tech in theTechs {
@@ -112,14 +112,14 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
                     }
                 }
                 print(techList)
-                let sorted = GlobalFunctions().qsort(techList)
+                let sorted = techList.sorted()
                 print(techList)
                 self.techDataSource = sorted
             }
         })
     }
     
-    func updateStatusLabel(notification : NSNotification) {
+    func updateStatusLabel(_ notification : Notification) {
         let status = notification.object as! String
         statusLabel.text = status
         switch notification.object as! String {
@@ -159,22 +159,22 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
         }
         if workOrderObject?.date != nil {
             dateLabel.text = GlobalFunctions().stringFromDateShortStyle(workOrderObject!.date)
-            dateLabel.textColor = UIColor.blackColor()
+            dateLabel.textColor = UIColor.black
         }
         if workOrderObject?.technician != nil {
             techLabel.text = workOrderObject!.technician!
-            techLabel.textColor = UIColor.blackColor()
+            techLabel.textColor = UIColor.black
         }
         
         if workOrderObject?.technicianPointer != nil {
-            workOrderObject?.technicianPointer?.fetchInBackgroundWithBlock({ (employee : PFObject?, error : NSError?) in
+            workOrderObject?.technicianPointer?.fetchInBackground(block: { (employee : PFObject?, error : Error?) in
                 if error == nil {
                     let emp = employee as! Employee
                     self.techLabel.text! = emp.firstName + " " + emp.lastName
-                    self.techLabel.textColor = UIColor.blackColor()
+                    self.techLabel.textColor = UIColor.black
                 } else {
                     self.techLabel.text = "Error Retrieving Assigned Tech"
-                    self.techLabel.textColor = UIColor.redColor()
+                    self.techLabel.textColor = UIColor.red
                 }
             })
         }
@@ -229,12 +229,12 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "customerLookup" {
             CustomerLookupObjects.fromVC = "AddEditWorkOrder"
         }
         if segue.identifier == "parts" {
-            let dest = segue.destinationViewController as! WorkOrderPartsTableViewController
+            let dest = segue.destination as! WorkOrderPartsTableViewController
             if parts != nil {
                 if parts.count != 0 {
                     dest.parts = self.parts
@@ -242,7 +242,7 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
             }
         }
         if segue.identifier == "labor" {
-            let dest = segue.destinationViewController as! LaborPartsTableViewController
+            let dest = segue.destination as! LaborPartsTableViewController
             if self.labor != nil {
                 if self.labor.count != 0 {
                     dest.labor = self.labor
@@ -251,22 +251,22 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
         }
         
         if segue.identifier == "viewTrips" {
-            let dest = segue.destinationViewController.childViewControllers.first as! TripsTableViewController
+            let dest = segue.destination.childViewControllers.first as! TripsTableViewController
             if workOrderObject != nil {
                 dest.workOrder = self.workOrderObject
             }
         }
         
         if segue.identifier == "techList" {
-            let dest = segue.destinationViewController as! TechListTableViewController
+            let dest = segue.destination as! TechListTableViewController
             dest.techs = self.techDataSource
-            dest.modalPresentationStyle = .Popover
+            dest.modalPresentationStyle = .popover
             dest.popoverPresentationController!.delegate = self
             
         }
     }
     
-    func UpdatePartsArray(notification : NSNotification) {
+    func UpdatePartsArray(_ notification : Notification) {
         self.parts = notification.object as! [String]
         if parts.count != 0 {
             managePartsLabel.text = "Manage Parts (\(self.parts.count))"
@@ -276,7 +276,7 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
         }
     }
     
-    func UpdateLaborArray(notification : NSNotification) {
+    func UpdateLaborArray(_ notification : Notification) {
         self.labor = notification.object as! [String]
         print(notification.object)
         if labor.count != 0 {
@@ -290,19 +290,19 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
     func UpdateCustomerFields() {
         let selectCx = CustomerLookupObjects.slectedCustomer
         
-        customerNameTextField.text = selectCx!.firstName!.capitalizedString + " " + selectCx!.lastName!.capitalizedString
+        customerNameTextField.text = selectCx!.firstName!.capitalized + " " + selectCx!.lastName!.capitalized
         customerPhoneTextField.text = selectCx!.phoneNumber
-        customerAddressTextField.text = "\(selectCx!.addressStreet.capitalizedString) \(selectCx!.addressCity.capitalizedString), \(selectCx!.addressState) \(selectCx!.ZIP)"
+        customerAddressTextField.text = "\(selectCx!.addressStreet.capitalized) \(selectCx!.addressCity.capitalized), \(selectCx!.addressState) \(selectCx!.ZIP)"
     }
     
     func workOrderDatePickerChanged() {
-        dateLabel.text = NSDateFormatter.localizedStringFromDate(wordOrderDatePicker.date, dateStyle: .ShortStyle, timeStyle: .NoStyle)
+        dateLabel.text = DateFormatter.localizedString(from: wordOrderDatePicker.date, dateStyle: .short, timeStyle: .none)
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        self.tableView.deselectRow(at: indexPath, animated: true)
         
         if cell?.reuseIdentifier == "datePromised" {
             toggleDatePromisedPicker()
@@ -312,61 +312,61 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
     
     var datePromisedPickerHidden = true
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let datePromisedIndex = NSIndexPath(forRow: 1, inSection: 1)
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let datePromisedIndex = IndexPath(row: 1, section: 1)
         
         if datePromisedPickerHidden && (indexPath == datePromisedIndex){
             return 0
         } else {
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
     
     func toggleDatePromisedPicker() {
         datePromisedPickerHidden = !datePromisedPickerHidden
         
-        if wordOrderDatePicker.hidden {
-            wordOrderDatePicker.hidden = false
+        if wordOrderDatePicker.isHidden {
+            wordOrderDatePicker.isHidden = false
         } else {
-            wordOrderDatePicker.hidden = true
+            wordOrderDatePicker.isHidden = true
         }
         
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
-    func tableViewScrollToBottom(animated: Bool) {
+    func tableViewScrollToBottom(_ animated: Bool) {
         
         let delay = 0.1 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
         
-        dispatch_after(time, dispatch_get_main_queue(), {
+        DispatchQueue.main.asyncAfter(deadline: time, execute: {
             
             let numberOfSections = self.tableView.numberOfSections
-            let numberOfRows = self.tableView.numberOfRowsInSection(numberOfSections-1)
+            let numberOfRows = self.tableView.numberOfRows(inSection: numberOfSections-1)
             
             if numberOfRows > 0 {
-                let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
-                self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+                let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections-1))
+                self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: animated)
             }
             
         })
     }
     
-    let calendar = NSCalendar.currentCalendar()
+    let calendar = Calendar.current
     
-    @IBAction func datePromisedPickerAction(sender: AnyObject) {
-        _ = calendar.dateBySettingHour(0, minute: 0, second: 0, ofDate: wordOrderDatePicker.date, options: NSCalendarOptions())
-        dateLabel.textColor = UIColor.blackColor()
+    @IBAction func datePromisedPickerAction(_ sender: AnyObject) {
+        _ = (calendar as NSCalendar).date(bySettingHour: 0, minute: 0, second: 0, of: wordOrderDatePicker.date, options: NSCalendar.Options())
+        dateLabel.textColor = UIColor.black
         workOrderDatePickerChanged()
     }
     
-    @IBAction func saveAction(sender: AnyObject) {
+    @IBAction func saveAction(_ sender: AnyObject) {
         if customerNameTextField.text!.isEmpty || customerAddressTextField.text!.isEmpty || customerPhoneTextField.text!.isEmpty {
-            let alert = UIAlertController(title: "Missing Customer Data", message: "There seems to be required data missing from the customer infromation, please check and try again.", preferredStyle: .Alert)
-            let okButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            let alert = UIAlertController(title: "Missing Customer Data", message: "There seems to be required data missing from the customer infromation, please check and try again.", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
             alert.addAction(okButton)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         } else {
             if workOrderObject == nil {
                 workOrderObject = WorkOrders()
@@ -402,52 +402,52 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
                 if self.parts.count == 0 {
                     workOrderObject?.parts = []
                 } else {
-                    workOrderObject?.parts = self.parts
+                    workOrderObject?.parts = self.parts as NSArray?
                 }
             }
             if self.labor != nil {
                 if self.labor.count == 0 {
                     workOrderObject?.labor? = []
                 } else {
-                    workOrderObject?.labor = self.labor
+                    workOrderObject?.labor = self.labor as NSArray?
                 }
             }
             workOrderObject?.status = statusLabel.text
             print(workOrderObject)
-            workOrderObject?.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+            workOrderObject?.saveInBackground(block: { (success : Bool, error : Error?) in
                 if success == true {
-                    let successAlert = UIAlertController(title: "Saved!", message: nil, preferredStyle: .Alert)
-                    self.presentViewController(successAlert, animated: true, completion: {
+                    let successAlert = UIAlertController(title: "Saved!", message: nil, preferredStyle: .alert)
+                    self.present(successAlert, animated: true, completion: {
                         let delay = 1.0 * Double(NSEC_PER_SEC)
-                        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                        let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
                         
-                        dispatch_after(time, dispatch_get_main_queue(), {
-                            self.dismissViewControllerAnimated(true, completion: {
-                                self.performSegueWithIdentifier("unwindToWOMain", sender: nil)
+                        DispatchQueue.main.asyncAfter(deadline: time, execute: {
+                            self.dismiss(animated: true, completion: {
+                                self.performSegue(withIdentifier: "unwindToWOMain", sender: nil)
                             })
                         })
                     })
                 }
                 if error != nil {
-                    let errorAlert = UIAlertController(title: "Error", message: "There was an error attempting to save the work order, please try again.", preferredStyle: .Alert)
-                    let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                    let errorAlert = UIAlertController(title: "Error", message: "There was an error attempting to save the work order, please try again.", preferredStyle: .alert)
+                    let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
                     errorAlert.addAction(okayButton)
-                    self.presentViewController(errorAlert, animated: true, completion: nil)
+                    self.present(errorAlert, animated: true, completion: nil)
                 }
             })
         }
     }
     
-    @IBAction func generatePDF(sender: AnyObject) {
+    @IBAction func generatePDF(_ sender: AnyObject) {
         self.saveWithoutSeg()
     }
     
     func saveWithoutSeg() {
         if customerNameTextField.text!.isEmpty || customerAddressTextField.text!.isEmpty || customerPhoneTextField.text!.isEmpty {
-            let alert = UIAlertController(title: "Missing Customer Data", message: "There seems to be required data missing from the customer infromation, please check and try again.", preferredStyle: .Alert)
-            let okButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            let alert = UIAlertController(title: "Missing Customer Data", message: "There seems to be required data missing from the customer infromation, please check and try again.", preferredStyle: .alert)
+            let okButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
             alert.addAction(okButton)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         } else {
             if workOrderObject == nil {
                 workOrderObject = WorkOrders()
@@ -480,20 +480,20 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
                 if self.parts.count == 0 {
                     workOrderObject?.parts = []
                 } else {
-                    workOrderObject?.parts = self.parts
+                    workOrderObject?.parts = self.parts as NSArray?
                 }
             }
             if self.labor != nil {
                 if self.labor.count == 0 {
                     workOrderObject?.labor? = []
                 } else {
-                    workOrderObject?.labor = self.labor
+                    workOrderObject?.labor = self.labor as NSArray?
                 }
             }
             workOrderObject?.status = statusLabel.text
-            workOrderObject?.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+            workOrderObject?.saveInBackground(block: { (success : Bool, error : Error?) in
                 let sb = UIStoryboard(name: "WorkOrderPDFTemplate", bundle: nil)
-                let vc = sb.instantiateViewControllerWithIdentifier("workOrderPDF") as! WorkOrderPDFTemplateViewController
+                let vc = sb.instantiateViewController(withIdentifier: "workOrderPDF") as! WorkOrderPDFTemplateViewController
                 vc.workOrderObject = self.workOrderObject
                 let theView = vc.view
                 
@@ -501,8 +501,8 @@ class AddEditWorkOrderTableViewController: UITableViewController, UIPopoverPrese
         }
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
     

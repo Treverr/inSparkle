@@ -18,58 +18,58 @@ class SelectedDatesTableViewController: UITableViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(SelectedDatesTimeAway.selectedDates.count)
         return SelectedDatesTimeAway.selectedDates.count + 1
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("headerCell")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (indexPath as NSIndexPath).row == 0 {
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "headerCell")
 
             return cell!
         } else {
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("dateCell")! as! SelectedDatesTableViewCell
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .ShortStyle
-            dateFormatter.timeStyle = .NoStyle
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "dateCell")! as! SelectedDatesTableViewCell
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .none
             
-            cell.dateLabel.text = dateFormatter.stringFromDate(SelectedDatesTimeAway.selectedDates[(indexPath.row - 1)])
+            cell.dateLabel.text = dateFormatter.string(from: SelectedDatesTimeAway.selectedDates[((indexPath as NSIndexPath).row - 1)] as Date)
             cell.fullDaySwitch.setOn(true, animated: false)
-            cell.fullDaySwitch.tag = (indexPath.row - 1)
-            cell.fullDaySwitch.addTarget(self, action: #selector(SelectedDatesTableViewController.notFullDay(_:)), forControlEvents: .ValueChanged)
+            cell.fullDaySwitch.tag = ((indexPath as NSIndexPath).row - 1)
+            cell.fullDaySwitch.addTarget(self, action: #selector(SelectedDatesTableViewController.notFullDay(_:)), for: .valueChanged)
             cell.hoursTextField.text = String(8)
-            cell.hoursTextField.tag = (indexPath.row - 1)
-            cell.hoursTextField.userInteractionEnabled = false
+            cell.hoursTextField.tag = ((indexPath as NSIndexPath).row - 1)
+            cell.hoursTextField.isUserInteractionEnabled = false
             cell.hoursTextField.delegate = self
             
             return cell
         }
     }
     
-    func notFullDay(sender : UISwitch) {
+    func notFullDay(_ sender : UISwitch) {
         _ = sender.tag
-        let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: sender.tag + 1, inSection: 0)) as! SelectedDatesTableViewCell
+        let cell = self.tableView.cellForRow(at: IndexPath(row: sender.tag + 1, section: 0)) as! SelectedDatesTableViewCell
         
-        if sender.on {
-            cell.hoursTextField.userInteractionEnabled = false
+        if sender.isOn {
+            cell.hoursTextField.isUserInteractionEnabled = false
             cell.hoursTextField.text = String(8)
             cell.hoursTextField.resignFirstResponder()
         } else {
-            cell.hoursTextField.userInteractionEnabled = true
+            cell.hoursTextField.isUserInteractionEnabled = true
             cell.hoursTextField.text = nil
             cell.hoursTextField.becomeFirstResponder()
         }
     }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0 {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).row == 0 {
             return 26
         } else {
             return 44
         }
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         SelectedDatesTimeAway.selectedDates = []
     }
     
@@ -77,7 +77,7 @@ class SelectedDatesTableViewController: UITableViewController {
 
 extension SelectedDatesTableViewController : UITextFieldDelegate {
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         var total : Double = 0
         if !textField.text!.isEmpty {
             let rounded = round(Double(textField.text!)! * 2) / 2
@@ -90,7 +90,7 @@ extension SelectedDatesTableViewController : UITextFieldDelegate {
                 let theCell = cell as! SelectedDatesTableViewCell
                 total = total + Double(theCell.hoursTextField.text!)!
             }
-            NSNotificationCenter.defaultCenter().postNotificationName("UpdateTotalNumberOfHours", object: total)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateTotalNumberOfHours"), object: total)
         } else {
             textField.text = String(8)
         }

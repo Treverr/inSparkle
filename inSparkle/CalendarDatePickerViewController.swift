@@ -35,21 +35,21 @@ class CalendarDatePickerViewController: UIViewController {
 
 extension CalendarDatePickerViewController : CalendarViewDelegate {
     
-    func calendarDidSelectDate(date: Moment) {
+    func calendarDidSelectDate(_ date: Moment) {
         self.date = date
         if TimeClockReportAllEmployee.startEnd == "start" {
             TimeClockReportAllEmployee.selectedStartDate = date.format("MMMM d, yyyy")
-            self.dismissViewControllerAnimated(true, completion: nil)
-            NSNotificationCenter.defaultCenter().postNotificationName("updateStart", object: nil)
+            self.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "updateStart"), object: nil)
         }
         if TimeClockReportAllEmployee.startEnd == "end" {
             TimeClockReportAllEmployee.selectedEndDate = date.format("MMMM d, yyyy")
-            self.dismissViewControllerAnimated(true, completion: nil)
-            NSNotificationCenter.defaultCenter().postNotificationName("updateEnd", object: nil)
+            self.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "updateEnd"), object: nil)
         }
     }
     
-    func calendarDidPageToDate(date: Moment) {
+    func calendarDidPageToDate(_ date: Moment) {
         title = date.format("MMMM yyyy")
     }
     

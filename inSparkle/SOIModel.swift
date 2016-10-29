@@ -16,42 +16,42 @@ class SOIObject: PFObject, PFSubclassing {
     }
     
     var customerName : String {
-        get { return objectForKey("customerName") as! String }
-        set { setObject(newValue.capitalizedString, forKey: "customerName") }
+        get { return object(forKey: "customerName") as! String }
+        set { setObject(newValue.capitalized, forKey: "customerName") }
     }
     
-    var date : NSDate? {
-        get { return objectForKey("date") as? NSDate }
+    var date : Date? {
+        get { return object(forKey: "date") as? Date }
         set { setObject(newValue!, forKey: "date") }
     }
     
     var location : String {
-        get { return objectForKey("location") as! String }
+        get { return object(forKey: "location") as! String }
         set { setObject(newValue, forKey: "location") }
     }
     
     var category : String {
-        get { return objectForKey("category") as! String }
+        get { return object(forKey: "category") as! String }
         set { setObject(newValue, forKey: "location") }
     }
     
     var serial : String? {
-        get { return objectForKey("serial") as? String }
+        get { return object(forKey: "serial") as? String }
         set { setObject(newValue!, forKey: "serial") }
     }
     
     var isActive : Bool {
-        get { return objectForKey("isActive") as! Bool }
+        get { return object(forKey: "isActive") as! Bool }
         set { setObject(newValue, forKey: "isActive") }
     }
     
     var objectID : String {
-        get { return objectForKey("objectId") as! String }
+        get { return object(forKey: "objectId") as! String }
         set { setObject(newValue, forKey: "objectId") }
     }
     
     var orderNumber : String? {
-        get { return objectForKey("orderNumber") as? String }
+        get { return object(forKey: "orderNumber") as? String }
         set { setObject(newValue!, forKey: "orderNumber") }
     }
     

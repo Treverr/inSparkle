@@ -8,6 +8,26 @@
 
 import UIKit
 import Parse
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class MyTimecardWeekSelectionTableViewController: UITableViewController {
     
@@ -30,7 +50,7 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
     @IBOutlet var totalHoursLabel: UILabel!
     
     var weekLabels : [UILabel] = []
-    var listOfDates : [NSDate] = []
+    var listOfDates : [Date] = []
     
     
     override func viewDidLoad() {
@@ -49,17 +69,17 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 {
-            let cell = self.tableView.cellForRowAtIndexPath(indexPath)
-            let selectedDate = cell?.textLabel?.text!.componentsSeparatedByString(" ")[1]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 0 {
+            let cell = self.tableView.cellForRow(at: indexPath)
+            let selectedDate = cell?.textLabel?.text!.components(separatedBy: " ")[1]
             
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
             
             let sb = UIStoryboard(name: "SparkleConnect", bundle: nil)
-            let vc = sb.instantiateViewControllerWithIdentifier("dateDetail") as! DateDetailTableViewController
-            vc.selectedDate = dateFormatter.dateFromString(selectedDate!)
+            let vc = sb.instantiateViewController(withIdentifier: "dateDetail") as! DateDetailTableViewController
+            vc.selectedDate = dateFormatter.date(from: selectedDate!)
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -89,44 +109,44 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
         }
         
         for day in weekLabels {
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
-            let dateToLookFor = dateFormatter.dateFromString(day.text!.componentsSeparatedByString(" ")[1])
-            calculateTotals(dateToLookFor!, day: day.text!.componentsSeparatedByString(" ")[0])
+            let dateToLookFor = dateFormatter.date(from: day.text!.components(separatedBy: " ")[1])
+            calculateTotals(dateToLookFor!, day: day.text!.components(separatedBy: " ")[0])
         }
     }
     
-    func firstDayOfWeekFromDate(day : String, daysToAdd: Int) -> String {
-        let calendar = NSCalendar.currentCalendar()
+    func firstDayOfWeekFromDate(_ day : String, daysToAdd: Int) -> String {
+        var calendar = Calendar.current
         calendar.firstWeekday = 2
-        let date = NSDate()
-        let comps = calendar.components([.YearForWeekOfYear, .WeekOfYear], fromDate: date)
-        let startOfWeek = calendar.dateFromComponents(comps)
+        let date = Date()
+        let comps = (calendar as NSCalendar).components([.yearForWeekOfYear, .weekOfYear], from: date)
+        let startOfWeek = calendar.date(from: comps)
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
-        dateFormatter.timeStyle = .NoStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
         
-        let currentCalendar = NSCalendar.currentCalendar()
-        let dateToString = currentCalendar.dateByAddingUnit([.Day], value: daysToAdd, toDate: startOfWeek!, options: [])
-        let stringDate = dateFormatter.stringFromDate(dateToString!)
+        let currentCalendar = Calendar.current
+        let dateToString = (currentCalendar as NSCalendar).date(byAdding: [.day], value: daysToAdd, to: startOfWeek!, options: [])
+        let stringDate = dateFormatter.string(from: dateToString!)
         
         return day + " " + stringDate
     }
     
     var totalOverall : Double = 0.00
     
-    func calculateTotals(date : NSDate, day : String) {
+    func calculateTotals(_ date : Date, day : String) {
         
         let employee = EmployeeData.universalEmployee
         let query = TimePunchCalcObject.query()
-        let cal = NSCalendar.currentCalendar()
-        let endOfDay = cal.dateBySettingHour(23, minute: 59, second: 59, ofDate: date, options: [])
+        let cal = Calendar.current
+        let endOfDay = (cal as NSCalendar).date(bySettingHour: 23, minute: 59, second: 59, of: date, options: [])
         
         query?.whereKey("employee", equalTo: employee)
         query?.whereKey("timePunchedIn", greaterThan: date)
         query?.whereKey("timePunchedOut", lessThan: endOfDay!)
-        query?.findObjectsInBackgroundWithBlock({ (timeCalcs : [PFObject]?, error : NSError?) in
+        query?.findObjectsInBackground(block: { (timeCalcs : [PFObject]?, error : Error?) in
             if error == nil {
                 var totalForDate : Double = 0.00
                 for calc in timeCalcs! {

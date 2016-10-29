@@ -22,18 +22,18 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
-    var logOutTimer : NSTimer?
+    var logOutTimer : Timer?
     
     let locationManager = CLLocationManager()
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         Fabric.with([Crashlytics.self])
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+        if UIDevice.current.userInterfaceIdiom == .phone {
             
             let sb = UIStoryboard(name: "Main", bundle: nil)
-            let tabBar = sb.instantiateViewControllerWithIdentifier("mainTabBar") as! TabBarViewController
+            let tabBar = sb.instantiateViewController(withIdentifier: "mainTabBar") as! TabBarViewController
             
             self.window?.rootViewController = tabBar
         }
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 $0.clientKey = ""
                 $0.server = "http://10.0.1.9:1337/parse"
             }
-            Parse.initializeWithConfiguration(configuration)
+            Parse.initialize(with: configuration)
         } else {
             print(getSSID())
             let configuration = ParseClientConfiguration {
@@ -53,19 +53,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 $0.clientKey = ""
                 $0.server = "http://insparklepools.com:1337/parse"
             }
-            Parse.initializeWithConfiguration(configuration)
+            Parse.initialize(with: configuration)
         }
         
         registerParseSubclasses()
         
         // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        PFAnalytics.trackAppOpened(launchOptions: launchOptions)
         
         do {
-            try PFUser.currentUser()?.fetch()
-            print(PFUser.currentUser())
-            if PFUser.currentUser() != nil {
-                let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
+            try PFUser.current()?.fetch()
+            print(PFUser.current())
+            if PFUser.current() != nil {
+                let employee = PFUser.current()?.object(forKey: "employee") as? Employee
                 do {
                     try employee!.fetch()
                 } catch {
@@ -74,26 +74,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 
                 EmployeeData.universalEmployee = employee
                 Crashlytics.sharedInstance().setUserIdentifier(employee?.firstName)
-                Crashlytics.sharedInstance().setUserEmail(PFUser.currentUser()?.email)
+                Crashlytics.sharedInstance().setUserEmail(PFUser.current()?.email)
                 
             }
         } catch {
-            let errorAlert = UIAlertController(title: "Error", message: "There was an error retrieving your user information, please try again. If the issue continues please contact IS&T", preferredStyle: .Alert)
-            let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
+            let errorAlert = UIAlertController(title: "Error", message: "There was an error retrieving your user information, please try again. If the issue continues please contact IS&T", preferredStyle: .alert)
+            let okayButton = UIAlertAction(title: "Okay", style: .default, handler: { (action) in
                 PFUser.logOut()
             })
             errorAlert.addAction(okayButton)
-            self.window?.rootViewController?.presentViewController(errorAlert, animated: true, completion: nil)
+            self.window?.rootViewController?.present(errorAlert, animated: true, completion: nil)
         }
         
-        let center = UNUserNotificationCenter.currentNotificationCenter()
-        center.requestAuthorizationWithOptions([.Alert, .Badge, .Sound]) { (granted : Bool, error : NSError?) in
-
-        }
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .badge, .sound], completionHandler: { (granted, error) in
+            
+        })
         application.registerForRemoteNotifications()
         
-        print(PFInstallation.currentInstallation().deviceToken)
-        PFInstallation.currentInstallation().saveEventually()
+        print(PFInstallation.current()?.deviceToken)
+        PFInstallation.current()?.saveEventually()
         
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses.append(LoginViewController.self)
@@ -106,60 +106,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func displayGlobalMessages() {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let globalMessageDisplayed = defaults.boolForKey("globalMessageDisplayed")
+        let defaults = UserDefaults.standard
+        let globalMessageDisplayed = defaults.bool(forKey: "globalMessageDisplayed")
         
         
         if PFConfigs.config != nil {
             
             if globalMessageDisplayed {
                 
-                if defaults.valueForKey("globalMessage") as! String != PFConfigs.config["globalMessage"] as! String {
-                    defaults.setBool(false, forKey: "globalMessageDisplayed")
+                if defaults.value(forKey: "globalMessage") as! String != PFConfigs.config["globalMessage"] as! String {
+                    defaults.set(false, forKey: "globalMessageDisplayed")
                     displayGlobalMessages()
                 }
                 
             } else {
                 let message = PFConfigs.config["globalMessage"]! as! String
                 
-                let globalMessage = UIAlertController(title: "Global Message", message: message, preferredStyle: .Alert)
-                let okay = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                let globalMessage = UIAlertController(title: "Global Message", message: message, preferredStyle: .alert)
+                let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
                 globalMessage.addAction(okay)
-                self.window?.rootViewController?.presentViewController(globalMessage, animated: true, completion: {
-                    defaults.setBool(true, forKey: "globalMessageDisplayed")
+                self.window?.rootViewController?.present(globalMessage, animated: true, completion: {
+                    defaults.set(true, forKey: "globalMessageDisplayed")
                     defaults.setValue(message, forKey: "globalMessage")
                 })
             }
         }
     }
     
-    func mobihelpIntegration(){
-        let config : MobihelpConfig = MobihelpConfig(domain: "insparkle.freshdesk.com", withAppKey: "insparkle-2-eeccef6dda3ed4ae678466b2b0c5847e", andAppSecret: "51525287e07b865f00b5dfef42c3f2fe45a760a4")
-        config.feedbackType = FEEDBACK_TYPE.NAME_AND_EMAIL_REQUIRED
-        config.enableAutoReply = true // Enable Auto Reply.
-        config.setThemeName("SparkleTheme")
-        
-        //Initialize Mobihelp. This needs to be called only once in the App.
-        Mobihelp.sharedInstance().clearUserData()
-        Mobihelp.sharedInstance().initWithConfig(config)
-        Mobihelp.sharedInstance().userName = PFUser.currentUser()?.username!
-        Mobihelp.sharedInstance().emailAddress = PFUser.currentUser()?.email!
-        
-    }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
-        let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
-        if NSFileManager.defaultManager().fileExistsAtPath(documentsDirectory.stringByAppendingString("/PDFLocker")) {
-            var fileName = String(url).componentsSeparatedByString("/").last
-            fileName = fileName?.stringByRemovingPercentEncoding
-            let origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
-            var originalFilePath = String(url).componentsSeparatedByString(("file://")).last!
-            originalFilePath = originalFilePath.stringByRemovingPercentEncoding!
+        let inboxPath = documentsDirectory + "/PDFLocker"
+        if FileManager.default.fileExists(atPath: documentsDirectory + "/PDFLocker") {
+            var fileName = String(describing: url).components(separatedBy: "/").last
+            fileName = fileName?.removingPercentEncoding
+            let origPath = String(describing: url).components(separatedBy: "/Inbox/").first!.components(separatedBy: "file://").last
+            var originalFilePath = String(describing: url).components(separatedBy: ("file://")).last!
+            originalFilePath = originalFilePath.removingPercentEncoding!
             let newPath = origPath! + "/PDFLocker/" + fileName!
             do {
-                try NSFileManager.defaultManager().copyItemAtPath(originalFilePath, toPath: newPath)
+                try FileManager.default.copyItem(atPath: originalFilePath, toPath: newPath)
             } catch {
                 print(error)
             }
@@ -167,19 +154,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         } else {
             
             do {
-                try NSFileManager.defaultManager().createDirectoryAtPath(inboxPath, withIntermediateDirectories: false, attributes: nil)
+                try FileManager.default.createDirectory(atPath: inboxPath, withIntermediateDirectories: false, attributes: nil)
             } catch {
                 
             }
             
-            var fileName = String(url).componentsSeparatedByString("/").last
-            fileName = fileName?.stringByRemovingPercentEncoding
-            let origPath = String(url).componentsSeparatedByString("/Inbox/").first!.componentsSeparatedByString("file://").last
-            var originalFilePath = String(url).componentsSeparatedByString(("file://")).last!
-            originalFilePath = originalFilePath.stringByRemovingPercentEncoding!
+            var fileName = String(describing: url).components(separatedBy: "/").last
+            fileName = fileName?.removingPercentEncoding
+            let origPath = String(describing: url).components(separatedBy: "/Inbox/").first!.components(separatedBy: "file://").last
+            var originalFilePath = String(describing: url).components(separatedBy: ("file://")).last!
+            originalFilePath = originalFilePath.removingPercentEncoding!
             let newPath = origPath! + "/PDFLocker/" + fileName!
             do {
-                try NSFileManager.defaultManager().copyItemAtPath(originalFilePath, toPath: newPath)
+                try FileManager.default.copyItem(atPath: originalFilePath, toPath: newPath)
             } catch {
                 print(error)
             }
@@ -191,14 +178,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         rootView.selectedIndex = 4
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         let navVC: UINavigationController =  rootView.viewControllers![4] as! UINavigationController
-        storyBoard.instantiateViewControllerWithIdentifier("moreView") as! MoreTableViewController
+        storyBoard.instantiateViewController(withIdentifier: "moreView") as! MoreTableViewController
         print(navVC.topViewController?.description)
-        if navVC.topViewController!.description.containsString("inSparkle.MoreTableViewController") {
+        if navVC.topViewController!.description.contains("inSparkle.MoreTableViewController") {
             let vc = navVC.topViewController as! MoreTableViewController
             
             
             let pdfLockerSB = UIStoryboard(name: "PDFLocker", bundle: nil)
-            let pdfvc = pdfLockerSB.instantiateViewControllerWithIdentifier("pdfLockerTable") as! PDFLockerTableViewController
+            let pdfvc = pdfLockerSB.instantiateViewController(withIdentifier: "pdfLockerTable") as! PDFLockerTableViewController
             
             vc.navigationController?.pushViewController(pdfvc, animated: true)
             
@@ -208,6 +195,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func registerParseSubclasses() {
+        Logs.registerSubclass()
+        WorkOrders.registerSubclass()
         ScheduleObject.registerSubclass()
         TimeClockPunchObj.registerSubclass()
         TimePunchCalcObject.registerSubclass()
@@ -226,13 +215,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         WorkServiceOrderTimeLog.registerSubclass()
     }
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        let installation = PFInstallation.currentInstallation()
+        let installation = PFInstallation.current()!
         
-        if PFUser.currentUser() != nil {
-            let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
-            print(PFUser.currentUser())
+        if PFUser.current() != nil {
+            let employee = PFUser.current()?.object(forKey: "employee") as? Employee
+            print(PFUser.current())
             print(employee)
             
             if employee != nil {
@@ -245,31 +234,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 installation.setObject(employee!, forKey: "employee")
             }
         }
-        installation.setDeviceTokenFromData(deviceToken)
+        installation.setDeviceTokenFrom(deviceToken)
         installation.saveInBackground()
         
     }
     
-    func applicationWillResignActive(application: UIApplication) {
-        print(UIDevice.currentDevice().name)
+    func applicationWillResignActive(_ application: UIApplication) {
+        print(UIDevice.current.name)
         
-        if UIDevice.currentDevice().name == "Store iPad 1" || UIDevice.currentDevice().name == "Store iPad 2" || UIDevice.currentDevice().name == "iPhone Simulator"{
-            if PFUser.currentUser() != nil {
+        if UIDevice.current.name == "Store iPad 1" || UIDevice.current.name == "Store iPad 2" || UIDevice.current.name == "iPhone Simulator"{
+            if PFUser.current() != nil {
                 self.logOut()
             }
         }
         
     }
     
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
-        if PFUser.currentUser() != nil {
-            let employee = PFUser.currentUser()?.objectForKey("employee")
-            employee?.fetchIfNeededInBackgroundWithBlock({ (emp : PFObject?, error : NSError?) in
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        if PFUser.current() != nil {
+            let employee = PFUser.current()?.object(forKey: "employee")
+            (employee as AnyObject).fetchIfNeededInBackground(block: { (emp : PFObject?, error : Error?) in
                 if error == nil {
                     let theEmployee = emp as! Employee
                     let name = theEmployee.firstName
@@ -284,7 +273,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         
         do {
             PFConfigs.config = try PFConfig.getConfig()
@@ -292,24 +281,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
         }
         
-//        displayGlobalMessages()
+        //        displayGlobalMessages()
         
-        let currentInstallation = PFInstallation.currentInstallation()
+        let currentInstallation = PFInstallation.current()!
         if currentInstallation.badge != 0 {
             currentInstallation.badge = 0
             currentInstallation.saveEventually()
         }
-        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         print(userInfo)
-        if application.applicationState == .Active {
-            let currentInstall = PFInstallation.currentInstallation()
+        if application.applicationState == .active {
+            let currentInstall = PFInstallation.current()!
             if currentInstall.badge != 0 {
                 currentInstall.badge = 0
                 currentInstall.saveEventually()
@@ -329,7 +318,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    func handleDeepLinkForMessages(messageID : String) {
+    func handleDeepLinkForMessages(_ messageID : String) {
         
         if self.window!.rootViewController as? UITabBarController != nil {
             let tabBarController = self.window?.rootViewController as! UITabBarController
@@ -341,10 +330,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func logOut() {
         PFUser.logOut()
         
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
+        DispatchQueue.main.async { () -> Void in
+            let viewController:UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
             let currentView = self.window?.currentViewController()
-            currentView?.presentViewController(viewController, animated: true, completion: nil)
+            currentView?.present(viewController, animated: true, completion: nil)
         }
     }
     
@@ -352,15 +341,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         var currentSSID = ""
         
-        if let interfaces:CFArray! = CNCopySupportedInterfaces() {
+        if let interfaces:CFArray? = CNCopySupportedInterfaces() {
             if interfaces != nil {
                 for i in 0..<CFArrayGetCount(interfaces){
-                    let interfaceName: UnsafePointer<Void> = CFArrayGetValueAtIndex(interfaces, i)
-                    let rec = unsafeBitCast(interfaceName, AnyObject.self)
-                    let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)")
+                    let interfaceName: UnsafeRawPointer = CFArrayGetValueAtIndex(interfaces, i)
+                    let rec = unsafeBitCast(interfaceName, to: AnyObject.self)
+                    let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)" as CFString)
                     if unsafeInterfaceData != nil {
-                        let interfaceData = unsafeInterfaceData! as Dictionary!
-                        currentSSID = interfaceData["SSID"] as! String
+                        let interfaceData = unsafeInterfaceData! as? Dictionary<String, String>
+                        currentSSID = interfaceData!["SSID"]! as String
                     }
                 }
             } else {

@@ -23,7 +23,7 @@ class ComposeMessageNavigationController: UINavigationController {
     }
     
     func close() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

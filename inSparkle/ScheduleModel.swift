@@ -16,112 +16,112 @@ class ScheduleObject : PFObject, PFSubclassing {
     }
     
     var accountNumber : String? {
-        get { return objectForKey("accountNumber") as? String }
+        get { return object(forKey: "accountNumber") as? String }
         set { setObject(newValue!, forKey: "accountNumber") }
     }
     
     var customerName : String {
-        get { return objectForKey("customerName") as! String }
+        get { return object(forKey: "customerName") as! String }
         set { setObject(newValue, forKey: "customerName") }
     }
     
     var customerAddress : String {
-        get { return objectForKey("customerAddress") as! String }
+        get { return object(forKey: "customerAddress") as! String }
         set { setObject(newValue, forKey: "customerAddress") }
     }
     
     var customerPhone : String {
-        get { return objectForKey("customerPhone") as! String }
+        get { return object(forKey: "customerPhone") as! String }
         set { setObject(newValue, forKey: "customerPhone") }
     }
     
-    var weekStart : NSDate {
-        get { return objectForKey("weekStart") as! NSDate }
+    var weekStart : Date {
+        get { return object(forKey: "weekStart") as! Date }
         set { setObject(newValue, forKey: "weekStart") }
     }
     
-    var weekEnd : NSDate {
-        get { return objectForKey("weekEnd") as! NSDate }
+    var weekEnd : Date {
+        get { return object(forKey: "weekEnd") as! Date }
         set { setObject(newValue, forKey: "weekEnd") }
     }
     
     var isActive : Bool {
-        get { return objectForKey("isActive") as! Bool }
+        get { return object(forKey: "isActive") as! Bool }
         set { setObject(newValue, forKey: "isActive") }
     }
     
     var cancelReason : String? {
-        get { return objectForKey("cancelReason") as? String }
+        get { return object(forKey: "cancelReason") as? String }
         set { setObject(newValue!, forKey: "cancelReason") }
     }
     
     var type : String {
-        get { return objectForKey("type") as! String }
+        get { return object(forKey: "type") as! String }
         set { setObject(newValue, forKey: "type") }
     }
     
     var coverType : String {
-        get { return objectForKey("coverType") as! String }
+        get { return object(forKey: "coverType") as! String }
         set { setObject(newValue, forKey: "coverType") }
     }
     
     var aquaDoor : Bool? {
-        get { return objectForKey("aquaDoor") as? Bool }
+        get { return object(forKey: "aquaDoor") as? Bool }
         set { setObject(newValue!, forKey: "aquaDoor") }
     }
     
     var locEssentials : String {
-        get { return objectForKey("locEssentials") as! String }
+        get { return object(forKey: "locEssentials") as! String }
         set { setObject(newValue, forKey: "locEssentials") }
     }
     
     var bringChem : Bool {
-        get { return objectForKey("bringChem") as! Bool }
+        get { return object(forKey: "bringChem") as! Bool }
         set { setObject(newValue, forKey: "bringChem") }
     }
     
     var takeTrash : Bool {
-        get { return objectForKey("takeTrash") as! Bool }
+        get { return object(forKey: "takeTrash") as! Bool }
         set { setObject(newValue, forKey: "takeTrash") }
     }
     
     var notes : String? {
-        get { return objectForKey("notes") as? String }
+        get { return object(forKey: "notes") as? String }
         set { setObject(newValue!, forKey: "notes") }
     }
     
     var canceledBy : String? {
-        get { return objectForKey("canceledBy") as? String }
+        get { return object(forKey: "canceledBy") as? String }
         set { setObject(newValue!, forKey: "canceledBy") }
     }
     
     var confrimed : Bool? {
-        get { return objectForKey("confrimed") as? Bool }
+        get { return object(forKey: "confrimed") as? Bool }
         set { setObject(newValue!, forKey: "confrimed") }
     }
     
     var confrimedBy : String? {
-        get { return objectForKey("confrimedBy") as? String }
+        get { return object(forKey: "confrimedBy") as? String }
         set { setObject(newValue!, forKey: "confrimedBy") }
     }
     
-    var confirmedDate : NSDate? {
-        get { return objectForKey("confirmedDate") as? NSDate }
+    var confirmedDate : Date? {
+        get { return object(forKey: "confirmedDate") as? Date }
         set { setObject(newValue!, forKey: "confirmedDate") }
     }
     
     var confirmedWith : String? {
-        get { return objectForKey("confirmedWith") as? String }
+        get { return object(forKey: "confirmedWith") as? String }
         set { setObject(newValue!, forKey: "confirmedWith") }
     }
     
     var weekObj : WeekList {
-        get { return objectForKey("weekObj") as! WeekList }
+        get { return object(forKey: "weekObj") as! WeekList }
         set { setObject(newValue, forKey: "weekObj") }
     }
     
     var tentativeDate : WeekList? {
-        get { return objectForKey("weekObj") as? WeekList }
+        get { return object(forKey: "weekObj") as? WeekList }
         set { setObject(newValue!, forKey: "weekObj") }
     }
     

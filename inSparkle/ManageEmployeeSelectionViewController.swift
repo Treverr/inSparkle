@@ -10,21 +10,21 @@ import UIKit
 
 class ManageEmployeeSelectionViewController: UIViewController {
 
-    @IBAction func dismissAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismissAction(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Manage Employees"
         self.navigationController?.setupNavigationbar(self.navigationController!)
     }
     
-    @IBAction func returnToManageEmpSelection(segue : UIStoryboardSegue) {
+    @IBAction func returnToManageEmpSelection(_ segue : UIStoryboardSegue) {
         
     }
 }

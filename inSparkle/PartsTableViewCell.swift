@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class PartsTableViewCell: UITableViewCell {
+open class PartsTableViewCell: UITableViewCell {
     
     @IBOutlet var partLabel: UILabel!
     @IBOutlet var qtyLabel: UILabel!

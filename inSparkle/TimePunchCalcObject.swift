@@ -11,46 +11,42 @@ import Parse
 
 class TimePunchCalcObject: PFObject, PFSubclassing {
     
-    override class func initialize() {
-        self.registerSubclass()
-    }
-    
     class func parseClassName() -> String {
         return "TimePunchTimeCalculations"
     }
     
     var employee : Employee {
-        get { return objectForKey("employee") as! Employee }
+        get { return object(forKey: "employee") as! Employee }
         set { setObject(newValue, forKey: "employee") }
     }
     
-    var timePunchedIn : NSDate {
-        get { return objectForKey("timePunchedIn") as! NSDate }
+    var timePunchedIn : Date {
+        get { return object(forKey: "timePunchedIn") as! Date }
         set { setObject(newValue, forKey: "timePunchedIn") }
     }
     
     var timePunchedInObject : TimeClockPunchObj {
-        get { return objectForKey("timePunchedInObject") as! TimeClockPunchObj }
+        get { return object(forKey: "timePunchedInObject") as! TimeClockPunchObj }
         set { setObject(newValue, forKey: "timePunchedInObject") }
     }
     
-    var timePunchedOut : NSDate {
-        get { return objectForKey("timePunchedOut") as! NSDate }
+    var timePunchedOut : Date {
+        get { return object(forKey: "timePunchedOut") as! Date }
         set { setObject(newValue, forKey: "timePunchedOut") }
     }
     
     var timePunchedOutObject : TimeClockPunchObj {
-        get { return objectForKey("timePunchedOutObject") as! TimeClockPunchObj }
+        get { return object(forKey: "timePunchedOutObject") as! TimeClockPunchObj }
         set { setObject(newValue, forKey: "timePunchedOutObject") }
     }
     
     var lunch : Bool {
-        get { return objectForKey("lunch") as! Bool }
+        get { return object(forKey: "lunch") as! Bool }
         set { setObject(newValue, forKey: "lunch") }
     }
     
     var totalTime : Double {
-        get { return objectForKey("totalTime") as! Double }
+        get { return object(forKey: "totalTime") as! Double }
         set { setObject(newValue, forKey: "totalTime") }
     }
 }

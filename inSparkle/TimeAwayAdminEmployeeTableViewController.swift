@@ -21,14 +21,14 @@ class TimeAwayAdminEmployeeTableViewController: UITableViewController {
         getEmployeesWithTimeAwayRequest()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
     
     func getEmployeesWithTimeAwayRequest() {
         let timeAway = TimeAwayRequest.query()
         timeAway?.whereKey("status", equalTo: "Pending")
-        timeAway?.findObjectsInBackgroundWithBlock({ (requests : [PFObject]?, error :NSError?) in
+        timeAway?.findObjectsInBackground(block: { (requests : [PFObject]?, error :Error?) in
             for req in requests! {
                 let request = req as! TimeAwayRequest
                 let employee = request.employee
@@ -45,25 +45,25 @@ class TimeAwayAdminEmployeeTableViewController: UITableViewController {
         })
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return employees.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("employeeCell")! as UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "employeeCell")! as UITableViewCell
         
-        cell.textLabel?.text = employees[indexPath.row].firstName + " " + employees[indexPath.row].lastName
+        cell.textLabel?.text = employees[(indexPath as NSIndexPath).row].firstName + " " + employees[(indexPath as NSIndexPath).row].lastName
         
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "employeeDetail" {
             let path = self.tableView.indexPathForSelectedRow
-            let employee = self.employees[path!.row]
+            let employee = self.employees[(path! as NSIndexPath).row]
             
             let sb = self.storyboard!
-            let vc = segue.destinationViewController as! EmployeeTimeAwayRequestsTableViewController
+            let vc = segue.destination as! EmployeeTimeAwayRequestsTableViewController
             vc.employee = employee
         }
     }

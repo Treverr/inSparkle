@@ -22,7 +22,7 @@ class WorkOrdersTableViewController: UITableViewController, NVActivityIndicatorV
     @IBOutlet var searchBar : UISearchBar!
     
     override func viewDidLoad() {
-        self.tableView.setContentOffset(CGPointMake(0, searchBar.frame.size.height), animated: false)
+        self.tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
         
         super.viewDidLoad()
         
@@ -31,7 +31,7 @@ class WorkOrdersTableViewController: UITableViewController, NVActivityIndicatorV
         searchBar.delegate = self
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
 
         if searchActive {
             searchForFilter(searchBar.text!)
@@ -46,20 +46,20 @@ class WorkOrdersTableViewController: UITableViewController, NVActivityIndicatorV
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return theWorkOrders.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("workOrder") as! WorkOrdersMainTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "workOrder") as! WorkOrdersMainTableViewCell
         
-        let customerName = theWorkOrders[indexPath.row].customerName
-        let dateCreated = theWorkOrders[indexPath.row].date
-        let theStatus = theWorkOrders[indexPath.row].status
+        let customerName = theWorkOrders[(indexPath as NSIndexPath).row].customerName
+        let dateCreated = theWorkOrders[(indexPath as NSIndexPath).row].date
+        let theStatus = theWorkOrders[(indexPath as NSIndexPath).row].status
         
         cell.customerNameLabel.text = customerName
-        cell.dateCreatedLabel.text = GlobalFunctions().stringFromDateShortStyle(dateCreated)
+        cell.dateCreatedLabel.text = GlobalFunctions().stringFromDateShortStyle(dateCreated!)
         cell.statusLabel.text = theStatus!
         cell.statusLabel.sizeToFit()
         switch theStatus! {
@@ -88,28 +88,28 @@ class WorkOrdersTableViewController: UITableViewController, NVActivityIndicatorV
     
     func getWorkOrders() {
         let query = WorkOrders.query()
-        query?.orderByDescending("date")
+        query?.order(byDescending: "date")
         query?.limit = 1000
-        query?.findObjectsInBackgroundWithBlock({ (workOrders : [PFObject]?, error :NSError?) in
+        query?.findObjectsInBackground(block: { (workOrders : [PFObject]?, error :Error?) in
             if error == nil {
                 self.theWorkOrders = workOrders as! [WorkOrders]
                 self.tableView.reloadData()
-                self.loadingUI.stopAnimation()
+                self.loadingUI.stopAnimating()
                 self.loadingBackground.removeFromSuperview()
             }
         })
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "existing" {
-            let selected = theWorkOrders[tableView.indexPathForSelectedRow!.row]
-            let dest = segue.destinationViewController as! AddEditWorkOrderTableViewController
+            let selected = theWorkOrders[(tableView.indexPathForSelectedRow! as NSIndexPath).row]
+            let dest = segue.destination as! AddEditWorkOrderTableViewController
             dest.workOrderObject = selected
         }
     }
     
-    @IBAction func unwindToWOMain(segue : UIStoryboardSegue) {
+    @IBAction func unwindToWOMain(_ segue : UIStoryboardSegue) {
         
     }
     
@@ -117,7 +117,7 @@ class WorkOrdersTableViewController: UITableViewController, NVActivityIndicatorV
 
 extension WorkOrdersTableViewController : UISearchBarDelegate {
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = true
         if !(searchBar.text?.isEmpty)! {
             searchForFilter(searchBar.text!)
@@ -125,16 +125,16 @@ extension WorkOrdersTableViewController : UISearchBarDelegate {
         }
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
         searchActive = true
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchActive = false
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: false)
         searchActive = false
         searchBar.text = nil
@@ -142,15 +142,15 @@ extension WorkOrdersTableViewController : UISearchBarDelegate {
         getWorkOrders()
     }
     
-    func searchForFilter(searchText : String) {
+    func searchForFilter(_ searchText : String) {
         let searchCustomerName = WorkOrders.query()
-        searchCustomerName?.whereKey("customerName", containsString: searchText.capitalizedString)
+        searchCustomerName?.whereKey("customerName", contains: searchText.capitalized)
         
         let searchCustomerAddy = WorkOrders.query()
-        searchCustomerAddy?.whereKey("customerAddress", containsString: searchText.capitalizedString)
+        searchCustomerAddy?.whereKey("customerAddress", contains: searchText.capitalized)
         
-        let searchQuery = PFQuery.orQueryWithSubqueries([searchCustomerName!, searchCustomerAddy!])
-        searchQuery.findObjectsInBackgroundWithBlock { (foundForSearch : [PFObject]?, error : NSError?) in
+        let searchQuery = PFQuery.orQuery(withSubqueries: [searchCustomerName!, searchCustomerAddy!])
+        searchQuery.findObjectsInBackground { (foundForSearch : [PFObject]?, error : Error?) in
             if error == nil {
                 self.theWorkOrders = foundForSearch as! [WorkOrders]
             }

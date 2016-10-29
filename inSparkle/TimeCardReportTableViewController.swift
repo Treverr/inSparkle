@@ -22,13 +22,13 @@ class TimeCardReportTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancelButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "summary" {
-            let vc = segue.destinationViewController as! RunTimeReportTableViewController
+            let vc = segue.destination as! RunTimeReportTableViewController
             vc.detail = false
         }
     }

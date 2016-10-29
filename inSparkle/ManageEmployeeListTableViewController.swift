@@ -22,7 +22,7 @@ class ManageEmployeeListTableViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         getEmps()
     }
     
@@ -32,9 +32,9 @@ class ManageEmployeeListTableViewController: UITableViewController {
         
         query?.includeKey("userPointer")
         query?.includeKey("roleType")
-        query?.orderByDescending("active")
-        query?.orderByAscending("firstName")
-        query?.findObjectsInBackgroundWithBlock({ (employeeResults : [PFObject]?, error : NSError?) in
+        query?.order(byDescending: "active")
+        query?.order(byAscending: "firstName")
+        query?.findObjectsInBackground(block: { (employeeResults : [PFObject]?, error : Error?) in
             if error == nil {
                 for emprRes in employeeResults! {
                     self.employeeList.append(emprRes as! Employee)
@@ -45,14 +45,14 @@ class ManageEmployeeListTableViewController: UITableViewController {
         })
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return employeeList.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("employeeCell")! as UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "employeeCell")! as UITableViewCell
         
-        let row = indexPath.row
+        let row = (indexPath as NSIndexPath).row
         
         let employeeName = employeeList[row].firstName + " " + employeeList[row].lastName
         
@@ -60,29 +60,29 @@ class ManageEmployeeListTableViewController: UITableViewController {
         
         if employeeList[row].active {
             cell.textLabel?.text = employeeName
-            cell.textLabel?.font = UIFont.systemFontOfSize(UIFont.systemFontSize())
-            cell.textLabel?.textColor = UIColor.blackColor()
+            cell.textLabel?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+            cell.textLabel?.textColor = UIColor.black
         } else {
             cell.textLabel?.text = employeeName
-            cell.textLabel?.font = UIFont.italicSystemFontOfSize(UIFont.systemFontSize())
-            cell.textLabel?.textColor = UIColor.lightGrayColor()
+            cell.textLabel?.font = UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)
+            cell.textLabel?.textColor = UIColor.lightGray
         }
         
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let row = self.tableView.indexPathForSelectedRow?.row
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let row = (self.tableView.indexPathForSelectedRow as NSIndexPath?)?.row
         let selected = employeeList[row!] 
         
         self.selectedEmployee = selected
         
-        let dest = segue.destinationViewController as! EmployeeDataTableViewController
+        let dest = segue.destination as! EmployeeDataTableViewController
         dest.employeeObject = self.selectedEmployee
     }
 
-    @IBAction func dismissAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismissAction(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

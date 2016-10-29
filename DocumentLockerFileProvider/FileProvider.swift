@@ -29,7 +29,7 @@ class FileProvider: NSFileProviderExtension {
         })
     }
 
-    override func providePlaceholderAtURL(url: NSURL, completionHandler: ((error: NSError?) -> Void)?) {
+    override func providePlaceholderAtURL(url: NSURL, completionHandler: ((error: Error?) -> Void)?) {
         // Should call writePlaceholderAtURL(_:withMetadata:error:) with the placeholder URL, then call the completion handler with the error if applicable.
         let fileName = url.lastPathComponent!
     
@@ -47,7 +47,7 @@ class FileProvider: NSFileProviderExtension {
         completionHandler?(error: nil)
     }
 
-    override func startProvidingItemAtURL(url: NSURL, completionHandler: ((error: NSError?) -> Void)?) {
+    override func startProvidingItemAtURL(url: NSURL, completionHandler: ((error: Error?) -> Void)?) {
         // Should ensure that the actual file is in the position returned by URLForItemWithIdentifier, then call the completion handler
 
         // TODO: get the contents of file at <url> from model

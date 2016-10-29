@@ -17,8 +17,8 @@ class AdminTableViewController: UITableViewController {
 
     }
     
-    @IBAction func cancelButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

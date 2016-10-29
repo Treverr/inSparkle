@@ -25,7 +25,7 @@ class ConfirmCalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.barTintColor = UIColor.white
 
         date = moment()
         calendar.delegate = self
@@ -42,14 +42,14 @@ class ConfirmCalViewController: UIViewController {
 
 extension ConfirmCalViewController : CalendarViewDelegate {
     
-    func calendarDidSelectDate(date: Moment) {
+    func calendarDidSelectDate(_ date: Moment) {
         self.shouldDismiss = true
         self.date = date
-        self.dismissViewControllerAnimated(true, completion: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName("NotifyConfirmScreenUpdateLabel", object: date.format("MMMM d, yyyy"))
+        self.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotifyConfirmScreenUpdateLabel"), object: date.format("MMMM d, yyyy"))
     }
     
-    func calendarDidPageToDate(date: Moment) {
+    func calendarDidPageToDate(_ date: Moment) {
         title = date.format("MMMM yyyy")
     }
     

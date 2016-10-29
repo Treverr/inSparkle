@@ -20,7 +20,7 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
     var lastPunch : TimeClockPunchObj? = nil
     var lunchResult: Bool?
     var pinString : String! = ""
-    var timeTimer = NSTimer()
+    var timeTimer = Timer()
     var incorrectAttempts = 0
     var employees : [Employee]!
     
@@ -32,20 +32,20 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.frame = CGRectMake(0, 44, self.view.frame.width , self.view.frame.height)
+        self.view.frame = CGRect(x: 0, y: 44, width: self.view.frame.width , height: self.view.frame.height)
         
         audioPlayer = GlobalFunctions().setupAudioPlayerWithFile("TimeClockPunch", type: "wav")
         audioPlayer.prepareToPlay()
         
-        currentTime.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .NoStyle, timeStyle: .ShortStyle)
-        currentDate.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .FullStyle, timeStyle: .NoStyle)
+        currentTime.text = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
+        currentDate.text = DateFormatter.localizedString(from: Date(), dateStyle: .full, timeStyle: .none)
         
-        self.timeTimer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(TimeClockViewController.tick), userInfo: nil, repeats: true)
+        self.timeTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(TimeClockViewController.tick), userInfo: nil, repeats: true)
         
         timeClockTextField.delegate = self
         
         timeClockTextField.attributedPlaceholder = NSAttributedString(string:"- - - -",
-            attributes:[NSForegroundColorAttributeName: UIColor.whiteColor()])
+            attributes:[NSForegroundColorAttributeName: UIColor.white])
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,75 +53,75 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
 
     }
     
-    @IBAction func closeTimeClock(sender : AnyObject) {
+    @IBAction func closeTimeClock(_ sender : AnyObject) {
         
-    self.dismissViewControllerAnimated(true, completion: nil)
+    self.dismiss(animated: true, completion: nil)
         
     }
 
-    @IBAction func number1(sender: AnyObject) {
+    @IBAction func number1(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "1")
         checkField()
     }
     
-    @IBAction func number2(sender: AnyObject) {
+    @IBAction func number2(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "2")
         checkField()
         
     }
     
-    @IBAction func number3(sender: AnyObject) {
+    @IBAction func number3(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "3")
         checkField()
         
     }
     
-    @IBAction func number4(sender: AnyObject) {
+    @IBAction func number4(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "4")
         checkField()
     }
     
-    @IBAction func number5(sender: AnyObject) {
+    @IBAction func number5(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "5")
         checkField()
     }
     
-    @IBAction func number6(sender: AnyObject) {
+    @IBAction func number6(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "6")
         checkField()
     }
     
-    @IBAction func number7(sender: AnyObject) {
+    @IBAction func number7(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "7")
         checkField()
     }
     
-    @IBAction func number8(sender: AnyObject) {
+    @IBAction func number8(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "8")
         checkField()
     }
     
-    @IBAction func number9(sender: AnyObject) {
+    @IBAction func number9(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "9")
         checkField()
     }
     
-    @IBAction func number0(sender: AnyObject) {
+    @IBAction func number0(_ sender: AnyObject) {
         timeClockTextField.text = (timeClockTextField.text! + "• ")
         pinString = (pinString + "0")
         checkField()
     }
     
-    var timeOutTimer : NSTimer!
+    var timeOutTimer : Timer!
     
     func checkField() {
         if timeClockTextField.text?.characters.count == 8 {
@@ -129,12 +129,12 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         }
         
         if timeOutTimer == nil {
-            timeOutTimer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: #selector(TimeClockViewController.deleteButton(_:)), userInfo: nil, repeats: false)
+            timeOutTimer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(TimeClockViewController.deleteButton(_:)), userInfo: nil, repeats: false)
         }
         
     }
     
-    @IBAction func deleteButton(sender: AnyObject) {
+    @IBAction func deleteButton(_ sender: AnyObject) {
         timeClockTextField.text = ""
         pinString = ""
         
@@ -154,25 +154,25 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         let empQuery = PFQuery(className: Employee.parseClassName())
         let pinToCheck = pinString
         empQuery.whereKey("pinNumber", equalTo: pinToCheck!)
-        empQuery.findObjectsInBackgroundWithBlock { (employees :[PFObject]?, error : NSError?) -> Void in
+        empQuery.findObjectsInBackground { (employees :[PFObject]?, error : Error?) -> Void in
             if employees?.count != 0 && employees != nil {
                 let theEmployee = employees?.first
                 print(theEmployee)
                 tcpo.employee = theEmployee as! Employee
-                tcpo.timePunched = NSDate()
+                tcpo.timePunched = Date()
 
-                let midnightToday = NSCalendar.currentCalendar().startOfDayForDate(NSDate())
+                let midnightToday = Calendar.current.startOfDay(for: Date())
                 let inOutQuery = PFQuery(className: TimeClockPunchObj.parseClassName())
                 inOutQuery.whereKey("timePunched", greaterThan: midnightToday)
                 inOutQuery.whereKey("employee", equalTo: theEmployee!)
-                inOutQuery.orderByAscending("timePunched")
-                inOutQuery.findObjectsInBackgroundWithBlock({ (punches: [PFObject]?, error:NSError?) -> Void in
+                inOutQuery.order(byAscending: "timePunched")
+                inOutQuery.findObjectsInBackground(block: { (punches: [PFObject]?, error:Error?) -> Void in
                     if punches != nil && punches?.count != 0 {
                         self.lastPunch = punches!.last! as! TimeClockPunchObj
                     }
-                    if punches?.count == 0 || punches == nil || self.lastPunch?.valueForKey("punchOutIn") as! String == "out" {
+                    if punches?.count == 0 || punches == nil || self.lastPunch?.value(forKey: "punchOutIn") as! String == "out" {
                         tcpo.punchOutIn = "in"
-                        tcpo.saveEventually({ (success : Bool, error:NSError?) -> Void in
+                        tcpo.saveEventually({ (success : Bool, error:Error?) -> Void in
                             if (success) {
                                 self.SetTimeInClockData(theEmployee as! Employee, timePunch: tcpo)
                             } else {
@@ -188,10 +188,10 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
                         self.didTakeLunch(theEmployee as! Employee, tcpo: tcpo)
                     }
                     if error != nil {
-                        let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
-                        let okButton = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+                        let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "Ok", style: .default, handler: nil)
                         alert.addAction(okButton)
-                        self.presentViewController(alert, animated: true, completion: nil)
+                        self.present(alert, animated: true, completion: nil)
                     }
                     self.deleteButton(self)
                 })
@@ -206,13 +206,13 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
                     }
                 }
                 if error != nil {
-                    switch error!.code {
+                    switch error!._code {
                     case 100:
                         let alert = UIAlertController(title: "Error", message: "The Internet connection appears to be offline.\n" + "\n" +
-                            "Please notify managment.", preferredStyle: .Alert)
-                        let okButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                            "Please notify managment.", preferredStyle: .alert)
+                        let okButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
                         alert.addAction(okButton)
-                        self.presentViewController(alert, animated: true, completion: nil)
+                        self.present(alert, animated: true, completion: nil)
                         self.deleteButton(self)
                     default:
                         break
@@ -223,12 +223,12 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         }
     }
     
-    func calculateTime(theEmployee : Employee, thePunch : TimeClockPunchObj) {
+    func calculateTime(_ theEmployee : Employee, thePunch : TimeClockPunchObj) {
         
-        if thePunch.valueForKey("punchOutIn") as! String == "out" {
+        if thePunch.value(forKey: "punchOutIn") as! String == "out" {
       
-            let theLastPunchDate = self.lastPunch?.valueForKey("timePunched") as! NSDate
-            var theMinutes = NSDate().minutesFrom(theLastPunchDate)
+            let theLastPunchDate = self.lastPunch?.value(forKey: "timePunched") as! Date
+            var theMinutes = Date().minutesFrom(theLastPunchDate)
             if theMinutes > 240 {
                 theMinutes = theMinutes - 20
             }
@@ -238,18 +238,18 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
             
             let timeCalc = TimePunchCalcObject()
             timeCalc.employee = theEmployee
-            timeCalc.timePunchedIn = self.lastPunch?.valueForKey("timePunched") as! NSDate
-            timeCalc.timePunchedOut = thePunch.valueForKey("timePunched") as! NSDate
+            timeCalc.timePunchedIn = self.lastPunch?.value(forKey: "timePunched") as! Date
+            timeCalc.timePunchedOut = thePunch.value(forKey: "timePunched") as! Date
             timeCalc.totalTime = Double(hours)!
             self.lastPunch?.relatedTimeCalc = timeCalc
             if Double(hours)! > 0.00 {
-                timeCalc.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) -> Void in
+                timeCalc.saveInBackground(block: { (success : Bool, error : Error?) -> Void in
                     if success == true {
                         self.setTimeOutClockData(theEmployee, timePunch: thePunch, hours: hours)
                         self.lastPunch?.saveInBackground()
                         print(timeCalc)
-                        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
-                        dispatch_after(delayTime, dispatch_get_main_queue()) {
+                        let delayTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                        DispatchQueue.main.asyncAfter(deadline: delayTime) {
                             thePunch.relatedTimeCalc = timeCalc
                             thePunch.saveInBackground()
                         }
@@ -259,7 +259,7 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
                 })
             } else {
                 thePunch.deleteInBackground()
-                let banner = Banner(title: "You were clocked in for less than 1 minute. The punch was recorded, but will not reflect any worked time.", subtitle: nil, image: nil, backgroundColor: UIColor.orangeColor(), didTapBlock: nil)
+                let banner = Banner(title: "You were clocked in for less than 1 minute. The punch was recorded, but will not reflect any worked time.", subtitle: nil, image: nil, backgroundColor: UIColor.orange, didTapBlock: nil)
                 banner.dismissesOnSwipe = false
                 banner.dismissesOnTap = false
                 banner.show(duration: 3.0)
@@ -267,70 +267,70 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         }
     }
     
-    func didTakeLunch(theEmployee : Employee, tcpo : TimeClockPunchObj) {
+    func didTakeLunch(_ theEmployee : Employee, tcpo : TimeClockPunchObj) {
         var result : Bool = false
         
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        let delayTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
             self.calculateTime(theEmployee , thePunch: tcpo)
         }
         
     }
     
     func errorBanner() {
-        let banner = Banner(title: "There was an error recording your punch.", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+        let banner = Banner(title: "There was an error recording your punch.", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         banner.dismissesOnTap = false
         banner.dismissesOnSwipe = false
         banner.show(duration: 5.0)
     }
     
     func incorrectPIN() {
-        let banner = Banner(title: "Unable to authenticate with the entered pin, try again.", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+        let banner = Banner(title: "Unable to authenticate with the entered pin, try again.", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
         banner.dismissesOnTap = false
         banner.dismissesOnSwipe = false
         banner.show(duration: 2.0)
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
-    func displayClockInConfirm(emp : Employee, timePunch: TimeClockPunchObj) {
+    func displayClockInConfirm(_ emp : Employee, timePunch: TimeClockPunchObj) {
 
         let x = self.view.center
         let timeStory = UIStoryboard(name: "TimeClock", bundle: nil)
-        let confirmPopOver = timeStory.instantiateViewControllerWithIdentifier("ConfirmPunchIn")
-        confirmPopOver.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let confirmPopOver = timeStory.instantiateViewController(withIdentifier: "ConfirmPunchIn")
+        confirmPopOver.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover : UIPopoverPresentationController = confirmPopOver.popoverPresentationController!
         popover.delegate = self
         popover.sourceView = self.view
-        popover.sourceRect = CGRectMake(((x.x) - 25), x.y, 0, 0)
+        popover.sourceRect = CGRect(x: ((x.x) - 25), y: x.y, width: 0, height: 0)
         popover.permittedArrowDirections = UIPopoverArrowDirection()
         popover.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
-        self.presentViewController(confirmPopOver, animated: true, completion: nil)
+        self.present(confirmPopOver, animated: true, completion: nil)
         self.audioPlayer.play()
     }
     
-    func displayClockOutConfirm(emp : Employee, timePunch : TimeClockPunchObj) {
+    func displayClockOutConfirm(_ emp : Employee, timePunch : TimeClockPunchObj) {
         let x = self.view.center
         let timeStory = UIStoryboard(name: "TimeClock", bundle: nil)
-        let confirmPopOver = timeStory.instantiateViewControllerWithIdentifier("ConfirmPunchOut")
-        confirmPopOver.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let confirmPopOver = timeStory.instantiateViewController(withIdentifier: "ConfirmPunchOut")
+        confirmPopOver.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover : UIPopoverPresentationController = confirmPopOver.popoverPresentationController!
         popover.delegate = self
         popover.sourceView = self.view
-        popover.sourceRect = CGRectMake(((x.x) - 25), x.y, 0, 0)
+        popover.sourceRect = CGRect(x: ((x.x) - 25), y: x.y, width: 0, height: 0)
         popover.permittedArrowDirections = UIPopoverArrowDirection()
         popover.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
-        self.presentViewController(confirmPopOver, animated: true, completion: nil)
+        self.present(confirmPopOver, animated: true, completion: nil)
         self.audioPlayer.play()
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        let delayTime = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
         self.audioPlayer.play()
         }
     }
     
-    func setTimeOutClockData(emp : Employee, timePunch: TimeClockPunchObj, hours : String) {
+    func setTimeOutClockData(_ emp : Employee, timePunch: TimeClockPunchObj, hours : String) {
         print(timePunch)
         let employeeName = emp.firstName + " " + emp.lastName
         let timeIn = lastPunch!.timePunched
@@ -346,7 +346,7 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
         self.displayClockOutConfirm(emp, timePunch: timePunch)
     }
     
-    func SetTimeInClockData(emp : Employee, timePunch: TimeClockPunchObj) {
+    func SetTimeInClockData(_ emp : Employee, timePunch: TimeClockPunchObj) {
         let employeeName = emp.firstName + " " + emp.lastName
         let thePunch = timePunch.timePunched
         
@@ -358,8 +358,8 @@ class TimeClockViewController: UIViewController, UITextFieldDelegate, UIPopoverP
     }
     
     func tick() {
-        currentTime.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .NoStyle, timeStyle: .ShortStyle)
-        currentDate.text = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .FullStyle, timeStyle: .NoStyle)
+        currentTime.text = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short)
+        currentDate.text = DateFormatter.localizedString(from: Date(), dateStyle: .full, timeStyle: .none)
     }
     
 

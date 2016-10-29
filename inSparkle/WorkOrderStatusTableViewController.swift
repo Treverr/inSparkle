@@ -20,17 +20,17 @@ class WorkOrderStatusTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
         
         let selectedStatus = cell?.textLabel?.text!
         
-        NSNotificationCenter.defaultCenter().postNotificationName("updateStatusLabel", object: selectedStatus)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "updateStatusLabel"), object: selectedStatus)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func dismissButtonAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismissButtonAction(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     

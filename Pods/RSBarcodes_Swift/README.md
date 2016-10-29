@@ -3,11 +3,8 @@
 </p>
 
 RSBarcodes, now Swift.
+[![Build Status](https://travis-ci.org/yeahdongcn/RSBarcodes_Swift.svg?branch=master)](https://travis-ci.org/yeahdongcn/RSBarcodes_Swift) [![codecov.io](https://codecov.io/gh/yeahdongcn/RSBarcodes_Swift/branch/master/graphs/badge.svg)](https://codecov.io/gh/yeahdongcn/RSBarcodes_Swift/branch/master) ![](https://img.shields.io/badge/Swift-3.0-blue.svg?style=flat) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) ![](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)
 ==========
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Total views](https://sourcegraph.com/api/repos/github.com/yeahdongcn/RSBarcodes_Swift/counters/views.png)](https://sourcegraph.com/github.com/yeahdongcn/RSBarcodes_Swift)
-[![Views in the last 24 hours](https://sourcegraph.com/api/repos/github.com/yeahdongcn/RSBarcodes_Swift/counters/views-24h.png)](https://sourcegraph.com/github.com/yeahdongcn/RSBarcodes_Swift)
-
 RSBarcodes allows you to read 1D and 2D barcodes using the metadata scanning capabilities introduced with iOS 7 and generate the same set of barcode images for displaying and sharing. Now implemented in Swift.
 
 * Objective-C version. [RSBarcodes](https://github.com/yeahdongcn/RSBarcodes)
@@ -41,9 +38,9 @@ RSBarcodes allows you to read 1D and 2D barcodes using the metadata scanning cap
 Simply add the following lines to your `Podfile`:
 ```ruby
 # required by Cocoapods 0.36.0.rc.1 for Swift Pods
-use_frameworks! 
+use_frameworks!
 
-pod 'RSBarcodes_Swift', '~> 0.1.9'
+pod 'RSBarcodes_Swift', '~> 3.0.1'
 ```
 
 Need to import RSBarcodes_Swift manually in the ViewController file after creating the file using wizard.
@@ -55,7 +52,7 @@ Need to import RSBarcodes_Swift manually in the ViewController file after creati
 Simply add the following line to your `Cartfile`:
 
 ```ruby
-github "yeahdongcn/RSBarcodes_Swift" >= 0.1.9
+github "yeahdongcn/RSBarcodes_Swift" >= 3.0.1
 ```
 
 Need to import RSBarcodes_Swift manually in the ViewController file after creating the file using wizard.
@@ -73,7 +70,7 @@ Need to import RSBarcodes_Swift manually in the ViewController file after creati
 
 ##Usage
 
-[HOW TO USE GENERATOR](#generator-1) and 
+[HOW TO USE GENERATOR](#generator-1) and
 [HOW TO USE READER](#reader-1)
 
 ###Generators
@@ -104,28 +101,28 @@ The following are steps to get the barcode reader working:
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.focusMarkLayer.strokeColor = UIColor.redColor().CGColor
-        
+
         self.cornersLayer.strokeColor = UIColor.yellowColor().CGColor
-        
+
         self.tapHandler = { point in
-            println(point)
+            print(point)
         }
-        
+
         self.barcodesHandler = { barcodes in
             for barcode in barcodes {
-                println("Barcode found: type=" + barcode.type + " value=" + barcode.stringValue)
+                print("Barcode found: type=" + barcode.type + " value=" + barcode.stringValue)
             }
         }
     }
-    
+
 If you want to ignore some code types, you'd better add the following lines:
 
     let types = NSMutableArray(array: self.output.availableMetadataObjectTypes)
     types.removeObject(AVMetadataObjectTypeQRCode)
     self.output.metadataObjectTypes = NSArray(array: types)
-    
+
 ###Validator
 
 To validate codes:

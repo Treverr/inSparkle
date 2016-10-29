@@ -16,77 +16,77 @@ class Messages : PFObject, PFSubclassing {
     }
     
     var objectID : String {
-        get {return objectForKey("objectId") as! String}
+        get {return object(forKey: "objectId") as! String}
         set { setObject(newValue, forKey: "objectId") }
     }
     
-    var dateTimeMessage : NSDate {
-        get {return objectForKey("dateTimeMessage") as! NSDate}
+    var dateTimeMessage : Date {
+        get {return object(forKey: "dateTimeMessage") as! Date}
         set { setObject(newValue, forKey: "dateTimeMessage") }
     }
     
     var recipient : Employee {
-        get {return objectForKey("recipient") as! Employee}
+        get {return object(forKey: "recipient") as! Employee}
         set { setObject(newValue, forKey: "recipient") }
     }
     
     var status : String {
-        get {return objectForKey("status") as! String}
+        get {return object(forKey: "status") as! String}
         set { setObject(newValue, forKey: "status") }
     }
     
-    var statusTime : NSDate {
-        get {return objectForKey("statusTime") as! NSDate}
+    var statusTime : Date {
+        get {return object(forKey: "statusTime") as! Date}
         set { setObject(newValue, forKey: "statusTime") }
     }
     
     var unread : Bool {
-        get {return objectForKey("unread") as! Bool}
+        get {return object(forKey: "unread") as! Bool}
         set { setObject(newValue, forKey: "unread") }
     }
     
     var messageFromName : String {
-        get {return objectForKey("messageFromName") as! String}
+        get {return object(forKey: "messageFromName") as! String}
         set { setObject(newValue, forKey: "messageFromName") }
     }
     
     var messageFromAddress : String? {
-        get {return objectForKey("messageFromAddress") as? String}
+        get {return object(forKey: "messageFromAddress") as? String}
         set { setObject(newValue!, forKey: "messageFromAddress") }
     }
     
     var messageFromPhone : String {
-        get {return objectForKey("messageFromPhone") as! String}
+        get {return object(forKey: "messageFromPhone") as! String}
         set { setObject(newValue, forKey: "messageFromPhone") }
     }
     
     var theMessage : String {
-        get {return objectForKey("theMessage") as! String}
+        get {return object(forKey: "theMessage") as! String}
         set { setObject(newValue, forKey: "theMessage") }
     }
     
-    var dateEntered : NSDate {
-        get {return objectForKey("dateEntered") as! NSDate}
+    var dateEntered : Date {
+        get {return object(forKey: "dateEntered") as! Date}
         set { setObject(newValue, forKey: "dateEntered") }
     }
     
     var signed : PFUser {
-        get {return objectForKey("signed") as! PFUser}
+        get {return object(forKey: "signed") as! PFUser}
         set { setObject(newValue, forKey: "signed") }
     }
     
     var isUrgent : Bool {
-        get {return objectForKey("isUrgent") as! Bool}
+        get {return object(forKey: "isUrgent") as! Bool}
         set { setObject(newValue, forKey: "isUrgent") }
     }
     
     var altPhone : String? {
-        get {return objectForKey("altPhone") as? String}
+        get {return object(forKey: "altPhone") as? String}
         set { setObject(newValue!, forKey: "altPhone") }
     }
     
     var emailAddy : String? {
-        get {return objectForKey("emailAddy") as? String}
+        get {return object(forKey: "emailAddy") as? String}
         set { setObject(newValue!, forKey: "emailAddy") }
     }
     

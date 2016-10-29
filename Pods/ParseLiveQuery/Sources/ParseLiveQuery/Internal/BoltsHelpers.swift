@@ -10,10 +10,10 @@
 import Bolts
 import BoltsSwift
 
-internal let unknownDomain = "unknown"
+let unknownDomain = "unknown"
 
-internal func objcTask<T where T: AnyObject>(task: Task<T>) -> BFTask {
-    let taskCompletionSource = BFTaskCompletionSource()
+func objcTask<T>(_ task: Task<T>) -> BFTask<T> where T: AnyObject {
+    let taskCompletionSource = BFTaskCompletionSource<T>()
     task.continueWith { task in
         if task.cancelled {
             taskCompletionSource.trySetCancelled()
@@ -27,12 +27,12 @@ internal func objcTask<T where T: AnyObject>(task: Task<T>) -> BFTask {
     return taskCompletionSource.task
 }
 
-internal func swiftTask(task: BFTask) -> Task<AnyObject> {
+func swiftTask(_ task: BFTask<AnyObject>) -> Task<AnyObject> {
     let taskCompletionSource = TaskCompletionSource<AnyObject>()
-    task.continueWithBlock { task in
-        if task.cancelled {
+    task.continue({ task in
+        if task.isCancelled {
             taskCompletionSource.tryCancel()
-        } else if let error = task.error where task.faulted {
+        } else if let error = task.error , task.isFaulted {
             taskCompletionSource.trySet(error: error)
         } else if let result = task.result {
             taskCompletionSource.trySet(result: result)
@@ -40,6 +40,6 @@ internal func swiftTask(task: BFTask) -> Task<AnyObject> {
             fatalError("Unknown task state")
         }
         return nil
-    }
+    })
     return taskCompletionSource.task
 }

@@ -16,9 +16,9 @@ class ConfirmingAppointmentTableViewController: UITableViewController, UIPopover
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ConfirmingAppointmentTableViewController.updateDateLabel(_:)), name: "NotifyConfirmScreenUpdateLabel", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ConfirmingAppointmentTableViewController.updateDateLabel(_:)), name: NSNotification.Name(rawValue: "NotifyConfirmScreenUpdateLabel"), object: nil)
         
-        dateLbel.userInteractionEnabled = true
+        dateLbel.isUserInteractionEnabled = true
         let dateLabelTapGest = UITapGestureRecognizer(target: self, action: #selector(ConfirmingAppointmentTableViewController.displayPopover))
         dateLabelTapGest.numberOfTapsRequired = 1
         dateLbel.addGestureRecognizer(dateLabelTapGest)
@@ -28,52 +28,52 @@ class ConfirmingAppointmentTableViewController: UITableViewController, UIPopover
     func displayPopover() {
         let storyboard = UIStoryboard(name: "Schedule", bundle: nil)
         let x = self.view.center
-        let vc = storyboard.instantiateViewControllerWithIdentifier("confimCalDatePicker")
-        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let vc = storyboard.instantiateViewController(withIdentifier: "confimCalDatePicker")
+        vc.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover : UIPopoverPresentationController = vc.popoverPresentationController!
         popover.delegate = self
         popover.sourceView = self.view
-        popover.sourceRect = CGRectMake((x.x - 25), x.y, 0, 0)
+        popover.sourceRect = CGRect(x: (x.x - 25), y: x.y, width: 0, height: 0)
         popover.permittedArrowDirections = UIPopoverArrowDirection()
         popover.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
     
-    func updateDateLabel(notification : NSNotification) {
+    func updateDateLabel(_ notification : Notification) {
         self.dateLbel.text = notification.object as! String
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var returnString : String = ""
         if section == 0 {
             
             let schObj = AddNewScheduleObjects.scheduledObject!
-            returnString = "Confirming Appointment for \(schObj.customerName.capitalizedString). " + "\nWeek of \(GlobalFunctions().stringFromDateShortStyle(schObj.weekStart))" + " - \(GlobalFunctions().stringFromDateShortStyle(schObj.weekEnd))"
+            returnString = "Confirming Appointment for \(schObj.customerName.capitalized). " + "\nWeek of \(GlobalFunctions().stringFromDateShortStyle(schObj.weekStart))" + " - \(GlobalFunctions().stringFromDateShortStyle(schObj.weekEnd))"
         }
         return returnString
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-       cell.selectionStyle = .None
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+       cell.selectionStyle = .none
     }
     
-    @IBAction func confirmButton(sender: AnyObject) {
+    @IBAction func confirmButton(_ sender: AnyObject) {
         let schObj = AddNewScheduleObjects.scheduledObject!
         schObj.confirmedDate = GlobalFunctions().dateFromMediumDateString(dateLbel.text!)
         schObj.confrimed = true
-        schObj.confrimedBy = PFUser.currentUser()!.username!.capitalizedString
-        schObj.saveInBackgroundWithBlock { (success : Bool, error : NSError?) -> Void in
+        schObj.confrimedBy = PFUser.current()!.username!.capitalized
+        schObj.saveInBackground { (success : Bool, error : Error?) -> Void in
             if (success) {
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
     
-    func popoverPresentationControllerShouldDismissPopover(popoverPresentationController: UIPopoverPresentationController) -> Bool {
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
         let vc = ConfirmCalViewController()
         if (vc.shouldDismiss) {
             return false

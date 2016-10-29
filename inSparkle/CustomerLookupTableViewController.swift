@@ -29,23 +29,23 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text!.isEmpty {
             self.customerDataArray.removeAll()
             self.tableView.reloadData()
         }
     }
     
-    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         
         return true
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.doTheParseSearch(searchBar.text!)
     }
     
-    func doTheParseSearch(searchFor : String) {
+    func doTheParseSearch(_ searchFor : String) {
         self.customerDataArray.removeAll()
         tableView.reloadData()
         var queries = [PFQuery]()
@@ -53,28 +53,28 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         let firstNameQuery = PFQuery(className: CustomerData.parseClassName())
         
         
-        firstNameQuery.whereKey("firstName", containsString: searchBar.text?.uppercaseString)
+        firstNameQuery.whereKey("firstName", contains: searchBar.text?.uppercased())
         queries.append(firstNameQuery)
         
         let lastNameQuery = PFQuery(className: CustomerData.parseClassName())
         
-        lastNameQuery.whereKey("lastName", containsString: searchBar.text?.uppercaseString)
+        lastNameQuery.whereKey("lastName", contains: searchBar.text?.uppercased())
         queries.append(lastNameQuery)
         
         let splitNameQuery1 = PFQuery(className: CustomerData.parseClassName())
         let splitNameQuery2 = PFQuery(className: CustomerData.parseClassName())
-        let splitString = searchBar.text!.componentsSeparatedByString(" ")
+        let splitString = searchBar.text!.components(separatedBy: " ")
         let first = splitString.first
         let last = splitString.last
         
-        splitNameQuery1.whereKey("fullName", containsString: first?.uppercaseString)
-        splitNameQuery2.whereKey("fullName", containsString: last?.uppercaseString)
+        splitNameQuery1.whereKey("fullName", contains: first?.uppercased())
+        splitNameQuery2.whereKey("fullName", contains: last?.uppercased())
         queries.append(splitNameQuery1)
         queries.append(splitNameQuery2)
         
-        let query = PFQuery.orQueryWithSubqueries(queries)
-        query.orderByAscending("lastName")
-        query.findObjectsInBackgroundWithBlock { (customers : [PFObject]?, error : NSError?) -> Void in
+        let query = PFQuery.orQuery(withSubqueries: queries)
+        query.order(byAscending: "lastName")
+        query.findObjectsInBackground { (customers : [PFObject]?, error : Error?) -> Void in
             if error == nil {
                 for cust in customers! {
                     let theCustomer = cust as! CustomerData
@@ -86,86 +86,86 @@ class CustomerLookupTableViewController: UITableViewController, UISearchBarDeleg
         }
         
     }
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 0 && indexPath.row == 0 {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 0 {
             return 40
         } else {
             return 120
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 && indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("addCell")!
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "addCell")!
             return cell
         } else {
             var cell = CustomerLookupTableViewCell()
             
-            cell = tableView.dequeueReusableCellWithIdentifier("customerCell") as! CustomerLookupTableViewCell
-            print(indexPath.row)
-            let customer = customerDataArray[indexPath.row - 1] 
+            cell = tableView.dequeueReusableCell(withIdentifier: "customerCell") as! CustomerLookupTableViewCell
+            print((indexPath as NSIndexPath).row)
+            let customer = customerDataArray[(indexPath as NSIndexPath).row - 1] 
             
-            cell.customerName.text = customer.firstName!.capitalizedString + " " + customer.lastName!.capitalizedString
-            cell.addressStreet.text = customer.addressStreet.capitalizedString
-            cell.addressRest.text = customer.addressCity.capitalizedString + ", " + customer.addressState.uppercaseString + " " + customer.ZIP
+            cell.customerName.text = customer.firstName!.capitalized + " " + customer.lastName!.capitalized
+            cell.addressStreet.text = customer.addressStreet.capitalized
+            cell.addressRest.text = customer.addressCity.capitalized + ", " + customer.addressState.uppercased() + " " + customer.ZIP
             cell.phoneNumber.text = customer.phoneNumber
             if customer.currentBalance > 0 {
                 print(customer.currentBalance)
                 cell.balance.text = "$\(customer.currentBalance)"
             } else {
-                cell.balance.hidden = true
+                cell.balance.isHidden = true
             }
             print(cell.editButton.tag)
-            cell.editButton.tag = ((indexPath.row) - 1)
+            cell.editButton.tag = (((indexPath as NSIndexPath).row) - 1)
             return cell
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return customerDataArray.count + 1
     }
-    @IBAction func editCustomer(sender: UIButton) {
+    @IBAction func editCustomer(_ sender: UIButton) {
         let cell = CustomerLookupTableViewCell()
         let editTag = sender.tag
         let customerObj : CustomerData = customerDataArray[editTag]
         AddEditCustomers.theCustomer = customerObj
-        if searchBar.isFirstResponder() {
+        if searchBar.isFirstResponder {
             searchBar.resignFirstResponder()
         }
     }
     
-    @IBAction func cancelButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let fromVC = CustomerLookupObjects.fromVC
-        if indexPath.section == 0 && indexPath.row == 0 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 0 {
             // Do nothing
         } else {
-            let selectedCx = self.customerDataArray[indexPath.row - 1]
+            let selectedCx = self.customerDataArray[(indexPath as NSIndexPath).row - 1]
             globalSelectedCx = selectedCx
             if fromVC == "AddSchedule" {
                 CustomerLookupObjects.slectedCustomer = selectedCx
                 CustomerLookupObjects.fromVC = nil
-                NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnSchedule", object: nil)
-                self.dismissViewControllerAnimated(true, completion: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateFieldsOnSchedule"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             }
             if fromVC == "NewMessage" {
                 CustomerLookupObjects.slectedCustomer = selectedCx
                 CustomerLookupObjects.fromVC = nil
-                NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnNewMessage", object: nil)
-                self.dismissViewControllerAnimated(true, completion: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateFieldsOnNewMessage"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             }
             if fromVC == "AddEditWorkOrder" {
                 CustomerLookupObjects.slectedCustomer = selectedCx
                 CustomerLookupObjects.fromVC = nil
-                NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnAddEditWorkOrder", object: nil)
-                self.dismissViewControllerAnimated(true, completion: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateFieldsOnAddEditWorkOrder"), object: nil)
+                self.dismiss(animated: true, completion: nil)
             }
             if fromVC == "More" {
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }

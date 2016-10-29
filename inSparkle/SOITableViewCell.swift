@@ -8,22 +8,22 @@
 
 import UIKit
 
-public class SOITableViewCell: UITableViewCell {
+open class SOITableViewCell: UITableViewCell {
 
     @IBOutlet weak var customerNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel?
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet var itemLabel: UILabel!
     
-    public func soiCell(customerName : String, date : NSDate?, location : String, item : String) {
+    open func soiCell(_ customerName : String, date : Date?, location : String, item : String) {
         
-        customerNameLabel.text = customerName.capitalizedString
+        customerNameLabel.text = customerName.capitalized
         
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
         
         if date != nil {
-            dateLabel?.text = formatter.stringFromDate(date!)
+            dateLabel?.text = formatter.string(from: date!)
         } else {
             dateLabel?.text = ""
         }

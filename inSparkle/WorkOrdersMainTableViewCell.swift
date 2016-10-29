@@ -8,19 +8,19 @@
 
 import UIKit
 
-public class WorkOrdersMainTableViewCell: UITableViewCell {
+open class WorkOrdersMainTableViewCell: UITableViewCell {
     
     @IBOutlet var customerNameLabel: UILabel!
     @IBOutlet var dateCreatedLabel: UILabel!
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var iconImageView: UIImageView!
 
-    public func configureCell(customerName : String, dateCreated : NSDate, status : String) {
+    open func configureCell(_ customerName : String, dateCreated : Date, status : String) {
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
-        dateFormatter.timeStyle = .NoStyle
-        let dateString = dateFormatter.stringFromDate(dateCreated)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        let dateString = dateFormatter.string(from: dateCreated)
         
         customerNameLabel.text = customerName
         dateCreatedLabel.text = dateString

@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>BRYXBanner-BRYXBanner.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>BRYXBanner.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -40,11 +35,6 @@
 			<false/>
 		</dict>
 		<key>DropDown.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FXImageView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -114,11 +104,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftGifOrigin.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>SwiftMoment.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -142,6 +127,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>070374204E491EF7E794313D14C6950B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>07289F5FE975C4B249066644344B188D</key>
 		<dict>
 			<key>primary</key>
@@ -162,7 +152,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>32F7B59D95C395E0676CB0B3641D320F</key>
+		<key>30A67191D5D2EA4D43859793D557124B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -177,22 +167,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>45B9E1F3924EF3D429B76262C87F1B61</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5632AE51791C2475C51CEDA5A88F50BF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>678B83F9F372302771E2C2629D28141C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>67D807208F62081EBD013D6EDE715B9B</key>
+		<key>5922F047B4A7957BC568CFBD8FDFD545</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -207,22 +182,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>75AEEEFD7E431013E8E60009251D5797</key>
+		<key>7129FAB61478FA70223DADF4921468CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8698C4558AE758AD92477EC134E714F7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8AA9BAC28EF65AB99B885816838A6D4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -237,6 +202,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9F766ADB76A46AB732825D44C4BAAABF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A21DCB995841FE970CCB507D94F822D9</key>
 		<dict>
 			<key>primary</key>
@@ -247,27 +217,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B272B33F162D6E5C3510BA50ECF2684B</key>
+		<key>A9644328A97F5F04C20565649B2AF38A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C050EB90AEDA8E52289FB70BB490AC44</key>
+		<key>B7C076F2D0346F25B653D33B216E020A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E45C60E65DC7B25E659C0A735F907FC7</key>
+		<key>D6372E9A14F373E0EDB6DE2320A42F8C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>ECCE6379B65D181822926ECBDDCC3099</key>
+		<key>D73FE0D76B535BA776955E5FBE51B12F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F926DEB100A8330346CDB2E7A4FD34B9</key>
+		<key>F4DB0482C249205BCDA119AE938A2FF4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

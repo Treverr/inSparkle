@@ -37,9 +37,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddNewToScheduleTableViewController.updateFields), name: "UpdateFieldsOnSchedule", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddNewToScheduleTableViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddNewToScheduleTableViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddNewToScheduleTableViewController.updateFields), name: NSNotification.Name(rawValue: "UpdateFieldsOnSchedule"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddNewToScheduleTableViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddNewToScheduleTableViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         var isOpening : Bool?
         
@@ -59,8 +59,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         if AddNewScheduleObjects.scheduledObject != nil {
             weeksNeedsSet = false
             let object = AddNewScheduleObjects.scheduledObject!
-            customerNameTextField.text = object.customerName.capitalizedString
-            addressLabel.text = object.customerAddress.capitalizedString
+            customerNameTextField.text = object.customerName.capitalized
+            addressLabel.text = object.customerAddress.capitalized
             phoneNumberTextField.text = object.customerPhone
             weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyle(object.weekStart)
             weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyle(object.weekEnd)
@@ -126,7 +126,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         typeOfWinterCoverPicker.delegate = self
         typeOfWinterCoverPicker.dataSource = self
         
-        weekPicker.userInteractionEnabled = true
+        weekPicker.isUserInteractionEnabled = true
         let weekPickerMakeAllOthersResign : Selector = #selector(AddNewToScheduleTableViewController.weekPickerMakeAllOthersResign)
         let weekPickerTapGesture = UITapGestureRecognizer(target: self, action: weekPickerMakeAllOthersResign)
         weekPickerTapGesture.numberOfTapsRequired = 1
@@ -134,7 +134,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         getDatesFromParse()
     }
     
@@ -148,7 +148,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             "Other (See Notes)"]
     }
     
-    func textFieldDidBeginEditing(textField : UITextField) {
+    func textFieldDidBeginEditing(_ textField : UITextField) {
         
     }
     
@@ -167,11 +167,11 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         let query = PFQuery(className: "ScheduleWeekList")
-        query.whereKey("weekEnd", greaterThan: NSDate())
+        query.whereKey("weekEnd", greaterThan: Date())
         //        query.whereKey("apptsRemain", greaterThan: 0)
         query.whereKey("isOpenWeek", equalTo: isOpeningWeek)
         query.addAscendingOrder("weekStart")
-        query.findObjectsInBackgroundWithBlock { (weeks:[PFObject]?, error: NSError?) -> Void in
+        query.findObjectsInBackground { (weeks:[PFObject]?, error: Error?) -> Void in
             if error == nil {
                 print(weeks!)
                 if weeks == nil || weeks?.count == 0 {
@@ -188,7 +188,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         var whatToReturn : Int? = nil
         
@@ -207,20 +207,20 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         return whatToReturn!
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         var whatToReturn : String? = nil
         
         if pickerView == weekPicker {
-            if weekList.count > 0 && weekPicker.selectedRowInComponent(0) == 0 {
+            if weekList.count > 0 && weekPicker.selectedRow(inComponent: 0) == 0 {
                 if AddNewScheduleObjects.scheduledObject == nil {
                     if weeksNeedsSet {
-                        let weekStart  = weekList[0].valueForKey("weekStart") as! NSDate
+                        let weekStart  = weekList[0].value(forKey: "weekStart") as! Date
                         weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekStart)
-                        weekStartingLabel.textColor = UIColor.blackColor()
-                        let weekEnd = weekList[0].valueForKey("weekEnd") as! NSDate
+                        weekStartingLabel.textColor = UIColor.black
+                        let weekEnd = weekList[0].value(forKey: "weekEnd") as! Date
                         weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekEnd)
-                        weekEndingLabel.textColor = UIColor.blackColor()
+                        weekEndingLabel.textColor = UIColor.black
                         weeksNeedsSet = false
                         let theweeeeek = weekList[0]
                         self.selectedWeekObj = theweeeeek as! WeekList
@@ -234,13 +234,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             }
             
             let weekTitle : String!
-            let weekStartDate : NSDate!
-            let weekEndDate : NSDate!
+            let weekStartDate : Date!
+            let weekEndDate : Date!
             let remaining : Int!
             
-            weekStartDate = weekList[row].valueForKey("weekStart") as! NSDate
-            weekEndDate = weekList[row].valueForKey("weekEnd") as! NSDate
-            remaining = weekList[row].valueForKey("apptsRemain") as? Int
+            weekStartDate = weekList[row].value(forKey: "weekStart") as! Date
+            weekEndDate = weekList[row].value(forKey: "weekEnd") as! Date
+            remaining = weekList[row].value(forKey: "apptsRemain") as? Int
             
             let global = GlobalFunctions()
             let weekStartString = global.stringFromDateShortStyleNoTimezone(weekStartDate)
@@ -253,9 +253,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         if pickerView == typeOfWinterCoverPicker {
-            if typeOfWinterCover.count > 0 && pickerView.selectedRowInComponent(0) == 0 {
-                if pickerView.hidden == false {
-                    typeOfWinterCoverLabel.textColor = UIColor.blackColor()
+            if typeOfWinterCover.count > 0 && pickerView.selectedRow(inComponent: 0) == 0 {
+                if pickerView.isHidden == false {
+                    typeOfWinterCoverLabel.textColor = UIColor.black
                     if AddNewScheduleObjects.scheduledObject == nil {
                         typeOfWinterCoverLabel.text = typeOfWinterCover.first
                     } else {
@@ -269,51 +269,51 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         if pickerView == dateClosingPicker {
-            if pickerView.hidden == false {
+            if pickerView.isHidden == false {
                 whatToReturn = dateWeekRange[row]
                 if AddNewScheduleObjects.scheduledObject?.confirmedDate == nil {
                     selectClosingDate.text = dateWeekRange[0]
                 }
-                selectClosingDate.textColor = UIColor.blackColor()
+                selectClosingDate.textColor = UIColor.black
             }
         }
         
         return whatToReturn!
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     var selectedWeekObj : WeekList?
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         
         if pickerView == weekPicker {
             
-            if !pickerView.isFirstResponder() {
+            if !pickerView.isFirstResponder {
                 customerNameTextField.resignFirstResponder()
                 addressLabel.resignFirstResponder()
                 phoneNumberTextField.resignFirstResponder()
             }
             
-            let weekStartDate : NSDate = weekList[row].valueForKey("weekStart") as! NSDate
-            let weekEndDate : NSDate = weekList[row].valueForKey("weekEnd") as! NSDate
+            let weekStartDate : Date = weekList[row].value(forKey: "weekStart") as! Date
+            let weekEndDate : Date = weekList[row].value(forKey: "weekEnd") as! Date
             
             let weekStartString = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekStartDate)
             let weekEndString = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekEndDate)
             
             weekStartingLabel.text = weekStartString
-            weekStartingLabel.textColor = UIColor.blackColor()
+            weekStartingLabel.textColor = UIColor.black
             weekEndingLabel.text = weekEndString
-            weekEndingLabel.textColor = UIColor.blackColor()
+            weekEndingLabel.textColor = UIColor.black
             let theObj = self.weekList[row] as! WeekList
             selectedWeekObj = theObj
         }
         
         if pickerView == typeOfWinterCoverPicker {
-            if !pickerView.isFirstResponder() {
+            if !pickerView.isFirstResponder {
                 customerNameTextField.resignFirstResponder()
                 addressLabel.resignFirstResponder()
                 phoneNumberTextField.resignFirstResponder()
@@ -326,24 +326,24 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
         if pickerView == dateClosingPicker {
             selectClosingDate.text! = dateWeekRange[row]
-            selectClosingDate!.textColor = UIColor.blackColor()
+            selectClosingDate!.textColor = UIColor.black
         }
         
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.selectionStyle = .None
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == customerNameTextField {
             customerNameTextField.resignFirstResponder()
             return true
         }
         if textField == phoneNumberTextField {
             do {
-                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
-                phoneNumberTextField.text! = phoneNumber.toNational()
+                let phoneNumber = try PhoneNumberKit().parse(phoneNumberTextField.text!)
+                phoneNumberTextField.text! = phoneNumber.numberString
             } catch {
                 print("error")
             }
@@ -351,11 +351,11 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         return false
     }
     
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField == phoneNumberTextField {
             do {
-                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
-                phoneNumberTextField.text! = phoneNumber.toNational()
+                let phoneNumber = try PhoneNumberKit().parse(phoneNumberTextField.text!)
+                phoneNumberTextField.text! = phoneNumber.numberString
             } catch {
                 print("error")
             }
@@ -363,11 +363,11 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         return true
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if theWeekPickerHidden == false || theCoverTypePickerHidden == false {
-            weekPicker.hidden = true
+            weekPicker.isHidden = true
             theWeekPickerHidden = true
-            typeOfWinterCoverPicker.hidden = true
+            typeOfWinterCoverPicker.isHidden = true
             theCoverTypePickerHidden = true
             tableView.beginUpdates()
             tableView.endUpdates()
@@ -376,72 +376,72 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         return true
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
         if theWeekPickerHidden == false || theCoverTypePickerHidden == false {
-            weekPicker.hidden = true
+            weekPicker.isHidden = true
             theWeekPickerHidden = true
-            typeOfWinterCoverPicker.hidden = true
+            typeOfWinterCoverPicker.isHidden = true
             theCoverTypePickerHidden = true
             tableView.beginUpdates()
             tableView.endUpdates()
         }
         
         if textView == notesTextView {
-            let indexPath = NSIndexPath(forRow: 12, inSection: 0)
-            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+            let indexPath = IndexPath(row: 12, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
         
         if textView == locationEssentialItems {
-            let indexPath = NSIndexPath(forRow: 9, inSection: 0)
-            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+            let indexPath = IndexPath(row: 9, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
         
     }
     
     var confirmedWith : UITextField!
     
-    @IBAction func confirmButton(sender : AnyObject) {
+    @IBAction func confirmButton(_ sender : AnyObject) {
         if selectClosingDate.text == "Not Set" {
-            let error = UIAlertController(title: "Select Date", message: "Please set a date before attempting to confirm a POC", preferredStyle: .Alert)
-            let okay = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+            let error = UIAlertController(title: "Select Date", message: "Please set a date before attempting to confirm a POC", preferredStyle: .alert)
+            let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
             error.addAction(okay)
-            self.presentViewController(error, animated: true, completion: nil)
+            self.present(error, animated: true, completion: nil)
         } else {
-            let alert = UIAlertController(title: "Confirmed with?", message: "Please enter the name of the peson you spoke to when confirming", preferredStyle: .Alert)
-            let confirmButton = UIAlertAction(title: "Confirm", style: .Default) { (action) -> Void in
+            let alert = UIAlertController(title: "Confirmed with?", message: "Please enter the name of the peson you spoke to when confirming", preferredStyle: .alert)
+            let confirmButton = UIAlertAction(title: "Confirm", style: .default) { (action) -> Void in
                 print(self.confirmedWith.text!)
                 self.saveButton(sender)
             }
-            let cancelButton = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-            alert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addTextField { (textField) -> Void in
                 textField.placeholder = "name"
-                textField.keyboardType = .Default
+                textField.keyboardType = .default
                 self.confirmedWith = textField
             }
             alert.addAction(confirmButton)
             alert.addAction(cancelButton)
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    func weekManagerOverride(sender : AnyObject?) {
+    func weekManagerOverride(_ sender : AnyObject?) {
         
-        let weekAlert = UIAlertController(title: "Overflow", message: "The week selected has 0 availabe slots, would you like to override this?", preferredStyle: .Alert)
-        let yesButton = UIAlertAction(title: "Yes", style: .Default, handler: { (action) in
+        let weekAlert = UIAlertController(title: "Overflow", message: "The week selected has 0 availabe slots, would you like to override this?", preferredStyle: .alert)
+        let yesButton = UIAlertAction(title: "Yes", style: .default, handler: { (action) in
             self.performSave(sender)
         })
-        let noButton = UIAlertAction(title: "No", style: .Default, handler: { (action) in
+        let noButton = UIAlertAction(title: "No", style: .default, handler: { (action) in
             return
         })
         
         weekAlert.addAction(noButton)
         weekAlert.addAction(yesButton)
-        self.presentViewController(weekAlert, animated: true, completion: nil)
+        self.present(weekAlert, animated: true, completion: nil)
         
     }
     
-    func performSave(sender : AnyObject?) {
-        let customerName = customerNameTextField.text?.capitalizedString
+    func performSave(_ sender : AnyObject?) {
+        let customerName = customerNameTextField.text?.capitalized
         let weekStartingString = weekStartingLabel.text
         let weekEndingString = weekEndingLabel.text
         let coverType = typeOfWinterCoverLabel.text
@@ -450,8 +450,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         let takeTheTrash = takeTrash
         let theNotes = notesTextView
         
-        var weekStartDate : NSDate?
-        var weekEndDate : NSDate?
+        var weekStartDate : Date?
+        var weekEndDate : Date?
         
         if weekStartingString != nil {
             weekStartDate = GlobalFunctions().dateFromShortDateString(weekStartingString!)
@@ -472,12 +472,12 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
         ScheduleObject.registerSubclass()
         if sender as! NSObject == confirmButton {
-            schObj.confirmedWith = self.confirmedWith.text!.capitalizedString
-            schObj.confirmedDate = NSDate()
+            schObj.confirmedWith = self.confirmedWith.text!.capitalized
+            schObj.confirmedDate = Date()
             schObj.confrimed = true
         }
-        schObj.customerName = customerName!.capitalizedString
-        schObj.customerAddress = addressLabel.text!.stringByReplacingOccurrencesOfString("\n", withString: " ").capitalizedString
+        schObj.customerName = customerName!.capitalized
+        schObj.customerAddress = addressLabel.text!.replacingOccurrences(of: "\n", with: " ").capitalized
         schObj.customerPhone = phoneNumberTextField.text!
         schObj.weekStart = weekStartDate!
         schObj.weekEnd = weekEndDate!
@@ -511,16 +511,16 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         schObj.locEssentials = locationOfEss
         schObj.bringChem = bringCloseChem
         schObj.takeTrash = takeTheTrash
-        schObj.notes = theNotes.text!
+        schObj.notes = theNotes?.text!
         if selectClosingDate.text != "Not Set" {
             schObj.confirmedDate = GlobalFunctions().dateFromShortDateString(selectClosingDate.text!)
-            if PFUser.currentUser()?.username != nil {
-                schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
+            if PFUser.current()?.username != nil {
+                schObj.confrimedBy = PFUser.current()?.username!.capitalized
             } else {
                 do {
-                    try PFUser.currentUser()?.fetch()
+                    try PFUser.current()?.fetch()
                     
-                    schObj.confrimedBy = PFUser.currentUser()?.username!.capitalizedString
+                    schObj.confrimedBy = PFUser.current()?.username!.capitalized
                 } catch {
                     self.displayError("Error", message: "There was an error saving with the user infromation, please try again.")
                 }
@@ -528,14 +528,14 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             
         } else {
             schObj.confrimed = false
-            schObj.removeObjectForKey("confrimedBy")
-            schObj.removeObjectForKey("confirmedDate")
+            schObj.remove(forKey: "confrimedBy")
+            schObj.remove(forKey: "confirmedDate")
         }
-        schObj.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+        schObj.saveInBackground(block: { (success : Bool, error : Error?) in
             if success {
                 if sender as! NSObject == self.generatePDFButton {
                     let sb = UIStoryboard(name: "OpeningPDFTemplate", bundle: nil)
-                    let vc = sb.instantiateViewControllerWithIdentifier("PoolOpeningTemplate")
+                    let vc = sb.instantiateViewController(withIdentifier: "PoolOpeningTemplate")
                     POCReportData.POCData = [schObj]
                     let view = vc.view
                     if let overlayView = self.view.viewWithTag(6969) {
@@ -556,19 +556,19 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                     
                     AddNewScheduleObjects.scheduledObject = nil
                     AddNewScheduleObjects.isOpening = nil
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
+                    self.dismiss(animated: true, completion: nil)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "NotifyScheduleTableToRefresh"), object: nil)
                     AddNewScheduleObjects.isOpening = nil
                     if self.selectClosingDate.text != "Not Set" && sender as! NSObject == self.confirmButton {
-                        NSNotificationCenter.defaultCenter().postNotificationName("NotifyAppointmentConfirmed", object: nil)
-                        NSNotificationCenter.defaultCenter().postNotificationName("NotifyScheduleTableToRefresh", object: nil)
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: "NotifyAppointmentConfirmed"), object: nil)
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: "NotifyScheduleTableToRefresh"), object: nil)
                     }
                 }
             }
         })
     }
     
-    @IBAction func saveButton(sender: AnyObject) {
+    @IBAction func saveButton(_ sender: AnyObject) {
         if customerNameTextField.text!.isEmpty || addressLabel.text!.isEmpty || phoneNumberTextField.text!.isEmpty || typeOfWinterCoverLabel.text!.isEmpty ||  locationEssentialItems.text.isEmpty {
             displayError("Missing Field", message: "There is a field missing, check your entries and try again")
         } else {
@@ -580,12 +580,12 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
     }
     
-    @IBAction func cancelButton(sender: AnyObject) {
+    @IBAction func cancelButton(_ sender: AnyObject) {
         AddNewScheduleObjects.scheduledObject = nil
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func segmentControl(selected : Int) -> String {
+    func segmentControl(_ selected : Int) -> String {
         var returnValue : String!
         
         switch selected {
@@ -614,11 +614,11 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     var showUIKeyboard : Bool?
     var hasKeyboard : Bool?
     
-    func keyboardWillShow(notification : NSNotification) {
+    func keyboardWillShow(_ notification : Notification) {
         
-        var userInfo: [NSObject : AnyObject] = notification.userInfo!
-        let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue
-        let keyboard: CGRect = self.view.convertRect(keyboardFrame, fromView: self.view.window)
+        var userInfo: [AnyHashable: Any] = (notification as NSNotification).userInfo!
+        let keyboardFrame: CGRect = userInfo[UIKeyboardFrameEndUserInfoKey] as! CGRect
+        let keyboard: CGRect = self.view.convert(keyboardFrame, from: self.view.window)
         let height: CGFloat = self.view.frame.size.height
         if ((keyboard.origin.y + keyboard.size.height) > height) {
             self.hasKeyboard = true
@@ -626,16 +626,16 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
         let toolbarHeight : CGFloat?
         
-        if !notesTextView.isFirstResponder() {
+        if !notesTextView.isFirstResponder {
             return
         } else {
             
             if isKeyboardShowing == true {
                 return
             } else {
-                if let userInfo = notification.userInfo {
-                    if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-                        if self.hasKeyboard == true && notesTextView.isFirstResponder() {
+                if let userInfo = (notification as NSNotification).userInfo {
+                    if let keyboardSize = (userInfo [UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                        if self.hasKeyboard == true && notesTextView.isFirstResponder {
                             kbHeight = 25
                         } else {
                             kbHeight = keyboardSize.height - 75
@@ -648,7 +648,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
     }
     
-    func keyboardWillHide(notification : NSNotification) {
+    func keyboardWillHide(_ notification : Notification) {
         if (isKeyboardShowing != nil) {
             if isKeyboardShowing! {
                 self.animateTextField(false)
@@ -657,23 +657,23 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
     }
     
-    func animateTextField(up: Bool) {
+    func animateTextField(_ up: Bool) {
         if kbHeight == nil {
             return
         } else {
-            if customerNameTextField.isFirstResponder() {
+            if customerNameTextField.isFirstResponder {
                 
             } else {
                 let movement = (up ? -kbHeight! : kbHeight!)
-                UIView.animateWithDuration(0.3, animations: {
-                    self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
                 })
             }
         }
     }
     
     func weekPickerMakeAllOthersResign() {
-        if !weekPicker.isFirstResponder() {
+        if !weekPicker.isFirstResponder {
             customerNameTextField.resignFirstResponder()
             addressLabel.resignFirstResponder()
             phoneNumberTextField.resignFirstResponder()
@@ -683,40 +683,40 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     var theWeekPickerHidden = true
     var theCoverTypePickerHidden = true
     
-    let weekPickerIndexPath : NSIndexPath = NSIndexPath(forItem: 4, inSection: 0)
-    let typePickerIndexPath : NSIndexPath = NSIndexPath(forItem: 7, inSection: 0)
+    let weekPickerIndexPath : IndexPath = IndexPath(item: 4, section: 0)
+    let typePickerIndexPath : IndexPath = IndexPath(item: 7, section: 0)
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
         if theWeekPickerHidden == false {
-            weekPicker.hidden = true
+            weekPicker.isHidden = true
         } else {
-            weekPicker.hidden = false
+            weekPicker.isHidden = false
         }
         
         if theCoverTypePickerHidden == false {
-            typeOfWinterCoverPicker.hidden = true
+            typeOfWinterCoverPicker.isHidden = true
         } else {
-            typeOfWinterCoverPicker.hidden = false
+            typeOfWinterCoverPicker.isHidden = false
         }
         
-        if indexPath.section  == 0 && indexPath.row == 3 {
+        if (indexPath as NSIndexPath).section  == 0 && (indexPath as NSIndexPath).row == 3 {
             toggleWeekPicker()
         }
         
-        if indexPath.section == 0 && indexPath.row == 5 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 5 {
             toggleWeekPicker()
         }
         
-        if indexPath.section == 0 && indexPath.row == 6 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 6 {
             toggleTypePicker()
         }
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.section == 0 && indexPath.row == 8 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 8 {
             if AddNewScheduleObjects.isOpening == nil {
                 
             } else {
@@ -728,7 +728,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         if AddNewScheduleObjects.scheduledObject == nil {
-            if indexPath.section == 1 && indexPath.row == 1 {
+            if (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row == 1 {
                 return 0
             }
         }
@@ -740,7 +740,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         if theCoverTypePickerHidden == true && indexPath == typePickerIndexPath {
             return 0
         } else {
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
         
         
@@ -768,7 +768,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     var aquadoor : Bool = true
     
-    @IBAction func aquaDoorYesNo(sender: AnyObject) {
+    @IBAction func aquaDoorYesNo(_ sender: AnyObject) {
         if aquadoorYesNo.selectedSegmentIndex == 0 {
             aquadoor = true
         }
@@ -783,7 +783,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet var bringCloseChemYesNo: UISegmentedControl!
     var bringChem : Bool = true
     
-    @IBAction func bringChem(sender: AnyObject) {
+    @IBAction func bringChem(_ sender: AnyObject) {
         
         if bringCloseChemYesNo.selectedSegmentIndex == 0 {
             bringChem = true
@@ -798,7 +798,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet var takeTrashSeg: UISegmentedControl!
     var takeTrash : Bool = true
     
-    @IBAction func takeTrash(sender: AnyObject) {
+    @IBAction func takeTrash(_ sender: AnyObject) {
         
         if takeTrashSeg.selectedSegmentIndex == 0 {
             takeTrash = true
@@ -817,14 +817,14 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     func updateFields() {
         
         let selectedCx = CustomerLookupObjects.slectedCustomer
-        customerNameTextField.text = selectedCx!.firstName!.capitalizedString + " " + selectedCx!.lastName!.capitalizedString
-        addressLabel.text = "\(selectedCx!.addressStreet.capitalizedString) \n \(selectedCx!.addressCity.capitalizedString), \(selectedCx!.addressState.uppercaseString) \(selectedCx!.ZIP)"
+        customerNameTextField.text = selectedCx!.firstName!.capitalized + " " + selectedCx!.lastName!.capitalized
+        addressLabel.text = "\(selectedCx!.addressStreet.capitalized) \n \(selectedCx!.addressCity.capitalized), \(selectedCx!.addressState.uppercased()) \(selectedCx!.ZIP)"
         phoneNumberTextField.text = selectedCx?.phoneNumber
         self.accountNumber = selectedCx?.accountNumber
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectCustomerForSchedule" {
             CustomerLookupObjects.fromVC = "AddSchedule"
         }
@@ -852,7 +852,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     //        }
     //    }
     
-    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         customerNameTextField.resignFirstResponder()
         addressLabel.resignFirstResponder()
         phoneNumberTextField.resignFirstResponder()
@@ -873,9 +873,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             
             repeat {
                 daysToAdd = daysToAdd + 1
-                let comps = NSDateComponents()
-                comps.setValue(daysToAdd, forComponent: NSCalendarUnit.Day)
-                let addDate = NSCalendar.currentCalendar().dateByAddingComponents(comps, toDate: startDate, options: NSCalendarOptions(rawValue: 0))
+                let comps = DateComponents()
+                (comps as NSDateComponents).setValue(daysToAdd, forComponent: NSCalendar.Unit.day)
+                let addDate = (Calendar.current as NSCalendar).date(byAdding: comps, to: startDate, options: NSCalendar.Options(rawValue: 0))
                 dateWeekRange.append(GlobalFunctions().stringFromDateShortStyle(addDate!))
             } while dateWeekRange.count < 7
             
@@ -885,7 +885,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
     }
     
-    @IBAction func generatePDF(sender: AnyObject) {
+    @IBAction func generatePDF(_ sender: AnyObject) {
         self.saveButton(sender)
     }
     

@@ -23,19 +23,19 @@ class SparkleConnectTableViewController: UITableViewController {
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         if EmployeeData.universalEmployee != nil {
             let user = EmployeeData.universalEmployee as Employee
             let emply = EmployeeData.universalEmployee
             self.employeeNameLabel.text = emply!.firstName + " " + emply!.lastName
             var theRole : Role?
-            let roleType = user.objectForKey("roleType") as! Role
+            let roleType = user.object(forKey: "roleType") as! Role
             
-            roleType.fetchInBackgroundWithBlock({ (role : PFObject?, error : NSError?) in
+            roleType.fetchInBackground(block: { (role : PFObject?, error : Error?) in
                 if error == nil {
                     theRole = role as! Role
                     self.roleLabel.text = theRole?.roleName
@@ -43,10 +43,10 @@ class SparkleConnectTableViewController: UITableViewController {
             })
 
         } else {
-            let user = PFUser.currentUser()?.objectForKey("employee") as! Employee
+            let user = PFUser.current()?.object(forKey: "employee") as! Employee
             var emply : Employee?
             var theRole : Role?
-            user.fetchInBackgroundWithBlock { (employee : PFObject?, error : NSError?) in
+            user.fetchInBackground { (employee : PFObject?, error : Error?) in
                 if error == nil {
                     emply = employee as! Employee
                     self.employeeNameLabel.text = emply!.firstName + " " + emply!.lastName
@@ -55,9 +55,9 @@ class SparkleConnectTableViewController: UITableViewController {
             
             print(user)
             
-            let roleType = user.objectForKey("roleType") as! Role
+            let roleType = user.object(forKey: "roleType") as! Role
             
-            roleType.fetchInBackgroundWithBlock({ (role : PFObject?, error : NSError?) in
+            roleType.fetchInBackground(block: { (role : PFObject?, error : Error?) in
                 if error == nil {
                     theRole = role as! Role
                     self.roleLabel.text = theRole?.roleName
@@ -66,11 +66,11 @@ class SparkleConnectTableViewController: UITableViewController {
         }
     }
     
-    @IBAction func closeAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeAction(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func exitTimeAway(segue : UIStoryboardSegue) {
+    @IBAction func exitTimeAway(_ segue : UIStoryboardSegue) {
         
     }
 }

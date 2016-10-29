@@ -23,7 +23,7 @@ class EditTimePunchesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EditTimePunchesTableViewController.refreshTable), name: "NotifyEditTableViewToRefresh", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EditTimePunchesTableViewController.refreshTable), name: NSNotification.Name(rawValue: "NotifyEditTableViewToRefresh"), object: nil)
         
         theEmployee = AddEditEmpTimeCard.employeeEditingObject
         
@@ -33,25 +33,25 @@ class EditTimePunchesTableViewController: UITableViewController {
         
     }
     
-    func getEmployeeExisitngPunches(emp : Employee) {
+    func getEmployeeExisitngPunches(_ emp : Employee) {
         let (returnUI, returnBG) = GlobalFunctions().loadingAnimation(self.loadingUI, loadingBG: self.loadingBackground, view: self.tableView, navController: self.navigationController!)
         loadingUI = returnUI
-        loadingUI.frame = CGRectMake(loadingBackground.frame.width, loadingBackground.frame.height, 100, 100)
+        loadingUI.frame = CGRect(x: loadingBackground.frame.width, y: loadingBackground.frame.height, width: 100, height: 100)
         loadingUI.center = loadingBackground.center
         loadingBackground = returnBG
         
         let query = TimeClockPunchObj.query()
         query?.whereKey("employee", equalTo: emp)
-        query?.orderByDescending("timePunched")
-        query?.findObjectsInBackgroundWithBlock({ (thePunches : [PFObject]?, error : NSError?) -> Void in
+        query?.order(byDescending: "timePunched")
+        query?.findObjectsInBackground(block: { (thePunches : [PFObject]?, error : Error?) -> Void in
             if error == nil {
                 print(thePunches?.count)
                 for punch in thePunches! {
                     print(punch)
-                    if punch.valueForKey("relatedTimeCalc") == nil {
+                    if punch.value(forKey: "relatedTimeCalc") == nil {
                         self.punchArray.append(punch as! TimeClockPunchObj)
                     } else {
-                        let timeObj = punch.objectForKey("relatedTimeCalc") as! TimePunchCalcObject
+                        let timeObj = punch.object(forKey: "relatedTimeCalc") as! TimePunchCalcObject
                         do {
                             try timeObj.fetchIfNeeded()
                         } catch {
@@ -65,7 +65,7 @@ class EditTimePunchesTableViewController: UITableViewController {
                         }
                     }
                     self.tableView.reloadData()
-                    self.loadingUI.stopAnimation()
+                    self.loadingUI.stopAnimating()
                     self.loadingBackground.removeFromSuperview()
                     print(self.punchArray.count)
                 }
@@ -73,13 +73,13 @@ class EditTimePunchesTableViewController: UITableViewController {
         })
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("punchCell")
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "punchCell")
         var theText = ""
-        let thePunchForCell = punchArray[indexPath.row]
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .ShortStyle
+        let thePunchForCell = punchArray[(indexPath as NSIndexPath).row]
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
         
         var punchIn = ""
         var punchOut = ""
@@ -87,26 +87,26 @@ class EditTimePunchesTableViewController: UITableViewController {
         
         let description = thePunchForCell.description
         
-        if !description.containsString("TimePunchTimeCalculations")  {
+        if !description.contains("TimePunchTimeCalculations")  {
             let punchObj = thePunchForCell as! TimeClockPunchObj
-            punchObj.fetchIfNeededInBackgroundWithBlock({ (obj : PFObject?, error : NSError?) -> Void in
+            punchObj.fetchIfNeededInBackground(block: { (obj : PFObject?, error : Error?) -> Void in
                 if error == nil && obj != nil {
                     if punchObj.punchOutIn == "in" {
-                        let punchIn = formatter.stringFromDate(punchObj.timePunched)
+                        let punchIn = formatter.string(from: punchObj.timePunched)
                         theText = "In: \(punchIn) Out : N/A"
                     }
                     if punchObj.punchOutIn == "out" {
-                        let punchOut = formatter.stringFromDate(punchObj.timePunched)
+                        let punchOut = formatter.string(from: punchObj.timePunched)
                         theText = "In: N/A Out: \(punchOut)"
                     }
                 }
             })
         } else {
             let calcObj = thePunchForCell as! TimePunchCalcObject
-            calcObj.fetchIfNeededInBackgroundWithBlock({ (obj : PFObject?, error : NSError?) -> Void in
+            calcObj.fetchIfNeededInBackground(block: { (obj : PFObject?, error : Error?) -> Void in
                 if error == nil && obj != nil {
-                    punchIn = formatter.stringFromDate(calcObj.timePunchedIn)
-                    punchOut = formatter.stringFromDate(calcObj.timePunchedOut)
+                    punchIn = formatter.string(from: calcObj.timePunchedIn)
+                    punchOut = formatter.string(from: calcObj.timePunchedOut)
                     theText = "In: \(punchIn) Out: \(punchOut)"
                 }
             })
@@ -118,17 +118,17 @@ class EditTimePunchesTableViewController: UITableViewController {
         return cell!
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(punchArray.count)
         return punchArray.count
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let thePunchObj = self.punchArray[indexPath.row]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let thePunchObj = self.punchArray[(indexPath as NSIndexPath).row]
         
         let description = thePunchObj.description
         
-        if !description.containsString("TimePunchTimeCalculations") {
+        if !description.contains("TimePunchTimeCalculations") {
             let punchPunch = thePunchObj as! TimeClockPunchObj
             if punchPunch.punchOutIn == "in" {
                 EditPunch.inTime = punchPunch.timePunched
@@ -149,8 +149,8 @@ class EditTimePunchesTableViewController: UITableViewController {
     
     func refreshTable() {
         
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        let delayTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
             self.punchArray.removeAll()
             self.getEmployeeExisitngPunches(self.theEmployee)
             self.tableView.reloadData()

@@ -21,7 +21,7 @@ class EmployeeTimeAwayRequestsTableViewController: UITableViewController {
         
         self.navigationItem.title = "Pending Time Away Requests"
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(EmployeeTimeAwayRequestsTableViewController.returnToMainTimeAway), name: "returnToMainTimeAway", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(EmployeeTimeAwayRequestsTableViewController.returnToMainTimeAway), name: NSNotification.Name(rawValue: "returnToMainTimeAway"), object: nil)
         
     }
     
@@ -34,49 +34,49 @@ class EmployeeTimeAwayRequestsTableViewController: UITableViewController {
         let timeAwayQuery = TimeAwayRequest.query()
         timeAwayQuery?.whereKey("employee", equalTo: self.employee)
         timeAwayQuery?.whereKey("status", equalTo: "Pending")
-        timeAwayQuery?.findObjectsInBackgroundWithBlock({ (req : [PFObject]?, error : NSError?) in
+        timeAwayQuery?.findObjectsInBackground(block: { (req : [PFObject]?, error : Error?) in
             if error == nil {
                 self.requests = req as! [TimeAwayRequest]
                 self.tableView.reloadData()
                 if self.requests.count == 0 {
-                    self.performSegueWithIdentifier("returnToMainTimeAway", sender: nil)
+                    self.performSegue(withIdentifier: "returnToMainTimeAway", sender: nil)
                 }
             }
         })
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.requests.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("dateCell")! 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "dateCell")! 
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
-        dateFormatter.timeStyle = .NoStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
         
         var dates : String = ""
-        let datesArray = self.requests[indexPath.row].datesRequested
+        let datesArray = self.requests[(indexPath as NSIndexPath).row].datesRequested
         var onDate : Int = 0
         
-        for date in datesArray {
-            dates = dates + "\n" + dateFormatter.stringFromDate(datesArray[onDate] as! NSDate)
+        for date in datesArray! {
+            dates = dates + "\n" + dateFormatter.string(from: datesArray?[onDate] as! Date)
             onDate = onDate + 1
         }
         
         print(dates)
         
-        cell.textLabel?.text = dateFormatter.stringFromDate(datesArray.firstObject as! NSDate) + " - " + dateFormatter.stringFromDate(datesArray.lastObject as! NSDate)
-        cell.detailTextLabel?.text = self.requests[indexPath.row].type
+        cell.textLabel?.text = dateFormatter.string(from: datesArray?.firstObject as! Date) + " - " + dateFormatter.string(from: datesArray?.lastObject as! Date)
+        cell.detailTextLabel?.text = self.requests[(indexPath as NSIndexPath).row].type
         
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detail" {
-            let row = self.tableView.indexPathForSelectedRow?.row
-            let vc = segue.destinationViewController as! UINavigationController
+            let row = (self.tableView.indexPathForSelectedRow as NSIndexPath?)?.row
+            let vc = segue.destination as! UINavigationController
             let reqVC = vc.viewControllers.first as! TimeAwayDetailTableViewController
             reqVC.request = self.requests[row!]
             reqVC.employee = self.employee

@@ -20,8 +20,8 @@ class BarcodeScanner: RSCodeReaderViewController {
         
         self.navigationController?.setupNavigationbar(self.navigationController!)
         
-        self.focusMarkLayer.strokeColor = UIColor.redColor().CGColor
-        self.cornersLayer.strokeColor = UIColor.yellowColor().CGColor
+        self.focusMarkLayer.strokeColor = UIColor.red.cgColor
+        self.cornersLayer.strokeColor = UIColor.yellow.cgColor
         
         self.tapHandler = { point in
             
@@ -35,32 +35,32 @@ class BarcodeScanner: RSCodeReaderViewController {
                 
                 let barcodeToPass = barcode.stringValue
                 self.playAlert()
-                NSNotificationCenter.defaultCenter().postNotificationName("barcodeNotification", object: barcodeToPass)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "barcodeNotification"), object: barcodeToPass)
                 
-                dispatch_async(dispatch_get_main_queue(),{ () -> Void in
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                })
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
         
         
     }
     
-    @IBAction func cancelAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelAction(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func toggleFlash() {
-        let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        if (device.hasTorch) {
+        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        if (device?.hasTorch)! {
             do {
-                try device.lockForConfiguration()
-                if (device.torchMode == AVCaptureTorchMode.On) {
-                    device.torchMode = AVCaptureTorchMode.Off
+                try device?.lockForConfiguration()
+                if (device?.torchMode == AVCaptureTorchMode.on) {
+                    device?.torchMode = AVCaptureTorchMode.off
                 } else {
-                    try device.setTorchModeOnWithLevel(1.0)
+                    try device?.setTorchModeOnWithLevel(1.0)
                 }
-                device.unlockForConfiguration()
+                device?.unlockForConfiguration()
             } catch {
                 print(error)
             }
@@ -68,14 +68,14 @@ class BarcodeScanner: RSCodeReaderViewController {
             let alert = UIAlertView()
             alert.title = "No Flash"
             alert.message = "It doesn't look like your device has an LED flash"
-            alert.addButtonWithTitle("Okay")
+            alert.addButton(withTitle: "Okay")
             alert.show()
         }
     }
     
     func checkForTorch() {
-        let theDevice = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
-        if (theDevice.hasTorch) {
+        let theDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        if (theDevice?.hasTorch)! {
             
         } else {
             
@@ -90,13 +90,13 @@ class BarcodeScanner: RSCodeReaderViewController {
         
     }
     
-    func setupAudioPlayerWithFile(file:NSString, type:NSString) -> AVAudioPlayer  {
-        let path = NSBundle.mainBundle().pathForResource(file as String, ofType: type as String)
-        let url = NSURL.fileURLWithPath(path!)
+    func setupAudioPlayerWithFile(_ file:NSString, type:NSString) -> AVAudioPlayer  {
+        let path = Bundle.main.path(forResource: file as String, ofType: type as String)
+        let url = URL(fileURLWithPath: path!)
         var audioPlayer:AVAudioPlayer?
         
         do {
-            try audioPlayer = AVAudioPlayer(contentsOfURL: url)
+            try audioPlayer = AVAudioPlayer(contentsOf: url)
         } catch {
             print("NO AUDIO PLAYER")
         }

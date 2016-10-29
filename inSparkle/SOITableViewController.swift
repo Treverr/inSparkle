@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 
 protocol sendObjectDelegate
 {
-    func sendObject(sendingObject : PFObject)
+    func sendObject(_ sendingObject : PFObject)
 }
 
 class SOITableViewController: UITableViewController, UIPopoverPresentationControllerDelegate {
@@ -26,75 +26,75 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.setContentOffset(CGPointMake(0, searchBar.frame.size.height), animated: false)
+        self.tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
         
         searchBar.delegate = self
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.backgroundColor = Colors.sparkleGreen
-        self.refreshControl!.tintColor = UIColor.whiteColor()
-        self.refreshControl!.addTarget(self, action: #selector(SOITableViewController.refreshInvoked), forControlEvents: .ValueChanged)
+        self.refreshControl!.tintColor = UIColor.white
+        self.refreshControl!.addTarget(self, action: #selector(SOITableViewController.refreshInvoked), for: .valueChanged)
         
         
         self.navigationController?.setupNavigationbar(self.navigationController!)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SOITableViewController.RefreshSOI(_:)), name: "RefreshSOINotification", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SOITableViewController.RefreshSOI(_:)), name: NSNotification.Name(rawValue: "RefreshSOINotification"), object: nil)
         
         self.tableView.allowsMultipleSelectionDuringEditing = true
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         getParseItems()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
     
     func capCustomerName() {
         
         let query = SOIObject.query()
-        query?.findObjectsInBackgroundWithBlock({ (objects : [PFObject]?, error : NSError?) in
+        query?.findObjectsInBackground(block: { (objects : [PFObject]?, error : Error?) in
             for obj in objects! {
                 let soi = obj as! SOIObject
-                soi.customerName = soi.customerName.capitalizedString
+                soi.customerName = soi.customerName.capitalized
             }
-            PFObject.saveAllInBackground(objects)
+            PFObject.saveAll(inBackground: objects)
         })
         
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return objects.count
     }
     
     
-    override func setEditing(editing: Bool, animated: Bool) {
+    override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         if (editing) {
-            let deleteButton = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: #selector(SOITableViewController.deleteParseObject))
+            let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(SOITableViewController.deleteParseObject))
             self.navigationItem.leftBarButtonItem = deleteButton
         } else {
-            let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(SOITableViewController.segToAdd))
+            let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(SOITableViewController.segToAdd))
             self.navigationItem.leftBarButtonItem = addButton
         }
     }
     
     func segToAdd() {
         let sb = UIStoryboard(name: "SOI", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("addToSOINav")
-        self.presentViewController(vc, animated: true, completion: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "addToSOINav")
+        self.present(vc, animated: true, completion: nil)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("soiCell") as! SOITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "soiCell") as! SOITableViewCell
         
-        let object = objects.objectAtIndex(indexPath.row)
+        let object = objects.object(at: (indexPath as NSIndexPath).row)
         
-        let customerName = object.valueForKey("customerName") as! String
-        let date = object.valueForKey("date") as? NSDate
-        let location = object.valueForKey("location") as! String
-        let item = object.valueForKey("category") as! String
+        let customerName = (object as AnyObject).value(forKey: "customerName") as! String
+        let date = (object as AnyObject).value(forKey: "date") as? Date
+        let location = (object as AnyObject).value(forKey: "location") as! String
+        let item = (object as AnyObject).value(forKey: "category") as! String
         
         cell.soiCell(customerName, date: date, location: location, item: item)
         
@@ -102,23 +102,23 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        var objectsToDelete = [NSIndexPath]()
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        var objectsToDelete = [IndexPath]()
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
             if tableView.indexPathsForSelectedRows != nil {
                 objectsToDelete = tableView.indexPathsForSelectedRows!
-                self.objects.removeObjectAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths(objectsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
+                self.objects.removeObject(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: objectsToDelete, with: UITableViewRowAnimation.automatic)
                 deleteParseObject()
             } else {
                 objectsToDelete.append(indexPath)
-                objsToDelete.append(self.objects[indexPath.row] as! PFObject)
-                self.objects.removeObjectAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths(objectsToDelete, withRowAnimation: UITableViewRowAnimation.Automatic)
+                objsToDelete.append(self.objects[(indexPath as NSIndexPath).row] as! PFObject)
+                self.objects.removeObject(at: (indexPath as NSIndexPath).row)
+                tableView.deleteRows(at: objectsToDelete, with: UITableViewRowAnimation.automatic)
                 deleteParseObject()
             }
         }
@@ -132,23 +132,23 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         
         let query = PFQuery(className: "SOI")
         query.whereKey("isActive", equalTo: true)
-        query.orderByDescending("createdAt")
-        query.findObjectsInBackgroundWithBlock { (foundObjects: [PFObject]?, error: NSError?) -> Void in
+        query.order(byDescending: "createdAt")
+        query.findObjectsInBackground { (foundObjects: [PFObject]?, error: Error?) -> Void in
             if error == nil {
                 let foundObjectsCount = foundObjects!.count
                 for object in foundObjects! {
-                    self.objects.addObject(object)
-                    UIView.transitionWithView(self.tableView, duration: 0.35, options: .TransitionCrossDissolve, animations: { () -> Void in
+                    self.objects.add(object)
+                    UIView.transition(with: self.tableView, duration: 0.35, options: .transitionCrossDissolve, animations: { () -> Void in
                         self.tableView.reloadData()
                         }, completion: nil)
                 }
                 self.loadingBackground.removeFromSuperview()
-                self.loadingUI.stopAnimation()
+                self.loadingUI.stopAnimating()
                 if (foundObjectsCount - self.objects.count) == 0 {
-                    if (self.refreshControl!.refreshing) {
+                    if (self.refreshControl!.isRefreshing) {
                         self.refreshControl?.endRefreshing()
                         self.loadingBackground.removeFromSuperview()
-                        self.loadingUI.stopAnimation()
+                        self.loadingUI.stopAnimating()
                     }
                 }
             } else {
@@ -171,7 +171,7 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
         
     }
     
-    func RefreshSOI(notification : NSNotification) {
+    func RefreshSOI(_ notification : Notification) {
         self.objects.removeAllObjects()
         getParseItems()
         self.tableView.reloadData()
@@ -189,7 +189,7 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
     
     func refresh() {
         self.objects.removeAllObjects()
-        UIView.transitionWithView(self.tableView, duration: 0.35, options: .TransitionCrossDissolve, animations: { () -> Void in
+        UIView.transition(with: self.tableView, duration: 0.35, options: .transitionCrossDissolve, animations: { () -> Void in
             self.tableView.reloadData()
             }, completion: nil)
         getParseItems()
@@ -197,44 +197,44 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
     
     var objsToDelete = [PFObject]()
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if tableView.editing == false {
-            let cell = tableView.cellForRowAtIndexPath(indexPath)
-            let object = objects[indexPath.row] as! PFObject
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.isEditing == false {
+            let cell = tableView.cellForRow(at: indexPath)
+            let object = objects[(indexPath as NSIndexPath).row] as! PFObject
             displayInformation(cell!, object: object)
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
-        if tableView.editing == true {
-            let theObject = objects[indexPath.row] as! PFObject
+        if tableView.isEditing == true {
+            let theObject = objects[(indexPath as NSIndexPath).row] as! PFObject
             objsToDelete.append(theObject)
         }
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        if tableView.editing == true {
-            let theObject = objects[indexPath.row] as! PFObject
-            let objIndex = self.objsToDelete.indexOf(theObject)
-            self.objsToDelete.removeAtIndex(objIndex!)
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if tableView.isEditing == true {
+            let theObject = objects[(indexPath as NSIndexPath).row] as! PFObject
+            let objIndex = self.objsToDelete.index(of: theObject)
+            self.objsToDelete.remove(at: objIndex!)
         }
     }
     
     
-    func displayInformation(sender : UITableViewCell, object : PFObject) {
+    func displayInformation(_ sender : UITableViewCell, object : PFObject) {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let detailPopover = storyBoard.instantiateViewControllerWithIdentifier("DetailPopViewControllerNav") as! UINavigationController
-        detailPopover.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let detailPopover = storyBoard.instantiateViewController(withIdentifier: "DetailPopViewControllerNav") as! UINavigationController
+        detailPopover.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover : UIPopoverPresentationController = detailPopover.popoverPresentationController!
         popover.delegate = self
         popover.sourceView = sender
         popover.sourceRect = sender.bounds
         let theSendingObject = object
         DataManager.passingObject = theSendingObject
-        presentViewController(detailPopover, animated: true, completion: nil)
+        present(detailPopover, animated: true, completion: nil)
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
     
@@ -242,34 +242,34 @@ class SOITableViewController: UITableViewController, UIPopoverPresentationContro
 
 extension SOITableViewController : UISearchBarDelegate {
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
         self.objects.removeAllObjects()
         self.getParseItems()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !searchBar.text!.isEmpty {
             self.objects.removeAllObjects()
             let query = PFQuery(className: "SOI")
             query.whereKey("isActive", equalTo: true)
-            query.whereKey("customerName", containsString: searchBar.text!.capitalizedString)
-            query.orderByDescending("createdAt")
-            query.findObjectsInBackgroundWithBlock { (foundObjects: [PFObject]?, error: NSError?) -> Void in
+            query.whereKey("customerName", contains: searchBar.text!.capitalized)
+            query.order(byDescending: "createdAt")
+            query.findObjectsInBackground { (foundObjects: [PFObject]?, error: Error?) -> Void in
                 if error == nil {
                     let foundObjectsCount = foundObjects!.count
                     for object in foundObjects! {
-                        self.objects.addObject(object)
-                        UIView.transitionWithView(self.tableView, duration: 0.35, options: .TransitionCrossDissolve, animations: { () -> Void in
+                        self.objects.add(object)
+                        UIView.transition(with: self.tableView, duration: 0.35, options: .transitionCrossDissolve, animations: { () -> Void in
                             self.tableView.reloadData()
                             }, completion: nil)
                     }
                     if (foundObjectsCount - self.objects.count) == 0 {
-                        if (self.refreshControl!.refreshing) {
+                        if (self.refreshControl!.isRefreshing) {
                             self.refreshControl?.endRefreshing()
                         }
                     }
@@ -280,7 +280,7 @@ extension SOITableViewController : UISearchBarDelegate {
         }
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searchBar.text!.isEmpty {
             self.objects.removeAllObjects()
             self.getParseItems()

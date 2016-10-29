@@ -17,9 +17,9 @@ class EditTimeDatePickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        datePicker.addTarget(self, action: #selector(EditTimeDatePickerViewController.datePickerChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        datePicker.addTarget(self, action: #selector(EditTimeDatePickerViewController.datePickerChanged(_:)), for: UIControlEvents.valueChanged)
         
-        datePicker.date = passedDate
+        datePicker.date = passedDate!
 
     }
 
@@ -28,11 +28,11 @@ class EditTimeDatePickerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func datePickerChanged(datePicker : UIDatePicker) {
+    func datePickerChanged(_ datePicker : UIDatePicker) {
         
        EditTimePunchesDatePicker.dateToPass = datePicker.date
         
-        NSNotificationCenter.defaultCenter().postNotificationName("NotifyDateLabelToUpdate", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "NotifyDateLabelToUpdate"), object: nil)
         
     }
 

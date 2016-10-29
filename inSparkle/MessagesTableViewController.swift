@@ -25,7 +25,7 @@ class MessagesTableViewController: UITableViewController {
     var sentFilter : Bool = false
     
     var liveSubscription : Subscription<Messages>!
-    var currentSubscribed : PFQuery!
+    var currentSubscribed : PFQuery<PFObject>!
     
     var addButton : UIBarButtonItem!
     var refreshButton : UIBarButtonItem!
@@ -39,7 +39,7 @@ class MessagesTableViewController: UITableViewController {
         
         StaticViews.messageTableView = self
         
-        self.tableView.setContentOffset(CGPointMake(0, searchBar.frame.size.height), animated: false)
+        self.tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.size.height), animated: false)
         
         searchBar.delegate = self
         
@@ -59,18 +59,18 @@ class MessagesTableViewController: UITableViewController {
     
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return theMesages.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("messageCell") as! MessagesMainTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell") as! MessagesMainTableViewCell
         if theMesages.count > 0 {
-            let name = theMesages[indexPath.row].messageFromName
-            let date = theMesages[indexPath.row].dateEntered
-            let status = theMesages[indexPath.row].status
-            let statusTime = theMesages[indexPath.row].statusTime
+            let name = theMesages[(indexPath as NSIndexPath).row].messageFromName
+            let date = theMesages[(indexPath as NSIndexPath).row].dateEntered
+            let status = theMesages[(indexPath as NSIndexPath).row].status
+            let statusTime = theMesages[(indexPath as NSIndexPath).row].statusTime
             var unread : Bool!
             if status == "Unread" {
                 unread = true
@@ -85,33 +85,33 @@ class MessagesTableViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         self.navigationItem.rightBarButtonItems = nil
         
-        PFSession.getCurrentSessionInBackgroundWithBlock { (session : PFSession?, error : NSError?) in
+        PFSession.getCurrentSessionInBackground { (session : PFSession?, error : Error?) in
             if error != nil {
                 PFUser.logOut()
-                let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
-                self.presentViewController(viewController, animated: true, completion: nil)
+                let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                self.present(viewController, animated: true, completion: nil)
             } else {
                 let currentUser : PFUser?
                 
-                currentUser = PFUser.currentUser()
-                let currentSession = PFUser.currentUser()?.sessionToken
+                currentUser = PFUser.current()
+                let currentSession = PFUser.current()?.sessionToken
                 
                 if (currentUser == nil) {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    DispatchQueue.main.async(execute: { () -> Void in
                         
-                        let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
-                        self.presentViewController(viewController, animated: true, completion: nil)
+                        let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                        self.present(viewController, animated: true, completion: nil)
                     })
                 }
                 
                 if (currentUser?.sessionToken == nil) {
                     PFUser.logOut()
-                    let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewControllerWithIdentifier("Login")
-                    self.presentViewController(viewController, animated: true, completion: nil)
+                    let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                    self.present(viewController, animated: true, completion: nil)
                 }
                 
                 if currentUser != nil && currentSession != nil {
@@ -132,7 +132,7 @@ class MessagesTableViewController: UITableViewController {
     
     func getEmpMessagesFromParse() {
         
-        if PFUser.currentUser()?.objectForKey("employee") != nil {
+        if PFUser.current()?.object(forKey: "employee") != nil {
             
             do {
                 try StaticEmployees.Tom = Employee.query()?.getObjectWithId("hNxAOyqKVy") as! Employee
@@ -140,34 +140,34 @@ class MessagesTableViewController: UITableViewController {
                 // TODO: Handle Error
             }
             
-            let emp = PFUser.currentUser()?.objectForKey("employee") as! Employee
+            let emp = PFUser.current()?.object(forKey: "employee") as! Employee
             emp.fetchInBackground()
             let selectedSeg = inboxSentSegControl.selectedSegmentIndex
             let query = Messages.query()
-            let employeeObj = PFUser.currentUser()?.objectForKey("employee") as! Employee
-            let currentUser = PFUser.currentUser()
+            let employeeObj = PFUser.current()?.object(forKey: "employee") as! Employee
+            let currentUser = PFUser.current()
             employeeObj.fetchIfNeededInBackground()
             
             switch selectedSeg {
             case 0:
                 query?.whereKey("recipient", equalTo: employeeObj)
-                query?.orderByDescending("dateTimeMessage")
+                query?.order(byDescending: "dateTimeMessage")
                 query?.includeKey("recipient")
                 query?.includeKey("signed")
             case 1:
                 query?.whereKey("signed", equalTo: currentUser!)
-                query?.orderByDescending("dateTimeMessage")
+                query?.order(byDescending: "dateTimeMessage")
                 query?.includeKey("recipient")
                 query?.includeKey("signed")
             case 2:
                 query?.whereKey("recipient", equalTo: StaticEmployees.Tom)
-                query?.orderByDescending("dateTimeMessage")
+                query?.order(byDescending: "dateTimeMessage")
                 query?.includeKey("recipient")
                 query?.includeKey("signed")
             default: break
             }
             
-            query?.findObjectsInBackgroundWithBlock({ (messages : [PFObject]?, error: NSError?) -> Void in
+            query?.findObjectsInBackground(block: { (messages : [PFObject]?, error: Error?) -> Void in
                 if error == nil {
                     for msg in messages! {
                         self.theMesages.append(msg as! Messages)
@@ -180,34 +180,37 @@ class MessagesTableViewController: UITableViewController {
         }
     }
     
-    func subscribeToUpdates(query : PFQuery) {
+    var client : Client!
+    
+    func subscribeToUpdates(_ query : PFQuery<PFObject>) {
         if currentSubscribed != nil {
             Client().unsubscribe(self.currentSubscribed)
         }
         self.currentSubscribed = query
-        self.liveSubscription = query
-            .subscribe()
-            .handle(Event.Created) {_, item in
+        self.liveSubscription = client.subscribe(query as! PFQuery<Messages>)
+            
+        self.liveSubscription
+            .handle(Event.created) {_, item in
                 self.handleCreatedEvent(item)
             }
-            .handle(Event.Updated) {_, item in
+            .handle(Event.updated) {_, item in
                 self.handleUpdatedEvent(item)
             }
-            .handle(Event.Deleted) {_, item in
+            .handle(Event.deleted) {_, item in
                 self.handleDeletedEvent(item)
         }
         self.currentSubscribed = query
         
     }
     
-    func handleCreatedEvent(item : Messages) {
-        self.theMesages.insert(item, atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! MessagesMainTableViewCell
-        let name = theMesages[indexPath.row].messageFromName
-        let date = theMesages[indexPath.row].dateEntered
-        let status = theMesages[indexPath.row].status
-        let statusTime = theMesages[indexPath.row].statusTime
+    func handleCreatedEvent(_ item : Messages) {
+        self.theMesages.insert(item, at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        let cell = self.tableView.cellForRow(at: indexPath) as! MessagesMainTableViewCell
+        let name = theMesages[(indexPath as NSIndexPath).row].messageFromName
+        let date = theMesages[(indexPath as NSIndexPath).row].dateEntered
+        let status = theMesages[(indexPath as NSIndexPath).row].status
+        let statusTime = theMesages[(indexPath as NSIndexPath).row].statusTime
         var unread : Bool!
         if status == "Unread" {
             unread = true
@@ -217,42 +220,42 @@ class MessagesTableViewController: UITableViewController {
         
         cell.configureCell(name, date: date, messageStatus: status, statusTime: statusTime, unread: unread)
         
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
-    func handleUpdatedEvent(item : Messages) {
+    func handleUpdatedEvent(_ item : Messages) {
         
     }
     
-    func handleDeletedEvent(item : Messages) {
+    func handleDeletedEvent(_ item : Messages) {
         
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         print(self.tableView.backgroundView)
         
         if sentFilter {
-            self.searchBar.hidden = false
+            self.searchBar.isHidden = false
             self.tableView.backgroundView = nil
-            self.tableView.separatorStyle = .SingleLine
+            self.tableView.separatorStyle = .singleLine
             return 1
         } else {
-            if PFUser.currentUser() != nil && EmployeeData.universalEmployee != nil {
+            if PFUser.current() != nil && EmployeeData.universalEmployee != nil {
                 if EmployeeData.universalEmployee.messages {
                     return 1
                 } else {
-                    self.searchBar.hidden = true
-                    let messageLabel : UILabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+                    self.searchBar.isHidden = true
+                    let messageLabel : UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
                     messageLabel.text = "Access Denied" + "\n\nYou do not have access to view messages."
-                    messageLabel.textColor = UIColor.blackColor()
+                    messageLabel.textColor = UIColor.black
                     messageLabel.numberOfLines = 0
-                    messageLabel.textAlignment = .Center
+                    messageLabel.textAlignment = .center
                     messageLabel.font = UIFont(name: "HelveticaNeue-Thin", size: 20)
                     messageLabel.sizeToFit()
                     
                     self.tableView.backgroundView = messageLabel
-                    self.tableView.separatorStyle = .None
+                    self.tableView.separatorStyle = .none
                 }
             }
             return 0
@@ -261,20 +264,20 @@ class MessagesTableViewController: UITableViewController {
     }
     
     
-    @IBAction func unwindToMessageList(segue : UIStoryboardSegue) {
+    @IBAction func unwindToMessageList(_ segue : UIStoryboardSegue) {
         
     }
     
-    @IBAction func manualRefresh(sender: AnyObject) {
+    @IBAction func manualRefresh(_ sender: AnyObject) {
         self.refresh()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "ViewEditMessage" {
-            let dest = segue.destinationViewController as! ComposeMessageTableViewController
+            let dest = segue.destination as! ComposeMessageTableViewController
             let indexPath = self.tableView.indexPathForSelectedRow
-            let selectMessage = theMesages[indexPath!.row]
+            let selectMessage = theMesages[(indexPath! as NSIndexPath).row]
             dest.isNewMessage = false
             if inboxSentSegControl.selectedSegmentIndex == 1 {
                 dest.isSent = true
@@ -288,7 +291,7 @@ class MessagesTableViewController: UITableViewController {
     
     var filterKey : PFObject!
     
-    @IBAction func inboxSentSegmentedControl(sender: AnyObject) {
+    @IBAction func inboxSentSegmentedControl(_ sender: AnyObject) {
         let selected = inboxSentSegControl.selectedSegmentIndex
         
         switch selected {
@@ -306,45 +309,45 @@ class MessagesTableViewController: UITableViewController {
 
 extension MessagesTableViewController : UISearchBarDelegate {
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)
     }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(false, animated: true)
         self.theMesages.removeAll()
         self.getEmpMessagesFromParse()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.theMesages.removeAll()
         if !searchBar.text!.isEmpty {
-            if PFUser.currentUser()?.objectForKey("employee") != nil {
-                let emp = PFUser.currentUser()?.objectForKey("employee") as! Employee
+            if PFUser.current()?.object(forKey: "employee") != nil {
+                let emp = PFUser.current()?.object(forKey: "employee") as! Employee
                 if emp.messages {
                     let selectedSeg = inboxSentSegControl.selectedSegmentIndex
                     let query = Messages.query()
-                    let employeeObj = PFUser.currentUser()?.objectForKey("employee") as! Employee
-                    let currentUser = PFUser.currentUser()
+                    let employeeObj = PFUser.current()?.object(forKey: "employee") as! Employee
+                    let currentUser = PFUser.current()
                     employeeObj.fetchIfNeededInBackground()
                     
                     switch selectedSeg {
                     case 0:
                         query?.whereKey("recipient", equalTo: employeeObj)
-                        query?.whereKey("messageFromName", containsString: searchBar.text!)
-                        query?.orderByDescending("dateTimeMessage")
+                        query?.whereKey("messageFromName", contains: searchBar.text!)
+                        query?.order(byDescending: "dateTimeMessage")
                     case 1:
                         query?.whereKey("signed", equalTo: currentUser!)
-                        query?.whereKey("messageFromName", containsString: searchBar.text!)
-                        query?.orderByDescending("dateTimeMessage")
+                        query?.whereKey("messageFromName", contains: searchBar.text!)
+                        query?.order(byDescending: "dateTimeMessage")
                     case 2:
                         query?.whereKey("recipient", equalTo: StaticEmployees.Tom)
-                        query?.whereKey("messageFromName", containsString: searchBar.text!)
-                        query?.orderByDescending("dateTimeMessage")
+                        query?.whereKey("messageFromName", contains: searchBar.text!)
+                        query?.order(byDescending: "dateTimeMessage")
                     default: break
                     }
                     
-                    query?.findObjectsInBackgroundWithBlock({ (messages : [PFObject]?, error: NSError?) -> Void in
+                    query?.findObjectsInBackground(block: { (messages : [PFObject]?, error: Error?) -> Void in
                         if error == nil {
                             for msg in messages! {
                                 self.theMesages.append(msg as! Messages)
@@ -356,7 +359,7 @@ extension MessagesTableViewController : UISearchBarDelegate {
             }
         }}
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if searchBar.text!.isEmpty {
             self.theMesages.removeAll()
             self.getEmpMessagesFromParse()

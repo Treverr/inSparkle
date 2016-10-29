@@ -14,14 +14,14 @@ class ReActivePOCTableViewCell: UITableViewCell {
     @IBOutlet var weekStartEnd: UILabel?
     @IBOutlet var cancelReasonTextView: UITextView?
     
-    func configureCell(customer : String, weekStart : NSDate, weekEnd : NSDate, cancelReason : String?) {
+    func configureCell(_ customer : String, weekStart : Date, weekEnd : Date, cancelReason : String?) {
         cancelReasonTextView!.contentInset = UIEdgeInsetsMake(-4, -4, 0, 0)
         
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .ShortStyle
-        formatter.timeStyle = .NoStyle
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
         
-        let weekString = formatter.stringFromDate(weekStart) + " - " + formatter.stringFromDate(weekEnd)
+        let weekString = formatter.string(from: weekStart) + " - " + formatter.string(from: weekEnd)
         
         self.customerName!.text! = customer
         self.weekStartEnd!.text! = weekString

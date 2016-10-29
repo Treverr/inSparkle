@@ -32,10 +32,10 @@ class TimeAwayRequestTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TimeAwayRequestTableViewController.updateTotalNumberOfHours), name: "UpdateTotalNumberOfHours", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TimeAwayRequestTableViewController.updateTotalNumberOfHours), name: NSNotification.Name(rawValue: "UpdateTotalNumberOfHours"), object: nil)
         
-        submitButton.enabled = false
-        submitButton.tintColor = UIColor.lightGrayColor()
+        submitButton.isEnabled = false
+        submitButton.tintColor = UIColor.lightGray
         
         self.navigationItem.title = "Time Away Request"
         
@@ -45,7 +45,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
         
         self.selectedDate.frame.size.height = CGFloat((SelectedDatesTimeAway.selectedDates.count * 44) + 26)
         
-        self.navigationController?.toolbarHidden = false
+        self.navigationController?.isToolbarHidden = false
         
         let vtQuery = VacationTime.query()
         vtQuery?.whereKey("employee", equalTo: EmployeeData.universalEmployee)
@@ -60,7 +60,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
 
     }
     
-    override func preferredContentSizeDidChangeForChildContentContainer(container: UIContentContainer) {
+    override func preferredContentSizeDidChange(forChildContentContainer container: UIContentContainer) {
         self.selectedDate.frame.size.height = CGFloat((SelectedDatesTimeAway.selectedDates.count * 44) + 26)
         self.tableView.contentSize.height = (self.originalHeight + 198) + self.selectedDate.frame.size.height
         self.tableView.layoutIfNeeded()
@@ -81,13 +81,13 @@ class TimeAwayRequestTableViewController: UITableViewController {
         
     }
     
-    @IBAction func submitTimeAway(sender: AnyObject) {
+    @IBAction func submitTimeAway(_ sender: AnyObject) {
         
-        if unpaidCell.accessoryType != .Checkmark && vacationCell.accessoryType != .Checkmark {
-            let error = UIAlertController(title: "Error", message: "Please select a type of time away.", preferredStyle: .Alert)
-            let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+        if unpaidCell.accessoryType != .checkmark && vacationCell.accessoryType != .checkmark {
+            let error = UIAlertController(title: "Error", message: "Please select a type of time away.", preferredStyle: .alert)
+            let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
             error.addAction(okayButton)
-            self.presentViewController(error, animated: true, completion: nil)
+            self.present(error, animated: true, completion: nil)
             
         } else {
             totalHours = 0.0
@@ -96,7 +96,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
             var timeCardVacation : [String : String] = [:]
             cells.removeFirst()
             
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "M/d/yy"
             
             for cell in cells {
@@ -106,14 +106,14 @@ class TimeAwayRequestTableViewController: UITableViewController {
             }
             
             let timeAway = TimeAwayRequest()
-            SelectedDatesTimeAway.selectedDates.sortInPlace()
-            timeAway.datesRequested = SelectedDatesTimeAway.selectedDates
-            timeAway.requestDate = NSDate()
+            SelectedDatesTimeAway.selectedDates.sort()
+            timeAway.datesRequested = SelectedDatesTimeAway.selectedDates as NSArray!
+            timeAway.requestDate = Date()
             
-            if unpaidCell.accessoryType == .Checkmark {
+            if unpaidCell.accessoryType == .checkmark {
                 timeAway.type = "Unpaid"
             }
-            if vacationCell.accessoryType == .Checkmark {
+            if vacationCell.accessoryType == .checkmark {
                 timeAway.type = "Vacation"
                 
                 print(vacationTime)
@@ -125,17 +125,17 @@ class TimeAwayRequestTableViewController: UITableViewController {
             
             timeAway.status = "Pending"
             timeAway.hours = Double(self.totalHours)
-            timeAway.timeCardDictionary = timeCardVacation
+            timeAway.timeCardDictionary = timeCardVacation as NSDictionary
             timeAway.employee = EmployeeData.universalEmployee
             
             if self.totalHours > employeeVacationHours && timeAway.type == "Vacation" {
-                let notEnoughTime = UIAlertController(title: "Insufficent Vacation Time", message: "You do not have enough vacation time, if you have pending vacation requests please cancel, reduce your request amount, or select 'Unpaid' for this request.", preferredStyle: .Alert)
-                let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                let notEnoughTime = UIAlertController(title: "Insufficent Vacation Time", message: "You do not have enough vacation time, if you have pending vacation requests please cancel, reduce your request amount, or select 'Unpaid' for this request.", preferredStyle: .alert)
+                let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
                 notEnoughTime.addAction(okayButton)
-                self.presentViewController(notEnoughTime, animated: true, completion: nil)
+                self.present(notEnoughTime, animated: true, completion: nil)
                 
             } else {
-                timeAway.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in
+                timeAway.saveInBackground { (success : Bool, error : Error?) in
                     if success {
                         let name = EmployeeData.universalEmployee.firstName + " " + EmployeeData.universalEmployee.lastName
                         var timeAwayType = timeAway.type
@@ -143,41 +143,41 @@ class TimeAwayRequestTableViewController: UITableViewController {
                             timeAwayType = "Unpaid Time Away"
                         }
 //                        CloudCode.SendNotificationOfNewTimeAwayRequest(name, type: timeAwayType, date1: SelectedDatesTimeAway.selectedDates.first!, date2: SelectedDatesTimeAway.selectedDates.last!, totalHours: timeAway.hours)
-                        let alert = UIAlertController(title: "Submitted", message: "Your Time Away Requset has been submitted. Please check with your manager for any questions. You will be notified via email if the request is approved or returned.", preferredStyle: .Alert)
-                        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
-                            self.performSegueWithIdentifier("exitToSparkleConnect", sender: nil)
+                        let alert = UIAlertController(title: "Submitted", message: "Your Time Away Requset has been submitted. Please check with your manager for any questions. You will be notified via email if the request is approved or returned.", preferredStyle: .alert)
+                        let okayButton = UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                            self.performSegue(withIdentifier: "exitToSparkleConnect", sender: nil)
                         })
                         alert.addAction(okayButton)
-                        self.presentViewController(alert, animated: true, completion: nil)
+                        self.present(alert, animated: true, completion: nil)
                     }
                 }
             }
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = self.tableView.cellForRowAtIndexPath(indexPath)
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = self.tableView.cellForRow(at: indexPath)
+        self.tableView.deselectRow(at: indexPath, animated: true)
         print(cell?.accessoryType.rawValue)
         
-        if indexPath.section == 0 {
-            if indexPath.row == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
+            if (indexPath as NSIndexPath).row == 0 {
                 if vacationCell.accessoryType.rawValue == 0 {
-                    vacationCell.accessoryType = .Checkmark
-                    unpaidCell.accessoryType = .None
+                    vacationCell.accessoryType = .checkmark
+                    unpaidCell.accessoryType = .none
                 } else {
-                    vacationCell.accessoryType = .None
-                    unpaidCell.accessoryType = .Checkmark
+                    vacationCell.accessoryType = .none
+                    unpaidCell.accessoryType = .checkmark
                 }
             }
             
-            if indexPath.row == 1 {
+            if (indexPath as NSIndexPath).row == 1 {
                 if unpaidCell.accessoryType.rawValue == 0 {
-                    unpaidCell.accessoryType = .Checkmark
-                    vacationCell.accessoryType = .None
+                    unpaidCell.accessoryType = .checkmark
+                    vacationCell.accessoryType = .none
                 } else {
-                    unpaidCell.accessoryType = .None
-                    vacationCell.accessoryType = .Checkmark
+                    unpaidCell.accessoryType = .none
+                    vacationCell.accessoryType = .checkmark
                 }
             }
         }
@@ -187,9 +187,9 @@ class TimeAwayRequestTableViewController: UITableViewController {
 
 extension TimeAwayRequestTableViewController : CalendarViewDelegate {
     
-    func calendarDidSelectDate(date: Moment) {
+    func calendarDidSelectDate(_ date: Moment) {
         let theDate = date.date
-        if theDate.timeIntervalSinceDate(NSDate()) > 0 {
+        if theDate.timeIntervalSince(Date()) > 0 {
             if !SelectedDatesTimeAway.selectedDates.contains(theDate) {
                 SelectedDatesTimeAway.selectedDates.append(theDate)
                 print(SelectedDatesTimeAway.selectedDates.count)
@@ -197,19 +197,19 @@ extension TimeAwayRequestTableViewController : CalendarViewDelegate {
                 tbc.preferredContentSize.height = CGFloat ( SelectedDatesTimeAway.selectedDates.count * 44 )
                 print(tbc.preferredContentSize.height)
                 tbc.tableView.beginUpdates()
-                let indexPath = NSIndexPath(forRow: SelectedDatesTimeAway.selectedDates.count, inSection: 0)
-                tbc.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+                let indexPath = IndexPath(row: SelectedDatesTimeAway.selectedDates.count, section: 0)
+                tbc.tableView.insertRows(at: [indexPath], with: .automatic)
                 tbc.tableView.endUpdates()
                 
                 self.updateTotalNumberOfHours()
                 
-                self.submitButton.enabled = true
+                self.submitButton.isEnabled = true
                 self.submitButton.tintColor = Colors.defaultTintColor
             }
         }
     }
     
-    func calendarDidPageToDate(date: Moment) {
+    func calendarDidPageToDate(_ date: Moment) {
         switch date.month {
         case 1:
             monthLabel.text = "January"
@@ -242,12 +242,10 @@ extension TimeAwayRequestTableViewController : CalendarViewDelegate {
     
 }
 
-public func <(a: NSDate, b: NSDate) -> Bool {
-    return a.compare(b) == .OrderedAscending
+public func <(a: Date, b: Date) -> Bool {
+    return a.compare(b) == .orderedAscending
 }
 
-public func ==(a: NSDate, b: NSDate) -> Bool {
-    return a.compare(b) == .OrderedSame
+public func ==(a: Date, b: Date) -> Bool {
+    return a.compare(b) == .orderedSame
 }
-
-extension NSDate : Comparable {}

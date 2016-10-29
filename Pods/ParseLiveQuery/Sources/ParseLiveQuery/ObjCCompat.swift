@@ -18,6 +18,7 @@ import BoltsSwift
  */
 @objc(PFLiveQuerySubscriptionHandling)
 public protocol ObjCCompat_SubscriptionHandling {
+
     /**
      Tells the handler that an event has been received from the live query server.
 
@@ -26,7 +27,7 @@ public protocol ObjCCompat_SubscriptionHandling {
      - parameter client: The live query client which received this event.
      */
     @objc(liveQuery:didRecieveEvent:inClient:)
-    optional func didRecieveEvent(query: PFQuery, event: ObjCCompat.Event, client: Client)
+    optional func didRecieveEvent(_ query: PFQuery<PFObject>, event: ObjCCompat.Event, client: Client)
 
     /**
      Tells the handler that an error has been received from the live query server.
@@ -36,7 +37,7 @@ public protocol ObjCCompat_SubscriptionHandling {
      - parameter client: The live query client which received this error.
      */
     @objc(liveQuery:didEncounterError:inClient:)
-    optional func didRecieveError(query: PFQuery, error: NSError, client: Client)
+    optional func didRecieveError(_ query: PFQuery<PFObject>, error: NSError, client: Client)
 
     /**
      Tells the handler that a query has been successfully registered with the server.
@@ -47,7 +48,7 @@ public protocol ObjCCompat_SubscriptionHandling {
      - parameter client: The live query client which subscribed this query.
      */
     @objc(liveQuery:didSubscribeInClient:)
-    optional func didSubscribe(query: PFQuery, client: Client)
+    optional func didSubscribe(_ query: PFQuery<PFObject>, client: Client)
 
     /**
      Tells the handler that a query has been successfully deregistered from the server.
@@ -58,53 +59,49 @@ public protocol ObjCCompat_SubscriptionHandling {
      - parameter client: The live query client which unsubscribed this query.
      */
     @objc(liveQuery:didUnsubscribeInClient:)
-    optional func didUnsubscribe(query: PFQuery, client: Client)
+    optional func didUnsubscribe(_ query: PFQuery<PFObject>, client: Client)
+}
+
+// HACK: Compiler bug causes enums that are declared in structs that are marked as @objc to not actually be emitted by 
+// the compiler (lolwut?). Moving this to global scope fixes the problem, but we can't change the objc name of an enum
+// either, so we pollute the swift namespace here.
+// TODO: Fix this eventually.
+
+/**
+ A type of an update event on a specific object from the live query server.
+ */
+@objc
+public enum PFLiveQueryEventType: Int {
+    /// The object has been updated, and is now included in the query.
+    case entered
+    /// The object has been updated, and is no longer included in the query.
+    case left
+    /// The object has been created, and is a part of the query.
+    case created
+    /// The object has been updated, and is still a part of the query.
+    case updated
+    /// The object has been deleted, and is no longer included in the query.
+    case deleted
 }
 
 /**
  This struct wraps up all of our Objective-C compatibility layer. You should never need to touch this if you're using Swift.
  */
 public struct ObjCCompat {
-    private init() { }
-
-    /**
-     A type of an update event on a specific object from the live query server.
-     */
-    @objc
-    public enum PFLiveQueryEventType: Int {
-        /// The object has been updated, and is now included in the query.
-        case Entered
-        /// The object has been updated, and is no longer included in the query.
-        case Left
-        /// The object has been created, and is a part of the query.
-        case Created
-        /// The object has been updated, and is still a part of the query.
-        case Updated
-        /// The object has been deleted, and is no longer included in the query.
-        case Deleted
-    }
+    fileprivate init() { }
 
     /**
       Represents an update on a specific object from the live query server.
      */
     @objc(PFLiveQueryEvent)
-    public class Event: NSObject {
+    open class Event: NSObject {
         /// Type of the event.
-        public let type: PFLiveQueryEventType
-        /// Object this event is for.
-        public let object: PFObject
+        @objc
+        open let type: PFLiveQueryEventType
 
-        init<T>(event: ParseLiveQuery.Event<T>) {
-            (type, object) = {
-                switch event {
-                case .Entered(let object): return (.Entered, object)
-                case .Left(let object): return (.Left, object)
-                case .Created(let object): return (.Created, object)
-                case .Updated(let object): return (.Updated, object)
-                case .Deleted(let object): return (.Deleted, object)
-                }
-                }()
-        }
+        /// Object this event is for.
+        @objc
+        open let object: PFObject
 
         init(type: PFLiveQueryEventType, object: PFObject) {
             self.type = type
@@ -116,16 +113,16 @@ public struct ObjCCompat {
      A default implementation of the SubscriptionHandling protocol, using blocks for callbacks.
      */
     @objc(PFLiveQuerySubscription)
-    public class Subscription: NSObject {
-        public typealias SubscribeHandler = @convention(block) PFQuery -> Void
-        public typealias ErrorHandler = @convention(block) (PFQuery, NSError) -> Void
-        public typealias EventHandler = @convention(block) (PFQuery, Event) -> Void
-        public typealias ObjectHandler = @convention(block) (PFQuery, PFObject) -> Void
+    open class Subscription: NSObject {
+        public typealias SubscribeHandler = @convention(block) (PFQuery<PFObject>) -> Void
+        public typealias ErrorHandler = @convention(block) (PFQuery<PFObject>, NSError) -> Void
+        public typealias EventHandler = @convention(block) (PFQuery<PFObject>, Event) -> Void
+        public typealias ObjectHandler = @convention(block) (PFQuery<PFObject>, PFObject) -> Void
 
-        internal var subscribeHandlers = [SubscribeHandler]()
-        internal var unsubscribeHandlers = [SubscribeHandler]()
-        internal var errorHandlers = [ErrorHandler]()
-        internal var eventHandlers = [EventHandler]()
+        var subscribeHandlers = [SubscribeHandler]()
+        var unsubscribeHandlers = [SubscribeHandler]()
+        var errorHandlers = [ErrorHandler]()
+        var eventHandlers = [EventHandler]()
 
         /**
          Register a callback for when a client succesfully subscribes to a query.
@@ -134,7 +131,7 @@ public struct ObjCCompat {
 
          - returns: The same subscription, for easy chaining.
          */
-        public func addSubscribeHandler(handler: SubscribeHandler) -> Subscription {
+        open func addSubscribeHandler(_ handler: @escaping SubscribeHandler) -> Subscription {
             subscribeHandlers.append(handler)
             return self
         }
@@ -146,7 +143,7 @@ public struct ObjCCompat {
 
          - returns: The same subscription, for easy chaining.
          */
-        public func addUnsubscribeHandler(handler: SubscribeHandler) -> Subscription {
+        open func addUnsubscribeHandler(_ handler: @escaping SubscribeHandler) -> Subscription {
             unsubscribeHandlers.append(handler)
             return self
         }
@@ -158,7 +155,7 @@ public struct ObjCCompat {
 
          - returns: The same subscription, for easy chaining.
          */
-        public func addErrorHandler(handler: ErrorHandler) -> Subscription {
+        open func addErrorHandler(_ handler: @escaping ErrorHandler) -> Subscription {
             errorHandlers.append(handler)
             return self
         }
@@ -170,7 +167,7 @@ public struct ObjCCompat {
 
          - returns: The same subscription, for easy chaining.
          */
-        public func addEventHandler(handler: EventHandler) -> Subscription {
+        open func addEventHandler(_ handler: @escaping EventHandler) -> Subscription {
             eventHandlers.append(handler)
             return self
         }
@@ -182,8 +179,8 @@ public struct ObjCCompat {
 
          - returns: The same subscription, for easy chaining.
          */
-        public func addEnterHandler(handler: ObjectHandler) -> Subscription {
-            return addEventHandler { $1.type == .Entered ? handler($0, $1.object) : () }
+        open func addEnterHandler(_ handler: @escaping  ObjectHandler) -> Subscription {
+            return addEventHandler { $1.type == .entered ? handler($0, $1.object) : () }
         }
 
         /**
@@ -193,8 +190,8 @@ public struct ObjCCompat {
 
          - returns: The same subscription, for easy chaining.
          */
-        public func addLeaveHandler(handler: ObjectHandler) -> Subscription {
-            return addEventHandler { $1.type == .Left ? handler($0, $1.object) : () }
+        open func addLeaveHandler(_ handler: @escaping ObjectHandler) -> Subscription {
+            return addEventHandler { $1.type == .left ? handler($0, $1.object) : () }
         }
 
         /**
@@ -204,8 +201,8 @@ public struct ObjCCompat {
 
          - returns: The same subscription, for easy chaining.
          */
-        public func addCreateHandler(handler: ObjectHandler) -> Subscription {
-            return addEventHandler { $1.type == .Created ? handler($0, $1.object) : () }
+        open func addCreateHandler(_ handler: @escaping  ObjectHandler) -> Subscription {
+            return addEventHandler { $1.type == .created ? handler($0, $1.object) : () }
         }
 
         /**
@@ -215,8 +212,8 @@ public struct ObjCCompat {
 
          - returns: The same subscription, for easy chaining.
          */
-        public func addUpdateHandler(handler: ObjectHandler) -> Subscription {
-            return addEventHandler { $1.type == .Updated ? handler($0, $1.object) : () }
+        open func addUpdateHandler(_ handler: @escaping  ObjectHandler) -> Subscription {
+            return addEventHandler { $1.type == .updated ? handler($0, $1.object) : () }
         }
 
         /**
@@ -226,54 +223,57 @@ public struct ObjCCompat {
 
          - returns: The same subscription, for easy chaining.
          */
-        public func addDeleteHandler(handler: ObjectHandler) -> Subscription {
-            return addEventHandler { $1.type == .Deleted ? handler($0, $1.object) : () }
+        open func addDeleteHandler(_ handler: @escaping  ObjectHandler) -> Subscription {
+            return addEventHandler { $1.type == .deleted ? handler($0, $1.object) : () }
         }
     }
 }
 
 extension ObjCCompat.Subscription: ObjCCompat_SubscriptionHandling {
-    func didRecieveEvent(query: PFQuery, event: ObjCCompat.Event, client: Client) {
+    public func didRecieveEvent(_ query: PFQuery<PFObject>, event: ObjCCompat.Event, client: Client) {
         eventHandlers.forEach { $0(query, event) }
     }
 
-    func didRecieveError(query: PFQuery, error: NSError, client: Client) {
+    public func didRecieveError(_ query: PFQuery<PFObject>, error: NSError, client: Client) {
         errorHandlers.forEach { $0(query, error) }
     }
 
-    func didSubscribe(query: PFQuery, client: Client) {
+    public func didSubscribe(_ query: PFQuery<PFObject>, client: Client) {
         subscribeHandlers.forEach { $0(query) }
     }
 
-    func didUnsubscribe(query: PFQuery, client: Client) {
+    public func didUnsubscribe(_ query: PFQuery<PFObject>, client: Client) {
         unsubscribeHandlers.forEach { $0(query) }
     }
 }
 
 extension Client {
-    private class HandlerConverter: SubscriptionHandling {
-        typealias PFObjectSubclass = PFObject
+    fileprivate class HandlerConverter: SubscriptionHandling {
+        typealias T = PFObject
 
-        private let handler: ObjCCompat_SubscriptionHandling
+        fileprivate static var associatedObjectKey: Int = 0
+        fileprivate weak var handler: ObjCCompat_SubscriptionHandling?
 
         init(handler: ObjCCompat_SubscriptionHandling) {
             self.handler = handler
+
+            objc_setAssociatedObject(handler, &HandlerConverter.associatedObjectKey, self, .OBJC_ASSOCIATION_RETAIN)
         }
 
-        private func didReceive(event: Event<PFObjectSubclass>, forQuery query: PFQuery, inClient client: Client) {
-            handler.didRecieveEvent?(query, event: ObjCCompat.Event(event: event), client: client)
+        fileprivate func didReceive(_ event: Event<T>, forQuery query: PFQuery<T>, inClient client: Client) {
+            handler?.didRecieveEvent?(query, event: ObjCCompat.Event(event: event), client: client)
         }
 
-        private func didEncounter(error: ErrorType, forQuery query: PFQuery, inClient client: Client) {
-            handler.didRecieveError?(query, error: error as NSError, client: client)
+        fileprivate func didEncounter(_ error: Error, forQuery query: PFQuery<T>, inClient client: Client) {
+            handler?.didRecieveError?(query, error: error as NSError, client: client)
         }
 
-        private func didSubscribe(toQuery query: PFQuery, inClient client: Client) {
-            handler.didSubscribe?(query, client: client)
+        fileprivate func didSubscribe(toQuery query: PFQuery<T>, inClient client: Client) {
+            handler?.didSubscribe?(query, client: client)
         }
 
-        private func didUnsubscribe(fromQuery query: PFQuery, inClient client: Client) {
-            handler.didUnsubscribe?(query, client: client)
+        fileprivate func didUnsubscribe(fromQuery query: PFQuery<T>, inClient client: Client) {
+            handler?.didUnsubscribe?(query, client: client)
         }
     }
 
@@ -287,10 +287,10 @@ extension Client {
      */
     @objc(subscribeToQuery:withHandler:)
     public func _PF_objc_subscribe(
-        query: PFQuery, handler: ObjCCompat_SubscriptionHandling
+        _ query: PFQuery<PFObject>, handler: ObjCCompat_SubscriptionHandling
         ) -> ObjCCompat_SubscriptionHandling {
             let swiftHandler = HandlerConverter(handler: handler)
-            subscribe(query, handler: swiftHandler)
+            _ = subscribe(query, handler: swiftHandler)
             return handler
     }
 
@@ -302,9 +302,9 @@ extension Client {
      - returns: The subscription that has just been registered.
      */
     @objc(subscribeToQuery:)
-    public func _PF_objc_subscribe(query: PFQuery) -> ObjCCompat.Subscription {
+    public func _PF_objc_subscribe(_ query: PFQuery<PFObject>) -> ObjCCompat.Subscription {
         let subscription = ObjCCompat.Subscription()
-        _PF_objc_subscribe(query, handler: subscription)
+        _ = _PF_objc_subscribe(query, handler: subscription)
         return subscription
     }
 
@@ -315,7 +315,7 @@ extension Client {
      - parameter handler: The specific handler to unsubscribe from.
      */
     @objc(unsubscribeFromQuery:withHandler:)
-    public func _PF_objc_unsubscribe(query: PFQuery, subscriptionHandler: ObjCCompat_SubscriptionHandling) {
+    public func _PF_objc_unsubscribe(_ query: PFQuery<PFObject>, subscriptionHandler: ObjCCompat_SubscriptionHandling) {
         unsubscribe { record in
             guard let handler = record.subscriptionHandler as? HandlerConverter
                 else {
@@ -323,6 +323,25 @@ extension Client {
             }
             return record.query == query && handler.handler === subscriptionHandler
         }
+    }
+}
+
+// HACK: Another compiler bug - if you have a required initializer with a generic type, the compiler simply refuses to 
+// emit the entire class altogether. Moving this to an extension for now solves the issue.
+
+extension ObjCCompat.Event {
+    convenience init<T>(event: ParseLiveQuery.Event<T>) {
+        let results: (type: PFLiveQueryEventType, object: PFObject) = {
+            switch event {
+            case .entered(let object): return (.entered, object)
+            case .left(let object):    return (.left, object)
+            case .created(let object): return (.created, object)
+            case .updated(let object): return (.updated, object)
+            case .deleted(let object): return (.deleted, object)
+            }
+        }()
+
+        self.init(type: results.type, object: results.object)
     }
 }
 
@@ -335,6 +354,6 @@ extension PFQuery {
      */
     @objc(subscribe)
     public func _PF_objc_subscribe() -> ObjCCompat.Subscription {
-        return Client.shared._PF_objc_subscribe(self)
+        return Client.shared._PF_objc_subscribe(self as! PFQuery<PFObject>)
     }
 }

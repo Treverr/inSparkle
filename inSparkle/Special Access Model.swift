@@ -16,12 +16,12 @@ class SpecialAccessObj: PFObject, PFSubclassing {
     }
     
     var accessName : String {
-        get { return objectForKey("accessName") as! String  }
+        get { return object(forKey: "accessName") as! String  }
         set { setObject(newValue, forKey: "accessName")     }
     }
     
     var accessDesc : String {
-        get { return objectForKey("accessDesc") as! String  }
+        get { return object(forKey: "accessDesc") as! String  }
         set { setObject(newValue, forKey: "accessDesc")     }
     }
     

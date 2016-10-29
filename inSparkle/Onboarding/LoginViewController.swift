@@ -12,6 +12,17 @@ import AVFoundation
 import Parse
 import BRYXBanner
 import NVActivityIndicatorView
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -38,13 +49,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if NSUserDefaults.standardUserDefaults().objectForKey("lastUsername") != nil {
-            let lastUser = NSUserDefaults.standardUserDefaults().valueForKey("lastUsername") as! String
-            usernameField.text = lastUser.lowercaseString
+        if UserDefaults.standard.object(forKey: "lastUsername") != nil {
+            let lastUser = UserDefaults.standard.value(forKey: "lastUsername") as! String
+            usernameField.text = lastUser.lowercased()
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         usernameField.delegate = self
         passwordField.delegate = self
@@ -53,19 +64,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if UIDevice.currentDevice().name == "Time Clock" {
+    override func viewDidAppear(_ animated: Bool) {
+        if UIDevice.current.name == "Time Clock" {
             let sb = UIStoryboard(name: "TimeClock", bundle: nil)
-            let vc = sb.instantiateViewControllerWithIdentifier("punch")
-            self.presentViewController(vc, animated: true, completion: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "punch")
+            self.present(vc, animated: true, completion: nil)
         }
         
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        let delayTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
             if QRLogInData.username != nil && QRLogInData.password != nil {
                 self.usernameField.text = QRLogInData.username
                 self.passwordField.text = QRLogInData.password
@@ -81,11 +92,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField == usernameField {
             passwordField.becomeFirstResponder()
@@ -98,10 +109,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func sparkleConnectAnimation() {
@@ -109,40 +120,40 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let x = (self.view.frame.size.width / 2)
         let y = (self.view.frame.size.height / 2)
         
-        self.loadingBackground.backgroundColor = UIColor.blackColor()
-        self.loadingBackground.frame = CGRectMake(0, 0, 300, 125)
+        self.loadingBackground.backgroundColor = UIColor.black
+        self.loadingBackground.frame = CGRect(x: 0, y: 0, width: 300, height: 125)
         self.loadingBackground.center = self.view.center
         self.loadingBackground.layer.cornerRadius = 5
         self.loadingBackground.layer.opacity = 0.75
         
-        self.loadingUI = NVActivityIndicatorView(frame: CGRectMake(x, y, 100, 50))
+        self.loadingUI = NVActivityIndicatorView(frame: CGRect(x: x, y: y, width: 100, height: 50))
         self.loadingUI.center = self.loadingBackground.center
         
         label.frame = loadingBackground.frame
-        label.center = CGPointMake(self.loadingBackground.center.x, self.loadingBackground.center.y + 35)
+        label.center = CGPoint(x: self.loadingBackground.center.x, y: self.loadingBackground.center.y + 35)
         label.text = "Authenticating with SparkleConnect...."
-        label.textColor = UIColor.whiteColor()
-        label.textAlignment = .Center
+        label.textColor = UIColor.white
+        label.textAlignment = .center
         
         self.view.addSubview(loadingBackground)
         self.view.addSubview(loadingUI)
         self.view.addSubview(label)
         
-        loadingUI.type = .BallBeat
-        loadingUI.color = UIColor.whiteColor()
-        loadingUI.startAnimation()
+        loadingUI.type = .ballBeat
+        loadingUI.color = UIColor.white
+        loadingUI.startAnimating()
         
     }
     
-    @IBAction func loginAction(sender : AnyObject) {
-        let username = self.usernameField.text?.lowercaseString
+    @IBAction func loginAction(_ sender : AnyObject) {
+        let username = self.usernameField.text?.lowercased()
         let password = self.passwordField.text
         
-        if usernameField.isFirstResponder() {
+        if usernameField.isFirstResponder {
             usernameField.resignFirstResponder()
         }
         
-        if passwordField.isFirstResponder() {
+        if passwordField.isFirstResponder {
             passwordField.resignFirstResponder()
         }
         
@@ -151,26 +162,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } else if password?.characters.count < 1 {
             // Alert
         } else {
-            NSUserDefaults.standardUserDefaults().setValue(username!, forKey: "lastUsername")
-            let spinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0, 0, 150, 150)) as UIActivityIndicatorView
+            UserDefaults.standard.setValue(username!, forKey: "lastUsername")
+            let spinner : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 150, height: 150)) as UIActivityIndicatorView
             spinner.startAnimating()
             
             sparkleConnectAnimation()
             
-            PFUser.logInWithUsernameInBackground(username!, password: password!, block: { (user, error) -> Void in
+            PFUser.logInWithUsername(inBackground: username!, password: password!, block: { (user, error) -> Void in
                 spinner.stopAnimating()
                 
                 if ((user) != nil) {
                     
-                    if (user!.objectForKey("isActive") as! Bool == true ) {
+                    if (user!.object(forKey: "isActive") as! Bool == true ) {
                         
                         self.closeLogin()
                         
                         do {
-                            try PFUser.currentUser()?.fetch()
-                            print(PFUser.currentUser())
-                            if PFUser.currentUser() != nil {
-                                let employee = PFUser.currentUser()?.objectForKey("employee") as? Employee
+                            try PFUser.current()?.fetch()
+                            print(PFUser.current())
+                            if PFUser.current() != nil {
+                                let employee = PFUser.current()?.object(forKey: "employee") as? Employee
                                 do {
                                     try employee!.fetch()
                                 } catch {
@@ -186,11 +197,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     } else {
                         PFUser.logOut()
                         self.passwordField.text = nil
-                        let notActive = Banner(title: "Your account has been disabled, please see your manager.", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+                        let notActive = Banner(title: "Your account has been disabled, please see your manager.", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
                         notActive.dismissesOnTap = true
                         notActive.show(duration: 5.0)
                         
-                        self.loadingUI.stopAnimation()
+                        self.loadingUI.stopAnimating()
                         self.loadingBackground.removeFromSuperview()
                         self.label.removeFromSuperview()
                         
@@ -199,11 +210,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     
                 } else {
-                    let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.redColor(), didTapBlock: nil)
+                    let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
                     banner.dismissesOnTap = true
                     banner.show(duration: 5.0)
                     
-                    self.loadingUI.stopAnimation()
+                    self.loadingUI.stopAnimating()
                     self.loadingBackground.removeFromSuperview()
                     self.label.removeFromSuperview()
                 }
@@ -212,39 +223,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func closeLogin() {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
             self.label.text = "Loading user information..."
-            self.loadingUI.stopAnimation()
+            self.loadingUI.stopAnimating()
             self.loadingBackground.removeFromSuperview()
             self.label.removeFromSuperview()
             
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             
         })
     }
     
-    @IBAction func qrButton(sender: AnyObject) {
+    @IBAction func qrButton(_ sender: AnyObject) {
         
         let storyBoard = UIStoryboard(name: "Onboarding", bundle: nil)
-        let scanVC = storyBoard.instantiateViewControllerWithIdentifier("QRCodeScanner")
+        let scanVC = storyBoard.instantiateViewController(withIdentifier: "QRCodeScanner")
         
-        self.presentViewController(scanVC, animated: true, completion: nil)
+        self.present(scanVC, animated: true, completion: nil)
         
     }
     
     var isShowing : Bool = false
     
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         
-        if usernameField.isFirstResponder() {
+        if usernameField.isFirstResponder {
             
         }
         
         self.isShowing = true
         
-        let info = notification.userInfo
-        let keyboardFrame = info![UIKeyboardFrameEndUserInfoKey]?.CGRectValue()
-        let keyboard = self.view.convertRect(keyboardFrame!, fromView: self.view.window)
+        let info = (notification as NSNotification).userInfo
+        let keyboardFrame = (info![UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        let keyboard = self.view.convert(keyboardFrame!, from: self.view.window)
         let height = self.view.frame.size.height
         let toolbarHeight = height - keyboard.origin.y
         
@@ -256,12 +267,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let contentInset = UIEdgeInsetsMake(0, 0, toolbarHeight, 0)
             scrollView.contentInset = contentInset
             scrollView.scrollIndicatorInsets = contentInset
-            self.performSelector(#selector(LoginViewController.scrollToPasswordRect), withObject: nil, afterDelay: 0.1)
+            self.perform(#selector(LoginViewController.scrollToPasswordRect), with: nil, afterDelay: 0.1)
         } else {
             let contentInset = UIEdgeInsetsMake(0, 0, keyboard.height, 0)
             scrollView.contentInset = contentInset
             scrollView.scrollIndicatorInsets = contentInset
-            self.performSelector(#selector(LoginViewController.scrollToPasswordRect), withObject: nil, afterDelay: 0.1)
+            self.perform(#selector(LoginViewController.scrollToPasswordRect), with: nil, afterDelay: 0.1)
         }
     }
     
@@ -269,9 +280,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.scrollView.scrollRectToVisible(self.passwordField.frame, animated: true)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    func keyboardWillHide(_ notification: Notification) {
         self.isShowing = false
-        let contentinset = UIEdgeInsetsZero
+        let contentinset = UIEdgeInsets.zero
         scrollView.contentInset = contentinset
         scrollView.scrollIndicatorInsets = contentinset
     }

@@ -16,22 +16,22 @@ class MessageNotes: PFObject, PFSubclassing {
     }
     
     var objectID : String {
-        get {return objectForKey("objectId") as! String}
+        get {return object(forKey: "objectId") as! String}
         set { setObject(newValue, forKey: "objectId") }
     }
     
     var pointerMessage : Messages {
-        get {return objectForKey("pointerMessage") as! Messages}
+        get {return object(forKey: "pointerMessage") as! Messages}
         set { setObject(newValue, forKey: "pointerMessage") }
     }
     
     var createdBy : Employee? {
-        get {return objectForKey("createdBy") as? Employee}
+        get {return object(forKey: "createdBy") as? Employee}
         set { setObject(newValue!, forKey: "createdBy") }
     }
 
     var note : String {
-        get {return objectForKey("note") as! String}
+        get {return object(forKey: "note") as! String}
         set { setObject(newValue, forKey: "note") }
     }
     

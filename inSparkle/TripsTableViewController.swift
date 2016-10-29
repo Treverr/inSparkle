@@ -13,7 +13,7 @@ class TripsTableViewController: UITableViewController {
     
     var workOrder : WorkOrders!
     var trips = [WorkServiceOrderTimeLog]()
-    var totalTime : NSTimeInterval = 0
+    var totalTime : TimeInterval = 0
     var totalHours : Double = 0.0
     var totalMin : Double = 0.0
     
@@ -25,17 +25,17 @@ class TripsTableViewController: UITableViewController {
 
     }
     
-    override func viewWillAppear(animated: Bool) {
-        let object = self.workOrder as! PFObject
+    override func viewWillAppear(_ animated: Bool) {
+        let object = self.workOrder as PFObject
         let timeQuery = WorkServiceOrderTimeLog.query()
         print(object.objectId!)
         timeQuery?.whereKey("relatedWorkOrderObjectID", equalTo: object.objectId!)
-        timeQuery?.orderByAscending("timeStamp")
-        timeQuery?.findObjectsInBackgroundWithBlock({ (results : [PFObject]?, error : NSError?) in
+        timeQuery?.order(byAscending: "timeStamp")
+        timeQuery?.findObjectsInBackground(block: { (results : [PFObject]?, error : Error?) in
             if error == nil {
                 self.trips = results as! [WorkServiceOrderTimeLog]
-                let sections = NSIndexSet(index: 0)
-                self.tableView.reloadSections(sections, withRowAnimation: .Bottom)
+                let sections = IndexSet(integer: 0)
+                self.tableView.reloadSections(sections, with: .bottom)
             }
         })
     }
@@ -47,7 +47,7 @@ class TripsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         print(Double(self.trips.count) / 2, self.trips.count)
         let roundNumber = round(Double(self.trips.count) / 2)
@@ -55,18 +55,18 @@ class TripsTableViewController: UITableViewController {
         return Int(roundNumber)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("tripCell")! as UITableViewCell
-        let currentRow = self.trips[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tripCell")! as UITableViewCell
+        let currentRow = self.trips[(indexPath as NSIndexPath).row]
         
-        print(indexPath.row)
+        print((indexPath as NSIndexPath).row)
             
             if currentRow.enter == true {
                 
-                if indexPath.row + 1 <= self.trips.count {
+                if (indexPath as NSIndexPath).row + 1 <= self.trips.count {
                     
-                    if self.trips[indexPath.row + 1].enter == false {
-                        let diff = (self.trips[indexPath.row + 1].timeStamp).timeIntervalSinceDate(currentRow.timeStamp)
+                    if self.trips[(indexPath as NSIndexPath).row + 1].enter == false {
+                        let diff = (self.trips[(indexPath as NSIndexPath).row + 1].timeStamp).timeIntervalSince(currentRow.timeStamp as Date)
                         totalTime += diff
                         let hours = (diff / 60) / 60
                         self.totalHours += hours
@@ -78,16 +78,16 @@ class TripsTableViewController: UITableViewController {
                         }
                         self.totalMin += min
                         
-                        let dateFormatter = NSDateFormatter()
-                        dateFormatter.dateStyle = .ShortStyle
-                        dateFormatter.timeStyle = .MediumStyle
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateStyle = .short
+                        dateFormatter.timeStyle = .medium
                         
                         let start = currentRow.timeStamp
-                        let end = self.trips[indexPath.row + 1].timeStamp
-                        self.trips.removeAtIndex(indexPath.row + 1)
+                        let end = self.trips[(indexPath as NSIndexPath).row + 1].timeStamp
+                        self.trips.remove(at: (indexPath as NSIndexPath).row + 1)
                         
-                        let startString = dateFormatter.stringFromDate(start)
-                        let endString = dateFormatter.stringFromDate(end)
+                        let startString = dateFormatter.string(from: start as Date)
+                        let endString = dateFormatter.string(from: end as Date)
                         
                         cell.textLabel!.text = startString + " - " + endString
                         cell.detailTextLabel!.text = String(Int(hours)) + "h " + String(Int(min)) + "m"
@@ -95,20 +95,20 @@ class TripsTableViewController: UITableViewController {
                     }
                 } else {
                     let start = currentRow.timeStamp
-                    let dateFormatter = NSDateFormatter()
-                    dateFormatter.dateStyle = .ShortStyle
-                    dateFormatter.timeStyle = .MediumStyle
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateStyle = .short
+                    dateFormatter.timeStyle = .medium
                     
-                    cell.textLabel?.text = dateFormatter.stringFromDate(start) + " - " + "No Time Out Recorded"
+                    cell.textLabel?.text = dateFormatter.string(from: start as Date) + " - " + "No Time Out Recorded"
                     cell.detailTextLabel?.text = "N/A"
                 }
             } else {
                 let end = currentRow.timeStamp
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateStyle = .ShortStyle
-                dateFormatter.timeStyle = .MediumStyle
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .short
+                dateFormatter.timeStyle = .medium
                 
-               cell.textLabel?.text = "No Time In Recorded" + " - " + dateFormatter.stringFromDate(end)
+               cell.textLabel?.text = "No Time In Recorded" + " - " + dateFormatter.string(from: end as Date)
                 cell.detailTextLabel?.text = "N/A"
             }
         
@@ -117,8 +117,8 @@ class TripsTableViewController: UITableViewController {
         return cell
     }
 
-    @IBAction func closeButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     

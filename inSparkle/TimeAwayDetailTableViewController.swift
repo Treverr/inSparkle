@@ -22,7 +22,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
     var employee = Employee()
     var empVaca = VacationTime()
     
-     var datesArray : [NSDate] = []
+     var datesArray : [Date] = []
     
     
     override func viewDidLoad() {
@@ -34,19 +34,19 @@ class TimeAwayDetailTableViewController: UITableViewController {
         
         self.navigationItem.title = "Pending " + self.request.type + " Request"
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
-        dateFormatter.timeStyle = .NoStyle
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
         
         employeeName.text! = self.employee.firstName + " " + self.employee.lastName
-        dateRequested.text = dateFormatter.stringFromDate(self.request.requestDate)
+        dateRequested.text = dateFormatter.string(from: self.request.requestDate as Date)
         
         var dates : String = ""
-        self.datesArray = self.request.datesRequested as! [NSDate]
+        self.datesArray = self.request.datesRequested as! [Date]
         var onDate : Int = 0
         
         for date in datesArray {
-            dates = dates + "\n" + dateFormatter.stringFromDate(datesArray[onDate])
+            dates = dates + "\n" + dateFormatter.string(from: datesArray[onDate])
             onDate = onDate + 1
         }
         
@@ -54,7 +54,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
         
         let vacaTimeQuery = VacationTime.query()
         vacaTimeQuery?.whereKey("employee", equalTo: self.employee)
-        vacaTimeQuery?.getFirstObjectInBackgroundWithBlock({ (employeeVaca : PFObject?, error : NSError?) in
+        vacaTimeQuery?.getFirstObjectInBackground(block: { (employeeVaca : PFObject?, error : Error?) in
             if error == nil {
                 self.empVaca = employeeVaca as! VacationTime
                 self.hoursAlloted.text! = String(self.empVaca.issuedHours)
@@ -63,13 +63,13 @@ class TimeAwayDetailTableViewController: UITableViewController {
             }
         })
     }
-    @IBAction func closeButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func closeButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func approveAction(sender: AnyObject) {
+    @IBAction func approveAction(_ sender: AnyObject) {
         self.request.status = "Approved"
-        self.request.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in
+        self.request.saveInBackground { (success : Bool, error : Error?) in
             if success {
                 
             }
@@ -89,14 +89,14 @@ class TimeAwayDetailTableViewController: UITableViewController {
                 self.empVaca.saveInBackground()
                 
                 var allDates = self.request.timeCardDictionary.allKeys as! [String]
-                allDates.sortInPlace()
-                let dateFormatter = NSDateFormatter()
+                allDates.sort()
+                let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "M/d/yy"
                 
                 for date in allDates {
                     let vacaTime = VacationTimePunch()
                     vacaTime.employee = self.employee
-                    vacaTime.vacationDate = dateFormatter.dateFromString(date)
+                    vacaTime.vacationDate = dateFormatter.date(from: date)
                     vacaTime.vacationHours = (self.request.timeCardDictionary[date] as! NSString).doubleValue
                     vacaTime.relationTimeAwayRequest = self.request
                     vacaTime.saveInBackground()
@@ -105,21 +105,21 @@ class TimeAwayDetailTableViewController: UITableViewController {
             }
             
             if self.request.type == "Unpaid" {
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateStyle = .ShortStyle
-                dateFormatter.timeStyle = .NoStyle
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .short
+                dateFormatter.timeStyle = .none
                 
                 var dates : String? = nil
-                self.datesArray = self.request.datesRequested as! [NSDate]
-                self.datesArray.sortInPlace()
+                self.datesArray = self.request.datesRequested as! [Date]
+                self.datesArray.sort()
                 var onDate : Int = 0
                 
                 for date in datesArray {
                     if dates == nil {
-                        dates = dateFormatter.stringFromDate(date)
+                        dates = dateFormatter.string(from: date)
                         onDate = onDate + 1
                     } else {
-                        dates = dates! + ", " + dateFormatter.stringFromDate(datesArray[onDate])
+                        dates = dates! + ", " + dateFormatter.string(from: datesArray[onDate])
                         onDate = onDate + 1
                     }
                 }
@@ -130,14 +130,14 @@ class TimeAwayDetailTableViewController: UITableViewController {
             
         }
         
-        self.dismissViewControllerAnimated(true) { 
-            NSNotificationCenter.defaultCenter().postNotificationName("returnToMainTimeAway", object: nil)
+        self.dismiss(animated: true) { 
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "returnToMainTimeAway"), object: nil)
         }
     }
     
-    @IBAction func declineAction(sender: AnyObject) {
+    @IBAction func declineAction(_ sender: AnyObject) {
         self.request.status = "Declined"
-        self.request.saveInBackgroundWithBlock { (success : Bool, error : NSError?) in
+        self.request.saveInBackground { (success : Bool, error : Error?) in
             if success {
                 
             }
@@ -158,8 +158,8 @@ class TimeAwayDetailTableViewController: UITableViewController {
         }
         
         
-        self.dismissViewControllerAnimated(true) {
-            NSNotificationCenter.defaultCenter().postNotificationName("returnToMainTimeAway", object: nil)
+        self.dismiss(animated: true) {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "returnToMainTimeAway"), object: nil)
         }
     }
 

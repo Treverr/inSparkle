@@ -48,19 +48,19 @@ class EmployeeDataTableViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         let indexPath = self.tableView.indexPathForSelectedRow
         if indexPath != nil {
-            self.tableView.deselectRowAtIndexPath(indexPath!, animated: true)
+            self.tableView.deselectRow(at: indexPath!, animated: true)
         }
         if employeeObject != nil  {
             firstName.text = employeeObject.firstName
             lastName.text = employeeObject.lastName
-            if employeeObject.objectForKey("roleType") != nil {
-                employeeObject.objectForKey("roleType")!.fetchInBackgroundWithBlock({ (daRole : PFObject?, error : NSError?) in
+            if employeeObject.object(forKey: "roleType") != nil {
+                (employeeObject.object(forKey: "roleType")! as AnyObject).fetchInBackground(block: { (daRole : PFObject?, error : Error?) in
                     if error == nil {
-                        self.roleLabel.text = daRole!.objectForKey("roleName") as! String
-                        self.roleLabel.textColor = UIColor.blackColor()
+                        self.roleLabel.text = daRole!.object(forKey: "roleName") as! String
+                        self.roleLabel.textColor = UIColor.black
                     }
                 })
             }
@@ -69,16 +69,16 @@ class EmployeeDataTableViewController: UITableViewController {
                 let userID = employeeObject.userPoint!.objectId!
                 let query = PFUser.query()
                 query?.whereKey("objectId", equalTo: userID)
-                query?.getFirstObjectInBackgroundWithBlock({ (userData : PFObject?, error : NSError?) in
+                query?.getFirstObjectInBackground(block: { (userData : PFObject?, error : Error?) in
                     let userInfo = userData as! PFUser
                     self.userObject = userInfo
                     self.userLoginSwitch.setOn(true, animated: false)
                     self.userNameTextField.text = userInfo.username
                     self.emailAddressTextField.text = userInfo.email
-                    if self.employeeObject.userPoint!.objectForKey("isAdmin") as! Bool {
+                    if self.employeeObject.userPoint!.object(forKey: "isAdmin") as! Bool {
                         self.adminSwitch.setOn(true, animated: false)
-                        self.accessManagerLabel.textColor = UIColor.lightGrayColor()
-                        self.accessManagerCell.userInteractionEnabled = false
+                        self.accessManagerLabel.textColor = UIColor.lightGray
+                        self.accessManagerCell.isUserInteractionEnabled = false
                     } else {
                         
                     }
@@ -89,44 +89,44 @@ class EmployeeDataTableViewController: UITableViewController {
                 
             } else {
                 userLoginSwitch.setOn(false, animated: false)
-                usernameLabel.textColor = UIColor.lightGrayColor()
-                emailLabel.textColor = UIColor.lightGrayColor()
-                adminPrivLabel.textColor = UIColor.lightGrayColor()
-                messagesEnabledLabel.textColor = UIColor.lightGrayColor()
-                userNameTextField.userInteractionEnabled = false
-                emailAddressTextField.userInteractionEnabled = false
-                messagesEnabledSwitch.userInteractionEnabled = false
-                adminSwitch.userInteractionEnabled = false
-                self.accessManagerLabel.textColor = UIColor.lightGrayColor()
-                self.accessManagerCell.userInteractionEnabled = false
+                usernameLabel.textColor = UIColor.lightGray
+                emailLabel.textColor = UIColor.lightGray
+                adminPrivLabel.textColor = UIColor.lightGray
+                messagesEnabledLabel.textColor = UIColor.lightGray
+                userNameTextField.isUserInteractionEnabled = false
+                emailAddressTextField.isUserInteractionEnabled = false
+                messagesEnabledSwitch.isUserInteractionEnabled = false
+                adminSwitch.isUserInteractionEnabled = false
+                self.accessManagerLabel.textColor = UIColor.lightGray
+                self.accessManagerCell.isUserInteractionEnabled = false
                 
             }
             if employeeObject.active {
-                disableEnableEmployee.setTitle("Disable Employee", forState: .Normal)
+                disableEnableEmployee.setTitle("Disable Employee", for: UIControlState())
             } else {
-                disableEnableEmployee.setTitle("Enable Employee", forState: .Normal)
-                disableEnableEmployee.setTitleColor(UIColor.blueColor(), forState: .Normal)
+                disableEnableEmployee.setTitle("Enable Employee", for: UIControlState())
+                disableEnableEmployee.setTitleColor(UIColor.blue, for: UIControlState())
             }
         } else {
             self.employeeObject = Employee()
-            usernameLabel.textColor = UIColor.lightGrayColor()
-            userNameTextField.userInteractionEnabled = false
-            emailLabel.textColor = UIColor.lightGrayColor()
-            emailAddressTextField.userInteractionEnabled = false
-            messagesEnabledLabel.textColor = UIColor.lightGrayColor()
-            messagesEnabledSwitch.userInteractionEnabled = false
-            adminSwitch.userInteractionEnabled = false
-            adminPrivLabel.textColor = UIColor.lightGrayColor()
-            accessManagerCell.userInteractionEnabled = false
-            accessManagerLabel.textColor = UIColor.lightGrayColor()
-            disableEnableEmployee.setTitle("Save", forState: .Normal)
-            disableEnableEmployee.setTitleColor(UIColor.blueColor(), forState: .Normal)
+            usernameLabel.textColor = UIColor.lightGray
+            userNameTextField.isUserInteractionEnabled = false
+            emailLabel.textColor = UIColor.lightGray
+            emailAddressTextField.isUserInteractionEnabled = false
+            messagesEnabledLabel.textColor = UIColor.lightGray
+            messagesEnabledSwitch.isUserInteractionEnabled = false
+            adminSwitch.isUserInteractionEnabled = false
+            adminPrivLabel.textColor = UIColor.lightGray
+            accessManagerCell.isUserInteractionEnabled = false
+            accessManagerLabel.textColor = UIColor.lightGray
+            disableEnableEmployee.setTitle("Save", for: UIControlState())
+            disableEnableEmployee.setTitleColor(UIColor.blue, for: UIControlState())
         }
     }
     
     func getRoles() {
         let query = Role.query()
-        query?.findObjectsInBackgroundWithBlock({ (theRoles : [PFObject]?, error : NSError?) in
+        query?.findObjectsInBackground(block: { (theRoles : [PFObject]?, error : Error?) in
             if error == nil {
                 for role in theRoles! {
                     let roleObj = role as! Role
@@ -137,8 +137,8 @@ class EmployeeDataTableViewController: UITableViewController {
         })
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 && indexPath.row == 2 {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 2 {
             print(roleDropDown.show())
             roleDropDown.show()
         }
@@ -159,15 +159,13 @@ class EmployeeDataTableViewController: UITableViewController {
         print(roles)
         
         roleDropDown.dataSource = roles
-        roleDropDown.direction = .Any
+        roleDropDown.direction = .any
         roleDropDown.anchorView = self.roleCell
-        roleDropDown.bottomOffset = CGPoint(x: 0, y: roleDropDown.anchorView!.bounds.height)
-        roleDropDown.topOffset = CGPoint(x: 0, y: -roleDropDown.anchorView!.bounds.height)
-        roleDropDown.dismissMode = .Automatic
+        roleDropDown.dismissMode = .automatic
         
         roleDropDown.selectionAction = { [unowned self] (index, item) in
             self.roleLabel.text = item
-            self.roleLabel.textColor = UIColor.blackColor()
+            self.roleLabel.textColor = UIColor.black
             self.selectedRole = self.roleDict[item]
             print(self.selectedRole)
             self.employeeObject.roleType = self.selectedRole
@@ -176,14 +174,14 @@ class EmployeeDataTableViewController: UITableViewController {
     }
     
     
-    @IBAction func disableEnableEmployeeAction(sender: AnyObject) {
+    @IBAction func disableEnableEmployeeAction(_ sender: AnyObject) {
         if disableEnableEmployee.titleLabel?.text == "Disable Employee" {
-            let disableAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to disable the employee?", preferredStyle: .Alert)
-            let confirmButton = UIAlertAction(title: "Confirm", style: .Destructive, handler: { (action) in
+            let disableAlert = UIAlertController(title: "Confirm", message: "Are you sure you want to disable the employee?", preferredStyle: .alert)
+            let confirmButton = UIAlertAction(title: "Confirm", style: .destructive, handler: { (action) in
                 var userID : String!
                 let userQuery = PFUser.query()
                 userQuery?.whereKey("employee", equalTo: self.employeeObject)
-                userQuery?.findObjectsInBackgroundWithBlock({ (userFound : [PFObject]?, error : NSError?) in
+                userQuery?.findObjectsInBackground(block: { (userFound : [PFObject]?, error : Error?) in
                     if error == nil {
                         if userFound?.count == 1 {
                             userID = userFound?.first?.objectId
@@ -195,18 +193,18 @@ class EmployeeDataTableViewController: UITableViewController {
                         }
                     }
                 })
-                self.employeeObject?.removeObjectForKey("pinNumber")
+                self.employeeObject?.remove(forKey: "pinNumber")
                 self.employeeObject?.active = false
-                self.employeeObject.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+                self.employeeObject.saveInBackground(block: { (success : Bool, error : Error?) in
                     if success {
-                        self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
+                        self.performSegue(withIdentifier: "returnToManageEmp", sender: nil)
                     }
                 })
             })
-            let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
             disableAlert.addAction(cancelButton)
             disableAlert.addAction(confirmButton)
-            self.presentViewController(disableAlert, animated: true, completion: nil)
+            self.present(disableAlert, animated: true, completion: nil)
         }
         
         if disableEnableEmployee.titleLabel?.text == "Save" || disableEnableEmployee.titleLabel?.text == "Enable Employee" {
@@ -225,12 +223,12 @@ class EmployeeDataTableViewController: UITableViewController {
                 //                let errorAlert = UIAlertController(title: "Check Fields", message: missingFields + " Are missing information. Please check and try again.", preferredStyle: .Alert)
             } else {
                 var pinText : UITextField!
-                let pinAlert = UIAlertController(title: "PIN Selection", message: "Select a 4-digit PIN", preferredStyle: .Alert)
-                pinAlert.addTextFieldWithConfigurationHandler({ (textField) in
+                let pinAlert = UIAlertController(title: "PIN Selection", message: "Select a 4-digit PIN", preferredStyle: .alert)
+                pinAlert.addTextField(configurationHandler: { (textField) in
                     pinText = textField
                 })
                 
-                let doneButton = UIAlertAction(title: "Done", style: .Default, handler: { (action) in
+                let doneButton = UIAlertAction(title: "Done", style: .default, handler: { (action) in
                     self.verifyPIN(pinText.text!, completion: { (pass) in
                         if pass {
                             if self.employeeObject.objectId == nil {
@@ -238,9 +236,9 @@ class EmployeeDataTableViewController: UITableViewController {
                                 //                                let email = self.emailAddressTextField.text!
                                 //                                CloudCode.SendWelcomeEmail(name, toEmail: email, emailAddress: email)
                             }
-                            self.employeeObject.firstName = self.firstName.text!.capitalizedString
-                            self.employeeObject.lastName = self.lastName.text!.capitalizedString
-                            self.employeeObject.messages = self.messagesEnabledSwitch.on
+                            self.employeeObject.firstName = self.firstName.text!.capitalized
+                            self.employeeObject.lastName = self.lastName.text!.capitalized
+                            self.employeeObject.messages = self.messagesEnabledSwitch.isOn
                             self.employeeObject.active = true
                             self.employeeObject.pinNumber = "\(pinText!.text!)"
                             if self.selectedRole != nil {
@@ -252,13 +250,13 @@ class EmployeeDataTableViewController: UITableViewController {
                             } catch {
                                 
                             }
-                            if !self.userLoginSwitch.on {
-                                self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
+                            if !self.userLoginSwitch.isOn {
+                                self.performSegue(withIdentifier: "returnToManageEmp", sender: nil)
                             }
                             
-                            if self.userLoginSwitch.on {
+                            if self.userLoginSwitch.isOn {
                                 if self.employeeObject.userPoint == nil {
-                                    CloudCode.CreateNewUser(self.userNameTextField.text!, password: pinText.text!, emailAddy: self.emailAddressTextField.text!, adminStatus: self.adminSwitch.on, empID: self.employeeObject.objectId!, completion: { (isComplete, objectID) in
+                                    CloudCode.CreateNewUser(self.userNameTextField.text!, password: pinText.text!, emailAddy: self.emailAddressTextField.text!, adminStatus: self.adminSwitch.isOn, empID: self.employeeObject.objectId!, completion: { (isComplete, objectID) in
                                         if isComplete {
                                             let user : PFUser!
                                             do {
@@ -268,132 +266,132 @@ class EmployeeDataTableViewController: UITableViewController {
                                             } catch {
                                                 
                                             }
-                                            let successAlert = UIAlertController(title: "Created", message: "The user has been created, the password is the PIN number for the employee. The employee can reset this by tapping 'Forgot Password' on the main log-in screen", preferredStyle: .Alert)
-                                            let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
-                                                self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
+                                            let successAlert = UIAlertController(title: "Created", message: "The user has been created, the password is the PIN number for the employee. The employee can reset this by tapping 'Forgot Password' on the main log-in screen", preferredStyle: .alert)
+                                            let okayButton = UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                                                self.performSegue(withIdentifier: "returnToManageEmp", sender: nil)
                                             })
                                             successAlert.addAction(okayButton)
-                                            self.presentViewController(successAlert, animated: true, completion: nil)
+                                            self.present(successAlert, animated: true, completion: nil)
                                         }
                                     })
                                 } else {
                                     CloudCode.DisableEnableUser(self.employeeObject.userPoint!.objectId!, enabled: true, completion: { (complete) in
                                         if complete {
-                                            let enabledUser = UIAlertController(title: "Enabled", message: "The user has been restored, if the employee does not remember the password they can reset it on the log-in screen", preferredStyle: .Alert)
-                                            let okay = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
-                                                self.performSegueWithIdentifier("returnToManageEmp", sender: nil)
+                                            let enabledUser = UIAlertController(title: "Enabled", message: "The user has been restored, if the employee does not remember the password they can reset it on the log-in screen", preferredStyle: .alert)
+                                            let okay = UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                                                self.performSegue(withIdentifier: "returnToManageEmp", sender: nil)
                                             })
                                             enabledUser.addAction(okay)
-                                            self.presentViewController(enabledUser, animated: true, completion: nil)
+                                            self.present(enabledUser, animated: true, completion: nil)
                                         }
                                     })
                                 }
                             }
                         } else {
-                            let errorAlert = UIAlertController(title: "PIN", message: "PIN number is in use, please pick a different one", preferredStyle: .Alert)
-                            let ok = UIAlertAction(title: "Okay", style: .Default, handler: { (action) in
-                                self.presentViewController(pinAlert, animated: true, completion: nil)
+                            let errorAlert = UIAlertController(title: "PIN", message: "PIN number is in use, please pick a different one", preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                                self.present(pinAlert, animated: true, completion: nil)
                             })
                             errorAlert.addAction(ok)
-                            self.presentViewController(errorAlert, animated: true, completion: nil)
+                            self.present(errorAlert, animated: true, completion: nil)
                         }
                     })
                 })
                 pinAlert.addAction(doneButton)
-                self.presentViewController(pinAlert, animated: true, completion: nil)
+                self.present(pinAlert, animated: true, completion: nil)
             }
         }
     }
     
-    func verifyPIN(pin : String, completion : (pass : Bool) -> Void) {
-        let error = NSErrorPointer()
+    func verifyPIN(_ pin : String, completion : (_ pass : Bool) -> Void) {
+        let error: ErrorPointer = nil
         let pinQuery = Employee.query()
         pinQuery!.whereKey("active", equalTo: true)
         pinQuery?.whereKey("pinNumber", equalTo: pin)
         let numReturn = pinQuery?.countObjects(error)
         if numReturn == 0 {
-            completion(pass: true)
+            completion(true)
         } else {
-            completion(pass: false)
+            completion(false)
         }
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section != 2 {
-            cell.selectionStyle = .None
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section != 2 {
+            cell.selectionStyle = .none
         }
     }
     
     var newUserObject : PFUser?
     
-    @IBAction func userLogInSwitchAction(sender: UISwitch) {
-        if sender.on {
+    @IBAction func userLogInSwitchAction(_ sender: UISwitch) {
+        if sender.isOn {
             if self.userObject == nil {
                 
                 if !firstName.text!.isEmpty && !lastName.text!.isEmpty {
                     self.userObject = PFUser()
-                    userNameTextField.text = firstName.text!.lowercaseString + lastName.text!.lowercaseString
+                    userNameTextField.text = firstName.text!.lowercased() + lastName.text!.lowercased()
                 }
             }
-            usernameLabel.textColor = UIColor.blackColor()
-            emailLabel.textColor = UIColor.blackColor()
-            messagesEnabledLabel.textColor = UIColor.blackColor()
-            adminPrivLabel.textColor = UIColor.blackColor()
-            userNameTextField.userInteractionEnabled = true
-            emailAddressTextField.userInteractionEnabled = true
-            messagesEnabledSwitch.userInteractionEnabled = true
-            adminSwitch.userInteractionEnabled = true
+            usernameLabel.textColor = UIColor.black
+            emailLabel.textColor = UIColor.black
+            messagesEnabledLabel.textColor = UIColor.black
+            adminPrivLabel.textColor = UIColor.black
+            userNameTextField.isUserInteractionEnabled = true
+            emailAddressTextField.isUserInteractionEnabled = true
+            messagesEnabledSwitch.isUserInteractionEnabled = true
+            adminSwitch.isUserInteractionEnabled = true
             if self.userObject.objectId != nil {
-                accessManagerCell.userInteractionEnabled = true
-                accessManagerLabel.textColor = UIColor.blackColor()
+                accessManagerCell.isUserInteractionEnabled = true
+                accessManagerLabel.textColor = UIColor.black
             }
         } else {
-            usernameLabel.textColor = UIColor.lightGrayColor()
+            usernameLabel.textColor = UIColor.lightGray
             userNameTextField.text = nil
-            emailLabel.textColor = UIColor.lightGrayColor()
+            emailLabel.textColor = UIColor.lightGray
             emailAddressTextField.text = nil
             messagesEnabledSwitch.setOn(false, animated: true)
             adminSwitch.setOn(false, animated: true)
-            adminPrivLabel.textColor = UIColor.lightGrayColor()
-            messagesEnabledLabel.textColor = UIColor.lightGrayColor()
-            userNameTextField.userInteractionEnabled = false
-            emailAddressTextField.userInteractionEnabled = false
-            messagesEnabledSwitch.userInteractionEnabled = false
-            adminSwitch.userInteractionEnabled = false
-            self.accessManagerLabel.textColor = UIColor.lightGrayColor()
-            self.accessManagerCell.userInteractionEnabled = false
+            adminPrivLabel.textColor = UIColor.lightGray
+            messagesEnabledLabel.textColor = UIColor.lightGray
+            userNameTextField.isUserInteractionEnabled = false
+            emailAddressTextField.isUserInteractionEnabled = false
+            messagesEnabledSwitch.isUserInteractionEnabled = false
+            adminSwitch.isUserInteractionEnabled = false
+            self.accessManagerLabel.textColor = UIColor.lightGray
+            self.accessManagerCell.isUserInteractionEnabled = false
         }
     }
     
-    @IBAction func messagesEnabledSwitchAction(sender: UISwitch) {
+    @IBAction func messagesEnabledSwitchAction(_ sender: UISwitch) {
         if self.employeeObject.objectId != nil {
-            if sender.on {
+            if sender.isOn {
                 self.employeeObject.messages = true
-                let provisioningAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .Alert)
-                self.presentViewController(provisioningAlert, animated: true, completion: nil)
-                self.employeeObject.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) in
+                let provisioningAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .alert)
+                self.present(provisioningAlert, animated: true, completion: nil)
+                self.employeeObject.saveInBackground(block: { (success : Bool, error : Error?) in
                     if (success) {
-                        provisioningAlert.dismissViewControllerAnimated(true, completion: nil)
+                        provisioningAlert.dismiss(animated: true, completion: nil)
                     }
                 })
             } else {
                 self.employeeObject.messages = false
-                let provAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .Alert)
-                self.presentViewController(provAlert, animated: true, completion: nil)
-                self.employeeObject.saveInBackgroundWithBlock({ (success : Bool, erorr : NSError?) in
+                let provAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .alert)
+                self.present(provAlert, animated: true, completion: nil)
+                self.employeeObject.saveInBackground(block: { (success : Bool, erorr : Error?) in
                     if (success) {
-                        provAlert.dismissViewControllerAnimated(true, completion: nil)
+                        provAlert.dismiss(animated: true, completion: nil)
                     }
                 })
             }
         }
     }
     
-    @IBAction func adminPrivSwitchAction(sender: UISwitch) {
+    @IBAction func adminPrivSwitchAction(_ sender: UISwitch) {
         if self.userObject.objectId != nil {
-            if sender.on {
-                let provAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .Alert)
-                self.presentViewController(provAlert, animated: true, completion: nil)
+            if sender.isOn {
+                let provAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .alert)
+                self.present(provAlert, animated: true, completion: nil)
                 CloudCode.UpdateUserSpecialAccess(self.userObject.objectId!, specialAccesses: [], completion: { (isComplete) in
                     CloudCode.UpdateUserAdminStatus(self.userObject.username!, adminStatus: true, alert: provAlert, completion: { (complete) in
                         if complete == true {
@@ -402,8 +400,8 @@ class EmployeeDataTableViewController: UITableViewController {
                     })
                 })
             } else {
-                let provAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .Alert)
-                self.presentViewController(provAlert, animated: true, completion: nil)
+                let provAlert = UIAlertController(title: "Provisioning...", message: nil, preferredStyle: .alert)
+                self.present(provAlert, animated: true, completion: nil)
                 CloudCode.UpdateUserAdminStatus(self.userObject.username!, adminStatus: false, alert: provAlert, completion: { (complete) in
                     if complete == true {
                         self.updateForAdminStatusChange(false)
@@ -413,37 +411,37 @@ class EmployeeDataTableViewController: UITableViewController {
         }
     }
     
-    func updateForAdminStatusChange(isAdmin : Bool) {
+    func updateForAdminStatusChange(_ isAdmin : Bool) {
         if isAdmin {
-            accessManagerCell.userInteractionEnabled = false
-            accessManagerLabel.textColor = UIColor.lightGrayColor()
+            accessManagerCell.isUserInteractionEnabled = false
+            accessManagerLabel.textColor = UIColor.lightGray
         } else {
-            accessManagerCell.userInteractionEnabled = true
-            accessManagerLabel.textColor = UIColor.blackColor()
+            accessManagerCell.isUserInteractionEnabled = true
+            accessManagerLabel.textColor = UIColor.black
         }
     }
     
-    func tableViewScrollToBottom(animated: Bool) {
+    func tableViewScrollToBottom(_ animated: Bool) {
         
         let delay = 0.1 * Double(NSEC_PER_SEC)
-        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
         
-        dispatch_after(time, dispatch_get_main_queue(), {
+        DispatchQueue.main.asyncAfter(deadline: time, execute: {
             
             let numberOfSections = self.tableView.numberOfSections
-            let numberOfRows = self.tableView.numberOfRowsInSection(numberOfSections-1)
+            let numberOfRows = self.tableView.numberOfRows(inSection: numberOfSections-1)
             
             if numberOfRows > 0 {
-                let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
-                self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+                let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections-1))
+                self.tableView.scrollToRow(at: indexPath, at: UITableViewScrollPosition.bottom, animated: animated)
             }
             
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "accessManager" {
-            let dest = segue.destinationViewController as! SpecialAccessTableViewController
+            let dest = segue.destination as! SpecialAccessTableViewController
             dest.userObj = self.userObject
         }
     }
@@ -451,19 +449,19 @@ class EmployeeDataTableViewController: UITableViewController {
 
 extension EmployeeDataTableViewController : UITextFieldDelegate {
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        let saving = UIAlertController(title: "Updating...", message: nil, preferredStyle: .Alert)
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let saving = UIAlertController(title: "Updating...", message: nil, preferredStyle: .alert)
         
         if textField == userNameTextField {
             if self.userObject.objectId != nil {
-                self.presentViewController(saving, animated: true, completion: nil)
-                CloudCode.UpdateUserInfo(textField.text!.lowercaseString, email: self.userObject.email!, objectId: self.userObject.objectId!, completion: { (isComplete) in
+                self.present(saving, animated: true, completion: nil)
+                CloudCode.UpdateUserInfo(textField.text!.lowercased(), email: self.userObject.email!, objectId: self.userObject.objectId!, completion: { (isComplete) in
                     if isComplete {
-                        saving.dismissViewControllerAnimated(true, completion: nil)
+                        saving.dismiss(animated: true, completion: nil)
                     }
                 })
             } else {
-                self.userObject.username = userNameTextField.text?.lowercaseString
+                self.userObject.username = userNameTextField.text?.lowercased()
             }
             
         }
@@ -471,31 +469,31 @@ extension EmployeeDataTableViewController : UITextFieldDelegate {
         if textField == emailAddressTextField {
             if GlobalFunctions().isValidEmail(textField.text!) {
                 if self.userObject.objectId != nil {
-                    self.presentViewController(saving, animated: true, completion: nil)
-                    CloudCode.UpdateUserInfo(self.userObject.username!, email: textField.text!.lowercaseString, objectId: self.userObject.objectId!, completion: { (isComplete) in
+                    self.present(saving, animated: true, completion: nil)
+                    CloudCode.UpdateUserInfo(self.userObject.username!, email: textField.text!.lowercased(), objectId: self.userObject.objectId!, completion: { (isComplete) in
                         if isComplete {
-                            saving.dismissViewControllerAnimated(true, completion: nil)
+                            saving.dismiss(animated: true, completion: nil)
                         }
                     })
                 } else if self.employeeObject.objectId != nil {
                     print(self.employeeObject.objectId)
                     self.userObject.email = emailAddressTextField.text
-                    CloudCode.CreateNewUser(self.userNameTextField.text!, password: "sparkle1", emailAddy: self.emailAddressTextField.text!, adminStatus: adminSwitch.on, empID: self.employeeObject.objectId!, completion: { (isComplete, objectID) in
+                    CloudCode.CreateNewUser(self.userNameTextField.text!, password: "sparkle1", emailAddy: self.emailAddressTextField.text!, adminStatus: adminSwitch.isOn, empID: self.employeeObject.objectId!, completion: { (isComplete, objectID) in
                         if isComplete {
-                            let userCreated = UIAlertController(title: "User Created", message: "The user has been created, the temporary password has been set to 'sparkle1' (without quotes) to update the password have the employee use the forgot password option on the log-in screen", preferredStyle: .Alert)
-                            let okay = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                            let userCreated = UIAlertController(title: "User Created", message: "The user has been created, the temporary password has been set to 'sparkle1' (without quotes) to update the password have the employee use the forgot password option on the log-in screen", preferredStyle: .alert)
+                            let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
                             userCreated.addAction(okay)
-                            self.presentViewController(userCreated, animated: true, completion: nil)
+                            self.present(userCreated, animated: true, completion: nil)
                             
                             let userQuery = PFUser.query()
                             userQuery?.whereKey("employee", equalTo: self.employeeObject)
-                            userQuery?.getFirstObjectInBackgroundWithBlock({ (user : PFObject?, error : NSError?) in
+                            userQuery?.getFirstObjectInBackground(block: { (user : PFObject?, error : Error?) in
                                 if error == nil {
                                     self.userObject = user as! PFUser
                                     
                                     self.employeeObject.userPoint = self.userObject
                                     self.employeeObject.saveInBackground()
-                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                    self.dismiss(animated: true, completion: nil)
                                 }
                             })
                         }
@@ -515,15 +513,15 @@ extension EmployeeDataTableViewController : UITextFieldDelegate {
         
     }
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == userNameTextField || textField == emailAddressTextField {
             self.tableViewScrollToBottom(true)
         }
         return true
     }
     
-    @IBAction func returnFromAM(segue : UIStoryboardSegue) {
-        self.userObject.fetchInBackgroundWithBlock { (user : PFObject?, error : NSError?) in
+    @IBAction func returnFromAM(_ segue : UIStoryboardSegue) {
+        self.userObject.fetchInBackground { (user : PFObject?, error : Error?) in
             if error == nil {
                 self.userObject = user as! PFUser
             }

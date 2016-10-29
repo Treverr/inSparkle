@@ -31,20 +31,20 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     @IBOutlet var altPhoneCallButton: UIButton!
     
     var selectedEmployee : Employee?
-    var formatter = NSDateFormatter()
+    var formatter = DateFormatter()
     
     var QuckActionsVC : QuickActionsMasterViewController!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         if StaticViews.masterView != nil {
                     self.QuckActionsVC = StaticViews.masterView.childViewControllers.first?.childViewControllers.first as! QuickActionsMasterViewController
         }
         
         if isNewMessage {
-            let employeeData = PFUser.currentUser()?.objectForKey("employee") as! Employee
+            let employeeData = PFUser.current()?.object(forKey: "employee") as! Employee
             print(employeeData)
-            employeeData.fetchIfNeededInBackgroundWithBlock { (employee : PFObject?, error : NSError?) -> Void in
+            employeeData.fetchIfNeededInBackground { (employee : PFObject?, error : Error?) -> Void in
                 if error == nil {
                     self.signedLabel.text = "Signed: " + employeeData.firstName + " " + employeeData.lastName
                 }
@@ -55,12 +55,12 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 recipientLabel.text = "To: " + recipName
                 
                 recipientLabel.bounds = addRecipCell.frame
-                recipientLabel.textAlignment = .Center
+                recipientLabel.textAlignment = .center
     
             }
             
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close",
-                                                                    style: .Plain,
+                                                                    style: .plain,
                                                                     target: self,
                                                                     action: #selector(ComposeMessageTableViewController.close)
             )
@@ -71,18 +71,18 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             
             if existingMessage != nil && isSent == false && existingMessage?.unread == true {
                 existingMessage!.status = "Read"
-                existingMessage!.statusTime = NSDate()
+                existingMessage!.statusTime = Date()
                 existingMessage!.unread = false
                 existingMessage!.saveInBackground()
             }
             
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageTableViewController.updateFields), name: "UpdateFieldsOnNewMessage", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageTableViewController.updateAddressLabel), name: "UpdateComposeMessageLabel", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ComposeMessageTableViewController.updateFields), name: NSNotification.Name(rawValue: "UpdateFieldsOnNewMessage"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ComposeMessageTableViewController.updateAddressLabel), name: NSNotification.Name(rawValue: "UpdateComposeMessageLabel"), object: nil)
         
-        addressTextField.userInteractionEnabled = true
-        addressTextField.addTarget(self, action: #selector(ComposeMessageTableViewController.googlePlacesAPI), forControlEvents: UIControlEvents.EditingDidBegin)
+        addressTextField.isUserInteractionEnabled = true
+        addressTextField.addTarget(self, action: #selector(ComposeMessageTableViewController.googlePlacesAPI), for: UIControlEvents.editingDidBegin)
         
         phoneTextField.delegate = self
         altPhoneTextField.delegate = self
@@ -98,19 +98,19 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             enableDisableSaveButton(false)
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageTableViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ComposeMessageTableViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ComposeMessageTableViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ComposeMessageTableViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     var activeField : UIView!
     
-    func keyboardWillShow(notification : NSNotification) {
-        let info = notification.userInfo!
-        let kbSize : CGSize = info[UIKeyboardFrameEndUserInfoKey]!.CGRectValue().size
+    func keyboardWillShow(_ notification : Notification) {
+        let info = (notification as NSNotification).userInfo!
+        let kbSize : CGSize = (info[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue.size
         
         var contentInsets : UIEdgeInsets!
         
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height - 200, 0)
         } else {
             contentInsets = UIEdgeInsetsMake(0, 0, kbSize.height - 50, 0)
@@ -122,16 +122,16 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         var aRect = self.view.frame
         aRect.size.height -= kbSize.height
         
-        if messageTextView.isFirstResponder() {
-            let indexToScrollTo = NSIndexPath(forRow: 7, inSection: 1)
-            self.tableView.scrollToRowAtIndexPath(indexToScrollTo, atScrollPosition: .Bottom, animated: true)
+        if messageTextView.isFirstResponder {
+            let indexToScrollTo = IndexPath(row: 7, section: 1)
+            self.tableView.scrollToRow(at: indexToScrollTo, at: .bottom, animated: true)
         }
     }
     
     
     
-    func keyboardWillHide(notification : NSNotification) {
-        let contentInsets = UIEdgeInsetsZero
+    func keyboardWillHide(_ notification : Notification) {
+        let contentInsets = UIEdgeInsets.zero
         self.tableView.contentInset = contentInsets
         self.tableView.scrollIndicatorInsets = contentInsets
         
@@ -140,12 +140,12 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     func updateSignedEmployee() {
         var signed : PFUser?
-        existingMessage?.signed.fetchInBackgroundWithBlock({ (user : PFObject?, error :NSError?) -> Void in
+        existingMessage?.signed.fetchInBackground(block: { (user : PFObject?, error :Error?) -> Void in
             if error == nil {
                 signed = user as! PFUser
                 print(self.existingMessage?.signed)
-                let signedEmployee = self.existingMessage?.signed.objectForKey("employee") as! Employee
-                signedEmployee.fetchInBackgroundWithBlock({ (signedEmployee : PFObject?, error : NSError?) in
+                let signedEmployee = self.existingMessage?.signed.object(forKey: "employee") as! Employee
+                signedEmployee.fetchInBackground(block: { (signedEmployee : PFObject?, error : Error?) in
                     if error == nil && signedEmployee != nil {
                         let signed = signedEmployee as! Employee
                         self.signedLabel.text = "Signed: " + signed.firstName + " " + signed.lastName
@@ -158,12 +158,12 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     
     
-    func enableDisableSaveButton(enabled : Bool) {
-        saveButton.enabled = enabled
+    func enableDisableSaveButton(_ enabled : Bool) {
+        saveButton.isEnabled = enabled
         if enabled {
-            saveButton.tintColor = UIColor.whiteColor()
+            saveButton.tintColor = UIColor.white
         } else {
-            saveButton.tintColor = UIColor.lightGrayColor()
+            saveButton.tintColor = UIColor.lightGray
         }
     }
     
@@ -198,7 +198,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     func getRecip() {
         let recip = existingMessage?.recipient
-        recip?.fetchInBackgroundWithBlock({ (recipient : PFObject?, error : NSError?) in
+        recip?.fetchInBackground(block: { (recipient : PFObject?, error : Error?) in
             if error == nil {
                 let theRecip = recipient as! Employee
                 
@@ -209,20 +209,20 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         })
     }
     
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         var phoneNumber : PhoneNumber?
         if textField == phoneTextField {
             do {
-                phoneNumber = try PhoneNumber(rawNumber: phoneTextField.text!)
+                phoneNumber = try PhoneNumberKit().parse(phoneTextField.text!)
             } catch { }
-            phoneTextField.text = phoneNumber?.toNational()
+            phoneTextField.text = String(describing: phoneNumber?.nationalNumber)
         }
         
         if textField == altPhoneTextField {
             do {
-                phoneNumber = try PhoneNumber(rawNumber: altPhoneTextField.text!)
+                phoneNumber = try PhoneNumberKit().parse(altPhoneTextField.text!)
             } catch { }
-            altPhoneTextField.text = phoneNumber?.toNational()
+            altPhoneTextField.text = String(describing: phoneNumber?.nationalNumber)
         }
         
         return true
@@ -232,16 +232,16 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
         let gpaViewController = GooglePlacesAutocomplete(
             apiKey: "AIzaSyCFBaUShWIatpRNiDtc8IcE8reNMs0kM7I",
-            placeType: .Address
+            placeType: .address
         )
         
         gpaViewController.placeDelegate = self
         gpaViewController.locationBias = LocationBias(latitude: 39.4931008, longitude: -87.3789913, radius: 120)
-        gpaViewController.navigationBar.barStyle = UIBarStyle.Black
+        gpaViewController.navigationBar.barStyle = UIBarStyle.black
         gpaViewController.navigationBar.barTintColor = Colors.sparkleBlue
-        gpaViewController.navigationBar.tintColor = UIColor.whiteColor()
-        
-        presentViewController(gpaViewController, animated: true, completion: nil)
+        gpaViewController.navigationBar.tintColor = UIColor.white
+    
+        present(gpaViewController, animated: true, completion: nil)
         
     }
     
@@ -250,12 +250,12 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
         self.recipientLabel.text = "Add Recipient"
         
-        formatter.timeStyle = .ShortStyle
-        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .short
+        formatter.dateStyle = .short
         if isNewMessage {
-            dateTimeOfMessage.text! = formatter.stringFromDate(NSDate())
+            dateTimeOfMessage.text! = formatter.string(from: Date())
         } else {
-            dateTimeOfMessage.text! = formatter.stringFromDate(existingMessage!.dateTimeMessage)
+            dateTimeOfMessage.text! = formatter.string(from: existingMessage!.dateTimeMessage as Date)
         }
         
         if isNewMessage == false {
@@ -267,9 +267,9 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.isHidden = false
         if StaticViews.masterView != nil {
                     self.QuckActionsVC.shouldShowHideMaster(true)
         }
@@ -277,48 +277,48 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if isNewMessage == true && indexPath.section == 1 && indexPath.row == 0 {
+        if isNewMessage == true && (indexPath as NSIndexPath).section == 1 && (indexPath as NSIndexPath).row == 0 {
             return 0
         }
         
-        if isNewMessage == true && indexPath.section == 2 && indexPath.row == 0 {
+        if isNewMessage == true && (indexPath as NSIndexPath).section == 2 && (indexPath as NSIndexPath).row == 0 {
             return 0
         } else {
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
         
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.selectionStyle = .None
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
     }
     
     @IBOutlet var saveButton: UIBarButtonItem!
     
-    @IBAction func saveButton(sender: AnyObject) {
+    @IBAction func saveButton(_ sender: AnyObject) {
         selectedEmployee = MessagesDataObjects.selectedEmp
         
-        saveButton.tintColor = UIColor.grayColor()
-        saveButton.enabled = false
+        saveButton.tintColor = UIColor.gray
+        saveButton.isEnabled = false
         
         if (isNewMessage) {
             
             if self.recipientLabel.text == "Add Recipient" {
-                let recipAlert = UIAlertController(title: "Add a Recipient", message: "Please select a recipient to send the message to", preferredStyle: .Alert)
-                let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                let recipAlert = UIAlertController(title: "Add a Recipient", message: "Please select a recipient to send the message to", preferredStyle: .alert)
+                let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
                 recipAlert.addAction(okayButton)
-                self.presentViewController(recipAlert, animated: true, completion: nil)
+                self.present(recipAlert, animated: true, completion: nil)
                 
-                saveButton.tintColor = UIColor.whiteColor()
-                saveButton.enabled = true
+                saveButton.tintColor = UIColor.white
+                saveButton.isEnabled = true
                 
                 return
             }
             
             let messObj = Messages()
-            messObj.dateTimeMessage = NSDate()
+            messObj.dateTimeMessage = Date()
             messObj.recipient = selectedEmployee!
             messObj.messageFromName = nameTextField.text!
             messObj.messageFromPhone = phoneTextField.text!
@@ -326,45 +326,45 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
                 messObj.messageFromAddress = addressTextField.text!
             }
             messObj.theMessage = messageTextView.text!
-            messObj.signed = PFUser.currentUser()!
+            messObj.signed = PFUser.current()!
             messObj.unread = true
-            messObj.dateEntered = NSDate()
+            messObj.dateEntered = Date()
             messObj.status = "Unread"
-            messObj.statusTime = NSDate()
+            messObj.statusTime = Date()
             if !altPhoneTextField.text!.isEmpty {
                 messObj.altPhone = altPhoneTextField.text!
             }
             if !emailAddress.text!.isEmpty {
                 messObj.emailAddy = emailAddress.text!
             }
-            messObj.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) -> Void in
+            messObj.saveInBackground(block: { (success : Bool, error : Error?) -> Void in
                 if error == nil && success == true {
-                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
-                    dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    let delayTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                    DispatchQueue.main.asyncAfter(deadline: delayTime) {
                         //                    NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
-                        self.performSegueWithIdentifier("unwindToMessages", sender: self)
+                        self.performSegue(withIdentifier: "unwindToMessages", sender: self)
                         PushNotifications.messagesPushNotification(self.selectedEmployee!)
                         MessagesDataObjects.selectedEmp = nil
                     }
                 }
                 if error != nil {
-                    self.saveButton.tintColor = UIColor.blueColor()
-                    self.saveButton.enabled = true
+                    self.saveButton.tintColor = UIColor.blue
+                    self.saveButton.isEnabled = true
                     let alert = UIAlertController()
-                    switch error!.code {
+                    switch error!._code {
                     case 100:
                         alert.title = "Error"
                         alert.message = "Check network connection and try again"
-                        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                        let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
                         alert.addAction(okayButton)
                     default: break
                     }
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)
                 }
             })
         } else {
             let messObj = existingMessage!
-            let sepStatus = statusLabel.text?.componentsSeparatedByString(": ")
+            let sepStatus = statusLabel.text?.components(separatedBy: ": ")
             let status = sepStatus![1]
             
             messObj.recipient = selectedEmployee!
@@ -375,7 +375,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             }
             messObj.theMessage = messageTextView.text!
             if messObj.status != status {
-                messObj.statusTime = NSDate()
+                messObj.statusTime = Date()
             }
             messObj.status = status
             if status == "Unread" {
@@ -391,12 +391,12 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             if !emailAddress.text!.isEmpty {
                 messObj.emailAddy = emailAddress.text!
             }
-            messObj.saveInBackgroundWithBlock({ (success : Bool, error : NSError?) -> Void in
+            messObj.saveInBackground(block: { (success : Bool, error : Error?) -> Void in
                 if error == nil && success == true {
-                    let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
-                    dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    let delayTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                    DispatchQueue.main.asyncAfter(deadline: delayTime) {
                         //                        NSNotificationCenter.defaultCenter().postNotificationName("RefreshMessagesTableViewController", object: nil)
-                        self.performSegueWithIdentifier("unwindToMessages", sender: self)
+                        self.performSegue(withIdentifier: "unwindToMessages", sender: self)
                         if self.isNewMessage == true {
                             PushNotifications.messagesPushNotification(self.selectedEmployee!)
                         }
@@ -411,44 +411,44 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     
     @IBOutlet weak var addRecipCell: UITableViewCell!
     
-    @IBAction func returnFromEmployeeSelection(segue : UIStoryboardSegue) {
+    @IBAction func returnFromEmployeeSelection(_ segue : UIStoryboardSegue) {
         let recipName = selectedEmployee!.firstName + " " + selectedEmployee!.lastName
         recipientLabel.text = "To: " + recipName
         
         recipientLabel.bounds = addRecipCell.frame
-        recipientLabel.textAlignment = .Center
+        recipientLabel.textAlignment = .center
         
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 && indexPath.row == 1 {
-            popover("Messages", vcID: "EmpPopover", sender: tableView.cellForRowAtIndexPath(indexPath)!)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 1 {
+            popover("Messages", vcID: "EmpPopover", sender: tableView.cellForRow(at: indexPath)!)
         }
     }
     
-    func popover (sb : String, vcID : String, sender : UITableViewCell) {
+    func popover (_ sb : String, vcID : String, sender : UITableViewCell) {
         let storyboard = UIStoryboard(name: sb, bundle: nil)
-        let vc = storyboard.instantiateViewControllerWithIdentifier(vcID)
-        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let vc = storyboard.instantiateViewController(withIdentifier: vcID)
+        vc.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover : UIPopoverPresentationController = vc.popoverPresentationController!
         popover.delegate = self
         popover.sourceView = sender
         popover.sourceRect = sender.bounds
-        presentViewController(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
         
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
     func updateFields() {
         
         let selectCx = CustomerLookupObjects.slectedCustomer
         print(selectCx)
-        nameTextField.text = selectCx!.firstName!.capitalizedString + " " + selectCx!.lastName!.capitalizedString
+        nameTextField.text = selectCx!.firstName!.capitalized + " " + selectCx!.lastName!.capitalized
         phoneTextField.text = selectCx!.phoneNumber
-        addressTextField.text = "\(selectCx!.addressStreet.capitalizedString) \(selectCx!.addressCity.capitalizedString), \(selectCx!.addressState) \(selectCx!.ZIP)"
+        addressTextField.text = "\(selectCx!.addressStreet.capitalized) \(selectCx!.addressCity.capitalized), \(selectCx!.addressState) \(selectCx!.ZIP)"
         selectedEmployee = MessagesDataObjects.selectedEmp
     }
     
@@ -456,7 +456,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         addressTextField.text = GoogleAddress.address
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CustomerLookup" {
             CustomerLookupObjects.fromVC = "NewMessage"
         }
@@ -466,18 +466,18 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         }
         
         if segue.identifier == "NotesSegue" {
-            let destinationVC = segue.destinationViewController as! MessageNotesTableViewController
+            let destinationVC = segue.destination as! MessageNotesTableViewController
             if existingMessage != nil {
                 destinationVC.linkingMessage = existingMessage
             }
         }
     }
     
-    @IBAction func updateStatusLabel(segue : UIStoryboardSegue) {
+    @IBAction func updateStatusLabel(_ segue : UIStoryboardSegue) {
         
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == nameTextField || textField == phoneTextField {
             if !nameTextField.text!.isEmpty && !phoneTextField.text!.isEmpty {
                 enableDisableSaveButton(true)
@@ -487,40 +487,40 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         }
     }
     
-    @IBAction func phoneCallButtonAction(sender: AnyObject) {
+    @IBAction func phoneCallButtonAction(_ sender: AnyObject) {
         var phoneNumber : String! = String(phoneTextField.text!)
         do {
-            let phone = try PhoneNumber(rawNumber: phoneNumber)
-            phoneNumber = phone.toNational()
+            let phone = try PhoneNumberKit().parse(phoneNumber)
+            phoneNumber = phone.numberString
             
-            let confirmCall = UIAlertController(title: phoneNumber, message: nil, preferredStyle: .Alert)
-            let callButton = UIAlertAction(title: "Call", style: .Default, handler: { (action) in
+            let confirmCall = UIAlertController(title: phoneNumber, message: nil, preferredStyle: .alert)
+            let callButton = UIAlertAction(title: "Call", style: .default, handler: { (action) in
                 GlobalFunctions().callNumber(phoneNumber)
             })
-            let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
             confirmCall.addAction(cancelButton)
             confirmCall.addAction(callButton)
-            self.presentViewController(confirmCall, animated: true, completion: nil)
+            self.present(confirmCall, animated: true, completion: nil)
             
         } catch {
             
         }
     }
     
-    @IBAction func altPhoneCallButtonAction(sender: AnyObject) {
+    @IBAction func altPhoneCallButtonAction(_ sender: AnyObject) {
         var phoneNumber : String! = String(altPhoneTextField.text!)
         do {
-            let phone = try PhoneNumber(rawNumber: phoneNumber)
-            phoneNumber = phone.toNational()
+            let phone = try PhoneNumberKit().parse(phoneNumber)
+            phoneNumber = phone.numberString
             
-            let confirmCall = UIAlertController(title: phoneNumber, message: nil, preferredStyle: .Alert)
-            let callButton = UIAlertAction(title: "Call", style: .Default, handler: { (action) in
+            let confirmCall = UIAlertController(title: phoneNumber, message: nil, preferredStyle: .alert)
+            let callButton = UIAlertAction(title: "Call", style: .default, handler: { (action) in
                 GlobalFunctions().callNumber(phoneNumber)
             })
-            let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
             confirmCall.addAction(cancelButton)
             confirmCall.addAction(callButton)
-            self.presentViewController(confirmCall, animated: true, completion: nil)
+            self.present(confirmCall, animated: true, completion: nil)
             
         } catch {
             
@@ -529,13 +529,13 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     }
     
     func close() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
 extension ComposeMessageTableViewController : UITextViewDelegate {
     
-    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         
         
         return true
@@ -546,32 +546,32 @@ extension ComposeMessageTableViewController : UITextViewDelegate {
 
 extension ComposeMessageTableViewController : GooglePlacesAutocompleteDelegate {
     
-    func placeSelected(place: Place) {
-        let houseNumbers = place.desc.componentsSeparatedByString(" ")[0]
+    func placeSelected(_ place: Place) {
+        let houseNumbers = place.desc.components(separatedBy: " ")[0]
         place.getDetails({ (thePlaceDetails) -> () in
-            let fullAddress = thePlaceDetails.fullAddress.componentsSeparatedByString(" ")[0]
+            let fullAddress = thePlaceDetails.fullAddress.components(separatedBy: " ")[0]
             if self.isNumeric(fullAddress) {
                 print(place.desc)
                 GoogleAddress.address = thePlaceDetails.fullAddress
             } else {
                 GoogleAddress.address = houseNumbers + " " + thePlaceDetails.fullAddress
             }
-            NSNotificationCenter.defaultCenter().postNotificationName("UpdateComposeMessageLabel", object: nil)
-            self.dismissViewControllerAnimated(true, completion: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UpdateComposeMessageLabel"), object: nil)
+            self.dismiss(animated: true, completion: nil)
         })
         
     }
     
-    func isNumeric(a: String) -> Bool {
+    func isNumeric(_ a: String) -> Bool {
         return Int(a) != nil
     }
     
     func placeViewClosed() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancelButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

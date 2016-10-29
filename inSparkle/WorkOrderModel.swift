@@ -11,96 +11,92 @@ import Parse
 
 class WorkOrders : PFObject, PFSubclassing {
     
-    override class func initialize() {
-        self.registerSubclass()
-    }
-    
     static func parseClassName() -> String {
         return "WorkOrders"
     }
     
     var customerName : String! {
-        get {return objectForKey("customerName") as! String}
+        get {return object(forKey: "customerName") as! String}
         set { setObject(newValue, forKey: "customerName") }
     }
     
     var customerAddress : String! {
-        get {return objectForKey("customerAddress") as! String}
+        get {return object(forKey: "customerAddress") as! String}
         set { setObject(newValue, forKey: "customerAddress") }
     }
     
     var customerPhone : String! {
-        get {return objectForKey("customerPhone") as! String}
+        get {return object(forKey: "customerPhone") as! String}
         set { setObject(newValue, forKey: "customerPhone") }
     }
     
     var customerAltPhone : String? {
-        get {return objectForKey("customerAltPhone") as? String}
+        get {return object(forKey: "customerAltPhone") as? String}
         set { setObject(newValue!, forKey: "customerAltPhone") }
     }
     
-    var date : NSDate! {
-        get {return objectForKey("date") as! NSDate}
+    var date : Date! {
+        get {return object(forKey: "date") as! Date}
         set { setObject(newValue, forKey: "date") }
     }
     
     var status : String? {
-        get {return objectForKey("status") as? String}
+        get {return object(forKey: "status") as? String}
         set { setObject(newValue!, forKey: "status") }
     }
     
-    var schedTime : NSDate? {
-        get {return objectForKey("schedTime") as? NSDate}
+    var schedTime : Date? {
+        get {return object(forKey: "schedTime") as? Date}
         set { setObject(newValue!, forKey: "schedTime") }
     }
     
     var technician : String? {
-        get {return objectForKey("technician") as? String}
+        get {return object(forKey: "technician") as? String}
         set { setObject(newValue!, forKey: "technician") }
     }
     
     var technicianPointer : Employee? {
-        get {return objectForKey("technicianPointer") as? Employee}
+        get {return object(forKey: "technicianPointer") as? Employee}
         set { setObject(newValue!, forKey: "technicianPointer") }
     }
     
     var workToBePerformed : String? {
-        get {return objectForKey("workToBePerformed") as? String}
+        get {return object(forKey: "workToBePerformed") as? String}
         set { setObject(newValue!, forKey: "workToBePerformed") }
     }
     
     var descOfWork : String? {
-        get {return objectForKey("descOfWork") as? String}
+        get {return object(forKey: "descOfWork") as? String}
         set { setObject(newValue!, forKey: "descOfWork") }
     }
     
     var unitMake : String? {
-        get {return objectForKey("unitMake") as? String}
+        get {return object(forKey: "unitMake") as? String}
         set { setObject(newValue!, forKey: "unitMake") }
     }
     
     var unitModel : String? {
-        get {return objectForKey("unitModel") as? String}
+        get {return object(forKey: "unitModel") as? String}
         set { setObject(newValue!, forKey: "unitModel") }
     }
     
     var unitSerial : String? {
-        get {return objectForKey("unitSerial") as? String}
+        get {return object(forKey: "unitSerial") as? String}
         set { setObject(newValue!, forKey: "unitSerial") }
     }
     
     var parts : NSArray? {
-        get {return objectForKey("parts") as? NSArray}
+        get {return object(forKey: "parts") as? NSArray}
         set { setObject(newValue!, forKey: "parts") }
     }
     
     var labor : NSArray? {
-        get {return objectForKey("labor") as? NSArray}
+        get {return object(forKey: "labor") as? NSArray}
         set { setObject(newValue!, forKey: "labor") }
     }
     
     var mobileTechObject : [PFObject]? {
-        get {return objectForKey("mobileTechObject") as? [PFObject]}
+        get {return object(forKey: "mobileTechObject") as? [PFObject]}
         set { setObject(newValue!, forKey: "mobileTechObject") }
     }
     

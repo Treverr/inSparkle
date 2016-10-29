@@ -10,6 +10,26 @@ import UIKit
 import GooglePlacesAutocomplete
 import Parse
 import PhoneNumberKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class AddEditCustomerTableViewController: UITableViewController, UITextFieldDelegate {
     
@@ -27,12 +47,12 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         self.customer = AddEditCustomers.theCustomer
     
         if AddEditCustomers.theCustomer != nil {
-            self.firstNameTextField.text = self.customer?.firstName?.capitalizedString
-            self.lastNameTextField.text = self.customer?.lastName?.capitalizedString
-            self.phoneNumberTextField.text = self.customer?.phoneNumber.capitalizedString
+            self.firstNameTextField.text = self.customer?.firstName?.capitalized
+            self.lastNameTextField.text = self.customer?.lastName?.capitalized
+            self.phoneNumberTextField.text = self.customer?.phoneNumber.capitalized
             if self.customer?.addressStreet != nil {
-                self.addressLabel.textColor = UIColor.blackColor()
-                self.addressLabel.text = "\(self.customer!.addressStreet.capitalizedString) \n" + "\(self.customer!.addressCity.capitalizedString), \(self.customer!.addressState.uppercaseString) \(self.customer!.ZIP)"
+                self.addressLabel.textColor = UIColor.black
+                self.addressLabel.text = "\(self.customer!.addressStreet.capitalized) \n" + "\(self.customer!.addressCity.capitalized), \(self.customer!.addressState.uppercased()) \(self.customer!.ZIP)"
             }
         }
         
@@ -40,7 +60,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddEditCustomerTableViewController.updatedAddressLabel), name: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddEditCustomerTableViewController.updatedAddressLabel), name: NSNotification.Name(rawValue: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI"), object: nil)
         
         enableSaveButton(false)
 
@@ -50,25 +70,25 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         
         let gpaViewController = GooglePlacesAutocomplete(
             apiKey: "AIzaSyCFBaUShWIatpRNiDtc8IcE8reNMs0kM7I",
-            placeType: .Address
+            placeType: .address
         )
         
         gpaViewController.placeDelegate = self
         gpaViewController.locationBias = LocationBias(latitude: 39.4931008, longitude: -87.3789913, radius: 120)
-        gpaViewController.navigationBar.barStyle = UIBarStyle.Black
+        gpaViewController.navigationBar.barStyle = UIBarStyle.black
         gpaViewController.navigationBar.barTintColor = Colors.sparkleBlue
-        gpaViewController.navigationBar.tintColor = UIColor.whiteColor()
+        gpaViewController.navigationBar.tintColor = UIColor.white
         
-        presentViewController(gpaViewController, animated: true, completion: nil)
+        present(gpaViewController, animated: true, completion: nil)
         
     }
     
-    func enableSaveButton(enabled : Bool) {
-        saveUpdateButton.enabled = enabled
+    func enableSaveButton(_ enabled : Bool) {
+        saveUpdateButton.isEnabled = enabled
         if enabled {
-            saveUpdateButton.tintColor = UIColor.blueColor()
+            saveUpdateButton.tintColor = UIColor.blue
         } else {
-            saveUpdateButton.tintColor = UIColor.lightGrayColor()
+            saveUpdateButton.tintColor = UIColor.lightGray
         }
     }
     
@@ -77,14 +97,14 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
     func updatedAddressLabel() {
         updatedAddress = true
         addressLabel.text = GoogleAddress.address
-        addressLabel.textColor = UIColor.blackColor()
+        addressLabel.textColor = UIColor.black
         GoogleAddress.address = nil
         enableSaveButton(true)
     }
     
-    @IBAction func saveUpdate(sender: AnyObject) {
+    @IBAction func saveUpdate(_ sender: AnyObject) {
         
-        saveUpdateButton.setTitle("Saving...", forState: .Normal)
+        saveUpdateButton.setTitle("Saving...", for: UIControlState())
         var accountNumber : String?
         var oldAccountNumber : String?
         var emailAccountNumber : String?
@@ -95,9 +115,9 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
             oldAccountNumber = customer?.accountNumber
             var firstSeven : String!
             if phoneNumberTextField.text?.characters.count > 7 {
-                let nonFormttedArray = phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
-                let acctNumber = nonFormttedArray.joinWithSeparator("")
-                firstSeven = acctNumber.substringFromIndex(phoneNumber.startIndex.advancedBy(3))
+                let nonFormttedArray = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                let acctNumber = nonFormttedArray.joined(separator: "")
+                firstSeven = acctNumber.substring(from: phoneNumber.characters.index(phoneNumber.startIndex, offsetBy: 3))
                 print(firstSeven)
                 accountNumber = firstSeven
                 emailAccountNumber = oldAccountNumber! + " --> " + accountNumber!
@@ -105,9 +125,9 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         } else {
             var firstSeven : String!
             if phoneNumberTextField.text?.characters.count > 7 {
-                let nonFormttedArray = phoneNumber.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet)
-                let acctNumber = nonFormttedArray.joinWithSeparator("")
-                firstSeven = acctNumber.substringFromIndex(phoneNumber.startIndex.advancedBy(3))
+                let nonFormttedArray = phoneNumber.components(separatedBy: CharacterSet.decimalDigits.inverted)
+                let acctNumber = nonFormttedArray.joined(separator: "")
+                firstSeven = acctNumber.substring(from: phoneNumber.characters.index(phoneNumber.startIndex, offsetBy: 3))
                 print(firstSeven)
                 accountNumber = firstSeven
                 emailAccountNumber = accountNumber
@@ -120,10 +140,10 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         var addressZIP : String?
         
         if updatedAddress == true {
-            let stringArray = address.componentsSeparatedByString(",")
+            let stringArray = address.components(separatedBy: ",")
             addressStreet = stringArray[0]
             addressCity = stringArray[1]
-            let cityStateArray = stringArray[2].componentsSeparatedByString(" ")
+            let cityStateArray = stringArray[2].components(separatedBy: " ")
             addressState = cityStateArray[1]
             addressZIP = cityStateArray[2]
         }
@@ -134,30 +154,30 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         }
         
         self.customer?.accountNumber = accountNumber!
-        self.customer?.firstName = firstNameTextField.text!.uppercaseString
-        self.customer?.lastName = lastNameTextField.text!.uppercaseString
-        self.customer?.fullName = lastNameTextField.text!.uppercaseString + ", " + firstNameTextField.text!.uppercaseString
+        self.customer?.firstName = firstNameTextField.text!.uppercased()
+        self.customer?.lastName = lastNameTextField.text!.uppercased()
+        self.customer?.fullName = lastNameTextField.text!.uppercased() + ", " + firstNameTextField.text!.uppercased()
         if updatedAddress == true {
-            self.customer?.addressStreet = addressStreet!.uppercaseString
-            self.customer?.addressCity = addressCity!.uppercaseString
-            self.customer?.addressState = addressState!.uppercaseString
+            self.customer?.addressStreet = addressStreet!.uppercased()
+            self.customer?.addressCity = addressCity!.uppercased()
+            self.customer?.addressState = addressState!.uppercased()
             self.customer?.ZIP = String(addressZIP!)
         }
         self.customer?.phoneNumber = phoneNumberTextField.text!
         self.customer?.currentBalance = 0
-        self.customer?.customerOpened = NSDate()
-        self.customer?.saveInBackgroundWithBlock({ (saved : Bool, error : NSError?) in
+        self.customer?.customerOpened = Date()
+        self.customer?.saveInBackground(block: { (saved : Bool, error : Error?) in
             if error == nil {
                 CustomerLookupObjects.slectedCustomer = self.customer!
                 
                 if CustomerLookupObjects.fromVC == "AddSchedule" {
-                    NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnSchedule", object: nil)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateFieldsOnSchedule"), object: nil)
                 }
                 if CustomerLookupObjects.fromVC == "NewMessage" {
-                    NSNotificationCenter.defaultCenter().postNotificationName("UpdateFieldsOnNewMessage", object: nil)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "UpdateFieldsOnNewMessage"), object: nil)
                 }
                 
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
                 CustomerLookupObjects.fromVC = nil
             } else {
                 print(error)
@@ -165,26 +185,26 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         })
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 && indexPath.row == 3 {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 3 {
             googlePlacesAPI()
         }
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         AddEditCustomers.theCustomer = nil
         GoogleAddress.address = nil
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == phoneNumberTextField {
             do {
-                let phoneNumber = try PhoneNumber(rawNumber: phoneNumberTextField.text!)
-                phoneNumberTextField.text = phoneNumber.toNational()
+                let phoneNumber = try PhoneNumberKit().parse(phoneNumberTextField.text!)
+                phoneNumberTextField.text = String(phoneNumber.nationalNumber)
             } catch {
                 
             }
@@ -192,11 +212,11 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         return false
     }
     
-    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField == phoneNumberTextField {
             do {
-                let phoneNumber = try PhoneNumber(rawNumber:phoneNumberTextField.text!)
-                phoneNumberTextField.text! = phoneNumber.toNational()
+                let phoneNumber = try PhoneNumberKit().parse(phoneNumberTextField.text!)
+                phoneNumberTextField.text! = String(phoneNumber.nationalNumber)
             } catch {
                 print("error")
             }
@@ -204,7 +224,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         return true
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         enableSaveButton(true)
     }
     
@@ -212,32 +232,32 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
 
 extension AddEditCustomerTableViewController : GooglePlacesAutocompleteDelegate {
     
-    func placeSelected(place: Place) {
-        let houseNumbers = place.desc.componentsSeparatedByString(" ")[0]
+    func placeSelected(_ place: Place) {
+        let houseNumbers = place.desc.components(separatedBy: " ")[0]
         place.getDetails({ (thePlaceDetails) -> () in
-            let fullAddress = thePlaceDetails.fullAddress.componentsSeparatedByString(" ")[0]
+            let fullAddress = thePlaceDetails.fullAddress.components(separatedBy: " ")[0]
             if self.isNumeric(fullAddress) {
                 print(place.desc)
                 GoogleAddress.address = thePlaceDetails.fullAddress
             } else {
                 GoogleAddress.address = houseNumbers + " " + thePlaceDetails.fullAddress
             }
-        NSNotificationCenter.defaultCenter().postNotificationName("NotifyUpdateAddressLabelFromGoogleAutocompleteAPI", object: nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotifyUpdateAddressLabelFromGoogleAutocompleteAPI"), object: nil)
+        self.dismiss(animated: true, completion: nil)
         })
         
     }
     
-    func isNumeric(a: String) -> Bool {
+    func isNumeric(_ a: String) -> Bool {
         return Int(a) != nil
     }
     
     func placeViewClosed() {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancelButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func cancelButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

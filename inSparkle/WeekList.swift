@@ -16,32 +16,32 @@ class WeekList: PFObject, PFSubclassing {
     }
     
     var apptsRemain : Int {
-        get { return objectForKey("apptsRemain") as! Int }
+        get { return object(forKey: "apptsRemain") as! Int }
         set { setObject(newValue, forKey: "apptsRemain") }
     }
     
     var isOpenWeek : Bool {
-        get { return objectForKey("isOpenWeek") as! Bool }
+        get { return object(forKey: "isOpenWeek") as! Bool }
         set { setObject(newValue, forKey: "isOpenWeek") }
     }
     
-    var weekStart : NSDate {
-        get { return objectForKey("weekStart") as! NSDate }
+    var weekStart : Date {
+        get { return object(forKey: "weekStart") as! Date }
         set { setObject(newValue, forKey: "weekStart") }
     }
     
-    var weekEnd : NSDate {
-        get { return objectForKey("weekEnd") as! NSDate }
+    var weekEnd : Date {
+        get { return object(forKey: "weekEnd") as! Date }
         set { setObject(newValue, forKey: "weekEnd") }
     }
     
     var maxAppts : Int {
-        get { return objectForKey("maxAppts") as! Int }
+        get { return object(forKey: "maxAppts") as! Int }
         set { setObject(newValue, forKey: "maxAppts") }
     }
     
     var numApptsSch : Int {
-        get { return objectForKey("numApptsSch") as! Int }
+        get { return object(forKey: "numApptsSch") as! Int }
         set { setObject(newValue, forKey: "numApptsSch") }
     }
     

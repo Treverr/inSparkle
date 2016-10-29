@@ -6,25 +6,23 @@ project 'inSparkle.xcodeproj'
 target 'inSparkle' do
 use_frameworks!
 
-pod 'RSBarcodes_Swift', '~> 0.1.9'
-pod "SwiftGifOrigin"
-pod "CalendarView"
-pod 'GooglePlacesAutocomplete', git: 'https://github.com/watsonbox/ios_google_places_autocomplete'
+pod 'RSBarcodes_Swift'
+pod "CalendarView", :git => 'https://github.com/mikeandike/CalendarView.git'
+pod 'SwiftMoment'
+pod 'GooglePlacesAutocomplete'
 pod 'PhoneNumberKit'
 pod 'MZFormSheetPresentationController'
 pod "UIView+HierarchicalDrawing"
 pod "iCarousel"
 pod "MIBadgeButton-Swift"
-pod 'FXImageView'
 pod 'DropDown'
-pod 'MobihelpSDK'
 pod 'SwiftSpinner'
-pod 'IQKeyboardManagerSwift', '4.0.5'
+pod 'IQKeyboardManagerSwift'
 pod 'Parse'
 pod 'BRYXBanner'
 pod 'NVActivityIndicatorView'
-pod 'Alamofire', '~> 3.5.0'
+pod 'Alamofire'
 pod 'ParseLiveQuery'
-pod 'PDFGenerator', :git => 'https://github.com/sgr-ksmt/PDFGenerator.git', :branch => 'swift-2.3'
+pod 'PDFGenerator'
 
 end

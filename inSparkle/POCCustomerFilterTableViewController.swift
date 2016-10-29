@@ -22,14 +22,14 @@ class POCAdminTableViewController: UITableViewController {
 
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "allCustomers" {
             POCReportFilters.filter.append("allCustomers")
         }
     }
 
-    @IBAction func closeAction(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) { 
+    @IBAction func closeAction(_ sender: AnyObject) {
+        self.dismiss(animated: true) { 
             POCReportFilters.filter.removeAll()
         }
     }

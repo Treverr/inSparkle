@@ -16,22 +16,22 @@ class VacationTime : PFObject, PFSubclassing {
     }
     
     var employee : Employee {
-        get { return objectForKey("employee") as! Employee }
+        get { return object(forKey: "employee") as! Employee }
         set { setObject(newValue, forKey: "employee") }
     }
     
     var issuedHours : Double {
-        get { return objectForKey("issuedHours") as! Double }
+        get { return object(forKey: "issuedHours") as! Double }
         set { setObject(newValue, forKey: "issuedHours") }
     }
     
     var hoursPending : Double {
-        get { return objectForKey("hoursPending") as! Double }
+        get { return object(forKey: "hoursPending") as! Double }
         set { setObject(newValue, forKey: "hoursPending") }
     }
     
     var hoursLeft : Double {
-        get { return objectForKey("hoursLeft") as! Double }
+        get { return object(forKey: "hoursLeft") as! Double }
         set { setObject(newValue, forKey: "hoursLeft") }
     }
     

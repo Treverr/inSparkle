@@ -25,47 +25,47 @@ class PDFLockerTableViewController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         getFiles()
         self.tableView.reloadData()
     }
     
     enum FileSaveError {
-        case Error17
+        case error17
     }
     
-    func renameFileLongPress(longPress: UIGestureRecognizer) {
+    func renameFileLongPress(_ longPress: UIGestureRecognizer) {
         print(longPress.state)
-        if longPress.state == .Began {
-            let pressPoint : CGPoint = longPress.locationInView(self.tableView)
-            let indexPath : NSIndexPath = self.tableView.indexPathForRowAtPoint(pressPoint)!
+        if longPress.state == .began {
+            let pressPoint : CGPoint = longPress.location(in: self.tableView)
+            let indexPath : IndexPath = self.tableView.indexPathForRow(at: pressPoint)!
             
             var renameTextField : UITextField!
-            let renameAlert = UIAlertController(title: "Rename File", message: nil, preferredStyle: .Alert)
-            renameAlert.addTextFieldWithConfigurationHandler({ (textField) in
+            let renameAlert = UIAlertController(title: "Rename File", message: nil, preferredStyle: .alert)
+            renameAlert.addTextField(configurationHandler: { (textField) in
                 renameTextField = textField
             })
-            let saveButton = UIAlertAction(title: "Save", style: .Default, handler: { (action) in
+            let saveButton = UIAlertAction(title: "Save", style: .default, handler: { (action) in
                 
-                let fileManager = NSFileManager.defaultManager()
-                let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+                let fileManager = FileManager.default
+                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
                 let documentsDirectory = paths[0]
-                let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
-                let stringPath =  inboxPath + "/" + self.filePaths[indexPath.row]
+                let inboxPath = documentsDirectory + "/PDFLocker"
+                let stringPath =  inboxPath + "/" + self.filePaths[(indexPath as NSIndexPath).row]
                 let newFileName = renameTextField.text!
                 let selectedFile = stringPath
-                let selectedFileName = selectedFile.componentsSeparatedByString("/").last
-                let filePath = selectedFile.componentsSeparatedByString(selectedFileName!)[0]
-                let newFilePath = filePath.stringByAppendingString(newFileName.capitalizedString + ".pdf")
+                let selectedFileName = selectedFile.components(separatedBy: "/").last
+                let filePath = selectedFile.components(separatedBy: selectedFileName!)[0]
+                let newFilePath = filePath + (newFileName.capitalized + ".pdf")
                 do {
-                    try NSFileManager.defaultManager().moveItemAtPath(selectedFile, toPath: newFilePath)
-                } catch let error as NSError {
-                    switch error.code {
+                    try FileManager.default.moveItem(atPath: selectedFile, toPath: newFilePath)
+                } catch let error as Error {
+                    switch error._code {
                     case 516:
-                        let fileExistAlert = UIAlertController(title: "Error", message: "The file name you specified already exists. Unable to rename", preferredStyle: .Alert)
-                        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+                        let fileExistAlert = UIAlertController(title: "Error", message: "The file name you specified already exists. Unable to rename", preferredStyle: .alert)
+                        let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
                         fileExistAlert.addAction(okayButton)
-                        self.presentViewController(fileExistAlert, animated: true, completion: nil)
+                        self.present(fileExistAlert, animated: true, completion: nil)
                     default :
                         break
                     }
@@ -74,46 +74,46 @@ class PDFLockerTableViewController: UITableViewController {
                 self.tableView.reloadData()
                
             })
-            let cancelButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            let cancelButton = UIAlertAction(title: "Cancel", style: .default, handler: nil)
             renameAlert.addAction(cancelButton)
             renameAlert.addAction(saveButton)
-            self.presentViewController(renameAlert, animated: true, completion: nil)
+            self.present(renameAlert, animated: true, completion: nil)
         }
     }
     
     
     func getFiles() {
-        let fileManager = NSFileManager.defaultManager()
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let fileManager = FileManager.default
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
-        let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
+        let inboxPath = documentsDirectory + "/PDFLocker"
         do {
-            self.filePaths = try fileManager.contentsOfDirectoryAtPath(inboxPath)
+            self.filePaths = try fileManager.contentsOfDirectory(atPath: inboxPath)
         } catch {
             
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("fileCell")! as UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell")! as UITableViewCell
         
-        let fileManager = NSFileManager.defaultManager()
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let fileManager = FileManager.default
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
-        let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
+        let inboxPath = documentsDirectory + "/PDFLocker"
 
-        let stringPath =  inboxPath + "/" + self.filePaths[indexPath.row]
-        let stringArray = stringPath.componentsSeparatedByString("/")
+        let stringPath =  inboxPath + "/" + self.filePaths[(indexPath as NSIndexPath).row]
+        let stringArray = stringPath.components(separatedBy: "/")
         let fileName = stringArray.last
 //        let documentName = stringPath.componentsSeparatedByString("file://")[1]
-        let fileNameWithoutPDF = fileName?.componentsSeparatedByString(".pdf")[0].capitalizedString
+        let fileNameWithoutPDF = fileName?.components(separatedBy: ".pdf")[0].capitalized
         var attribs : NSDictionary?
-        var createdAt : NSDate?
+        var createdAt : Date?
         
         let renameLongPress : UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(PDFLockerTableViewController.renameFileLongPress(_:)))
         
         do {
-            try attribs = NSFileManager.defaultManager().attributesOfItemAtPath(stringPath)
+            try attribs = FileManager.default.attributesOfItem(atPath: stringPath) as NSDictionary?
         } catch {
             print(error)
         }
@@ -131,13 +131,13 @@ class PDFLockerTableViewController: UITableViewController {
             cell.detailTextLabel?.text = GlobalFunctions().stringFromDateShortTimeShortDate(createdAt!)
         }
         
-        cell.accessoryType = .DisclosureIndicator
+        cell.accessoryType = .disclosureIndicator
         cell.addGestureRecognizer(renameLongPress)
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.filePaths == nil {
             return 0
         } else {
@@ -145,61 +145,61 @@ class PDFLockerTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let selection = indexPath.row
-        let fileManager = NSFileManager.defaultManager()
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let selection = (indexPath as NSIndexPath).row
+        let fileManager = FileManager.default
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
-        let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
+        let inboxPath = documentsDirectory + "/PDFLocker"
         
-        let stringPath =  inboxPath + "/" + self.filePaths[indexPath.row]
+        let stringPath =  inboxPath + "/" + self.filePaths[(indexPath as NSIndexPath).row]
 
         
-        let docURL = NSURL.fileURLWithPath(stringPath)
+        let docURL = URL(fileURLWithPath: stringPath)
         var docController : UIDocumentInteractionController!
-        docController = UIDocumentInteractionController(URL: docURL)
+        docController = UIDocumentInteractionController(url: docURL)
         docController.delegate = self
-        docController.presentPreviewAnimated(true)
+        docController.presentPreview(animated: true)
         
     }
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            let selection = indexPath.row
-            let fileManager = NSFileManager.defaultManager()
-            let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let selection = (indexPath as NSIndexPath).row
+            let fileManager = FileManager.default
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
             let documentsDirectory = paths[0]
-            let inboxPath = documentsDirectory.stringByAppendingString("/PDFLocker")
+            let inboxPath = documentsDirectory + "/PDFLocker"
             
-            let stringPath =  inboxPath + "/" + self.filePaths[indexPath.row]
+            let stringPath =  inboxPath + "/" + self.filePaths[(indexPath as NSIndexPath).row]
 
             
             do {
-                try NSFileManager.defaultManager().removeItemAtPath(stringPath)
+                try FileManager.default.removeItem(atPath: stringPath)
             } catch {
                 
             }
             self.getFiles()
             self.tableView.beginUpdates()
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
             self.tableView.endUpdates()
         }
     }
     
-    func jumpToPDFFile(filePath : String) {
+    func jumpToPDFFile(_ filePath : String) {
         
-        let documentPath = filePath.componentsSeparatedByString("file://")[1]
+        let documentPath = filePath.components(separatedBy: "file://")[1]
         
-        let docURL = NSURL.fileURLWithPath(documentPath)
+        let docURL = URL(fileURLWithPath: documentPath)
         var docController : UIDocumentInteractionController!
-        docController = UIDocumentInteractionController(URL: docURL)
+        docController = UIDocumentInteractionController(url: docURL)
         docController.delegate = self
-        docController.presentPreviewAnimated(true)
+        docController.presentPreview(animated: true)
         
         self.shouldJumpToPDFWithPath = nil
         
@@ -209,18 +209,18 @@ class PDFLockerTableViewController: UITableViewController {
 
 extension PDFLockerTableViewController : UIDocumentInteractionControllerDelegate {
     
-    func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
+    func documentInteractionControllerRectForPreview(_ controller: UIDocumentInteractionController) -> CGRect {
         return self.view.frame
     }
     
     
-    func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         let viewController = UIViewController()
-        self.presentViewController(viewController, animated: true, completion: nil)
+        self.present(viewController, animated: true, completion: nil)
         return viewController
     }
     

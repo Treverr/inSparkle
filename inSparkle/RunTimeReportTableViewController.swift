@@ -9,6 +9,26 @@
  import UIKit
  import Parse
  import NVActivityIndicatorView
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
  
  class RunTimeReportTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UIActionSheetDelegate, UIDocumentInteractionControllerDelegate  {
     
@@ -28,34 +48,34 @@
         self.startDateLabel.text = "select"
         self.endDateLabel.text = "select"
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RunTimeReportTableViewController.updateStartDateLabel), name: "updateStart", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RunTimeReportTableViewController.updateEndDateLabel), name: "updateEnd", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RunTimeReportTableViewController.updateStartDateLabel), name: NSNotification.Name(rawValue: "updateStart"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RunTimeReportTableViewController.updateEndDateLabel), name: NSNotification.Name(rawValue: "updateEnd"), object: nil)
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "updateStart", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "updateEnd", object: nil)
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateStart"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "updateEnd"), object: nil)
         
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // First Section
-        if indexPath.section == 0 {
+        if (indexPath as NSIndexPath).section == 0 {
             // First Cell
-            if indexPath.row == 0 {
+            if (indexPath as NSIndexPath).row == 0 {
                 
                 displayPopover("CalendarDatePicker", indexPath: indexPath)
                 
                 TimeClockReportAllEmployee.startEnd = "start"
             }
             
-            if indexPath.row == 1 {
+            if (indexPath as NSIndexPath).row == 1 {
                 
                 displayPopover("CalendarDatePicker", indexPath: indexPath)
                 
@@ -65,19 +85,19 @@
         }
     }
     
-    func displayPopover(vcID : String, indexPath : NSIndexPath) {
+    func displayPopover(_ vcID : String, indexPath : IndexPath) {
         let storyboard = UIStoryboard(name: "TimeClockReport", bundle: nil)
         let x = self.view.center
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let vc = storyboard.instantiateViewControllerWithIdentifier(vcID)
-        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let vc = storyboard.instantiateViewController(withIdentifier: vcID)
+        vc.modalPresentationStyle = UIModalPresentationStyle.popover
         let popover : UIPopoverPresentationController = vc.popoverPresentationController!
         popover.delegate = self
         popover.sourceView = self.view
-        popover.sourceRect = CGRectMake((x.x - 25), x.y, 0, 0)
+        popover.sourceRect = CGRect(x: (x.x - 25), y: x.y, width: 0, height: 0)
         popover.permittedArrowDirections = UIPopoverArrowDirection()
         popover.popoverLayoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
-        self.presentViewController(vc, animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
     
     func updateStartDateLabel() {
@@ -94,25 +114,25 @@
         loadingUI = returnUI
         
         loadingBackground.frame = self.view.frame
-        loadingBackground.backgroundColor = UIColor.blackColor()
+        loadingBackground.backgroundColor = UIColor.black
         
     }
     
-    @IBAction func runReportButton(sender: AnyObject) {
+    @IBAction func runReportButton(_ sender: AnyObject) {
         
-        performSelectorOnMainThread(#selector(RunTimeReportTableViewController.swiftActive), withObject: nil, waitUntilDone: true)
+        performSelector(onMainThread: #selector(RunTimeReportTableViewController.swiftActive), with: nil, waitUntilDone: true)
 
         let startDateString = startDateLabel.text
         let endDateString = endDateLabel.text
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
         
-        let startDate : NSDate = formatter.dateFromString(startDateString!)!
-        var endDate : NSDate = formatter.dateFromString(endDateString!)!
+        let startDate : Date = formatter.date(from: startDateString!)!
+        var endDate : Date = formatter.date(from: endDateString!)!
         
-        let cal : NSCalendar = NSCalendar.currentCalendar()
-        endDate = cal.dateBySettingHour(23, minute: 59, second: 59, ofDate: endDate, options: NSCalendarOptions(rawValue: 0))!
+        let cal : Calendar = Calendar.current
+        endDate = (cal as NSCalendar).date(bySettingHour: 23, minute: 59, second: 59, of: endDate, options: NSCalendar.Options(rawValue: 0))!
         print(endDate)
         
         getEmployees(startDate, endDate: endDate)
@@ -121,9 +141,9 @@
     
     var employeeArray = [Employee]()
     
-    func getEmployees(startDate : NSDate, endDate : NSDate) {
+    func getEmployees(_ startDate : Date, endDate : Date) {
         let query = Employee.query()
-        query?.findObjectsInBackgroundWithBlock({ (employees:[PFObject]?, error:NSError?) -> Void in
+        query?.findObjectsInBackground(block: { (employees:[PFObject]?, error:Error?) -> Void in
             if error == nil && employees?.count > 0 {
                 for employee in employees! {
                     self.employeeArray.append(employee as! Employee)
@@ -143,9 +163,9 @@
     var csvPunches : String = "Employee,TimePunchedIn,TimePunchedOut,TotalTime\n"
     var expectedPunches = 0
     var returnedPunches = 0
-    var error = NSErrorPointer()
+    var error: ErrorPointer = nil
     
-    func getTimeCardForEachEmployee(employee : Employee, startDate : NSDate, endDate : NSDate) {
+    func getTimeCardForEachEmployee(_ employee : Employee, startDate : Date, endDate : Date) {
         if !detail {
             csvPunches = "Employee,StandardHours,OvertimeHours,VacationHours,TotalTime\n"
             csvPunches += "Marti Ennis,Salary,-,-,-\n"
@@ -160,7 +180,7 @@
         timeCardQuery?.whereKey("timePunchedOut", lessThan: endDate)
         expectedPunches = expectedPunches + (timeCardQuery?.countObjects(error))!
         print(expectedPunches)
-        timeCardQuery?.findObjectsInBackgroundWithBlock({ (punches : [PFObject]?, error : NSError?) -> Void in
+        timeCardQuery?.findObjectsInBackground(block: { (punches : [PFObject]?, error : Error?) -> Void in
             if error == nil {
                 
                 var totalForEmp : Double! = 0
@@ -168,15 +188,15 @@
                 
                 for punch in punches! {
                     let thePunch = punch as! TimePunchCalcObject
-                    let formatter = NSDateFormatter()
-                    formatter.dateStyle = .MediumStyle
-                    formatter.timeStyle = .ShortStyle
+                    let formatter = DateFormatter()
+                    formatter.dateStyle = .medium
+                    formatter.timeStyle = .short
                     
                     employeeName = "\(employee.firstName) \(employee.lastName)"
-                    var timePunchedIn = formatter.stringFromDate(thePunch.timePunchedIn)
-                    timePunchedIn = timePunchedIn.stringByReplacingOccurrencesOfString(",", withString: " ")
-                    var timePunchedOut = formatter.stringFromDate(thePunch.timePunchedOut)
-                    timePunchedOut = timePunchedOut.stringByReplacingOccurrencesOfString(",", withString: " ")
+                    var timePunchedIn = formatter.string(from: thePunch.timePunchedIn)
+                    timePunchedIn = timePunchedIn.replacingOccurrences(of: ",", with: " ")
+                    var timePunchedOut = formatter.string(from: thePunch.timePunchedOut)
+                    timePunchedOut = timePunchedOut.replacingOccurrences(of: ",", with: " ")
                     let totalTime = "\(thePunch.totalTime)"
                     let theTotal = thePunch.totalTime
                     
@@ -266,48 +286,48 @@
         textToShare.appendFormat("%@\r", self.csvPunches)
         print("Time to Share: \(textToShare)")
         
-        let data = textToShare.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let data = textToShare.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)
         saveCSV(textToShare)
         
     }
     
-    func sheet(whatToShare : AnyObject) {
+    func sheet(_ whatToShare : AnyObject) {
         let activityViewController = UIActivityViewController(activityItems: [whatToShare], applicationActivities: nil)
-        presentViewController(activityViewController, animated: true, completion: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
     
     var docController: UIDocumentInteractionController?
     
-    func saveCSV(whatToSave : NSMutableString) {
+    func saveCSV(_ whatToSave : NSMutableString) {
         let x = self.view.center
-        let docs = NSSearchPathForDirectoriesInDomains(.DocumentationDirectory, .UserDomainMask, true)[0] 
-        let writePath = docs.stringByAppendingString("TimeCardReport.csv")
+        let docs = NSSearchPathForDirectoriesInDomains(.documentationDirectory, .userDomainMask, true)[0] 
+        let writePath = docs + "TimeCardReport.csv"
         do {
-            try whatToSave.writeToFile(writePath, atomically: true, encoding: NSUTF8StringEncoding)
+            try whatToSave.write(toFile: writePath, atomically: true, encoding: String.Encoding.utf8.rawValue)
             print("Wrote File")
             print(writePath)
         } catch {
             
         }
-        docController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: writePath))
+        docController = UIDocumentInteractionController(url: URL(fileURLWithPath: writePath))
         docController!.delegate = self
-        docController!.presentPreviewAnimated(true)
-        self.loadingUI.stopAnimation()
+        docController!.presentPreview(animated: true)
+        self.loadingUI.stopAnimating()
     }
     
-    func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
+    func documentInteractionControllerRectForPreview(_ controller: UIDocumentInteractionController) -> CGRect {
         return self.view.frame
     }
     
-    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         let viewController: UIViewController = UIViewController()
-        self.presentViewController(viewController, animated: true, completion: nil)
+        self.present(viewController, animated: true, completion: nil)
         return viewController
     }
     
-    func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
+        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
  }

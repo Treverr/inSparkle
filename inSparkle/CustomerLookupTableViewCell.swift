@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class CustomerLookupTableViewCell: UITableViewCell {
+open class CustomerLookupTableViewCell: UITableViewCell {
     
     @IBOutlet weak var customerName: UILabel!
     @IBOutlet weak var addressStreet: UILabel!
@@ -17,7 +17,7 @@ public class CustomerLookupTableViewCell: UITableViewCell {
     @IBOutlet weak var balance: UILabel!
     @IBOutlet weak var editButton: UIButton!
     
-    public func customerCell(_customerName : String, _addressStreet : String, _addressRest : String, _phoneNumber : String, _balance : Int?, editButton : UIButton) {
+    open func customerCell(_ _customerName : String, _addressStreet : String, _addressRest : String, _phoneNumber : String, _balance : Int?, editButton : UIButton) {
         
         customerName.text = _customerName
         addressStreet.text = _addressStreet

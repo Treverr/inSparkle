@@ -12,7 +12,7 @@ import Alamofire
 
 class CloudCode {
     
-    class func AddUpdateCustomerRecord(accountNumber : String?, name : String, address : String, phoneNumber : String) {
+    class func AddUpdateCustomerRecord(_ accountNumber : String?, name : String, address : String, phoneNumber : String) {
         
         let to = "robert@mysparklepools.com"
         let from = "inSparkle App Team <trever@insparklepools.com>"
@@ -32,7 +32,7 @@ class CloudCode {
         }
     }
     
-    class func AlertOfCancelation(name : String, address : String, phone : String, reason : String, cancelBy : String, theDates : String, theType : String) {
+    class func AlertOfCancelation(_ name : String, address : String, phone : String, reason : String, cancelBy : String, theDates : String, theType : String) {
         
         let to = "robert@mysparklepools.com"
         let from = "inSparkle App Team <trever@insparklepools.com>"
@@ -56,48 +56,50 @@ class CloudCode {
         
     }
     
-    class func UpdateUserAdminStatus(username : String, adminStatus : Bool, alert : UIAlertController, completion : (complete : Bool) -> Void) {
+    class func UpdateUserAdminStatus(_ username : String, adminStatus : Bool, alert : UIAlertController, completion : (_ complete : Bool) -> Void) {
         let parameters = [
             "username" : username,
             "adminStatus" : adminStatus,
-            ]
+            ] as [String : Any]
         
-        PFCloud.callFunctionInBackground("modifyAdminStatus", withParameters: parameters as [NSObject : AnyObject], block: { (response : AnyObject?, error : NSError?) in
+        PFCloud.callFunction(inBackground: "modifyAdminStatus", withParameters: parameters) { (reponse, error) in
             if error == nil {
-                alert.dismissViewControllerAnimated(true, completion: nil)
+                alert.dismiss(animated: true, completion: nil)
             }
-        })
-        completion(complete: true)
+        }
+        completion(true)
     }
     
-    class func UpdateUserInfo(username : String, email : String, objectId : String, completion : (isComplete : Bool) -> Void) {
+    class func UpdateUserInfo(_ username : String, email : String, objectId : String, completion : @escaping (_ isComplete : Bool) -> Void) {
         let params = [
             "username" : username,
             "emailAddy" : email,
             "objId" : objectId
         ]
         
-        PFCloud.callFunctionInBackground("updateUserInformation", withParameters: params, block: { (response : AnyObject?, error : NSError?) in
+        PFCloud.callFunction(inBackground: "updateUserInformation", withParameters: params) { (response, error) in
             if error == nil {
-                completion(isComplete: true)
+                completion(true)
             }
-        })
+        }
+
     }
     
-    class func UpdateUserSpecialAccess(objId : String, specialAccesses : NSArray, completion : (isComplete : Bool) -> Void) {
+    class func UpdateUserSpecialAccess(_ objId : String, specialAccesses : NSArray, completion : @escaping (_ isComplete : Bool) -> Void) {
         let params = [
             "objId" : objId,
             "specAccess" : specialAccesses,
-            ]
+            ] as [String : Any]
         
-        PFCloud.callFunctionInBackground("UpdateUserSpecialAccess", withParameters: params, block: { (response : AnyObject?, error : NSError?) in
+        PFCloud.callFunction(inBackground: "UpdateUserSpecialAccess", withParameters: params) { (response, error) in
             if error == nil {
-                completion(isComplete: true)
+                completion(true)
             }
-        })
+        }
+
     }
     
-    class func CreateNewUser(username : String, password : String, emailAddy : String, adminStatus : Bool, empID : String, completion : (isComplete : Bool, objectID : String) -> Void) {
+    class func CreateNewUser(_ username : String, password : String, emailAddy : String, adminStatus : Bool, empID : String, completion : @escaping (_ isComplete : Bool, _ objectID : String) -> Void) {
         
         let params = [
             "username" : username,
@@ -106,60 +108,61 @@ class CloudCode {
             "adminStatus" : adminStatus,
             "empID" : empID,
             "enabled" : true
-        ]
+            ] as [String : Any]
         
         do {
-            PFCloud.callFunctionInBackground("CreateNewUser", withParameters: params as [NSObject : AnyObject], block: { (response : AnyObject?, error : NSError?) in
+            PFCloud.callFunction(inBackground: "CreateNewUser", withParameters: params, block: { (response, error) in
                 if error == nil {
-                    completion(isComplete: true, objectID: response as! String)
+                    completion(true, response as! String)
                 }
             })
+            
         }
     }
     
-    class func DisableEnableUser (userObjID : String, enabled : Bool, completion : (complete : Bool) -> Void) {
+    class func DisableEnableUser (_ userObjID : String, enabled : Bool, completion : @escaping (_ complete : Bool) -> Void) {
         let params = [
             "objId" : userObjID,
             "enabled" : enabled
-        ]
+        ] as [String : Any]
         
         do {
-            PFCloud.callFunctionInBackground("UpdateUserStatus", withParameters: params as [NSObject : AnyObject], block: { (response : AnyObject?, error : NSError?) in
+            
+            PFCloud.callFunction(inBackground: "UpdateUserStatus", withParameters: params, block: { (response, error) in
                 if error == nil {
-                    completion(complete: true)
+                    completion(true)
                 }
             })
         }
     }
     
-    class func ChangeUserPassword(username : String, newPassword : String, completion: (isComplete : Bool) -> Void) {
+    class func ChangeUserPassword(_ username : String, newPassword : String, completion: @escaping (_ isComplete : Bool) -> Void) {
         let params = [
             "username" : username,
             "newPassword" : newPassword
         ]
         
-        PFCloud.callFunctionInBackground("changeUserPassword", withParameters: params) {
-            (result: AnyObject?, error: NSError?) -> Void in
+        PFCloud.callFunction(inBackground: "changeUserPassword", withParameters: params) { (result, error) in
             if (error == nil) {
-                completion(isComplete: true)
+                completion(true)
             }
         }
     }
     
-    class func SendVacationApprovedEmail(email : String, date1 : NSDate, date2 : NSDate) {
-        let dateFormatter = NSDateFormatter()
+    class func SendVacationApprovedEmail(_ email : String, date1 : Date, date2 : Date) {
+        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MMM-yyyy"
-        let fromDate = dateFormatter.stringFromDate(date1)
-        let toDate = dateFormatter.stringFromDate(date2)
+        let fromDate = dateFormatter.string(from: date1)
+        let toDate = dateFormatter.string(from: date2)
         
         do {
-            let pathToHTML = NSBundle.mainBundle().pathForResource("VacationApprovedHTML", ofType: "html")
+            let pathToHTML = Bundle.main.path(forResource: "VacationApprovedHTML", ofType: "html")
             
             var HTMLContent = try String(contentsOfFile: pathToHTML!)
             
-            HTMLContent = HTMLContent.stringByReplacingOccurrencesOfString("#date1", withString: fromDate)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#date1", with: fromDate)
             
-            HTMLContent = HTMLContent.stringByReplacingOccurrencesOfString("#date2", withString: toDate)
+            HTMLContent = HTMLContent.replacingOccurrences(of: "#date2", with: toDate)
             
             Email.send(email, from: "Sparkle HR <sparklepools@insparklepools.com>", subject: "Your vacation request is approved.", body: nil, cc: nil, bcc: "trever@insparklepools.com", html: HTMLContent, replyTo: "Time Away Requests <timeawayrequests@mysparklepools.com>")
             

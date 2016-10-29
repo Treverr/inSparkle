@@ -45,14 +45,14 @@ class PoolOpeningPDFViewController: UIViewController {
         
         self.data = POCReportData.POCData
         
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
+        let delayTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
             self.createPdfFromView(self.theView, saveToDocumentsWithFileName: "POC")
         }
    
     }
     
-    func createPdfFromView(aView: UIView, saveToDocumentsWithFileName fileName: String) {
+    func createPdfFromView(_ aView: UIView, saveToDocumentsWithFileName fileName: String) {
         
         if firsRun {
             pagesLeft = data.count
@@ -60,7 +60,7 @@ class PoolOpeningPDFViewController: UIViewController {
         }
         
         let pdfData = NSMutableData()
-        UIGraphicsBeginPDFContextToData(pdfData, CGRectZero, nil)
+        UIGraphicsBeginPDFContextToData(pdfData, CGRect.zero, nil)
         
         while pagesLeft > 0 {
             
@@ -121,7 +121,7 @@ class PoolOpeningPDFViewController: UIViewController {
                 
                 guard let pdfContext = UIGraphicsGetCurrentContext() else { return }
                 
-                CGContextSetInterpolationQuality(pdfContext, .High)
+                pdfContext.interpolationQuality = .high
                 aView.drawHierarchy()
                 
                 pagesLeft = pagesLeft - 1
@@ -133,8 +133,8 @@ class PoolOpeningPDFViewController: UIViewController {
                 UIGraphicsEndPDFContext()
                 
                 let info : UIPrintInfo = UIPrintInfo(dictionary: nil)
-                info.orientation = UIPrintInfoOrientation.Portrait
-                info.outputType = UIPrintInfoOutputType.Grayscale
+                info.orientation = UIPrintInfoOrientation.portrait
+                info.outputType = UIPrintInfoOutputType.grayscale
                 info.jobName = customerName.text! + " PoC"
                 
                 GlobalFunctions().printToPrinter(pdfData, printInfo: info, view: self)
@@ -158,19 +158,19 @@ class PoolOpeningPDFViewController: UIViewController {
 
 extension PoolOpeningPDFViewController : UIDocumentInteractionControllerDelegate {
     
-    func documentInteractionControllerRectForPreview(controller: UIDocumentInteractionController) -> CGRect {
+    func documentInteractionControllerRectForPreview(_ controller: UIDocumentInteractionController) -> CGRect {
         return self.view.frame
     }
     
-    func documentInteractionControllerDidEndPreview(controller: UIDocumentInteractionController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func documentInteractionControllerDidEndPreview(_ controller: UIDocumentInteractionController) {
+        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func documentInteractionControllerViewControllerForPreview(controller: UIDocumentInteractionController) -> UIViewController {
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
         let viewController: UIViewController = UIViewController()
-        self.presentViewController(viewController, animated: true, completion: nil)
+        self.present(viewController, animated: true, completion: nil)
         return viewController
     }
     

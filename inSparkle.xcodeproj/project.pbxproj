@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		A1E5EC61ACB2271D50D7CDA2 /* Pods_inSparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578343C5A28B70E501E29E5D /* Pods_inSparkle.framework */; };
 		C90251B71BFE989F00BEB906 /* DetailPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */; };
-		C90340C61C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90340C51C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard */; };
-		C90340C81C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340C71C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift */; };
-		C90340CA1C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340C91C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift */; };
 		C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C90340CB1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard */; };
 		C90340CF1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */; };
 		C9062D591D78827E002D0D0F /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9062D581D78827E002D0D0F /* TripsTableViewController.swift */; };
@@ -73,11 +70,9 @@
 		C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96EF7F71C13F37700C4D2C1 /* EmployeeModel.swift */; };
 		C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96EF7FA1C14BFC400C4D2C1 /* TimeClockViewController.swift */; };
 		C96EF7FE1C14CDDD00C4D2C1 /* TimeClock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96EF7FD1C14CDDD00C4D2C1 /* TimeClock.storyboard */; };
-		C96EF8011C14CE3100C4D2C1 /* ChemCheck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96EF8001C14CE3100C4D2C1 /* ChemCheck.storyboard */; };
 		C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C96EF8021C14E0FD00C4D2C1 /* TimeClock.xcassets */; };
 		C96F07C31CAB696C009F3436 /* SparkleConnect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96F07C21CAB696C009F3436 /* SparkleConnect.storyboard */; };
 		C96F79AB1BFC41AB00C13615 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C96F79AA1BFC41AB00C13615 /* LocalAuthentication.framework */; };
-		C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C96F79AF1BFC44ED00C13615 /* KeychainWrapper.m */; };
 		C9709C1C1C72D144000ED6EA /* WorkOrderMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9709C1B1C72D144000ED6EA /* WorkOrderMain.storyboard */; };
 		C9709C1E1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9709C1D1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift */; };
 		C9709C201C72D3A4000ED6EA /* WorkOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9709C1F1C72D3A4000ED6EA /* WorkOrdersTableViewController.swift */; };
@@ -119,7 +114,6 @@
 		C9B993DF1C7FAAAB00702851 /* PDFPartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B993DE1C7FAAAB00702851 /* PDFPartTableViewCell.swift */; };
 		C9B993E11C7FB19B00702851 /* PDFLaborTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B993E01C7FB19B00702851 /* PDFLaborTableViewCell.swift */; };
 		C9BA20101C59B6B400F8E44B /* FromBottomCustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA200F1C59B6B400F8E44B /* FromBottomCustomSegue.swift */; };
-		C9C039EC1C6D60530064FDBA /* ChemicalCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C039EB1C6D60530064FDBA /* ChemicalCheckoutViewController.swift */; };
 		C9C192881BF64DBF00862F52 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192871BF64DBF00862F52 /* AudioToolbox.framework */; };
 		C9C1928A1BF64DC900862F52 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C192891BF64DC900862F52 /* CFNetwork.framework */; };
 		C9C1928C1BF64DD100862F52 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9C1928B1BF64DD100862F52 /* CoreGraphics.framework */; };
@@ -142,6 +136,8 @@
 		C9C8E1E11C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1E01C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift */; };
 		C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */; };
 		C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */; };
+		C9CD6A0E1DBEDEE6009C93A1 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CD6A0B1DBEDEE6009C93A1 /* KeychainItemAccessibility.swift */; };
+		C9CD6A0F1DBEDEE6009C93A1 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CD6A0C1DBEDEE6009C93A1 /* KeychainWrapper.swift */; };
 		C9CE08AB1C1BEE2300603BAF /* CustomerLookupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */; };
 		C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */; };
 		C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */; };
@@ -168,15 +164,12 @@
 		C9F1A47F1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */; };
 		C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F431171BFEB13500AC3CD8 /* Global.swift */; };
 		C9F7A9B01C6FD994001A6555 /* MIBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9AF1C6FD994001A6555 /* MIBadgeButton.swift */; };
-		C9F7A9B21C6FE771001A6555 /* ChemCartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9B11C6FE771001A6555 /* ChemCartTableViewController.swift */; };
 		C9F7A9B41C70149E001A6555 /* UserPIN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F7A9B31C70149E001A6555 /* UserPIN.storyboard */; };
 		C9F7A9B61C701614001A6555 /* UserPINViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9B51C701614001A6555 /* UserPINViewController.swift */; };
-		C9F7A9B81C701BE1001A6555 /* CheckoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9B71C701BE1001A6555 /* CheckoutModel.swift */; };
 		C9FA4D591D19B1FA00EF15FA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FA4D581D19B1FA00EF15FA /* Bolts.framework */; };
 		C9FAE77B1C57FD39005630FC /* MessageStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */; };
 		C9FAE77D1C584B2E005630FC /* MessageNotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */; };
 		C9FAE77F1C584BEE005630FC /* MessageNotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */; };
-		C9FB1ED91C6EC5A100663EB7 /* ChemicalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FB1ED81C6EC5A100663EB7 /* ChemicalData.swift */; };
 		C9FE5BE41C1F880600293836 /* ConfirmCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */; };
 		C9FE5BE51C1F880600293836 /* ConfirmingAppointmentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */; };
 		C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */; };
@@ -186,9 +179,6 @@
 		578343C5A28B70E501E29E5D /* Pods_inSparkle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_inSparkle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC4344A3ECAD5C96FD76DADB /* Pods-inSparkle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-inSparkle.release.xcconfig"; path = "Pods/Target Support Files/Pods-inSparkle/Pods-inSparkle.release.xcconfig"; sourceTree = "<group>"; };
 		C90251B61BFE989F00BEB906 /* DetailPopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailPopViewController.swift; sourceTree = "<group>"; };
-		C90340C51C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChemicalCheckoutReportPDFTemplate.storyboard; sourceTree = "<group>"; };
-		C90340C71C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemCheckoutPDFReportTemplateViewController.swift; sourceTree = "<group>"; };
-		C90340C91C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemicalCheckoutTableViewCell.swift; sourceTree = "<group>"; };
 		C90340CB1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChemicalCheckoutReport.storyboard; sourceTree = "<group>"; };
 		C90340CE1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeSelectionChemCheckoutTableViewController.swift; sourceTree = "<group>"; };
 		C9062D581D78827E002D0D0F /* TripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewController.swift; sourceTree = "<group>"; };
@@ -251,13 +241,10 @@
 		C96EF7F71C13F37700C4D2C1 /* EmployeeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeModel.swift; sourceTree = "<group>"; };
 		C96EF7FA1C14BFC400C4D2C1 /* TimeClockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeClockViewController.swift; sourceTree = "<group>"; };
 		C96EF7FD1C14CDDD00C4D2C1 /* TimeClock.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeClock.storyboard; sourceTree = "<group>"; };
-		C96EF8001C14CE3100C4D2C1 /* ChemCheck.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChemCheck.storyboard; sourceTree = "<group>"; };
 		C96EF8021C14E0FD00C4D2C1 /* TimeClock.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TimeClock.xcassets; sourceTree = "<group>"; };
 		C96F07C21CAB696C009F3436 /* SparkleConnect.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SparkleConnect.storyboard; sourceTree = "<group>"; };
 		C96F79AA1BFC41AB00C13615 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		C96F79AD1BFC44ED00C13615 /* inSparkle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "inSparkle-Bridging-Header.h"; sourceTree = "<group>"; };
-		C96F79AE1BFC44ED00C13615 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
-		C96F79AF1BFC44ED00C13615 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		C9709C1B1C72D144000ED6EA /* WorkOrderMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WorkOrderMain.storyboard; sourceTree = "<group>"; };
 		C9709C1D1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrdersMainTableViewCell.swift; sourceTree = "<group>"; };
 		C9709C1F1C72D3A4000ED6EA /* WorkOrdersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrdersTableViewController.swift; sourceTree = "<group>"; };
@@ -312,7 +299,6 @@
 		C9B993DE1C7FAAAB00702851 /* PDFPartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFPartTableViewCell.swift; sourceTree = "<group>"; };
 		C9B993E01C7FB19B00702851 /* PDFLaborTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFLaborTableViewCell.swift; sourceTree = "<group>"; };
 		C9BA200F1C59B6B400F8E44B /* FromBottomCustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromBottomCustomSegue.swift; sourceTree = "<group>"; };
-		C9C039EB1C6D60530064FDBA /* ChemicalCheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemicalCheckoutViewController.swift; sourceTree = "<group>"; };
 		C9C192871BF64DBF00862F52 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C9C192891BF64DC900862F52 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C9C1928B1BF64DD100862F52 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -335,6 +321,9 @@
 		C9C8E1E01C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCActiveInactiveAllFilterTableViewController.swift; sourceTree = "<group>"; };
 		C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		C9CD6A0B1DBEDEE6009C93A1 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		C9CD6A0C1DBEDEE6009C93A1 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		C9CD6A0D1DBEDEE6009C93A1 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftKeychainWrapper.h; sourceTree = "<group>"; };
 		C9CE08AA1C1BEE2300603BAF /* CustomerLookupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewController.swift; sourceTree = "<group>"; };
 		C9CE08AC1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerLookupTableViewCell.swift; sourceTree = "<group>"; };
 		C9CE08AE1C1BF2AE00603BAF /* CustomerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerData.swift; sourceTree = "<group>"; };
@@ -361,15 +350,12 @@
 		C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTimecardWeekSelectionTableViewController.swift; sourceTree = "<group>"; };
 		C9F431171BFEB13500AC3CD8 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		C9F7A9AF1C6FD994001A6555 /* MIBadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIBadgeButton.swift; sourceTree = "<group>"; };
-		C9F7A9B11C6FE771001A6555 /* ChemCartTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemCartTableViewController.swift; sourceTree = "<group>"; };
 		C9F7A9B31C70149E001A6555 /* UserPIN.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPIN.storyboard; sourceTree = "<group>"; };
 		C9F7A9B51C701614001A6555 /* UserPINViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPINViewController.swift; sourceTree = "<group>"; };
-		C9F7A9B71C701BE1001A6555 /* CheckoutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutModel.swift; sourceTree = "<group>"; };
 		C9FA4D581D19B1FA00EF15FA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Library/Developer/Xcode/DerivedData/inSparkle-desganbhfldpqwasjowiakppzzfu/Build/Products/Debug-iphoneos/Bolts.framework"; sourceTree = "<group>"; };
 		C9FAE77A1C57FD39005630FC /* MessageStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageStatusTableViewController.swift; sourceTree = "<group>"; };
 		C9FAE77C1C584B2E005630FC /* MessageNotesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNotesTableViewController.swift; sourceTree = "<group>"; };
 		C9FAE77E1C584BEE005630FC /* MessageNotesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageNotesTableViewCell.swift; sourceTree = "<group>"; };
-		C9FB1ED81C6EC5A100663EB7 /* ChemicalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChemicalData.swift; sourceTree = "<group>"; };
 		C9FE5BE21C1F880600293836 /* ConfirmCalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmCalViewController.swift; sourceTree = "<group>"; };
 		C9FE5BE31C1F880600293836 /* ConfirmingAppointmentTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmingAppointmentTableViewController.swift; sourceTree = "<group>"; };
 		C9FE5BE61C1FC5BA00293836 /* POCReport.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = POCReport.storyboard; sourceTree = "<group>"; };
@@ -585,21 +571,6 @@
 			name = TimeClock;
 			sourceTree = "<group>";
 		};
-		C96EF7FF1C14CE1C00C4D2C1 /* Chemical Check */ = {
-			isa = PBXGroup;
-			children = (
-				C90340C91C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift */,
-				C90340C51C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard */,
-				C90340C71C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift */,
-				C96EF8001C14CE3100C4D2C1 /* ChemCheck.storyboard */,
-				C9F7A9B11C6FE771001A6555 /* ChemCartTableViewController.swift */,
-				C9C039EB1C6D60530064FDBA /* ChemicalCheckoutViewController.swift */,
-				C9FB1ED81C6EC5A100663EB7 /* ChemicalData.swift */,
-				C9F7A9B71C701BE1001A6555 /* CheckoutModel.swift */,
-			);
-			name = "Chemical Check";
-			sourceTree = "<group>";
-		};
 		C96F07C41CAB6971009F3436 /* SparkleConnect */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,15 +581,6 @@
 				C949EBA01CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift */,
 			);
 			name = SparkleConnect;
-			sourceTree = "<group>";
-		};
-		C96F79AC1BFC44E100C13615 /* KeychainWrapper */ = {
-			isa = PBXGroup;
-			children = (
-				C96F79AE1BFC44ED00C13615 /* KeychainWrapper.h */,
-				C96F79AF1BFC44ED00C13615 /* KeychainWrapper.m */,
-			);
-			name = KeychainWrapper;
 			sourceTree = "<group>";
 		};
 		C9709C1A1C72D12F000ED6EA /* Work Orders */ = {
@@ -711,7 +673,6 @@
 				C9709C1A1C72D12F000ED6EA /* Work Orders */,
 				C9585F321C17588D008AB918 /* Admin */,
 				C9585F231C16511A008AB918 /* Resources */,
-				C96EF7FF1C14CE1C00C4D2C1 /* Chemical Check */,
 				C96EF7FC1C14BFD800C4D2C1 /* TimeClock */,
 				C9CC66A51C0D0E800000EDE6 /* More */,
 				C9CC66A41C0D0E6D0000EDE6 /* Schedule */,
@@ -806,7 +767,7 @@
 		C9C1929B1BF64E0C00862F52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C96F79AC1BFC44E100C13615 /* KeychainWrapper */,
+				C9CD6A101DBEDEEC009C93A1 /* KeychainWrapper */,
 				C9C192871BF64DBF00862F52 /* AudioToolbox.framework */,
 				C9B5B44F1BF6773200650FC4 /* Fabric.framework */,
 				C9B5B4501BF6773200650FC4 /* Crashlytics.framework */,
@@ -870,6 +831,16 @@
 				C96F07C41CAB6971009F3436 /* SparkleConnect */,
 			);
 			name = More;
+			sourceTree = "<group>";
+		};
+		C9CD6A101DBEDEEC009C93A1 /* KeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				C9CD6A0B1DBEDEE6009C93A1 /* KeychainItemAccessibility.swift */,
+				C9CD6A0C1DBEDEE6009C93A1 /* KeychainWrapper.swift */,
+				C9CD6A0D1DBEDEE6009C93A1 /* SwiftKeychainWrapper.h */,
+			);
+			name = KeychainWrapper;
 			sourceTree = "<group>";
 		};
 		C9E511F11BFABC8D0030AA98 /* Log-In */ = {
@@ -1015,7 +986,6 @@
 				C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */,
 				C9A01EC31C8FBF83002D75AA /* PDF Icon.png in Resources */,
 				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
-				C96EF8011C14CE3100C4D2C1 /* ChemCheck.storyboard in Resources */,
 				C9DC84641C6251A300C41B6A /* OpeningPDFTemplate.storyboard in Resources */,
 				C9D2105A1CB4899E003102D9 /* TimeAwayHistory.storyboard in Resources */,
 				C9A01EC61C8FC3D1002D75AA /* PDFLocker.storyboard in Resources */,
@@ -1025,7 +995,6 @@
 				C94C1CBF1C3CB96100F568B9 /* CustomerLookup.storyboard in Resources */,
 				C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */,
 				C95008611C61C08E00F5351C /* GeneratePDF.storyboard in Resources */,
-				C90340C61C720C6A0028F865 /* ChemicalCheckoutReportPDFTemplate.storyboard in Resources */,
 				C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */,
 				C99C7D951CA8E27600EF8776 /* PayrollPDFGenerate.storyboard in Resources */,
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
@@ -1115,7 +1084,6 @@
 				C9062D591D78827E002D0D0F /* TripsTableViewController.swift in Sources */,
 				C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */,
 				C9C847411D8E3736001D892B /* SplitViewController.swift in Sources */,
-				C90340CA1C7216E70028F865 /* ChemicalCheckoutTableViewCell.swift in Sources */,
 				C9856A031C7D664800E6C87F /* LaborPartsTableViewCell.swift in Sources */,
 				C9B993E11C7FB19B00702851 /* PDFLaborTableViewCell.swift in Sources */,
 				C9F0FF931C189B57005EEE28 /* TimeCardManageEmployeeListTableViewController.swift in Sources */,
@@ -1135,12 +1103,10 @@
 				C94C772B1CB201F100EB3CED /* TimeAwayAdminEmployeeTableViewController.swift in Sources */,
 				C9CE08AD1C1BEF5000603BAF /* CustomerLookupTableViewCell.swift in Sources */,
 				C94C772D1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift in Sources */,
-				C9FB1ED91C6EC5A100663EB7 /* ChemicalData.swift in Sources */,
 				C949EBA11CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift in Sources */,
 				C9709C1E1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
 				C9062D5B1D7884DA002D0D0F /* TripsTableViewCell.swift in Sources */,
-				C9F7A9B21C6FE771001A6555 /* ChemCartTableViewController.swift in Sources */,
 				C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */,
 				C923D5FA1C231A9100A32978 /* WeekList.swift in Sources */,
 				C94367061BF719E10066D155 /* Colors.swift in Sources */,
@@ -1151,7 +1117,6 @@
 				C99D3E711BF5C04200D30F96 /* SOITableViewCell.swift in Sources */,
 				C9C8E1DD1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift in Sources */,
 				C9B993DF1C7FAAAB00702851 /* PDFPartTableViewCell.swift in Sources */,
-				C9F7A9B81C701BE1001A6555 /* CheckoutModel.swift in Sources */,
 				C96EF7F61C13F2E700C4D2C1 /* TimeClockPunchObj.swift in Sources */,
 				C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */,
 				C9585F381C175BC0008AB918 /* AdminTableViewController.swift in Sources */,
@@ -1165,6 +1130,7 @@
 				C972FF6E1C18ECEE00D34EB2 /* EditExistingTimePunchTableViewController.swift in Sources */,
 				C9C887EC1C817B2800C7A2F9 /* RoleModel.swift in Sources */,
 				C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */,
+				C9CD6A0F1DBEDEE6009C93A1 /* KeychainWrapper.swift in Sources */,
 				C9C8E1C31C32175600191C17 /* MessageEmployeeListTableViewController.swift in Sources */,
 				C974FAD71C205845004D69E4 /* POCRunReportFinalTableViewController.swift in Sources */,
 				C90340CF1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift in Sources */,
@@ -1189,12 +1155,10 @@
 				C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */,
 				C929E7F21D8A37F1004EE7A7 /* Email.swift in Sources */,
 				C9AB005E1C469FC900595F58 /* PushNotifications.swift in Sources */,
-				C9C039EC1C6D60530064FDBA /* ChemicalCheckoutViewController.swift in Sources */,
 				C97C9C7A1D5F8781006F47D0 /* QRCodeScanner.swift in Sources */,
 				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,
 				C95990E41C10F8DD00F6873E /* ScheduleModel.swift in Sources */,
 				C980015E1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift in Sources */,
-				C96F79B01BFC44ED00C13615 /* KeychainWrapper.m in Sources */,
 				C911BA3A1C7B935E00AC8364 /* WorkOrderPartsTableViewController.swift in Sources */,
 				C940778B1C7BF6C200E74817 /* PartsTableViewCell.swift in Sources */,
 				C9F0C26B1CACE5540037736D /* DateDetailTableViewController.swift in Sources */,
@@ -1211,6 +1175,7 @@
 				C9A01EC81C8FC434002D75AA /* PDFLockerTableViewController.swift in Sources */,
 				C99D3E731BF5C29500D30F96 /* SOITableViewController.swift in Sources */,
 				C961638A1BF6EC9E00EB5D44 /* BarcodeScanner.swift in Sources */,
+				C9CD6A0E1DBEDEE6009C93A1 /* KeychainItemAccessibility.swift in Sources */,
 				C9585F311C175887008AB918 /* ReportsTableViewController.swift in Sources */,
 				C9D210521CB39111003102D9 /* VacationTimePunchesModel.swift in Sources */,
 				C97757091C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift in Sources */,
@@ -1219,7 +1184,6 @@
 				C9C8E1E11C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift in Sources */,
 				C9585F361C175B08008AB918 /* TimeCardReportTableViewController.swift in Sources */,
 				C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */,
-				C90340C81C7215F60028F865 /* ChemCheckoutPDFReportTemplateViewController.swift in Sources */,
 				C972FF701C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift in Sources */,
 				C9DB9E781C8290A30097E97F /* ManageEmployeeSelectionViewController.swift in Sources */,
 				C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */,
@@ -1389,7 +1353,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "inSparkle/inSparkle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1421,7 +1385,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "inSparkle/inSparkle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

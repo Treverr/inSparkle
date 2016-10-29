@@ -51,35 +51,35 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         if (DataManager.isEditingSOIbject!) {
             existingObject = DataManager.passingObject!
             
-            customerNameTextField.text = existingObject!.valueForKey("customerName") as! String
-            if (existingObject!.valueForKey("date") != nil) {
-                let date = existingObject!.valueForKey("date") as! NSDate
+            customerNameTextField.text = existingObject!.value(forKey: "customerName") as! String
+            if (existingObject!.value(forKey: "date") != nil) {
+                let date = existingObject!.value(forKey: "date") as! Date
                 dateLabel.text = GlobalFunctions().stringFromDateShortStyle(date)
                 
             }
-            locationLabel.text = existingObject!.valueForKey("location") as! String
-            locationLabel.textColor = UIColor.blackColor()
-            categoryLabel.text = existingObject!.valueForKey("category") as! String
-            if (existingObject!.valueForKey("serial")) != nil {
-                barcodeTextField.text = existingObject!.valueForKey("serial") as! String
+            locationLabel.text = existingObject!.value(forKey: "location") as! String
+            locationLabel.textColor = UIColor.black
+            categoryLabel.text = existingObject!.value(forKey: "category") as! String
+            if (existingObject!.value(forKey: "serial")) != nil {
+                barcodeTextField.text = existingObject!.value(forKey: "serial") as! String
             }
-            if existingObject?.valueForKey("orderNumber") != nil {
-                orderNumber.text = existingObject?.valueForKey("orderNumber") as! String
+            if existingObject?.value(forKey: "orderNumber") != nil {
+                orderNumber.text = existingObject?.value(forKey: "orderNumber") as! String
             }
-            tableView.scrollEnabled = true
+            tableView.isScrollEnabled = true
         } else {
-            tableView.scrollEnabled = false
+            tableView.isScrollEnabled = false
         }
         
         self.navigationController?.setupNavigationbar(self.navigationController!)
         
         
         if (DataManager.isEditingSOIbject!) {
-            locationLabel.textColor = UIColor.blackColor()
-            if existingObject?.valueForKey("date") != nil {
-                dateLabel.textColor = UIColor.blackColor()
+            locationLabel.textColor = UIColor.black
+            if existingObject?.value(forKey: "date") != nil {
+                dateLabel.textColor = UIColor.black
             }
-            categoryLabel.textColor = UIColor.blackColor()
+            categoryLabel.textColor = UIColor.black
         } else {
             locationLabel.textColor = Colors.placeholderGray
             dateLabel.textColor = Colors.placeholderGray
@@ -93,7 +93,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         categoryPicker.dataSource = self
         categoryPicker.delegate = self
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddNewSOITableViewController.setTheBarcode(_:)), name: "barcodeNotification", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AddNewSOITableViewController.setTheBarcode(_:)), name: NSNotification.Name(rawValue: "barcodeNotification"), object: nil)
         
         // Set all the textfield delegates
         customerNameTextField.delegate = self
@@ -105,23 +105,23 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         getLocationsFromParse()
     }
     
-    func setTheBarcode(barcode : NSNotification) {
+    func setTheBarcode(_ barcode : Notification) {
         let theBarcode = barcode.object as! String
         print(theBarcode)
-        dispatch_async(dispatch_get_main_queue()) { [unowned self] in
+        DispatchQueue.main.async { [unowned self] in
             self.barcodeTextField.text = theBarcode
         }
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         var count : Int?
         
@@ -137,7 +137,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
         var title_ : String?
         
@@ -152,28 +152,28 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         return title_
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if pickerView.tag == 0 {
-            locationLabel.textColor = UIColor.blackColor()
+            locationLabel.textColor = UIColor.black
             locationLabel.text = locationsArray[row]
         }
         
         if pickerView.tag == 1 {
-            categoryLabel.textColor = UIColor.blackColor()
+            categoryLabel.textColor = UIColor.black
             categoryLabel.text = categories[row]
         }
         
     }
     
     
-    @IBAction func cancelButtonAction(sender: AnyObject) {
+    @IBAction func cancelButtonAction(_ sender: AnyObject) {
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
     }
     
-    @IBAction func saveButtonAction(sender: AnyObject) {
+    @IBAction func saveButtonAction(_ sender: AnyObject) {
         
         print("Save Button")
         
@@ -181,9 +181,9 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         print(customerName)
         let date_ = dateLabel.text
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yy"
-        let sendDate : NSDate? = formatter.dateFromString(date_!)
+        let sendDate : Date? = formatter.date(from: date_!)
         print(sendDate)
         
         let location = locationLabel.text
@@ -212,12 +212,12 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
                 if !orderNumber.text!.isEmpty {
                     existingObject?.setValue(orderNumber.text!, forKey: "orderNumber")
                 } else {
-                    existingObject?.removeObjectForKey("orderNumber")
+                    existingObject?.remove(forKey: "orderNumber")
                 }
-                existingObject?.saveEventually({ (success : Bool, error: NSError?) -> Void in
+                existingObject?.saveEventually({ (success : Bool, error: Error?) -> Void in
                     if error == nil {
-                        NSNotificationCenter.defaultCenter().postNotificationName("RefreshSOINotification", object: nil)
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: "RefreshSOINotification"), object: nil)
+                        self.dismiss(animated: true, completion: nil)
                     } else {
                         print(error)
                     }
@@ -236,11 +236,11 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
                 if !orderNumber.text!.isEmpty {
                     soiObject["orderNumber"] = orderNumber.text!
                 }
-                soiObject["enteredBy"] = PFUser.currentUser()
-                soiObject.saveEventually({ (success : Bool, error: NSError?) -> Void in
+                soiObject["enteredBy"] = PFUser.current()
+                soiObject.saveEventually({ (success : Bool, error: Error?) -> Void in
                     if error == nil {
-                        NSNotificationCenter.defaultCenter().postNotificationName("RefreshSOINotification", object: nil)
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: "RefreshSOINotification"), object: nil)
+                        self.dismiss(animated: true, completion: nil)
                     } else {
                         print(error)
                     }
@@ -250,63 +250,63 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         DataManager.isEditingSOIbject = false
     }
     
     func datePickerChanged () {
-        dateLabel.text = NSDateFormatter.localizedStringFromDate(datePicker.date, dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.NoStyle)
-        dateLabel.textColor = UIColor.blackColor()
+        dateLabel.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
+        dateLabel.textColor = UIColor.black
     }
     
-    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.selectionStyle = .None
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if datePickerHidden == false {
-            datePicker.hidden = true
+            datePicker.isHidden = true
         } else {
-            datePicker.hidden = false
+            datePicker.isHidden = false
         }
         
         if locationPickerHidden == false {
-            locationPicker.hidden = true
+            locationPicker.isHidden = true
         } else {
-            locationPicker.hidden = false
+            locationPicker.isHidden = false
         }
         
         if categoryPickerHidden == false {
-            categoryPicker.hidden = true
+            categoryPicker.isHidden = true
         } else {
-            categoryPicker.hidden = false
+            categoryPicker.isHidden = false
         }
         
-        if indexPath.section == 0 && indexPath.row == 3 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 3 {
             toggleDatepicker()
             datePickerChanged()
             
         }
         
-        if indexPath.section == 0 && indexPath.row == 5 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 5 {
             toggleLocationPicker()
             if locationLabel.text == "required" || locationLabel.text == "" {
                 locationLabel.text = locationsArray[0]
-                locationLabel.textColor = UIColor.blackColor()
+                locationLabel.textColor = UIColor.black
             }
             
         }
         
-        if indexPath.section == 0 && indexPath.row == 0 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 0 {
             toggleCategoryPicker()
             if categoryLabel.text == "required" || categoryLabel.text == "" {
                 categoryLabel.text = categories[0]
-                categoryLabel.textColor = UIColor.blackColor()
+                categoryLabel.textColor = UIColor.black
             }
         }
         
-        if indexPath.section == 0 && indexPath.row == 7 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 7 {
             
             locationPickerHidden = true
             datePickerHidden = true
@@ -316,7 +316,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
             
         }
         
-        if indexPath.section == 0 && indexPath.row == 2 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 2 {
             locationPickerHidden = true
             datePickerHidden = true
             categoryPickerHidden = true
@@ -328,29 +328,29 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if datePickerHidden && indexPath.section == 0 && indexPath.row == 4 {
+        if datePickerHidden && (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 4 {
             return 0
         }
         
-        if categoryPickerHidden && indexPath.section == 0 && indexPath.row == 1 {
+        if categoryPickerHidden && (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 1 {
             return 0
         }
         
-        if locationPickerHidden && indexPath.section == 0 && indexPath.row == 6 {
+        if locationPickerHidden && (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 6 {
             return 0
         } else {
-            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
     }
     
-    @IBAction func barcodeButton(sender: AnyObject) {
+    @IBAction func barcodeButton(_ sender: AnyObject) {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let scanVC = storyBoard.instantiateViewControllerWithIdentifier("BarcodeScannerNav")
+        let scanVC = storyBoard.instantiateViewController(withIdentifier: "BarcodeScannerNav")
         
-        self.presentViewController(scanVC, animated: true, completion: nil)
+        self.present(scanVC, animated: true, completion: nil)
         
         
     }
@@ -386,26 +386,26 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
     }
     
     
-    @IBAction func datePickerAction(sender: AnyObject) {
+    @IBAction func datePickerAction(_ sender: AnyObject) {
         
         datePickerChanged()
         
     }
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         locationPickerHidden = true
-        locationPicker.hidden = true
+        locationPicker.isHidden = true
         categoryPickerHidden = true
-        categoryPicker.hidden = true
+        categoryPicker.isHidden = true
         datePickerHidden = true
-        datePicker.hidden = true
+        datePicker.isHidden = true
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     func getLocationsFromParse() {
-        let documents = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] 
-        let filePath = documents.stringByAppendingString("/locationList.plist")
+        let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] 
+        let filePath = documents + "/locationList.plist"
         
         let savedLocationArray : [String]?
         
@@ -418,14 +418,14 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         
         
         let locationQuery = PFQuery(className: "locationList")
-        locationQuery.findObjectsInBackgroundWithBlock { (locations: [PFObject]?, error: NSError?) -> Void in
+        locationQuery.findObjectsInBackground { (locations: [PFObject]?, error: Error?) -> Void in
             if error == nil {
                 let locationCount = locations!.count
                 var possibleLocationsArray : [String] = []
                 for location in locations! {
                     
                     if (locationCount - possibleLocationsArray.count) != 0 {
-                        possibleLocationsArray.append(location.valueForKey("locationName") as! String)
+                        possibleLocationsArray.append(location.value(forKey: "locationName") as! String)
                         print("Added to array")
                     }
                     
@@ -437,7 +437,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
                             print("Updating Local File")
                             self.locationsArray = possibleLocationsArray
                             let arrayToSave = self.locationsArray as NSArray
-                            arrayToSave.writeToFile(filePath, atomically: true)
+                            arrayToSave.write(toFile: filePath, atomically: true)
                         }
                     }
                     
@@ -449,16 +449,16 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
     }
     
     func displaySaveError() {
-        let alert = UIAlertController(title: nil, message: "Check the fields, it looks like at least one is missing.", preferredStyle: .Alert)
-        let okayButton = UIAlertAction(title: "Okay", style: .Default, handler: nil)
+        let alert = UIAlertController(title: nil, message: "Check the fields, it looks like at least one is missing.", preferredStyle: .alert)
+        let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
         alert.addAction(okayButton)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func checkForLocationFile(filePath : String) -> Bool {
-        let fileManager = NSFileManager.defaultManager()
+    func checkForLocationFile(_ filePath : String) -> Bool {
+        let fileManager = FileManager.default
         
-        if (fileManager.fileExistsAtPath(filePath)) {
+        if (fileManager.fileExists(atPath: filePath)) {
             print("FILE AVAILABLE")
             return true
         } else {
@@ -467,7 +467,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         }
     }
     
-    func grabLocationsFile(filePath : String) -> [String] {
+    func grabLocationsFile(_ filePath : String) -> [String] {
         var returnArray : [String]?
         
         let array = NSArray(contentsOfFile: filePath)

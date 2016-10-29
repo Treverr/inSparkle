@@ -37,28 +37,28 @@ class DetailPopViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func displayInfo(sentObject : PFObject) {
+    func displayInfo(_ sentObject : PFObject) {
         print("Passed: \(sentObject)")
         let theObject = sentObject
         
-        let theCustomerName = theObject.valueForKey("customerName") as! String
-        customerName.textColor = UIColor.blackColor()
-        let theDate = theObject.valueForKey("date") as? NSDate
+        let theCustomerName = theObject.value(forKey: "customerName") as! String
+        customerName.textColor = UIColor.black
+        let theDate = theObject.value(forKey: "date") as? Date
         let theDateString : String?
         if theDate != nil {
             theDateString = stringFromDate(theDate!)
             dateLabel.text = theDateString!
-            dateLabel.textColor = UIColor.blackColor()
+            dateLabel.textColor = UIColor.black
         } else {
             dateLabel.text = "No Date Set"
             dateLabel.textColor = Colors.placeholderGray
         }
-        let location = theObject.valueForKey("location") as! String
-        locationLabel.textColor = UIColor.blackColor()
-        let serial = theObject.valueForKey("serial") as? String
-        serialTextField.textColor = UIColor.blackColor()
-        let category = theObject.valueForKey("category")
-        let employee = theObject.valueForKey("enteredBy") as! PFUser
+        let location = theObject.value(forKey: "location") as! String
+        locationLabel.textColor = UIColor.black
+        let serial = theObject.value(forKey: "serial") as? String
+        serialTextField.textColor = UIColor.black
+        let category = theObject.value(forKey: "category")
+        let employee = theObject.value(forKey: "enteredBy") as! PFUser
         print(employee)
         
         
@@ -69,22 +69,22 @@ class DetailPopViewController: UITableViewController {
         self.locationLabel.text = location
         
         self.employeeName.text = getEmployeeInfo(employee.objectId!)
-        employeeName.textColor = UIColor.blackColor()
+        employeeName.textColor = UIColor.black
         
         self.navigationItem.title = category as! String
         
     }
     
-    func stringFromDate(theDate : NSDate) -> String {
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.FullStyle
-        formatter.timeStyle = NSDateFormatterStyle.NoStyle
-        let dateString = formatter.stringFromDate(theDate)
+    func stringFromDate(_ theDate : Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = DateFormatter.Style.full
+        formatter.timeStyle = DateFormatter.Style.none
+        let dateString = formatter.string(from: theDate)
         
         return dateString
     }
     
-    func getEmployeeInfo(emp : String) -> String {
+    func getEmployeeInfo(_ emp : String) -> String {
         var user : PFObject!
         let userQuery = PFUser.query()
         userQuery?.whereKey("objectId", equalTo: emp)
@@ -93,12 +93,12 @@ class DetailPopViewController: UITableViewController {
         } catch {
             "error"
         }
-        let username = user.valueForKey("username") as! String
+        let username = user.value(forKey: "username") as! String
         
-        return "Entered By: " + username.capitalizedString
+        return "Entered By: " + username.capitalized
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editSOI" {
             DataManager.isEditingSOIbject = true
         }

@@ -11,7 +11,7 @@ import Parse
 
 class PushNotifications {
     
-    class func messagesPushNotification(sendTo : Employee) {
+    class func messagesPushNotification(_ sendTo : Employee) {
         let data = [
             "alert" : "New Message",
             "badge" : "Increment",
@@ -23,9 +23,9 @@ class PushNotifications {
         installQuery?.whereKey("employee", equalTo: sendTo)
         
         let push = PFPush()
-        push.setQuery(installQuery)
+        push.setQuery(installQuery as! PFQuery<PFInstallation>?)
         push.setData(data)
-        push.sendPushInBackground()
+        push.sendInBackground()
     }
     
 }
