@@ -337,26 +337,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    func getSSID() -> String {
+    func getSSID() -> String? {
         
-        var currentSSID = ""
-        
-        if let interfaces:CFArray? = CNCopySupportedInterfaces() {
-            if interfaces != nil {
-                for i in 0..<CFArrayGetCount(interfaces){
-                    let interfaceName: UnsafeRawPointer = CFArrayGetValueAtIndex(interfaces, i)
-                    let rec = unsafeBitCast(interfaceName, to: AnyObject.self)
-                    let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)" as CFString)
-                    if unsafeInterfaceData != nil {
-                        let interfaceData = unsafeInterfaceData! as? Dictionary<String, String>
-                        currentSSID = interfaceData!["SSID"]! as String
-                    }
-                }
-            } else {
-                currentSSID = "Simulator"
-            }
+        let interfaces = CNCopySupportedInterfaces()
+        if interfaces == nil {
+            return nil
         }
-        return currentSSID
+        
+        let interfacesArray = interfaces as! [String]
+        if interfacesArray.count <= 0 {
+            return nil
+        }
+        
+        let interfaceName = interfacesArray[0] as String
+        let unsafeInterfaceData =     CNCopyCurrentNetworkInfo(interfaceName as CFString)
+        if unsafeInterfaceData == nil {
+            return nil
+        }
+        
+        let interfaceData = unsafeInterfaceData as! Dictionary <String,AnyObject>
+        
+        return interfaceData["SSID"] as? String
     }
 }
 
