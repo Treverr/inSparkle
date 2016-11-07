@@ -17,6 +17,7 @@ import BRYXBanner
 import SystemConfiguration.CaptiveNetwork
 import DropDown
 import UserNotifications
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
@@ -289,6 +290,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             currentInstallation.saveEventually()
         }
         UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        let apiKey = "AIzaSyAW7Mk3n17qA3Wdn2gJxkjqput1AwwVrcI"
+        let location = "39.493115,-87.378896"
+        let timeStamp = String(Date().timeIntervalSince1970)
+        
+        let url = "https://maps.googleapis.com/maps/api/timezone/json?location=\(location)&timestamp=\(timeStamp)&key=\(apiKey)"
+        
+        Alamofire.request(url)
+        .responseJSON { (response) in
+            if let json = response.result.value as? NSDictionary {
+                let timeZoneOffset = json["rawOffset"]! as! Int
+                UserDefaults.standard.set(timeZoneOffset, forKey: "SparkleTimeZone")
+            }
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

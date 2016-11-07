@@ -25,6 +25,7 @@ class ConfirmPunchOutViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         
         employeeName.text = TimeClock.employeeName
         timeOfPunch.text = formatter.string(from: TimeClock.timeOfPunch as Date)
@@ -32,6 +33,7 @@ class ConfirmPunchOutViewController: UIViewController {
         let fullDate = DateFormatter()
         fullDate.dateStyle = .short
         fullDate.timeStyle = .short
+        fullDate.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         
         timeIn.text = fullDate.string(from: TimeClock.timeInObject as Date)
         timeOut.text = fullDate.string(from: TimeClock.timeOutObject as Date)

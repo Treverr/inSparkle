@@ -216,10 +216,10 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                 if AddNewScheduleObjects.scheduledObject == nil {
                     if weeksNeedsSet {
                         let weekStart  = weekList[0].value(forKey: "weekStart") as! Date
-                        weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekStart)
+                        weekStartingLabel.text = GlobalFunctions().stringFromDateShortStyle(weekStart)
                         weekStartingLabel.textColor = UIColor.black
                         let weekEnd = weekList[0].value(forKey: "weekEnd") as! Date
-                        weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyleNoTimezone(weekEnd)
+                        weekEndingLabel.text = GlobalFunctions().stringFromDateShortStyle(weekEnd)
                         weekEndingLabel.textColor = UIColor.black
                         weeksNeedsSet = false
                         let theweeeeek = weekList[0]
@@ -246,7 +246,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             let weekStartString = global.stringFromDateShortStyleNoTimezone(weekStartDate)
             let weekEndString = global.stringFromDateShortStyleNoTimezone(weekEndDate)
             
-            weekTitle = "\(weekStartString) - \(weekEndString) (\(remaining))"
+            weekTitle = "\(weekStartString) - \(weekEndString) (\(remaining!))"
             
             whatToReturn = weekTitle
             
@@ -343,7 +343,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         if textField == phoneNumberTextField {
             do {
                 let phoneNumber = try PhoneNumberKit().parse(phoneNumberTextField.text!)
-                phoneNumberTextField.text! = phoneNumber.numberString
+                phoneNumberTextField.text! = PhoneNumberKit().format(phoneNumber, toType: .national)
             } catch {
                 print("error")
             }
@@ -355,7 +355,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         if textField == phoneNumberTextField {
             do {
                 let phoneNumber = try PhoneNumberKit().parse(phoneNumberTextField.text!)
-                phoneNumberTextField.text! = phoneNumber.numberString
+                phoneNumberTextField.text! = PhoneNumberKit().format(phoneNumber, toType: .national)
             } catch {
                 print("error")
             }
@@ -869,14 +869,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             dateWeekRange.append("Not Set")
             dateWeekRange.append(GlobalFunctions().stringFromDateShortStyle(startDate))
             
-            var daysToAdd = 0
+            var daysToAdd = 0.0
             
             repeat {
+                let day : Double = 86400.0
                 daysToAdd = daysToAdd + 1
-                let comps = DateComponents()
-                (comps as NSDateComponents).setValue(daysToAdd, forComponent: NSCalendar.Unit.day)
-                let addDate = (Calendar.current as NSCalendar).date(byAdding: comps, to: startDate, options: NSCalendar.Options(rawValue: 0))
-                dateWeekRange.append(GlobalFunctions().stringFromDateShortStyle(addDate!))
+                let addDate = startDate.addingTimeInterval(day * daysToAdd)
+                dateWeekRange.append(GlobalFunctions().stringFromDateShortStyle(addDate))
             } while dateWeekRange.count < 7
             
             print(self.dateWeekRange)

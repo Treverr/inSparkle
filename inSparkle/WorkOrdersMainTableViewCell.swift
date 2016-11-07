@@ -20,6 +20,7 @@ open class WorkOrdersMainTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         let dateString = dateFormatter.string(from: dateCreated)
         
         customerNameLabel.text = customerName

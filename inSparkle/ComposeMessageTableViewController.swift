@@ -214,15 +214,20 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         if textField == phoneTextField {
             do {
                 phoneNumber = try PhoneNumberKit().parse(phoneTextField.text!)
-            } catch { }
-            phoneTextField.text = String(describing: phoneNumber?.nationalNumber)
+                phoneTextField.text = PhoneNumberKit().format(phoneNumber!, toType: .national)
+            } catch {
+                print(error)
+            }
+            
         }
         
         if textField == altPhoneTextField {
             do {
                 phoneNumber = try PhoneNumberKit().parse(altPhoneTextField.text!)
-            } catch { }
-            altPhoneTextField.text = String(describing: phoneNumber?.nationalNumber)
+                altPhoneTextField.text = PhoneNumberKit().format(phoneNumber!, toType: .national)
+            } catch {
+            }
+            
         }
         
         return true

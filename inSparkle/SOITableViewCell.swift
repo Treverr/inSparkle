@@ -21,6 +21,7 @@ open class SOITableViewCell: UITableViewCell {
         
         let formatter = DateFormatter()
         formatter.dateStyle = .short
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         
         if date != nil {
             dateLabel?.text = formatter.string(from: date!)

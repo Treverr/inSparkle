@@ -30,6 +30,7 @@ open class MessagesMainTableViewCell: UITableViewCell {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         dateLabel.text! = formatter.string(from: date)
         
         if messageStatus == "Unread" {
@@ -38,6 +39,7 @@ open class MessagesMainTableViewCell: UITableViewCell {
             let timeFormatter = DateFormatter()
             timeFormatter.dateStyle = .short
             timeFormatter.timeStyle = .short
+            timeFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
             timeFormatter.doesRelativeDateFormatting = true
             
             statusOfMessageLabel.text! = messageStatus + " - " + timeFormatter.string(from: statusTime)

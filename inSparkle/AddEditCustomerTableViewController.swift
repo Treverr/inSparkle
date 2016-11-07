@@ -204,7 +204,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         if textField == phoneNumberTextField {
             do {
                 let phoneNumber = try PhoneNumberKit().parse(phoneNumberTextField.text!)
-                phoneNumberTextField.text = String(phoneNumber.nationalNumber)
+                phoneNumberTextField.text = PhoneNumberKit().format(phoneNumber, toType: .national)
             } catch {
                 
             }
@@ -216,7 +216,7 @@ class AddEditCustomerTableViewController: UITableViewController, UITextFieldDele
         if textField == phoneNumberTextField {
             do {
                 let phoneNumber = try PhoneNumberKit().parse(phoneNumberTextField.text!)
-                phoneNumberTextField.text! = String(phoneNumber.nationalNumber)
+                phoneNumberTextField.text! = PhoneNumberKit().format(phoneNumber, toType: .national)
             } catch {
                 print("error")
             }

@@ -26,6 +26,7 @@ class ConfirmPunchInViewController: UIViewController {
         let timeFormatter = DateFormatter()
         timeFormatter.dateStyle = .none
         timeFormatter.timeStyle = .short
+        timeFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         
         let theTimeString = timeFormatter.string(from: TimeClock.timeOfPunch as Date)
         
@@ -45,6 +46,7 @@ class ConfirmPunchInViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         let punchString = formatter.string(from: punchTime as Date)
         
         timeOfPunch.text = punchString

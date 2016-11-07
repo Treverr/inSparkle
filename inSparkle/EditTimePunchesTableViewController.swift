@@ -80,6 +80,7 @@ class EditTimePunchesTableViewController: UITableViewController {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         
         var punchIn = ""
         var punchOut = ""

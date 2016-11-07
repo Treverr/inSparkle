@@ -104,6 +104,7 @@ class POCRunReportFinalTableViewController: UITableViewController, UIPopoverPres
         
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         
         let startDate : Date = formatter.date(from: startDateAsString)!
         var endDate : Date = formatter.date(from: endDateASString)!

@@ -47,6 +47,7 @@ class TimeAwayHistoryTableViewController: UITableViewController {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "statusCell")! as UITableViewCell
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M/d/yy"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         
         if (indexPath as NSIndexPath).section == 0 {
             let datesRequested = self.returnedRequsts[(indexPath as NSIndexPath).row].datesRequested as! [Date]

@@ -21,6 +21,7 @@ open class ScheduleTableViewCell: UITableViewCell {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         
         var weekStartString : String! = nil
         var weekEndString : String! = nil

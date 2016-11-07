@@ -152,6 +152,7 @@ class CloudCode {
     class func SendVacationApprovedEmail(_ email : String, date1 : Date, date2 : Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MMM-yyyy"
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         let fromDate = dateFormatter.string(from: date1)
         let toDate = dateFormatter.string(from: date2)
         

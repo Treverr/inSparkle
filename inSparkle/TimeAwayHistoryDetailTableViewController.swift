@@ -80,6 +80,7 @@ class TimeAwayHistoryDetailTableViewController: UITableViewController {
             let dict = self.request.timeCardDictionary as! [String : String]
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "M/d/yy"
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
             
             cell.textLabel?.text = currentDate
             cell.detailTextLabel?.text = dict[currentDate]! + " hours"

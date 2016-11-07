@@ -253,6 +253,7 @@ class GlobalFunctions {
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.full
         formatter.timeStyle = DateFormatter.Style.none
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         let dateString = formatter.string(from: theDate)
         
         return dateString
@@ -262,6 +263,7 @@ class GlobalFunctions {
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.short
         formatter.timeStyle = DateFormatter.Style.none
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         let dateString = formatter.string(from: theDate)
         
         return dateString
@@ -281,6 +283,7 @@ class GlobalFunctions {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         let dateString = formatter.string(from: theDate)
         
         return dateString
@@ -289,6 +292,7 @@ class GlobalFunctions {
     func dateFromShortDateString(_ dateString : String) -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yy"
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         let theReturn = formatter.date(from: dateString)
         
         return theReturn!
@@ -297,6 +301,7 @@ class GlobalFunctions {
     func dateFromMediumDateString(_ dateString : String) -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         let theReturn = formatter.date(from: dateString)
         
         return theReturn!
@@ -305,6 +310,7 @@ class GlobalFunctions {
     func dateFromShortDateShortTime(_ dateString : String) -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yy, h:mm a"
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         let theReturn = formatter.date(from: dateString)
         
         return theReturn!

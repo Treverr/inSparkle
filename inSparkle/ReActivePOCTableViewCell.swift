@@ -20,6 +20,7 @@ class ReActivePOCTableViewCell: UITableViewCell {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
+        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
         
         let weekString = formatter.string(from: weekStart) + " - " + formatter.string(from: weekEnd)
         
