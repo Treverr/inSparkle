@@ -89,37 +89,12 @@ class MessagesTableViewController: UITableViewController {
         
         self.navigationItem.rightBarButtonItems = nil
         
-        PFSession.getCurrentSessionInBackground { (session : PFSession?, error : Error?) in
-            if error != nil {
-                PFUser.logOut()
-                let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
-                self.present(viewController, animated: true, completion: nil)
-            } else {
-                let currentUser : PFUser?
-                
-                currentUser = PFUser.current()
-                let currentSession = PFUser.current()?.sessionToken
-                
-                if (currentUser == nil) {
-                    DispatchQueue.main.async(execute: { () -> Void in
-                        
-                        let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
-                        self.present(viewController, animated: true, completion: nil)
-                    })
-                }
-                
-                if (currentUser?.sessionToken == nil) {
-                    PFUser.logOut()
-                    let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
-                    self.present(viewController, animated: true, completion: nil)
-                }
-                
-                if currentUser != nil && currentSession != nil {
-                    self.refresh()
-                }
-                
-            }
+        if PFUser.current() != nil && PFUser.current()?.sessionToken != nil {
+            self.refresh()
+        } else {
+            
         }
+
     }
     
     func refresh() {

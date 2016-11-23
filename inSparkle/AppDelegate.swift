@@ -37,6 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let tabBar = sb.instantiateViewController(withIdentifier: "mainTabBar") as! TabBarViewController
             
             self.window?.rootViewController = tabBar
+        } else if UIDevice.current.userInterfaceIdiom == .pad {
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let tabBar = sb.instantiateViewController(withIdentifier: "ipadMain")            
+            self.window?.rootViewController = tabBar
         }
         
         if getSSID() == "Sparkle Pools" {
@@ -62,29 +66,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpened(launchOptions: launchOptions)
         
-        do {
-            try PFUser.current()?.fetch()
-            print(PFUser.current())
-            if PFUser.current() != nil {
-                let employee = PFUser.current()?.object(forKey: "employee") as? Employee
-                do {
-                    try employee!.fetch()
-                } catch {
+        GlobalFunctions().checkLogin()
+        
+        if PFUser.current() != nil {
+            do {
+                try PFUser.current()?.fetch()
+                print(PFUser.current())
+                if PFUser.current() != nil {
+                    let employee = PFUser.current()?.object(forKey: "employee") as? Employee
+                    do {
+                        try employee!.fetch()
+                    } catch {
+                        
+                    }
+                    
+                    EmployeeData.universalEmployee = employee
+                    Crashlytics.sharedInstance().setUserIdentifier(employee?.firstName)
+                    Crashlytics.sharedInstance().setUserEmail(PFUser.current()?.email)
                     
                 }
-                
-                EmployeeData.universalEmployee = employee
-                Crashlytics.sharedInstance().setUserIdentifier(employee?.firstName)
-                Crashlytics.sharedInstance().setUserEmail(PFUser.current()?.email)
-                
+            } catch {
+                let errorAlert = UIAlertController(title: "Error", message: "There was an error retrieving your user information, please try again. If the issue continues please contact IS&T", preferredStyle: .alert)
+                let okayButton = UIAlertAction(title: "Okay", style: .default, handler: { (action) in
+                    PFUser.logOut()
+                })
+                errorAlert.addAction(okayButton)
+                self.window?.rootViewController?.present(errorAlert, animated: true, completion: nil)
             }
-        } catch {
-            let errorAlert = UIAlertController(title: "Error", message: "There was an error retrieving your user information, please try again. If the issue continues please contact IS&T", preferredStyle: .alert)
-            let okayButton = UIAlertAction(title: "Okay", style: .default, handler: { (action) in
-                PFUser.logOut()
-            })
-            errorAlert.addAction(okayButton)
-            self.window?.rootViewController?.present(errorAlert, animated: true, completion: nil)
         }
         
         let center = UNUserNotificationCenter.current()
@@ -374,6 +382,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         return interfaceData["SSID"] as? String
     }
+    
 }
 
 

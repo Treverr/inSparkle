@@ -121,12 +121,12 @@ class QuickActionsMasterViewController: UIViewController {
         nav.viewControllers = [composeView]
         let tabBar = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers.last as! UITabBarController
         let selected = tabBar.selectedIndex
-        let vc = tabBar.childViewControllers[selected] as! UINavigationController
+        let vc = UIApplication.shared.keyWindow!.rootViewController!
         nav.modalPresentationStyle = .formSheet
         nav.setupNavigationbar(nav)
         nav.navigationItem
         
-        vc.childViewControllers.first?.present(nav, animated: true, completion: nil)
+        vc.present(nav, animated: true, completion: nil)
     }
     
     func newMessageToTom() {

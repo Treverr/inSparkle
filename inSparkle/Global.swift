@@ -488,6 +488,36 @@ class GlobalFunctions {
             UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
+    
+    func checkLogin() {
+        PFSession.getCurrentSessionInBackground { (session : PFSession?, error : Error?) in
+            if error != nil {
+                PFUser.logOut()
+                let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                UIApplication.shared.keyWindow!.rootViewController!.present(viewController, animated: true, completion: nil)
+            } else {
+                let currentUser : PFUser?
+                
+                currentUser = PFUser.current()
+                let currentSession = PFUser.current()?.sessionToken
+                
+                if (currentUser == nil) {
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        
+                        let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                        UIApplication.shared.keyWindow!.rootViewController!.present(viewController, animated: true, completion: nil)
+                    })
+                }
+                
+                if (currentUser?.sessionToken == nil) {
+                    PFUser.logOut()
+                    let viewController : UIViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Login")
+                    UIApplication.shared.keyWindow!.rootViewController!.present(viewController, animated: true, completion: nil)
+                }
+                
+            }
+        }
+    }
 }
 
 class UnderlinedLabel: UILabel {

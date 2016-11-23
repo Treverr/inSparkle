@@ -45,8 +45,15 @@
 		C94C77281CB1FF3F00EB3CED /* TimeAwayAdmin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C94C77271CB1FF3F00EB3CED /* TimeAwayAdmin.storyboard */; };
 		C94C772B1CB201F100EB3CED /* TimeAwayAdminEmployeeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C772A1CB201F100EB3CED /* TimeAwayAdminEmployeeTableViewController.swift */; };
 		C94C772D1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94C772C1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift */; };
+		C94CF1F11DE2787500F0518C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94CF1F01DE2787500F0518C /* HomeViewController.swift */; };
 		C95008611C61C08E00F5351C /* GeneratePDF.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C95008601C61C08E00F5351C /* GeneratePDF.storyboard */; };
 		C95008631C61C11800F5351C /* PDFGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95008621C61C11800F5351C /* PDFGenerateViewController.swift */; };
+		C9536C501DDCE5370022E3AA /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9536C4F1DDCE5370022E3AA /* More.storyboard */; };
+		C9536C521DDCE95A0022E3AA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9536C511DDCE95A0022E3AA /* Home.storyboard */; };
+		C9536C551DDCEB2A0022E3AA /* HomeAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9536C541DDCEB2A0022E3AA /* HomeAssets.xcassets */; };
+		C9536C571DDCEBF90022E3AA /* MainAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9536C561DDCEBF90022E3AA /* MainAssets.xcassets */; };
+		C9536C5A1DDD01970022E3AA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9536C591DDD01970022E3AA /* MainViewController.swift */; };
+		C9536C5C1DDD06400022E3AA /* ToolbarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9536C5B1DDD06400022E3AA /* ToolbarCollectionViewCell.swift */; };
 		C9566FEE1BFAF69C00364CBF /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */; };
 		C9566FF11BFB018D00364CBF /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */; };
 		C9585F201C163FF1008AB918 /* ConfirmPunchInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9585F1F1C163FF1008AB918 /* ConfirmPunchInViewController.swift */; };
@@ -216,8 +223,15 @@
 		C94C77271CB1FF3F00EB3CED /* TimeAwayAdmin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TimeAwayAdmin.storyboard; sourceTree = "<group>"; };
 		C94C772A1CB201F100EB3CED /* TimeAwayAdminEmployeeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAwayAdminEmployeeTableViewController.swift; sourceTree = "<group>"; };
 		C94C772C1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeeTimeAwayRequestsTableViewController.swift; sourceTree = "<group>"; };
+		C94CF1F01DE2787500F0518C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C95008601C61C08E00F5351C /* GeneratePDF.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = GeneratePDF.storyboard; sourceTree = "<group>"; };
 		C95008621C61C11800F5351C /* PDFGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFGenerateViewController.swift; sourceTree = "<group>"; };
+		C9536C4F1DDCE5370022E3AA /* More.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		C9536C511DDCE95A0022E3AA /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		C9536C541DDCEB2A0022E3AA /* HomeAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HomeAssets.xcassets; sourceTree = "<group>"; };
+		C9536C561DDCEBF90022E3AA /* MainAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MainAssets.xcassets; sourceTree = "<group>"; };
+		C9536C591DDD01970022E3AA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C9536C5B1DDD06400022E3AA /* ToolbarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarCollectionViewCell.swift; sourceTree = "<group>"; };
 		C9566FED1BFAF69C00364CBF /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResetPasswordViewController.swift; path = Onboarding/ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		C9585F1F1C163FF1008AB918 /* ConfirmPunchInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPunchInViewController.swift; sourceTree = "<group>"; };
@@ -512,6 +526,27 @@
 			name = "Generate PDF";
 			sourceTree = "<group>";
 		};
+		C9536C531DDCE9650022E3AA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C9536C511DDCE95A0022E3AA /* Home.storyboard */,
+				C94CF1F01DE2787500F0518C /* HomeViewController.swift */,
+				C9536C541DDCEB2A0022E3AA /* HomeAssets.xcassets */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		C9536C581DDCEC040022E3AA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C99D3E461BF5BD3700D30F96 /* Main.storyboard */,
+				C9536C591DDD01970022E3AA /* MainViewController.swift */,
+				C9536C5B1DDD06400022E3AA /* ToolbarCollectionViewCell.swift */,
+				C9536C561DDCEBF90022E3AA /* MainAssets.xcassets */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		C9585F231C16511A008AB918 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,7 +717,8 @@
 				C94367041BF719D50066D155 /* Utilities */,
 				C9C1929B1BF64E0C00862F52 /* Frameworks */,
 				C9C847421D8E3755001D892B /* SplitViewControllers */,
-				C99D3E461BF5BD3700D30F96 /* Main.storyboard */,
+				C9536C581DDCEC040022E3AA /* Main */,
+				C9536C531DDCE9650022E3AA /* Home */,
 				C99D3E421BF5BD3700D30F96 /* AppDelegate.swift */,
 				C9A781221BF944740013D388 /* TabBarViewController.swift */,
 				C99D3E491BF5BD3700D30F96 /* Assets.xcassets */,
@@ -828,6 +864,7 @@
 			children = (
 				C9A01EC41C8FC3B5002D75AA /* PDF Locker */,
 				C9566FF01BFB018D00364CBF /* MoreTableViewController.swift */,
+				C9536C4F1DDCE5370022E3AA /* More.storyboard */,
 				C96F07C41CAB6971009F3436 /* SparkleConnect */,
 			);
 			name = More;
@@ -976,13 +1013,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9F0FF961C18A646005EEE28 /* TimeCardManagement.storyboard in Resources */,
+				C9536C501DDCE5370022E3AA /* More.storyboard in Resources */,
 				C99D3E4D1BF5BD3700D30F96 /* LaunchScreen.storyboard in Resources */,
+				C9536C521DDCE95A0022E3AA /* Home.storyboard in Resources */,
 				C97D3D3A1C815D55006B9E90 /* Manage Emps.storyboard in Resources */,
 				C96F07C31CAB696C009F3436 /* SparkleConnect.storyboard in Resources */,
 				C9585F251C165179008AB918 /* ScannerBeep.wav in Resources */,
 				C9709C1C1C72D144000ED6EA /* WorkOrderMain.storyboard in Resources */,
 				C9C8473F1D8E32A3001D892B /* MasterSplitViewController.storyboard in Resources */,
 				C99D3E4A1BF5BD3700D30F96 /* Assets.xcassets in Resources */,
+				C9536C571DDCEBF90022E3AA /* MainAssets.xcassets in Resources */,
 				C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */,
 				C9A01EC31C8FBF83002D75AA /* PDF Icon.png in Resources */,
 				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
@@ -1000,6 +1040,7 @@
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
 				C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */,
 				C9E2A2B91C235D8400DBA851 /* ToSparkle.gpx in Resources */,
+				C9536C551DDCEB2A0022E3AA /* HomeAssets.xcassets in Resources */,
 				C94C77281CB1FF3F00EB3CED /* TimeAwayAdmin.storyboard in Resources */,
 				C93AEF161D8A544600F9D44D /* VacationApprovedHTML.html in Resources */,
 				C9E511F31BFABCF20030AA98 /* Onboarding.storyboard in Resources */,
@@ -1135,10 +1176,12 @@
 				C974FAD71C205845004D69E4 /* POCRunReportFinalTableViewController.swift in Sources */,
 				C90340CF1C722D660028F865 /* EmployeeSelectionChemCheckoutTableViewController.swift in Sources */,
 				C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */,
+				C94CF1F11DE2787500F0518C /* HomeViewController.swift in Sources */,
 				C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */,
 				C928CF9E1C233BF000C83345 /* LocalNotifications.swift in Sources */,
 				C949EBA31CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift in Sources */,
 				C9676DF31C8277FB00309F8B /* SpecialAccessTableViewController.swift in Sources */,
+				C9536C5C1DDD06400022E3AA /* ToolbarCollectionViewCell.swift in Sources */,
 				C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */,
 				C9585F291C174A3B008AB918 /* CalendarDatePickerViewController.swift in Sources */,
 				C9097DE51CCADF2800297696 /* ReactivePOCTableViewController.swift in Sources */,
@@ -1186,6 +1229,7 @@
 				C9CE08AF1C1BF2AE00603BAF /* CustomerData.swift in Sources */,
 				C972FF701C190A8C00D34EB2 /* EditTimeDatePickerViewController.swift in Sources */,
 				C9DB9E781C8290A30097E97F /* ManageEmployeeSelectionViewController.swift in Sources */,
+				C9536C5A1DDD01970022E3AA /* MainViewController.swift in Sources */,
 				C9140FB31C30F4E000F9D624 /* ComposeMessageTableViewController.swift in Sources */,
 				C9585F271C169491008AB918 /* RunTimeReportTableViewController.swift in Sources */,
 				C9C8E1C11C32141800191C17 /* MessageModel.swift in Sources */,

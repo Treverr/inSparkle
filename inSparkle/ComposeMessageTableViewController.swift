@@ -29,6 +29,7 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
     @IBOutlet var statusLabel: UILabel!
     @IBOutlet var phoneCallButton: UIButton!
     @IBOutlet var altPhoneCallButton: UIButton!
+    @IBOutlet weak var notesLabel: UILabel!
     
     var selectedEmployee : Employee?
     var formatter = DateFormatter()
@@ -98,6 +99,8 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
             enableDisableSaveButton(false)
         }
         
+        self.getNotesNumber()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(ComposeMessageTableViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ComposeMessageTableViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -128,7 +131,20 @@ class ComposeMessageTableViewController: UITableViewController, UIPopoverPresent
         }
     }
     
-    
+    func getNotesNumber() {
+        if existingMessage != nil && isNewMessage == false {
+            let query = MessageNotes.query()!
+            query.whereKey("pointerMessage", equalTo: existingMessage!)
+            query.addAscendingOrder("createdAt")
+            query.findObjectsInBackground(block: { (notes : [PFObject]?, error : Error?) in
+                if error == nil {
+                    if notes!.count > 0 {
+                        self.notesLabel.text = "Notes " + "(\(notes!.count))"
+                    }
+                }
+            })
+        }
+    }
     
     func keyboardWillHide(_ notification : Notification) {
         let contentInsets = UIEdgeInsets.zero

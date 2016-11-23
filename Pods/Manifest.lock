@@ -29,6 +29,7 @@ PODS:
     - PhoneNumberKit/PhoneNumberKitCore
   - RSBarcodes_Swift (3.0.1)
   - SocketRocket (0.5.1)
+  - Spring (1.0.3)
   - SwiftMoment (0.7)
   - SwiftSpinner (1.0.2)
   - UIView+HierarchicalDrawing (0.1.0)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - PDFGenerator
   - PhoneNumberKit
   - RSBarcodes_Swift
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
   - SwiftMoment
   - SwiftSpinner
   - UIView+HierarchicalDrawing
@@ -56,11 +58,17 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   CalendarView:
     :git: https://github.com/mikeandike/CalendarView.git
+  Spring:
+    :branch: swift3
+    :git: https://github.com/MengTo/Spring.git
 
 CHECKOUT OPTIONS:
   CalendarView:
     :commit: bfe418eb5bede90e7c4ca774c4bcee1708f869f7
     :git: https://github.com/mikeandike/CalendarView.git
+  Spring:
+    :commit: 3a9227c6e9157e7b47f5ac1ee5abab2a56b50002
+    :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
@@ -82,10 +90,11 @@ SPEC CHECKSUMS:
   PhoneNumberKit: 0b5ea9a5454d201656db766343e9d768f8542496
   RSBarcodes_Swift: c773a985f0ff3e2592d5458dd7494a71825aa733
   SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftMoment: dc6dd27012e267819104cbb03f74ff9192dd0b42
   SwiftSpinner: 1c80ff6ea1c47e2faa1dfce0fcd5e6b39a47fd51
   UIView+HierarchicalDrawing: 9cb086a2c0cde4fa8a3d17c58227abdd92e29ece
 
-PODFILE CHECKSUM: b49716a29924532b0587cca1e1607142a2a1804a
+PODFILE CHECKSUM: cbe4cccd531a46ff53cb79b97448e43853448134
 
 COCOAPODS: 1.1.1
