@@ -10,6 +10,7 @@ PODS:
   - iCarousel (1.8.3)
   - IQKeyboardManagerSwift (4.0.7)
   - MIBadgeButton-Swift (0.4)
+  - MKRingProgressView (1.1)
   - MZAppearance (1.1.6)
   - MZFormSheetPresentationController (2.4.2):
     - MZAppearance
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - iCarousel
   - IQKeyboardManagerSwift
   - MIBadgeButton-Swift
+  - MKRingProgressView
   - MZFormSheetPresentationController
   - NVActivityIndicatorView
   - Parse
@@ -81,6 +83,7 @@ SPEC CHECKSUMS:
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
   MIBadgeButton-Swift: b5d07924904c84bcb8e8fe3c3131b8499f28930c
+  MKRingProgressView: 0873f9cb2f1e668559aedf534c17b413891b9f8d
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
   MZFormSheetPresentationController: c1dc3bce639d2393b3cc416fcb6e050eb5bca062
   NVActivityIndicatorView: 81953b5e65093ba79edf4fe7268e002039ca5268
@@ -95,6 +98,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: 1c80ff6ea1c47e2faa1dfce0fcd5e6b39a47fd51
   UIView+HierarchicalDrawing: 9cb086a2c0cde4fa8a3d17c58227abdd92e29ece
 
-PODFILE CHECKSUM: cbe4cccd531a46ff53cb79b97448e43853448134
+PODFILE CHECKSUM: 23426e705ae5e985548f571d0e37ec67aca8947e
 
 COCOAPODS: 1.1.1

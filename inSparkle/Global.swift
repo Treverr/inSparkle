@@ -518,6 +518,17 @@ class GlobalFunctions {
             }
         }
     }
+    
+    func requestOverride(overrideReason : String, notificationName : Notification.Name) {
+        
+        let vc = UIStoryboard(name: "ManagerOverride", bundle: nil).instantiateViewController(withIdentifier: "overrideNav") as! UINavigationController
+        let over = vc.viewControllers.first as! ManagerOverrideViewController
+        let _ = over.view
+        over.overrideReason.text = overrideReason
+        over.notifyName = notificationName
+        UIApplication.shared.keyWindow?.currentViewController()?.present(vc, animated: true, completion: nil)
+    }
+    
 }
 
 class UnderlinedLabel: UILabel {

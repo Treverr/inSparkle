@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MKRingProgressView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MZAppearance.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -137,7 +142,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0FCCAF994B1241814F00A8DA526C5A01</key>
+		<key>1DD433296644EC99D334FB13290CDB9F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,17 +152,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2321DE92E436EF1DAD57737612B99BA6</key>
+		<key>20BAD4DDB164E6DB07E9B3EE0D201148</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2F85F4CE4621A6F8C77A181F4534443C</key>
+		<key>33C3F44FCC310F8424FE2A5B8E063CEA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>34E1BEE5B9151B6FF42B51C88D1AF746</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3707317B4B2C57F9C1CEC354DB33E18B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -217,7 +227,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD3D42D6A24BF12A8CFDEFE187DEC415</key>
+		<key>B52BD698820411BDED1F06B002ECE3C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -232,12 +242,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C2FBBF19CF1F1E73AC99B52A2A04EC39</key>
+		<key>C987ABC0516F08EB4031980AAE831F95</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C987ABC0516F08EB4031980AAE831F95</key>
+		<key>CB34D9D6318E23B9B54B7F408106A1BE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

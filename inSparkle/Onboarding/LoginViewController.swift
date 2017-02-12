@@ -210,6 +210,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     
                 } else {
+                    print(error)
                     let banner = Banner(title: "Incorrect username or password", subtitle: nil, image: nil, backgroundColor: UIColor.red, didTapBlock: nil)
                     banner.dismissesOnTap = true
                     banner.show(duration: 5.0)

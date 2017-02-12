@@ -74,6 +74,8 @@ class MainViewController: UIViewController {
             
             let homeIndex = IndexPath(item: 0, section: 0)
             self.toolbarCollectionView.selectItem(at: homeIndex, animated: true, scrollPosition: .bottom)
+            homeViewController.view.frame = containerView.bounds
+            homeViewController.view.contentMode = .redraw
             containerView.addSubview(homeViewController.view)
             
         }
@@ -87,6 +89,8 @@ class MainViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    
     
 }
 
@@ -150,6 +154,7 @@ extension MainViewController : UICollectionViewDelegate, UICollectionViewDataSou
         
         addChildViewController(vc)
         vc.view.frame = containerView.bounds
+        vc.view.contentMode = .redraw
         containerView.addSubview(vc.view)
         vc.didMove(toParentViewController: self)
         

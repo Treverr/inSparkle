@@ -12,20 +12,23 @@ import Parse
 class PushNotifications {
     
     class func messagesPushNotification(_ sendTo : Employee) {
+        
+        let sendToID = sendTo.objectId!
+        
         let data = [
-            "alert" : "New Message",
-            "badge" : "Increment",
-            "vc" : "messages",
-            "messageID" : "1234"
+            "sendToUser" : sendToID
         ]
         
-        let installQuery = PFInstallation.query()
-        installQuery?.whereKey("employee", equalTo: sendTo)
+        PFCloud.callFunction(inBackground: "sendMessageNotification", withParameters: data) { (result, error) in
+            if error != nil {
+                
+                let alert = UIAlertController(title: "Error", message: "There was an error sending the notification.", preferredStyle: .alert)
+                let okayButton = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                
+                UIApplication.shared.keyWindow?.window?.rootViewController?.present(alert, animated: true, completion: nil)
+                
+            }
+        }
         
-        let push = PFPush()
-        push.setQuery(installQuery as! PFQuery<PFInstallation>?)
-        push.setData(data)
-        push.sendInBackground()
     }
-    
 }

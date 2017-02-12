@@ -37,14 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let tabBar = sb.instantiateViewController(withIdentifier: "mainTabBar") as! TabBarViewController
             
             self.window?.rootViewController = tabBar
-        } else if UIDevice.current.userInterfaceIdiom == .pad {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let tabBar = sb.instantiateViewController(withIdentifier: "ipadMain")            
-            self.window?.rootViewController = tabBar
         }
+//        else if UIDevice.current.userInterfaceIdiom == .pad {
+//            let sb = UIStoryboard(name: "Main", bundle: nil)
+//            let tabBar = sb.instantiateViewController(withIdentifier: "ipadMain")            
+//            self.window?.rootViewController = tabBar
+//        }
         
         if getSSID() == "Sparkle Pools" {
-            print(getSSID())
             let configuration = ParseClientConfiguration {
                 $0.applicationId = "inSparkle"
                 $0.clientKey = ""
@@ -52,11 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
             Parse.initialize(with: configuration)
         } else {
-            print(getSSID())
             let configuration = ParseClientConfiguration {
                 $0.applicationId = "inSparkle"
                 $0.clientKey = ""
-                $0.server = "http://insparklepools.com:1337/parse"
+                $0.server = "http://ps.mysparklepools.com:1337/parse"
             }
             Parse.initialize(with: configuration)
         }
@@ -71,7 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         if PFUser.current() != nil {
             do {
                 try PFUser.current()?.fetch()
-                print(PFUser.current())
                 if PFUser.current() != nil {
                     let employee = PFUser.current()?.object(forKey: "employee") as? Employee
                     do {
@@ -109,6 +107,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         IQKeyboardManager.sharedManager().disabledToolbarClasses.append(LoginViewController.self)
         
         DropDown.startListeningToKeyboard()
+        
+        UIApplication.shared.statusBarStyle = .lightContent
         
         return true
     }
@@ -230,8 +230,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if PFUser.current() != nil {
             let employee = PFUser.current()?.object(forKey: "employee") as? Employee
-            print(PFUser.current())
-            print(employee)
             
             if employee != nil {
                 do {
@@ -241,6 +239,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 }
                 
                 installation.setObject(employee!, forKey: "employee")
+                installation.setObject(employee!.objectId! as String, forKey: "employeeid")
             }
         }
         installation.setDeviceTokenFrom(deviceToken)
@@ -253,6 +252,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if UIDevice.current.name == "Store iPad 1" || UIDevice.current.name == "Store iPad 2" || UIDevice.current.name == "iPhone Simulator"{
             if PFUser.current() != nil {
+                PFInstallation.current()?.remove(forKey: "employee")
+                PFInstallation.current()?.saveInBackground()
                 self.logOut()
             }
         }

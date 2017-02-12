@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en_US</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -62,12 +60,14 @@
 			</dict>
 		</array>
 	</dict>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mysparklepoolstime</string>
 	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
