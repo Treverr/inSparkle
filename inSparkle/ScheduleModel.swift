@@ -125,4 +125,19 @@ class ScheduleObject : PFObject, PFSubclassing {
         set { setObject(newValue!, forKey: "weekObj") }
     }
     
+    var smsEnabled : Bool? {
+        get { return object(forKey: "smsEnabled") as? Bool }
+        set { setObject(newValue!, forKey: "smsEnabled") }
+    }
+    
+    var smsNumber : String? {
+        get { return object(forKey: "smsNumber") as? String }
+        set { setObject(newValue!, forKey: "smsNumber") }
+    }
+    
+    var smsCustomerNotified : Bool? {
+        get { return object(forKey: "smsCustomerNotified") as? Bool }
+        set { setObject(newValue!, forKey: "smsCustomerNotified") }
+    }
+    
 }

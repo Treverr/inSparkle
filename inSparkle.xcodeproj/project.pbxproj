@@ -92,6 +92,7 @@
 		C974FAD71C205845004D69E4 /* POCRunReportFinalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974FAD61C205845004D69E4 /* POCRunReportFinalTableViewController.swift */; };
 		C974FAD91C20B84D004D69E4 /* POCCalPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974FAD81C20B84D004D69E4 /* POCCalPickerViewController.swift */; };
 		C97757091C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97757081C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift */; };
+		C97C78B71E52272C001C4A9E /* SMSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97C78B61E52272C001C4A9E /* SMSLog.swift */; };
 		C97C9C7A1D5F8781006F47D0 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97C9C791D5F8781006F47D0 /* QRCodeScanner.swift */; };
 		C97D3D3A1C815D55006B9E90 /* Manage Emps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */; };
 		C97D3D3C1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */; };
@@ -276,6 +277,7 @@
 		C974FAD61C205845004D69E4 /* POCRunReportFinalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCRunReportFinalTableViewController.swift; sourceTree = "<group>"; };
 		C974FAD81C20B84D004D69E4 /* POCCalPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCCalPickerViewController.swift; sourceTree = "<group>"; };
 		C97757081C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkOrderStatusTableViewController.swift; sourceTree = "<group>"; };
+		C97C78B61E52272C001C4A9E /* SMSLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMSLog.swift; sourceTree = "<group>"; };
 		C97C9C791D5F8781006F47D0 /* QRCodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Manage Emps.storyboard"; sourceTree = "<group>"; };
 		C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
@@ -878,6 +880,7 @@
 				C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */,
 				C95990E31C10F8DD00F6873E /* ScheduleModel.swift */,
 				C923D5F91C231A9100A32978 /* WeekList.swift */,
+				C97C78B61E52272C001C4A9E /* SMSLog.swift */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
@@ -1205,6 +1208,7 @@
 				C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */,
 				C94CF1F11DE2787500F0518C /* HomeViewController.swift in Sources */,
 				C9140FB11C30EBE900F9D624 /* UserModel.swift in Sources */,
+				C97C78B71E52272C001C4A9E /* SMSLog.swift in Sources */,
 				C928CF9E1C233BF000C83345 /* LocalNotifications.swift in Sources */,
 				C949EBA31CAB87DB00AF36DE /* UpdatePasswordTableViewController.swift in Sources */,
 				C9676DF31C8277FB00309F8B /* SpecialAccessTableViewController.swift in Sources */,

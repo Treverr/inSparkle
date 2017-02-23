@@ -99,10 +99,13 @@ class ScheduleTableViewController: UITableViewController {
         loadingUI = returnUI
         loadingBackground = returnBG
         
+        let startOfYear = Date(dateString: "2017-01-01")
+        
         let query : PFQuery = PFQuery(className: "Schedule")
         query.whereKey("isActive", equalTo: true)
         query.whereKey("type", equalTo: filterOption)
         query.limit = 1000
+        query.whereKey("weekStart", greaterThan: startOfYear)
         query.order(byAscending: "weekStart")
         query.findObjectsInBackground { (scheduleObjects :[PFObject]?, error: Error?) -> Void in
             if error == nil {
@@ -383,5 +386,15 @@ extension ScheduleTableViewController : UISearchBarDelegate {
             self.scheduleArray.removeAllObjects()
             self.scheduleQuery()
         }
+    }
+}
+
+extension Date {
+    init(dateString:String) {
+        let dateStringFormatter = DateFormatter()
+        dateStringFormatter.dateFormat = "yyyy-MM-dd"
+        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX") as Locale!
+        let d = dateStringFormatter.date(from: dateString)!
+        self.init(timeInterval:0, since:d)
     }
 }

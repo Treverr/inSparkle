@@ -75,6 +75,7 @@ class EmployeeDataTableViewController: UITableViewController {
                     self.userLoginSwitch.setOn(true, animated: false)
                     self.userNameTextField.text = userInfo.username
                     self.emailAddressTextField.text = userInfo.email
+                    print(userInfo)
                     if self.employeeObject.userPoint!.object(forKey: "isAdmin") as! Bool {
                         self.adminSwitch.setOn(true, animated: false)
                         self.accessManagerLabel.textColor = UIColor.lightGray
@@ -455,6 +456,7 @@ extension EmployeeDataTableViewController : UITextFieldDelegate {
         if textField == userNameTextField {
             if self.userObject.objectId != nil {
                 self.present(saving, animated: true, completion: nil)
+                print(textField.text?.lowercased(), self.userObject.email!, self.userObject.objectId!)
                 CloudCode.UpdateUserInfo(textField.text!.lowercased(), email: self.userObject.email!, objectId: self.userObject.objectId!, completion: { (isComplete) in
                     if isComplete {
                         saving.dismiss(animated: true, completion: nil)

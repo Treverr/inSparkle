@@ -28,6 +28,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     @IBOutlet var importantTextView: UITextView!
     @IBOutlet var selectClosingDate: UILabel!
     @IBOutlet var generatePDFButton: UIBarButtonItem!
+    @IBOutlet weak var smsSwitch: UISwitch!
+    @IBOutlet weak var smsNumber: PhoneNumberTextField!
     
     var weekList = [PFObject]()
     var typeOfWinterCover = [String]()
@@ -55,6 +57,9 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         
         locationEssentialItems.delegate = self
         notesTextView.delegate = self
+        
+        smsNumber.isHidden = true
+        smsSwitch.addTarget(self, action: #selector(self.smsSwitchStateChange), for: .valueChanged)
         
         if AddNewScheduleObjects.scheduledObject != nil {
             weeksNeedsSet = false
@@ -99,6 +104,13 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                 }
             }
             
+            if object.smsEnabled != nil {
+                if object.smsEnabled! {
+                    self.smsSwitch.setOn(true, animated: false)
+                    self.smsNumber.isHidden = false
+                    self.smsNumber.text = object.smsNumber!
+                }
+            }
         }
         
         if (isOpening!) {
@@ -387,12 +399,12 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
         
         if textView == notesTextView {
-            let indexPath = IndexPath(row: 12, section: 0)
+            let indexPath = IndexPath(row: 13, section: 0)
             self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
         
         if textView == locationEssentialItems {
-            let indexPath = IndexPath(row: 9, section: 0)
+            let indexPath = IndexPath(row: 10, section: 0)
             self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
         }
         
@@ -438,6 +450,15 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         weekAlert.addAction(yesButton)
         self.present(weekAlert, animated: true, completion: nil)
         
+    }
+    
+    func smsSwitchStateChange() {
+        if smsSwitch.isOn {
+            self.smsNumber.isHidden = false
+            self.smsNumber.text = self.phoneNumberTextField.text!
+        } else {
+            self.smsNumber.isHidden = true
+        }
     }
     
     func performSave(_ sender : AnyObject?) {
@@ -519,17 +540,35 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             } else {
                 do {
                     try PFUser.current()?.fetch()
-                    
                     schObj.confrimedBy = PFUser.current()?.username!.capitalized
+                    
                 } catch {
                     self.displayError("Error", message: "There was an error saving with the user infromation, please try again.")
                 }
             }
             
+            if schObj.smsEnabled != nil {
+                if schObj.smsEnabled! {
+                    // SMS Notify Enabled
+                    if schObj.smsCustomerNotified != nil {
+                        if schObj.smsCustomerNotified == false {
+                            let smsNumber = (self.smsNumber.text?.components(separatedBy: CharacterSet.decimalDigits.inverted))!.joined(separator: "")
+                            CloudCode.smsNotifyCustomer(smsNumber, dateSet: GlobalFunctions().dateFromShortDateString(selectClosingDate.text!), scheduleObject: schObj)
+                            schObj.smsCustomerNotified = true
+                        }
+                    }
+                }
+            }
+            
         } else {
+            schObj.smsCustomerNotified = false
             schObj.confrimed = false
             schObj.remove(forKey: "confrimedBy")
             schObj.remove(forKey: "confirmedDate")
+        }
+        schObj.smsEnabled = self.smsSwitch.isOn
+        if self.smsSwitch.isOn {
+            schObj.smsNumber = (self.smsNumber.text?.components(separatedBy: CharacterSet.decimalDigits.inverted))!.joined(separator: "")
         }
         schObj.saveInBackground(block: { (success : Bool, error : Error?) in
             if success {
@@ -683,8 +722,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     var theWeekPickerHidden = true
     var theCoverTypePickerHidden = true
     
-    let weekPickerIndexPath : IndexPath = IndexPath(item: 4, section: 0)
-    let typePickerIndexPath : IndexPath = IndexPath(item: 7, section: 0)
+    let weekPickerIndexPath : IndexPath = IndexPath(item: 5, section: 0)
+    let typePickerIndexPath : IndexPath = IndexPath(item: 8, section: 0)
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -701,22 +740,22 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
             typeOfWinterCoverPicker.isHidden = false
         }
         
-        if (indexPath as NSIndexPath).section  == 0 && (indexPath as NSIndexPath).row == 3 {
-            toggleWeekPicker()
-        }
-        
-        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 5 {
+        if (indexPath as NSIndexPath).section  == 0 && (indexPath as NSIndexPath).row == 4 {
             toggleWeekPicker()
         }
         
         if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 6 {
+            toggleWeekPicker()
+        }
+        
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 7 {
             toggleTypePicker()
         }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 8 {
+        if (indexPath as NSIndexPath).section == 0 && (indexPath as NSIndexPath).row == 9 {
             if AddNewScheduleObjects.isOpening == nil {
                 
             } else {

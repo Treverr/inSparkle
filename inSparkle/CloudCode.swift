@@ -57,9 +57,10 @@ class CloudCode {
     }
     
     class func UpdateUserAdminStatus(_ username : String, adminStatus : Bool, alert : UIAlertController, completion : (_ complete : Bool) -> Void) {
+        print(adminStatus)
         let parameters = [
             "username" : username,
-            "adminStatus" : adminStatus,
+            "adminStatus" : adminStatus
             ] as [String : Any]
         
         PFCloud.callFunction(inBackground: "modifyAdminStatus", withParameters: parameters) { (reponse, error) in
@@ -169,6 +170,37 @@ class CloudCode {
             
         } catch {
             print(error)
+        }
+    }
+    
+    class func smsNotifyCustomer(_ smsNumber : String, dateSet : Date, scheduleObject : ScheduleObject) {
+        let dateString = GlobalFunctions().stringFromDateFullStyle(dateSet)
+        let type = scheduleObject.type.lowercased()
+        var toSMS = (smsNumber.components(separatedBy: CharacterSet.decimalDigits.inverted)).joined(separator: "")
+        
+        if toSMS.characters.first == "1" {
+           let dropped = toSMS.characters.dropFirst()
+            toSMS = String(dropped)
+        }
+        
+        let params = [
+            "type" : type,
+            "date" : dateString,
+            "toSMS" : toSMS
+        ]
+        
+        PFCloud.callFunction(inBackground: "sendConfirmationMessage", withParameters: params) { (result, error) in
+            if error == nil {
+                scheduleObject.fetchInBackground(block: { (updatedSch : PFObject?, error) in
+                    let schObj = updatedSch as! ScheduleObject
+                    let smsLogItem = SMSLog()
+                    smsLogItem.messageContent = result as! String
+                    smsLogItem.smsSentTo = toSMS
+                    smsLogItem.saveInBackground()
+                })
+            } else {
+                // TODO: Handle error
+            }
         }
     }
     
