@@ -99,7 +99,7 @@ class ScheduleTableViewController: UITableViewController {
         loadingUI = returnUI
         loadingBackground = returnBG
         
-        let startOfYear = Date(dateString: "2017-01-01")
+        let startOfYear = PFConfigs.config["pocCutOffDate"] as! Date
         
         let query : PFQuery = PFQuery(className: "Schedule")
         query.whereKey("isActive", equalTo: true)

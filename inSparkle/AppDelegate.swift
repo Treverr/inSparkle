@@ -99,7 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         })
         application.registerForRemoteNotifications()
         
-        print(PFInstallation.current()?.deviceToken)
         PFInstallation.current()?.saveEventually()
         
         IQKeyboardManager.sharedManager().enable = true
