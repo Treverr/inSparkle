@@ -214,22 +214,22 @@ class QuickActionsMasterViewController: UIViewController {
             weekNumber.whereKey("weekObj", equalTo: weekObj)
             weekNumber.countObjectsInBackground(block: { (counted : Int32, error : Error?) in
                 self.thisWeekPOCNumber.text = String(counted)
-//                weekNumber.subscribe()
-//                    .handle(Event.Created) {_, item in
-//                        self.getNumPOCThisWeek()
-//                    }
-//                    .handle(Event.Updated) {_, item in
-//                        self.getNumPOCThisWeek()
-//                    }
-//                    .handle(Event.Deleted) {_, item in
-//                        self.getNumPOCThisWeek()
-//                    }
-//                    .handle(Event.Entered) {_, item in
-//                        self.getNumPOCThisWeek()
-//                    }
-//                    .handle(Event.Left) {_, item in
-//                        self.getNumPOCThisWeek()
-//                }
+                //                weekNumber.subscribe()
+                //                    .handle(Event.Created) {_, item in
+                //                        self.getNumPOCThisWeek()
+                //                    }
+                //                    .handle(Event.Updated) {_, item in
+                //                        self.getNumPOCThisWeek()
+                //                    }
+                //                    .handle(Event.Deleted) {_, item in
+                //                        self.getNumPOCThisWeek()
+                //                    }
+                //                    .handle(Event.Entered) {_, item in
+                //                        self.getNumPOCThisWeek()
+                //                    }
+                //                    .handle(Event.Left) {_, item in
+                //                        self.getNumPOCThisWeek()
+                //                }
             })
         } catch {
             print(error)
@@ -244,6 +244,7 @@ class QuickActionsMasterViewController: UIViewController {
         query.getFirstObjectInBackground { (firstWeek : PFObject?, error : Error?) in
             if error == nil {
                 if firstWeek != nil {
+                    
                     let week = firstWeek as! WeekList
                     
                     let dateFormatter = DateFormatter()
@@ -278,9 +279,9 @@ class QuickActionsMasterViewController: UIViewController {
                     //                        .handle(Event.Left) {_, item in
                     //                            self.getNextAvailOpening()
                     //                    }
+                } else {
+                    self.nextAvailOpeningWeeksLabel.text = "N/A"
                 }
-            } else {
-                self.nextAvailOpeningWeeksLabel.text = "N/A"
             }
         }
     }
@@ -329,9 +330,11 @@ class QuickActionsMasterViewController: UIViewController {
                     //                        .handle(Event.Left) {_, item in
                     //                            self.getNextAvailClosing()
                     //                    }
+                } else {
+                    self.nextAvailClosingWeeksLabel.text = "N/A"
                 }
             } else {
-                self.nextAvailOpeningWeeksLabel.text = "N/A"
+                self.nextAvailClosingWeeksLabel.text = "N/A"
             }
         }
     }
