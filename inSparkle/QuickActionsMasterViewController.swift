@@ -81,6 +81,9 @@ class QuickActionsMasterViewController: UIViewController {
         newMessageGesture.numberOfTapsRequired = 1
         newMessageView.addGestureRecognizer(newMessageGesture)
         
+        self.thisWeekPOCNumber.text = "0"
+        self.openWorkOrdersNumber.text = "0"
+        
     }
     
     override func didReceiveMemoryWarning() {
