@@ -179,7 +179,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         
                         do {
                             try PFUser.current()?.fetch()
-                            print(PFUser.current())
                             if PFUser.current() != nil {
                                 let employee = PFUser.current()?.object(forKey: "employee") as? Employee
                                 do {

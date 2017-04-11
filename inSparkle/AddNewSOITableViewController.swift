@@ -183,7 +183,7 @@ class AddNewSOITableViewController: UITableViewController, UITextFieldDelegate, 
         
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yy"
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         let sendDate : Date? = formatter.date(from: date_!)
         print(sendDate)
         

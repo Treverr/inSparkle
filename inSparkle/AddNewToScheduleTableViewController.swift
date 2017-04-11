@@ -35,6 +35,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     var typeOfWinterCover = [String]()
     var phoneNumber : String! = nil
     var weeksNeedsSet = true
+    var managerOverrode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         NotificationCenter.default.addObserver(self, selector: #selector(AddNewToScheduleTableViewController.updateFields), name: NSNotification.Name(rawValue: "UpdateFieldsOnSchedule"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AddNewToScheduleTableViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AddNewToScheduleTableViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(managerOverride), name: Notification.string(name: "ManagerOverrideApproved"), object: nil)
         
         var isOpening : Bool?
         
@@ -461,6 +464,11 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         }
     }
     
+    func managerOverride(notification : Notification) {
+        self.managerOverrode = true
+        self.performSave(self)
+    }
+    
     func performSave(_ sender : AnyObject?) {
         let customerName = customerNameTextField.text?.capitalized
         let weekStartingString = weekStartingLabel.text
@@ -611,8 +619,15 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         if customerNameTextField.text!.isEmpty || addressLabel.text!.isEmpty || phoneNumberTextField.text!.isEmpty || typeOfWinterCoverLabel.text!.isEmpty ||  locationEssentialItems.text.isEmpty {
             displayError("Missing Field", message: "There is a field missing, check your entries and try again")
         } else {
-            if selectedWeekObj?.apptsRemain == 0 {
-                self.weekManagerOverride(sender)
+            if selectedWeekObj!.apptsRemain <= 0 {
+                if self.managerOverrode || (PFUser.current()?.object(forKey: "isAdmin") as! Bool == true) {
+                    if managerOverrode {
+                        self.performSave(sender)
+                    }
+                    weekManagerOverride(sender)
+                } else {
+                    GlobalFunctions().requestOverride(overrideReason: "Overbooked Week", notificationName: Notification.string(name: "ManagerOverrideApproved"))
+                }
             } else {
                 self.performSave(sender)
             }

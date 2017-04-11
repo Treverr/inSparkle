@@ -9,6 +9,7 @@ PODS:
   - GooglePlacesAutocomplete (0.3.0)
   - iCarousel (1.8.3)
   - IQKeyboardManagerSwift (4.0.7)
+  - MGSwipeTableCell (1.5.6)
   - MIBadgeButton-Swift (0.4)
   - MKRingProgressView (1.1)
   - MZAppearance (1.1.6)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - GooglePlacesAutocomplete
   - iCarousel
   - IQKeyboardManagerSwift
+  - MGSwipeTableCell
   - MIBadgeButton-Swift
   - MKRingProgressView
   - MZFormSheetPresentationController
@@ -82,6 +84,7 @@ SPEC CHECKSUMS:
   GooglePlacesAutocomplete: 7694636fce561c9d8ac807b8e490d299a730a633
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
+  MGSwipeTableCell: 616700eb0ffd1c611ba909066cb7fd739790a0a7
   MIBadgeButton-Swift: b5d07924904c84bcb8e8fe3c3131b8499f28930c
   MKRingProgressView: 0873f9cb2f1e668559aedf534c17b413891b9f8d
   MZAppearance: 0c06d3fa9cc55142f1da14bc8631fbe8fd6e19d5
@@ -98,6 +101,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: 1c80ff6ea1c47e2faa1dfce0fcd5e6b39a47fd51
   UIView+HierarchicalDrawing: 9cb086a2c0cde4fa8a3d17c58227abdd92e29ece
 
-PODFILE CHECKSUM: 23426e705ae5e985548f571d0e37ec67aca8947e
+PODFILE CHECKSUM: 74ffc861fe68bab005f3df42f8a9ab1ea7957b6a
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0.rc.1

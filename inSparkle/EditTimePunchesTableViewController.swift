@@ -43,6 +43,7 @@ class EditTimePunchesTableViewController: UITableViewController {
         let query = TimeClockPunchObj.query()
         query?.whereKey("employee", equalTo: emp)
         query?.order(byDescending: "timePunched")
+        query?.limit = 25
         query?.findObjectsInBackground(block: { (thePunches : [PFObject]?, error : Error?) -> Void in
             if error == nil {
                 print(thePunches?.count)
@@ -80,7 +81,9 @@ class EditTimePunchesTableViewController: UITableViewController {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
+        
+        print(SparkleTimeZone.timeZone)
         
         var punchIn = ""
         var punchOut = ""

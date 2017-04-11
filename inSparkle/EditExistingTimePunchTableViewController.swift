@@ -53,7 +53,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         
         if inTimeLabel.text != "N/A" {
             inTimeSet = true
@@ -146,7 +146,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
     func pickDate(_ sender : UILabel!, timeObject : PFObject!) {
         let formatter = DateFormatter()
         formatter.dateFormat = "M/d/yy, h:mm a"
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         
         if sender == inTimeLabel {
             if sender.text != "N/A" {
@@ -197,7 +197,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         
         if EditTimePunchesDatePicker.sender == inTimeLabel {
             inTimeLabel.text = formatter.string(from: EditTimePunchesDatePicker.dateToPass as Date)
@@ -280,7 +280,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
         if (needsCalc) {
             let formatter = DateFormatter()
             formatter.dateFormat = "M/d/yy, h:mm a"
-            formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+            formatter.timeZone = SparkleTimeZone.timeZone
             let inDate = formatter.date(from: inTimeLabel.text!)!
             let outDate = formatter.date(from: outTimeLabel.text!)!
             
@@ -430,7 +430,7 @@ class EditExistingTimePunchTableViewController: UITableViewController, UIPopover
             
             let theEmp = AddEditEmpTimeCard.employeeEditingObject
             let formatter = DateFormatter()
-            formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+            formatter.timeZone = SparkleTimeZone.timeZone
             formatter.dateFormat = "M/d/yy, h:mm a"
             
             if updatedIn != nil {

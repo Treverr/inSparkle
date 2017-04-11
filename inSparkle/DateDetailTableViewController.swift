@@ -20,7 +20,7 @@ class DateDetailTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        dateFormatter.timeZone = SparkleTimeZone.timeZone
         
         self.navigationItem.title = "Time Punches for " + dateFormatter.string(from: selectedDate)
     
@@ -42,7 +42,7 @@ class DateDetailTableViewController: UITableViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .short
                 dateFormatter.timeStyle = .short
-                dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+                dateFormatter.timeZone = SparkleTimeZone.timeZone
                 
                 for punch in foundPunches! {
                     let thePunch = punch as! TimeClockPunchObj

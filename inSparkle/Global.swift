@@ -246,14 +246,56 @@ class Barcode {
     
 }
 
+class SparkleTimeZone {
+    
+    static var timeZone : TimeZone!
+    
+}
+
+struct AppUtility {
+    
+    // This method will force you to use base on how you configure.
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask) {
+        
+        if let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.orientationLock = orientation
+        }
+    }
+    
+    // This method done pretty well where we can use this for best user experience.
+    static func lockOrientation(_ orientation: UIInterfaceOrientationMask, andRotateTo rotateOrientation:UIInterfaceOrientation) {
+        
+        self.lockOrientation(orientation)
+        
+        UIDevice.current.setValue(rotateOrientation.rawValue, forKey: "orientation")
+    }
+    
+}
+
 
 class GlobalFunctions {
+    
+    class func expenseLog(expenseItem : ExpenseItem, logReason: String, completion: @escaping (_ saveComplete : Bool, _ error : Error?) -> Void) {
+        let log = ExpenseLog()
+        log.employee = EmployeeData.universalEmployee
+        log.expenseObject = expenseItem
+        log.logReason = logReason
+        log.saveInBackground { (success, error) in
+            if error == nil && success {
+                completion(true, nil)
+            } else if error != nil {
+                completion(false, error)
+            } else if success == false {
+                completion(false, error)
+            }
+        }
+    }
     
     func stringFromDateFullStyle(_ theDate : Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.full
         formatter.timeStyle = DateFormatter.Style.none
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         let dateString = formatter.string(from: theDate)
         
         return dateString
@@ -263,7 +305,7 @@ class GlobalFunctions {
         let formatter = DateFormatter()
         formatter.dateStyle = DateFormatter.Style.short
         formatter.timeStyle = DateFormatter.Style.none
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         let dateString = formatter.string(from: theDate)
         
         return dateString
@@ -283,7 +325,7 @@ class GlobalFunctions {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         let dateString = formatter.string(from: theDate)
         
         return dateString
@@ -292,7 +334,7 @@ class GlobalFunctions {
     func dateFromShortDateString(_ dateString : String) -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yy"
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         let theReturn = formatter.date(from: dateString)
         
         return theReturn!
@@ -301,7 +343,7 @@ class GlobalFunctions {
     func dateFromMediumDateString(_ dateString : String) -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         let theReturn = formatter.date(from: dateString)
         
         return theReturn!
@@ -310,7 +352,7 @@ class GlobalFunctions {
     func dateFromShortDateShortTime(_ dateString : String) -> Date {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yy, h:mm a"
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         let theReturn = formatter.date(from: dateString)
         
         return theReturn!
@@ -669,4 +711,23 @@ extension UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+}
+
+extension UIImage {
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        
+        
+        image.draw(in: CGRect(x: 0, y: 0,width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
 }

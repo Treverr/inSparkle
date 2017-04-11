@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,7 +15,15 @@
                 <viewControllerPlaceholder storyboardName="Admin" id="nrI-7n-Vtw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PhE-M1-rBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836.5" y="959"/>
+            <point key="canvasLocation" x="828" y="917"/>
+        </scene>
+        <!--Expense-->
+        <scene sceneID="kNt-gZ-MLN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Expense" id="2D2-8Q-v7S" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s3C-9b-mI8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="849" y="1157"/>
         </scene>
         <!--PDFLocker-->
         <scene sceneID="KG7-lQ-5kc">
@@ -71,8 +79,32 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="chemCheckout" textLabel="hOl-Qi-zdA" imageView="pCw-E7-htN" style="IBUITableViewCellStyleDefault" id="84P-6u-bLs">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="expenseBook" textLabel="DXl-po-aOS" imageView="zgA-Zk-8pu" style="IBUITableViewCellStyleDefault" id="M5j-5L-4zU">
                                 <rect key="frame" x="0.0" y="100" width="1024" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M5j-5L-4zU" id="sVU-Dt-gRk">
+                                    <rect key="frame" x="0.0" y="0.0" width="830" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Expenses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DXl-po-aOS">
+                                            <rect key="frame" x="225" y="0.0" width="605" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Expense Book" id="zgA-Zk-8pu">
+                                            <rect key="frame" x="176" y="4" width="34" height="34"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="2D2-8Q-v7S" kind="presentation" id="F6y-yi-0x2"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="chemCheckout" textLabel="hOl-Qi-zdA" imageView="pCw-E7-htN" style="IBUITableViewCellStyleDefault" id="84P-6u-bLs">
+                                <rect key="frame" x="0.0" y="144" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="84P-6u-bLs" id="BPq-qd-mKL">
                                     <rect key="frame" x="0.0" y="0.0" width="830" height="43"/>
@@ -93,7 +125,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="pdfLocker" textLabel="lR1-CO-1eT" imageView="fdy-bK-O5y" style="IBUITableViewCellStyleDefault" id="EyJ-gP-EP0">
-                                <rect key="frame" x="0.0" y="144" width="1024" height="44"/>
+                                <rect key="frame" x="0.0" y="188" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EyJ-gP-EP0" id="kUM-IZ-ci6">
                                     <rect key="frame" x="0.0" y="0.0" width="830" height="43"/>
@@ -117,7 +149,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="sparkleConnect" textLabel="LeM-YN-c5K" imageView="z3C-8F-gbo" style="IBUITableViewCellStyleDefault" id="Ka6-Vp-8HO">
-                                <rect key="frame" x="0.0" y="188" width="1024" height="44"/>
+                                <rect key="frame" x="0.0" y="232" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ka6-Vp-8HO" id="Gu5-Af-0og">
                                     <rect key="frame" x="0.0" y="0.0" width="830" height="43"/>
@@ -141,7 +173,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="customerLookup" textLabel="HG5-K1-6bI" imageView="zra-Qk-ZZ8" style="IBUITableViewCellStyleDefault" id="bWJ-Yb-HZv">
-                                <rect key="frame" x="0.0" y="232" width="1024" height="44"/>
+                                <rect key="frame" x="0.0" y="276" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bWJ-Yb-HZv" id="02f-sN-7SB">
                                     <rect key="frame" x="0.0" y="0.0" width="830" height="43"/>
@@ -165,7 +197,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="printerSelection" textLabel="7SB-UL-qgB" imageView="8Ks-ur-QeF" style="IBUITableViewCellStyleDefault" id="Pbw-my-3dc">
-                                <rect key="frame" x="0.0" y="276" width="1024" height="44"/>
+                                <rect key="frame" x="0.0" y="320" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pbw-my-3dc" id="SmK-p3-dNn">
                                     <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -186,7 +218,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="logoutCell" textLabel="fqY-Pb-FMK" style="IBUITableViewCellStyleDefault" id="APW-gX-2mQ">
-                                <rect key="frame" x="0.0" y="320" width="1024" height="44"/>
+                                <rect key="frame" x="0.0" y="364" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="APW-gX-2mQ" id="Bcw-1l-PHQ">
                                     <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -203,7 +235,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="saCell" textLabel="x32-iE-nik" style="IBUITableViewCellStyleDefault" id="LMu-Bv-Jhh">
-                                <rect key="frame" x="0.0" y="364" width="1024" height="44"/>
+                                <rect key="frame" x="0.0" y="408" width="1024" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LMu-Bv-Jhh" id="jOZ-vv-RgQ">
                                     <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
@@ -280,6 +312,7 @@
         <image name="Administrator" width="22" height="22"/>
         <image name="Chemical Checkout Report" width="34" height="34"/>
         <image name="Customer Search" width="34" height="34"/>
+        <image name="Expense Book" width="34" height="34"/>
         <image name="PDF Icon" width="32" height="32"/>
         <image name="Printer Settings" width="34" height="34"/>
         <image name="Time Span" width="34" height="34"/>

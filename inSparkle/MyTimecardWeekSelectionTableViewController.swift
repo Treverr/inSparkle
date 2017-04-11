@@ -76,7 +76,7 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+            dateFormatter.timeZone = SparkleTimeZone.timeZone
             
             let sb = UIStoryboard(name: "SparkleConnect", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "dateDetail") as! DateDetailTableViewController
@@ -112,7 +112,7 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
         for day in weekLabels {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+            dateFormatter.timeZone = SparkleTimeZone.timeZone
             let dateToLookFor = dateFormatter.date(from: day.text!.components(separatedBy: " ")[1])
             calculateTotals(dateToLookFor!, day: day.text!.components(separatedBy: " ")[0])
         }
@@ -128,7 +128,7 @@ class MyTimecardWeekSelectionTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        dateFormatter.timeZone = SparkleTimeZone.timeZone
         
         let currentCalendar = Calendar.current
         let dateToString = (currentCalendar as NSCalendar).date(byAdding: [.day], value: daysToAdd, to: startOfWeek!, options: [])

@@ -8,131 +8,190 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 		<key>BRYXBanner.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Bolts-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>CalendarView-CalendarView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>CalendarView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>DropDown.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 		<key>GooglePlacesAutocomplete.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>MGSwipeTableCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>11</integer>
 		</dict>
 		<key>MIBadgeButton-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>12</integer>
 		</dict>
 		<key>MKRingProgressView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>13</integer>
 		</dict>
 		<key>MZAppearance.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>14</integer>
 		</dict>
 		<key>MZFormSheetPresentationController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>15</integer>
 		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>16</integer>
 		</dict>
 		<key>PDFGenerator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>19</integer>
 		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>17</integer>
 		</dict>
 		<key>ParseLiveQuery.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>18</integer>
 		</dict>
 		<key>PhoneNumberKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>20</integer>
 		</dict>
 		<key>Pods-inSparkle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>21</integer>
 		</dict>
 		<key>RSBarcodes_Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>22</integer>
 		</dict>
 		<key>SocketRocket.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>23</integer>
 		</dict>
 		<key>Spring.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>24</integer>
 		</dict>
 		<key>SwiftMoment.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>25</integer>
 		</dict>
 		<key>SwiftSpinner.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>26</integer>
 		</dict>
 		<key>UIView+HierarchicalDrawing.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>27</integer>
 		</dict>
 		<key>iCarousel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -142,7 +201,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1DD433296644EC99D334FB13290CDB9F</key>
+		<key>1CD80321715FDB12A3A31B7BCB09EA28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,27 +211,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>20BAD4DDB164E6DB07E9B3EE0D201148</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>33C3F44FCC310F8424FE2A5B8E063CEA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>34E1BEE5B9151B6FF42B51C88D1AF746</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3707317B4B2C57F9C1CEC354DB33E18B</key>
+		<key>3CB17C6B6D5F08F6B3350CCEC6B1E0F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3CB17C6B6D5F08F6B3350CCEC6B1E0F6</key>
+		<key>3CD3CCD6514FA2C2DCBFD0DAC9568663</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,6 +251,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>58604AE32A76AC3BC4BE9723CD6F8AB0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>62EF80CFC788B65B0A7C66881A8E43A1</key>
 		<dict>
 			<key>primary</key>
@@ -227,7 +281,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B52BD698820411BDED1F06B002ECE3C6</key>
+		<key>B61BF6D7C7BFDE66D8AE49A260241C32</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -242,12 +296,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C2F5DE5898A4ED7546C243FB1389A733</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C987ABC0516F08EB4031980AAE831F95</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>CB34D9D6318E23B9B54B7F408106A1BE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D1968A11AA0394C2EB37EDFA809BCB2A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

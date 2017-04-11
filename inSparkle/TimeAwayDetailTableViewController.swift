@@ -35,7 +35,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
         self.navigationItem.title = "Pending " + self.request.type + " Request"
         
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        dateFormatter.timeZone = SparkleTimeZone.timeZone
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
         
@@ -93,7 +93,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
                 allDates.sort()
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "M/d/yy"
-                dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+                dateFormatter.timeZone = SparkleTimeZone.timeZone
                 
                 for date in allDates {
                     let vacaTime = VacationTimePunch()
@@ -110,7 +110,7 @@ class TimeAwayDetailTableViewController: UITableViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .short
                 dateFormatter.timeStyle = .none
-                dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+                dateFormatter.timeZone = SparkleTimeZone.timeZone
                 
                 var dates : String? = nil
                 self.datesArray = self.request.datesRequested as! [Date]

@@ -127,7 +127,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
-        formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        formatter.timeZone = SparkleTimeZone.timeZone
         
         let startDate : Date = formatter.date(from: startDateString!)!
         var endDate : Date = formatter.date(from: endDateString!)!
@@ -192,7 +192,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
                     let formatter = DateFormatter()
                     formatter.dateStyle = .medium
                     formatter.timeStyle = .short
-                    formatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+                    formatter.timeZone = SparkleTimeZone.timeZone
                     
                     employeeName = "\(employee.firstName) \(employee.lastName)"
                     var timePunchedIn = formatter.string(from: thePunch.timePunchedIn)

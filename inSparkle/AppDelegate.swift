@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import Parse
 import Bolts
 import Fabric
@@ -38,11 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
             self.window?.rootViewController = tabBar
         }
-//        else if UIDevice.current.userInterfaceIdiom == .pad {
-//            let sb = UIStoryboard(name: "Main", bundle: nil)
-//            let tabBar = sb.instantiateViewController(withIdentifier: "ipadMain")            
-//            self.window?.rootViewController = tabBar
-//        }
+        
+        //        else if UIDevice.current.userInterfaceIdiom == .pad {
+        //            let sb = UIStoryboard(name: "Main", bundle: nil)
+        //            let tabBar = sb.instantiateViewController(withIdentifier: "ipadMain")
+        //            self.window?.rootViewController = tabBar
+        //        }
         
         if getSSID() == "Sparkle Pools" {
             let configuration = ParseClientConfiguration {
@@ -75,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     do {
                         try employee!.fetch()
                     } catch {
-                        
+                        print(error)
                     }
                     
                     EmployeeData.universalEmployee = employee
@@ -299,19 +301,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
         UIApplication.shared.applicationIconBadgeNumber = 0
         
-        let apiKey = "AIzaSyAW7Mk3n17qA3Wdn2gJxkjqput1AwwVrcI"
-        let location = "39.493115,-87.378896"
-        let timeStamp = String(Date().timeIntervalSince1970)
-        
-        let url = "https://maps.googleapis.com/maps/api/timezone/json?location=\(location)&timestamp=\(timeStamp)&key=\(apiKey)"
-        
-        Alamofire.request(url)
-        .responseJSON { (response) in
-            if let json = response.result.value as? NSDictionary {
-                let timeZoneOffset = json["rawOffset"]! as! Int
-                UserDefaults.standard.set(timeZoneOffset, forKey: "SparkleTimeZone")
-            }
-        }
+        let timeZone = TimeZone(identifier: "America/Indiana/Indianapolis")
+        SparkleTimeZone.timeZone = timeZone!
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -383,9 +374,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return interfaceData["SSID"] as? String
     }
     
+    
+    var orientationLock = UIInterfaceOrientationMask.all
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.orientationLock
+    }
+    
 }
-
-
 
 
 

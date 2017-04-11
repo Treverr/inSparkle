@@ -81,7 +81,7 @@ class TripsTableViewController: UITableViewController {
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateStyle = .short
                         dateFormatter.timeStyle = .medium
-                        dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+                        dateFormatter.timeZone = SparkleTimeZone.timeZone
                         
                         let start = currentRow.timeStamp
                         let end = self.trips[(indexPath as NSIndexPath).row + 1].timeStamp
@@ -99,7 +99,7 @@ class TripsTableViewController: UITableViewController {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateStyle = .short
                     dateFormatter.timeStyle = .medium
-                    dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+                    dateFormatter.timeZone = SparkleTimeZone.timeZone
                     
                     cell.textLabel?.text = dateFormatter.string(from: start as Date) + " - " + "No Time Out Recorded"
                     cell.detailTextLabel?.text = "N/A"
@@ -109,7 +109,7 @@ class TripsTableViewController: UITableViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateStyle = .short
                 dateFormatter.timeStyle = .medium
-                dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+                dateFormatter.timeZone = SparkleTimeZone.timeZone
                 
                cell.textLabel?.text = "No Time In Recorded" + " - " + dateFormatter.string(from: end as Date)
                 cell.detailTextLabel?.text = "N/A"

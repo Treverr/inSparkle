@@ -66,7 +66,7 @@ class MoreTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 6
+            return 7
         } else {
             return specialAccess.count
         }
@@ -87,15 +87,18 @@ class MoreTableViewController: UITableViewController {
             case 0:
                 cell = self.tableView.dequeueReusableCell(withIdentifier: "timeClock")!
             case 1:
-                cell = self.tableView.dequeueReusableCell(withIdentifier: "pdfLocker")!
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "expenseBook")!
             case 2:
-                cell = self.tableView.dequeueReusableCell(withIdentifier: "sparkleConnect")!
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "pdfLocker")!
             case 3:
-                cell = self.tableView.dequeueReusableCell(withIdentifier: "customerLookup")!
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "sparkleConnect")!
+                
             case 4:
+                cell = self.tableView.dequeueReusableCell(withIdentifier: "customerLookup")!
+            case 5:
                 cell = self.tableView.dequeueReusableCell(withIdentifier: "printerSelection")!
                 self.printerSelectionRect = cell.frame
-            case 5:
+            case 6:
                 cell = self.tableView.dequeueReusableCell(withIdentifier: "logoutCell")!
             default:
                 break

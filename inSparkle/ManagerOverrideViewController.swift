@@ -39,7 +39,7 @@ class ManagerOverrideViewController: UIViewController, UIGestureRecognizerDelega
         let blur = UIBlurEffect(style: UIBlurEffectStyle.light)
         // 2
         let blurView = UIVisualEffectView(effect: blur)
-        blurView.frame = blurImageView.bounds
+        blurView.frame = self.view.frame
         // 3
         blurImageView.addSubview(blurView)
 
@@ -72,18 +72,33 @@ class ManagerOverrideViewController: UIViewController, UIGestureRecognizerDelega
                 
                 if (theUser.object(forKey: "isAdmin") as! Bool) {
                     approve = true
-                    self.dismiss(animated: true, completion: { 
-                        NotificationCenter.default.post(name: self.notifyName, object: approve)
+                    self.dismiss(animated: true, completion: {
                     })
+                    NotificationCenter.default.post(name: self.notifyName, object: approve)
                 } else {
                     
                 }
                 
             } else {
-                //Failed
+                let errorCode = returnError as! NSError
+                
+                switch errorCode.code {
+                case 141:
+                    self.errorAlert(message: "Invalid User Name or Password")
+                default:
+                    break
+                }
             }
         }
         
+    }
+    
+    func errorAlert(message : String) {
+        let alert = UIAlertController(title: "Failed", message: "Authentication failed, invalid username or password", preferredStyle: .alert)
+        let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        
+        alert.addAction(okay)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func remoteApprove(_ sender: Any) {

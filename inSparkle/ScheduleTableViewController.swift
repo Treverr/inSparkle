@@ -194,7 +194,7 @@ class ScheduleTableViewController: UITableViewController {
         let setDates = UIAlertAction(title: "Save", style: .default) { (action) in
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "M/d/yy"
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+            dateFormatter.timeZone = SparkleTimeZone.timeZone
             
             for obj in self.objectsToEdit {
                 let date : Date? = dateFormatter.date(from: dateTextField.text!)

@@ -26,5 +26,6 @@ pod 'ParseLiveQuery'
 pod 'PDFGenerator'
 pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
 pod 'MKRingProgressView'
+pod 'MGSwipeTableCell'
 
 end

@@ -98,7 +98,7 @@ class TimeAwayRequestTableViewController: UITableViewController {
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "M/d/yy"
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+            dateFormatter.timeZone = SparkleTimeZone.timeZone
             
             for cell in cells {
                 let theCell = cell as! SelectedDatesTableViewCell

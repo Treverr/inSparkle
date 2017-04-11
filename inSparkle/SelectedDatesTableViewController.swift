@@ -31,7 +31,7 @@ class SelectedDatesTableViewController: UITableViewController {
         } else {
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "dateCell")! as! SelectedDatesTableViewCell
             let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+            dateFormatter.timeZone = SparkleTimeZone.timeZone
             dateFormatter.dateStyle = .short
             dateFormatter.timeStyle = .none
             

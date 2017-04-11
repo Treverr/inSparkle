@@ -65,7 +65,7 @@ class MessageNotesTableViewController: UITableViewController {
         let noteTimeDateFormatter = DateFormatter()
         noteTimeDateFormatter.timeStyle = .short
         noteTimeDateFormatter.dateStyle = .short
-        noteTimeDateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        noteTimeDateFormatter.timeZone = SparkleTimeZone.timeZone
         noteTimeDateFormatter.doesRelativeDateFormatting = true
         
         let timeString = noteTimeDateFormatter.string(from: time)

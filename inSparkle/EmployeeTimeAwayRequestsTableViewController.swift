@@ -55,7 +55,7 @@ class EmployeeTimeAwayRequestsTableViewController: UITableViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
-        dateFormatter.timeZone = TimeZone(secondsFromGMT: UserDefaults.standard.integer(forKey: "SparkleTimeZone"))
+        dateFormatter.timeZone = SparkleTimeZone.timeZone
         
         var dates : String = ""
         let datesArray = self.requests[(indexPath as NSIndexPath).row].datesRequested

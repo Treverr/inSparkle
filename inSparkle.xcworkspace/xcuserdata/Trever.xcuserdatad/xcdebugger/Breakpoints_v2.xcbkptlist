@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/CloudCode.swift"
-            timestampString = "509057434.411948"
+            filePath = "inSparkle/AddNewExpenseViewController.swift"
+            timestampString = "512677724.595641"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "UpdateUserAdminStatus(_:adminStatus:alert:completion:)"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "saveExpense(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/CloudCode.swift"
-            timestampString = "509057434.411948"
+            filePath = "inSparkle/AddNewExpenseViewController.swift"
+            timestampString = "512677724.804336"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "UpdateUserAdminStatus(_:adminStatus:alert:completion:)"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "saveExpense(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/CloudCode.swift"
-            timestampString = "509057434.411948"
+            filePath = "inSparkle/AddNewExpenseViewController.swift"
+            timestampString = "512677725.311352"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "UpdateUserAdminStatus(_:adminStatus:alert:completion:)"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "saveExpense(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/EmployeeDataTableViewController.swift"
-            timestampString = "509087790.796675"
+            filePath = "inSparkle/AddNewExpenseViewController.swift"
+            timestampString = "512677823.727357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
-            landmarkName = "adminPrivSwitchAction(_:)"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "saveExpense(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,60 +73,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/EmployeeDataTableViewController.swift"
-            timestampString = "509087790.796675"
+            filePath = "inSparkle/AddNewExpenseViewController.swift"
+            timestampString = "512677855.560736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
-            landmarkName = "adminPrivSwitchAction(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "inSparkle/EmployeeDataTableViewController.swift"
-            timestampString = "509087790.796675"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
-            landmarkName = "adminPrivSwitchAction(_:)"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "saveExpense(_:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.EmployeeDataTableViewController.adminPrivSwitchAction (__ObjC.UISwitch) -&gt; ()"
+                  symbolName = "inSparkle.AddNewExpenseViewController.saveExpense (Any) -&gt; ()"
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "509564129.987488"
+                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewExpenseViewController.swift"
+                  timestampString = "513625654.145328"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "396"
-                  endingLineNumber = "396"
-                  offsetFromSymbolStart = "1221">
+                  startingLineNumber = "272"
+                  endingLineNumber = "272"
+                  offsetFromSymbolStart = "11400">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.EmployeeDataTableViewController.(adminPrivSwitchAction (__ObjC.UISwitch) -&gt; ()).(closure #1)"
+                  symbolName = "inSparkle.AddNewExpenseViewController.(saveExpense (Any) -&gt; ()).(closure #2)"
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/EmployeeDataTableViewController.swift"
-                  timestampString = "509564129.988507"
+                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/AddNewExpenseViewController.swift"
+                  timestampString = "513625654.146439"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "397"
-                  endingLineNumber = "397"
-                  offsetFromSymbolStart = "27">
+                  startingLineNumber = "273"
+                  endingLineNumber = "273"
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -137,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/EmployeeDataTableViewController.swift"
-            timestampString = "509087790.796675"
+            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
+            timestampString = "513625653.980992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "459"
-            endingLineNumber = "459"
-            landmarkName = "textFieldDidEndEditing(_:)"
+            startingLineNumber = "619"
+            endingLineNumber = "619"
+            landmarkName = "saveButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,13 +137,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/EmployeeDataTableViewController.swift"
-            timestampString = "509087710.311122"
+            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
+            timestampString = "513625653.980992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "622"
+            endingLineNumber = "622"
+            landmarkName = "saveButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -169,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/QuickActionsMasterViewController.swift"
-            timestampString = "509563504.435668"
+            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
+            timestampString = "513625653.980992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
-            landmarkName = "getNextAvailOpening()"
+            startingLineNumber = "582"
+            endingLineNumber = "582"
+            landmarkName = "performSave(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -185,44 +169,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/QuickActionsMasterViewController.swift"
-            timestampString = "509563505.740326"
+            filePath = "inSparkle/ManagerOverrideViewController.swift"
+            timestampString = "513627026.983456"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "getNextAvailOpening()"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "approveAction(_:)"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.QuickActionsMasterViewController.getNextAvailOpening () -&gt; ()"
+                  symbolName = "inSparkle.ManagerOverrideViewController.(approveAction (Any) -&gt; ()).(closure #1)"
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/QuickActionsMasterViewController.swift"
-                  timestampString = "509564129.996596"
+                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/ManagerOverrideViewController.swift"
+                  timestampString = "513625654.154725"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "244"
-                  endingLineNumber = "244"
-                  offsetFromSymbolStart = "606">
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "1119">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "inSparkle.QuickActionsMasterViewController.(getNextAvailOpening () -&gt; ()).(closure #1)"
+                  symbolName = "inSparkle.ManagerOverrideViewController.(approveAction (Any) -&gt; ()).(closure #1).(closure #1)"
                   moduleName = "inSparkle"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/QuickActionsMasterViewController.swift"
-                  timestampString = "509564129.997802"
+                  urlString = "file:///Users/Trever/Documents/inSparkle/inSparkle/ManagerOverrideViewController.swift"
+                  timestampString = "513625654.155982"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "245"
-                  endingLineNumber = "245"
-                  offsetFromSymbolStart = "23">
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "4">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -233,13 +217,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/QuickActionsMasterViewController.swift"
-            timestampString = "509563878.915127"
+            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
+            timestampString = "513625637.500719"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "getNextAvailOpening()"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
+            landmarkName = "managerOverride(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -249,13 +233,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "inSparkle/QuickActionsMasterViewController.swift"
-            timestampString = "509563922.588019"
+            filePath = "inSparkle/AddNewToScheduleTableViewController.swift"
+            timestampString = "513625637.950901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
-            landmarkName = "getNextAvailOpening()"
+            startingLineNumber = "469"
+            endingLineNumber = "469"
+            landmarkName = "managerOverride(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
