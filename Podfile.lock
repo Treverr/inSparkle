@@ -5,7 +5,10 @@ PODS:
   - BRYXBanner (0.7.1)
   - CalendarView (1.1.1):
     - SwiftMoment (~> 0.6)
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
   - DropDown (2)
+  - Fabric (1.6.11)
   - GooglePlacesAutocomplete (0.3.0)
   - iCarousel (1.8.3)
   - IQKeyboardManagerSwift (4.0.7)
@@ -40,7 +43,9 @@ DEPENDENCIES:
   - Alamofire
   - BRYXBanner
   - CalendarView (from `https://github.com/mikeandike/CalendarView.git`)
+  - Crashlytics
   - DropDown
+  - Fabric
   - GooglePlacesAutocomplete
   - iCarousel
   - IQKeyboardManagerSwift
@@ -80,7 +85,9 @@ SPEC CHECKSUMS:
   Bolts-Swift: fa98d1b59fc1acea9b21a21306dcdca1c85e3737
   BRYXBanner: 34eabf9c6c009f187948ca78a4f3bba3767d0f04
   CalendarView: 5db3b54c3226f5a6a50aced4557ae05f8f01aa71
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   GooglePlacesAutocomplete: 7694636fce561c9d8ac807b8e490d299a730a633
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   IQKeyboardManagerSwift: 58bbcf46b5cf9fd4ed625d28a60cb2fbae4ab0f4
@@ -101,6 +108,6 @@ SPEC CHECKSUMS:
   SwiftSpinner: 1c80ff6ea1c47e2faa1dfce0fcd5e6b39a47fd51
   UIView+HierarchicalDrawing: 9cb086a2c0cde4fa8a3d17c58227abdd92e29ece
 
-PODFILE CHECKSUM: 74ffc861fe68bab005f3df42f8a9ab1ea7957b6a
+PODFILE CHECKSUM: 85603ef89d1f2b475fa154f808b26170278dc83f
 
 COCOAPODS: 1.2.0.rc.1

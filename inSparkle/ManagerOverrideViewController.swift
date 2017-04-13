@@ -26,22 +26,14 @@ class ManagerOverrideViewController: UIViewController, UIGestureRecognizerDelega
     
     override func viewWillAppear(_ animated: Bool) {
         
-        let layer = UIApplication.shared.keyWindow!.layer
-        let scale = UIScreen.main.scale
-        UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
+//        blurImageView.image = ManagerOverride.image
         
-        layer.render(in: UIGraphicsGetCurrentContext()!)
-        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        blurImageView.image = screenshot!
-        
-        let blur = UIBlurEffect(style: UIBlurEffectStyle.light)
-        // 2
-        let blurView = UIVisualEffectView(effect: blur)
-        blurView.frame = self.view.frame
-        // 3
-        blurImageView.addSubview(blurView)
+//        let blur = UIBlurEffect(style: UIBlurEffectStyle.light)
+//        // 2
+//        let blurView = UIVisualEffectView(effect: blur)
+//        blurView.frame = self.view.frame
+//        // 3
+//        blurImageView.addSubview(blurView)
 
 
     }
@@ -56,6 +48,18 @@ class ManagerOverrideViewController: UIViewController, UIGestureRecognizerDelega
         }
     }
     
+    @IBAction func qrButton(_ sender: AnyObject) {
+        
+        let storyBoard = UIStoryboard(name: "Onboarding", bundle: nil)
+        let scanVC = storyBoard.instantiateViewController(withIdentifier: "QRCodeScanner")
+        
+        self.present(scanVC, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func closeCancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func approveAction(_ sender: Any) {
         
@@ -76,7 +80,7 @@ class ManagerOverrideViewController: UIViewController, UIGestureRecognizerDelega
                     })
                     NotificationCenter.default.post(name: self.notifyName, object: approve)
                 } else {
-                    
+                    self.errorAlert(message: "User [\(self.username.text!.lowercased())] does not have privilages to perform override, please try again.")
                 }
                 
             } else {
@@ -94,7 +98,7 @@ class ManagerOverrideViewController: UIViewController, UIGestureRecognizerDelega
     }
     
     func errorAlert(message : String) {
-        let alert = UIAlertController(title: "Failed", message: "Authentication failed, invalid username or password", preferredStyle: .alert)
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
         
         alert.addAction(okay)

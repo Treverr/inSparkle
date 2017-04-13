@@ -13,7 +13,6 @@ class ExpenseSplitNavViewController: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        GlobalFunctions().requestOverride(overrideReason: "test", notificationName: Notification.string(name: "Test"))
     }
 
     override func didReceiveMemoryWarning() {

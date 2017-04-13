@@ -12,6 +12,7 @@ import AVFoundation
 import CoreImage
 import NVActivityIndicatorView
 import NetworkExtension
+import UIKit
 
 class DataManager: NSObject {
     
@@ -251,6 +252,13 @@ class SparkleTimeZone {
     static var timeZone : TimeZone!
     
 }
+
+class ManagerOverride {
+    
+    static var image : UIImage!
+    
+}
+
 
 struct AppUtility {
     
@@ -563,14 +571,28 @@ class GlobalFunctions {
     
     func requestOverride(overrideReason : String, notificationName : Notification.Name) {
         
-        let vc = UIStoryboard(name: "ManagerOverride", bundle: nil).instantiateViewController(withIdentifier: "overrideNav") as! UINavigationController
-        let over = vc.viewControllers.first as! ManagerOverrideViewController
-        let _ = over.view
-        over.overrideReason.text = overrideReason
-        over.notifyName = notificationName
-        UIApplication.shared.keyWindow?.currentViewController()?.present(vc, animated: true, completion: nil)
+        captureScreen { (image) in
+            ManagerOverride.image = image
+            
+            let vc = UIStoryboard(name: "ManagerOverride", bundle: nil).instantiateViewController(withIdentifier: "overrideNav") as! UINavigationController
+            let over = vc.viewControllers.first as! ManagerOverrideViewController
+            let _ = over.view
+            over.overrideReason.text = overrideReason
+            over.notifyName = notificationName
+            over.modalPresentationStyle = .overCurrentContext
+            UIApplication.shared.keyWindow?.currentViewController()?.present(vc, animated: true, completion: nil)
+        }
     }
     
+}
+
+func captureScreen(completion: @escaping (UIImage) -> ()) {
+    let view = UIApplication.shared.keyWindow!.currentViewController()!.view!
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
+    view.layer.render(in: UIGraphicsGetCurrentContext()!)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    completion(image!)
 }
 
 class UnderlinedLabel: UILabel {

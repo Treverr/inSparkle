@@ -143,8 +143,6 @@
 		C9A781231BF944740013D388 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A781221BF944740013D388 /* TabBarViewController.swift */; };
 		C9AB005E1C469FC900595F58 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AB005D1C469FC900595F58 /* PushNotifications.swift */; };
 		C9B2D8BF1C1BCA4C00F76A24 /* TimeClockPunch.wav in Resources */ = {isa = PBXBuildFile; fileRef = C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */; };
-		C9B5B4511BF6773200650FC4 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B44F1BF6773200650FC4 /* Fabric.framework */; };
-		C9B5B4521BF6773200650FC4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9B5B4501BF6773200650FC4 /* Crashlytics.framework */; };
 		C9B5B4541BF679E500650FC4 /* AddNewSOITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */; };
 		C9B993DF1C7FAAAB00702851 /* PDFPartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B993DE1C7FAAAB00702851 /* PDFPartTableViewCell.swift */; };
 		C9B993E11C7FB19B00702851 /* PDFLaborTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B993E01C7FB19B00702851 /* PDFLaborTableViewCell.swift */; };
@@ -386,8 +384,6 @@
 		C9A781221BF944740013D388 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C9AB005D1C469FC900595F58 /* PushNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		C9B2D8BE1C1BCA4C00F76A24 /* TimeClockPunch.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TimeClockPunch.wav; sourceTree = "<group>"; };
-		C9B5B44F1BF6773200650FC4 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
-		C9B5B4501BF6773200650FC4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		C9B5B4531BF679E500650FC4 /* AddNewSOITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewSOITableViewController.swift; sourceTree = "<group>"; };
 		C9B993DE1C7FAAAB00702851 /* PDFPartTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFPartTableViewCell.swift; sourceTree = "<group>"; };
 		C9B993E01C7FB19B00702851 /* PDFLaborTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFLaborTableViewCell.swift; sourceTree = "<group>"; };
@@ -466,10 +462,8 @@
 				C96F79AB1BFC41AB00C13615 /* LocalAuthentication.framework in Frameworks */,
 				C9C1929A1BF64E0500862F52 /* libsqlite3.tbd in Frameworks */,
 				C9C192981BF64DFE00862F52 /* libz.tbd in Frameworks */,
-				C9B5B4521BF6773200650FC4 /* Crashlytics.framework in Frameworks */,
 				C9C192961BF64DF400862F52 /* SystemConfiguration.framework in Frameworks */,
 				C9C192921BF64DE600862F52 /* Security.framework in Frameworks */,
-				C9B5B4511BF6773200650FC4 /* Fabric.framework in Frameworks */,
 				C9C192901BF64DDF00862F52 /* QuartzCore.framework in Frameworks */,
 				C9C1928E1BF64DD800862F52 /* CoreLocation.framework in Frameworks */,
 				C9C1928C1BF64DD100862F52 /* CoreGraphics.framework in Frameworks */,
@@ -969,8 +963,6 @@
 			children = (
 				C9CD6A101DBEDEEC009C93A1 /* KeychainWrapper */,
 				C9C192871BF64DBF00862F52 /* AudioToolbox.framework */,
-				C9B5B44F1BF6773200650FC4 /* Fabric.framework */,
-				C9B5B4501BF6773200650FC4 /* Crashlytics.framework */,
 				C9C192991BF64E0500862F52 /* libsqlite3.tbd */,
 				C9C192971BF64DFE00862F52 /* libz.tbd */,
 				C9C192951BF64DF400862F52 /* SystemConfiguration.framework */,
@@ -1105,10 +1097,10 @@
 				C99D3E3B1BF5BD3700D30F96 /* Sources */,
 				C99D3E3C1BF5BD3700D30F96 /* Frameworks */,
 				C99D3E3D1BF5BD3700D30F96 /* Resources */,
-				C9B5B44E1BF6772000650FC4 /* ShellScript */,
 				7F54611C1AB18F7DE26427DD /* [CP] Embed Pods Frameworks */,
 				46530A22AE3E8DF27EE67F53 /* [CP] Copy Pods Resources */,
 				C90F5D251E830EFB00350754 /* Embed App Extensions */,
+				C90DA6BA1E9FD82A00D44F10 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1278,7 +1270,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		C9B5B44E1BF6772000650FC4 /* ShellScript */ = {
+		C90DA6BA1E9FD82A00D44F10 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1289,7 +1281,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run bb9f228438400e05eeff9a4184baa75a30a9ea74 0c50bda97b33f1d934fba0ec283f8cb080b86c68a78653bd6087cd3e97b07f21";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" b4d036f08be707cd60a816288d19664a0178e107 f031e99690b8dffbda1ddcedfaf3f42108d3fe43ad3c472b74324bf9dcaf85ae";
 		};
 /* End PBXShellScriptBuildPhase section */
 

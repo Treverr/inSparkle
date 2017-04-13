@@ -466,6 +466,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
     
     func managerOverride(notification : Notification) {
         self.managerOverrode = true
+        NotificationCenter.default.removeObserver(self, name: Notification.string(name: "ManagerOverrideApproved"), object: nil)
         self.performSave(self)
     }
     
@@ -619,17 +620,21 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
         if customerNameTextField.text!.isEmpty || addressLabel.text!.isEmpty || phoneNumberTextField.text!.isEmpty || typeOfWinterCoverLabel.text!.isEmpty ||  locationEssentialItems.text.isEmpty {
             displayError("Missing Field", message: "There is a field missing, check your entries and try again")
         } else {
-            if selectedWeekObj!.apptsRemain <= 0 {
-                if self.managerOverrode || (PFUser.current()?.object(forKey: "isAdmin") as! Bool == true) {
-                    if managerOverrode {
-                        self.performSave(sender)
+            if selectedWeekObj != nil {
+                if selectedWeekObj!.apptsRemain <= 0 {
+                    if self.managerOverrode || (PFUser.current()?.object(forKey: "isAdmin") as! Bool == true) {
+                        if managerOverrode {
+                            self.performSave(sender)
+                        }
+                        weekManagerOverride(sender)
+                    } else {
+                        GlobalFunctions().requestOverride(overrideReason: "inSparkle requires you to find a manager to override an overbooked week", notificationName: Notification.string(name: "ManagerOverrideApproved"))
                     }
-                    weekManagerOverride(sender)
                 } else {
-                    GlobalFunctions().requestOverride(overrideReason: "Overbooked Week", notificationName: Notification.string(name: "ManagerOverrideApproved"))
+                    self.performSave(sender)
                 }
             } else {
-                self.performSave(sender)
+               self.performSave(sender) 
             }
         }
     }
