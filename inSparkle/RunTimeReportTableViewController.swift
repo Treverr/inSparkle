@@ -246,7 +246,8 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
                 
                 if totalForEmp != 0 {
                     if (self.detail) {
-                        self.csvPunches = self.csvPunches + ",,TOTAL:,\(totalForEmp)\n" + ",,,\n"
+                        totalForEmp = round(1000 * totalForEmp) / 1000
+                        self.csvPunches = self.csvPunches + ",,TOTAL:,\(totalForEmp!)\n" + ",,,\n"
                     }
                     
                     var standardHours : Double!
