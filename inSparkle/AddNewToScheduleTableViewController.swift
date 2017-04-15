@@ -628,7 +628,7 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                         }
                         weekManagerOverride(sender)
                     } else {
-                        GlobalFunctions().requestOverride(overrideReason: "inSparkle requires you to find a manager to override an overbooked week", notificationName: Notification.string(name: "ManagerOverrideApproved"))
+                        GlobalFunctions().requestOverride(overrideReason: "overbooked week of " + self.weekStartingLabel.text! + " - " + self.weekEndingLabel.text!, notificationName: Notification.string(name: "ManagerOverrideApproved"))
                     }
                 } else {
                     self.performSave(sender)

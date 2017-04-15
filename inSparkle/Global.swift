@@ -476,6 +476,14 @@ class GlobalFunctions {
             deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
     
+    func displayAlertOverMainWindow(alert : UIAlertController) {
+        repeat {
+            if UIApplication.shared.keyWindow?.rootViewController != nil {
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            }
+        } while UIApplication.shared.keyWindow?.rootViewController == nil
+    }
+    
     func printToPrinter(_ item : AnyObject, printInfo : UIPrintInfo, view : UIViewController) {
         
         func completePrint(_ printer : UIPrinter) {
@@ -507,7 +515,7 @@ class GlobalFunctions {
                 } else {
                     let alert = UIAlertController(title: "Printer Unavailable", message: "The printer is unavailable, would you like to print to the office printer via VPN? \nEnable VPN in settings before attemptng to print", preferredStyle: .alert)
                     let yesThisTimeOnly = UIAlertAction(title: "Yes, This Time Only", style: .default, handler: { (action) in
-                        printer = UIPrinter(url: URL(string: "ipp://10.0.1.50:10631/printers/Office")!)
+                        printer = UIPrinter(url: URL(string: "ipp://10.0.1.50:10631/printers/Work")!)
                         printer.contactPrinter({ (available) in
                             if available {
                                 completePrint(printer)
@@ -515,8 +523,8 @@ class GlobalFunctions {
                         })
                     })
                     let yesSetSelected = UIAlertAction(title: "Yes, Set as Selected", style: .default, handler: { (action) in
-                        UserDefaults.standard.set(URL(string: "ipp://10.0.1.50:10631/printers/Office")!, forKey: "printer")
-                        printer = UIPrinter(url: URL(string: "ipp://10.0.1.50:10631/printers/Office")!)
+                        UserDefaults.standard.set(URL(string: "ipp://10.0.1.50:10631/printers/Work")!, forKey: "printer")
+                        printer = UIPrinter(url: URL(string: "ipp://10.0.1.50:10631/printers/Work")!)
                         printer.contactPrinter({ (available) in
                             if available {
                                 completePrint(printer)
@@ -577,7 +585,7 @@ class GlobalFunctions {
             let vc = UIStoryboard(name: "ManagerOverride", bundle: nil).instantiateViewController(withIdentifier: "overrideNav") as! UINavigationController
             let over = vc.viewControllers.first as! ManagerOverrideViewController
             let _ = over.view
-            over.overrideReason.text = overrideReason
+            over.overrideReason.text = "inSparkle requires you to find a manager to override " + overrideReason
             over.notifyName = notificationName
             over.modalPresentationStyle = .overCurrentContext
             UIApplication.shared.keyWindow?.currentViewController()?.present(vc, animated: true, completion: nil)

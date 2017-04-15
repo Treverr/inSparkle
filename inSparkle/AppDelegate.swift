@@ -111,6 +111,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         UIApplication.shared.statusBarStyle = .lightContent
         
+        if let launchOptions = launchOptions {
+            if let apns = launchOptions[UIApplicationLaunchOptionsKey.remoteNotification] as? NSDictionary {
+                if let remoteApproval = apns["remoteApprovalID"] as? String {
+                    print(remoteApproval)
+                    handleActiveRemoteApproval(remoteID: remoteApproval)
+                }
+            }
+        }
+        
         return true
     }
     
@@ -223,6 +232,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         SOIObject.registerSubclass()
         SessionModel.registerSubclass()
         WorkServiceOrderTimeLog.registerSubclass()
+        RemoteApproveRequest.registerSubclass()
+        ExpenseLog.registerSubclass()
+        ExpenseItem.registerSubclass()
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -309,7 +321,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [String : Any]) {
         print(userInfo)
         if application.applicationState == .active {
             let currentInstall = PFInstallation.current()!
@@ -319,17 +331,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
         
-        if let aps = userInfo["aps"] as? NSDictionary {
-            
-            if let vc = userInfo["vc"] as? String {
-                
-                if vc == "messages" {
-                    let messageID = userInfo["messageID"] as! String
-                    handleDeepLinkForMessages(messageID)
-                }
-                
-            }
+        if let remoteApproval = userInfo["remoteApprovalID"] as? String {
+                handleActiveRemoteApproval(remoteID: remoteApproval)
         }
+    
     }
     
     func handleDeepLinkForMessages(_ messageID : String) {
@@ -339,6 +344,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             tabBarController.selectedIndex = 2
         }
         
+    }
+    
+    func handleActiveRemoteApproval(remoteID : String) {
+        let remoteQuery = RemoteApproveRequest.query()
+        remoteQuery?.includeKey("requestedBy")
+        remoteQuery?.getObjectInBackground(withId: remoteID, block: { (remoteObject, error) in
+            if error == nil {
+                let object = remoteObject as! RemoteApproveRequest
+                
+                let reason = object.requestedBy.firstName.capitalized + " has requested an override for " + object.requestReason.lowercased()
+                
+                let alert = UIAlertController(title: "Remote Manager Approval", message: reason, preferredStyle: .alert)
+                let approveAction = UIAlertAction(title: "Approve", style: .default, handler: { (action) in
+                    object.response = "Approved"
+                    object.respondedBy = EmployeeData.universalEmployee
+                    object.saveInBackground()
+                })
+                let denyAction = UIAlertAction(title: "Deny", style: .destructive, handler: { (action) in
+                    object.response = "Denied"
+                    object.respondedBy = EmployeeData.universalEmployee
+                    object.saveInBackground()
+                })
+                let ignoreAction = UIAlertAction(title: "Ignore", style: .default, handler: nil)
+                
+                alert.addAction(approveAction)
+                alert.addAction(denyAction)
+                alert.addAction(ignoreAction)
+                
+                GlobalFunctions().displayAlertOverMainWindow(alert: alert)
+            } else {
+                let alert = UIAlertController(title: "Error", message: error as! String?, preferredStyle: .alert)
+                let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                alert.addAction(okay)
+                GlobalFunctions().displayAlertOverMainWindow(alert: alert)
+            }
+
+        })
     }
     
     func logOut() {

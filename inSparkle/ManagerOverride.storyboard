@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -128,11 +129,18 @@
                                 <action selector="closeCancelButton:" destination="j5B-tV-8mX" id="CV6-Jl-yA4"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Approve" id="heo-HX-0gc">
-                            <connections>
-                                <action selector="approveAction:" destination="j5B-tV-8mX" id="tck-Yk-Ki6"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Approve" id="heo-HX-0gc">
+                                <connections>
+                                    <action selector="approveAction:" destination="j5B-tV-8mX" id="tck-Yk-Ki6"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Remote Approve     " id="s8B-hC-dA8">
+                                <connections>
+                                    <action selector="remoteApprove:" destination="j5B-tV-8mX" id="fJf-VK-GED"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="approveButton" destination="heo-HX-0gc" id="GZC-qz-qSu"/>
