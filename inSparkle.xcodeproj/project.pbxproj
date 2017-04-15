@@ -14,6 +14,7 @@
 		C9062D591D78827E002D0D0F /* TripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9062D581D78827E002D0D0F /* TripsTableViewController.swift */; };
 		C9062D5B1D7884DA002D0D0F /* TripsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9062D5A1D7884DA002D0D0F /* TripsTableViewCell.swift */; };
 		C906B32F1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */; };
+		C90961A51EA10C5200A6305F /* ManagerOverrideRemoteApprovalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90961A41EA10C5200A6305F /* ManagerOverrideRemoteApprovalModel.swift */; };
 		C9097DE11CCABDF900297696 /* LogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9097DE01CCABDF900297696 /* LogModel.swift */; };
 		C9097DE31CCADD8B00297696 /* ReActivePOCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9097DE21CCADD8B00297696 /* ReActivePOCTableViewCell.swift */; };
 		C9097DE51CCADF2800297696 /* ReactivePOCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9097DE41CCADF2800297696 /* ReactivePOCTableViewController.swift */; };
@@ -233,6 +234,7 @@
 		C9062D5A1D7884DA002D0D0F /* TripsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsTableViewCell.swift; sourceTree = "<group>"; };
 		C906B32E1C6268C0001DAD45 /* PoolOpeningPDFViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PoolOpeningPDFViewController.swift; sourceTree = "<group>"; };
 		C90915641C183D8600FC7E54 /* inSparkle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = inSparkle.entitlements; sourceTree = "<group>"; };
+		C90961A41EA10C5200A6305F /* ManagerOverrideRemoteApprovalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerOverrideRemoteApprovalModel.swift; sourceTree = "<group>"; };
 		C9097DE01CCABDF900297696 /* LogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogModel.swift; sourceTree = "<group>"; };
 		C9097DE21CCADD8B00297696 /* ReActivePOCTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReActivePOCTableViewCell.swift; sourceTree = "<group>"; };
 		C9097DE41CCADF2800297696 /* ReactivePOCTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactivePOCTableViewController.swift; sourceTree = "<group>"; };
@@ -919,6 +921,7 @@
 				C98F4D1B1DEFE7F4008F7A49 /* ManagerOverrideAssets.xcassets */,
 				C99A694C1DECDEAF001E872C /* ManagerOverrideNavViewController.swift */,
 				C99A694A1DECDBF5001E872C /* ManagerOverrideViewController.swift */,
+				C90961A41EA10C5200A6305F /* ManagerOverrideRemoteApprovalModel.swift */,
 			);
 			name = Override;
 			sourceTree = "<group>";
@@ -1318,6 +1321,7 @@
 				C94C772D1CB208DE00EB3CED /* EmployeeTimeAwayRequestsTableViewController.swift in Sources */,
 				C949EBA11CAB7C8E00AF36DE /* SparkleConnectTableViewController.swift in Sources */,
 				C9709C1E1C72D248000ED6EA /* WorkOrdersMainTableViewCell.swift in Sources */,
+				C90961A51EA10C5200A6305F /* ManagerOverrideRemoteApprovalModel.swift in Sources */,
 				C96EF7F81C13F37700C4D2C1 /* EmployeeModel.swift in Sources */,
 				C90F5CFF1E8302F500350754 /* FileTypeIdentifier.swift in Sources */,
 				C9062D5B1D7884DA002D0D0F /* TripsTableViewCell.swift in Sources */,
