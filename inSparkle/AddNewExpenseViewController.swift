@@ -233,7 +233,6 @@ class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate
         expenseItem.expenseDate = self.expenseDateAsDate
         expenseItem.category = self.categoryAsCategory
         
-        print(self.dollarAmountLabel.text)
         if !self.dollarAmountLabel.text!.isEmpty {
             var dollaBills = self.dollarAmountLabel.text?.components(separatedBy: "$").last
             dollaBills = dollaBills!.replacingOccurrences(of: ",", with: "")
