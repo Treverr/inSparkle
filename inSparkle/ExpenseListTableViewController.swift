@@ -69,7 +69,12 @@ class ExpenseListTableViewController: UITableViewController {
         
         cell.expenseDate.text! = dateFormatter.string(from: item.expenseDate)
         cell.merchantName.text! = item.merchantName.name
-        cell.expenseCost.text! = formatAmount(number: NSNumber(value: item.dollarAmount))
+        if item.dollarAmount != nil {
+            cell.expenseCost.text! = formatAmount(number: NSNumber(value: item.dollarAmount!))
+        } else {
+            cell.expenseCost.text = "$--.--"
+        }
+        
         
         cell.leftButtons = [self.flagSwipe!]
         cell.rightButtons = [self.deleteSwipe!]
@@ -235,6 +240,7 @@ class ExpenseListTableViewController: UITableViewController {
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             let vc = sb.instantiateViewController(withIdentifier: "ipadAddNewExpense") as! UINavigationController
+            vc.modalPresentationStyle = .formSheet
             self.present(vc, animated: true, completion: nil)
         }
         

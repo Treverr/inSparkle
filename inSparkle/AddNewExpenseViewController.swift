@@ -221,7 +221,7 @@ class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate
             self.paymentMethodLabel.textColor = UIColor.red
         }
         
-        if merchantNameLabel.textColor == UIColor.red || dateLabel.textColor == UIColor.red || dollarAmountLabel.textColor == UIColor.red || paymentMethodLabel.textColor == UIColor.red {
+        if merchantNameLabel.textColor == UIColor.red || dateLabel.textColor == UIColor.red || paymentMethodLabel.textColor == UIColor.red {
             return
         }
         
@@ -233,9 +233,12 @@ class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate
         expenseItem.expenseDate = self.expenseDateAsDate
         expenseItem.category = self.categoryAsCategory
         
-        var dollaBills = self.dollarAmountLabel.text?.components(separatedBy: "$").last
-        dollaBills = dollaBills!.replacingOccurrences(of: ",", with: "")
-        expenseItem.dollarAmount = Double(dollaBills!)!
+        print(self.dollarAmountLabel.text)
+        if !self.dollarAmountLabel.text!.isEmpty {
+            var dollaBills = self.dollarAmountLabel.text?.components(separatedBy: "$").last
+            dollaBills = dollaBills!.replacingOccurrences(of: ",", with: "")
+            expenseItem.dollarAmount = Double(dollaBills!)!
+        }
         
         expenseItem.paymentMethod = self.paymentMethodLabel.text!
         expenseItem.reimbursable = self.reimbursableSwitch.isOn

@@ -108,7 +108,11 @@ class ExpenseDetailViewController: UIViewController, UIGestureRecognizerDelegate
         let expenseObject = notification.object as! ExpenseItem
         self.expenseObject = expenseObject
         
-        self.dollarAmountLabel.text = formatAmount(number: NSNumber(value: expenseObject.dollarAmount))
+        if expenseObject.dollarAmount != nil {
+            self.dollarAmountLabel.text = formatAmount(number: NSNumber(value: expenseObject.dollarAmount!))
+        } else {
+            self.dollarAmountLabel.text = "$--.--"
+        }
         self.paymentMethodLabel.text = expenseObject.paymentMethod
         self.merchantNameLabel.text = expenseObject.merchantName.name
         
@@ -207,8 +211,8 @@ class ExpenseDetailViewController: UIViewController, UIGestureRecognizerDelegate
     }
     
     func saveAdditionalAttachmentImage(image : UIImage) {
-        let imageData = UIImageJPEGRepresentation(image.resizeImage(image: image, newWidth: 500), 1.0)
-        let file = PFFile(data: imageData!, contentType: MimeType(ext: "jpeg"))
+        let imageData = UIImageJPEGRepresentation(image, 1.0)!
+        let file = PFFile(data: imageData, contentType: MimeType(ext: "jpeg"))
         saveAdditionalFile(file: file)
     }
     

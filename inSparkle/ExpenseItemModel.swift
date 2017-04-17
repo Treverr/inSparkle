@@ -30,9 +30,9 @@ class ExpenseItem : PFObject, PFSubclassing {
         set { setObject(newValue!, forKey: "category") }
     }
     
-    var dollarAmount : Double {
-        get { return object(forKey: "dollarAmount") as! Double }
-        set { setObject(newValue, forKey: "dollarAmount") }
+    var dollarAmount : Double? {
+        get { return object(forKey: "dollarAmount") as? Double }
+        set { setObject(newValue!, forKey: "dollarAmount") }
     }
     
     var paymentMethod : String {

@@ -194,7 +194,6 @@ class QuickActionsMasterViewController: UIViewController {
         }
     }
     
-    
     func getNumPOCThisWeek() {
         var calendar = Calendar.current
         calendar.firstWeekday = 2
@@ -214,22 +213,7 @@ class QuickActionsMasterViewController: UIViewController {
             weekNumber.whereKey("weekObj", equalTo: weekObj)
             weekNumber.countObjectsInBackground(block: { (counted : Int32, error : Error?) in
                 self.thisWeekPOCNumber.text = String(counted)
-                //                weekNumber.subscribe()
-                //                    .handle(Event.Created) {_, item in
-                //                        self.getNumPOCThisWeek()
-                //                    }
-                //                    .handle(Event.Updated) {_, item in
-                //                        self.getNumPOCThisWeek()
-                //                    }
-                //                    .handle(Event.Deleted) {_, item in
-                //                        self.getNumPOCThisWeek()
-                //                    }
-                //                    .handle(Event.Entered) {_, item in
-                //                        self.getNumPOCThisWeek()
-                //                    }
-                //                    .handle(Event.Left) {_, item in
-                //                        self.getNumPOCThisWeek()
-                //                }
+
             })
         } catch {
             print(error)
