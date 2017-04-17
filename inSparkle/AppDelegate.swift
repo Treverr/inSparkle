@@ -245,6 +245,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let employee = PFUser.current()?.object(forKey: "employee") as? Employee
             
             if employee != nil {
+                
                 do {
                     try employee!.fetchIfNeeded()
                 } catch {
@@ -353,26 +354,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             if error == nil {
                 let object = remoteObject as! RemoteApproveRequest
                 
-                let reason = object.requestedBy.firstName.capitalized + " has requested an override for " + object.requestReason.lowercased()
-                
-                let alert = UIAlertController(title: "Remote Manager Approval", message: reason, preferredStyle: .alert)
-                let approveAction = UIAlertAction(title: "Approve", style: .default, handler: { (action) in
-                    object.response = "Approved"
-                    object.respondedBy = EmployeeData.universalEmployee
-                    object.saveInBackground()
-                })
-                let denyAction = UIAlertAction(title: "Deny", style: .destructive, handler: { (action) in
-                    object.response = "Denied"
-                    object.respondedBy = EmployeeData.universalEmployee
-                    object.saveInBackground()
-                })
-                let ignoreAction = UIAlertAction(title: "Ignore", style: .default, handler: nil)
-                
-                alert.addAction(approveAction)
-                alert.addAction(denyAction)
-                alert.addAction(ignoreAction)
-                
-                GlobalFunctions().displayAlertOverMainWindow(alert: alert)
+                if object.response == nil {
+                    let reason = object.requestedBy.firstName.capitalized + " has requested an override for " + object.requestReason.lowercased()
+                    
+                    let alert = UIAlertController(title: "Remote Manager Approval", message: reason, preferredStyle: .alert)
+                    let approveAction = UIAlertAction(title: "Approve", style: .default, handler: { (action) in
+                        object.response = "Approved"
+                        object.respondedBy = EmployeeData.universalEmployee
+                        object.saveInBackground()
+                    })
+                    let denyAction = UIAlertAction(title: "Deny", style: .destructive, handler: { (action) in
+                        object.response = "Denied"
+                        object.respondedBy = EmployeeData.universalEmployee
+                        object.saveInBackground()
+                    })
+                    let ignoreAction = UIAlertAction(title: "Ignore", style: .default, handler: nil)
+                    
+                    alert.addAction(approveAction)
+                    alert.addAction(denyAction)
+                    alert.addAction(ignoreAction)
+                    
+                    GlobalFunctions().displayAlertOverMainWindow(alert: alert)
+                } else {
+                    let message = "This request has already been" + object.response!.lowercased() + " by " + object.respondedBy!.firstName.capitalized
+                    let alert = UIAlertController(title: "Remote Manager Approval", message: message, preferredStyle: .alert)
+                    let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                    
+                    alert.addAction(okay)
+                    GlobalFunctions().displayAlertOverMainWindow(alert: alert)
+                }
             } else {
                 let alert = UIAlertController(title: "Error", message: error as! String?, preferredStyle: .alert)
                 let okay = UIAlertAction(title: "Okay", style: .default, handler: nil)

@@ -225,4 +225,19 @@ class ExpenseListTableViewController: UITableViewController {
         self.splitViewController?.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addNewExpense(_ sender: Any) {
+        let sb = UIStoryboard(name: "Expense", bundle: nil)
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            let vc = sb.instantiateViewController(withIdentifier: "iPhoneAddNewExpense") as! UINavigationController
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let vc = sb.instantiateViewController(withIdentifier: "ipadAddNewExpense") as! UINavigationController
+            self.present(vc, animated: true, completion: nil)
+        }
+        
+    }
+    
 }

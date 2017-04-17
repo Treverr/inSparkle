@@ -189,6 +189,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 
                                 EmployeeData.universalEmployee = employee
                                 
+                                UIApplication.shared.registerForRemoteNotifications()
+                                
                             }
                         } catch {
                             print("Error")

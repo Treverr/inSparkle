@@ -1,17 +1,17 @@
 //
-//  AddNewExpenseViewController.swift
-//  inSparkle
+//  AddNewExpenseiPhoneTableViewController.swift
+//  
 //
-//  Created by Trever on 3/2/17.
-//  Copyright © 2017 Sparkle Pools. All rights reserved.
+//  Created by Trever on 4/17/17.
+//
 //
 
 import UIKit
 import Parse
 import NVActivityIndicatorView
 
-class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate {
-    
+class AddNewExpenseiPhoneTableViewController: UITableViewController, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
+
     @IBOutlet weak var merchantNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
@@ -100,6 +100,7 @@ class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate
         viewController.popoverPresentationController?.sourceRect = CGRect(x: self.merchantNameLabel.bounds.maxX, y: self.merchantNameLabel.bounds.midY, width: 0, height: 0)
         viewController.popoverPresentationController?.permittedArrowDirections = .left
         viewController.preferredContentSize = CGSize(width: 300, height: 0)
+        viewController.popoverPresentationController?.delegate = self
         present(viewController, animated: true) {
             
         }
@@ -111,6 +112,7 @@ class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate
         viewController.popoverPresentationController?.sourceView = self.dateLabel
         viewController.popoverPresentationController?.sourceRect = CGRect(x: self.dateLabel.bounds.maxX, y: self.dateLabel.bounds.midY, width: 0, height: 0)
         viewController.popoverPresentationController?.permittedArrowDirections = .left
+        viewController.popoverPresentationController?.delegate = self
         present(viewController, animated: true) {
             
         }
@@ -124,6 +126,7 @@ class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate
         viewController.popoverPresentationController?.sourceRect = CGRect(x: self.categoryLabel.bounds.maxX, y: self.categoryLabel.bounds.midY, width: 0, height: 0)
         viewController.popoverPresentationController?.permittedArrowDirections = .left
         viewController.preferredContentSize = CGSize(width: 300, height: 0)
+        viewController.popoverPresentationController?.delegate = self
         present(viewController, animated: true) {
             
         }
@@ -136,6 +139,7 @@ class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate
         viewController.popoverPresentationController?.sourceRect = CGRect(x: self.paymentMethodLabel.bounds.maxX, y: self.paymentMethodLabel.bounds.midY, width: 0, height: 0)
         viewController.popoverPresentationController?.permittedArrowDirections = .left
         viewController.preferredContentSize = CGSize(width: 300, height: 0)
+        viewController.popoverPresentationController?.delegate = self
         present(viewController, animated: true) {
             
         }
@@ -315,9 +319,18 @@ class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate
         
         return savingUI
     }
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
+    }
+    
 }
 
-extension AddNewExpenseViewController : UITextFieldDelegate {
+extension AddNewExpenseiPhoneTableViewController : UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == self.referenceTextField {
@@ -339,7 +352,7 @@ extension AddNewExpenseViewController : UITextFieldDelegate {
     
 }
 
-extension AddNewExpenseViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension AddNewExpenseiPhoneTableViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -350,4 +363,35 @@ extension AddNewExpenseViewController : UIImagePickerControllerDelegate, UINavig
         }
     }
     
+}
+
+extension String {
+    
+    // formatting text for currency textField
+    func currencyInputFormatting() -> String {
+        
+        var number: NSNumber!
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currencyAccounting
+        formatter.currencySymbol = "$"
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        
+        var amountWithPrefix = self
+        
+        // remove from String: "$", ".", ","
+        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count), withTemplate: "")
+        
+        let double = (amountWithPrefix as NSString).doubleValue
+        number = NSNumber(value: (double / 100))
+        
+        // if first number is 0 or all numbers were deleted
+        guard number != 0 as NSNumber else {
+            return ""
+        }
+        
+        return formatter.string(from: number)!
+    }
+
 }

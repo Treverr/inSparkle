@@ -628,7 +628,8 @@ class AddNewToScheduleTableViewController: UITableViewController, UIPickerViewDe
                         }
                         weekManagerOverride(sender)
                     } else {
-                        GlobalFunctions().requestOverride(overrideReason: "overbooked week of " + self.weekStartingLabel.text! + " - " + self.weekEndingLabel.text!, notificationName: Notification.string(name: "ManagerOverrideApproved"))
+                        let reason = "overbooked week of " + self.weekStartingLabel.text! + " - " + self.weekEndingLabel.text! + "(Overbooked by \(selectedWeekObj!.apptsRemain))"
+                        GlobalFunctions().requestOverride(overrideReason: reason, notificationName: Notification.string(name: "ManagerOverrideApproved"))
                     }
                 } else {
                     self.performSave(sender)

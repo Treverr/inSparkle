@@ -111,6 +111,7 @@
 		C97C9C7A1D5F8781006F47D0 /* QRCodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97C9C791D5F8781006F47D0 /* QRCodeScanner.swift */; };
 		C97D3D3A1C815D55006B9E90 /* Manage Emps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */; };
 		C97D3D3C1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */; };
+		C97FBD001EA5315F0020F908 /* AddNewExpenseiPhoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97FBCFF1EA5315F0020F908 /* AddNewExpenseiPhoneTableViewController.swift */; };
 		C980015E1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */; };
 		C9856A011C7D648D00E6C87F /* LaborPartsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9856A001C7D648D00E6C87F /* LaborPartsTableViewController.swift */; };
 		C9856A031C7D664800E6C87F /* LaborPartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9856A021C7D664800E6C87F /* LaborPartsTableViewCell.swift */; };
@@ -340,6 +341,7 @@
 		C97C9C791D5F8781006F47D0 /* QRCodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScanner.swift; sourceTree = "<group>"; };
 		C97D3D391C815D55006B9E90 /* Manage Emps.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Manage Emps.storyboard"; sourceTree = "<group>"; };
 		C97D3D3B1C815D91006B9E90 /* ManageEmployeeListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageEmployeeListTableViewController.swift; sourceTree = "<group>"; };
+		C97FBCFF1EA5315F0020F908 /* AddNewExpenseiPhoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewExpenseiPhoneTableViewController.swift; sourceTree = "<group>"; };
 		C980015D1CAE32A3001E20B0 /* SelectedDatesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedDatesTableViewController.swift; sourceTree = "<group>"; };
 		C9856A001C7D648D00E6C87F /* LaborPartsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaborPartsTableViewController.swift; sourceTree = "<group>"; };
 		C9856A021C7D664800E6C87F /* LaborPartsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaborPartsTableViewCell.swift; sourceTree = "<group>"; };
@@ -945,6 +947,7 @@
 				C9A4E6AE1E71B8B70065287F /* PaymentTypeTableViewController.swift */,
 				C96C683A1E709913002D2E7D /* ExpenseItemModel.swift */,
 				C92BDA6E1E6883BC007AE134 /* AddNewExpenseViewController.swift */,
+				C97FBCFF1EA5315F0020F908 /* AddNewExpenseiPhoneTableViewController.swift */,
 				C947A6041E676E80001F0492 /* ExpenseTableViewCell.swift */,
 				C947A6061E676F7B001F0492 /* ExpenseListTableViewController.swift */,
 				C92BDA6C1E67BD83007AE134 /* ExpenseSpliNavViewController.swift */,
@@ -1415,6 +1418,7 @@
 				C9D210521CB39111003102D9 /* VacationTimePunchesModel.swift in Sources */,
 				C92BDA6D1E67BD83007AE134 /* ExpenseSpliNavViewController.swift in Sources */,
 				C97757091C7E959A0025F7D9 /* WorkOrderStatusTableViewController.swift in Sources */,
+				C97FBD001EA5315F0020F908 /* AddNewExpenseiPhoneTableViewController.swift in Sources */,
 				C9EE6D551E7DCB5C00A44AAC /* MIMETypes.swift in Sources */,
 				C9585F201C163FF1008AB918 /* ConfirmPunchInViewController.swift in Sources */,
 				C9A4E6AF1E71B8B70065287F /* PaymentTypeTableViewController.swift in Sources */,
