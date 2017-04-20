@@ -173,22 +173,22 @@ class QuickActionsMasterViewController: UIViewController {
                     
                     self.openWorkOrdersLive = self.myClient.subscribe(query as! PFQuery<WorkOrders>)
                     
-                    self.openWorkOrdersLive
-                        .handle(Event.created) {_, item in
-                            self.getOpenWorkOrders()
-                        }
-                        .handle(Event.updated) {_, item in
-                            self.getOpenWorkOrders()
-                        }
-                        .handle(Event.deleted) {_, item in
-                            self.getOpenWorkOrders()
-                        }
-                        .handle(Event.entered) {_, item in
-                            self.getOpenWorkOrders()
-                        }
-                        .handle(Event.left) {_, item in
-                            self.getOpenWorkOrders()
-                    }
+//                    self.openWorkOrdersLive
+//                        .handle(Event.created) {_, item in
+//                            self.getOpenWorkOrders()
+//                        }
+//                        .handle(Event.updated) {_, item in
+//                            self.getOpenWorkOrders()
+//                        }
+//                        .handle(Event.deleted) {_, item in
+//                            self.getOpenWorkOrders()
+//                        }
+//                        .handle(Event.entered) {_, item in
+//                            self.getOpenWorkOrders()
+//                        }
+//                        .handle(Event.left) {_, item in
+//                            self.getOpenWorkOrders()
+//                    }
                 }
             }
         }

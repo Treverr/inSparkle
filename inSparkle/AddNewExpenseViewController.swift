@@ -286,9 +286,6 @@ class AddNewExpenseViewController: UIViewController, UIGestureRecognizerDelegate
     }
     
     func savingAnimation() -> NVActivityIndicatorView {
-        let x = (self.view.frame.size.width / 2)
-        let y = (self.view.frame.size.height / 2)
-        
         let background = UIView()
         background.backgroundColor = UIColor.black
         background.frame = CGRect(x: 0, y: 0, width: 247, height: 247)

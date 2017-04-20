@@ -163,7 +163,6 @@ class ExpenseDetailViewController: UIViewController, UIGestureRecognizerDelegate
             if error == nil {
                 self.additionalAttachments = addtlAttch as! [ExpenseAdditionalAttachments]
                 self.attachmentCollectionView.reloadData()
-                self.stopLoadingIndicator()
             }
         })
     }
@@ -454,6 +453,13 @@ extension ExpenseDetailViewController : UICollectionViewDelegate, UICollectionVi
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if indexPath.item == collectionView.indexPathsForVisibleItems.last?.item {
+            self.stopLoadingIndicator()
+        }
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         var temp = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)

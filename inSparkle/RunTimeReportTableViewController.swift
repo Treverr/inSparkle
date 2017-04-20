@@ -50,6 +50,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         
         NotificationCenter.default.addObserver(self, selector: #selector(RunTimeReportTableViewController.updateStartDateLabel), name: NSNotification.Name(rawValue: "updateStart"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RunTimeReportTableViewController.updateEndDateLabel), name: NSNotification.Name(rawValue: "updateEnd"), object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(dismissView), name: NSNotification.Name(rawValue: "dismissRunTimeReport"), object: nil)
         
     }
     
@@ -61,6 +62,10 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
+    }
+    
+    func dismissView() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -166,6 +171,8 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     var returnedPunches = 0
     var error: ErrorPointer = nil
     
+    var employeeTimeCardData = [EmployeePayrollReportModel]()
+    
     func getTimeCardForEachEmployee(_ employee : Employee, startDate : Date, endDate : Date) {
         if !detail {
             csvPunches = "Employee,StandardHours,OvertimeHours,VacationHours,TotalTime\n"
@@ -263,19 +270,21 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
                         totalHours = totalForEmp
                         overtimeHours = 0
                     }
-                    
-                    
+                
                     if (!self.detail) {
-                        self.csvPunches = self.csvPunches + "\(employeeName!),\(standardHours!),\(overtimeHours!),\(vacationHours),\(totalForEmp!)\n"
+                        let empemp = EmployeePayrollReportModel()
+                        empemp.employeeName = employeeName
+                        empemp.standardHours = String(standardHours)
+                        empemp.overtimeHours = String(overtimeHours)
+                        empemp.total = String(totalForEmp)
+                        
+                        print(empemp)
+                        self.employeeTimeCardData.append(empemp)
+//                        self.csvPunches = self.csvPunches + "\(employeeName!),\(standardHours!),\(overtimeHours!),\(vacationHours),\(totalForEmp!)\n"
                     }
                     
-                    
-                    print(self.expectedPunches)
-                    print(self.returnedPunches)
-                    print(self.expectedPunches - self.returnedPunches)
-                    
                     if self.expectedPunches - self.returnedPunches == 0 {
-                        print(self.csvPunches)
+                        print(self.employeeTimeCardData)
                         self.shareTime()
                     }
                 }
@@ -284,13 +293,46 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
     
     func shareTime() {
+        let marti = EmployeePayrollReportModel()
+        marti.employeeName = "Marti Ennis"
+        marti.standardHours = "Salary"
+        marti.overtimeHours = "-"
+        marti.total = "-"
         
-        let textToShare = NSMutableString()
-        textToShare.appendFormat("%@\r", self.csvPunches)
-        print("Time to Share: \(textToShare)")
+        let tom = EmployeePayrollReportModel()
+        tom.employeeName = "Tom Sedletzeck"
+        tom.standardHours = "Salary"
+        tom.overtimeHours = "-"
+        tom.total = "-"
         
-        let data = textToShare.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)
-        saveCSV(textToShare)
+        let robert = EmployeePayrollReportModel()
+        robert.employeeName = "Robert Casad"
+        robert.standardHours = "Salary"
+        robert.overtimeHours = "-"
+        robert.total = "-"
+        
+        self.employeeTimeCardData.insert(marti, at: 0)
+        self.employeeTimeCardData.insert(tom, at: 1)
+        self.employeeTimeCardData.insert(robert, at: 2)
+        
+        let period = self.startDateLabel.text! + " - " + self.endDateLabel.text!
+        
+        let prwp = self.storyboard?.instantiateViewController(withIdentifier: "webPreivew") as! PayrollWebPreview
+        prwp.periodDates = period
+        prwp.loadingUI = self.loadingUI
+        prwp.employees = self.employeeTimeCardData
+        
+        self.present(prwp, animated: true) { 
+            self.loadingUI.stopAnimating()
+            self.loadingBackground.removeFromSuperview()
+        }
+        
+//        let textToShare = NSMutableString()
+//        textToShare.appendFormat("%@\r", self.csvPunches)
+//        print("Time to Share: \(textToShare)")
+//        
+//        let data = textToShare.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)
+//        saveCSV(textToShare)
         
     }
     
@@ -301,22 +343,13 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     
     var docController: UIDocumentInteractionController?
     
-    func saveCSV(_ whatToSave : NSMutableString) {
-        let x = self.view.center
-        let docs = NSSearchPathForDirectoriesInDomains(.documentationDirectory, .userDomainMask, true)[0] 
-        let writePath = docs + "TimeCardReport.csv"
-        do {
-            try whatToSave.write(toFile: writePath, atomically: true, encoding: String.Encoding.utf8.rawValue)
-            print("Wrote File")
-            print(writePath)
-        } catch {
-            
-        }
+    func presentPDF(_ writePath : String) {
         docController = UIDocumentInteractionController(url: URL(fileURLWithPath: writePath))
         docController!.delegate = self
         docController!.presentPreview(animated: true)
         self.loadingUI.stopAnimating()
     }
+    
     
     func documentInteractionControllerRectForPreview(_ controller: UIDocumentInteractionController) -> CGRect {
         return self.view.frame

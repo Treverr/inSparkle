@@ -43,6 +43,8 @@
 		C92E248F1C1557790028D647 /* TimePunchCalcObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */; };
 		C92E81871D8B8E3300ED2D13 /* TechListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92E81861D8B8E3300ED2D13 /* TechListTableViewController.swift */; };
 		C9338D841C1E306C00DC09BE /* CloudCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9338D831C1E306C00DC09BE /* CloudCode.swift */; };
+		C933ADCB1EA8412E00FBB606 /* employeeline.html in Resources */ = {isa = PBXBuildFile; fileRef = C933ADCA1EA8412E00FBB606 /* employeeline.html */; };
+		C933ADCD1EA8416700FBB606 /* PayrollReportHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = C933ADCC1EA8416700FBB606 /* PayrollReportHTML.swift */; };
 		C93AEF161D8A544600F9D44D /* VacationApprovedHTML.html in Resources */ = {isa = PBXBuildFile; fileRef = C93AEF151D8A544600F9D44D /* VacationApprovedHTML.html */; };
 		C940778B1C7BF6C200E74817 /* PartsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C940778A1C7BF6C200E74817 /* PartsTableViewCell.swift */; };
 		C94367061BF719E10066D155 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94367051BF719E10066D155 /* Colors.swift */; };
@@ -118,9 +120,9 @@
 		C9856A051C7E8B1E00E6C87F /* Work Order Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9856A041C7E8B1E00E6C87F /* Work Order Assets.xcassets */; };
 		C98F4D1C1DEFE7F4008F7A49 /* ManagerOverrideAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C98F4D1B1DEFE7F4008F7A49 /* ManagerOverrideAssets.xcassets */; };
 		C99111CC1D5E2D0A0052D5C0 /* SessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99111CB1D5E2D0A0052D5C0 /* SessionModel.swift */; };
+		C992A9231EA864AD00883ECE /* EmployeePayrollReportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C992A9221EA864AD00883ECE /* EmployeePayrollReportModel.swift */; };
 		C99A694B1DECDBF5001E872C /* ManagerOverrideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99A694A1DECDBF5001E872C /* ManagerOverrideViewController.swift */; };
 		C99A694D1DECDEAF001E872C /* ManagerOverrideNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99A694C1DECDEAF001E872C /* ManagerOverrideNavViewController.swift */; };
-		C99C7D951CA8E27600EF8776 /* PayrollPDFGenerate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99C7D941CA8E27600EF8776 /* PayrollPDFGenerate.storyboard */; };
 		C99C7D971CA8E2D300EF8776 /* PayrollSummaryPDFGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99C7D961CA8E2D300EF8776 /* PayrollSummaryPDFGenerateViewController.swift */; };
 		C99D3E431BF5BD3700D30F96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99D3E421BF5BD3700D30F96 /* AppDelegate.swift */; };
 		C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C99D3E461BF5BD3700D30F96 /* Main.storyboard */; };
@@ -169,6 +171,7 @@
 		C9C8E1DD1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1DC1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift */; };
 		C9C8E1DF1C1FCE9A0056D789 /* POCOpenCloseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1DE1C1FCE9A0056D789 /* POCOpenCloseTableViewController.swift */; };
 		C9C8E1E11C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C8E1E01C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift */; };
+		C9CBCB8D1EA909B1009BAC7B /* payrollreportlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = C9CBCB8C1EA909B1009BAC7B /* payrollreportlogo.png */; };
 		C9CC66A01C0D0E090000EDE6 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */; };
 		C9CC66A21C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */; };
 		C9CD6A0E1DBEDEE6009C93A1 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CD6A0B1DBEDEE6009C93A1 /* KeychainItemAccessibility.swift */; };
@@ -198,6 +201,7 @@
 		C9F0FF981C18AB34005EEE28 /* EditTimePunchesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */; };
 		C9F0FF9A1C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */; };
 		C9F1A47F1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */; };
+		C9F342D91EA8386C007C49EF /* report.html in Resources */ = {isa = PBXBuildFile; fileRef = C9F342D81EA8386C007C49EF /* report.html */; };
 		C9F431181BFEB13500AC3CD8 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F431171BFEB13500AC3CD8 /* Global.swift */; };
 		C9F7A9B01C6FD994001A6555 /* MIBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F7A9AF1C6FD994001A6555 /* MIBadgeButton.swift */; };
 		C9F7A9B41C70149E001A6555 /* UserPIN.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F7A9B31C70149E001A6555 /* UserPIN.storyboard */; };
@@ -271,6 +275,8 @@
 		C92E248E1C1557790028D647 /* TimePunchCalcObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePunchCalcObject.swift; sourceTree = "<group>"; };
 		C92E81861D8B8E3300ED2D13 /* TechListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechListTableViewController.swift; sourceTree = "<group>"; };
 		C9338D831C1E306C00DC09BE /* CloudCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudCode.swift; sourceTree = "<group>"; };
+		C933ADCA1EA8412E00FBB606 /* employeeline.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = employeeline.html; sourceTree = "<group>"; };
+		C933ADCC1EA8416700FBB606 /* PayrollReportHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayrollReportHTML.swift; sourceTree = "<group>"; };
 		C93AEF151D8A544600F9D44D /* VacationApprovedHTML.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = VacationApprovedHTML.html; sourceTree = "<group>"; };
 		C940778A1C7BF6C200E74817 /* PartsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartsTableViewCell.swift; sourceTree = "<group>"; };
 		C94367051BF719E10066D155 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -348,9 +354,9 @@
 		C9856A041C7E8B1E00E6C87F /* Work Order Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Work Order Assets.xcassets"; sourceTree = "<group>"; };
 		C98F4D1B1DEFE7F4008F7A49 /* ManagerOverrideAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ManagerOverrideAssets.xcassets; sourceTree = "<group>"; };
 		C99111CB1D5E2D0A0052D5C0 /* SessionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionModel.swift; sourceTree = "<group>"; };
+		C992A9221EA864AD00883ECE /* EmployeePayrollReportModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmployeePayrollReportModel.swift; sourceTree = "<group>"; };
 		C99A694A1DECDBF5001E872C /* ManagerOverrideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerOverrideViewController.swift; sourceTree = "<group>"; };
 		C99A694C1DECDEAF001E872C /* ManagerOverrideNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagerOverrideNavViewController.swift; sourceTree = "<group>"; };
-		C99C7D941CA8E27600EF8776 /* PayrollPDFGenerate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PayrollPDFGenerate.storyboard; sourceTree = "<group>"; };
 		C99C7D961CA8E2D300EF8776 /* PayrollSummaryPDFGenerateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayrollSummaryPDFGenerateViewController.swift; sourceTree = "<group>"; };
 		C99D3E3F1BF5BD3700D30F96 /* inSparkle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = inSparkle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99D3E421BF5BD3700D30F96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -412,6 +418,7 @@
 		C9C8E1DC1C1FCDB60056D789 /* POCCustomerFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCCustomerFilterTableViewController.swift; sourceTree = "<group>"; };
 		C9C8E1DE1C1FCE9A0056D789 /* POCOpenCloseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCOpenCloseTableViewController.swift; sourceTree = "<group>"; };
 		C9C8E1E01C1FCF320056D789 /* POCActiveInactiveAllFilterTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POCActiveInactiveAllFilterTableViewController.swift; sourceTree = "<group>"; };
+		C9CBCB8C1EA909B1009BAC7B /* payrollreportlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = payrollreportlogo.png; sourceTree = "<group>"; };
 		C9CC669F1C0D0E090000EDE6 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		C9CC66A11C0D0E3E0000EDE6 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		C9CD6A0B1DBEDEE6009C93A1 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
@@ -442,6 +449,7 @@
 		C9F0FF971C18AB34005EEE28 /* EditTimePunchesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTimePunchesTableViewController.swift; sourceTree = "<group>"; };
 		C9F0FF991C18AC00005EEE28 /* AddEditEmployeeSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditEmployeeSelectionTableViewController.swift; sourceTree = "<group>"; };
 		C9F1A47E1CAC8E370071DC5A /* MyTimecardWeekSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTimecardWeekSelectionTableViewController.swift; sourceTree = "<group>"; };
+		C9F342D81EA8386C007C49EF /* report.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = report.html; sourceTree = "<group>"; };
 		C9F431171BFEB13500AC3CD8 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		C9F7A9AF1C6FD994001A6555 /* MIBadgeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIBadgeButton.swift; sourceTree = "<group>"; };
 		C9F7A9B31C70149E001A6555 /* UserPIN.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPIN.storyboard; sourceTree = "<group>"; };
@@ -706,7 +714,7 @@
 			isa = PBXGroup;
 			children = (
 				C9585F2A1C174C0F008AB918 /* TimeClockReport.storyboard */,
-				C99C7D941CA8E27600EF8776 /* PayrollPDFGenerate.storyboard */,
+				C9F342D71EA8385B007C49EF /* New Payroll Report Files */,
 				C99C7D961CA8E2D300EF8776 /* PayrollSummaryPDFGenerateViewController.swift */,
 				C9585F261C169491008AB918 /* RunTimeReportTableViewController.swift */,
 				C9585F351C175B08008AB918 /* TimeCardReportTableViewController.swift */,
@@ -1077,6 +1085,18 @@
 			name = "Time Card Management";
 			sourceTree = "<group>";
 		};
+		C9F342D71EA8385B007C49EF /* New Payroll Report Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9CBCB8C1EA909B1009BAC7B /* payrollreportlogo.png */,
+				C933ADCA1EA8412E00FBB606 /* employeeline.html */,
+				C933ADCC1EA8416700FBB606 /* PayrollReportHTML.swift */,
+				C992A9221EA864AD00883ECE /* EmployeePayrollReportModel.swift */,
+				C9F342D81EA8386C007C49EF /* report.html */,
+			);
+			name = "New Payroll Report Files";
+			sourceTree = "<group>";
+		};
 		C9FE5BE81C1FC5BF00293836 /* POC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1183,6 +1203,7 @@
 			files = (
 				C9A226351E675CFE00AD245C /* Expense.storyboard in Resources */,
 				C98F4D1C1DEFE7F4008F7A49 /* ManagerOverrideAssets.xcassets in Resources */,
+				C933ADCB1EA8412E00FBB606 /* employeeline.html in Resources */,
 				C9F0FF961C18A646005EEE28 /* TimeCardManagement.storyboard in Resources */,
 				C9536C501DDCE5370022E3AA /* More.storyboard in Resources */,
 				C99D3E4D1BF5BD3700D30F96 /* LaunchScreen.storyboard in Resources */,
@@ -1196,6 +1217,7 @@
 				C9536C571DDCEBF90022E3AA /* MainAssets.xcassets in Resources */,
 				C90340CC1C722C9A0028F865 /* ChemicalCheckoutReport.storyboard in Resources */,
 				C9A01EC31C8FBF83002D75AA /* PDF Icon.png in Resources */,
+				C9CBCB8D1EA909B1009BAC7B /* payrollreportlogo.png in Resources */,
 				C96EF8031C14E0FD00C4D2C1 /* TimeClock.xcassets in Resources */,
 				C9DC84641C6251A300C41B6A /* OpeningPDFTemplate.storyboard in Resources */,
 				C9D2105A1CB4899E003102D9 /* TimeAwayHistory.storyboard in Resources */,
@@ -1207,7 +1229,6 @@
 				C972FF731C19FA0900D34EB2 /* Messages.storyboard in Resources */,
 				C95008611C61C08E00F5351C /* GeneratePDF.storyboard in Resources */,
 				C9FE5BE71C1FC5BA00293836 /* POCReport.storyboard in Resources */,
-				C99C7D951CA8E27600EF8776 /* PayrollPDFGenerate.storyboard in Resources */,
 				C99D3E481BF5BD3700D30F96 /* Main.storyboard in Resources */,
 				C9585F2F1C175505008AB918 /* Admin.storyboard in Resources */,
 				C9E2A2B91C235D8400DBA851 /* ToSparkle.gpx in Resources */,
@@ -1224,6 +1245,7 @@
 				C9D210561CB44692003102D9 /* RequestTimeOff.storyboard in Resources */,
 				C9A226321E675AA500AD245C /* MoreAssets.xcassets in Resources */,
 				C91120861C73F9E8004002A3 /* WorkOrderPDFTemplate.storyboard in Resources */,
+				C9F342D91EA8386C007C49EF /* report.html in Resources */,
 				C9585F2B1C174C0F008AB918 /* TimeClockReport.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1386,10 +1408,12 @@
 				C9FAE77D1C584B2E005630FC /* MessageNotesTableViewController.swift in Sources */,
 				C9FE5BE41C1F880600293836 /* ConfirmCalViewController.swift in Sources */,
 				C9FAE77B1C57FD39005630FC /* MessageStatusTableViewController.swift in Sources */,
+				C992A9231EA864AD00883ECE /* EmployeePayrollReportModel.swift in Sources */,
 				C9C8473D1D8E0AE2001D892B /* QuickActionsMasterViewController.swift in Sources */,
 				C96EF7FB1C14BFC400C4D2C1 /* TimeClockViewController.swift in Sources */,
 				C929E7F21D8A37F1004EE7A7 /* Email.swift in Sources */,
 				C96C683D1E709B0C002D2E7D /* PaymentTypeModel.swift in Sources */,
+				C933ADCD1EA8416700FBB606 /* PayrollReportHTML.swift in Sources */,
 				C9AB005E1C469FC900595F58 /* PushNotifications.swift in Sources */,
 				C97C9C7A1D5F8781006F47D0 /* QRCodeScanner.swift in Sources */,
 				C9E511F51BFAC15E0030AA98 /* LoginViewController.swift in Sources */,
