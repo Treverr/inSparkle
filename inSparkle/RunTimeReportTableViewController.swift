@@ -9,26 +9,26 @@
  import UIKit
  import Parse
  import NVActivityIndicatorView
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
+ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
+ }
+ 
+ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
+ }
+ 
  
  class RunTimeReportTableViewController: UITableViewController, UIPopoverPresentationControllerDelegate, UIActionSheetDelegate, UIDocumentInteractionControllerDelegate  {
     
@@ -50,7 +50,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         
         NotificationCenter.default.addObserver(self, selector: #selector(RunTimeReportTableViewController.updateStartDateLabel), name: NSNotification.Name(rawValue: "updateStart"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RunTimeReportTableViewController.updateEndDateLabel), name: NSNotification.Name(rawValue: "updateEnd"), object: nil)
-                NotificationCenter.default.addObserver(self, selector: #selector(dismissView), name: NSNotification.Name(rawValue: "dismissRunTimeReport"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RunTimeReportTableViewController.updateEndDateLabel), name: NSNotification.Name(rawValue: "dismissRunTimeReport"), object: nil)
         
     }
     
@@ -126,7 +126,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     @IBAction func runReportButton(_ sender: AnyObject) {
         
         performSelector(onMainThread: #selector(RunTimeReportTableViewController.swiftActive), with: nil, waitUntilDone: true)
-
+        
         let startDateString = startDateLabel.text
         let endDateString = endDateLabel.text
         
@@ -239,17 +239,17 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
                         }
                     }
                 } catch { }
-
-//                if (self.expectedPunches == 0) && (self.returnedPunches == 0) {
-//                    
-//                    let alert = UIAlertController(title: "Error", message: "The report retuned 0 punches, please check your criteria and try again.", preferredStyle: .Alert)
-//                    let okButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) -> Void in
-//                        self.dismissViewControllerAnimated(true, completion: nil)
-//                    })
-//                    alert.addAction(okButton)
-//                    self.presentViewController(alert, animated: true, completion: nil)
-//                    
-//                }
+                
+                //                if (self.expectedPunches == 0) && (self.returnedPunches == 0) {
+                //
+                //                    let alert = UIAlertController(title: "Error", message: "The report retuned 0 punches, please check your criteria and try again.", preferredStyle: .Alert)
+                //                    let okButton = UIAlertAction(title: "Okay", style: .Default, handler: { (action) -> Void in
+                //                        self.dismissViewControllerAnimated(true, completion: nil)
+                //                    })
+                //                    alert.addAction(okButton)
+                //                    self.presentViewController(alert, animated: true, completion: nil)
+                //
+                //                }
                 
                 if totalForEmp != 0 {
                     if (self.detail) {
@@ -270,7 +270,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
                         totalHours = totalForEmp
                         overtimeHours = 0
                     }
-                
+                    
                     if (!self.detail) {
                         let empemp = EmployeePayrollReportModel()
                         empemp.employeeName = employeeName
@@ -280,7 +280,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
                         
                         print(empemp)
                         self.employeeTimeCardData.append(empemp)
-//                        self.csvPunches = self.csvPunches + "\(employeeName!),\(standardHours!),\(overtimeHours!),\(vacationHours),\(totalForEmp!)\n"
+                        //                        self.csvPunches = self.csvPunches + "\(employeeName!),\(standardHours!),\(overtimeHours!),\(vacationHours),\(totalForEmp!)\n"
                     }
                     
                     if self.expectedPunches - self.returnedPunches == 0 {
@@ -293,47 +293,65 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     }
     
     func shareTime() {
-        let marti = EmployeePayrollReportModel()
-        marti.employeeName = "Marti Ennis"
-        marti.standardHours = "Salary"
-        marti.overtimeHours = "-"
-        marti.total = "-"
-        
-        let tom = EmployeePayrollReportModel()
-        tom.employeeName = "Tom Sedletzeck"
-        tom.standardHours = "Salary"
-        tom.overtimeHours = "-"
-        tom.total = "-"
-        
-        let robert = EmployeePayrollReportModel()
-        robert.employeeName = "Robert Casad"
-        robert.standardHours = "Salary"
-        robert.overtimeHours = "-"
-        robert.total = "-"
-        
-        self.employeeTimeCardData.insert(marti, at: 0)
-        self.employeeTimeCardData.insert(tom, at: 1)
-        self.employeeTimeCardData.insert(robert, at: 2)
-        
-        let period = self.startDateLabel.text! + " - " + self.endDateLabel.text!
-        
-        let prwp = self.storyboard?.instantiateViewController(withIdentifier: "webPreivew") as! PayrollWebPreview
-        prwp.periodDates = period
-        prwp.loadingUI = self.loadingUI
-        prwp.employees = self.employeeTimeCardData
-        
-        self.present(prwp, animated: true) { 
-            self.loadingUI.stopAnimating()
-            self.loadingBackground.removeFromSuperview()
+        if !self.detail {
+            let marti = EmployeePayrollReportModel()
+            marti.employeeName = "Marti Ennis"
+            marti.standardHours = "Salary"
+            marti.overtimeHours = "-"
+            marti.total = "-"
+            
+            let tom = EmployeePayrollReportModel()
+            tom.employeeName = "Tom Sedletzeck"
+            tom.standardHours = "Salary"
+            tom.overtimeHours = "-"
+            tom.total = "-"
+            
+            let robert = EmployeePayrollReportModel()
+            robert.employeeName = "Robert Casad"
+            robert.standardHours = "Salary"
+            robert.overtimeHours = "-"
+            robert.total = "-"
+            
+            self.employeeTimeCardData.insert(marti, at: 0)
+            self.employeeTimeCardData.insert(tom, at: 1)
+            self.employeeTimeCardData.insert(robert, at: 2)
+            
+            let period = self.startDateLabel.text! + " - " + self.endDateLabel.text!
+            
+            let prwp = self.storyboard?.instantiateViewController(withIdentifier: "webPreivew") as! PayrollWebPreview
+            prwp.periodDates = period
+            prwp.loadingUI = self.loadingUI
+            prwp.employees = self.employeeTimeCardData
+            
+            self.present(prwp, animated: true) {
+                self.loadingUI.stopAnimating()
+                self.loadingBackground.removeFromSuperview()
+            }
+        } else {
+            let textToShare = NSMutableString()
+            textToShare.appendFormat("%@\r", self.csvPunches)
+            print("Time to Share: \(textToShare)")
+            
+            let data = textToShare.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)
+            saveCSV(textToShare)
         }
-        
-//        let textToShare = NSMutableString()
-//        textToShare.appendFormat("%@\r", self.csvPunches)
-//        print("Time to Share: \(textToShare)")
-//        
-//        let data = textToShare.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false)
-//        saveCSV(textToShare)
-        
+    }
+    
+    func saveCSV(_ whatToSave : NSMutableString) {
+        let x = self.view.center
+        let docs = NSSearchPathForDirectoriesInDomains(.documentationDirectory, .userDomainMask, true)[0]
+        let writePath = docs + "TimeCardReport.csv"
+        do {
+            try whatToSave.write(toFile: writePath, atomically: true, encoding: String.Encoding.utf8.rawValue)
+            print("Wrote File")
+            print(writePath)
+        } catch {
+            
+        }
+        docController = UIDocumentInteractionController(url: URL(fileURLWithPath: writePath))
+        docController!.delegate = self
+        docController!.presentPreview(animated: true)
+        self.loadingUI.stopAnimating()
     }
     
     func sheet(_ whatToShare : AnyObject) {
